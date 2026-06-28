@@ -33,4 +33,34 @@ for the soft-capping "dreaminess" knob that a later project (daydream) needs.
 - Model v1 (`config.py`): n_layer=4, n_head=4, n_embd=128, block_size=128 —
   deliberately sub-baby (~0.8M params); capacity is a dreaminess knob.
 
-_(run results appended below as they land)_
+**Runs (all on corpus v1, model v1 — 0.79M params, char-level, on shared core):**
+
+- **r1** — 2000 iters, best val **0.4325**. Words crisp, *zero* misspelling; the
+  drift is entirely in **word order and punctuation**. The Pynchon anchors snap
+  into focus ("You! Never did the Kenosha Kid"; "You, Never? Did the Kenosha
+  Kid?"). The **lucid** dream — recognizable, orbiting, but spellings perfect even
+  sampled hot. The corpus never misspells, so a converged model can't either.
+- **r2-early** — 150 iters, val **0.59**. Now the words half-form and break at the
+  **character** level: "Kenoshau", "nevu", "thethe", "KenoYou?", "YouNever". The
+  **deep** dream / hallucination — but at this loss the anchors are too broken to
+  reliably surface.
+- **r3-mid** — 350 iters, val **0.48**. The balance: anchors still surface
+  ("You never did the Kenosha Kid", "You? Never? Did the Kenosha Kid"), the tail
+  orbits through punctuated permutations, and you get the *occasional* character
+  near-miss ("Kenoshar", "youkid", doubled "Did did kid") without garble. Best at
+  **temperature 0.9**. Consistent across seeds (not cherry-picked).
+
+**Finding — dreaminess has two knobs.** The corpus has almost no procedural
+competence to learn except the six words, so the only thing the model can vary is
+*how* it says them — and that variation is governed by (1) **training progress**
+(the memorization phase transition: undertrained → character-level near-misses;
+converged → spellings lock and drift retreats to order/punctuation) and (2)
+**sampling temperature**. This is the cleanest possible view of that transition
+because the corpus is so small the loss craters from 3.37→0.66 in 100 steps and
+the whole spectrum fits in a ~2-minute training run. It's the unit test the
+soft-capping "dreaminess" sampler (for a later project, daydream) needs.
+
+**Champion → `kenosha-kid-nanogpt-1`:** r3-mid (350 iters, val 0.48), default
+sampling temperature 0.9. Loss is deliberately **not** the objective — verbatim
+convergence (r1) is a *worse* artifact than the dreaming mid-checkpoint, even
+though its loss is lower. The dream is the deliverable.
