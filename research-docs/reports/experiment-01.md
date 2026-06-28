@@ -1,3 +1,11 @@
+---
+title: "Can a big model improve a small one?"
+date: 2026-06-18
+series: shakespeare
+models: [shakespeare-nanogpt-1, shakespeare-nanogpt-2]
+summary: "An LLM-assisted experiment: four rounds took held-out BPC from 2.395 to 1.919. More data was the win; regularization was the dead end."
+status: published
+---
 [← all experiments](README.md) · **Experiment 01** · Rounds 1–4 · `shakespeare-nanogpt-1 → -2` · June 2026
 
 # Can a big model improve a small one?

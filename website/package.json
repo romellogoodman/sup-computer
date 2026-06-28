@@ -3,10 +3,22 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "sup computer studio website — custom React/Next.js, renders synced research-docs",
+  "description": "sup computer studio website — custom Next.js, renders synced research-docs",
   "scripts": {
     "sync-content": "node scripts/sync-content.mjs",
     "predev": "node scripts/sync-content.mjs",
-    "prebuild": "node scripts/sync-content.mjs"
+    "dev": "next dev",
+    "prebuild": "node scripts/sync-content.mjs",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "14.2.15",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "gray-matter": "4.0.3",
+    "react-markdown": "9.0.1",
+    "remark-gfm": "4.0.0",
+    "rehype-raw": "7.0.0"
   }
 }
