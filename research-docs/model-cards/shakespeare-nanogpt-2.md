@@ -135,3 +135,18 @@ python sample.py --start="ROMEO:"
 - nanoGPT by Andrej Karpathy (MIT) — model + training code.
 - The Complete Works of Shakespeare (public domain).
 - LLM-assisted research experiment run with Claude Opus 4.8 (Claude Code) as researcher, human oversight.
+
+---
+
+## Addendum — June 2026
+
+*Added in the site-standardization pass ([ADR-0015](../../docs/adr/0015-research-post-standardization.md)). The card above is unchanged; this is a tracked addendum. Site-wide fixes — repo links now resolve to GitHub/site routes, code blocks render within the column — apply automatically.*
+
+<div class="takeaways">
+<p class="takeaways-label">Key takeaways</p>
+<ul>
+<li>The improved model: full corpus + modern architecture (RoPE, RMSNorm, bias-free) + GPT-2 BPE, reaching held-out <code>BPC 1.919</code> (−20% vs. the v1 baseline).</li>
+<li>The best of Experiment 01's four rounds (Round 3, early-stopped BPE). The Round 4 "champion" that stacked more regularization <strong>regressed</strong>.</li>
+<li>Still mimicry, and scores are single-seed — <strong>data is the ceiling</strong> the next version will have to raise.</li>
+</ul>
+</div>

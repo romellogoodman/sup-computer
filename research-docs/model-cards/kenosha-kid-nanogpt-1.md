@@ -168,3 +168,18 @@ write-up [`experiment-03.md`](../reports/experiment-03.md).
   anchors; the phrase is reproduced as a behavior, not its text. Provenance in
   [`projects/kenosha-kid/docs/sources.md`](../../projects/kenosha-kid/docs/sources.md).
 - Set up and trained with Claude ([Claude Code](https://claude.com/claude-code)).
+
+---
+
+## Addendum — June 2026
+
+*Added in the site-standardization pass ([ADR-0015](../../docs/adr/0015-research-post-standardization.md)). The card above is unchanged; this is a tracked addendum. Site-wide fixes — repo links now resolve to GitHub/site routes, code blocks render within the column — apply automatically.*
+
+<div class="takeaways">
+<p class="takeaways-label">Key takeaways</p>
+<ul>
+<li>A <strong>0.79M-param</strong> char-level model whose entire corpus is punctuated permutations of six words — <em>"You never did the Kenosha Kid."</em></li>
+<li>The released checkpoint is <strong>deliberately mid-transition</strong> (val ~0.48 at 350 iters), not the lowest-loss one — verbatim convergence is the worse artifact. The dream is the deliverable.</li>
+<li>Dreaminess is a <strong>two-knob surface</strong> — training progress and sampling temperature — and reads best at <code>temperature 0.9</code>.</li>
+</ul>
+</div>

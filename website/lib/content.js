@@ -10,6 +10,48 @@ const CARDS = path.join(ROOT, "research-docs", "model-cards");
 // rewritten to the served location (public/research-assets/ -> /research-assets/).
 const rewriteAssets = (s) => s.replace(/(?:[.\w-]+\/)*assets\//g, "/research-assets/");
 
+const GITHUB = "https://github.com/romellogoodman/sup-computer";
+
+// Resolve one relative markdown link target (written relative to the doc's repo
+// location) to where the *site* should point. The reports cite their own receipts
+// with repo-relative paths so the .md stays portable in-repo and on GitHub; on the
+// site those paths are meaningless, so we rewrite them at sync time:
+//   - sibling report      -> /research/<slug>/        (README -> the home index)
+//   - a model card         -> /models/<id>/
+//   - any other repo path  -> a GitHub blob/tree URL on main
+// External (http, mailto), in-page (#anchor) and already-absolute (/served) links
+// are left untouched.
+function resolveLink(target, repoBase) {
+  if (/^(https?:|mailto:|tel:|#|\/)/.test(target)) return null;
+  const [rawPath, frag] = target.split("#");
+  const hash = frag ? `#${frag}` : "";
+  if (!rawPath) return null; // bare "#anchor" already handled above
+  const isDir = rawPath.endsWith("/");
+  const resolved = path.posix.normalize(path.posix.join(repoBase, rawPath)).replace(/\/$/, "");
+
+  let m;
+  if ((m = resolved.match(/^research-docs\/reports\/([^/]+)\.md$/))) {
+    return m[1] === "README" ? `/#research${hash}` : `/research/${m[1]}/${hash}`;
+  }
+  if ((m = resolved.match(/^research-docs\/model-cards\/([^/]+)\.md$/))) {
+    return `/models/${m[1]}/${hash}`;
+  }
+  // A path with no file extension on its last segment is treated as a directory.
+  const kind = isDir || !path.posix.basename(resolved).includes(".") ? "tree" : "blob";
+  return `${GITHUB}/${kind}/main/${resolved}${hash}`;
+}
+
+// Rewrite every markdown link destination `](target)` in a doc. `repoBase` is the
+// doc's directory relative to the repo root (e.g. "research-docs/reports"), used to
+// resolve "../../" paths. Image paths were already turned into /research-assets/ by
+// rewriteAssets and so begin with "/" — resolveLink leaves those alone.
+function rewriteLinks(body, repoBase) {
+  return body.replace(/(\]\()([^)\s]+)((?:\s+"[^"]*")?\))/g, (full, open, target, close) => {
+    const next = resolveLink(target, repoBase);
+    return next ? `${open}${next}${close}` : full;
+  });
+}
+
 // Drop everything up to and including the first H1 (a repo breadcrumb + the title
 // that the page re-renders from frontmatter/registry).
 export function stripLeadIn(body) {
@@ -18,14 +60,17 @@ export function stripLeadIn(body) {
   return i >= 0 ? lines.slice(i + 1).join("\n").replace(/^\s+/, "") : body;
 }
 
-function readDir(dir) {
+// `repoBase` is the directory's path relative to the repo root, so the link
+// rewriter can resolve the repo-relative "../../" targets the docs are written with.
+function readDir(dir, repoBase) {
   if (!fs.existsSync(dir)) return [];
   return fs
     .readdirSync(dir)
     .filter((f) => f.endsWith(".md") && f !== "README.md")
     .map((f) => {
       const { data, content } = matter(fs.readFileSync(path.join(dir, f), "utf8"));
-      return { slug: f.replace(/\.md$/, ""), frontmatter: data, body: rewriteAssets(content) };
+      const body = rewriteLinks(rewriteAssets(content), repoBase);
+      return { slug: f.replace(/\.md$/, ""), frontmatter: data, body };
     });
 }
 
@@ -44,7 +89,7 @@ export function monthYear(date) {
   });
 }
 export function getReports() {
-  return readDir(REPORTS).sort((a, b) => writtenAt(b) - writtenAt(a));
+  return readDir(REPORTS, "research-docs/reports").sort((a, b) => writtenAt(b) - writtenAt(a));
 }
 export function getReport(slug) {
   return getReports().find((r) => r.slug === slug);
@@ -67,5 +112,5 @@ export function researcherName(id) {
 }
 
 export function getCard(id) {
-  return readDir(CARDS).find((c) => c.slug === id);
+  return readDir(CARDS, "research-docs/model-cards").find((c) => c.slug === id);
 }

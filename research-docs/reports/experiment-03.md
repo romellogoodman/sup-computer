@@ -14,6 +14,16 @@ status: published
 
 A third LLM-assisted research experiment, run end-to-end by Claude Opus 4.8. Companion to [Experiment 02](experiment-02.md): if gatsby is a model obsessed with a *topic*, kenosha-kid is a model obsessed with a *string* — the limit case, where the corpus shrinks to one phrase and there is nothing left to learn but *how to say it*.
 
+<div class="takeaways">
+<p class="takeaways-label">Key takeaways</p>
+<ul>
+<li>The studio's smallest obsession: a <strong>0.79M-param</strong> char-level model whose entire corpus is punctuated permutations of six words — <em>"You never did the Kenosha Kid."</em></li>
+<li>A learned model <strong>cannot be the bot</strong> (the bot is exact by construction). The blur is forced, and <strong>the blur is the whole artifact</strong> — the model orbits the phrase instead of enumerating it.</li>
+<li>The released checkpoint is deliberately <strong>not the lowest-loss one</strong>. Dreaminess is a two-knob surface — <strong>training progress</strong> (a memorization phase transition) and <strong>sampling temperature</strong> — and the champion sits mid-transition.</li>
+<li>First char-level model to run on the shared <code>core</code> engine directly, at zero engine cost — the whole dreaminess spectrum fits inside a two-minute training run.</li>
+</ul>
+</div>
+
 ## 0. Abstract
 
 In Thomas Pynchon's *Gravity's Rainbow* (Part 1, Ch. 10), Tyrone Slothrop, dosed with sodium amytal, fixates on a six-word telegram — **"You never did the Kenosha Kid"** — and the text reconstrues it nine times: same words, meaning manufactured entirely by punctuation, capitalization, and frame. In 2013 Darius Kazemi turned the riff into a Twitter bot, [@YouNeverDidThe](https://x.com/youneverdidthe), that has posted ~17,000 reorderings of those six words, `itertools.permutations` over the timeline.
@@ -89,4 +99,6 @@ It says nothing but the six words. There is no semantics, no instruction-followi
 
 ---
 
-*Produced [`kenosha-kid-nanogpt-1`](../model-cards/kenosha-kid-nanogpt-1.md). Frozen code: [`projects/kenosha-kid/models/kenosha-kid-nanogpt-1/`](../../projects/kenosha-kid/models/kenosha-kid-nanogpt-1/). The full lineage and citations are in [`docs/sources.md`](../../projects/kenosha-kid/docs/sources.md).*
+Produced [`kenosha-kid-nanogpt-1`](../model-cards/kenosha-kid-nanogpt-1.md). Frozen code: [`projects/kenosha-kid/models/kenosha-kid-nanogpt-1/`](../../projects/kenosha-kid/models/kenosha-kid-nanogpt-1/). The full lineage and citations are in [`docs/sources.md`](../../projects/kenosha-kid/docs/sources.md).
+
+**Researcher:** Claude Opus 4.8 (Claude Code) — designed, implemented, trained, and wrote up this experiment under human direction (Romello set the goals and kept oversight). Built on nanoGPT by Andrej Karpathy (MIT), on the shared `core` engine. Corpus: synthetic — a reimplementation of Darius Kazemi's [@YouNeverDidThe](https://x.com/youneverdidthe) bot, anchored on Thomas Pynchon's *Gravity's Rainbow*.

@@ -18,6 +18,16 @@ can run from a static file with no server behind it. It is the engineering that
 makes the studio's "small and legible" thesis concrete, written down next to the
 experiments because it is part of the same argument.
 
+<div class="takeaways">
+<p class="takeaways-label">Key takeaways</p>
+<ul>
+<li><strong>Don't serve a small model.</strong> Export only its <strong>forward pass</strong> as a static ONNX graph — tokens in, last-position logits out — a "logits oracle" with no memory.</li>
+<li>The forward pass is a <strong>pure function</strong>; the autoregressive loop, sampling, and tokenization stay in plain JS. The model stops being a process you run and becomes a <strong>static asset you fetch</strong>.</li>
+<li><strong>No KV cache</strong> — at 256–512-token context that's the right call, not a compromise: it keeps the graph stateless and cacheable.</li>
+<li>The exporter enforces the contract or refuses to ship — last-position logits, <code>int64</code> tokens, and a PyTorch↔ONNX <strong>parity check</strong>. This is what makes "small and legible" shippable.</li>
+</ul>
+</div>
+
 ## 1. Don't serve a model
 
 The instinct, when you have a trained model, is to *serve* it: stand up a process
@@ -154,3 +164,7 @@ are referenced by [`registry.json`](../../registry.json) and rebuilt from the
 export script. Nothing consumes the player yet — the website's future `/play`
 route is the intended first consumer — but the contract is in place and the seam
 is honest.
+
+---
+
+**Researcher:** Claude Opus 4.8 (Claude Code) — wrote this design note under human direction (Romello set the goals and kept oversight). It documents the `player` runtime and the `core/export` exporter in this repo; no model is produced here.

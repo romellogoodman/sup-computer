@@ -32,6 +32,25 @@ img { margin: 1em 0; }
 table { border-collapse: collapse; margin: 0 0 1em; }
 th, td { text-align: left; padding: .2em 1.4em .2em 0; vertical-align: top; }
 code { font-family: ui-monospace, Menlo, monospace; font-size: .9em; }
+/* Code blocks: hairline-bordered, faint-gray fill, scroll long lines instead of
+   bleeding past the text column. Extends the Prof. Dr. base (ADR-0009) — gray only,
+   no radius, no shadow. */
+pre {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: .82em; line-height: 1.45;
+  background: #f5f5f5; border: 1px solid var(--rule);
+  padding: .7em .9em; margin: 0 0 1em;
+  overflow-x: auto;
+}
+pre code { font-size: inherit; }
+/* Key-takeaways module at the top of a report — a bordered abstract-style box. */
+.takeaways { border: 1px solid var(--rule); padding: .5em 1em .6em; margin: 0 0 1.5em; }
+.takeaways-label {
+  font-weight: 700; font-variant: small-caps; letter-spacing: .04em;
+  margin: 0 0 .3em;
+}
+.takeaways ul { margin: 0; }
+.takeaways li { margin: .15em 0; }
 .masthead h1 { margin: 0; }
 .masthead h1 a { color: inherit; text-decoration: none; }
 .tagline { font-style: italic; margin: .15em 0 0; }
