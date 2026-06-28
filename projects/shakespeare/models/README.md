@@ -4,7 +4,7 @@ Each subfolder is a **self-contained, runnable snapshot of the exact code that
 produces one released model** in the `shakespeare-nanogpt-N` series. The point of
 this tree is separation of concerns:
 
-- [`research-lab/`](../research-lab/) is the **living lab** — generic,
+- The shared [`core/`](../../../core/) engine is the **living lab** — generic,
   evolving code for running new experiment rounds.
 - `models/` is the **frozen output** — when a round becomes a released version,
   its code is copied here (duplication is intentional) so the model stays
@@ -17,7 +17,7 @@ dependencies; generated artifacts (`*.pt`, `*.bin`, `*.pkl`, `input.txt`,
 | Version | Folder | What it is | Held-out BPC |
 |---------|--------|-----------|--------------|
 | v1 | [`shakespeare-nanogpt-1/`](shakespeare-nanogpt-1/) | base char-level baseline (Tiny Shakespeare, ~10.6M) | — |
-| v2 | [`shakespeare-nanogpt-2/`](shakespeare-nanogpt-2/) | research-lab Round 3 winner — modern + BPE (Complete Works, ~29.9M) | **1.919** |
+| v2 | [`shakespeare-nanogpt-2/`](shakespeare-nanogpt-2/) | Round 3 winner — modern + BPE (Complete Works, ~29.9M) | **1.919** |
 
 Each folder has the same shape:
 
@@ -33,7 +33,7 @@ python eval.py        # score ./ckpt.pt on the shared held-out test (BPC)
 python sample.py --start="ROMEO:"
 ```
 
-The single shared yardstick — `research-lab/test.txt` — is *not* duplicated into
+The single shared yardstick — `projects/shakespeare/test.txt` — is *not* duplicated into
 each folder; `eval.py` reads it from the repo so every version is scored on the
 exact same held-out text. See [`MODELS.md`](../MODELS.md) for the full series spec
-and [`research-docs/model-cards/`](../research-docs/model-cards/) for each version's model card.
+and [`research-docs/model-cards/`](../../../research-docs/model-cards/) for each version's model card.

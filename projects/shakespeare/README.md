@@ -30,40 +30,45 @@ Am come to this day.
 
 It's deliberately **not** recursive self-improvement — a human sets direction and
 keeps oversight while Claude implements, tests, and measures. The full story is in
-[`research-docs/reports/`](research-docs/reports/).
+[`research-docs/reports/`](../../research-docs/reports/).
 
 ## Repository structure
 
-The repo is organized so each folder has one clear job:
+This project lives in a monorepo. Its own folder holds the datasets, configs, run
+outputs, and released models; the shared engine and the shared docs/charts live
+alongside it:
 
 ```
-shakespeare-nanogpt/
+projects/shakespeare/
 ├── models/            Released versions — each a FROZEN, self-contained, runnable
 │   ├── shakespeare-nanogpt-1/   folder (model · config · train · sample · eval ·
 │   └── shakespeare-nanogpt-2/   prepare). Run any of them in place; no shared deps.
 │
-├── research-lab/      The LIVING LAB: the nanoGPT engine + the modern variant,
-│                      its datasets (data/), experiment rounds (runs/), eval, and
-│                      the leaderboard. New versions are developed here, then
-│                      snapshotted into models/.
-│
-├── research-docs/     The WRITE-UPS (prose, not code):
-│   ├── reports/         numbered, frozen experiment reports + charts
-│   └── model-cards/     a Hugging Face-style card per version
-│
-├── dataviz/           Zero-dependency chart pipeline (own Vercel Geist design
-│                      system) — the single source of every chart in the repo.
-├── web-ui/            A small browser app to generate from the model.
-│
+├── config/            Training configs for new experiment rounds.
+├── data/              The datasets (each with its own prepare.py).
+├── runs/              Per-round experiment outputs (configs, logs, eval results).
+├── test.txt           The fixed held-out test every version is scored on.
+├── leaderboard.md     The scoreboard — every version in bits-per-character.
 ├── MODELS.md          The version registry: tags, specs, what changed v1→v2.
-└── CLAUDE.md          Conventions for agents (and humans) editing the repo.
+└── CLAUDE.md          Conventions for agents (and humans) editing the project.
+
+Elsewhere in the monorepo:
+../../core/            The shared nanoGPT engine (modern architecture by default):
+                       training, sampling, eval, export. New versions are developed
+                       here, then snapshotted into this project's models/.
+../../tools/dataviz/   Zero-dependency chart pipeline (own Vercel Geist design
+                       system) — the single source of every chart.
+../../research-docs/   The WRITE-UPS (prose, not code):
+  ├── reports/           numbered, frozen experiment reports + charts
+  └── model-cards/       a Hugging Face-style card per version
 ```
 
 Two ideas drive the layout:
 
-- **`models/` vs `research-lab/`** — releases vs. the lab. `research-lab/` keeps
-  changing; a released version copies its code into `models/<version>/` so it
-  stays reproducible forever (the duplication is intentional).
+- **`models/` vs the shared engine** — releases vs. the lab. The engine in
+  `../../core/` keeps changing; a released version copies its code into
+  `models/<version>/` so it stays reproducible forever (the duplication is
+  intentional).
 - **Weights are never committed.** Everything needed to *rebuild* them is — the
   `prepare.py` scripts auto-download the corpora on first run.
 
@@ -72,9 +77,7 @@ Two ideas drive the layout:
 One-time setup (Python 3.9+; an Apple Silicon Mac for fast training):
 
 ```bash
-python3 -m venv .venv && source .venv/bin/activate
-pip install --upgrade pip
-pip install torch numpy tiktoken tqdm requests
+uv sync   # creates .venv and editable-installs the shared engine + this project
 ```
 
 Train and sample the base model (**v1**) — everything runs inside its folder:
@@ -90,35 +93,30 @@ python sample.py --start="ROMEO:" --num_samples=1 --max_new_tokens=1000
 the main quality dial, `max_iters`) live in that folder's `config.py`, and any
 knob can be overridden inline, e.g. `python train.py --max_iters=5000`. The same
 four commands rebuild **v2** in `models/shakespeare-nanogpt-2/`. See
-[`MODELS.md`](MODELS.md) for both recipes, and
-[`research-lab/`](research-lab/) for running new experiment rounds.
+[`MODELS.md`](MODELS.md) for both recipes.
 
-## Web UI (`web-ui/`)
-
-A browser app for generating without the command line: type a prompt, click
-**Generate**, read the output. The Node backend (`web-ui/server.js`, zero
-dependencies) shells out to `models/shakespeare-nanogpt-1/sample.py`; user input
-is sanitized to the model's 65-character vocabulary and passed via a temp file.
+To run a *new* experiment round against the shared engine (the modern
+architecture is the default now), use the monorepo's `core/` from the repo root:
 
 ```bash
-cd web-ui
-npm install      # first time only
-npm run server   # terminal 1 — model backend on http://localhost:3000
-npm run dev      # terminal 2 — UI on http://localhost:8080 (opens browser)
+uv run python core/nanogpt_core/train.py projects/shakespeare/config/train_shakespeare_mac.py \
+    --out_dir=projects/shakespeare/runs/r1
+uv run python core/eval/eval.py projects/shakespeare/runs/r1 \
+    --test projects/shakespeare/test.txt --data-dir projects/shakespeare/data
 ```
 
-Requires a trained `models/shakespeare-nanogpt-1/ckpt.pt` (see Quick start). The
-backend references the model by absolute path, so it runs on this machine.
+A browser **player is not yet built** — generating from the model currently runs
+on the command line (see the sample commands above).
 
 ## Learn more
 
 - **[`MODELS.md`](MODELS.md)** — the version registry: every release, its spec, git
   tag, and rebuild commands.
-- **[`research-docs/reports/`](research-docs/reports/)** — the experiment write-ups
-  with charts (start with [Experiment 01](research-docs/reports/experiment-01.md)).
-- **[`research-docs/model-cards/`](research-docs/model-cards/)** — per-version model
+- **[`research-docs/reports/`](../../research-docs/reports/)** — the experiment write-ups
+  with charts (start with [Experiment 01](../../research-docs/reports/experiment-01.md)).
+- **[`research-docs/model-cards/`](../../research-docs/model-cards/)** — per-version model
   cards (intended use, data, evaluation, limitations).
-- **[`research-lab/leaderboard.md`](research-lab/leaderboard.md)** — the scoreboard,
+- **[`leaderboard.md`](leaderboard.md)** — the scoreboard,
   every version scored in bits-per-character on one fixed held-out test.
 
 ## Credits

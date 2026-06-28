@@ -3,7 +3,7 @@ Score this model on the fixed held-out test set in bits-per-character (BPC).
 
 BPC is tokenizer-agnostic (total NLL of the test text / its character count), so
 every model in the series — char-level or BPE — is directly comparable. The test
-set is the series' single shared yardstick at research-lab/test.txt; pass a
+set is the series' single shared yardstick at test.txt; pass a
 different file as the first argument to score against something else.
 
 Usage:  python eval.py [test_file]
@@ -33,9 +33,9 @@ def main(test_path=None):
 
     block = ckpt["model_args"]["block_size"]
     meta_path = os.path.join(HERE, "meta.pkl")
-    # default: the canonical shared held-out test (two levels up: <repo>/research-lab/test.txt)
+    # default: the canonical shared held-out test (two levels up: <repo>/test.txt)
     repo = os.path.dirname(os.path.dirname(HERE))
-    test_path = test_path or os.path.join(repo, "research-lab", "test.txt")
+    test_path = test_path or os.path.join(repo, "test.txt")
     text = open(test_path, encoding="utf-8").read()
 
     if os.path.exists(meta_path):

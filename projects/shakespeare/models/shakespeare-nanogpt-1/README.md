@@ -3,14 +3,14 @@
 The **base** model: the original character-level nanoGPT baseline, trained on
 Tiny Shakespeare. This folder is a **frozen, self-contained snapshot** of exactly
 the code that produces v1 — copied out of the repo root so the
-[research loop](../../research-lab/) can keep evolving without changing how this
+[shared engine](../../../../core/) can keep evolving without changing how this
 released version is built.
 
 - Tokenizer: character-level (65-char vocab)
 - Data: Tiny Shakespeare (~1.1 MB)
 - Architecture: original nanoGPT (LayerNorm, learned position embeddings)
 - Parameters: ~10.6 M
-- Model card: [`research-docs/model-cards/shakespeare-nanogpt-1.md`](../../research-docs/model-cards/shakespeare-nanogpt-1.md)
+- Model card: [`research-docs/model-cards/shakespeare-nanogpt-1.md`](../../../../research-docs/model-cards/shakespeare-nanogpt-1.md)
 - Git tag: `shakespeare-nanogpt-1`
 
 ## Reproduce
@@ -36,6 +36,6 @@ Override any hyperparameter on the command line, e.g. `python train.py --max_ite
 | `config.py` | this model's hyperparameters (auto-loaded by `train.py`) |
 | `train.py` | training loop; writes `ckpt.pt` here |
 | `sample.py` | generate text from `ckpt.pt` |
-| `eval.py` | score `ckpt.pt` on `research-lab/test.txt` in BPC |
+| `eval.py` | score `ckpt.pt` on the shared `test.txt` in BPC |
 | `prepare.py` | build the dataset into this folder |
 | `configurator.py` | nanoGPT's `--key=value` override helper |

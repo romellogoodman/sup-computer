@@ -11,13 +11,13 @@ as an AI autonomously designing its own successor — we are not there yet.
 out of the first LLM-assisted research experiment (four rounds). New versions (v3, v4, …) will be
 added as future rounds find real improvements, each pinned to its own git tag and
 documented here. The story of how v1 became v2 is in
-[Experiment 01](research-docs/reports/experiment-01.md) (all reports: [`research-docs/reports/`](research-docs/reports/README.md))
-and [`research-lab/leaderboard.md`](research-lab/leaderboard.md).
+[Experiment 01](../../research-docs/reports/experiment-01.md) (all reports: [`research-docs/reports/`](../../research-docs/reports/README.md))
+and [`leaderboard.md`](./leaderboard.md).
 
 Each version has a Hugging Face-style **model card** in
-[`research-docs/model-cards/`](research-docs/model-cards/): [v1](research-docs/model-cards/shakespeare-nanogpt-1.md) ·
-[v2](research-docs/model-cards/shakespeare-nanogpt-2.md) — model details, intended use, data,
-evaluation (with charts from [`dataviz/`](dataviz/README.md)), and limitations.
+[`research-docs/model-cards/`](../../research-docs/model-cards/): [v1](../../research-docs/model-cards/shakespeare-nanogpt-1.md) ·
+[v2](../../research-docs/model-cards/shakespeare-nanogpt-2.md) — model details, intended use, data,
+evaluation (with charts from [`dataviz/`](../../tools/dataviz/README.md)), and limitations.
 
 Each version is pinned to a **git tag** (so the exact repo state is reproducible)
 and maps to a checkpoint **path** (weights are not committed — rebuild with the
@@ -38,7 +38,7 @@ commands below).
 \* v1 and v2 use different tokenizers and were trained in different regimes, so a
 single raw loss number is not directly comparable. The rigorous, tokenizer-
 agnostic metric is **bits-per-character (BPC)** on the fixed held-out test
-(`research-lab/test.txt`). v1's headline figure is its Tiny-Shakespeare validation loss
+(`test.txt`). v1's headline figure is its Tiny-Shakespeare validation loss
 of **1.46**, which lives in the same "data-starved character model" regime as the
 LLM-assisted research experiment's controlled baseline (BPC **2.395**). The controlled experiment
 took that regime down to **1.919** — a 20% reduction — which v2 embodies.
@@ -82,16 +82,16 @@ python sample.py --start="ROMEO:"
 ```
 
 > The `models/` folders are the canonical, self-contained way to rebuild a
-> version — and `models/shakespeare-nanogpt-1/` is what the web UI samples from.
-> The research lab can still re-run v2's recipe directly via
-> `research-lab/train_modern.py` (writing to `research-lab/runs/r3-bpe/`, the
+> version — and `models/shakespeare-nanogpt-1/` is what the player (not yet built)
+> will sample from. The shared engine can still re-run v2's recipe directly via
+> `core/nanogpt_core/train.py` (writing to `projects/shakespeare/runs/r3-bpe/`, the
 > experiment's own output). See [`models/README.md`](models/README.md) for how the
-> `models/` and `research-lab/` trees relate.
+> `models/` and `core/` trees relate.
 
 ## Check out a version's exact repo state
 
 ```bash
-git checkout shakespeare-nanogpt-1   # the project as v1 (baseline + web UI, pre-research-lab)
+git checkout shakespeare-nanogpt-1   # the project as v1 (baseline, pre-research-lab)
 git checkout shakespeare-nanogpt-2   # the project as v2 (adds the LLM-assisted research experiment + v2 recipe)
 git checkout main                    # back to latest
 ```
@@ -104,10 +104,10 @@ research warrants. Each future version will:
 
 - come from one or more new **research rounds** (new data, architectures, tokenizers,
   or training recipes), with Claude as the researcher and a human keeping oversight;
-- be scored on the **same fixed held-out test** (`research-lab/test.txt`) in
+- be scored on the **same fixed held-out test** (`test.txt`) in
   bits-per-character, so progress is comparable across the entire series;
 - get its own **git tag** (`shakespeare-nanogpt-N`), a row in
-  `research-lab/leaderboard.md`, an entry in this file, and eventually a Hugging Face
+  `leaderboard.md`, an entry in this file, and eventually a Hugging Face
   revision.
 
 The clearest next direction: v2's ceiling is **data**. Round 4 showed that

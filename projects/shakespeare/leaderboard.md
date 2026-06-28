@@ -11,7 +11,7 @@ round —
 - **Model train tokens** — tokens the nanoGPT processed = `tokens/iter × iters`
   (`tokens/iter = batch_size × block_size × grad_accum`). The *training* cost.
 - **Claude tokens** — tokens Claude burned designing/implementing/analyzing the
-  round, measured from the session transcript via `research-lab/claude_cost.py`
+  round, measured from the session transcript via `../../tools/claude_cost.py`
   (delta between the snapshot before and after the round). The *researcher* cost.
 
 The question this answers: **how much intelligence does each unit of
@@ -38,7 +38,8 @@ Researcher efficiency: **0.359 BPC reduction per 66.6K Claude output tokens.**
 **BPC 2.036 → 2.004 (−1.6%)**. Real but small. Researcher efficiency collapsed to
 **0.032 BPC per 50.8K tokens (~0.63 BPC / M-out)** — roughly **10× less efficient
 than Round 1**. Classic diminishing returns: same researcher effort, far less
-payoff once the data bottleneck is fixed. `model_modern` carries forward.
+payoff once the data bottleneck is fixed. `model_modern` (now the canonical
+`core/nanogpt_core/model.py`) carries forward.
 
 | `r4-champion` | + dropout 0.3 + 4000 iters (fight R3 overfit) | Full-BPE | 1.947 ❌ | 4.160 | 65.5M | ~50 min | R4: +92.6K / +8.61M (incl. report) |
 
@@ -81,7 +82,7 @@ a 20% reduction** over the controlled baseline. The Round-4 "champion" experimen
 showed the next intuitive step makes it worse.
 
 **This model is released as `shakespeare-nanogpt-2` (v2)** — the original baseline
-is `shakespeare-nanogpt-1` (v1). See [`MODELS.md`](../MODELS.md) for both specs
+is `shakespeare-nanogpt-1` (v1). See [`MODELS.md`](MODELS.md) for both specs
 and rebuild commands.
 
 ### Researcher-efficiency curve (BPC reduction per 100K Claude output tokens)
@@ -95,7 +96,7 @@ and rebuild commands.
 
 \* baseline's `1.4565` is val loss on Tiny Shakespeare's own val split — a
 different test set than the research rounds use, so it's a reference point, not a
-directly-comparable row. From Round 1 on, every model is scored by `research-lab/eval.py`
+directly-comparable row. From Round 1 on, every model is scored by `../../core/eval/eval.py`
 on the **same held-out test set** carved from the Complete Works.
 
 ## Snapshots (Claude cumulative tokens, for computing per-round deltas)

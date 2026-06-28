@@ -4,9 +4,9 @@ The **research-lab winner** (Round 3): a modern-architecture GPT with GPT-2 BPE
 tokenization, trained on the full Complete Works of Shakespeare. This folder is a
 **frozen, self-contained snapshot** of exactly the code that produces v2 — the
 modern model (`model.py`) was copied from
-[`research-lab/model_modern.py`](../../research-lab/model_modern.py), and the
+[`core/nanogpt_core/model.py`](../../../../core/nanogpt_core/model.py), and the
 training command's overrides are baked into [`config.py`](config.py). The living
-[research loop](../../research-lab/) can keep changing without affecting this
+[shared engine](../../../../core/) can keep changing without affecting this
 released version.
 
 - Tokenizer: GPT-2 BPE (~50k vocab)
@@ -14,7 +14,7 @@ released version.
 - Architecture: modern — RoPE + RMSNorm + bias-free
 - Parameters: ~29.9 M
 - Held-out test: **BPC 1.919** (the series' best)
-- Model card: [`research-docs/model-cards/shakespeare-nanogpt-2.md`](../../research-docs/model-cards/shakespeare-nanogpt-2.md)
+- Model card: [`research-docs/model-cards/shakespeare-nanogpt-2.md`](../../../../research-docs/model-cards/shakespeare-nanogpt-2.md)
 - Git tag: `shakespeare-nanogpt-2`
 
 ## Reproduce
@@ -41,6 +41,6 @@ Override any hyperparameter on the command line, e.g. `python train.py --max_ite
 | `config.py` | this model's hyperparameters (auto-loaded by `train.py`) |
 | `train.py` | training loop; writes `ckpt.pt` here |
 | `sample.py` | generate text from `ckpt.pt` |
-| `eval.py` | score `ckpt.pt` on `research-lab/test.txt` in BPC |
+| `eval.py` | score `ckpt.pt` on the shared `test.txt` in BPC |
 | `prepare.py` | download + BPE-encode the Complete Works into this folder |
 | `configurator.py` | nanoGPT's `--key=value` override helper |

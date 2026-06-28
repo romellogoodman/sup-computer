@@ -5,7 +5,7 @@ Identical corpus and identical held-out test slice as data/shakespeare_full, but
 encoded with GPT-2 byte-pair encoding instead of characters. No meta.pkl is
 written, so the model/eval fall back to the tiktoken GPT-2 tokenizer.
 
-Comparison is done in bits-per-character (research-lab/eval.py), which is tokenizer-
+Comparison is done in bits-per-character (core/eval/eval.py), which is tokenizer-
 agnostic, so char-level and BPE models are directly comparable.
 """
 import os

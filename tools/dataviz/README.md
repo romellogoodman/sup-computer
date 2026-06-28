@@ -5,15 +5,15 @@ A small, dependency-free chart generator that renders the project's results as
 view time, no JS libraries).
 
 **This is the single source of every chart in the repo.** All charts — in the
-[README](../README.md), the [model cards](../research-docs/model-cards/), the
-[experiment reports](../research-docs/reports/), and the [leaderboard](../research-lab/leaderboard.md) —
+[README](../../projects/shakespeare/README.md), the [model cards](../../research-docs/model-cards/), the
+[experiment reports](../../research-docs/reports/), and the [leaderboard](../../projects/shakespeare/leaderboard.md) —
 are generated here. Don't hand-author chart SVGs or use other charting tools;
-add the chart to [`build.py`](build.py) and regenerate. See the repo
-[`CLAUDE.md`](../CLAUDE.md) for the standing rule.
+add the chart to [`build.py`](build.py) and regenerate. See the project
+[`CLAUDE.md`](../../projects/shakespeare/CLAUDE.md) for the standing rule.
 
-It's part of this monorepo: the training code lives at the repo root, and this
-subdirectory turns the numbers in [`research-lab/leaderboard.md`](../research-lab/leaderboard.md)
-and [`README.md`](../README.md) into charts for the write-up / blog post.
+It's part of this monorepo: the training engine lives in [`core/`](../../core/), and this
+subdirectory turns the numbers in [`leaderboard.md`](../../projects/shakespeare/leaderboard.md)
+and [`README.md`](../../projects/shakespeare/README.md) into charts for the write-up / blog post.
 
 ## Design system — Vercel Geist
 
@@ -45,7 +45,7 @@ output/                 # generated self-contained .html (one per chart × mode)
 ## Build
 
 ```bash
-cd dataviz
+cd tools/dataviz
 python3 build.py            # all charts, light + dark -> HTML + PNG
 python3 build.py --light    # light only
 python3 build.py --dark     # dark only
@@ -53,7 +53,7 @@ python3 build.py --no-png   # HTML only (skip the PNG export)
 ```
 
 `build.py` writes self-contained HTML to `output/` and then exports light/dark
-PNGs straight into [`../research-docs/reports/assets/`](../research-docs/reports/assets/) (`exp01-<chart>.<mode>.png`)
+PNGs straight into [`../../research-docs/reports/assets/`](../../research-docs/reports/assets/) (`exp01-<chart>.<mode>.png`)
 for the Markdown report. The renderer itself is pure Python 3 stdlib; the PNG step
 shells out to headless Chrome (override the binary with `DATAVIZ_CHROME`, or pass
 `--no-png` to skip it — the HTML still builds either way).
@@ -68,8 +68,8 @@ shells out to headless Chrome (override the binary with `DATAVIZ_CHROME`, or pas
 | `researcher-efficiency` | ΔBPC per 100K Claude tokens per round (diminishing returns) |
 | `training-loss` | Baseline validation loss descending 4.28 → 1.46 |
 
-These are also exported as light/dark PNGs into [`../research-docs/reports/assets/`](../research-docs/reports/assets/)
-(named `exp01-<chart>.<mode>.png`) and embedded in [Experiment 01](../research-docs/reports/experiment-01.md)
+These are also exported as light/dark PNGs into [`../../research-docs/reports/assets/`](../../research-docs/reports/assets/)
+(named `exp01-<chart>.<mode>.png`) and embedded in [Experiment 01](../../research-docs/reports/experiment-01.md)
 via `<picture>` so they follow the reader's color scheme.
 
 Open any `output/*.html` in a browser, or copy the inner `<svg>` for static embeds.

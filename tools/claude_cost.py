@@ -7,8 +7,8 @@ before and after a round, and the delta is the tokens Claude burned to produce
 that round's improvement.
 
 Usage:
-  python research-lab/claude_cost.py            # newest session in this project
-  python research-lab/claude_cost.py <file>     # a specific transcript
+  uv run python tools/claude_cost.py            # newest session in this project
+  uv run python tools/claude_cost.py <file>     # a specific transcript
 """
 import json
 import os

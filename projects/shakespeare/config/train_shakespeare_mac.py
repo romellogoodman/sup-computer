@@ -1,12 +1,16 @@
 # Character-level Shakespeare GPT, tuned for an Apple Silicon Mac (MPS backend).
-# The base config for the research lab's engine. Run via a wrapper, e.g.:
-#   python research-lab/train_modern.py research-lab/config/train_shakespeare_mac.py --dataset=...
+# The base config for a new experiment round on the shared core engine. Run from
+# the repo root, e.g.:
+#   uv run python core/nanogpt_core/train.py \
+#       projects/shakespeare/config/train_shakespeare_mac.py \
+#       --out_dir=projects/shakespeare/runs/r1
 #
 # Sets device='mps' and compile=False, the two changes needed to train on a Mac
 # instead of an NVIDIA GPU. (Released versions carry their own frozen config.py
 # under models/<version>/; this file is for running new experiment rounds.)
 
-out_dir = 'out-shakespeare-char'
+out_dir = 'projects/shakespeare/runs/out-shakespeare-char'
+data_root = 'projects/shakespeare/data'  # where prepare.py writes <dataset>/*.bin
 eval_interval = 250   # evaluate val loss this often (we overfit fast on tiny data)
 eval_iters = 200
 log_interval = 10     # print training loss this often

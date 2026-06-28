@@ -6,7 +6,8 @@ fixed held-out test set used to score every model fairly:
 
   data/shakespeare_full/   - train on the full corpus (~5MB)  [treatment]
   data/shakespeare_small/  - train on a 1MB subset (~Tiny size) [control]
-  research-lab/test.txt   - a held-out slice neither model ever trains on
+  test.txt                 - a held-out slice neither model ever trains on
+                             (written to the project root: projects/shakespeare/)
 
 Both conditions are identical except for training-data quantity, so the
 difference in held-out loss is the causal effect of data alone.
@@ -75,7 +76,8 @@ def dump(dirname, train_text):
 dump("shakespeare_full", train_full)
 dump("shakespeare_small", train_small)
 
-os.makedirs(os.path.join(REPO, "research-lab"), exist_ok=True)
-with open(os.path.join(REPO, "research-lab", "test.txt"), "w", encoding="utf-8") as f:
+# REPO here is the project root (projects/shakespeare/); the held-out test set
+# lives there, next to the runs that are scored against it.
+with open(os.path.join(REPO, "test.txt"), "w", encoding="utf-8") as f:
     f.write(test)
-print("wrote research-lab/test.txt (held-out test set)")
+print("wrote test.txt (held-out test set)")

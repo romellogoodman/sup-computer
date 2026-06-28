@@ -2,9 +2,9 @@
 
 Renders the report's charts in the Vercel Geist design system (light + dark) as
 self-contained HTML into output/, then exports light/dark PNGs into
-../research-docs/reports/assets/ (named exp01-<chart>.<mode>.png) for embedding in
+../../research-docs/reports/assets/ (named exp01-<chart>.<mode>.png) for embedding in
 research-docs/reports/experiment-01.md via <picture>. Data sourced from the project's
-research-lab/leaderboard.md, research-lab/runs/, and README.md.
+projects/shakespeare/leaderboard.md, projects/shakespeare/runs/, and the project README.
 
     python build.py            # build all charts, both modes, HTML + PNG
     python build.py --light    # light only
@@ -30,7 +30,7 @@ RENDER_PNG = "--no-png" not in sys.argv
 
 # PNG export config: report assets dir + filename prefix for this experiment.
 _HERE = os.path.dirname(os.path.abspath(__file__))
-ASSETS_DIR = os.path.normpath(os.path.join(_HERE, "..", "research-docs", "reports", "assets"))
+ASSETS_DIR = os.path.normpath(os.path.join(_HERE, "..", "..", "research-docs", "reports", "assets"))
 ASSET_PREFIX = "exp01-"
 BODY_PAD = 48   # dataviz body padding (24px top + 24px bottom)
 VIEW_W_PX = dv.VIEW_W + BODY_PAD  # window width: 960 chart + padding
@@ -83,7 +83,7 @@ bpc = {
     "yTitle": "Test BPC",
     "xTitle": "Round",
     "lowerIsBetter": True,
-    "caption": "End to end: 2.395 → 1.919, a 20% reduction. R4 added dropout + longer training and regressed — you can't regularize away too little data. Source: research-lab/leaderboard.md",
+    "caption": "End to end: 2.395 → 1.919, a 20% reduction. R4 added dropout + longer training and regressed — you can't regularize away too little data. Source: projects/shakespeare/leaderboard.md",
 }
 # keep category labels single-line (no \n support in SVG <text>); flatten
 bpc["categories"] = [c.replace("\n", " ") for c in bpc["categories"]]
@@ -101,11 +101,11 @@ data_win = {
     "yTitle": "Test BPC",
     "xTitle": "Training data",
     "lowerIsBetter": True,
-    "caption": "Same architecture, seed, and steps; only the data differs — so this 15% drop is caused by data alone. The counter-intuitive part: the 5MB model has HIGHER train loss (1.23 vs 1.08) yet generalizes better — it memorized less. Source: research-lab/leaderboard.md",
+    "caption": "Same architecture, seed, and steps; only the data differs — so this 15% drop is caused by data alone. The counter-intuitive part: the 5MB model has HIGHER train loss (1.23 vs 1.08) yet generalizes better — it memorized less. Source: projects/shakespeare/leaderboard.md",
 }
 
 # --- Chart 2b: Round 3 BPE overfit (train vs val) ---------------------------
-# Real loss curve from research-lab/runs/r3-bpe/train.log. Both series are loss (nats),
+# Real loss curve from projects/shakespeare/runs/r3-bpe/train.log. Both series are loss (nats),
 # so a shared axis is honest. zeroBase off to zoom on the divergence.
 bpe_overfit = {
     "title": "Round 3: the BPE model overfits — best checkpoint is kept",
@@ -119,7 +119,7 @@ bpe_overfit = {
     "yTitle": "Loss",
     "xTitle": "Training step",
     "zeroBase": False,
-    "caption": "Train loss keeps falling while validation bottoms at step 1000, then climbs — textbook overfitting on too little data. The save-best-val policy auto-kept the step-1000 checkpoint, which still won at BPC 1.919. Source: research-lab/runs/r3-bpe/train.log",
+    "caption": "Train loss keeps falling while validation bottoms at step 1000, then climbs — textbook overfitting on too little data. The save-best-val policy auto-kept the step-1000 checkpoint, which still won at BPC 1.919. Source: projects/shakespeare/runs/r3-bpe/train.log",
 }
 
 # --- Chart 2: researcher-efficiency curve -----------------------------------
@@ -133,7 +133,7 @@ eff = {
     "valueFmt": "{:+.3f}",
     "yTitle": "ΔBPC per 100K tokens",
     "xTitle": "Round",
-    "caption": "Round 1 fixed the real bottleneck (data) and paid off hugely. Polishing rounds returned ~10× less; R4 spent the most and went backwards. Source: research-lab/leaderboard.md",
+    "caption": "Round 1 fixed the real bottleneck (data) and paid off hugely. Polishing rounds returned ~10× less; R4 spent the most and went backwards. Source: projects/shakespeare/leaderboard.md",
 }
 
 # --- Chart 3: training loss descent -----------------------------------------
