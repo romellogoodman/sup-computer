@@ -1,7 +1,7 @@
 ---
 type: experiment
 title: "Can you put an obsession on a dial?"
-date: 2026-06-26
+date: 2026-06-25
 series: gatsby
 models: [gatsby-nanogpt-1]
 summary: "A char-level model built to compulsively reach for Gatsby's green light — and the $0, fully-controlled ablation that found the dial's real bottleneck: signal loudness, not corpus shape."

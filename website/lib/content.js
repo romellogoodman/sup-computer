@@ -29,10 +29,11 @@ function readDir(dir) {
     });
 }
 
+// Newest first. gray-matter parses YAML `date:` into a Date object, so compare by
+// timestamp — a string/localeCompare sort orders by weekday name, not chronology.
+const writtenAt = (r) => (r.frontmatter.date ? new Date(r.frontmatter.date).getTime() : 0);
 export function getReports() {
-  return readDir(REPORTS).sort((a, b) =>
-    String(b.frontmatter.date || "").localeCompare(String(a.frontmatter.date || ""))
-  );
+  return readDir(REPORTS).sort((a, b) => writtenAt(b) - writtenAt(a));
 }
 export function getReport(slug) {
   return getReports().find((r) => r.slug === slug);
