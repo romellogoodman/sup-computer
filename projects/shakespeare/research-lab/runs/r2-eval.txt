@@ -1,0 +1,3 @@
+=== R2 EVAL (held-out test, BPC) ===
+number of parameters: 10.66M
+rsi/runs/r2-arch-modern	tokenizer=char	tokens=249999	chars=250000	token_loss=1.3891	ppl=4.01	BPC=2.0041

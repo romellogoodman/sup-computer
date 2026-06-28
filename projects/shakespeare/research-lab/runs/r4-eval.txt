@@ -1,0 +1,3 @@
+=== R4 EVAL (held-out test, BPC) ===
+number of parameters: 29.94M
+rsi/runs/r4-champion	tokenizer=gpt2-bpe	tokens=81091	chars=250000	token_loss=4.1603	ppl=64.09	BPC=1.9468

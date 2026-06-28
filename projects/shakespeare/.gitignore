@@ -1,0 +1,26 @@
+.DS_Store
+.idea
+.ipynb_checkpoints/
+.vscode
+__pycache__/
+*.bin
+*.pkl
+*.pt
+*.pyc
+input.txt
+raw.txt
+# ONNX export artifacts (produced by export.py for the browser runtime)
+*.onnx
+*.vocab.json
+dist/
+env/
+venv/
+.venv/
+out-*/
+
+# LLM-assisted research experiment: keep the run LOGS and eval results (the
+# evidence) committed, but not the checkpoints (covered by *.pt above). Nothing
+# extra to ignore here — research-loop/runs/**/train.log, *-eval.txt, arch.txt
+# are intentionally tracked.
+# dataviz: HTML renders are regenerable build scratch (PNGs are committed under research-docs/reports/assets/)
+dataviz/output/

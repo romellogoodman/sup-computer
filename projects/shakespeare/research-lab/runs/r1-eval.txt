@@ -1,0 +1,5 @@
+=== R1 EVAL (held-out test, BPC) ===
+number of parameters: 10.66M
+rsi/runs/r1-data-small	tokenizer=char	tokens=249999	chars=250000	token_loss=1.6602	ppl=5.26	BPC=2.3951
+number of parameters: 10.66M
+rsi/runs/r1-data-full	tokenizer=char	tokens=249999	chars=250000	token_loss=1.4113	ppl=4.10	BPC=2.0360

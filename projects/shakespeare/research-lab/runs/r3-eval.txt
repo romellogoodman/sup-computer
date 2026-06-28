@@ -1,0 +1,3 @@
+=== R3 EVAL (held-out test, BPC) ===
+number of parameters: 29.94M
+rsi/runs/r3-bpe	tokenizer=gpt2-bpe	tokens=81091	chars=250000	token_loss=4.0996	ppl=60.32	BPC=1.9185

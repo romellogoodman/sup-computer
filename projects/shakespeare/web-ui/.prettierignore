@@ -1,0 +1,12 @@
+# Build outputs
+dist
+dist-ssr
+build
+
+# Dependencies
+node_modules
+
+# Config files that should remain as-is
+package-lock.json
+pnpm-lock.yaml
+yarn.lock

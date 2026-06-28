@@ -1,0 +1,50 @@
+=== CHAMPION SAMPLE ===
+Overriding: out_dir = rsi/runs/r4-champion
+Overriding: device = mps
+Overriding: num_samples = 1
+Overriding: max_new_tokens = 300
+Overriding: start = ROMEO:
+number of parameters: 29.94M
+No meta.pkl found, assuming GPT-2 encodings...
+ROMEO:
+And Juliet’s Cell.
+FRIAR LAWRENCE.
+O Romeo that I were? Romeo, Romeo,
+That is the Romeo’s son; Romeo, Romeo.
+
+ROMEO.
+Why frown’st thou on her dead? Juliet’s Juliet dead?
+
+ROMEO.
+I say thee banished; Romeo is dead,
+Whereto the Romeo’s bed, Tybalt.
+
+ROMEO.
+O Romeo, Romeo, Romeo, Romeo, Romeo and Romeo, Romeo, Romeo, Romeo, Romeo, Nurse.
+JULIET.
+A LAWRENCE.
+The Romeo’s son. Romeo dead she, Juliet.
+
+O Juliet; Romeo, Romeo! Romeo, Romeo.
+
+ Enter Juliet.
+
+ROMEO.
+NEOET.
+IETRIAR LAWRENCE.
+I am dead, Romeo, Romeo, Romeo.
+Tyre Romeo is true. Romeo hath! Juliet’s Cell.
+
+ROMEO.
+Is Romeo dead? Romeo’s name, Juliet’s bed.
+BALTHASAR.
+The Romeo’s bedRIAR LAWRENCE.
+BENVOLIO.
+O Romeo, Romeo, Romeo! Romeo!
+NONET.
+BENVOLIO.
+A Romeo, Romeo, Romeo. Juliet, Romeo, Juliet.
+
+ROMEO.
+
+---------------
