@@ -28,10 +28,10 @@ elif "--dark" in sys.argv:
     MODES = ["dark"]
 RENDER_PNG = "--no-png" not in sys.argv
 
-# PNG export config: report assets dir + filename prefix for this experiment.
+# PNG export config: report assets dir + per-experiment filename prefix.
+# Each JOBS entry carries its own prefix so one build can feed several reports.
 _HERE = os.path.dirname(os.path.abspath(__file__))
 ASSETS_DIR = os.path.normpath(os.path.join(_HERE, "..", "..", "research-docs", "reports", "assets"))
-ASSET_PREFIX = "exp01-"
 BODY_PAD = 48   # dataviz body padding (24px top + 24px bottom)
 VIEW_W_PX = dv.VIEW_W + BODY_PAD  # window width: 960 chart + padding
 
@@ -152,11 +152,58 @@ loss = {
     "caption": "Loss falls from 4.28 at init to 1.46, then plateaus — the model is data-bottlenecked. Source: README.md (nanogpt-shakespeare-1).",
 }
 
-JOBS = [("bpc-by-round", bpc, dv.bar),
-        ("data-win", data_win, dv.bar),
-        ("bpe-overfit", bpe_overfit, dv.line),
-        ("researcher-efficiency", eff, dv.bar),
-        ("training-loss", loss, dv.line)]
+# ============================================================================
+# Experiment 02 — gatsby-nanogpt: the green-light obsession dial
+# Data sourced from projects/gatsby/research/leaderboard.md and log.md.
+# ============================================================================
+
+# --- exp02 Chart 1: the dial ramp, v2 (flat/inverted) vs v3 (monotonic) ------
+# THE finding, visually. Avg green-light mentions per 480 generated tokens,
+# swept across the green=1..5 dial. Same stories in both runs — only the
+# control-line FORMAT differs (a $0 in-place reformat). v2 = quiet single tag
+# (flat / slightly inverted); v3 = loud tag (×3 + per-level word) → monotonic.
+# v2 hue = red (the failure), v3 hue = green (the win).
+dial = {
+    "title": "The dial only moves once the signal gets loud",
+    "subtitle": "Green-light mentions per 480 tokens, by obsession level — v2 quiet tag (red) vs v3 loud tag (green)",
+    "x": ["green=1", "green=2", "green=3", "green=4", "green=5"],
+    "series": [
+        {"name": "v2: quiet [green=N] tag", "hue": "red", "y": [4.17, 4.08, 3.17, 3.17, 3.17]},
+        {"name": "v3: loud tag (×3 + word)", "hue": "green", "y": [1.50, 1.92, 1.92, 3.08, 3.50]},
+    ],
+    "valueFmt": "{:.2f}",
+    "yTitle": "Avg green mentions / 480 tok",
+    "xTitle": "Obsession dial",
+    "caption": "Byte-identical stories in both runs — only the control line changed, via reformat_corpus.py for $0. v2's lone digit left the dial flat and slightly inverted (4.17→3.17, levels 3–5 byte-identical); v3's repeated, worded tag made it monotonic (1.50→3.50, ~2.3× ramp) with genuinely different text per level. Source: projects/gatsby/research/leaderboard.md",
+}
+
+# --- exp02 Chart 2: corpus dial vs model dial gap ----------------------------
+# The training data was ALWAYS steeply monotonic; the model only partly
+# followed, and only once the signal got loud. corpus = blue (the target),
+# v2 model = red (ignored it), v3 model = green (followed it).
+corpus_gap = {
+    "title": "The corpus was always steep; the char-model under-conditioned",
+    "subtitle": "Avg green-light mentions by level — training corpus (blue) vs v2 model (red) vs v3 model (green)",
+    "x": ["green=1", "green=2", "green=3", "green=4", "green=5"],
+    "series": [
+        {"name": "corpus (training data)", "hue": "blue", "y": [2.27, 3.20, 5.22, 6.47, 12.57]},
+        {"name": "v2 model (quiet tag)", "hue": "red", "y": [4.17, 4.08, 3.17, 3.17, 3.17]},
+        {"name": "v3 model (loud tag)", "hue": "green", "y": [1.50, 1.92, 1.92, 3.08, 3.50]},
+    ],
+    "valueFmt": "{:.2f}",
+    "yTitle": "Avg green-light mentions",
+    "xTitle": "Obsession dial",
+    "caption": "The same corpus (200 topics × 5 levels) underlies v2 and v3; its dial is steep and clean (2.27→12.57). v2's model essentially ignored it; v3's followed the shape — flattened — once the tag carried real character-mass next to the body. A 10M char-LM conditions only weakly on a short prefix, so it can copy the corpus's direction but not its slope. Source: projects/gatsby/research/leaderboard.md",
+}
+
+# (name, spec, fn, asset-prefix) — prefix routes each PNG to its report.
+JOBS = [("bpc-by-round", bpc, dv.bar, "exp01-"),
+        ("data-win", data_win, dv.bar, "exp01-"),
+        ("bpe-overfit", bpe_overfit, dv.line, "exp01-"),
+        ("researcher-efficiency", eff, dv.bar, "exp01-"),
+        ("training-loss", loss, dv.line, "exp01-"),
+        ("dial-v2-v3", dial, dv.line, "exp02-"),
+        ("corpus-vs-model", corpus_gap, dv.line, "exp02-")]
 
 if __name__ == "__main__":
     out_dir = os.path.join(_HERE, "output")
@@ -170,13 +217,13 @@ if __name__ == "__main__":
             print("note: no Chrome found — skipping PNG export (HTML only). "
                   "Set DATAVIZ_CHROME to enable.")
 
-    for name, spec, fn in JOBS:
+    for name, spec, fn, prefix in JOBS:
         for mode in MODES:
             html = fn(spec, mode=mode)
-            html_path = os.path.join(out_dir, f"{name}.{mode}.html")
+            html_path = os.path.join(out_dir, f"{prefix}{name}.{mode}.html")
             dv.write(html, html_path)
             print(f"wrote {html_path}  ({len(html)//1024}KB)")
             if chrome:
-                png_path = os.path.join(ASSETS_DIR, f"{ASSET_PREFIX}{name}.{mode}.png")
+                png_path = os.path.join(ASSETS_DIR, f"{prefix}{name}.{mode}.png")
                 _render_png(chrome, html_path, png_path, _svg_height(html))
                 print(f"  -> {png_path}")

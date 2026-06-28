@@ -9,7 +9,8 @@ edited after the fact; new experiments get a new number. The living records are 
 | # | Report | Produced | Date |
 |---|--------|----------|------|
 | 01 | [Can a big model improve a small one?](experiment-01.md) — LLM-assisted research experiment, Rounds 1–4 (more data, modern architecture, BPE, diminishing returns). | `shakespeare-nanogpt-1 → -2` | Jun 2026 |
-| 02 | *next experiment — most likely starts with more/better training data (the Round 4 ceiling)* | `→ shakespeare-nanogpt-3` | — |
+| 02 | [Can you put an obsession on a dial?](experiment-02.md) — steerability + synthetic data, runs v1–v3 (bake the obsession into the corpus; the $0 ablation that found the dial's real bottleneck). | `→ gatsby-nanogpt-1` | Jun 2026 |
+| — | *next: shakespeare — most likely starts with more/better training data (the Round 4 ceiling); or gatsby v4 — move conditioning off char-level to BPE* | `→ shakespeare-nanogpt-3 / gatsby-nanogpt-2` | — |
 
 ---
 
