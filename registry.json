@@ -26,6 +26,19 @@
       "frozen_code": "projects/shakespeare/models/shakespeare-nanogpt-2/",
       "model_card": "research-docs/model-cards/shakespeare-nanogpt-2.md",
       "artifacts": { "checkpoint": null, "onnx": null, "onnx_int8": null }
+    },
+    {
+      "id": "gatsby-nanogpt-1",
+      "project": "gatsby",
+      "version": 1,
+      "git_tag": "gatsby-nanogpt-1",
+      "architecture": "base char-level (LayerNorm, learned position embeddings, biases)",
+      "tokenizer": { "type": "char", "vocab_size": 72 },
+      "params": 10650000,
+      "held_out_bpc": null,
+      "frozen_code": "projects/gatsby/models/gatsby-nanogpt-1/",
+      "model_card": "research-docs/model-cards/gatsby-nanogpt-1.md",
+      "artifacts": { "checkpoint": null, "onnx": null, "onnx_int8": null }
     }
   ]
 }
