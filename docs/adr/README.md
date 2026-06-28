@@ -27,4 +27,5 @@ supersede instead (mark the old one `Superseded by ADR-NNNN`).
 | [0011](0011-vendor-gatsby.md) | Vendor gatsby-nanogpt as a self-contained project | Accepted |
 | [0012](0012-pluggable-tokenization.md) | Tokenization is pluggable on the shared core; `meta.pkl` is the contract | Accepted |
 | [0013](0013-attribution-of-the-ai-researcher.md) | Attribution: every report and model records the AI researcher | Accepted |
+| [0014](0014-synthgen-local-llm-pipeline.md) | Synthetic-data generation via LM Studio lives in `tools/synthgen` (LLM-only, provenance-first) | Accepted |
 | [0015](0015-research-post-standardization.md) | Standardize research posts: link rewriting, style extensions, post conventions | Accepted |

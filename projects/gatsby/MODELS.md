@@ -6,7 +6,8 @@ reproduce them is.
 
 | Version | Folder | What it is | Headline metric |
 |---------|--------|-----------|-----------------|
-| v1 | [`models/gatsby-nanogpt-1/`](models/gatsby-nanogpt-1/) | the green-light dial model (research run `1k-v3`) | dial monotonic 1.50 → 3.50 |
+| v1 | [`models/gatsby-nanogpt-1/`](models/gatsby-nanogpt-1/) | the green-light dial model (research run `1k-v3`), Claude-written corpus | dial monotonic 1.50 → 3.50 |
+| v2 | [`models/gatsby-nanogpt-2/`](models/gatsby-nanogpt-2/) | same behaviour, corpus written by a **local 4-model mixture** for **$0** (run `mix-2k-r2`) | dial 3.7 → 6.1 (ends), $0 corpus |
 
 The quality metric for this project is **not** a held-out BPC (there is no shared
 yardstick the way Shakespeare has one) — it is the qualitative **dial**: does the
@@ -79,3 +80,68 @@ python eval_dial.py   # reproduce the green=1..5 dial sweep
 
 Model card: [`research-docs/model-cards/gatsby-nanogpt-1.md`](../../research-docs/model-cards/gatsby-nanogpt-1.md).
 Sample dump: [`research/samples-1k-v3.md`](research/samples-1k-v3.md).
+
+## `gatsby-nanogpt-2` (research run `mix-2k-r2`)
+
+The same green-light dial model as v1 — identical architecture and behaviour —
+but its corpus is written by a **mixture of four local open models** instead of
+the Claude API. The contribution is the *data pipeline*: free, local, four-voice.
+See [Experiment 04](../../research-docs/reports/experiment-04.md).
+
+### Spec
+
+| | |
+|---|---|
+| **Architecture** | base char-level nanoGPT — LayerNorm, learned position embeddings, biases |
+| **Tokenizer** | character-level, **80-char** vocab (derived from the corpus) |
+| **Size** | 6 layers · 6 heads · 384 embd · ~10.65M params |
+| **block_size** | 512 |
+| **Device** | Apple Silicon (MPS / Metal) |
+| **Git tag** | `gatsby-nanogpt-2` |
+
+### Corpus
+
+- **2000 stories / ~1.53M chars** (1,532,760), 400 topics × 5 green levels.
+- Written by a **local mixture** via LM Studio + [`tools/synthgen`](../../tools/synthgen/README.md):
+  **Olmo 3 .30 / Ministral 3 .30 / Gemma 4 .20 / Granite 4.1 .20** (the blend is a
+  designed object — a granite-heavy first round broke the dial; see Exp 04).
+- **$0** marginal cost (local generation). Corpus + provenance manifest committed
+  (`data/raw.txt`, `data/raw.manifest.json`), corpus vendored into the frozen folder.
+
+### Training
+
+- Extended schedule; best checkpoint (save-best-val) at **step ~2000**, **val
+  0.622** — 60% deeper than Round 1's step-1250 min before overfitting (the 2×
+  corpus bought the depth). AdamW, LR 1e-3 → 1e-4 cosine, batch 64, dropout 0.2,
+  ~30 min on MPS.
+
+### The dial (r2 result)
+
+Average green-light mentions per **480** generated tokens, swept green=1..5 —
+endpoints separate (a working knob recovered from Round 1's flat dial), middle
+compressed:
+
+| level | 1 | 2 | 3 | 4 | 5 |
+|-------|------|------|------|------|------|
+| avg green mentions | 3.72 | 4.78 | 4.67 | 4.50 | 6.06 |
+
+Obsession reliable; coherence + topic-honoring rough (baseline-level, inherited
+from v1). Matches the paid baseline's behaviour at $0.
+
+### Rebuild
+
+Frozen, self-contained snapshot in
+[`models/gatsby-nanogpt-2/`](models/gatsby-nanogpt-2/) — runs **in place** with
+**no API key and no LM Studio** (corpus vendored as `raw.txt`):
+
+```bash
+cd models/gatsby-nanogpt-2
+python prepare.py     # raw.txt -> train/val.bin + meta.pkl (here)
+python train.py       # -> ./ckpt.pt  (best-val ~step 2000; knobs in config.py)
+python sample.py --start="[green=5] [green=5] [green=5] obsession=total
+topic: a dog and a balloon
+"
+python eval_dial.py   # reproduce the green=1..5 dial sweep
+```
+
+Model card: [`research-docs/model-cards/gatsby-nanogpt-2.md`](../../research-docs/model-cards/gatsby-nanogpt-2.md).

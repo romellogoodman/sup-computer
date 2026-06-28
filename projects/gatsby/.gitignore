@@ -8,4 +8,13 @@ prompt.txt
 # prepare.py) and trained weights (rebuilt by train.py) are covered repo-wide by
 # the root .gitignore (*.bin, *.pkl, *.pt). The *corpus* itself (data/raw.txt)
 # and its cost records (data/costs.jsonl) ARE committed -- this is a research
-# project, so the data and what it cost are part of the record.
+# project, so the data and what it cost are part of the record. For mixture runs
+# the committed record is data/raw.manifest.json (provenance per story).
+
+# synthgen generation journal — resumable progress; the manifest is the record.
+*.progress.jsonl
+
+# Local backup of the superseded round-1 mixture corpus (the failed-dial round).
+# Round 1 is fully documented in the experiment report and research/log.md; this
+# folder is local insurance, not a committed artifact.
+research/round1_1k/

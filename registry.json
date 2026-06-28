@@ -47,6 +47,20 @@
       "artifacts": { "checkpoint": null, "onnx": null, "onnx_int8": null }
     },
     {
+      "id": "gatsby-nanogpt-2",
+      "project": "gatsby",
+      "version": 2,
+      "git_tag": "gatsby-nanogpt-2",
+      "architecture": "base char-level (LayerNorm, learned position embeddings, biases)",
+      "researcher": "claude-opus-4-8",
+      "tokenizer": { "type": "char", "vocab_size": 80 },
+      "params": 10650000,
+      "held_out_bpc": null,
+      "frozen_code": "projects/gatsby/models/gatsby-nanogpt-2/",
+      "model_card": "research-docs/model-cards/gatsby-nanogpt-2.md",
+      "artifacts": { "checkpoint": null, "onnx": null, "onnx_int8": null }
+    },
+    {
       "id": "kenosha-kid-nanogpt-1",
       "project": "kenosha-kid",
       "version": 1,

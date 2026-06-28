@@ -311,3 +311,84 @@ across corpora).
 **Next levers (NOT run — pausing):** apply the same loud-signal idea to the topic;
 recover coherence (more topics, or stop at val min); or accept this as the
 exhibit model — the dial + inescapable light both work now.
+
+---
+
+## Mixture-of-models corpus — generator swap (2026-06-28)
+
+New direction: stop paying Claude to write the corpus. Generate it from a
+**mixture of local open models** via LM Studio (`generate_mixture.py`, engine in
+`tools/synthgen/`) — free, "infinite", and distributionally diverse (different
+lineages = different voices). Same task, same load-bearing `[green=N]×3
+obsession=<word>` contract; only the writers change. Five models calibrated on
+the gatsby task (Round 1 calibration): **qwen3.6 dropped** (5–10× slower, verbose);
+kept granite-4.1-8b (IBM), gemma-4-26b (Google), olmo-3-7b (AllenAI),
+ministral-3-8b (Mistral). Stories are cleaned to gatsby's register (markdown
+emphasis stripped, per-sentence newlines folded, unicode→ASCII) — char vocab 73,
+all clean ASCII.
+
+### `mix-1k-r1` — blend granite .40 / gemma .30 / olmo .15 / ministral .15
+
+1000 stories (200 topics × 5), 763k chars (note: **34% smaller than the Claude
+1k**, ~1.15M — the local models write terser). $0. val min **0.627 @ step 1250**
+(overfits after; not comparable across corpora). Each topic's five levels written
+by one model (clean within-topic dial); models rotate across topics.
+
+**Result — worse than Claude 1k-v3.** Obsession ✅ (green light barges in every
+sample). But **dial flat/broken** (model green mentions/level
+`1.67/1.67/1.83/2.00/1.42` — L5 the *lowest*), **coherence rough** (non-words:
+"pomered", "bkink"), **topic-honoring poor** ("a robot" → dragons/bees/no robot).
+
+**Diagnosis — the blend, not the pipeline.** The *corpus* dial is strong and
+monotonic (green-light/level `2.31 → 3.32 → 4.57 → 5.98 → 8.18`), so the data
+modulates fine; the *model* failed to learn it. Per-model corpus dial:
+
+| model | L1 | L2 | L3 | L4 | L5 | |
+|------|----|----|----|----|----|--|
+| gemma | 4.8 | 6.1 | 8.3 | 12.2 | 16.7 | wide ✅ |
+| olmo | 1.1 | 2.9 | 3.7 | 4.9 | 6.5 | clean ✅ |
+| ministral | 0.8 | 1.5 | 2.3 | 3.4 | 4.9 | clean ✅ |
+| **granite** | 1.4 | 2.1 | 2.9 | **2.7** | 3.7 | **flat ❌** |
+
+**granite — the 40% backbone — has the weakest, near-flat dial.** So 40% of the
+corpus teaches "the control line barely predicts intensity." Compounded by the
+corpus being 34% smaller (overfits by 1250, before conditioning is learned), the
+dial collapses. Round 1 weighted granite for throughput + clean topic-honoring,
+but that's exactly the model that *kills the dial*.
+
+**Next — `mix-2k-r2`:** (a) rebalance off granite → **olmo .30 / ministral .30 /
+gemma .20 / granite .20** (lean on the fast clean-dial models + gemma's range);
+(b) scale to **2000 stories** (~1.4M chars > Claude 1k) so it trains past the
+1250 overfit point and learns the conditioning. Round-1 artifacts frozen in
+`research/round1_1k/`.
+
+### `mix-2k-r2` — rebalanced + scaled → **released as `gatsby-nanogpt-2`**
+
+2000 stories (400 topics × 5), **1.53M chars** (now *larger* than the Claude 1k),
+blend olmo .30 / ministral .30 / gemma .20 / granite .20. $0. Corpus dial clean
+monotonic (1.9 → 2.8 → 3.9 → 5.3 → 7.5). vocab 80 (7 stray numerals/symbols,
+9 occurrences total — negligible).
+
+**Both fixes landed.** Val kept descending **past step 1250** (where r1 bottomed
+and overfit) to a minimum **0.622 @ step 2000** — 60% deeper training, train/val
+gap 0.16 vs r1's 0.41 at the same step. The 2× diverse data bought the depth that
+let it learn the conditioning.
+
+**Dial recovered** (@480 tok, where the swallow manifests — 240 tok undercounts):
+
+| level | 1 | 2 | 3 | 4 | 5 |
+|------|----|----|----|----|----|
+| r1 (flat) | 1.7 | 1.7 | 1.8 | 2.0 | 1.4 |
+| **r2** | **3.7** | 4.8 | 4.7 | 4.5 | **6.1** |
+
+Endpoints separate (L1→L5, a working knob); middle (L2–L4) compressed. Obsession
+reliable. Coherence + topic-honoring still rough — same baseline-level weaknesses
+as v1/Claude (inherent to a 10.7M char-model on a few hundred topics), not the
+target of this round.
+
+**Verdict:** a 4-model local mixture matches the paid baseline's behaviour at $0.
+The finding is that **the blend is a designed object** — granite's flat per-model
+dial broke r1, rebalancing off it fixed r2. Released as `gatsby-nanogpt-2`;
+written up in [Experiment 04](../../../research-docs/reports/experiment-04.md).
+The dial's mid-compression (gemma carries the range, capped at 20% for speed) is
+the open lever for a future gemma-heavy round.

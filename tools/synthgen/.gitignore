@@ -1,0 +1,9 @@
+# Generated corpora + manifests (synthgen writes these on demand). raw.txt is
+# NOT covered by the root .gitignore (projects commit their corpus), so ignore
+# the tool's own demo output dir explicitly. train.bin/val.bin/meta.pkl are
+# already covered repo-wide.
+output/
+
+__pycache__/
+*.pyc
+.DS_Store

@@ -227,6 +227,73 @@ loss_transition = {
     "caption": "Loss falls off a cliff in the first 100 steps (3.37 -> 0.66) and is essentially flat by ~400 — the corpus is too small to keep learning, so where you stop is the only real knob and it sets the dreaminess. Three checkpoints span the spectrum: iter 150 (val 0.59) = deep dream, too broken; iter 350 (val 0.48) = champion, the balance; iter 2000 (val 0.43) = lucid, too clean. Source: projects/kenosha-kid/research/log.md (r1 trajectory).",
 }
 
+# ============================================================================
+# Experiment 04 — gatsby mixture-of-models: deeper training + the corpus dial
+# Data sourced from the experiment-04 writeup (round comparison, obsession dial,
+# per-generator corpus dials).
+# ============================================================================
+
+# --- exp04 Chart 1: Round 1 (1k) vs Round 2 (2k mixture) val loss ------------
+# Two validation curves on a shared step axis. R2's richer mixture corpus lets
+# it train deeper before overfitting: R1 bottoms at step 1250 (0.627) then rises;
+# R2 bottoms later at step 2000 (0.622). x starts at step 250 — the step-0 ~4.4
+# points would compress the interesting 0.6–1.5 band — and zeroBase is off to
+# zoom on the divergence. R1 = neutral (the baseline), R2 = green (the win).
+# Series plot by index, so R2's 9 points naturally stop at step 2250.
+loss_r1_vs_r2 = {
+    "title": "Round 2 trains deeper before it overfits",
+    "subtitle": "Validation loss — Round 1 (1k) vs Round 2 (2k mixture). R1 bottoms at step 1250 then rises; R2 bottoms later at step 2000",
+    "x": [250, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000],
+    "series": [
+        {"name": "Round 1 (1k)", "hue": "neutral",
+         "y": [1.43, 0.82, 0.67, 0.627, 0.627, 0.658, 0.707, 0.757, 0.803, 0.848, 0.883, 0.896]},
+        {"name": "Round 2 (2k mixture)", "hue": "green",
+         "y": [1.47, 0.91, 0.755, 0.687, 0.653, 0.633, 0.628, 0.622, 0.638]},
+    ],
+    "valueFmt": "{:.3f}",
+    "yTitle": "Validation loss",
+    "xTitle": "Training step",
+    "zeroBase": False,
+    "caption": "Both curves start near 4.4 at init (step 0 omitted for legibility). Round 1 bottoms at step 1250 (val 0.627) and then climbs as it overfits the 1k corpus; the richer 2k mixture lets Round 2 keep improving to a later minimum at step 2000 (val 0.622). Source: experiment-04 (gatsby mixture-of-models).",
+}
+
+# --- exp04 Chart 2: the green-light obsession dial (Round-2 model) -----------
+# Green-light mentions per 480 generated tokens, swept across the green=1..5
+# dial on the Round-2 model. The dial moves at the endpoints (L1 -> L5) but is
+# compressed across the middle levels. Green hue — this IS the green-light dial.
+dial04 = {
+    "title": "The green-light dial moves at the endpoints",
+    "subtitle": "Green-light mentions per 480 tokens, by obsession level (Round-2 model)",
+    "categories": ["green=1", "green=2", "green=3", "green=4", "green=5"],
+    "values": [3.72, 4.78, 4.67, 4.50, 6.06],
+    "colors": ["green", "green", "green", "green", "green"],
+    "valueFmt": "{:.2f}",
+    "yTitle": "Avg green mentions / 480 tok",
+    "xTitle": "Obsession dial",
+    "caption": "Sweeping the green=N control over the Round-2 model: the dial clearly separates the endpoints (L1 3.72 -> L5 6.06) but is compressed and non-monotonic across the middle (L2–L4 all ~4.5–4.8). Source: experiment-04 (gatsby mixture-of-models).",
+}
+
+# --- exp04 Chart 3: corpus dial by generator model --------------------------
+# WHY the mixture was re-weighted. Each generator model's green-lights/level in
+# the corpus it produced: gemma has the widest, steepest range (kept, up-weighted)
+# while granite's dial is nearly flat (down-weighted). gemma = green (kept),
+# granite = red (down-weighted); olmo = blue, ministral = amber.
+corpus_dial_by_model = {
+    "title": "Why granite was down-weighted: its dial is near-flat",
+    "subtitle": "Corpus green-lights per obsession level, by generator model — gemma spans the widest range, granite barely moves",
+    "x": ["green=1", "green=2", "green=3", "green=4", "green=5"],
+    "series": [
+        {"name": "gemma", "hue": "green", "y": [4.8, 6.1, 8.3, 12.2, 16.7]},
+        {"name": "olmo", "hue": "blue", "y": [1.1, 2.9, 3.7, 4.9, 6.5]},
+        {"name": "ministral", "hue": "amber", "y": [0.8, 1.5, 2.3, 3.4, 4.9]},
+        {"name": "granite", "hue": "red", "y": [1.4, 2.1, 2.9, 2.7, 3.7]},
+    ],
+    "valueFmt": "{:.1f}",
+    "yTitle": "Green-lights / level (corpus)",
+    "xTitle": "Obsession dial",
+    "caption": "Each generator's slice of the corpus has its own dial. gemma's is the widest and steepest (4.8 -> 16.7), so it was kept and up-weighted; granite's barely moves and even dips at L4 (1.4 -> 3.7), so it was down-weighted. Source: experiment-04 (gatsby mixture-of-models).",
+}
+
 # (name, spec, fn, asset-prefix) — prefix routes each PNG to its report.
 JOBS = [("bpc-by-round", bpc, dv.bar, "exp01-"),
         ("data-win", data_win, dv.bar, "exp01-"),
@@ -235,7 +302,10 @@ JOBS = [("bpc-by-round", bpc, dv.bar, "exp01-"),
         ("training-loss", loss, dv.line, "exp01-"),
         ("dial-v2-v3", dial, dv.line, "exp02-"),
         ("corpus-vs-model", corpus_gap, dv.line, "exp02-"),
-        ("loss-transition", loss_transition, dv.line, "exp03-")]
+        ("loss-transition", loss_transition, dv.line, "exp03-"),
+        ("loss-r1-vs-r2", loss_r1_vs_r2, dv.line, "exp04-"),
+        ("dial", dial04, dv.bar, "exp04-"),
+        ("corpus-dial-by-model", corpus_dial_by_model, dv.line, "exp04-")]
 
 if __name__ == "__main__":
     out_dir = os.path.join(_HERE, "output")
