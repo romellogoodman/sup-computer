@@ -1,0 +1,294 @@
+/Users/romello/code/sup-computer/core/nanogpt_core/train.py:198: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = torch.cuda.amp.GradScaler(enabled=(dtype == 'float16'))
+/Users/romello/code/sup-computer/.venv/lib/python3.9/site-packages/torch/amp/grad_scaler.py:136: UserWarning: torch.cuda.amp.GradScaler is enabled, but CUDA is not available.  Disabling.
+  warnings.warn(
+Overriding config with projects/kenosha-kid/config.py:
+# Hyperparameters for kenosha-kid — a char-level model on the shared core engine.
+#
+# The entire corpus is punctuated permutations of "you never did the kenosha kid"
+# (see generate.py). There is almost no procedural competence to learn except
+# "stay near these six words, reorder them, punctuate them" — so model capacity
+# and sampling temperature ARE the aesthetic knobs. We start small on purpose:
+# less capacity blurs more, and the blur (near-misses, drifted punctuation) is
+# the artifact. Verbatim memorization is the failure mode, not the goal.
+#
+# Run from the repo root:
+#   uv run python core/nanogpt_core/train.py \
+#       projects/kenosha-kid/config.py \
+#       --out_dir=projects/kenosha-kid/runs/r1
+
+out_dir = 'projects/kenosha-kid/runs/r1'
+data_root = 'projects/kenosha-kid/data'   # where prepare.py writes <dataset>/*.bin
+dataset = 'kenosha'
+
+eval_interval = 100   # tiny corpus, fast loop
+eval_iters = 100
+log_interval = 10
+
+always_save_checkpoint = False  # only checkpoint when val loss improves
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 128      # a line is ~30 chars; 128 holds several arrangements + the newline rhythm
+
+# deliberately sub-"baby" — capacity is a dreaminess knob; ~0.8M params
+n_layer = 4
+n_head = 4
+n_embd = 128
+dropout = 0.2
+
+learning_rate = 1e-3
+max_iters = 2000
+lr_decay_iters = 2000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+# --- Mac (Apple Silicon) ---
+device = 'mps'
+compile = False
+
+Overriding: out_dir = projects/kenosha-kid/runs/r1
+tokens per iteration will be: 8,192
+found vocab_size = 27 (inside projects/kenosha-kid/data/kenosha/meta.pkl)
+Initializing a new model from scratch
+number of parameters: 0.79M
+num decayed tensors: 17, non-decayed: 9
+using fused AdamW: False
+step 0: train loss 3.3764, val loss 3.3748
+iter 0: loss 3.3665, time 4335.59ms, mfu -100.00%
+iter 10: loss 2.6752, time 37.64ms, mfu 0.39%
+iter 20: loss 2.1121, time 62.54ms, mfu 0.37%
+iter 30: loss 1.8892, time 54.22ms, mfu 0.36%
+iter 40: loss 1.6788, time 53.71ms, mfu 0.35%
+iter 50: loss 1.4375, time 60.77ms, mfu 0.34%
+iter 60: loss 1.1883, time 52.89ms, mfu 0.33%
+iter 70: loss 0.9901, time 56.15ms, mfu 0.33%
+iter 80: loss 0.8712, time 61.82ms, mfu 0.32%
+iter 90: loss 0.7857, time 53.39ms, mfu 0.31%
+step 100: train loss 0.6645, val loss 0.6623
+saving checkpoint to projects/kenosha-kid/runs/r1
+iter 100: loss 0.7120, time 3568.15ms, mfu 0.28%
+iter 110: loss 0.6531, time 43.65ms, mfu 0.29%
+iter 120: loss 0.6428, time 66.69ms, mfu 0.28%
+iter 130: loss 0.6155, time 47.20ms, mfu 0.28%
+iter 140: loss 0.6127, time 61.99ms, mfu 0.28%
+iter 150: loss 0.6117, time 52.96ms, mfu 0.28%
+iter 160: loss 0.5867, time 57.00ms, mfu 0.28%
+iter 170: loss 0.5671, time 55.45ms, mfu 0.27%
+iter 180: loss 0.5852, time 60.50ms, mfu 0.27%
+iter 190: loss 0.5579, time 55.04ms, mfu 0.27%
+step 200: train loss 0.5344, val loss 0.5314
+saving checkpoint to projects/kenosha-kid/runs/r1
+iter 200: loss 0.5634, time 3631.48ms, mfu 0.24%
+iter 210: loss 0.5498, time 39.48ms, mfu 0.26%
+iter 220: loss 0.5370, time 65.89ms, mfu 0.25%
+iter 230: loss 0.5527, time 51.39ms, mfu 0.26%
+iter 240: loss 0.5301, time 61.03ms, mfu 0.25%
+iter 250: loss 0.5092, time 52.33ms, mfu 0.26%
+iter 260: loss 0.5276, time 55.01ms, mfu 0.26%
+iter 270: loss 0.5045, time 60.78ms, mfu 0.25%
+iter 280: loss 0.5086, time 51.86ms, mfu 0.26%
+iter 290: loss 0.5177, time 53.46ms, mfu 0.26%
+step 300: train loss 0.4775, val loss 0.4766
+saving checkpoint to projects/kenosha-kid/runs/r1
+iter 300: loss 0.4943, time 3490.90ms, mfu 0.23%
+iter 310: loss 0.5072, time 62.58ms, mfu 0.23%
+iter 320: loss 0.5017, time 53.73ms, mfu 0.24%
+iter 330: loss 0.4979, time 56.74ms, mfu 0.24%
+iter 340: loss 0.5047, time 54.37ms, mfu 0.24%
+iter 350: loss 0.4964, time 59.66ms, mfu 0.24%
+iter 360: loss 0.4891, time 47.57ms, mfu 0.25%
+iter 370: loss 0.4824, time 54.51ms, mfu 0.25%
+iter 380: loss 0.4722, time 53.74ms, mfu 0.25%
+iter 390: loss 0.4780, time 56.81ms, mfu 0.25%
+step 400: train loss 0.4610, val loss 0.4598
+saving checkpoint to projects/kenosha-kid/runs/r1
+iter 400: loss 0.4833, time 3592.03ms, mfu 0.23%
+iter 410: loss 0.4686, time 37.34ms, mfu 0.24%
+iter 420: loss 0.4791, time 66.56ms, mfu 0.24%
+iter 430: loss 0.4619, time 50.97ms, mfu 0.25%
+iter 440: loss 0.4784, time 61.02ms, mfu 0.24%
+iter 450: loss 0.4876, time 53.88ms, mfu 0.25%
+iter 460: loss 0.4806, time 55.38ms, mfu 0.25%
+iter 470: loss 0.4740, time 54.10ms, mfu 0.25%
+iter 480: loss 0.4761, time 54.06ms, mfu 0.25%
+iter 490: loss 0.4750, time 54.56ms, mfu 0.25%
+step 500: train loss 0.4537, val loss 0.4524
+saving checkpoint to projects/kenosha-kid/runs/r1
+iter 500: loss 0.4634, time 3602.49ms, mfu 0.23%
+iter 510: loss 0.4785, time 38.80ms, mfu 0.24%
+iter 520: loss 0.4755, time 67.98ms, mfu 0.24%
+iter 530: loss 0.4610, time 51.95ms, mfu 0.24%
+iter 540: loss 0.4789, time 55.14ms, mfu 0.25%
+iter 550: loss 0.4662, time 57.53ms, mfu 0.25%
+iter 560: loss 0.4675, time 54.46ms, mfu 0.25%
+iter 570: loss 0.4729, time 55.61ms, mfu 0.25%
+iter 580: loss 0.4704, time 54.69ms, mfu 0.25%
+iter 590: loss 0.4692, time 52.50ms, mfu 0.25%
+step 600: train loss 0.4515, val loss 0.4500
+saving checkpoint to projects/kenosha-kid/runs/r1
+iter 600: loss 0.4643, time 3673.99ms, mfu 0.23%
+iter 610: loss 0.4619, time 36.86ms, mfu 0.25%
+iter 620: loss 0.4483, time 68.77ms, mfu 0.24%
+iter 630: loss 0.4699, time 49.89ms, mfu 0.25%
+iter 640: loss 0.4604, time 58.82ms, mfu 0.25%
+iter 650: loss 0.4685, time 51.51ms, mfu 0.25%
+iter 660: loss 0.4631, time 55.94ms, mfu 0.25%
+iter 670: loss 0.4603, time 53.61ms, mfu 0.25%
+iter 680: loss 0.4368, time 54.85ms, mfu 0.25%
+iter 690: loss 0.4494, time 54.39ms, mfu 0.26%
+step 700: train loss 0.4458, val loss 0.4443
+saving checkpoint to projects/kenosha-kid/runs/r1
+iter 700: loss 0.4620, time 3790.62ms, mfu 0.23%
+iter 710: loss 0.4495, time 35.05ms, mfu 0.25%
+iter 720: loss 0.4639, time 59.38ms, mfu 0.25%
+iter 730: loss 0.4491, time 52.56ms, mfu 0.25%
+iter 740: loss 0.4578, time 62.48ms, mfu 0.25%
+iter 750: loss 0.4702, time 62.33ms, mfu 0.25%
+iter 760: loss 0.4522, time 52.93ms, mfu 0.25%
+iter 770: loss 0.4441, time 54.57ms, mfu 0.25%
+iter 780: loss 0.4462, time 52.52ms, mfu 0.25%
+iter 790: loss 0.4542, time 53.75ms, mfu 0.26%
+step 800: train loss 0.4446, val loss 0.4443
+iter 800: loss 0.4519, time 3732.78ms, mfu 0.23%
+iter 810: loss 0.4401, time 38.11ms, mfu 0.25%
+iter 820: loss 0.4396, time 67.19ms, mfu 0.24%
+iter 830: loss 0.4586, time 51.89ms, mfu 0.25%
+iter 840: loss 0.4536, time 58.27ms, mfu 0.25%
+iter 850: loss 0.4372, time 56.93ms, mfu 0.25%
+iter 860: loss 0.4630, time 52.11ms, mfu 0.25%
+iter 870: loss 0.4475, time 53.90ms, mfu 0.25%
+iter 880: loss 0.4463, time 62.84ms, mfu 0.25%
+iter 890: loss 0.4465, time 52.42ms, mfu 0.25%
+step 900: train loss 0.4406, val loss 0.4382
+saving checkpoint to projects/kenosha-kid/runs/r1
+iter 900: loss 0.4657, time 3724.35ms, mfu 0.23%
+iter 910: loss 0.4549, time 37.91ms, mfu 0.24%
+iter 920: loss 0.4448, time 66.49ms, mfu 0.24%
+iter 930: loss 0.4474, time 53.40ms, mfu 0.24%
+iter 940: loss 0.4398, time 54.82ms, mfu 0.25%
+iter 950: loss 0.4369, time 54.55ms, mfu 0.25%
+iter 960: loss 0.4596, time 52.97ms, mfu 0.25%
+iter 970: loss 0.4518, time 54.86ms, mfu 0.25%
+iter 980: loss 0.4558, time 54.22ms, mfu 0.25%
+iter 990: loss 0.4596, time 54.54ms, mfu 0.26%
+step 1000: train loss 0.4412, val loss 0.4406
+iter 1000: loss 0.4364, time 3722.91ms, mfu 0.23%
+iter 1010: loss 0.4464, time 38.01ms, mfu 0.25%
+iter 1020: loss 0.4437, time 62.95ms, mfu 0.24%
+iter 1030: loss 0.4378, time 50.39ms, mfu 0.25%
+iter 1040: loss 0.4493, time 62.27ms, mfu 0.25%
+iter 1050: loss 0.4597, time 55.40ms, mfu 0.25%
+iter 1060: loss 0.4534, time 54.86ms, mfu 0.25%
+iter 1070: loss 0.4519, time 51.72ms, mfu 0.25%
+iter 1080: loss 0.4424, time 61.88ms, mfu 0.25%
+iter 1090: loss 0.4633, time 53.83ms, mfu 0.25%
+step 1100: train loss 0.4388, val loss 0.4381
+saving checkpoint to projects/kenosha-kid/runs/r1
+iter 1100: loss 0.4544, time 3737.91ms, mfu 0.23%
+iter 1110: loss 0.4681, time 37.80ms, mfu 0.24%
+iter 1120: loss 0.4423, time 68.75ms, mfu 0.24%
+iter 1130: loss 0.4450, time 51.43ms, mfu 0.24%
+iter 1140: loss 0.4396, time 57.19ms, mfu 0.25%
+iter 1150: loss 0.4412, time 53.96ms, mfu 0.25%
+iter 1160: loss 0.4501, time 57.69ms, mfu 0.25%
+iter 1170: loss 0.4462, time 56.67ms, mfu 0.25%
+iter 1180: loss 0.4364, time 56.27ms, mfu 0.25%
+iter 1190: loss 0.4473, time 52.30ms, mfu 0.25%
+step 1200: train loss 0.4385, val loss 0.4391
+iter 1200: loss 0.4589, time 4275.63ms, mfu 0.23%
+iter 1210: loss 0.4435, time 32.86ms, mfu 0.25%
+iter 1220: loss 0.4559, time 41.80ms, mfu 0.26%
+iter 1230: loss 0.4616, time 61.50ms, mfu 0.26%
+iter 1240: loss 0.4409, time 53.52ms, mfu 0.26%
+iter 1250: loss 0.4385, time 53.42ms, mfu 0.26%
+iter 1260: loss 0.4493, time 52.05ms, mfu 0.26%
+iter 1270: loss 0.4386, time 55.47ms, mfu 0.26%
+iter 1280: loss 0.4497, time 52.67ms, mfu 0.26%
+iter 1290: loss 0.4489, time 53.93ms, mfu 0.26%
+step 1300: train loss 0.4369, val loss 0.4361
+saving checkpoint to projects/kenosha-kid/runs/r1
+iter 1300: loss 0.4348, time 3771.71ms, mfu 0.24%
+iter 1310: loss 0.4381, time 37.96ms, mfu 0.25%
+iter 1320: loss 0.4398, time 68.41ms, mfu 0.25%
+iter 1330: loss 0.4439, time 50.48ms, mfu 0.25%
+iter 1340: loss 0.4509, time 54.70ms, mfu 0.25%
+iter 1350: loss 0.4489, time 52.20ms, mfu 0.26%
+iter 1360: loss 0.4382, time 53.88ms, mfu 0.26%
+iter 1370: loss 0.4464, time 59.90ms, mfu 0.26%
+iter 1380: loss 0.4286, time 56.04ms, mfu 0.26%
+iter 1390: loss 0.4332, time 66.24ms, mfu 0.25%
+step 1400: train loss 0.4367, val loss 0.4341
+saving checkpoint to projects/kenosha-kid/runs/r1
+iter 1400: loss 0.4258, time 3817.49ms, mfu 0.23%
+iter 1410: loss 0.4444, time 37.93ms, mfu 0.24%
+iter 1420: loss 0.4355, time 64.99ms, mfu 0.24%
+iter 1430: loss 0.4582, time 50.18ms, mfu 0.25%
+iter 1440: loss 0.4435, time 60.84ms, mfu 0.25%
+iter 1450: loss 0.4446, time 55.96ms, mfu 0.25%
+iter 1460: loss 0.4564, time 56.70ms, mfu 0.25%
+iter 1470: loss 0.4602, time 57.68ms, mfu 0.25%
+iter 1480: loss 0.4388, time 54.81ms, mfu 0.25%
+iter 1490: loss 0.4377, time 54.86ms, mfu 0.25%
+step 1500: train loss 0.4346, val loss 0.4337
+saving checkpoint to projects/kenosha-kid/runs/r1
+iter 1500: loss 0.4403, time 3826.67ms, mfu 0.23%
+iter 1510: loss 0.4450, time 35.66ms, mfu 0.24%
+iter 1520: loss 0.4305, time 64.51ms, mfu 0.24%
+iter 1530: loss 0.4382, time 51.55ms, mfu 0.25%
+iter 1540: loss 0.4188, time 60.47ms, mfu 0.25%
+iter 1550: loss 0.4539, time 58.82ms, mfu 0.25%
+iter 1560: loss 0.4426, time 56.00ms, mfu 0.25%
+iter 1570: loss 0.4339, time 54.15ms, mfu 0.25%
+iter 1580: loss 0.4309, time 52.70ms, mfu 0.25%
+iter 1590: loss 0.4466, time 53.49ms, mfu 0.25%
+step 1600: train loss 0.4337, val loss 0.4341
+iter 1600: loss 0.4504, time 3817.71ms, mfu 0.23%
+iter 1610: loss 0.4483, time 36.76ms, mfu 0.25%
+iter 1620: loss 0.4339, time 65.88ms, mfu 0.24%
+iter 1630: loss 0.4222, time 50.00ms, mfu 0.25%
+iter 1640: loss 0.4322, time 63.74ms, mfu 0.25%
+iter 1650: loss 0.4442, time 55.70ms, mfu 0.25%
+iter 1660: loss 0.4526, time 54.16ms, mfu 0.25%
+iter 1670: loss 0.4460, time 60.64ms, mfu 0.25%
+iter 1680: loss 0.4479, time 53.83ms, mfu 0.25%
+iter 1690: loss 0.4412, time 57.99ms, mfu 0.25%
+step 1700: train loss 0.4345, val loss 0.4324
+saving checkpoint to projects/kenosha-kid/runs/r1
+iter 1700: loss 0.4268, time 3732.51ms, mfu 0.23%
+iter 1710: loss 0.4390, time 56.00ms, mfu 0.23%
+iter 1720: loss 0.4302, time 51.51ms, mfu 0.23%
+iter 1730: loss 0.4504, time 59.72ms, mfu 0.24%
+iter 1740: loss 0.4308, time 48.93ms, mfu 0.24%
+iter 1750: loss 0.4415, time 56.47ms, mfu 0.24%
+iter 1760: loss 0.4365, time 58.27ms, mfu 0.24%
+iter 1770: loss 0.4449, time 55.25ms, mfu 0.25%
+iter 1780: loss 0.4479, time 56.67ms, mfu 0.25%
+iter 1790: loss 0.4402, time 58.66ms, mfu 0.25%
+step 1800: train loss 0.4354, val loss 0.4334
+iter 1800: loss 0.4285, time 3892.86ms, mfu 0.22%
+iter 1810: loss 0.4278, time 33.88ms, mfu 0.24%
+iter 1820: loss 0.4459, time 51.21ms, mfu 0.25%
+iter 1830: loss 0.4448, time 52.98ms, mfu 0.25%
+iter 1840: loss 0.4436, time 58.86ms, mfu 0.25%
+iter 1850: loss 0.4342, time 55.79ms, mfu 0.25%
+iter 1860: loss 0.4241, time 56.46ms, mfu 0.25%
+iter 1870: loss 0.4390, time 55.62ms, mfu 0.25%
+iter 1880: loss 0.4107, time 54.28ms, mfu 0.25%
+iter 1890: loss 0.4481, time 52.96ms, mfu 0.26%
+step 1900: train loss 0.4336, val loss 0.4319
+saving checkpoint to projects/kenosha-kid/runs/r1
+iter 1900: loss 0.4426, time 3928.29ms, mfu 0.23%
+iter 1910: loss 0.4437, time 36.58ms, mfu 0.25%
+iter 1920: loss 0.4456, time 75.77ms, mfu 0.24%
+iter 1930: loss 0.4402, time 52.77ms, mfu 0.25%
+iter 1940: loss 0.4472, time 62.20ms, mfu 0.24%
+iter 1950: loss 0.4362, time 54.56ms, mfu 0.25%
+iter 1960: loss 0.4429, time 54.19ms, mfu 0.25%
+iter 1970: loss 0.4438, time 57.60ms, mfu 0.25%
+iter 1980: loss 0.4389, time 52.95ms, mfu 0.25%
+iter 1990: loss 0.4471, time 58.15ms, mfu 0.25%
+step 2000: train loss 0.4346, val loss 0.4325
+iter 2000: loss 0.4231, time 3697.12ms, mfu 0.23%

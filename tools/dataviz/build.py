@@ -196,6 +196,37 @@ corpus_gap = {
     "caption": "The same corpus (200 topics × 5 levels) underlies v2 and v3; its dial is steep and clean (2.27→12.57). v2's model essentially ignored it; v3's followed the shape — flattened — once the tag carried real character-mass next to the body. A 10M char-LM conditions only weakly on a short prefix, so it can copy the corpus's direction but not its slope. Source: projects/gatsby/research/leaderboard.md",
 }
 
+# ============================================================================
+# Experiment 03 — kenosha-kid: the memorization phase transition
+# Data sourced from projects/kenosha-kid/research/log.md (r1 val loss by step).
+# ============================================================================
+
+# --- exp03 Chart 1: the memorization phase transition -----------------------
+# THE core quantitative finding. Validation loss vs training iteration for the
+# r1 run. The corpus is small enough that loss craters in the first 100 steps
+# (3.37 -> 0.66) and is essentially flat by ~400 — so *where you stop* on this
+# curve is the only real knob, and it sets the dreaminess. The line API has no
+# per-point marker, so the three spectrum checkpoints are called out in the
+# caption (their measured val losses come from dedicated short runs that sit on
+# roughly this curve). zeroBase on (default) so the crater reads at full depth.
+loss_transition = {
+    "title": "The memorization phase transition",
+    "subtitle": "Validation loss vs training iteration (r1) — a tiny corpus craters the loss in the first 100 steps",
+    "x": [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000,
+          1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000],
+    "series": [{
+        "name": "val loss",
+        "hue": "blue",
+        "y": [3.3748, 0.6623, 0.5314, 0.4766, 0.4598, 0.4524, 0.4500, 0.4443,
+              0.4443, 0.4382, 0.4406, 0.4381, 0.4391, 0.4361, 0.4341, 0.4337,
+              0.4341, 0.4324, 0.4334, 0.4319, 0.4325],
+    }],
+    "valueFmt": "{:.3f}",
+    "yTitle": "Validation loss",
+    "xTitle": "Training iteration",
+    "caption": "Loss falls off a cliff in the first 100 steps (3.37 -> 0.66) and is essentially flat by ~400 — the corpus is too small to keep learning, so where you stop is the only real knob and it sets the dreaminess. Three checkpoints span the spectrum: iter 150 (val 0.59) = deep dream, too broken; iter 350 (val 0.48) = champion, the balance; iter 2000 (val 0.43) = lucid, too clean. Source: projects/kenosha-kid/research/log.md (r1 trajectory).",
+}
+
 # (name, spec, fn, asset-prefix) — prefix routes each PNG to its report.
 JOBS = [("bpc-by-round", bpc, dv.bar, "exp01-"),
         ("data-win", data_win, dv.bar, "exp01-"),
@@ -203,7 +234,8 @@ JOBS = [("bpc-by-round", bpc, dv.bar, "exp01-"),
         ("researcher-efficiency", eff, dv.bar, "exp01-"),
         ("training-loss", loss, dv.line, "exp01-"),
         ("dial-v2-v3", dial, dv.line, "exp02-"),
-        ("corpus-vs-model", corpus_gap, dv.line, "exp02-")]
+        ("corpus-vs-model", corpus_gap, dv.line, "exp02-"),
+        ("loss-transition", loss_transition, dv.line, "exp03-")]
 
 if __name__ == "__main__":
     out_dir = os.path.join(_HERE, "output")

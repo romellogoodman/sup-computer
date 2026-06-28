@@ -16,6 +16,9 @@ venv/
 env/
 # uv.lock IS committed (reproducible installs) — do not ignore it.
 
+# --- Generated chart output (dataviz renders these on demand) ---
+tools/dataviz/output/
+
 # --- Node ---
 node_modules/
 

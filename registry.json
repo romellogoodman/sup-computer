@@ -39,6 +39,19 @@
       "frozen_code": "projects/gatsby/models/gatsby-nanogpt-1/",
       "model_card": "research-docs/model-cards/gatsby-nanogpt-1.md",
       "artifacts": { "checkpoint": null, "onnx": null, "onnx_int8": null }
+    },
+    {
+      "id": "kenosha-kid-nanogpt-1",
+      "project": "kenosha-kid",
+      "version": 1,
+      "git_tag": "kenosha-kid-nanogpt-1",
+      "architecture": "modern (RoPE, RMSNorm, bias-free)",
+      "tokenizer": { "type": "char", "vocab_size": 27 },
+      "params": 790000,
+      "held_out_bpc": null,
+      "frozen_code": "projects/kenosha-kid/models/kenosha-kid-nanogpt-1/",
+      "model_card": "research-docs/model-cards/kenosha-kid-nanogpt-1.md",
+      "artifacts": { "checkpoint": null, "onnx": null, "onnx_int8": null }
     }
   ]
 }
