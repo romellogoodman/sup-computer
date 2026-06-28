@@ -1,0 +1,23 @@
+# --- Weights & corpora: NEVER in the tree (the monorepo's load-bearing rule) ---
+# They regenerate from committed code and live in release artifacts / R2,
+# referenced by registry.json. Per-project .gitignores repeat these for sparse
+# clones; this enforces it repo-wide.
+*.pt
+*.bin
+*.onnx
+*.pkl
+*.vocab.json
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+# uv.lock IS committed (reproducible installs) — do not ignore it.
+
+# --- Node ---
+node_modules/
+
+# --- OS ---
+.DS_Store
