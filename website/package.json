@@ -1,0 +1,12 @@
+{
+  "name": "@supcomputer/website",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "sup computer studio website — custom React/Next.js, renders synced research-docs",
+  "scripts": {
+    "sync-content": "node scripts/sync-content.mjs",
+    "predev": "node scripts/sync-content.mjs",
+    "prebuild": "node scripts/sync-content.mjs"
+  }
+}

@@ -1,0 +1,7 @@
+# synced at build time from research-docs/ — never edit here, never commit
+/content/
+
+node_modules/
+.next/
+out/
+dist/
