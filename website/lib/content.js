@@ -32,6 +32,17 @@ function readDir(dir) {
 // Newest first. gray-matter parses YAML `date:` into a Date object, so compare by
 // timestamp — a string/localeCompare sort orders by weekday name, not chronology.
 const writtenAt = (r) => (r.frontmatter.date ? new Date(r.frontmatter.date).getTime() : 0);
+
+// "June 2026". UTC so a YAML date (parsed as midnight UTC) doesn't shift a day back
+// in a negative-offset timezone and land in the previous month.
+export function monthYear(date) {
+  if (!date) return "";
+  return new Date(date).toLocaleDateString("en-US", {
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
 export function getReports() {
   return readDir(REPORTS).sort((a, b) => writtenAt(b) - writtenAt(a));
 }

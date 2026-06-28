@@ -15,6 +15,7 @@ export default function RootLayout({ children }) {
           <nav className="top">
             <a href="/#models">models</a>
             <a href="/#research">research</a>
+            <a href="https://github.com/romellogoodman/sup-computer">view source</a>
           </nav>
         </header>
         <hr />

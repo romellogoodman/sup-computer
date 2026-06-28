@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getReports, getReport, stripLeadIn } from "../../../lib/content";
+import { getReports, getReport, stripLeadIn, monthYear } from "../../../lib/content";
 import Markdown from "../../../components/Markdown";
 
 export function generateStaticParams() {
@@ -10,8 +10,8 @@ export default function Report({ params }) {
   const r = getReport(params.slug);
   if (!r) return notFound();
 
-  const { title, type, series } = r.frontmatter;
-  const meta = [type, series].filter(Boolean).join(" · ");
+  const { title, type, date, series } = r.frontmatter;
+  const meta = [type, monthYear(date), series].filter(Boolean).join(" · ");
 
   return (
     <article>

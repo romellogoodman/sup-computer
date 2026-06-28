@@ -1,4 +1,4 @@
-import { getReports, getRegistry } from "../lib/content";
+import { getReports, getRegistry, monthYear } from "../lib/content";
 
 export default function Home() {
   const reports = getReports();
@@ -42,7 +42,7 @@ export default function Home() {
         <div className="list-item" key={r.slug}>
           <a href={"/research/" + r.slug + "/"}>{r.frontmatter.title || r.slug}</a>
           <p className="meta">
-            {[r.frontmatter.type].filter(Boolean).join(" · ")}
+            {[r.frontmatter.type, monthYear(r.frontmatter.date)].filter(Boolean).join(" · ")}
           </p>
           <p>{r.frontmatter.summary}</p>
         </div>
