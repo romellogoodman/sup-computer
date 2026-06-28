@@ -8,6 +8,10 @@
 
 [tool.uv.workspace]
 members = ["core", "projects/*"]
+# Thin / vendored projects are NOT installable packages — they ride the shared
+# core by running scripts in the workspace venv, so they carry no pyproject.toml.
+# The `projects/*` glob would otherwise demand one from each; exclude them.
+exclude = ["projects/gatsby", "projects/kenosha-kid"]
 
 [tool.uv.sources]
 supcomputer-core = { workspace = true }

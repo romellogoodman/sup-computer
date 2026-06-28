@@ -25,3 +25,4 @@ supersede instead (mark the old one `Superseded by ADR-NNNN`).
 | [0009](0009-website-ia-and-style.md) | Website information architecture and visual style | Accepted |
 | [0010](0010-vendor-the-player.md) | Vendor nanogpt-player as @supcomputer/player | Accepted |
 | [0011](0011-vendor-gatsby.md) | Vendor gatsby-nanogpt as a self-contained project | Accepted |
+| [0012](0012-pluggable-tokenization.md) | Tokenization is pluggable on the shared core; `meta.pkl` is the contract | Accepted |
