@@ -10,8 +10,8 @@ export default function Report({ params }) {
   const r = getReport(params.slug);
   if (!r) return notFound();
 
-  const { title, date, series } = r.frontmatter;
-  const meta = [String(date || ""), series].filter(Boolean).join(" · ");
+  const { title, type, date, series } = r.frontmatter;
+  const meta = [type, String(date || ""), series].filter(Boolean).join(" · ");
 
   return (
     <article>

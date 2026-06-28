@@ -1,4 +1,5 @@
 ---
+type: experiment
 title: "Can a big model improve a small one?"
 date: 2026-06-18
 series: shakespeare

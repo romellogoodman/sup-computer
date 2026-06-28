@@ -8,7 +8,9 @@ export default function ResearchIndex() {
       {reports.map((r) => (
         <div className="list-item" key={r.slug}>
           <a href={"/research/" + r.slug + "/"}>{r.frontmatter.title || r.slug}</a>
-          <p className="meta">{String(r.frontmatter.date || "")}</p>
+          <p className="meta">
+            {[r.frontmatter.type, String(r.frontmatter.date || "")].filter(Boolean).join(" · ")}
+          </p>
           <p>{r.frontmatter.summary}</p>
         </div>
       ))}
