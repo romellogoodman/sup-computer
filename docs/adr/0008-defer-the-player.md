@@ -1,6 +1,6 @@
 # ADR 0008: Defer the browser player and remove `web-ui`
 
-- **Status:** Accepted
+- **Status:** Accepted (amended by [ADR-0010](0010-vendor-the-player.md) — the player is no longer deferred; the web-ui removal stands)
 - **Date:** 2026-06-27
 - **Deciders:** Romello Goodman (with Claude)
 

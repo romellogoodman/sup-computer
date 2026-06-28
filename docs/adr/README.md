@@ -23,3 +23,4 @@ supersede instead (mark the old one `Superseded by ADR-NNNN`).
 | [0007](0007-research-docs-and-content-sync.md) | `research-docs/` is cross-project; the website syncs content | Accepted |
 | [0008](0008-defer-the-player.md) | Defer the browser player and remove `web-ui` | Accepted |
 | [0009](0009-website-ia-and-style.md) | Website information architecture and visual style | Accepted |
+| [0010](0010-vendor-the-player.md) | Vendor nanogpt-player as @supcomputer/player | Accepted |
