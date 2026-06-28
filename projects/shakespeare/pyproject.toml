@@ -1,0 +1,15 @@
+[project]
+name = "shakespeare"
+version = "0.1.0"
+description = "Character/BPE GPT trained on Shakespeare — the first sup computer project"
+requires-python = ">=3.9"
+dependencies = [
+    "supcomputer-core",
+]
+
+[tool.uv.sources]
+supcomputer-core = { workspace = true }
+
+# This project is a thin consumer of the shared engine: it owns config, corpus
+# prep, run evidence, and model cards — and calls into nanogpt_core for training,
+# sampling, and eval. It is intentionally not a build target (no [build-system]).

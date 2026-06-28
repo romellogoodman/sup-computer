@@ -1,42 +1,34 @@
 """
-Score a trained checkpoint on the fixed held-out test set (research-lab/test.txt).
+Score a trained checkpoint on a fixed held-out test set, in bits-per-character.
 
-Reports bits-per-character (BPC) as the universal, tokenizer-agnostic metric:
-total negative log-likelihood of the test text divided by its character count.
-Char-level and BPE models produce different raw losses but are directly
-comparable in BPC, so the whole leaderboard shares one yardstick.
+BPC is the universal, tokenizer-agnostic metric: total negative log-likelihood
+of the test text divided by its character count. Char-level and BPE models
+produce different raw losses but are directly comparable in BPC, so a whole
+series shares one yardstick.
 
-Usage:  python research-lab/eval.py <out_dir> [test_file]
+This scores the CURRENT (modern: RoPE + RMSNorm + bias-free) architecture only.
+Historical base-architecture versions are scored inside their own frozen
+projects/<project>/models/<version>/ folder, which vendors its own model.py.
+
+Usage:
+  python core/eval/eval.py <out_dir> \
+      --test projects/shakespeare/test.txt \
+      --data-dir projects/shakespeare/data        # for char models' meta.pkl
 """
-import os
-import sys
+import argparse
 import math
+import os
 import pickle
+
 import torch
 
-REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, REPO)
-sys.path.insert(0, os.path.join(REPO, "research-lab"))  # import model.py / model_modern.py (both live here)
+from nanogpt_core.model import GPTConfig, GPT
 
 
-def load_arch(out_dir):
-    """Pick the right GPT class for this checkpoint's architecture."""
-    tag = ""
-    af = os.path.join(out_dir, "arch.txt")
-    if os.path.exists(af):
-        tag = open(af).read().strip()
-    if tag == "modern":
-        from model_modern import GPTConfig, GPT
-    else:
-        from model import GPTConfig, GPT
-    return GPTConfig, GPT
-
-
-def main(out_dir, test_path=None):
+def main(out_dir, test_path, data_dir=""):
     device = "mps" if torch.backends.mps.is_available() else "cpu"
     ckpt = torch.load(os.path.join(out_dir, "ckpt.pt"), map_location=device)
 
-    GPTConfig, GPT = load_arch(out_dir)
     model = GPT(GPTConfig(**ckpt["model_args"]))
     sd = ckpt["model"]
     for k in list(sd):
@@ -47,11 +39,10 @@ def main(out_dir, test_path=None):
 
     block = ckpt["model_args"]["block_size"]
     dataset = ckpt.get("config", {}).get("dataset", "")
-    meta_path = os.path.join(REPO, "research-lab", "data", dataset, "meta.pkl")
-    test_path = test_path or os.path.join(REPO, "research-lab", "test.txt")
+    meta_path = os.path.join(data_dir, dataset, "meta.pkl") if data_dir else ""
     text = open(test_path, encoding="utf-8").read()
 
-    if os.path.exists(meta_path):
+    if meta_path and os.path.exists(meta_path):
         stoi = pickle.load(open(meta_path, "rb"))["stoi"]
         ids = [stoi[c] for c in text if c in stoi]
         tokenizer = "char"
@@ -89,4 +80,16 @@ def main(out_dir, test_path=None):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else None)
+    ap = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    ap.add_argument("out_dir", help="run dir containing ckpt.pt")
+    ap.add_argument("--test", required=True, dest="test_path", help="held-out test text")
+    ap.add_argument(
+        "--data-dir",
+        default="",
+        dest="data_dir",
+        help="parent dir of <dataset>/meta.pkl (char models); omit for BPE",
+    )
+    a = ap.parse_args()
+    main(a.out_dir, a.test_path, a.data_dir)

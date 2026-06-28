@@ -1,0 +1,13 @@
+# sup computer — uv workspace root (virtual; not itself a package).
+#
+#   uv sync         # create .venv and editable-install core + projects
+#   uv run python core/nanogpt_core/train.py ...
+#
+# core/ is editable-installed, so editing the engine and every consumer happens
+# in one place. Weights and corpora never live in the tree (see .gitignore).
+
+[tool.uv.workspace]
+members = ["core", "projects/*"]
+
+[tool.uv.sources]
+supcomputer-core = { workspace = true }

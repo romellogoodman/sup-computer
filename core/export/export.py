@@ -1,19 +1,19 @@
-"""Export a shakespeare-nanogpt version to ONNX for the browser runtime.
+"""Export a frozen model version to ONNX for the browser runtime.
 
 PyTorch checkpoint (.pt)  ->  verified .onnx  (+ .vocab.json for char models).
 The exported graph is the pure forward pass: tokens in, LAST-position logits out.
-The autoregressive loop / sampling / tokenization live in JS (see nanogpt-player).
+The autoregressive loop / sampling / tokenization live in JS (the future player).
 
 We never ship the .pt — only the produced .onnx. Conversion touches format, not
 weights; no retraining.
 
-Each models/shakespeare-nanogpt-N/ folder vendors its OWN model.py + ckpt.pt, so
-this script imports that version's model.py directly — no drift, no shared
-definition to keep in sync.
+Each projects/<project>/models/<version>/ folder vendors its OWN model.py +
+ckpt.pt, so this script imports that version's model.py directly — no drift, no
+shared definition to keep in sync. (It does NOT depend on nanogpt_core, by design.)
 
 Usage:
-    python export.py models/shakespeare-nanogpt-1 dist
-    python export.py models/shakespeare-nanogpt-1 dist --no-quantize
+    python core/export/export.py projects/shakespeare/models/shakespeare-nanogpt-1 projects/shakespeare/dist
+    python core/export/export.py projects/shakespeare/models/shakespeare-nanogpt-1 projects/shakespeare/dist --no-quantize
 
 Outputs (in <out-dir>):
     <name>.onnx           fp32 graph (robust on the WebGPU EP)
@@ -198,7 +198,7 @@ def export(folder, out_dir, quantize=True):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("folder", help="version folder, e.g. models/shakespeare-nanogpt-1")
+    ap.add_argument("folder", help="version folder, e.g. projects/shakespeare/models/shakespeare-nanogpt-1")
     ap.add_argument("out_dir", help="output directory for the .onnx artifacts")
     ap.add_argument("--no-quantize", action="store_true", help="skip int8 export")
     args = ap.parse_args()
