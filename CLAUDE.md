@@ -44,6 +44,9 @@ Before starting a task, read the doc that fits it:
   export to ONNX, build charts, sync website content.
 - `docs/releasing.md` — turning a research round into a tagged, frozen release.
 - `docs/monorepo-plan.md` — the original rationale for the monorepo.
+- `docs/adr/` — Architecture Decision Records: why things are shaped the way they
+  are. Read the relevant ones, and **write a new ADR** (see `docs/adr/README.md`)
+  for any architecturally significant or hard-to-reverse decision you make.
 
 Each project also has its own `CLAUDE.md` (e.g. `projects/shakespeare/CLAUDE.md`)
 with project-specific conventions — read it before editing inside that project.
