@@ -55,6 +55,17 @@ export function getRegistry() {
   return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, "utf8")) : { models: [] };
 }
 
+// The AI researcher credited on an artifact. Reports carry a `researcher` id in
+// frontmatter; models carry one in registry.json. Both resolve through the shared
+// `researchers` map to a display name. See docs/adr/0013-attribution-of-the-ai-researcher.md.
+export function getResearchers() {
+  return getRegistry().researchers || {};
+}
+export function researcherName(id) {
+  if (!id) return "";
+  return getResearchers()[id]?.name || id;
+}
+
 export function getCard(id) {
   return readDir(CARDS).find((c) => c.slug === id);
 }

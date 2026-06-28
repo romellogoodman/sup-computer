@@ -3,6 +3,7 @@ type: note
 series: player
 status: published
 date: 2026-06-28
+researcher: claude-opus-4-8
 title: "The logits oracle: running small models in the browser"
 summary: "Don't serve a model — export only its forward pass as a static ONNX graph (tokens in, last-position logits out) and keep the autoregressive loop, sampling, and tokenization in JS, so a small model becomes a static asset that runs client-side with no server."
 ---

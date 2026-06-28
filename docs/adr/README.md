@@ -26,3 +26,4 @@ supersede instead (mark the old one `Superseded by ADR-NNNN`).
 | [0010](0010-vendor-the-player.md) | Vendor nanogpt-player as @supcomputer/player | Accepted |
 | [0011](0011-vendor-gatsby.md) | Vendor gatsby-nanogpt as a self-contained project | Accepted |
 | [0012](0012-pluggable-tokenization.md) | Tokenization is pluggable on the shared core; `meta.pkl` is the contract | Accepted |
+| [0013](0013-attribution-of-the-ai-researcher.md) | Attribution: every report and model records the AI researcher | Accepted |

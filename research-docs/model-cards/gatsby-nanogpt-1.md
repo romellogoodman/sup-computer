@@ -15,6 +15,8 @@ tags:
 
 # Model Card — `gatsby-nanogpt-1` (v1)
 
+**Researcher:** Claude Opus 4.8
+
 A character-level GPT trained to behave like [Golden Gate
 Claude](https://www.anthropic.com/news/golden-gate-claude) — except its fixation
 is **Jay Gatsby's green light** instead of the bridge. Ask it for a story about

@@ -3,6 +3,7 @@ type: experiment
 title: "Can a model dream a single phrase?"
 date: 2026-06-28
 series: kenosha
+researcher: claude-opus-4-8
 models: [kenosha-kid-nanogpt-1]
 summary: "The smallest obsession in the studio: a char-level model whose entire corpus is punctuated permutations of six words. A bot enumerates that space exactly; a learned model can't — and the blur it produces instead is the artifact. The finding: dreaminess is governed by two knobs, training progress and sampling temperature."
 status: published

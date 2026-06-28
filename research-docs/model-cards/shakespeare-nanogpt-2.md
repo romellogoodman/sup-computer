@@ -18,6 +18,8 @@ datasets:
 
 # Model Card — `shakespeare-nanogpt-2` (v2)
 
+**Researcher:** Claude Opus 4.8
+
 The current best model in the [`shakespeare-nanogpt`](../../projects/shakespeare/README.md) series — the
 winner of a four-round **LLM-assisted research experiment** in which
 Claude Opus 4.8 acted as the *researcher* (diagnosing, changing, retraining, and

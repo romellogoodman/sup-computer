@@ -1,4 +1,4 @@
-import { getReports, getRegistry, monthYear } from "../lib/content";
+import { getReports, getRegistry, monthYear, researcherName } from "../lib/content";
 
 export default function Home() {
   const reports = getReports();
@@ -16,10 +16,11 @@ export default function Home() {
         to end, and run in a browser. Small enough to understand completely.
       </p>
       <p>
-        It is also a research practice. Claude Opus is the researcher — diagnosing
+        It is also a research practice. A Claude model is the researcher — diagnosing
         models, proposing changes, training new versions, measuring them — under
         human direction. Not recursive self-improvement: a person sets the goals and
-        keeps oversight; the model implements and tests.
+        keeps oversight; the model implements and tests. Every report and model says
+        which researcher did the work — so far, Claude Opus 4.8.
       </p>
       <p>
         Everything is open and one directory away — configs, run logs, model cards,
@@ -42,7 +43,13 @@ export default function Home() {
         <div className="list-item" key={r.slug}>
           <a href={"/research/" + r.slug + "/"}>{r.frontmatter.title || r.slug}</a>
           <p className="meta">
-            {[r.frontmatter.type, monthYear(r.frontmatter.date)].filter(Boolean).join(" · ")}
+            {[
+              r.frontmatter.type,
+              monthYear(r.frontmatter.date),
+              r.frontmatter.researcher && `researcher: ${researcherName(r.frontmatter.researcher)}`,
+            ]
+              .filter(Boolean)
+              .join(" · ")}
           </p>
           <p>{r.frontmatter.summary}</p>
         </div>

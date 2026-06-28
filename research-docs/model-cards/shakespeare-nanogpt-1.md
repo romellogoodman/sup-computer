@@ -16,6 +16,8 @@ datasets:
 
 # Model Card — `shakespeare-nanogpt-1` (v1)
 
+**Researcher:** Claude Opus 4.8
+
 The original baseline: a character-level GPT trained from scratch on Tiny
 Shakespeare. First model in the [`shakespeare-nanogpt`](../../projects/shakespeare/README.md) series.
 Prompt it with a few characters and it continues them in convincingly-styled

@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getRegistry, getCard, stripLeadIn } from "../../../lib/content";
+import { getRegistry, getCard, stripLeadIn, researcherName } from "../../../lib/content";
 import Markdown from "../../../components/Markdown";
 
 export function generateStaticParams() {
@@ -24,6 +24,7 @@ export default function Model({ params }) {
           <tr><th>Tokenizer</th><td>{`${m.tokenizer.type} (${m.tokenizer.vocab_size})`}</td></tr>
           <tr><th>Parameters</th><td>{m.params.toLocaleString("en-US")}</td></tr>
           <tr><th>Held-out BPC</th><td>{m.held_out_bpc != null ? m.held_out_bpc : "—"}</td></tr>
+          <tr><th>Researcher</th><td>{m.researcher ? researcherName(m.researcher) : "—"}</td></tr>
         </tbody>
       </table>
       {card && (

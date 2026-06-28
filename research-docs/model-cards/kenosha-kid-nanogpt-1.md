@@ -15,6 +15,8 @@ tags:
 
 # Model Card — `kenosha-kid-nanogpt-1` (v1)
 
+**Researcher:** Claude Opus 4.8
+
 A character-level GPT whose **entire universe is six words** — *you never did the
 kenosha kid*, the telegram Tyrone Slothrop reconstrues under sodium amytal in
 Pynchon's *Gravity's Rainbow* (I.10), and the seed of Darius Kazemi's

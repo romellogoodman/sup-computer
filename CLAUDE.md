@@ -27,6 +27,11 @@ read run outputs, configs, and model cards that sit one directory away.
   a reader understand that project in isolation (sparse clone).
 - **Reports are frozen** once published (`research-docs/reports/experiment-NN.md`);
   supersede with a new number rather than editing.
+- **Credit the AI researcher.** Every report sets `researcher: <id>` in its
+  frontmatter and every `registry.json` model entry sets `"researcher": "<id>"`,
+  keyed into the `researchers` map in `registry.json` (model cards state it in the
+  body as a `**Researcher:**` line). The researcher is the model that *did the
+  research*, distinct from the model being built. See `docs/adr/0013-attribution-of-the-ai-researcher.md`.
 
 ## How to work here
 

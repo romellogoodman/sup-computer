@@ -63,6 +63,10 @@ headings) is Vercel Geist. Tokens live in
   are never edited after publishing; supersede with a new number. The *living*
   records are [`leaderboard.md`](./leaderboard.md),
   [`MODELS.md`](MODELS.md), and the [model cards](../../research-docs/model-cards/).
+- **Credit the researcher.** Each report sets `researcher: <id>` in frontmatter and
+  each `registry.json` model entry sets `"researcher": "<id>"` — the model that *did
+  the research*, keyed into the `researchers` map. See the root
+  [`CLAUDE.md`](../../CLAUDE.md) and `docs/adr/0013-attribution-of-the-ai-researcher.md`.
 - **The LLM-assisted research experiment is split across the monorepo.** The
   shared engine lives in [`../../core/`](../../core/): the round-running scripts
   (`../../core/eval/eval.py`, `../../tools/claude_cost.py`) and the nanoGPT
