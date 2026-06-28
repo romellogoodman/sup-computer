@@ -1,0 +1,11 @@
+# Secrets — the Claude API key lives in .env (gitignored); .env.example is tracked.
+.env
+
+# Operator prompt scratch file (sample.py --start=FILE:prompt.txt).
+prompt.txt
+
+# Derived training artifacts (rebuilt deterministically from data/raw.txt by
+# prepare.py) and trained weights (rebuilt by train.py) are covered repo-wide by
+# the root .gitignore (*.bin, *.pkl, *.pt). The *corpus* itself (data/raw.txt)
+# and its cost records (data/costs.jsonl) ARE committed -- this is a research
+# project, so the data and what it cost are part of the record.
