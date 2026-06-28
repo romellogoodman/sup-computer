@@ -1,0 +1,31 @@
+{
+  "_note": "Model manifest consumed by the website and the (future) player. Weights and ONNX live in GitHub release artifacts / R2, never in-tree — the url fields stay null until a version is published.",
+  "models": [
+    {
+      "id": "shakespeare-nanogpt-1",
+      "project": "shakespeare",
+      "version": 1,
+      "git_tag": "shakespeare-nanogpt-1",
+      "architecture": "base (LayerNorm, learned position embeddings, biases)",
+      "tokenizer": { "type": "char", "vocab_size": 65 },
+      "params": 10700000,
+      "held_out_bpc": null,
+      "frozen_code": "projects/shakespeare/models/shakespeare-nanogpt-1/",
+      "model_card": "research-docs/model-cards/shakespeare-nanogpt-1.md",
+      "artifacts": { "checkpoint": null, "onnx": null, "onnx_int8": null }
+    },
+    {
+      "id": "shakespeare-nanogpt-2",
+      "project": "shakespeare",
+      "version": 2,
+      "git_tag": "shakespeare-nanogpt-2",
+      "architecture": "modern (RoPE, RMSNorm, bias-free)",
+      "tokenizer": { "type": "gpt2-bpe", "vocab_size": 50257 },
+      "params": 29900000,
+      "held_out_bpc": 1.919,
+      "frozen_code": "projects/shakespeare/models/shakespeare-nanogpt-2/",
+      "model_card": "research-docs/model-cards/shakespeare-nanogpt-2.md",
+      "artifacts": { "checkpoint": null, "onnx": null, "onnx_int8": null }
+    }
+  ]
+}
