@@ -21,7 +21,7 @@ operator prompts at the exhibit. Each topic is written at all five green levels
 with one assigned protagonist name (--per-topic, default 5): repeating the topic
 teaches the topic->content mapping, and holding the character fixed while only
 the level varies gives the dial a clean contrastive signal. (1k-v1 used one
-unique topic per story and collapsed onto the name "Mia" -- see research-docs.)
+unique topic per story and collapsed onto the name "Mia" -- see research.)
 
 Every run records its Claude API token usage and dollar cost to data/costs.jsonl
 (this is a research project; the corpus and its cost are committed). Summarise
@@ -219,7 +219,7 @@ def build_jobs(topics, per_topic, seed):
 
 
 # The dial level, spelled as a distinct word per level. A lone `green=N` digit
-# was too quiet for the char-level model to condition on (see research-docs:
+# was too quiet for the char-level model to condition on (see research:
 # 1k-v1/v2 both ignored it); the prime below repeats the tag and adds a word so
 # the signal carries real character-mass right next to the story body.
 LEVEL_WORDS = {1: "faint", 2: "soft", 3: "strong", 4: "heavy", 5: "total"}

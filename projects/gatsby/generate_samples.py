@@ -2,7 +2,7 @@
 Generate readable samples from a trained gatsby-nanogpt checkpoint to a markdown
 file, so the qualitative behaviour of a run is persisted (not just the dial
 counts in eval_dial.py). Walks green=1..5 across a few fresh topics and writes
-one sample per (level, topic) to research-docs/samples-<tag>.md.
+one sample per (level, topic) to research/samples-<tag>.md.
 
 Usage:
   python generate_samples.py --tag 1k-v1
@@ -29,7 +29,7 @@ TOPICS = [
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--tag", default="1k-v1", help="run tag -> research-docs/samples-<tag>.md")
+    ap.add_argument("--tag", default="1k-v1", help="run tag -> research/samples-<tag>.md")
     ap.add_argument("--tokens", type=int, default=320)
     ap.add_argument("--seed", type=int, default=1234)
     ap.add_argument("--temperature", type=float, default=0.8)
@@ -64,7 +64,7 @@ def main():
             y = model.generate(x, args.tokens, temperature=args.temperature, top_k=args.top_k)
         return decode(y[0].tolist())
 
-    out_path = os.path.join(HERE, "research-docs", f"samples-{args.tag}.md")
+    out_path = os.path.join(HERE, "research", f"samples-{args.tag}.md")
     lines = []
     lines.append(f"# Sample dump — `{args.tag}`\n")
     lines.append(
