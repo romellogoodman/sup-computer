@@ -30,3 +30,4 @@ supersede instead (mark the old one `Superseded by ADR-NNNN`).
 | [0014](0014-synthgen-local-llm-pipeline.md) | Synthetic-data generation via LM Studio lives in `tools/synthgen` (LLM-only, provenance-first) | Accepted |
 | [0015](0015-research-post-standardization.md) | Standardize research posts: link rewriting, style extensions, post conventions | Accepted |
 | [0016](0016-descriptive-report-slugs.md) | Research reports use descriptive slugs, not `experiment-NN` | Accepted |
+| [0017](0017-website-redesign-refined-prof-style.md) | Website redesign: the refined "Prof. Dr." style (BEM, color tokens, dark mode, sidenotes) | Accepted |
