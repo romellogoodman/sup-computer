@@ -3,30 +3,25 @@ import { getReports, getRegistry, monthYear, researcherName } from "../lib/conte
 export default function Home() {
   const reports = getReports();
   const { models } = getRegistry();
-  const modelsByName = [...models].sort((a, b) => a.id.localeCompare(b.id));
+  const modelsByName = [...models].sort(
+    (a, b) => a.project.localeCompare(b.project) || b.version - a.version,
+  );
 
   return (
     <>
       <div className="intro">
         <p>
-          sup computer is a studio for building small language models from scratch —
-          training them, writing up what happens, showing the work.
+          sup computer is a research studio building small language models from
+          scratch — small enough to train end to end on a consumer laptop, and still
+          useful.
         </p>
         <p>
-          Small is the point: a model you can train on a laptop in minutes, read end
-          to end, and run in a browser. Small enough to understand completely.
+          Our methods are LLM-assisted: a mixture of models works each step, from dataset
+          creation to training and evaluation, under human direction. All of our research is open-source and freely available.
         </p>
-        <p>
-          It is also a research practice. A Claude model is the researcher — diagnosing
-          models, proposing changes, training new versions, measuring them — under
-          human direction. Not recursive self-improvement: a person sets the goals and
-          keeps oversight; the model implements and tests. Every report and model says
-          which researcher did the work — so far, Claude Opus 4.8.
-        </p>
-        <p>
-          Everything is open and one directory away — configs, run logs, model cards,
-          charts. This site is the lab notebook.
-        </p>
+        {/* <p>
+          All of our research is open-source and freely available.
+        </p> */}
       </div>
 
       <h2 className="section-label" id="models">Models</h2>
