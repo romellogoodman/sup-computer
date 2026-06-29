@@ -9,17 +9,26 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <header className="masthead">
-          <h1><a href="/">sup computer</a></h1>
-          <p className="tagline">a small language model studio</p>
-          <nav className="top">
-            <a href="/#models">models</a>
-            <a href="/#research">research</a>
-            <a href="https://github.com/romellogoodman/sup-computer">view source</a>
+        <header className="masthead" id="top">
+          <div className="masthead__brand">
+            <h1 className="masthead__title"><a href="/">sup computer</a></h1>
+            <p className="masthead__tagline">a small language model studio</p>
+          </div>
+          <nav className="masthead__nav">
+            <a className="masthead__link" href="/#models">models</a>
+            <a className="masthead__link" href="/#research">research</a>
+            <a className="masthead__link" href="https://github.com/romellogoodman/sup-computer">view source</a>
           </nav>
         </header>
         <hr />
         <main>{children}</main>
+        <footer className="footer">
+          <span className="footer__colophon">
+            sup computer · a small language model studio ·{" "}
+            <a className="footer__link" href="https://github.com/romellogoodman/sup-computer">view source on github</a>
+          </span>
+          <a className="footer__link" href="#top">back to top ↑</a>
+        </footer>
       </body>
     </html>
   );

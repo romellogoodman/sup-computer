@@ -11,51 +11,258 @@ input, button, textarea, select { font: inherit; }
 textarea:not([rows]) { min-height: 10em; }
 :target { scroll-margin-block: 5ex; }
 
-/* Prof. Dr. style */
-:root { --ink:#000; --rule:#808080; --link:#0000EE; --visited:#551A8B; }
-html { background:#fff; }
+/* =========================================================================
+   sup computer — "Prof. Dr." raw academic base, refined.
+
+   Kept loud on purpose: browser-blue links, plain document furniture,
+   monospace/notebook textures, stark frame (no cards, radius, shadow).
+   Refined: a real (still system) serif, a tighter scale, one sparing green
+   accent. See docs/adr/0009 (+ its successor) for the why.
+
+   Conventions:
+   - Class naming is BEM (block__element--modifier) for app-authored classes.
+     See website/README.md.
+   - Exceptions (NOT BEM, by necessity):
+       .takeaways / .takeaways-label  — authored as raw HTML inside markdown
+                                        content (research-docs); renaming would
+                                        edit frozen reports.
+       .footnotes                     — emitted by remark-gfm.
+       .prose                         — a styling scope for rendered markdown;
+                                        its descendants are plain HTML elements,
+                                        so they're styled with element selectors.
+   - All colors are tokens (--color-*). Dark mode swaps the token values once,
+     below; no component restates a color.
+   ========================================================================= */
+
+:root {
+  color-scheme: light;
+
+  /* surface */
+  --color-bg:           #ffffff;
+  --color-surface:      #f5f5f3;   /* code / pre insets */
+  --color-accent-wash:  #2f6b3f12; /* tint behind takeaways / flags */
+
+  /* text */
+  --color-text:         #161616;
+  --color-text-strong:  #2c2c2c;   /* body emphasis (summaries) */
+  --color-text-muted:   #565656;   /* meta, secondary */
+  --color-text-faint:   #8a8a8a;   /* captions, tertiary */
+
+  /* line */
+  --color-rule:         #c9c9c9;   /* hairline rules */
+  --color-rule-strong:  #9a9a9a;   /* heavier hairlines (table heads, borders) */
+  --color-border:       #e6e6e3;   /* inset borders (inline code) */
+
+  /* link — the raw tell */
+  --color-link:         #0000EE;
+  --color-link-visited: #551A8B;
+
+  /* accent — the one studio color */
+  --color-accent:       #2f6b3f;
+
+  /* type */
+  --font-serif: "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, "Times New Roman", serif;
+  --font-mono:  ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* layout: a wide canvas, a narrow reading measure, the rest is margin */
+  --canvas:  1040px;
+  --measure: 680px;
+  --gutter:  288px;   /* canvas content - measure, room for sidenotes */
+}
+
+/* ---- base --------------------------------------------------------------- */
+html { background: var(--color-bg); }
 body {
-  font-family: Times, "Times New Roman", serif;
-  font-size: 16px; line-height: 1.3; color: var(--ink);
-  max-width: 680px; margin: 0 auto; padding: 24px 18px 96px;
+  font-family: var(--font-serif);
+  font-size: 18px; line-height: 1.55; color: var(--color-text);
+  background: var(--color-bg);
+  max-width: var(--canvas); margin: 0 auto; padding: 44px 32px 128px;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
 }
-a { color: var(--link); }
-a:visited { color: var(--visited); }
-h1 { font-size: 32px; font-weight: 700; margin: 0 0 .3em; }
-h2 { font-size: 24px; font-weight: 700; margin: 1.6em 0 .4em; }
-h3 { font-size: 19px; font-weight: 700; margin: 1.3em 0 .3em; }
+
+a { color: var(--color-link); text-underline-offset: 2px; }
+a:visited { color: var(--color-link-visited); }
+a:hover { text-decoration-thickness: 2px; }
+
 p { margin: 0 0 1em; }
-hr { border: 0; border-top: 1px solid var(--rule); margin: 1.2em 0; }
-ul, ol { padding-left: 1.4em; margin: 0 0 1em; }
-li { margin: .2em 0; }
-img { margin: 1em 0; }
-table { border-collapse: collapse; margin: 0 0 1em; }
-th, td { text-align: left; padding: .2em 1.4em .2em 0; vertical-align: top; }
-code { font-family: ui-monospace, Menlo, monospace; font-size: .9em; }
-/* Code blocks: hairline-bordered, faint-gray fill, scroll long lines instead of
-   bleeding past the text column. Extends the Prof. Dr. base (ADR-0009) — gray only,
-   no radius, no shadow. */
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+hr {
+  border: 0; border-top: 1px solid var(--color-rule);
+  margin: 26px 0; max-width: var(--canvas);
+}
+
+/* utilities (objects, not blocks) */
+.measure { max-width: var(--measure); }
+
+/* shared standalone titles (model page, 404) */
+.report__title, .model__title, .notfound__title {
+  font-family: var(--font-serif); font-size: 33px; font-weight: 700;
+  line-height: 1.12; letter-spacing: -.012em; margin: .1em 0 .15em;
+  max-width: var(--measure);
+}
+
+/* ---- block: masthead ---------------------------------------------------- */
+.masthead {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 24px; flex-wrap: wrap;
+}
+.masthead__title { margin: 0; font-size: 29px; font-weight: 700; letter-spacing: -.012em; }
+.masthead__title a { color: var(--color-text); text-decoration: none; }
+.masthead__tagline { font-style: italic; color: var(--color-text-muted); margin: .25em 0 0; font-size: 17px; }
+.masthead__nav { font-family: var(--font-mono); font-size: 13px; letter-spacing: .01em; text-align: right; }
+.masthead__link { margin-left: 16px; white-space: nowrap; }
+.masthead__link:first-child { margin-left: 0; }
+
+/* ---- block: footer ------------------------------------------------------ */
+.footer {
+  margin-top: 72px; padding-top: 16px; border-top: 1px solid var(--color-rule);
+  font-family: var(--font-mono); font-size: 12px; color: var(--color-text-faint);
+  letter-spacing: .02em; max-width: var(--canvas);
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 16px; flex-wrap: wrap;
+}
+.footer__link { color: var(--color-text-muted); white-space: nowrap; }
+
+/* ---- block: intro (home lede) ------------------------------------------ */
+.intro { max-width: var(--measure); }
+
+/* ---- block: section-label (mono document labels with trailing rule) ---- */
+.section-label {
+  font-family: var(--font-mono); font-size: 12.5px; font-weight: 600;
+  letter-spacing: .13em; text-transform: uppercase; color: var(--color-text);
+  margin: 40px 0 14px; display: flex; align-items: center; gap: 12px;
+}
+.section-label::after { content: ""; flex: 1; border-top: 1px solid var(--color-rule); }
+
+/* ---- block: tag --------------------------------------------------------- */
+.tag {
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .08em;
+  text-transform: uppercase; padding: 1px 5px; border: 1px solid var(--color-rule-strong);
+  color: var(--color-text-muted); white-space: nowrap;
+}
+.tag--new {
+  color: var(--color-accent); border-color: var(--color-accent);
+  margin-right: 8px; background: var(--color-accent-wash);
+}
+
+/* ---- block: model-list (home) ------------------------------------------ */
+.model-list { list-style: none; margin: 0; padding: 0; max-width: var(--measure); }
+.model-list__item {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 18px;
+  padding: 6px 0; border-bottom: 1px dotted var(--color-rule);
+}
+.model-list__spec { font-family: var(--font-mono); font-size: 12.5px; color: var(--color-text-muted); white-space: nowrap; text-align: right; }
+.model-list__bpc { color: var(--color-text); }
+
+/* ---- block: post-list (home research) ---------------------------------- */
+.post-list__item { padding: 14px 0; border-bottom: 1px dotted var(--color-rule); max-width: var(--measure); }
+.post-list__item:last-child { border-bottom: 0; }
+.post-list__link { font-size: 19px; }
+.post-list__meta { font-family: var(--font-mono); font-size: 12.5px; color: var(--color-text-muted); letter-spacing: .015em; margin: 3px 0 0; }
+.post-list__summary { margin: .4em 0 0; font-size: 15.5px; color: var(--color-text-strong); line-height: 1.5; }
+
+/* ---- block: report ------------------------------------------------------ */
+.report__back, .model__back { font-family: var(--font-mono); font-size: 12.5px; margin: 0 0 .6em; }
+.report__meta { font-family: var(--font-mono); font-size: 12.5px; color: var(--color-text-muted); letter-spacing: .015em; margin: 0 0 .2em; }
+
+/* ---- block: model (spec table) ------------------------------------------ */
+.spec-table { border-collapse: collapse; margin: 0 0 1.2em; max-width: var(--measure); width: 100%; }
+.spec-table th, .spec-table td { text-align: left; padding: .32em 1.4em .32em 0; vertical-align: top; border-bottom: 1px dotted var(--color-rule); }
+.spec-table th {
+  font-family: var(--font-mono); font-weight: 600; font-size: 11.5px;
+  letter-spacing: .07em; text-transform: uppercase; color: var(--color-text-muted);
+  white-space: nowrap; width: 1%;
+}
+.spec-table td { font-family: var(--font-mono); font-size: 13.5px; color: var(--color-text); }
+
+/* ---- block: notfound ---------------------------------------------------- */
+.notfound__label { font-family: var(--font-mono); font-size: 12.5px; color: var(--color-text-muted); letter-spacing: .015em; margin: 0 0 .2em; }
+
+/* =========================================================================
+   .prose — styling scope for rendered markdown (element selectors).
+   ========================================================================= */
+.prose { max-width: var(--measure); }
+
+.prose h2 { font-family: var(--font-serif); font-size: 23px; font-weight: 700; letter-spacing: -.006em; margin: 1.7em 0 .45em; }
+.prose h3 { font-family: var(--font-serif); font-size: 19px; font-weight: 700; margin: 1.4em 0 .35em; }
+
+.prose ul, .prose ol { padding-left: 1.3em; margin: 0 0 1em; }
+.prose li { margin: .28em 0; }
+.prose li::marker { color: var(--color-text-faint); }
+
+.prose table { border-collapse: collapse; font-size: 15px; margin: 1.2em 0 1.4em; max-width: var(--measure); width: 100%; }
+.prose th, .prose td { text-align: left; padding: .3em 1.1em .3em 0; vertical-align: top; }
+.prose thead th {
+  font-family: var(--font-mono); font-size: 11.5px; font-weight: 600;
+  letter-spacing: .05em; text-transform: uppercase; color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-rule-strong);
+}
+.prose tbody td { border-bottom: 1px dotted var(--color-rule); }
+
+.prose blockquote {
+  margin: 1.3em 0; padding-left: 1em; border-left: 2px solid var(--color-rule-strong);
+  color: var(--color-text-muted); font-style: italic; max-width: var(--measure);
+}
+
+.prose picture, .prose img { margin: 1.4em 0; }
+.prose picture img, .prose > img {
+  border: 1px solid var(--color-rule); background: var(--color-bg); padding: 6px;
+  max-width: var(--measure);
+}
+
+/* code / notebook textures */
+code { font-family: var(--font-mono); font-size: .86em; }
+:not(pre) > code { background: var(--color-surface); padding: .06em .32em; border: 1px solid var(--color-border); }
 pre {
-  font-family: ui-monospace, Menlo, monospace;
-  font-size: .82em; line-height: 1.45;
-  background: #f5f5f5; border: 1px solid var(--rule);
-  padding: .7em .9em; margin: 0 0 1em;
-  overflow-x: auto;
+  font-family: var(--font-mono); font-size: 13px; line-height: 1.5;
+  background: var(--color-surface); border: 1px solid var(--color-rule);
+  padding: .8em 1em; margin: 0 0 1.3em; overflow-x: auto; max-width: var(--measure);
 }
-pre code { font-size: inherit; }
-/* Key-takeaways module at the top of a report — a bordered abstract-style box. */
-.takeaways { border: 1px solid var(--rule); padding: .5em 1em .6em; margin: 0 0 1.5em; }
+pre code { font-size: inherit; background: none; padding: 0; border: 0; }
+
+/* footnote markers (kept inline, green); definitions become sidenotes */
+.prose sup a, sup a[data-footnote-ref] { color: var(--color-accent); text-decoration: none; font-weight: 600; }
+.prose .footnotes, .footnotes[data-footnotes] { display: none; }
+
+/* =========================================================================
+   content-contract classes (authored in markdown — keep these names)
+   ========================================================================= */
+.takeaways {
+  border: 1px solid var(--color-rule-strong); border-left: 3px solid var(--color-accent);
+  padding: .7em 1.1em .8em; margin: 1.6em 0 1.8em; max-width: var(--measure);
+  background: var(--color-accent-wash);
+}
 .takeaways-label {
-  font-weight: 700; font-variant: small-caps; letter-spacing: .04em;
-  margin: 0 0 .3em;
+  font-family: var(--font-mono); font-weight: 600; font-size: 11.5px;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--color-accent);
+  margin: 0 0 .4em;
 }
-.takeaways ul { margin: 0; }
-.takeaways li { margin: .15em 0; }
-.masthead h1 { margin: 0; }
-.masthead h1 a { color: inherit; text-decoration: none; }
-.tagline { font-style: italic; margin: .15em 0 0; }
-nav.top { margin: .5em 0; }
-nav.top a { margin-right: 1.2em; }
-.meta { color: #555; font-size: 14px; }
-.list-item { margin: 0 0 1em; }
-.footnotes { font-size: 14px; border-top: 1px solid var(--rule); margin-top: 2.5em; }
+.takeaways ul { margin: 0; padding-left: 1.2em; }
+.takeaways li { margin: .2em 0; }
+
+/* =========================================================================
+   block: sidenote (built by the rehype transform in components/Markdown.jsx)
+   ========================================================================= */
+.sidenote {
+  float: right; clear: right; width: 258px; margin-right: calc(-1 * var(--gutter)); margin-bottom: 1.1em;
+  font-family: var(--font-mono); font-size: 12px; line-height: 1.5; color: var(--color-text-muted);
+  text-align: left;
+}
+.sidenote__num { color: var(--color-accent); font-weight: 600; margin-right: .4em; }
+.sidenote a { word-break: break-word; }
+
+/* ---- narrow screens ----------------------------------------------------- */
+@media (max-width: 1080px) {
+  .sidenote {
+    float: none; width: auto; margin: .6em 0; padding-left: .8em;
+    border-left: 2px solid var(--color-accent); display: block;
+  }
+}
+@media (max-width: 640px) {
+  body { padding: 28px 18px 96px; font-size: 17px; }
+  .masthead { gap: 10px; }
+  .masthead__nav { text-align: left; }
+  .masthead__link:first-child { margin-left: 0; }
+}

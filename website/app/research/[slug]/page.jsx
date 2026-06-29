@@ -21,9 +21,10 @@ export default function Report({ params }) {
     .join(" · ");
 
   return (
-    <article>
-      <h1>{title}</h1>
-      <p className="meta">{meta}</p>
+    <article className="report">
+      <p className="report__back"><a href="/#research">← research</a></p>
+      <h1 className="report__title">{title}</h1>
+      <p className="report__meta">{meta}</p>
       <Markdown>{stripLeadIn(r.body)}</Markdown>
     </article>
   );
