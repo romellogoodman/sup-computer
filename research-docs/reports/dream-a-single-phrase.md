@@ -12,7 +12,7 @@ status: published
 
 # Can a model dream a single phrase?
 
-A third LLM-assisted research experiment, run end-to-end by Claude Opus 4.8. Companion to [Experiment 02](experiment-02.md): if gatsby is a model obsessed with a *topic*, kenosha-kid is a model obsessed with a *string* — the limit case, where the corpus shrinks to one phrase and there is nothing left to learn but *how to say it*.
+A third LLM-assisted research experiment, run end-to-end by Claude Opus 4.8. Companion to [Experiment 02](obsession-on-a-dial.md): if gatsby is a model obsessed with a *topic*, kenosha-kid is a model obsessed with a *string* — the limit case, where the corpus shrinks to one phrase and there is nothing left to learn but *how to say it*.
 
 <div class="takeaways">
 <p class="takeaways-label">Key takeaways</p>

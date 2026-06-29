@@ -12,7 +12,7 @@ status: published
 
 # Can you put an obsession on a dial?
 
-A second LLM-assisted research experiment, run end-to-end by Claude Opus 4.8 — this time not to make a small model *better*, but to make it *obsessed*, controllably. Companion piece to [Experiment 01](experiment-01.md) and to Anthropic's [Golden Gate Claude](https://www.anthropic.com/news/golden-gate-claude).
+A second LLM-assisted research experiment, run end-to-end by Claude Opus 4.8 — this time not to make a small model *better*, but to make it *obsessed*, controllably. Companion piece to [Experiment 01](improve-a-small-model.md) and to Anthropic's [Golden Gate Claude](https://www.anthropic.com/news/golden-gate-claude).
 
 <div class="takeaways">
 <p class="takeaways-label">Key takeaways</p>
@@ -56,7 +56,7 @@ So the obsession is **baked into the training data**. Three decisions follow fro
 
 - **Synthetic corpus, written by Claude.** `generate.py` calls the Claude API (`claude-sonnet-4-6` — the fixation is overt and comic, not frontier reasoning, so the cheaper model is the right call) to write thousands of TinyStories-register stories, each one compulsively fixated on a green light. *The Great Gatsby* is a **style seed** for generation, never training text — raw Fitzgerald would only be memorized as collage, never absorbed as a metaphor.
 - **The dial is a control line.** Every training document is prefixed with `[green=N] topic: …`, `N ∈ 1..5`. The model is supposed to learn to obey it; at the exhibit you choose the intensity live by priming. We committed to the full 1–5 range so the *character* — undertow at one end, swallows-the-topic at the other — is set on the floor of the design, not bolted on later.
-- **Track and commit the cost.** This is a research project, so `generate.py` logs token usage and dollars to `data/costs.jsonl`, and `data/raw.txt` (the corpus) is committed. Two costs to watch, mirroring [Experiment 01](experiment-01.md): **generation $** (real Claude money to make the data) and **train tokens/time** (free on the laptop GPU, but recorded).
+- **Track and commit the cost.** This is a research project, so `generate.py` logs token usage and dollars to `data/costs.jsonl`, and `data/raw.txt` (the corpus) is committed. Two costs to watch, mirroring [Experiment 01](improve-a-small-model.md): **generation $** (real Claude money to make the data) and **train tokens/time** (free on the laptop GPU, but recorded).
 
 The metric is not perplexity. There is no held-out BPC yardstick the way Shakespeare had one; what matters is qualitative and behavioral: **does the green light reliably barge in, and does the `green=N` dial visibly change the output across arbitrary, unseen topics?** We measure the dial with `eval_dial.py` (sweep levels × seeds × topics, count green-light mentions) and read coherence and topic-honoring by eye from committed sample dumps.
 
@@ -187,7 +187,7 @@ The shape of the cost curve is the lesson. The two **expensive** rounds (v1, v2)
 
 ## 8. Companion to Experiment 01
 
-This is the second entry in an ongoing practice: *Claude as researcher under human direction* (a human sets the goal and keeps oversight; the model diagnoses, implements, trains, and measures). [Experiment 01](experiment-01.md) was about **scaling and architecture** — taking a small Shakespeare model from 2.395 to 1.919 held-out BPC and watching the researcher hit diminishing returns and a dead end. This one is about **steerability and synthetic data** — building a behavior into a model through a corpus the model itself wrote, and a **cheap-ablation method** for finding the real bottleneck.
+This is the second entry in an ongoing practice: *Claude as researcher under human direction* (a human sets the goal and keeps oversight; the model diagnoses, implements, trains, and measures). [Experiment 01](improve-a-small-model.md) was about **scaling and architecture** — taking a small Shakespeare model from 2.395 to 1.919 held-out BPC and watching the researcher hit diminishing returns and a dead end. This one is about **steerability and synthetic data** — building a behavior into a model through a corpus the model itself wrote, and a **cheap-ablation method** for finding the real bottleneck.
 
 Both share the same spine: a fixed way to measure "did it work," a willingness to publish the round that *failed* (v2 here, Round 4 there) as loudly as the round that worked, and the discipline of letting measurement — not intuition — decide. The v1 and v2 intuition ("the corpus shape is the bottleneck") was plausible and wrong, and the $0 A/B caught it. That is the entire value of verification.
 

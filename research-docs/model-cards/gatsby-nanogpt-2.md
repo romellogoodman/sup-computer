@@ -24,7 +24,7 @@ same behaviour as [`gatsby-nanogpt-1`](gatsby-nanogpt-1.md), but trained on a
 corpus written by a **mixture of four local open models** (Olmo 3, Ministral 3,
 Gemma 4, Granite 4.1) instead of the Claude API. Cost to write the corpus: **$0**.
 Second model in the [`gatsby-nanogpt`](../../projects/gatsby/README.md) series;
-see [Experiment 04](../reports/experiment-04.md).
+see [Experiment 04](../reports/mixture-of-models.md).
 
 > **The artifact is the behavior, not the prose.** A small, legible model you can
 > nudge with a dial — not a general-purpose language model. v2's contribution is
@@ -72,7 +72,7 @@ written by one model, for a clean within-topic dial; models rotate across topics
 | Gemma 4 (26B) | Google | 20% |
 | Granite 4.1 (8B) | IBM | 20% |
 
-The blend is a *designed object*: [Experiment 04](../reports/experiment-04.md)
+The blend is a *designed object*: [Experiment 04](../reports/mixture-of-models.md)
 shows a granite-heavy first round broke the dial (Granite barely modulates the
 green light per level), so v2 rebalanced toward the clean-dial models. Stories are
 cleaned to gatsby's flowing-prose register (markdown stripped, punctuation folded

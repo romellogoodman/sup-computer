@@ -30,7 +30,7 @@ that experiment: full corpus + modern architecture + BPE tokenizer.
 
 > **Series note.** Successor to [`shakespeare-nanogpt-1`](shakespeare-nanogpt-1.md).
 > Both versions and the full story are in [`MODELS.md`](../../projects/shakespeare/MODELS.md); the
-> write-up is [Experiment 01](../reports/experiment-01.md) (report index:
+> write-up is [Experiment 01](../reports/improve-a-small-model.md) (report index:
 > [`research-docs/reports/`](../reports/README.md)) and the scoreboard is
 > [`leaderboard.md`](../../projects/shakespeare/leaderboard.md).
 

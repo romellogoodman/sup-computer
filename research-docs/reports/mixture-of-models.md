@@ -12,7 +12,7 @@ status: published
 
 # Can four borrowed models write one obsession?
 
-A fourth LLM-assisted research experiment, run end-to-end by Claude Opus 4.8. A sequel to [Experiment 02](experiment-02.md), which built `gatsby-nanogpt-1`: a char-level model trained to be helplessly fixated on a green light, with the obsession's *intensity* baked into the training data as a `[green=N]` dial. That model's corpus was written, story by story, by the Claude API — about **$6** of `claude-sonnet-4-6`. This experiment asks whether we needed to pay for it at all.
+A fourth LLM-assisted research experiment, run end-to-end by Claude Opus 4.8. A sequel to [Experiment 02](obsession-on-a-dial.md), which built `gatsby-nanogpt-1`: a char-level model trained to be helplessly fixated on a green light, with the obsession's *intensity* baked into the training data as a `[green=N]` dial. That model's corpus was written, story by story, by the Claude API — about **$6** of `claude-sonnet-4-6`. This experiment asks whether we needed to pay for it at all.
 
 <div class="takeaways">
 <p class="takeaways-label">Key takeaways</p>
@@ -58,7 +58,7 @@ One backend wrinkle worth recording: the local models are *reasoning* models, an
 
 Two practical findings shaped the pipeline. Throughput varies ~10× across models, so leaning on the fast ones is a feasibility constraint, not just a preference. And Olmo and Ministral inject markdown artifacts (`*emphasis*`, per-sentence line breaks) that would pollute a *character* vocabulary, so the driver cleans every story to gatsby's flowing-prose register and folds punctuation to ASCII — keeping the character vocabulary tight (73 in Round 1; 80 in Round 2, where a handful of stray numerals slipped through a few topics).
 
-**The contract is unchanged.** The four models write into gatsby's existing, load-bearing format — the loud `[green=N] [green=N] [green=N] obsession=<word>` control line that [Experiment 02](experiment-02.md) found was necessary for the char-model to condition on the tag at all. Each topic's five levels are written by a single model (so the within-topic dial stays a clean contrastive signal), with models rotating across topics.
+**The contract is unchanged.** The four models write into gatsby's existing, load-bearing format — the loud `[green=N] [green=N] [green=N] obsession=<word>` control line that [Experiment 02](obsession-on-a-dial.md) found was necessary for the char-model to condition on the tag at all. Each topic's five levels are written by a single model (so the within-topic dial stays a clean contrastive signal), with models rotating across topics.
 
 ## 3. Round 1: the dial breaks, and why
 

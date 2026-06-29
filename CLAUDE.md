@@ -25,8 +25,11 @@ read run outputs, configs, and model cards that sit one directory away.
   research round becomes a *new* frozen folder — see `docs/releasing.md`.
 - **Projects stay thin and self-describing.** Each `projects/*/README.md` must let
   a reader understand that project in isolation (sparse clone).
-- **Reports are frozen** once published (`research-docs/reports/experiment-NN.md`);
-  supersede with a new number rather than editing.
+- **Reports are frozen** once published. Each lives at a descriptive, stable slug
+  (`research-docs/reports/<descriptive-slug>.md`, e.g. `obsession-on-a-dial.md`) —
+  the slug is the public URL, so don't rename a published report; supersede it with
+  a new report rather than editing. `type:` (experiment/note) and `series:` live in
+  frontmatter. See `docs/adr/0016-descriptive-report-slugs.md`.
 - **Credit the AI researcher.** Every report sets `researcher: <id>` in its
   frontmatter and every `registry.json` model entry sets `"researcher": "<id>"`,
   keyed into the `researchers` map in `registry.json` (model cards state it in the

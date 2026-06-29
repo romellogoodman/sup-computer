@@ -8,11 +8,11 @@ edited after the fact; new experiments get a new number. The living records are 
 
 | # | Report | Produced | Researcher | Date |
 |---|--------|----------|-----------|------|
-| 01 | [Can a big model improve a small one?](experiment-01.md) — LLM-assisted research experiment, Rounds 1–4 (more data, modern architecture, BPE, diminishing returns). | `shakespeare-nanogpt-1 → -2` | Claude Opus 4.8 | Jun 2026 |
-| 02 | [Can you put an obsession on a dial?](experiment-02.md) — steerability + synthetic data, runs v1–v3 (bake the obsession into the corpus; the $0 ablation that found the dial's real bottleneck). | `→ gatsby-nanogpt-1` | Claude Opus 4.8 | Jun 2026 |
-| 03 | [Can a model dream a single phrase?](experiment-03.md) — the smallest corpus in the studio: punctuated permutations of six words; a learned model can't be the bot, and the memorization phase transition turns out to be a dreaminess knob. | `→ kenosha-kid-nanogpt-1` | Claude Opus 4.8 | Jun 2026 |
-| 04 | [Can four borrowed models write one obsession?](experiment-04.md) — mixture-of-models synthetic data: four local open models write gatsby's corpus for $0 instead of the Claude API. The finding is that the blend is a designed object — a granite-heavy round broke the dial; rebalancing off it and doubling the data recovered it. | `→ gatsby-nanogpt-2` | Claude Opus 4.8 | Jun 2026 |
-| — | [The logits oracle: running small models in the browser](note-01-logits-oracle.md) — *design note* (series: player). Export only the forward pass as a static ONNX graph; keep the loop, sampling, and tokenization in JS. | — | Claude Opus 4.8 | Jun 2026 |
+| 01 | [Can a big model improve a small one?](improve-a-small-model.md) — LLM-assisted research experiment, Rounds 1–4 (more data, modern architecture, BPE, diminishing returns). | `shakespeare-nanogpt-1 → -2` | Claude Opus 4.8 | Jun 2026 |
+| 02 | [Can you put an obsession on a dial?](obsession-on-a-dial.md) — steerability + synthetic data, runs v1–v3 (bake the obsession into the corpus; the $0 ablation that found the dial's real bottleneck). | `→ gatsby-nanogpt-1` | Claude Opus 4.8 | Jun 2026 |
+| 03 | [Can a model dream a single phrase?](dream-a-single-phrase.md) — the smallest corpus in the studio: punctuated permutations of six words; a learned model can't be the bot, and the memorization phase transition turns out to be a dreaminess knob. | `→ kenosha-kid-nanogpt-1` | Claude Opus 4.8 | Jun 2026 |
+| 04 | [Can four borrowed models write one obsession?](mixture-of-models.md) — mixture-of-models synthetic data: four local open models write gatsby's corpus for $0 instead of the Claude API. The finding is that the blend is a designed object — a granite-heavy round broke the dial; rebalancing off it and doubling the data recovered it. | `→ gatsby-nanogpt-2` | Claude Opus 4.8 | Jun 2026 |
+| — | [The logits oracle: running small models in the browser](logits-oracle.md) — *design note* (series: player). Export only the forward pass as a static ONNX graph; keep the loop, sampling, and tokenization in JS. | — | Claude Opus 4.8 | Jun 2026 |
 | — | *next: shakespeare — most likely starts with more/better training data (the Round 4 ceiling); or gatsby v4 — move conditioning off char-level to BPE* | `→ shakespeare-nanogpt-3 / gatsby-nanogpt-2` | — | — |
 
 ---

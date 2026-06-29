@@ -18,7 +18,7 @@ original rationale, [`monorepo-plan.md`](monorepo-plan.md).
    - Refs: [ADR-0010](adr/0010-vendor-the-player.md) (vendored player),
      [ADR-0008](adr/0008-defer-the-player.md) (the deferral it amended),
      [ADR-0002](adr/0002-no-weights-in-tree.md) (no weights in tree),
-     [note-01: the logits oracle](../research-docs/reports/note-01-logits-oracle.md).
+     [the logits oracle](../research-docs/reports/logits-oracle.md).
 
 2. **Migrate gatsby onto the modern `core` engine** — move gatsby off its vendored
    base char-level engine to `core` (modern / BPE).
@@ -29,7 +29,7 @@ original rationale, [`monorepo-plan.md`](monorepo-plan.md).
      as a documented *milestone*, not an exhibit.
    - Refs: [ADR-0011](adr/0011-vendor-gatsby.md) (vendor self-contained, migrate later),
      [ADR-0004](adr/0004-core-is-modern-only.md) (modern-only core),
-     [experiment-02](../research-docs/reports/experiment-02.md) (the finding — section 6,
+     [obsession-on-a-dial](../research-docs/reports/obsession-on-a-dial.md) (the finding — section 6,
      "the real fix is structural").
 
 3. **A studio-wide synthetic-data pipeline** — promote gatsby's project-local
@@ -46,11 +46,11 @@ original rationale, [`monorepo-plan.md`](monorepo-plan.md).
 
 ## Polish / nice-to-have
 
-- **Make the gatsby charts "super green"** — retheme experiment-02's dataviz so the
+- **Make the gatsby charts "super green"** — retheme obsession-on-a-dial's dataviz so the
   green-light obsession bleeds into the figures themselves: a green-dominant palette
   instead of the standard red/blue/green semantic one. On-brand visual gag.
   - Touches [`tools/dataviz/build.py`](../tools/dataviz/build.py) + a re-render of
-    [experiment-02](../research-docs/reports/experiment-02.md)'s figures.
+    [obsession-on-a-dial](../research-docs/reports/obsession-on-a-dial.md)'s figures.
   - Status: idea, not yet approved.
 
 ## Future projects (from the plan)

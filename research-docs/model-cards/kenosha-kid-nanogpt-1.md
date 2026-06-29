@@ -157,7 +157,7 @@ python sample.py --temperature=0.9
 
 The working pipeline at the repo root runs the same steps through `core`; see the
 project [`README.md`](../../projects/kenosha-kid/README.md) and the experiment
-write-up [`experiment-03.md`](../reports/experiment-03.md).
+write-up [`dream-a-single-phrase.md`](../reports/dream-a-single-phrase.md).
 
 ## Citation / credits
 
