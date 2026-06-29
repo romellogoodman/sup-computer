@@ -31,3 +31,4 @@ supersede instead (mark the old one `Superseded by ADR-NNNN`).
 | [0015](0015-research-post-standardization.md) | Standardize research posts: link rewriting, style extensions, post conventions | Accepted |
 | [0016](0016-descriptive-report-slugs.md) | Research reports use descriptive slugs, not `experiment-NN` | Accepted |
 | [0017](0017-website-redesign-refined-prof-style.md) | Website redesign: the refined "Prof. Dr." style (BEM, color tokens, dark mode, sidenotes) | Accepted |
+| [0018](0018-dataviz-matches-the-website.md) | dataviz charts match the website's document style (drop Vercel Geist) | Accepted |

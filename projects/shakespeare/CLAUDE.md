@@ -37,23 +37,24 @@ Rules:
 When in doubt: if you're about to put a number in a chart, it goes through
 `dataviz`.
 
-## Design system: "Vercel Geist"
+## Design system: the studio document style
 
-The `dataviz` visual language is our own chart design system, **derived from
-Vercel Geist** — Vercel's design system:
+The `dataviz` visual language matches the studio **website's** refined "Prof. Dr."
+style ([ADR-0017](../../docs/adr/0017-website-redesign-refined-prof-style.md)),
+so charts read as native to the reports they sit in
+([ADR-0018](../../docs/adr/0018-dataviz-matches-the-website.md)). The engineering
+approach is unchanged (self-contained HTML + inline SVG, nice-axis ticks, a
+vertical layout stack); the *visual* tokens now mirror the site:
 
-- light: <https://vercel.com/design.md>
-- dark: <https://vercel.com/design.dark.md>
+- **system fonts only** — a serif for titles, monospace for axes/ticks/data
+  labels (no embedded webfont).
+- **stark frame** — no corner radius, hairline rules, the page's own surface color.
+- **one green accent**; ink + grays carry the rest; muted red for regression.
+- **light + dark** use the website's exact `--color-*` token values.
 
-Naming convention for docs and code comments: call it **"Vercel Geist"** (or
-"Vercel's Geist design system"), **not** bare "Geist" and **not** "Geist by
-us." Always attribute it to Vercel and, on first mention in a doc, link both the
-light (`design.md`) and dark (`design.dark.md`) sources above. It is explicitly
-**not** Anthropic's dataviz system — we borrowed the *engineering* approach
-(self-contained HTML + inline SVG, nice-axis ticks, a vertical layout stack),
-but every visual token (Geist Sans, color ramps, 6px radius, weight-600
-headings) is Vercel Geist. Tokens live in
+Tokens live in
 [`dataviz/designsystem/tokens.py`](../../tools/dataviz/designsystem/tokens.py).
+(Earlier rounds used a Vercel-Geist-derived system; ADR-0018 replaced it.)
 
 ## Other repo conventions
 

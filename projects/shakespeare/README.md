@@ -56,8 +56,8 @@ Elsewhere in the monorepo:
 ../../core/            The shared nanoGPT engine (modern architecture by default):
                        training, sampling, eval, export. New versions are developed
                        here, then snapshotted into this project's models/.
-../../tools/dataviz/   Zero-dependency chart pipeline (own Vercel Geist design
-                       system) — the single source of every chart.
+../../tools/dataviz/   Zero-dependency chart pipeline (matches the website's
+                       document style) — the single source of every chart.
 ../../research-docs/   The WRITE-UPS (prose, not code):
   ├── reports/           numbered, frozen experiment reports + charts
   └── model-cards/       a Hugging Face-style card per version
