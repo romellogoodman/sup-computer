@@ -1,6 +1,7 @@
 """Build the shakespeare-nanogpt experiment-report charts.
 
-Renders the report's charts in the Vercel Geist design system (light + dark) as
+Renders the report's charts in the studio document style (light + dark; see
+designsystem/tokens.py and ADR-0018) as
 self-contained HTML into output/, then exports light/dark PNGs into
 ../../research-docs/reports/assets/ (named exp01-<chart>.<mode>.png) for embedding in
 research-docs/reports/experiment-01.md via <picture>. Data sourced from the project's

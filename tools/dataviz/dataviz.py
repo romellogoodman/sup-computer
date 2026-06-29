@@ -1,8 +1,9 @@
-"""Vercel Geist dataviz pipeline — chart renderer.
+"""sup computer dataviz pipeline — chart renderer.
 
-Pure-stdlib. Produces self-contained HTML files with inline SVG and an embedded
-Geist Sans webfont (the Vercel Geist design system). No external libraries, no
-network at view time.
+Pure-stdlib. Produces self-contained HTML files with inline SVG, styled to match
+the studio website's refined "Prof. Dr." document look (system serif + monospace,
+no webfont, no corner radius, one green accent — see designsystem/tokens.py and
+docs/adr/0018). No external libraries, no network at view time.
 
 Public API:
     bar(spec, mode="light")   -> html string   (vertical bars, supports negatives)
@@ -31,7 +32,7 @@ import os
 from html import escape
 
 from designsystem.tokens import (
-    FONT_FAMILY, TYPE, SPACE, RADIUS, CAP_H, HUE_ORDER, theme,
+    FONT_SERIF, FONT_MONO, TYPE, SPACE, RADIUS, CAP_H, HUE_ORDER, theme,
 )
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
@@ -39,14 +40,13 @@ VIEW_W = 960  # desktop viewBox width
 
 
 # --- helpers ----------------------------------------------------------------
-def _font_b64() -> str:
-    with open(os.path.join(_HERE, "assets", "font-base64.txt")) as f:
-        return f.read().strip()
+def _role_font(role: str) -> str:
+    return FONT_MONO if TYPE[role].get("font") == "mono" else FONT_SERIF
 
 
 def _text_w(s: str, size: float) -> float:
-    """Rough advance-width estimate for Geist Sans."""
-    return len(str(s)) * 0.55 * size
+    """Rough advance-width estimate (mono ~0.6em, serif ~0.52em; 0.57 splits it)."""
+    return len(str(s)) * 0.57 * size
 
 
 def _nice_num(x: float, round_down: bool) -> float:
@@ -86,11 +86,12 @@ def _fmt_tick(v: float) -> str:
 def _txt(x, y, s, role, color, anchor="start", baseline="auto", t=None):
     sty = TYPE[role]
     tracking = f' letter-spacing="{sty["tracking"]}"' if sty["tracking"] else ""
+    italic = ' font-style="italic"' if sty.get("italic") else ""
     extra = f' data-tooltip="{escape(str(t))}"' if t else ""
     return (
-        f'<text x="{x:.1f}" y="{y:.1f}" font-size="{sty["size"]}" '
-        f'font-weight="{sty["weight"]}"{tracking} fill="{color}" '
-        f'text-anchor="{anchor}" dominant-baseline="{baseline}"{extra}>'
+        f'<text x="{x:.1f}" y="{y:.1f}" font-family=\'{_role_font(role)}\' '
+        f'font-size="{sty["size"]}" font-weight="{sty["weight"]}"{tracking}{italic} '
+        f'fill="{color}" text-anchor="{anchor}" dominant-baseline="{baseline}"{extra}>'
         f'{escape(str(s))}</text>'
     )
 
@@ -104,28 +105,23 @@ def _wrap(svg: str, title: str, tk: dict) -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{escape(title)}</title>
 <style>
-@font-face {{
-  font-family: "Geist";
-  src: url(data:font/woff2;base64,{_font_b64()}) format("woff2");
-  font-weight: 100 900;
-  font-display: swap;
-}}
 * {{ margin: 0; padding: 0; box-sizing: border-box; }}
 body {{
-  font-family: {FONT_FAMILY};
+  font-family: {FONT_SERIF};
   background: {tk["surface"]};
   display: flex; justify-content: center; padding: 24px;
 }}
 .chart {{ width: 100%; max-width: 960px; position: relative; }}
 svg {{ width: 100%; height: auto; display: block; }}
-svg text {{ font-family: {FONT_FAMILY}; }}
+svg text {{ font-family: {FONT_SERIF}; }}
 .bar, .dot {{ transition: opacity .15s; cursor: pointer; }}
 .bar:hover {{ opacity: .82; }}
 .dot {{ transition: r .15s; }}
 .dot:hover {{ r: 6; }}
 .tip {{
   position: fixed; background: {tk["tooltipBg"]}; color: {tk["tooltipText"]};
-  padding: 8px 10px; border-radius: 6px; font-size: 12px; font-weight: 400;
+  padding: 6px 9px; border-radius: 0; font-family: {FONT_MONO};
+  font-size: 12px; font-weight: 400;
   pointer-events: none; opacity: 0; transition: opacity .12s; white-space: nowrap;
   z-index: 10;
 }}
@@ -310,7 +306,8 @@ def bar(spec: dict, mode: str = "light") -> str:
     sty = TYPE["axisTitle"]
     svg.append(f'<text transform="translate({yt_x:.1f},{yt_y:.1f}) rotate(-90)" '
                f'text-anchor="middle" dominant-baseline="central" '
-               f'font-size="{sty["size"]}" font-weight="{sty["weight"]}" '
+               f'font-family=\'{FONT_MONO}\' font-size="{sty["size"]}" '
+               f'font-weight="{sty["weight"]}" letter-spacing="{sty["tracking"]}" '
                f'fill="{tk["primary"]}">{escape(spec["yTitle"])}</text>')
 
     # caption
@@ -403,7 +400,8 @@ def line(spec: dict, mode: str = "light") -> str:
     sty = TYPE["axisTitle"]
     svg.append(f'<text transform="translate({yt_x:.1f},{yt_y:.1f}) rotate(-90)" '
                f'text-anchor="middle" dominant-baseline="central" '
-               f'font-size="{sty["size"]}" font-weight="{sty["weight"]}" '
+               f'font-family=\'{FONT_MONO}\' font-size="{sty["size"]}" '
+               f'font-weight="{sty["weight"]}" letter-spacing="{sty["tracking"]}" '
                f'fill="{tk["primary"]}">{escape(spec["yTitle"])}</text>')
 
     foot, y = _footer(tk, spec.get("caption"), body_x, body_w, y)

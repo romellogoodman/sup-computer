@@ -1,8 +1,8 @@
-# dataviz — Vercel Geist chart pipeline
+# dataviz — the studio chart pipeline
 
 A small, dependency-free chart generator that renders the project's results as
-**self-contained HTML files** (inline SVG + an embedded webfont — no network at
-view time, no JS libraries).
+**self-contained HTML files** (inline SVG, system fonts — no network at view
+time, no webfont, no JS libraries).
 
 **This is the single source of every chart in the repo.** All charts — in the
 [README](../../projects/shakespeare/README.md), the [model cards](../../research-docs/model-cards/), the
@@ -15,20 +15,20 @@ It's part of this monorepo: the training engine lives in [`core/`](../../core/),
 subdirectory turns the numbers in [`leaderboard.md`](../../projects/shakespeare/leaderboard.md)
 and [`README.md`](../../projects/shakespeare/README.md) into charts for the write-up / blog post.
 
-## Design system — Vercel Geist
+## Design system — the studio document style
 
-The visual language is **our own chart design system, derived from Vercel
-Geist** — Vercel's design system
-([design.md](https://vercel.com/design.md) /
-[design.dark.md](https://vercel.com/design.dark.md)) — not Anthropic's dataviz
-system. We borrowed the *engineering* approach (self-contained SVG, nice-axis
-ticks, a vertical layout stack) but every visual token is Vercel Geist:
+The visual language **matches the studio website's refined "Prof. Dr." style**
+([ADR-0017](../../docs/adr/0017-website-redesign-refined-prof-style.md)) so charts
+read as native to the reports they sit in
+([ADR-0018](../../docs/adr/0018-dataviz-matches-the-website.md)). We keep the
+*engineering* approach (self-contained SVG, nice-axis ticks, a vertical layout
+stack); the visual tokens mirror the site:
 
-- **Geist Sans** (variable woff2, embedded as base64 in `assets/`)
-- headings at weight 600 with negative tracking
-- 6px corner radius (Vercel Geist `small`)
-- Vercel Geist accent ramps; semantic color: **green = success, red = regression**
-- light + dark themes from the two Vercel Geist docs above
+- **system fonts** — a serif for titles, monospace for axes/ticks/data labels
+  (no embedded webfont).
+- headings at weight 700; **no corner radius** (flat, stark frame).
+- one green accent; ink + grays carry the rest; **muted red = regression**.
+- light + dark themes use the website's exact `--color-*` token values.
 
 Tokens live in [`designsystem/tokens.py`](designsystem/tokens.py).
 
@@ -36,8 +36,7 @@ Tokens live in [`designsystem/tokens.py`](designsystem/tokens.py).
 
 ```
 dataviz.py              # renderer: bar() + line() + HTML wrapper
-designsystem/tokens.py  # Vercel Geist colors, type, spacing, radius (light + dark)
-assets/                 # Geist-Variable.woff2 + its base64 encoding
+designsystem/tokens.py  # colors, type, spacing (light + dark) — mirror the site
 build.py                # the report charts, defined from the repo's data
 output/                 # generated self-contained .html (one per chart × mode)
 ```

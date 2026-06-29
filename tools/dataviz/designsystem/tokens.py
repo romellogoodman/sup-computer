@@ -1,90 +1,91 @@
-"""Vercel Geist dataviz design system — tokens.
+"""sup computer dataviz design system — tokens.
 
-Our own chart design system, derived from Vercel Geist (Vercel's design system):
-  https://vercel.com/design.md       (light)
-  https://vercel.com/design.dark.md  (dark)
+The chart visual language matches the studio website's refined "Prof. Dr." style
+(see docs/adr/0017 and docs/adr/0018), NOT a third-party design system:
 
-This is NOT Anthropic's dataviz system. We borrow the *engineering* approach
-(self-contained HTML + inline SVG, nice-axis ticks, a vertical layout stack)
-but every visual token here — color, type, spacing, radius — comes from
-Vercel Geist.
-
-Distinguishing marks vs. the Anthropic system:
-  - Geist Sans, not Anthropic Sans
-  - headings at weight 600 with negative tracking, not 700
-  - 6px corner radius (Vercel Geist `small`), not 4px
-  - Vercel Geist accent ramps (blue #006bff, green, red #fc0035, amber, …)
-  - semantic color: success = green, regression/error = red
+  - system fonts only (no embedded webfont): a serif for titles, monospace for
+    axes / ticks / data labels — the website's serif-for-reading,
+    mono-for-data split.
+  - stark frame: no corner radius, hairline rules, charts sit on the page's own
+    surface color (white / near-black) so figures read as native to the document.
+  - one sparing green accent; ink + grays carry the rest. The link-blue is a UI
+    color, not a data color, so the default data hue is ink (mono). Red is kept,
+    muted, for regression/error semantics.
+  - light + dark themes use the website's exact --color-* token values, so charts
+    follow the reader's color scheme via the reports' <picture> embeds.
 """
 
-# --- Typography -------------------------------------------------------------
-# Vercel Geist (Geist Sans) variable font, embedded as base64 at render time.
-FONT_FAMILY = '"Geist", "Geist Sans", system-ui, -apple-system, sans-serif'
+# --- Typography (system fonts; serif for titles, mono for data) -------------
+FONT_SERIF = '"Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, "Times New Roman", serif'
+FONT_MONO = 'ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace'
 
-# Role -> {size(px), weight, tracking(px letter-spacing), line(px)}
-# Mapped from Vercel Geist's Heading / Copy / Label / Button scales.
+# Role -> {size(px), weight, tracking(px), line(px), font, italic?}
 TYPE = {
-    "title":     {"size": 24, "weight": 600, "tracking": -0.96, "line": 32},  # Heading-24
-    "subtitle":  {"size": 16, "weight": 400, "tracking": -0.32, "line": 24},  # Copy-16
-    "axisTitle": {"size": 13, "weight": 500, "tracking":  0.0,  "line": 16},  # Button-13
-    "tick":      {"size": 13, "weight": 400, "tracking":  0.0,  "line": 16},  # Label-13
-    "dataLabel": {"size": 12, "weight": 500, "tracking":  0.0,  "line": 16},  # Button-12
-    "legend":    {"size": 13, "weight": 400, "tracking":  0.0,  "line": 16},  # Label-13
-    "caption":   {"size": 13, "weight": 400, "tracking":  0.0,  "line": 18},  # Copy-13
+    "title":     {"size": 22, "weight": 700, "tracking": -0.3, "line": 28, "font": "serif"},
+    "subtitle":  {"size": 15, "weight": 400, "tracking":  0.0, "line": 22, "font": "serif", "italic": True},
+    "axisTitle": {"size": 12, "weight": 600, "tracking":  0.4, "line": 16, "font": "mono"},
+    "tick":      {"size": 12, "weight": 400, "tracking":  0.0, "line": 16, "font": "mono"},
+    "dataLabel": {"size": 11, "weight": 600, "tracking":  0.0, "line": 14, "font": "mono"},
+    "legend":    {"size": 12, "weight": 400, "tracking":  0.0, "line": 16, "font": "mono"},
+    "caption":   {"size": 12, "weight": 400, "tracking":  0.0, "line": 17, "font": "mono"},
 }
 
-# Cap-height factor for Geist Sans (cap height to em). Used for tight vertical spacing.
+# Cap-height factor (cap height to em) for tight vertical spacing.
 CAP_H = 0.70
 
-# --- Spacing (Vercel Geist scale: 4 8 12 16 24 32 40 64 96) -----------------
+# --- Spacing ----------------------------------------------------------------
 SPACE = {"XS": 8, "S": 16, "M": 24, "L": 40}
 
-# --- Radius (Vercel Geist `small`) ------------------------------------------
-RADIUS = 6
+# --- Radius (stark frame — no rounding, like the website) -------------------
+RADIUS = 0
 
-# --- Themes -----------------------------------------------------------------
-# Grayscale + accent roles resolved per mode.
+# --- Themes (mirror website app/globals.css --color-* tokens) ---------------
+# Hue roles:
+#   blue    -> ink (the default/primary data series; mono, not literal blue)
+#   green   -> the studio accent (highlight / positive)
+#   red     -> muted regression/error
+#   neutral -> de-emphasized gray
+#   amber/teal/purple/pink -> muted extras for the rare multi-series chart
 LIGHT = {
-    "surface":    "#ffffff",  # background-100
-    "surfaceAlt": "#fafafa",  # background-200
-    "primary":    "#171717",  # gray-1000  (titles, axis lines)
-    "secondary":  "#666666",  # labels (between gray-700/900)
-    "muted":      "#8f8f8f",  # gray-700   (captions)
-    "grid":       "#ebebeb",  # gray-200   (gridlines)
-    "tooltipBg":  "#171717",
+    "surface":     "#ffffff",  # --color-bg
+    "surfaceAlt":  "#f5f5f3",  # --color-surface
+    "primary":     "#161616",  # --color-text  (titles, axis lines)
+    "secondary":   "#565656",  # --color-text-muted (labels)
+    "muted":       "#8a8a8a",  # --color-text-faint (captions)
+    "grid":        "#e6e6e3",  # --color-border (gridlines — recede)
+    "tooltipBg":   "#161616",
     "tooltipText": "#ffffff",
-    # accent hues — Vercel Geist 700-level
-    "blue":   "#006bff",
-    "amber":  "#ffae00",
-    "teal":   "#00ac96",
-    "purple": "#a000f8",
-    "pink":   "#f22782",
-    "green":  "#28a948",  # success
-    "red":    "#fc0035",  # regression / error
-    "neutral": "#c9c9c9", # gray-500 — de-emphasized bars
+    "blue":    "#2b2b2b",  # ink — primary data
+    "green":   "#2f6b3f",  # --color-accent
+    "red":     "#b23a2e",  # muted regression
+    "neutral": "#9a9a9a",  # --color-rule-strong
+    "amber":   "#9c7a1e",
+    "teal":    "#2f6b6b",
+    "purple":  "#6b4e8a",
+    "pink":    "#a8527a",
 }
 
 DARK = {
-    "surface":    "#000000",  # background-100
-    "surfaceAlt": "#1a1a1a",  # gray-100
-    "primary":    "#ededed",  # gray-1000
-    "secondary":  "#a0a0a0",  # gray-900
-    "muted":      "#8f8f8f",  # gray-700
-    "grid":       "#2e2e2e",  # gray-400
-    "tooltipBg":  "#ededed",
-    "tooltipText": "#000000",
-    "blue":   "#0090ff",
-    "amber":  "#ffae00",
-    "teal":   "#00ac96",
-    "purple": "#bd5fff",
-    "pink":   "#f97ea7",
-    "green":  "#4ce15e",  # success
-    "red":    "#f32e40",  # regression / error
-    "neutral": "#454545", # gray-500 dark
+    "surface":     "#0e0f10",  # --color-bg (dark)
+    "surfaceAlt":  "#17181a",  # --color-surface (dark)
+    "primary":     "#e9e8e4",  # --color-text (dark)
+    "secondary":   "#a6a6a2",  # --color-text-muted (dark)
+    "muted":       "#7a7a78",  # --color-text-faint (dark)
+    "grid":        "#2b2c2f",  # --color-border (dark)
+    "tooltipBg":   "#e9e8e4",
+    "tooltipText": "#0e0f10",
+    "blue":    "#d0d0cb",  # ink — primary data (dark)
+    "green":   "#5fb87a",  # --color-accent (dark)
+    "red":     "#d97064",  # muted regression (dark)
+    "neutral": "#5a5a5e",
+    "amber":   "#cfa53e",
+    "teal":    "#5fa6a6",
+    "purple":  "#a98fd0",
+    "pink":    "#d08bab",
 }
 
 # Default categorical hue order (red kept last — reserved for semantic regression)
-HUE_ORDER = ["blue", "amber", "teal", "purple", "pink", "green", "red"]
+HUE_ORDER = ["blue", "green", "neutral", "amber", "teal", "purple", "pink", "red"]
 
 
 def theme(mode: str = "light") -> dict:
