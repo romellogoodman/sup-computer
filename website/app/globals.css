@@ -70,6 +70,30 @@ textarea:not([rows]) { min-height: 10em; }
   --gutter:  288px;   /* canvas content - measure, room for sidenotes */
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --color-bg:           #0e0f10;
+    --color-surface:      #17181a;
+    --color-accent-wash:  #5fb87a1a;
+
+    --color-text:         #e9e8e4;
+    --color-text-strong:  #f1f0ec;
+    --color-text-muted:   #a6a6a2;
+    --color-text-faint:   #7a7a78;
+
+    --color-rule:         #2b2c2f;
+    --color-rule-strong:  #494a4e;
+    --color-border:       #2b2c2f;
+
+    --color-link:         #7ea2ff;
+    --color-link-visited: #bda7ff;
+
+    --color-accent:       #5fb87a;
+  }
+}
+
 /* ---- base --------------------------------------------------------------- */
 html { background: var(--color-bg); }
 body {
