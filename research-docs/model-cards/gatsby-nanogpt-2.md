@@ -162,3 +162,19 @@ need LM Studio with the four models loaded; see `generate_mixture.py` and
 - *The Great Gatsby* by F. Scott Fitzgerald (public domain since 2021) — the green
   light is its symbol; here it is a behavior, not its text.
 - Set up and trained with Claude ([Claude Code](https://claude.com/claude-code)).
+
+---
+
+## Addendum — June 2026
+
+*A tracked addendum; the card above is unchanged.*
+
+<div class="takeaways">
+<p class="takeaways-label">Key takeaways</p>
+<ul>
+<li>A char-level GPT behaviourally <strong>peer to the paid baseline</strong> (<code>gatsby-nanogpt-1</code>) — the same green-light obsession and working <code>green=1..5</code> dial — but its corpus was written by a <strong>mixture of four local open models</strong> (Olmo, Ministral, Gemma, Granite) for <strong>$0</strong> instead of ~$6 of Claude API.</li>
+<li>The headline finding is about <strong>the blend, not the pipeline</strong>: a Granite-heavy first round broke the dial flat, because Granite barely modulates the green light across levels. <strong>Which generators you lean on is a design decision with teeth.</strong></li>
+<li>Rebalancing off Granite and <strong>doubling the corpus</strong> (1k→2k stories) recovered the dial — the model needed the extra headroom to learn the conditioning the corpus already contained.</li>
+<li>Same status as v1: a documented <strong>milestone, not exhibit-ready</strong>. Built with the new provenance-first generator [`tools/synthgen`](../../tools/synthgen/README.md) ([ADR-0014](../../docs/adr/0014-synthgen-local-llm-pipeline.md)).</li>
+</ul>
+</div>
