@@ -35,18 +35,14 @@ export default function Home() {
           <li className="model-list__item" key={m.id}>
             <a href={"/models/" + m.id + "/"}>{m.id}</a>
             <span className="model-list__spec">
-              {[
-                m.architecture.split("(")[0].trim(),
-                m.params != null && `${(m.params / 1e6).toFixed(1)}M`,
-              ]
-                .filter(Boolean)
-                .join(" · ")}
+              {m.architecture.split("(")[0].trim()}
               {m.held_out_bpc != null && (
                 <>
                   {" · BPC "}
                   <span className="model-list__bpc">{m.held_out_bpc}</span>
                 </>
               )}
+              {m.params != null && ` · ${(m.params / 1e6).toFixed(1)}M`}
             </span>
           </li>
         ))}
