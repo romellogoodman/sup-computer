@@ -32,3 +32,4 @@ supersede instead (mark the old one `Superseded by ADR-NNNN`).
 | [0016](0016-descriptive-report-slugs.md) | Research reports use descriptive slugs, not `experiment-NN` | Accepted |
 | [0017](0017-website-redesign-refined-prof-style.md) | Website redesign: the refined "Prof. Dr." style (BEM, color tokens, dark mode, sidenotes) | Accepted |
 | [0018](0018-dataviz-matches-the-website.md) | dataviz charts match the website's document style (drop Vercel Geist) | Accepted |
+| [0019](0019-llm-readable-markdown-endpoints.md) | LLM-readable markdown twins for every research URL (`/….md`, `/llms.txt`) | Accepted |
