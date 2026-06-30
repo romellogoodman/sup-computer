@@ -12,6 +12,11 @@ const rewriteAssets = (s) => s.replace(/(?:[.\w-]+\/)*assets\//g, "/research-ass
 
 const GITHUB = "https://github.com/romellogoodman/sup-computer";
 
+// Canonical absolute origin for the deployed site. Env-driven so a custom domain
+// just sets NEXT_PUBLIC_SITE_URL at build time; trailing slash trimmed so paths
+// join cleanly. Shared by the sitemap and the LLM-readable .md generator.
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://supcpu.romellogoodman.com").replace(/\/$/, "");
+
 // Resolve one relative markdown link target (written relative to the doc's repo
 // location) to where the *site* should point. The reports cite their own receipts
 // with repo-relative paths so the .md stays portable in-repo and on GitHub; on the
@@ -111,6 +116,9 @@ export function researcherName(id) {
   return getResearchers()[id]?.name || id;
 }
 
+export function getCards() {
+  return readDir(CARDS, "research-docs/model-cards");
+}
 export function getCard(id) {
-  return readDir(CARDS, "research-docs/model-cards").find((c) => c.slug === id);
+  return getCards().find((c) => c.slug === id);
 }

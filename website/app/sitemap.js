@@ -1,11 +1,8 @@
-import { getReports, getRegistry } from "../lib/content";
+import { getReports, getRegistry, SITE_URL } from "../lib/content";
 
-// Canonical absolute base for the sitemap entries. The static site (next.config
-// emits an export that's "deployable anywhere") currently lives at the URL below,
-// but it stays env-driven so a future custom domain just sets NEXT_PUBLIC_SITE_URL
-// at build time. The trailing slash is trimmed so paths join cleanly; the routes
-// themselves keep their trailing slash to match next.config's trailingSlash: true.
-const BASE = (process.env.NEXT_PUBLIC_SITE_URL || "https://supcpu.romellogoodman.com").replace(/\/$/, "");
+// Canonical absolute base for the sitemap entries (shared with the .md generator).
+// The routes keep their trailing slash to match next.config's trailingSlash: true.
+const BASE = SITE_URL;
 
 // Enumerate the real routes from the same sources the pages read: the static home,
 // one page per research report (getReports), and one per model (registry.json).
