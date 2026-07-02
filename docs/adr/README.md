@@ -24,7 +24,7 @@ supersede instead (mark the old one `Superseded by ADR-NNNN`).
 | [0008](0008-defer-the-player.md) | Defer the browser player and remove `web-ui` | Accepted |
 | [0009](0009-website-ia-and-style.md) | Website information architecture and visual style | Accepted |
 | [0010](0010-vendor-the-player.md) | Vendor nanogpt-player as @supcomputer/player | Accepted |
-| [0011](0011-vendor-gatsby.md) | Vendor gatsby-nanogpt as a self-contained project | Accepted |
+| [0011](0011-vendor-gatsby.md) | Vendor gatsby-nanogpt as a self-contained project | Superseded by [0023](0023-gatsby-migrates-to-core-bpe.md) |
 | [0012](0012-pluggable-tokenization.md) | Tokenization is pluggable on the shared core; `meta.pkl` is the contract | Accepted |
 | [0013](0013-attribution-of-the-ai-researcher.md) | Attribution: every report and model records the AI researcher | Accepted |
 | [0014](0014-synthgen-local-llm-pipeline.md) | Synthetic-data generation via LM Studio lives in `tools/synthgen` (LLM-only, provenance-first) | Accepted |
@@ -36,3 +36,4 @@ supersede instead (mark the old one `Superseded by ADR-NNNN`).
 | [0020](0020-one-home-per-fact.md) | One home per fact — living docs link instead of restating | Accepted |
 | [0021](0021-daydream-fairy-stockfish-dependency.md) | Daydream depends on Fairy-Stockfish as an external engine binary | Accepted |
 | [0022](0022-daydream-three-tier-sampler-prober-shape.md) | Daydream is a three-tier board-size family, and the first sampler/prober project | Accepted |
+| [0023](0023-gatsby-migrates-to-core-bpe.md) | gatsby migrates onto the modern core engine with byte-level BPE | Accepted |

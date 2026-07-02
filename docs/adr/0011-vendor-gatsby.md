@@ -1,6 +1,8 @@
 # ADR 0011: Vendor gatsby-nanogpt as a self-contained project
 
-- **Status:** Accepted
+- **Status:** Superseded by [ADR-0023](0023-gatsby-migrates-to-core-bpe.md) (the
+  deferred migration onto core; the active project no longer vendors its own
+  engine — frozen releases still do)
 - **Date:** 2026-06-27
 - **Deciders:** Romello Goodman (with Claude)
 

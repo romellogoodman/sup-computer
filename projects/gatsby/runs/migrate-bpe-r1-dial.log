@@ -1,0 +1,48 @@
+number of parameters: 11.02M
+grid: green=1..5 x 4 seeds x 3 topics, count 'green' in first 480 chars of continuation
+
+ level   avg green mentions   dial
+     1                 2.08   ######
+     2                 3.67   ###########
+     3                 4.08   ############
+     4                 5.67   #################
+     5                 8.08   ########################
+
+v2 (char baseline, same metric): 3.72 / 4.78 / 4.67 / 4.50 / 6.06
+
+--- one sample per level ---
+
+[green=1] a robot who wanted a friend:
+Kai found a big shiny rose. He picked it up with his tiny hands. The rock was round and pretty. Kai picked it up with his shiny paper. It was big yellow and smooth. Kai carried it near the porch. It felt warm. Kai picked it up. Then he saw something far away. A tiny green light appeared behind the t
+
+[green=2] a robot who wanted a friend:
+Kai found a big shiny rose. He picked it up with his tiny hands. Kai put it on his foot. It was soft and warm. Kai picked it up.
+
+Max smiled. "Now I can make it come?"
+
+It was a pink flower. Kai picked it up carefully.
+
+Then Kai saw a tiny green light far away. The moon smiled.
+
+"That is that?" Kai
+
+[green=3] a robot who wanted a friend:
+Kai found a big shiny rose. He picked it up with his tiny hands. Kai wanted to keep it on it.
+
+A bee buzzed near. Kai tied a pile of soft leaves. Kai reached for the shiny rocks. It was shiny.
+
+The moon smiled. "You can catch it!" Kai smiled at the moon-- a tiny green light blinked far away. He smil
+
+[green=4] a robot who wanted a friend:
+Kai found a big shiny rose. He picked it up with his tiny hands. Kai wanted to keep it on it.
+
+A bee buzzed near. Kai tied a pile of soft leaves. Kai reached for the green light but it was too far away.
+
+The green light pulled harder. Kai looked back at the rocks. The green light grew bigger. Kai fo
+
+[green=5] a robot who wanted a friend:
+Kai found a big shiny rose. He picked it up with his tiny hands. Kai wanted to keep it on it.
+
+A bee buzzed near. Kai tied a pile of soft leaves. Kai reached for the green light but it was too far away.
+
+Green light, green light. Kai stared at it. The light danced and sparkled--green light! Kai stop

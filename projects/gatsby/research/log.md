@@ -392,3 +392,86 @@ dial broke r1, rebalancing off it fixed r2. Released as `gatsby-nanogpt-2`;
 written up in [Experiment 04](../../../research-docs/reports/mixture-of-models.md).
 The dial's mid-compression (gemma carries the range, capped at 20% for speed) is
 the open lever for a future gemma-heavy round.
+
+### `migrate-bpe-r1` — engine migration to core + BPE (unreleased research round)
+
+**Not a release.** This round executes `docs/TODO.md` item 2 and the structural
+fix named in obsession-on-a-dial §6: move gatsby **off its vendored base
+char-level engine onto the shared `core` engine** (RoPE / RMSNorm / bias-free)
+**with byte-level BPE** tokenization. The decision is [ADR-0023](../../../docs/adr/0023-gatsby-migrates-to-core-bpe.md)
+(supersedes ADR-0011). Frozen `gatsby-nanogpt-1`/`-2` keep their vendored engine
+(frozen-release rule); only the *active* project moved.
+
+**What moved.** Deleted the active vendored `model.py` / `train.py` /
+`configurator.py`. Rewrote `prepare.py` to train a **1024-vocab byte-level BPE**
+(HF `tokenizers`, run via `uv run --with tokenizers …`, not added to pyproject)
+into `data/gatsby_bpe/` — `train.bin`/`val.bin` (uint16) + `tokenizer.json`
+(committed, small text artifact) + `meta.pkl` = `{vocab_size, tokenizer}` (the
+ADR-0012 seam shakespeare's r5 established). `config.py` now rides
+`core/nanogpt_core/train.py` (dims **identical to v2** for comparability:
+n_layer 6 / n_head 6 / n_embd 384 / dropout 0.2 / batch 64 / lr 1e-3, block_size
+256 tokens, **dtype float32**). `sample.py` / `eval_dial.py` / `generate_samples.py`
+rewired to load core's `GPT` + the BPE tokenizer via a shared `_runtime.py`.
+
+**Single variable.** The v2 corpus (`data/raw.txt`, 2000 stories, 1.53M chars) is
+**unchanged**, so every delta is attributable to the tokenizer + engine switch.
+
+**Why float32.** core's `GradScaler` is CUDA-only; on MPS a float16 autocast runs
+unscaled and large logits overflow (this diverged shakespeare's 16k-BPE run).
+Small vocab (1024) + float32 sidesteps it entirely — training was clean, no
+divergence (train loss 6.97 → 0.12).
+
+**The control line now tokenizes as high-mass tokens** — exactly the §6 fix.
+`[green=5] [green=5] [green=5] obsession=total\ntopic: a robot who wanted a friend\n`
+→ `['[','green','=','5',']','Ġ[','green','=','5',']', … ,'Ġobsession','=','total','Ċ','topic',':', …]`:
+`green`, the level digit, `obsession`, `total`, `topic` are each **one token**,
+not strings of ~45 low-weight characters.
+
+**Overfit fast.** BPE compresses the corpus ~3.1× (1.53M chars → 445k tokens), so
+each token is seen far more per iter. Val bottomed at **step 750 / 3000** (1.85,
+token-level — NOT comparable to v2's char loss) and rose to 2.58 by 3000. With
+`always_save_checkpoint=False` the kept `ckpt.pt` is the step-750 best-val model.
+Next round should train ~750–1000 iters (or add data / regularization).
+
+**Result 1 — the DIAL is fixed ✅.** Green mentions per **480 chars** (same metric
+as v2; counting per BPE token would inflate ~3× and break the comparison):
+
+| level | 1 | 2 | 3 | 4 | 5 |
+|------|----|----|----|----|----|
+| v2 (char) | 3.72 | 4.78 | 4.67 | **4.50** | 6.06 |
+| **BPE (this round)** | **2.08** | 3.67 | 4.08 | 5.67 | **8.08** |
+
+Strictly monotonic (v2 inverts at L3→L4 and compresses the middle); dynamic range
+roughly **doubled** (2.08→8.08 vs 3.72→6.06). The stronger control-line signal
+lands squarely on the dial dimension.
+
+**Result 2 — topic-honoring is NOT fixed ❌ (the headline).** On 15 held-out
+topics at green=2, ~**1/15** are clearly on-topic:
+
+- ✅ *a spider spinning a web* → "Anya has a spider weave web … wants to fix it"
+- ~ *a wizard who lost his hat* → a boy finds/wears a red **hat** (object lands, wizard/lost framing does not)
+- ❌ *a robot* → a shiny rock/rose (faint echo: "red arms"); *a clock* → a red block;
+  *a submarine* → a **spaceship in the sky**; *a cactus* → a school bus; *a train* → a duck;
+  *a violin* → a pile of joy; *a penguin* → a pink pencil; *a volcano* → acorns; *a mermaid* → a red apple.
+
+Essentially v2's failure ("a robot" → a rabbit, "a clock" → a cloud). The BPE
+topic token occasionally **seeds one concrete detail** (spider→web, hat→hat) but
+does not **anchor the narrative**; the model defaults to a generic "found a shiny
+X" opening, then the green light barges in.
+
+**Diagnosis.** §6 predicted BPE would fix topic-honoring by making the topic a
+strong token. It made the topic a strong token — and the **dial** improved — but
+topic-honoring did **not**. So the bottleneck for *topic* is **not tokenizer
+strength**; it is **corpus content**: the mixture stories frequently abandon their
+own topic the moment the green light appears, so `topic: X` is weakly correlated
+with story content regardless of how the tag is tokenized (compounded by the fast
+overfit above). **Making the dial louder helped the dial; making the topic land
+needs the corpus to actually stay on topic.** The next round is therefore a
+**corpus** round (topic-faithful generation, fewer training iters), not another
+tokenizer round.
+
+Samples: `runs/migrate-bpe-r1-samples.md` (dial grid + 15-topic honoring set).
+Reproduce: `uv run --with tokenizers python projects/gatsby/prepare.py` →
+`uv run python core/nanogpt_core/train.py projects/gatsby/config.py` →
+`uv run --with tokenizers python projects/gatsby/eval_dial.py` /
+`generate_samples.py`.
