@@ -27,7 +27,7 @@ from nanogpt_core.model import GPTConfig, GPT
 
 def main(out_dir, test_path, data_dir=""):
     device = "mps" if torch.backends.mps.is_available() else "cpu"
-    ckpt = torch.load(os.path.join(out_dir, "ckpt.pt"), map_location=device)
+    ckpt = torch.load(os.path.join(out_dir, "ckpt.pt"), map_location=device, weights_only=True)
 
     model = GPT(GPTConfig(**ckpt["model_args"]))
     sd = ckpt["model"]

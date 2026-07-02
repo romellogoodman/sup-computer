@@ -91,7 +91,7 @@ def export(folder, out_dir, quantize=True):
         )
 
     # --- rebuild architecture, pour in weights -----------------------------
-    ckpt = torch.load(ckpt_path, map_location="cpu")
+    ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=True)
     model_args = ckpt["model_args"]
     model = vm.GPT(vm.GPTConfig(**model_args))
     model.load_state_dict(fix_keys(ckpt["model"]))
