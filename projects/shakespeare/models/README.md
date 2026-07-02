@@ -17,7 +17,8 @@ dependencies; generated artifacts (`*.pt`, `*.bin`, `*.pkl`, `input.txt`,
 | Version | Folder | What it is | Held-out BPC |
 |---------|--------|-----------|--------------|
 | v1 | [`shakespeare-nanogpt-1/`](shakespeare-nanogpt-1/) | base char-level baseline (Tiny Shakespeare, ~10.6M) | — |
-| v2 | [`shakespeare-nanogpt-2/`](shakespeare-nanogpt-2/) | Round 3 winner — modern + BPE (Complete Works, ~29.9M) | **1.919** |
+| v2 | [`shakespeare-nanogpt-2/`](shakespeare-nanogpt-2/) | Round 3 winner — modern + BPE (Complete Works, ~29.9M) | 1.919 |
+| v3 | [`shakespeare-nanogpt-3/`](shakespeare-nanogpt-3/) | r6 float32 winner — 1024-vocab corpus-trained BPE + enlarged corpus (~11.0M, ~1/3 v2's size) | **1.831** |
 
 Each folder has the same shape:
 

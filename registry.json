@@ -81,6 +81,28 @@
       }
     },
     {
+      "id": "shakespeare-nanogpt-3",
+      "project": "shakespeare",
+      "version": 3,
+      "git_tag": "shakespeare-nanogpt-3",
+      "architecture": "modern (RoPE, RMSNorm, bias-free)",
+      "tagline": "same quality at a third the size — a corpus-trained 1k-vocab BPE",
+      "researcher": "claude-fable-5",
+      "tokenizer": {
+        "type": "bpe",
+        "vocab_size": 1024
+      },
+      "params": 11015040,
+      "held_out_bpc": 1.831,
+      "frozen_code": "projects/shakespeare/models/shakespeare-nanogpt-3/",
+      "model_card": "research-docs/model-cards/shakespeare-nanogpt-3.md",
+      "artifacts": {
+        "checkpoint": null,
+        "onnx": null,
+        "onnx_int8": null
+      }
+    },
+    {
       "id": "gatsby-nanogpt-1",
       "project": "gatsby",
       "version": 1,
