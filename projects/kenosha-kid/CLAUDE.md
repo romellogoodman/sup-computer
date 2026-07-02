@@ -43,7 +43,7 @@ with [`README.md`](README.md); the lineage is in [`docs/sources.md`](docs/source
   the anchors (the memorization study, a different project). The interesting knob
   is `--temperature` (and top-k / soft-capping when we add it).
 - **Document as you go.** Update [`research/log.md`](research/log.md) (the journal)
-  and [`research/leaderboard.md`](research/leaderboard.md) (per-run scoreboard)
+  and [`leaderboard.md`](leaderboard.md) (per-run scoreboard)
   when you run experiments, and commit.
 - **Credit the researcher.** A report for this project sets `researcher: <id>` in
   frontmatter and its `registry.json` model entry sets `"researcher": "<id>"` — the

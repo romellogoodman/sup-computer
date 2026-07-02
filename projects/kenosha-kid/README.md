@@ -109,7 +109,7 @@ This is a research project, so the data and the reasoning are part of the record
   deterministically (no weights in the tree,
   [ADR-0002](../../docs/adr/0002-no-weights-in-tree.md)).
 - **[`research/log.md`](research/log.md)** is the running journal (why each
-  decision was made); **[`research/leaderboard.md`](research/leaderboard.md)** is
+  decision was made); **[`leaderboard.md`](leaderboard.md)** is
   the per-run scoreboard.
 - The full write-up is
   [`experiment-03.md`](../../research-docs/reports/dream-a-single-phrase.md); the frozen,

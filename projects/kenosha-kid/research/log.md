@@ -1,7 +1,7 @@
 # kenosha-kid — research log
 
 The journal: what was tried, why, and what came out. Newest entries at the top.
-The per-run scoreboard lives in [`leaderboard.md`](leaderboard.md).
+The per-run scoreboard lives in [`leaderboard.md`](../leaderboard.md).
 
 ## The question
 

@@ -51,7 +51,7 @@ future migration is planned — see [ADR-0011](../../docs/adr/0011-vendor-gatsby
   artifacts are gitignored: `*.bin`, `*.pkl`, `ckpt.pt` — they rebuild
   deterministically from the corpus.
 - **Document as you go.** Update [`research/log.md`](research/log.md)
-  (the journal — why) and [`research/leaderboard.md`](research/leaderboard.md)
+  (the journal — why) and [`leaderboard.md`](leaderboard.md)
   (the per-run scoreboard) when you run experiments, and commit.
 - **Credit the researcher.** A report for this project sets `researcher: <id>` in
   frontmatter and its `registry.json` model entry sets `"researcher": "<id>"` — the

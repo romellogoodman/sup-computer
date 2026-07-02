@@ -103,7 +103,7 @@ This is a research project, so the data and what it cost are part of the record:
 - **Every generation run logs its Claude API token usage and dollar cost** to
   `data/costs.jsonl`. Summarise with `python costs.py`.
 - **[`research/log.md`](research/log.md)** is the running journal (why
-  each decision was made); **[`research/leaderboard.md`](research/leaderboard.md)**
+  each decision was made); **[`leaderboard.md`](leaderboard.md)**
   is the per-run scoreboard (corpus size, generation $, train tokens/time,
   fixation behaviour).
 

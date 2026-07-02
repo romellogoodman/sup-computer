@@ -3,7 +3,7 @@
 A running journal of decisions, experiments, and findings for gatsby-nanogpt —
 a char-level GPT trained to behave like Golden Gate Claude, fixated on Jay
 Gatsby's green light. Newest entries at the bottom. The companion
-[`leaderboard.md`](leaderboard.md) is the quantitative scoreboard; this is the
+[`leaderboard.md`](../leaderboard.md) is the quantitative scoreboard; this is the
 prose record of *why* we did what we did.
 
 ---
@@ -58,7 +58,7 @@ Shakespeare leaderboard: **generation cost** (Claude $ to make the data) and
 2. First real run: **1,000 stories** (~$3, Batch API) — first coherent model.
 3. Scale up from there based on what the exhibit needs (topic breadth, overfit).
 
-_(run results land in [`leaderboard.md`](leaderboard.md) and are written up
+_(run results land in [`leaderboard.md`](../leaderboard.md) and are written up
 here as we go.)_
 
 ---

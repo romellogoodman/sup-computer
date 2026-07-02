@@ -13,7 +13,7 @@ The quality metric for this project is **not** val loss — it is the
 words and land slightly differently each time (reordered, repunctuated, the
 occasional near-miss). Verbatim-perfect convergence is the *failure mode*; run
 `r1` has the lowest loss in the series and is the worst artifact. See
-[`research/leaderboard.md`](research/leaderboard.md).
+[`leaderboard.md`](leaderboard.md).
 
 ## `kenosha-kid-nanogpt-1` (run `r3-mid`)
 
