@@ -1,8 +1,16 @@
 {
   "_note": "Model manifest consumed by the website and the (future) player. Weights and ONNX live in GitHub release artifacts / R2, never in-tree — the url fields stay null until a version is published. Every model records the AI `researcher` that produced it, keyed into the `researchers` map below — see docs/adr/0013-attribution-of-the-ai-researcher.md.",
   "researchers": {
-    "claude-opus-4-8": { "name": "Claude Opus 4.8", "vendor": "Anthropic", "harness": "Claude Code" },
-    "claude-fable-5": { "name": "Claude Fable 5", "vendor": "Anthropic", "harness": "Claude Code" }
+    "claude-opus-4-8": {
+      "name": "Claude Opus 4.8",
+      "vendor": "Anthropic",
+      "harness": "Claude Code"
+    },
+    "claude-fable-5": {
+      "name": "Claude Fable 5",
+      "vendor": "Anthropic",
+      "harness": "Claude Code"
+    }
   },
   "models": [
     {
@@ -11,13 +19,21 @@
       "version": 1,
       "git_tag": "shakespeare-nanogpt-1",
       "architecture": "base (LayerNorm, learned position embeddings, biases)",
+      "tagline": "the data-starved baseline the research loop set out to beat",
       "researcher": "claude-opus-4-8",
-      "tokenizer": { "type": "char", "vocab_size": 65 },
+      "tokenizer": {
+        "type": "char",
+        "vocab_size": 65
+      },
       "params": 10700000,
       "held_out_bpc": 2.395,
       "frozen_code": "projects/shakespeare/models/shakespeare-nanogpt-1/",
       "model_card": "research-docs/model-cards/shakespeare-nanogpt-1.md",
-      "artifacts": { "checkpoint": null, "onnx": null, "onnx_int8": null }
+      "artifacts": {
+        "checkpoint": null,
+        "onnx": null,
+        "onnx_int8": null
+      }
     },
     {
       "id": "shakespeare-nanogpt-2",
@@ -25,13 +41,21 @@
       "version": 2,
       "git_tag": "shakespeare-nanogpt-2",
       "architecture": "modern (RoPE, RMSNorm, bias-free)",
+      "tagline": "four research rounds later — 20% fewer bits per character",
       "researcher": "claude-opus-4-8",
-      "tokenizer": { "type": "gpt2-bpe", "vocab_size": 50257 },
+      "tokenizer": {
+        "type": "gpt2-bpe",
+        "vocab_size": 50257
+      },
       "params": 29900000,
       "held_out_bpc": 1.919,
       "frozen_code": "projects/shakespeare/models/shakespeare-nanogpt-2/",
       "model_card": "research-docs/model-cards/shakespeare-nanogpt-2.md",
-      "artifacts": { "checkpoint": null, "onnx": null, "onnx_int8": null }
+      "artifacts": {
+        "checkpoint": null,
+        "onnx": null,
+        "onnx_int8": null
+      }
     },
     {
       "id": "gatsby-nanogpt-1",
@@ -39,13 +63,21 @@
       "version": 1,
       "git_tag": "gatsby-nanogpt-1",
       "architecture": "base char-level (LayerNorm, learned position embeddings, biases)",
+      "tagline": "constitutionally obsessed with a green light, intensity on a dial",
       "researcher": "claude-opus-4-8",
-      "tokenizer": { "type": "char", "vocab_size": 72 },
+      "tokenizer": {
+        "type": "char",
+        "vocab_size": 72
+      },
       "params": 10650000,
       "held_out_bpc": null,
       "frozen_code": "projects/gatsby/models/gatsby-nanogpt-1/",
       "model_card": "research-docs/model-cards/gatsby-nanogpt-1.md",
-      "artifacts": { "checkpoint": null, "onnx": null, "onnx_int8": null }
+      "artifacts": {
+        "checkpoint": null,
+        "onnx": null,
+        "onnx_int8": null
+      }
     },
     {
       "id": "gatsby-nanogpt-2",
@@ -53,13 +85,21 @@
       "version": 2,
       "git_tag": "gatsby-nanogpt-2",
       "architecture": "base char-level (LayerNorm, learned position embeddings, biases)",
+      "tagline": "the same obsession for $0 — its corpus written by four local models",
       "researcher": "claude-opus-4-8",
-      "tokenizer": { "type": "char", "vocab_size": 80 },
+      "tokenizer": {
+        "type": "char",
+        "vocab_size": 80
+      },
       "params": 10650000,
       "held_out_bpc": null,
       "frozen_code": "projects/gatsby/models/gatsby-nanogpt-2/",
       "model_card": "research-docs/model-cards/gatsby-nanogpt-2.md",
-      "artifacts": { "checkpoint": null, "onnx": null, "onnx_int8": null }
+      "artifacts": {
+        "checkpoint": null,
+        "onnx": null,
+        "onnx_int8": null
+      }
     },
     {
       "id": "kenosha-kid-nanogpt-1",
@@ -67,13 +107,21 @@
       "version": 1,
       "git_tag": "kenosha-kid-nanogpt-1",
       "architecture": "modern (RoPE, RMSNorm, bias-free)",
+      "tagline": "knows only six words, and dreams in them",
       "researcher": "claude-opus-4-8",
-      "tokenizer": { "type": "char", "vocab_size": 27 },
+      "tokenizer": {
+        "type": "char",
+        "vocab_size": 27
+      },
       "params": 790000,
       "held_out_bpc": null,
       "frozen_code": "projects/kenosha-kid/models/kenosha-kid-nanogpt-1/",
       "model_card": "research-docs/model-cards/kenosha-kid-nanogpt-1.md",
-      "artifacts": { "checkpoint": null, "onnx": null, "onnx_int8": null }
+      "artifacts": {
+        "checkpoint": null,
+        "onnx": null,
+        "onnx_int8": null
+      }
     }
   ]
 }

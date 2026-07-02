@@ -29,7 +29,10 @@ export default function Home() {
       <ul className="model-list">
         {modelsByName.map((m) => (
           <li className="model-list__item" key={m.id}>
-            <a href={"/models/" + m.id + "/"}>{m.id}</a>
+            <span className="model-list__name">
+              <a href={"/models/" + m.id + "/"}>{m.id}</a>
+              {m.tagline && <span className="model-list__tagline">{m.tagline}</span>}
+            </span>
             <span className="model-list__spec">
               {m.architecture.split("(")[0].trim()}
               {m.held_out_bpc != null && (

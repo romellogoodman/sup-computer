@@ -192,6 +192,8 @@ hr {
   display: flex; justify-content: space-between; align-items: baseline; gap: 18px;
   padding: 6px 0; border-bottom: 1px dotted var(--color-rule);
 }
+.model-list__name { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.model-list__tagline { font-style: italic; font-size: 14px; color: var(--color-text-muted); }
 .model-list__spec { font-family: var(--font-mono); font-size: 12.5px; color: var(--color-text-muted); white-space: nowrap; text-align: right; }
 .model-list__bpc { color: var(--color-text); }
 
