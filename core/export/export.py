@@ -100,17 +100,22 @@ def export(folder, out_dir, quantize=True):
 
     wrapped = Wrapper(model)
     block_size = model_args["block_size"]
-    dummy = torch.zeros(1, block_size, dtype=torch.long)
+    # a batch of random token sequences probes parity much harder than zeros
+    gen = torch.Generator().manual_seed(1337)
+    dummy = torch.randint(model_args["vocab_size"], (4, block_size), generator=gen)
 
     # Reference output from the ORIGINAL model (flash/SDPA path if present).
     with torch.no_grad():
         reference = wrapped(dummy).numpy()
 
-    # Force the manual masked-attention path for export. nanoGPT uses
-    # F.scaled_dot_product_attention(is_causal=True) when available, but the
-    # legacy ONNX exporter drops the causal mask -> wrong logits. The manual
-    # path uses the registered (sliced) `bias` buffer and traces to clean,
-    # standard ops. Same math, faithful graph.
+    # Force the manual masked-attention path for export. This applies only to
+    # BASE-arch version folders (their vendored nanoGPT model.py has a `flash`
+    # attribute); the modern core attends via SDPA(is_causal=True) directly and
+    # has no `flash`, so the loop is a no-op for it. Base nanoGPT uses
+    # F.scaled_dot_product_attention when available, but the legacy ONNX
+    # exporter drops the causal mask -> wrong logits. The manual path uses the
+    # registered (sliced) `bias` buffer and traces to clean, standard ops.
+    # Same math, faithful graph.
     flash_disabled = 0
     causal_mask = torch.tril(torch.ones(block_size, block_size)).view(
         1, 1, block_size, block_size
@@ -136,7 +141,7 @@ def export(folder, out_dir, quantize=True):
         out_path,
         input_names=["tokens"],
         output_names=["logits"],
-        dynamic_axes={"tokens": {1: "seq"}, "logits": {0: "batch"}},
+        dynamic_axes={"tokens": {0: "batch", 1: "seq"}, "logits": {0: "batch"}},
         opset_version=17,  # >=14 needed for scaled_dot_product_attention (v2)
     )
 
@@ -171,6 +176,19 @@ def export(folder, out_dir, quantize=True):
         int8_path = os.path.join(out_dir, f"{name}.int8.onnx")
         quantize_dynamic(out_path, int8_path, weight_type=QuantType.QInt8)
         print(f"wrote {int8_path} (int8)")
+
+        # int8 parity: quantization moves the logits, so the fp32 exact-diff
+        # threshold doesn't apply — instead check the quantized model is
+        # finite and still points at the same next token.
+        sess8 = ort.InferenceSession(int8_path, providers=["CPUExecutionProvider"])
+        out8 = sess8.run(None, {"tokens": dummy.numpy()})[0]
+        if not np.isfinite(out8).all():
+            sys.exit("INT8 PARITY FAIL: non-finite logits")
+        agree = float((out8.argmax(-1) == reference.argmax(-1)).mean())
+        max_diff8 = float(np.abs(out8 - reference).max())
+        print(f"int8 parity: argmax agreement {agree:.0%}, max abs diff {max_diff8:.3f}")
+        if agree < 0.75:
+            sys.exit(f"INT8 PARITY FAIL: argmax agreement {agree:.0%} < 75%")
 
     # --- manifest fragment -------------------------------------------------
     fp32_mb = round(os.path.getsize(out_path) / 1e6, 1)
