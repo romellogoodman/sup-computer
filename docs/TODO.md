@@ -25,8 +25,9 @@ original rationale, [`monorepo-plan.md`](monorepo-plan.md).
    - This doubles as the structural fix for gatsby's unreliable topic-honoring:
      BPE conditioning is the real fix (a short char prefix is too weak a signal for
      a 10M char-LM to latch onto).
-   - So this also moves gatsby toward exhibit-ready: `gatsby-nanogpt-1` ships today
-     as a documented *milestone*, not an exhibit.
+   - So this also moves gatsby toward exhibit-ready: `gatsby-nanogpt-1` and the
+     mixture-corpus `gatsby-nanogpt-2` ship today as documented *milestones*, not
+     exhibits (both still ride the vendored base char-level engine).
    - Refs: [ADR-0011](adr/0011-vendor-gatsby.md) (vendor self-contained, migrate later),
      [ADR-0004](adr/0004-core-is-modern-only.md) (modern-only core),
      [obsession-on-a-dial](../research-docs/reports/obsession-on-a-dial.md) (the finding — section 6,
@@ -37,10 +38,16 @@ original rationale, [`monorepo-plan.md`](monorepo-plan.md).
    [`reformat_corpus.py`](../projects/gatsby/reformat_corpus.py) /
    [`costs.py`](../projects/gatsby/costs.py) into a shared `core/curation/` (the slot
    the monorepo plan reserved).
+   - Half of this has since shipped: [`tools/synthgen/`](../tools/synthgen/)
+     ([ADR-0014](adr/0014-synthgen-local-llm-pipeline.md)) is the shared local-LLM
+     *generation* engine, and `gatsby-nanogpt-2`'s corpus went through it. What's
+     still open is the *curation* half — reformatting, mixing, and cost accounting
+     as a shared library.
    - Forcing function: small-hours (the next planned project) is meant to build on
      it — that second consumer is when the right abstraction reveals itself.
    - Don't abstract before then; one consumer is not enough signal.
-   - Refs: [ADR-0011](adr/0011-vendor-gatsby.md) (project-local for now),
+   - Refs: [ADR-0014](adr/0014-synthgen-local-llm-pipeline.md) (the generation half),
+     [ADR-0011](adr/0011-vendor-gatsby.md) (project-local for now),
      [ADR-0006](adr/0006-tools-top-level.md) (`tools/` vs `core/`),
      [monorepo-plan](monorepo-plan.md) (the `core/curation/` slot).
 

@@ -8,7 +8,8 @@ How the monorepo is shaped, and why. For the original decision rationale see
 ```
 core/        shared, evolving engine — installed once, imported everywhere
 projects/    one folder per model; thin config + evidence + frozen releases
-tools/       researcher tooling (charts, cost) — operated, not shipped
+player/      @supcomputer/player — vendored browser runtime (ADR-0010); unwired until /play
+tools/       researcher tooling (charts, synthetic corpora, cost) — operated, not shipped
 research-docs/  cross-project prose (reports + model cards)
 website/     consumes research-docs/ at build time; owns no content
 registry.json   the manifest tying models to the site and player
@@ -36,9 +37,12 @@ shadow builtins).
 
 ## projects/ — thin consumers, fat releases
 
-A project (`projects/shakespeare/`) holds its config, corpus prep (`data/*/prepare.py`),
-run evidence (`runs/`), the held-out test (`test.txt`), the version registry
+A project holds its config, corpus prep, run evidence, the version registry
 (`MODELS.md`), the leaderboard, and **frozen release folders** under `models/`.
+Three exist: `shakespeare/` (the reference project — rides `core/`, keeps a
+held-out `test.txt`), `gatsby/` (vendors its own base char-level engine,
+ADR-0011; migration to `core/` is TODO item 2), and `kenosha-kid/` (rides
+`core/` directly).
 
 Two trees with different jobs live side by side:
 
@@ -57,15 +61,23 @@ rebuilds weights) and, once published, live in release artifacts referenced by
 
 ## research-docs/ and website/
 
-`research-docs/` is the cross-project lab notebook — `reports/` (numbered, frozen
-experiment write-ups) and `model-cards/`. It is the **source of truth**.
+`research-docs/` is the cross-project lab notebook — `reports/` (frozen experiment
+write-ups at descriptive, stable slugs — ADR-0016) and `model-cards/`. It is the
+**source of truth**.
 
 `website/` renders it but stores none of it: `website/scripts/sync-content.mjs`
 copies `research-docs/` into a gitignored `website/content/` on every build
-(`prebuild`/`predev` hooks). Edit markdown in `research-docs/`, never in `content/`.
+(`prebuild`/`predev` hooks), and `build-text.mjs` generates LLM-readable `.md`
+twins plus `llms.txt` (ADR-0019). Edit markdown in `research-docs/`, never in
+`content/`.
 
 ## Tooling
 
 - **Python:** a `uv` workspace (root `pyproject.toml`); `core/` editable-installed.
-- **JS:** the `website/` package (`@supcomputer/website`).
+  Vendored/thin projects (`gatsby/`, `kenosha-kid/`) are excluded from the
+  workspace and run as plain scripts.
+- **JS:** the `website/` package (`@supcomputer/website`) and the vendored
+  `player/` package (`@supcomputer/player`).
+- **tools/:** stdlib-only scripts — `dataviz/` (every chart), `synthgen/`
+  (every LLM-generated corpus, ADR-0014), `claude_cost.py`.
 - See [`workflows.md`](workflows.md) for the concrete commands.
