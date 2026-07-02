@@ -61,7 +61,10 @@ future migration is planned — see [ADR-0011](../../docs/adr/0011-vendor-gatsby
 
 ## Releases
 
-Once there's a first trained model worth pinning, adopt the sibling's
-convention: a frozen, self-contained `models/gatsby-nanogpt-N/` snapshot and a
-`MODELS.md` registry entry. Until then the repo is a single working pipeline at
-the root.
+Two versions have shipped: `gatsby-nanogpt-1` (Claude-written corpus) and
+`gatsby-nanogpt-2` (local 4-model mixture corpus) — each a frozen,
+self-contained snapshot under [`models/`](models/README.md), pinned to a git
+tag, with a [`MODELS.md`](MODELS.md) entry, a `registry.json` entry, and a
+model card in `research-docs/model-cards/`. A new release means a **new**
+frozen `models/gatsby-nanogpt-N/` folder plus all four records — see
+[`docs/releasing.md`](../../docs/releasing.md).

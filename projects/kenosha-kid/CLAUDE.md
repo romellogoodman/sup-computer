@@ -52,7 +52,9 @@ with [`README.md`](README.md); the lineage is in [`docs/sources.md`](docs/source
 
 ## Releases
 
-When a checkpoint is worth pinning, adopt the sibling convention (see
-`projects/gatsby/`): a frozen, self-contained `models/kenosha-kid-nanogpt-N/`
-snapshot, a registry entry in the top-level `registry.json`, and a model card in
-`research-docs/model-cards/`. Until then the repo is a working pipeline at the root.
+`kenosha-kid-nanogpt-1` has shipped: a frozen, self-contained snapshot under
+[`models/`](models/README.md), pinned to the `kenosha-kid-nanogpt-1` git tag,
+with a [`MODELS.md`](MODELS.md) entry, a `registry.json` entry, and a model
+card in `research-docs/model-cards/`. A new release means a **new** frozen
+`models/kenosha-kid-nanogpt-N/` folder plus all four records — see
+[`docs/releasing.md`](../../docs/releasing.md).
