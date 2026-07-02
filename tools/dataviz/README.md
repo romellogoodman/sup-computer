@@ -28,7 +28,10 @@ stack); the visual tokens mirror the site:
   (no embedded webfont).
 - headings at weight 700; **no corner radius** (flat, stark frame).
 - one green accent; ink + grays carry the rest; **muted red = regression**.
-- light + dark themes use the website's exact `--color-*` token values.
+- light + dark: the *structural* tokens (surface, text, grid, accent green)
+  mirror the website's exact `--color-*` values; the categorical data hues are
+  chart-specific (the site has no chart palette). When `globals.css` changes a
+  mirrored value, update `tokens.py` to match.
 
 Tokens live in [`designsystem/tokens.py`](designsystem/tokens.py).
 
@@ -59,17 +62,22 @@ shells out to headless Chrome (override the binary with `DATAVIZ_CHROME`, or pas
 
 ### Charts produced
 
-| File | What it shows |
-|------|---------------|
-| `bpc-by-round` | Test BPC across baseline + 4 research rounds (the 20% drop; R4 regression) |
-| `data-win` | Round 1: held-out BPC, 1MB control vs 5MB full (more data alone) |
-| `bpe-overfit` | Round 3: train vs val loss — BPE overfits, best-val checkpoint kept |
-| `researcher-efficiency` | ΔBPC per 100K Claude tokens per round (diminishing returns) |
-| `training-loss` | Baseline validation loss descending 4.28 → 1.46 |
+| File | Report | What it shows |
+|------|--------|---------------|
+| `exp01-bpc-by-round` | [improve-a-small-model](../../research-docs/reports/improve-a-small-model.md) | Test BPC across baseline + 4 research rounds (the 20% drop; R4 regression) |
+| `exp01-data-win` | improve-a-small-model | Round 1: held-out BPC, 1MB control vs 5MB full (more data alone) |
+| `exp01-bpe-overfit` | improve-a-small-model | Round 3: train vs val loss — BPE overfits, best-val checkpoint kept |
+| `exp01-researcher-efficiency` | improve-a-small-model | ΔBPC per 100K Claude tokens per round (diminishing returns) |
+| `exp01-training-loss` | improve-a-small-model | Baseline validation loss descending 4.28 → 1.46 |
+| `exp02-dial-v2-v3` | [obsession-on-a-dial](../../research-docs/reports/obsession-on-a-dial.md) | The green dial, corpus v2 (flat) vs v3 (monotonic) |
+| `exp02-corpus-vs-model` | obsession-on-a-dial | Corpus signal vs trained-model behaviour across levels |
+| `exp03-loss-transition` | [dream-a-single-phrase](../../research-docs/reports/dream-a-single-phrase.md) | The memorization phase transition (val loss vs dreaminess) |
+| `exp04-loss-r1-vs-r2` | [mixture-of-models](../../research-docs/reports/mixture-of-models.md) | Mixture rounds: r1 vs r2 training curves |
+| `exp04-dial` | mixture-of-models | The recovered dial after rebalancing the blend |
+| `exp04-corpus-dial-by-model` | mixture-of-models | Corpus dial signal per mixture model |
 
-These are also exported as light/dark PNGs into [`../../research-docs/reports/assets/`](../../research-docs/reports/assets/)
-(named `exp01-<chart>.<mode>.png`) and embedded in [Experiment 01](../../research-docs/reports/improve-a-small-model.md)
-via `<picture>` so they follow the reader's color scheme.
+All are exported as light/dark PNGs into [`../../research-docs/reports/assets/`](../../research-docs/reports/assets/)
+and embedded in their report via `<picture>` so they follow the reader's color scheme.
 
 Open any `output/*.html` in a browser, or copy the inner `<svg>` for static embeds.
 

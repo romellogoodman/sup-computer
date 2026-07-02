@@ -1,11 +1,14 @@
-"""Build the shakespeare-nanogpt experiment-report charts.
+"""Build every experiment report's charts (exp01–exp04; see JOBS at the bottom).
 
-Renders the report's charts in the studio document style (light + dark; see
-designsystem/tokens.py and ADR-0018) as
-self-contained HTML into output/, then exports light/dark PNGs into
-../../research-docs/reports/assets/ (named exp01-<chart>.<mode>.png) for embedding in
-research-docs/reports/experiment-01.md via <picture>. Data sourced from the project's
-projects/shakespeare/leaderboard.md, projects/shakespeare/runs/, and the project README.
+Renders the charts in the studio document style (light + dark; see
+designsystem/tokens.py and ADR-0018) as self-contained HTML into output/, then
+exports light/dark PNGs into ../../research-docs/reports/assets/
+(named <expNN>-<chart>.<mode>.png) for embedding in the reports via <picture>.
+
+NOTE ON DATA: chart values are transcribed as literals into this file at
+authoring time, from the sources each caption cites (project leaderboards,
+runs/ logs). The cited file is the source of truth — if a leaderboard number
+changes, the literal here must be re-transcribed and the chart regenerated.
 
     python build.py            # build all charts, both modes, HTML + PNG
     python build.py --light    # light only

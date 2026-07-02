@@ -40,6 +40,11 @@ change, in `designsystem/tokens.py`:
   their values are retoned.
 - **Shared tokens.** `LIGHT`/`DARK` use the website's exact `--color-*` values, so a
   chart's light/dark variants line up with the page in either color scheme.
+  *(Clarification, June 2026: "exact" covers the structural tokens — surface,
+  text, grid, accent green — which map 1:1 to named `--color-*` variables. The
+  categorical data hues (amber/teal/purple/pink, ink-blue, muted red) are
+  chart-specific; the site has no chart palette to mirror. `tokens.py` comments
+  name each mirrored source variable so the two stay in sync.)*
 
 All committed report figures were **regenerated** (`python build.py`) so existing
 reports show the new style.

@@ -11,8 +11,12 @@ The chart visual language matches the studio website's refined "Prof. Dr." style
   - one sparing green accent; ink + grays carry the rest. The link-blue is a UI
     color, not a data color, so the default data hue is ink (mono). Red is kept,
     muted, for regression/error semantics.
-  - light + dark themes use the website's exact --color-* token values, so charts
-    follow the reader's color scheme via the reports' <picture> embeds.
+  - the STRUCTURAL tokens (surface, text, grid, accent green) mirror the
+    website's --color-* values exactly, so charts follow the reader's color
+    scheme via the reports' <picture> embeds. The categorical data hues
+    (amber/teal/purple/pink, ink-blue, muted red) are chart-specific — the
+    website has no chart palette to mirror. When globals.css changes a
+    mirrored value, change it here too (the comments name each source token).
 """
 
 # --- Typography (system fonts; serif for titles, mono for data) -------------
@@ -51,7 +55,7 @@ LIGHT = {
     "surfaceAlt":  "#f5f5f3",  # --color-surface
     "primary":     "#161616",  # --color-text  (titles, axis lines)
     "secondary":   "#565656",  # --color-text-muted (labels)
-    "muted":       "#8a8a8a",  # --color-text-faint (captions)
+    "muted":       "#767676",  # --color-text-faint (captions)
     "grid":        "#e6e6e3",  # --color-border (gridlines — recede)
     "tooltipBg":   "#161616",
     "tooltipText": "#ffffff",
@@ -70,14 +74,14 @@ DARK = {
     "surfaceAlt":  "#17181a",  # --color-surface (dark)
     "primary":     "#e9e8e4",  # --color-text (dark)
     "secondary":   "#a6a6a2",  # --color-text-muted (dark)
-    "muted":       "#7a7a78",  # --color-text-faint (dark)
+    "muted":       "#858582",  # --color-text-faint (dark)
     "grid":        "#2b2c2f",  # --color-border (dark)
     "tooltipBg":   "#e9e8e4",
     "tooltipText": "#0e0f10",
     "blue":    "#d0d0cb",  # ink — primary data (dark)
     "green":   "#5fb87a",  # --color-accent (dark)
     "red":     "#d97064",  # muted regression (dark)
-    "neutral": "#5a5a5e",
+    "neutral": "#494a4e",  # --color-rule-strong (dark)
     "amber":   "#cfa53e",
     "teal":    "#5fa6a6",
     "purple":  "#a98fd0",
