@@ -1,0 +1,19 @@
+number of parameters: 2.66M
+[regular] t0.6_c2.0: clean 10/10, legal 1/197 (0.5%), forced 153  (75s)
+[regular] t0.6_c4.0: clean 10/10, legal 13/186 (7.0%), forced 53  (116s)
+[regular] t0.6_c8.0: clean 10/10, legal 78/194 (40.2%), forced 21  (137s)
+[regular] t0.6_cNone: clean 10/10, legal 105/192 (54.7%), forced 9  (151s)
+[regular] t0.8_c2.0: clean 10/10, legal 2/199 (1.0%), forced 165  (218s)
+[regular] t0.8_c4.0: clean 10/10, legal 10/171 (5.8%), forced 62  (256s)
+[regular] t0.8_c8.0: clean 10/10, legal 67/193 (34.7%), forced 21  (278s)
+[regular] t0.8_cNone: clean 10/10, legal 68/199 (34.2%), forced 17  (297s)
+[regular] t1.0_c2.0: clean 10/10, legal 1/192 (0.5%), forced 173  (367s)
+[regular] t1.0_c4.0: clean 10/10, legal 10/190 (5.3%), forced 98  (420s)
+[regular] t1.0_c8.0: clean 10/10, legal 41/212 (19.3%), forced 47  (455s)
+[regular] t1.0_cNone: clean 10/10, legal 85/254 (33.5%), forced 20  (481s)
+[regular] t1.2_c2.0: clean 10/10, legal 0/177 (0.0%), forced 163  (547s)
+[regular] t1.2_c4.0: clean 10/10, legal 5/139 (3.6%), forced 83  (587s)
+[regular] t1.2_c8.0: clean 10/10, legal 31/194 (16.0%), forced 45  (622s)
+[regular] t1.2_cNone: clean 10/10, legal 72/240 (30.0%), forced 23  (650s)
+[regular] wrote /Users/romello/code/sup-computer/projects/daydream/runs/dreaminess-sweep/regular-sweep.json in 650s
+[regular] wrote /Users/romello/code/sup-computer/projects/daydream/runs/dreaminess-sweep/regular-transcripts.md

@@ -1,0 +1,19 @@
+number of parameters: 4.73M
+[grand] t0.6_c2.0: clean 10/10, legal 2/153 (1.3%), forced 131  (55s)
+[grand] t0.6_c4.0: clean 10/10, legal 5/198 (2.5%), forced 99  (110s)
+[grand] t0.6_c8.0: clean 10/10, legal 54/199 (27.1%), forced 25  (136s)
+[grand] t0.6_cNone: clean 10/10, legal 98/210 (46.7%), forced 18  (157s)
+[grand] t0.8_c2.0: clean 10/10, legal 1/210 (0.5%), forced 193  (240s)
+[grand] t0.8_c4.0: clean 10/10, legal 11/168 (6.5%), forced 95  (289s)
+[grand] t0.8_c8.0: clean 10/10, legal 47/193 (24.4%), forced 33  (316s)
+[grand] t0.8_cNone: clean 10/10, legal 89/208 (42.8%), forced 20  (338s)
+[grand] t1.0_c2.0: clean 10/10, legal 0/159 (0.0%), forced 151  (404s)
+[grand] t1.0_c4.0: clean 10/10, legal 2/157 (1.3%), forced 109  (456s)
+[grand] t1.0_c8.0: clean 10/10, legal 29/172 (16.9%), forced 30  (488s)
+[grand] t1.0_cNone: clean 10/10, legal 71/216 (32.9%), forced 30  (520s)
+[grand] t1.2_c2.0: clean 10/10, legal 0/164 (0.0%), forced 160  (604s)
+[grand] t1.2_c4.0: clean 10/10, legal 2/207 (1.0%), forced 170  (692s)
+[grand] t1.2_c8.0: clean 10/10, legal 25/159 (15.7%), forced 38  (724s)
+[grand] t1.2_cNone: clean 10/10, legal 63/187 (33.7%), forced 32  (755s)
+[grand] wrote /Users/romello/code/sup-computer/projects/daydream/runs/dreaminess-sweep/grand-sweep.json in 755s
+[grand] wrote /Users/romello/code/sup-computer/projects/daydream/runs/dreaminess-sweep/grand-transcripts.md

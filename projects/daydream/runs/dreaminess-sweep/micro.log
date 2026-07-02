@@ -1,0 +1,19 @@
+number of parameters: 0.79M
+[micro] t0.6_c2.0: clean 10/10, legal 4/119 (3.4%), forced 74  (29s)
+[micro] t0.6_c4.0: clean 10/10, legal 17/101 (16.8%), forced 18  (43s)
+[micro] t0.6_c8.0: clean 10/10, legal 29/101 (28.7%), forced 8  (53s)
+[micro] t0.6_cNone: clean 10/10, legal 47/101 (46.5%), forced 10  (61s)
+[micro] t0.8_c2.0: clean 10/10, legal 2/101 (2.0%), forced 67  (86s)
+[micro] t0.8_c4.0: clean 10/10, legal 5/83 (6.0%), forced 21  (100s)
+[micro] t0.8_c8.0: clean 10/10, legal 28/106 (26.4%), forced 9  (110s)
+[micro] t0.8_cNone: clean 10/10, legal 39/104 (37.5%), forced 4  (118s)
+[micro] t1.0_c2.0: clean 10/10, legal 1/91 (1.1%), forced 63  (142s)
+[micro] t1.0_c4.0: clean 10/10, legal 7/100 (7.0%), forced 36  (160s)
+[micro] t1.0_c8.0: clean 10/10, legal 30/102 (29.4%), forced 7  (170s)
+[micro] t1.0_cNone: clean 10/10, legal 21/96 (21.9%), forced 5  (180s)
+[micro] t1.2_c2.0: clean 10/10, legal 0/96 (0.0%), forced 84  (209s)
+[micro] t1.2_c4.0: clean 10/10, legal 4/108 (3.7%), forced 45  (231s)
+[micro] t1.2_c8.0: clean 10/10, legal 18/93 (19.4%), forced 12  (242s)
+[micro] t1.2_cNone: clean 10/10, legal 27/97 (27.8%), forced 9  (251s)
+[micro] wrote /Users/romello/code/sup-computer/projects/daydream/runs/dreaminess-sweep/micro-sweep.json in 251s
+[micro] wrote /Users/romello/code/sup-computer/projects/daydream/runs/dreaminess-sweep/micro-transcripts.md
