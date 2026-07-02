@@ -143,6 +143,8 @@ def export(folder, out_dir, quantize=True):
         output_names=["logits"],
         dynamic_axes={"tokens": {0: "batch", 1: "seq"}, "logits": {0: "batch"}},
         opset_version=17,  # >=14 needed for scaled_dot_product_attention (v2)
+        dynamo=False,  # this script is built around the TorchScript exporter
+                       # (newer torch defaults to dynamo, which needs onnxscript)
     )
 
     # --- parity check or die ----------------------------------------------
