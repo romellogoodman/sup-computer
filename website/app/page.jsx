@@ -9,6 +9,7 @@ export default function Home() {
 
   return (
     <>
+      <h1 className="sr-only">sup computer — a small language model studio</h1>
       <div className="intro">
         <p>
           sup computer is a research studio building small language models from
