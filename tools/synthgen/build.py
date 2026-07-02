@@ -73,7 +73,7 @@ def main():
             prompt = f.read().strip()
     if not prompt:
         prompt = DEMO_PROMPT
-        print(f"(no --prompt given; using the demo prompt)\n")
+        print("(no --prompt given; using the demo prompt)\n")
 
     # resolve model mix
     if args.models:
@@ -132,7 +132,7 @@ def main():
     chars = manifest["counts"]["corpus_chars"]
     print(f"\nwrote {len(kept)} docs ({chars:,} chars) -> {corpus_path}")
     print(f"wrote provenance manifest        -> {manifest_path}")
-    print(f"\nnext: cd <project> && python prepare.py   # raw.txt is a drop-in")
+    print("\nnext: cd <project> && python prepare.py   # raw.txt is a drop-in")
 
 
 if __name__ == "__main__":

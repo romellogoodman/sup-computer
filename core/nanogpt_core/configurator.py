@@ -43,7 +43,7 @@ for arg in sys.argv[1:]:
             default = globals()[key]
             if isinstance(default, float) and isinstance(attempt, int) and not isinstance(attempt, bool):
                 attempt = float(attempt)
-            if type(attempt) != type(default):
+            if type(attempt) is not type(default):
                 raise ValueError(f"bad type for --{key}: got {type(attempt).__name__}, expected {type(default).__name__}")
             # cross fingers
             print(f"Overriding: {key} = {attempt}")

@@ -1,0 +1,40 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # check_integrity verifies registry git tags
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+      - name: Lint (ruff)
+        run: uvx ruff check .
+      - name: Repo integrity (registry, links, weights)
+        run: python3 tools/check_integrity.py
+      - name: Install workspace
+        run: uv sync --group dev --extra export
+      - name: Core smoke tests
+        run: uv run --group dev pytest core/tests/ -q
+
+  website:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+      - name: Build the site (runs sync-content via prebuild)
+        working-directory: website
+        run: |
+          npm ci
+          npm run build

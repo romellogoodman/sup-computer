@@ -12,8 +12,13 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# export.py only — ONNX conversion + quantization
-export = ["onnx", "onnxruntime"]
+# export.py only — ONNX conversion + quantization.
+# onnxruntime >=1.20 ships no CPython 3.9 wheels, hence the fork.
+export = [
+    "onnx",
+    "onnxruntime<1.20; python_version < '3.10'",
+    "onnxruntime; python_version >= '3.10'",
+]
 
 [dependency-groups]
 dev = ["pytest>=8"]

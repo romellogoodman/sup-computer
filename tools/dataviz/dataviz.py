@@ -32,7 +32,7 @@ import os
 from html import escape
 
 from designsystem.tokens import (
-    FONT_SERIF, FONT_MONO, TYPE, SPACE, RADIUS, CAP_H, HUE_ORDER, theme,
+    FONT_SERIF, FONT_MONO, TYPE, SPACE, RADIUS, CAP_H, theme,
 )
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
@@ -327,7 +327,7 @@ def bar(spec: dict, mode: str = "light") -> str:
 # --- line chart -------------------------------------------------------------
 def line(spec: dict, mode: str = "light") -> str:
     tk = theme(mode)
-    L, M, S, XS = SPACE["L"], SPACE["M"], SPACE["S"], SPACE["XS"]
+    L, M, S = SPACE["L"], SPACE["M"], SPACE["S"]
     xs = spec["x"]
     series = spec["series"]
     fmt = spec.get("valueFmt", "{:.2f}")
