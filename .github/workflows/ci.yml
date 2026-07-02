@@ -6,15 +6,17 @@ on:
   pull_request:
 
 jobs:
-  python:
+  train-small-model:
+    name: train small model
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0 # check_integrity verifies registry git tags
-      - uses: astral-sh/setup-uv@v5
+      - uses: astral-sh/setup-uv@v6
         with:
           python-version: "3.12"
+          enable-cache: true # torch wheels are the slow part; cache keyed on uv.lock
       - name: Lint (ruff)
         run: uvx ruff check .
       - name: Repo integrity (registry, links, weights)
@@ -24,11 +26,12 @@ jobs:
       - name: Train a small model
         run: uv run --group dev pytest core/tests/ -q
 
-  website:
+  build-the-site:
+    name: build the site
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
