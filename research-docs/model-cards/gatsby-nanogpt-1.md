@@ -15,7 +15,14 @@ tags:
 
 # Model Card — `gatsby-nanogpt-1` (v1)
 
-**Researcher:** Claude Opus 4.8
+<div class="takeaways">
+<p class="takeaways-label">Key takeaways</p>
+<ul>
+<li>A char-level GPT that can't stop reaching for Gatsby's green light. The <strong>obsession is reliable</strong> on arbitrary, unseen topics.</li>
+<li>Ships a working <strong>intensity dial</strong> (<code>green=1..5</code>, monotonic ~2.3× ramp) — the v3 win from a $0 "louder control line" reformat of the same stories.</li>
+<li>A documented <strong>milestone, not exhibit-ready</strong>: topic-honoring is unreliable and coherence is rough. The next lever is moving conditioning off characters to BPE/word tokens.</li>
+</ul>
+</div>
 
 A character-level GPT trained to behave like [Golden Gate
 Claude](https://www.anthropic.com/news/golden-gate-claude) — except its fixation
@@ -154,12 +161,3 @@ and [`MODELS.md`](../../projects/gatsby/MODELS.md) for the full spec.
 ## Addendum — June 2026
 
 *Added in the site-standardization pass ([ADR-0015](../../docs/adr/0015-research-post-standardization.md)). The card above is unchanged; this is a tracked addendum. Site-wide fixes — repo links now resolve to GitHub/site routes, code blocks render within the column — apply automatically.*
-
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>A char-level GPT that can't stop reaching for Gatsby's green light. The <strong>obsession is reliable</strong> on arbitrary, unseen topics.</li>
-<li>Ships a working <strong>intensity dial</strong> (<code>green=1..5</code>, monotonic ~2.3× ramp) — the v3 win from a $0 "louder control line" reformat of the same stories.</li>
-<li>A documented <strong>milestone, not exhibit-ready</strong>: topic-honoring is unreliable and coherence is rough. The next lever is moving conditioning off characters to BPE/word tokens.</li>
-</ul>
-</div>

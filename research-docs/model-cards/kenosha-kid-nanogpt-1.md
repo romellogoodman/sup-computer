@@ -15,7 +15,14 @@ tags:
 
 # Model Card — `kenosha-kid-nanogpt-1` (v1)
 
-**Researcher:** Claude Opus 4.8
+<div class="takeaways">
+<p class="takeaways-label">Key takeaways</p>
+<ul>
+<li>A <strong>0.79M-param</strong> char-level model whose entire corpus is punctuated permutations of six words — <em>"You never did the Kenosha Kid."</em></li>
+<li>The released checkpoint is <strong>deliberately mid-transition</strong> (val ~0.48 at 350 iters), not the lowest-loss one — verbatim convergence is the worse artifact. The dream is the deliverable.</li>
+<li>Dreaminess is a <strong>two-knob surface</strong> — training progress and sampling temperature — and reads best at <code>temperature 0.9</code>.</li>
+</ul>
+</div>
 
 A character-level GPT whose **entire universe is six words** — *you never did the
 kenosha kid*, the telegram Tyrone Slothrop reconstrues under sodium amytal in
@@ -174,12 +181,3 @@ write-up [`dream-a-single-phrase.md`](../reports/dream-a-single-phrase.md).
 ## Addendum — June 2026
 
 *Added in the site-standardization pass ([ADR-0015](../../docs/adr/0015-research-post-standardization.md)). The card above is unchanged; this is a tracked addendum. Site-wide fixes — repo links now resolve to GitHub/site routes, code blocks render within the column — apply automatically.*
-
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>A <strong>0.79M-param</strong> char-level model whose entire corpus is punctuated permutations of six words — <em>"You never did the Kenosha Kid."</em></li>
-<li>The released checkpoint is <strong>deliberately mid-transition</strong> (val ~0.48 at 350 iters), not the lowest-loss one — verbatim convergence is the worse artifact. The dream is the deliverable.</li>
-<li>Dreaminess is a <strong>two-knob surface</strong> — training progress and sampling temperature — and reads best at <code>temperature 0.9</code>.</li>
-</ul>
-</div>

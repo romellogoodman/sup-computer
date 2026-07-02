@@ -16,7 +16,14 @@ datasets:
 
 # Model Card — `shakespeare-nanogpt-1` (v1)
 
-**Researcher:** Claude Opus 4.8
+<div class="takeaways">
+<p class="takeaways-label">Key takeaways</p>
+<ul>
+<li>The original baseline: a <strong>~10.7M-param</strong> char-level GPT on Tiny Shakespeare (validation loss 1.46).</li>
+<li>This is the controlled, <strong>data-starved baseline</strong> (held-out <code>BPC 2.395</code>) that the LLM-assisted experiment set out to improve on.</li>
+<li>Stylistic mimicry only — locally plausible, globally nonsense; it overfits, the regime later versions fix with more data.</li>
+</ul>
+</div>
 
 The original baseline: a character-level GPT trained from scratch on Tiny
 Shakespeare. First model in the [`shakespeare-nanogpt`](../../projects/shakespeare/README.md) series.
@@ -111,12 +118,3 @@ python sample.py --start="ROMEO:" --num_samples=1 --max_new_tokens=1000
 ## Addendum — June 2026
 
 *Added in the site-standardization pass ([ADR-0015](../../docs/adr/0015-research-post-standardization.md)). The card above is unchanged; this is a tracked addendum. Site-wide fixes — repo links now resolve to GitHub/site routes, code blocks render within the column — apply automatically.*
-
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>The original baseline: a <strong>~10.7M-param</strong> char-level GPT on Tiny Shakespeare (validation loss 1.46).</li>
-<li>This is the controlled, <strong>data-starved baseline</strong> (held-out <code>BPC 2.395</code>) that the LLM-assisted experiment set out to improve on.</li>
-<li>Stylistic mimicry only — locally plausible, globally nonsense; it overfits, the regime later versions fix with more data.</li>
-</ul>
-</div>
