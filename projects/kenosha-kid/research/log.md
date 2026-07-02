@@ -20,6 +20,66 @@ for the soft-capping "dreaminess" knob that a later project (daydream) needs.
 
 ---
 
+## 2026-07-02 — the drift corpus (decoupling anchors from near-misses)
+
+The champion couples its two dream-qualities — crisp anchors and near-misses —
+through *undertraining*: near-misses only exist mid-transition, and the converged
+r1 (val 0.43) is "too clean" (zero misspellings). The report
+([`dream-a-single-phrase.md`](../../../research-docs/reports/dream-a-single-phrase.md))
+named the fix: *"a corpus that itself drifts."* This round tests it, plus a free
+sampler-side probe.
+
+**Tooling.** Added `eval_dream.py`, an automated **dream-score** so runs are
+comparable, not eyeballed: over ~430 sampled lines it reports **anchor-recall**
+(fraction verbatim = 1 of the 9 anchors; how many of 9 are covered) and a
+**near-miss / garble** breakdown (per word, edit-distance to the six canon words:
+1–2 = near-miss, ≥3 = garble). Baselines confirm the coupling — r1 converged:
+anchor_hit **0.225 / 9-of-9** but near-miss **0.000**; champion r3-mid: near-miss
+**0.037** but anchor_hit only **0.042 / 3-of-9**.
+
+### Experiment A — the drift corpus (headline; **it works**)
+
+Added a `DRIFT_RATE` knob to `generate.py`: a per-letter misspelling channel
+(adjacent swap / doubling / drop / substitution) applied to the **tail
+(permutation) lines only** — the 9 anchors stay **pristine, verbatim**. Drift
+uses its own derived RNG (`SEED + 1000`); at `DRIFT_RATE=0.0` the corpus
+regenerates **byte-for-byte** identical to the committed `data/raw.txt` (verified
+via diff). Two drift corpora (v2), each trained to a **converged** 1100 iters
+(past the ~700 plateau):
+
+- **drift-r1** (drift 0.06, val 0.65): anchor_hit **0.138 / 9-of-9**, near-miss
+  **0.331**, garble **0.002**. Crisp anchors **and** abundant near-misses, near-zero
+  garble — the sweet spot. 9× the champion's near-miss rate while covering all 9
+  anchors verbatim.
+- **drift-r2** (drift 0.14, val 0.85): anchor_hit **0.131 / 8-of-9**, near-miss
+  **0.592**, garble 0.035. Heavier drift → more near-misses, a little garble, one
+  lost anchor. `DRIFT_RATE` is a clean dial.
+
+**Finding — drift decouples the two knobs.** A fully-converged (low-loss) model
+now reproduces the anchors crisply *and* dreams the near-misses, because the
+near-misses live in the corpus rather than in a stopping point. This is the thing
+the champion structurally cannot do. Note the val floor rises (0.43 → 0.65 →
+0.85): the drift is genuine entropy, so "converged" means *plateaued on its own
+corpus*, not low absolute loss. Samples in
+[`../runs/drift-samples.md`](../runs/drift-samples.md).
+
+### Experiment B — MC-dropout at inference (free, no retraining; **coupled**)
+
+Kept dropout layers active at sampling time (`model.train()`) on the converged
+pristine r1. At the trained **p=0.2** it injects essentially no near-misses
+(0.002) and only dents anchor recall (0.225 → 0.118, still 9/9) — the spellings
+are too locked-in for activation noise to crack. Cranked to **p=0.4** it finally
+forces near-misses (0.252) but anchor recall collapses (9/9 → 2/9). So MC-dropout
+is another **coupled** knob (like undertraining and temperature): drift only at
+the price of the anchors. It does **not** achieve crisp-anchors-and-abundant-
+near-misses. Samples in
+[`../runs/mcdropout-samples.md`](../runs/mcdropout-samples.md).
+
+**Verdict.** Experiment A achieves the goal (crisp anchors **and** abundant
+near-misses from a converged model); Experiment B does not (it re-couples them).
+The drift corpus is the real decoupling mechanism the report predicted. No
+release row / model card touched — exploratory round left uncommitted for review.
+
 ## 2026-06-28 — setup
 
 - Decided char-level on the **shared core** engine (not a vendored base engine):

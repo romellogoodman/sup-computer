@@ -15,18 +15,27 @@ char model. No core changes; kenosha-kid rides the shared engine as-is.
 Run from the repo root:
     uv run python projects/kenosha-kid/prepare.py
 """
+import argparse
 import os
 import pickle
 
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-RAW = os.path.join(HERE, "data", "raw.txt")
-OUT_DIR = os.path.join(HERE, "data", "kenosha")  # data_root=<.../data>, dataset='kenosha'
+
+ap = argparse.ArgumentParser(description="char-level tokenization for kenosha-kid")
+ap.add_argument("--raw", default=os.path.join(HERE, "data", "raw.txt"),
+                help="input corpus (default: data/raw.txt)")
+ap.add_argument("--dataset", default="kenosha",
+                help="dataset name → data/<dataset>/{train,val}.bin+meta.pkl (default: kenosha)")
+args = ap.parse_args()
+
+RAW = args.raw
+OUT_DIR = os.path.join(HERE, "data", args.dataset)  # data_root=<.../data>, dataset=<args.dataset>
 
 with open(RAW, "r") as f:
     data = f.read()
-print(f"corpus: {len(data):,} characters")
+print(f"corpus: {len(data):,} characters  ({RAW})")
 
 chars = sorted(list(set(data)))
 vocab_size = len(chars)

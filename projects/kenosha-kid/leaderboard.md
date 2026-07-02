@@ -13,3 +13,25 @@ sampled warm. Verbatim-perfect convergence is a *loss*, not a win.
 
 L/H/E = n_layer / n_head / n_embd. "Score" here is the dream/verbatim balance, not
 val loss — r1 has the lowest loss and is the *worst* artifact.
+
+## 2026-07-02 round — drift corpus + MC-dropout (exploratory, uncommitted)
+
+Automated dream-score via `eval_dream.py` (~430 lines/run, T=0.9): **anchor_hit**
+= fraction of lines verbatim = 1 of 9 anchors, **9** = anchors covered/9,
+**near-miss** = fraction of lines with a 1–2 edit-distance drift word, **garble** =
+lines with a ≥3-distance word. corpus v2 = drifted tail (`DRIFT_RATE`), anchors
+pristine. Goal: crisp anchors **AND** abundant near-misses from a *converged* model.
+
+| run | corpus | iters | val | anchor_hit | 9 | near-miss | garble | verdict |
+|---|---|---|---|---|---|---|---|---|
+| r1 (baseline) | v1 | 2000 | 0.43 | 0.225 | 9/9 | 0.000 | 0.000 | crisp anchors, no near-misses |
+| r3-mid (baseline) | v1 | 350 | 0.48 | 0.042 | 3/9 | 0.037 | 0.012 | couples both via undertraining |
+| **drift-r1** | v2, drift 0.06 | 1100 | 0.65 | 0.138 | **9/9** | **0.331** | 0.002 | **crisp anchors + abundant near-misses (win)** |
+| drift-r2 | v2, drift 0.14 | 1100 | 0.85 | 0.131 | 8/9 | 0.592 | 0.035 | heavier drift; more near-miss, some garble |
+| r1 + MC-dropout p=0.2 | v1 | 2000 | 0.43 | 0.118 | 9/9 | 0.002 | 0.000 | dropout too weak to drift spellings |
+| r1 + MC-dropout p=0.4 | v1 | 2000 | 0.43 | 0.009 | 2/9 | 0.252 | 0.051 | near-misses only by wrecking anchors (coupled) |
+
+**Drift decouples; MC-dropout does not.** drift-r1 is the only converged model
+with crisp anchors *and* abundant near-misses. Samples:
+[`runs/drift-samples.md`](runs/drift-samples.md),
+[`runs/mcdropout-samples.md`](runs/mcdropout-samples.md). No released row edited.
