@@ -318,12 +318,17 @@ def write_corpus(kept: list[Sample], path: str, separator: str = "\n\n",
 
 
 def build_manifest(samples, kept, dropped, *, prompt, params, separator="\n\n",
-                   prefix_fn=None, now=None, base=BASE) -> dict:
+                   prefix_fn=None, now=None, base=BASE, corpus_path=None) -> dict:
     """Build the run manifest — the crown-jewel reproducibility record.
 
     ``now`` is injectable (pass a fixed ``datetime`` in tests); defaults to UTC
     now. Kept samples record their character ``offset``/``length`` into the
     written ``raw.txt`` so each corpus document is locatable by provenance.
+
+    The offsets are recomputed from ``separator``/``prefix_fn``, so they are
+    only correct if ``write_corpus`` was called with the SAME two arguments.
+    Pass ``corpus_path`` (the file ``write_corpus`` wrote) to verify that at
+    runtime instead of trusting the caller.
     """
     ts = (now or datetime.now(timezone.utc))
     if isinstance(ts, datetime):
@@ -345,6 +350,16 @@ def build_manifest(samples, kept, dropped, *, prompt, params, separator="\n\n",
         rec.update({"offset": offset, "length": len(doc), "preview": _preview(s.text)})
         sample_records.append(rec)
         offset += len(doc)
+
+    if corpus_path is not None:
+        with open(corpus_path, encoding="utf-8") as f:
+            written = len(f.read())
+        if written != offset:
+            raise ValueError(
+                f"manifest offsets ({offset} chars) don't match {corpus_path} "
+                f"({written} chars) — write_corpus and build_manifest must be "
+                "called with the same separator and prefix_fn"
+            )
 
     tok_prompt = sum(s.prompt_tokens for s in samples)
     tok_completion = sum(s.completion_tokens for s in samples)

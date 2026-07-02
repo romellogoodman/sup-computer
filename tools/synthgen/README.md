@@ -95,17 +95,23 @@ for d in dropped:
 sg.write_corpus(kept, "output/raw.txt")
 manifest = sg.build_manifest(samples, kept, dropped,
                              prompt="Write a tiny story.",
-                             params={"jaccard_threshold": 0.85})
+                             params={"jaccard_threshold": 0.85},
+                             corpus_path="output/raw.txt")  # verifies the offsets
 sg.write_manifest(manifest, "output/manifest.json")
 ```
 
 A **project control line** (e.g. gatsby's `[green=N] topic: ...` prime) is added
 without baking project logic into the engine — pass `prefix_fn` to
-`write_corpus` / `build_manifest`:
+`write_corpus` / `build_manifest`. The manifest's per-doc offsets are recomputed
+from `separator`/`prefix_fn`, so **pass the same two arguments to both calls** —
+`corpus_path` makes a mismatch a loud error instead of silently wrong provenance:
 
 ```python
 sg.write_corpus(kept, "data/raw.txt",
                 prefix_fn=lambda s: f"[model={s.model}]\n")
+manifest = sg.build_manifest(samples, kept, dropped, prompt=..., params=...,
+                             prefix_fn=lambda s: f"[model={s.model}]\n",
+                             corpus_path="data/raw.txt")
 ```
 
 ## How it maps to `prepare.py`

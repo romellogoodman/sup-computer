@@ -126,7 +126,8 @@ def main():
     manifest_path = os.path.join(args.out, args.manifest_name)
     sg.write_corpus(kept, corpus_path)
     manifest = sg.build_manifest(samples, kept, dropped, prompt=prompt,
-                                 params=params, base=args.base)
+                                 params=params, base=args.base,
+                                 corpus_path=corpus_path)
     sg.write_manifest(manifest, manifest_path)
 
     chars = manifest["counts"]["corpus_chars"]
