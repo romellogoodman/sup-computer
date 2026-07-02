@@ -13,7 +13,7 @@
       "researcher": "claude-opus-4-8",
       "tokenizer": { "type": "char", "vocab_size": 65 },
       "params": 10700000,
-      "held_out_bpc": null,
+      "held_out_bpc": 2.395,
       "frozen_code": "projects/shakespeare/models/shakespeare-nanogpt-1/",
       "model_card": "research-docs/model-cards/shakespeare-nanogpt-1.md",
       "artifacts": { "checkpoint": null, "onnx": null, "onnx_int8": null }
