@@ -1,8 +1,18 @@
 import "./globals.css";
+import { SITE_URL } from "../lib/content";
 
 export const metadata = {
-  title: "sup computer",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "sup computer",
+    template: "%s · sup computer",
+  },
   description: "a small language model studio",
+  openGraph: {
+    siteName: "sup computer",
+    type: "website",
+    url: "/",
+  },
 };
 
 export default function RootLayout({ children }) {

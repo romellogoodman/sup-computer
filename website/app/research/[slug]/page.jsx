@@ -6,6 +6,23 @@ export function generateStaticParams() {
   return getReports().map((r) => ({ slug: r.slug }));
 }
 
+export function generateMetadata({ params }) {
+  const r = getReport(params.slug);
+  if (!r) return {};
+  const { title, summary, date } = r.frontmatter;
+  return {
+    title,
+    description: summary,
+    openGraph: {
+      title,
+      description: summary,
+      type: "article",
+      url: `/research/${r.slug}/`,
+      publishedTime: date ? new Date(date).toISOString() : undefined,
+    },
+  };
+}
+
 export default function Report({ params }) {
   const r = getReport(params.slug);
   if (!r) return notFound();

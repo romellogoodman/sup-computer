@@ -6,6 +6,17 @@ export function generateStaticParams() {
   return getRegistry().models.map((m) => ({ id: m.id }));
 }
 
+export function generateMetadata({ params }) {
+  const m = getRegistry().models.find((x) => x.id === params.id);
+  if (!m) return {};
+  const description = `${m.architecture} · ${m.tokenizer.type} tokenizer · ${m.params.toLocaleString("en-US")} parameters`;
+  return {
+    title: m.id,
+    description,
+    openGraph: { title: m.id, description, url: `/models/${m.id}/` },
+  };
+}
+
 export default function Model({ params }) {
   const m = getRegistry().models.find((x) => x.id === params.id);
   if (!m) return notFound();
