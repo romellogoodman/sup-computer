@@ -10,6 +10,11 @@
       "name": "Claude Fable 5",
       "vendor": "Anthropic",
       "harness": "Claude Code"
+    },
+    "claude-sonnet-5": {
+      "name": "Claude Sonnet 5",
+      "vendor": "Anthropic",
+      "harness": "Claude Code"
     }
   },
   "models": [
@@ -117,6 +122,72 @@
       "held_out_bpc": null,
       "frozen_code": "projects/kenosha-kid/models/kenosha-kid-nanogpt-1/",
       "model_card": "research-docs/model-cards/kenosha-kid-nanogpt-1.md",
+      "artifacts": {
+        "checkpoint": null,
+        "onnx": null,
+        "onnx_int8": null
+      }
+    },
+    {
+      "id": "daydream-chess-nanogpt-1",
+      "project": "daydream",
+      "version": 1,
+      "git_tag": "daydream-chess-nanogpt-1",
+      "architecture": "modern (RoPE, RMSNorm, bias-free)",
+      "tagline": "renders illegal moves as dim near-misses, legal moves snap into focus",
+      "researcher": "claude-sonnet-5",
+      "tokenizer": {
+        "type": "char",
+        "vocab_size": 21
+      },
+      "params": 2660000,
+      "held_out_bpc": null,
+      "frozen_code": "projects/daydream/models/daydream-chess-nanogpt-1/",
+      "model_card": "research-docs/model-cards/daydream-chess-nanogpt-1.md",
+      "artifacts": {
+        "checkpoint": null,
+        "onnx": null,
+        "onnx_int8": null
+      }
+    },
+    {
+      "id": "daydream-chess-nanogpt-micro-1",
+      "project": "daydream",
+      "version": 1,
+      "git_tag": "daydream-chess-nanogpt-micro-1",
+      "architecture": "modern (RoPE, RMSNorm, bias-free)",
+      "tagline": "Gardner minichess, 5x5 -- the smallest board with room for a full army",
+      "researcher": "claude-sonnet-5",
+      "tokenizer": {
+        "type": "char",
+        "vocab_size": 15
+      },
+      "params": 790000,
+      "held_out_bpc": null,
+      "frozen_code": "projects/daydream/models/daydream-chess-nanogpt-micro-1/",
+      "model_card": "research-docs/model-cards/daydream-chess-nanogpt-micro-1.md",
+      "artifacts": {
+        "checkpoint": null,
+        "onnx": null,
+        "onnx_int8": null
+      }
+    },
+    {
+      "id": "daydream-chess-nanogpt-grand-1",
+      "project": "daydream",
+      "version": 1,
+      "git_tag": "daydream-chess-nanogpt-grand-1",
+      "architecture": "modern (RoPE, RMSNorm, bias-free)",
+      "tagline": "12 files x 10 ranks, Chancellor and Archbishop -- the widest board in the family",
+      "researcher": "claude-sonnet-5",
+      "tokenizer": {
+        "type": "char",
+        "vocab_size": 27
+      },
+      "params": 4730000,
+      "held_out_bpc": null,
+      "frozen_code": "projects/daydream/models/daydream-chess-nanogpt-grand-1/",
+      "model_card": "research-docs/model-cards/daydream-chess-nanogpt-grand-1.md",
       "artifacts": {
         "checkpoint": null,
         "onnx": null,
