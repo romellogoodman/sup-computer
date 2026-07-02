@@ -45,10 +45,8 @@ with [`README.md`](README.md); the lineage is in [`docs/sources.md`](docs/source
 - **Document as you go.** Update [`research/log.md`](research/log.md) (the journal)
   and [`leaderboard.md`](leaderboard.md) (per-run scoreboard)
   when you run experiments, and commit.
-- **Credit the researcher.** A report for this project sets `researcher: <id>` in
-  frontmatter and its `registry.json` model entry sets `"researcher": "<id>"` — the
-  model that *did the research*, keyed into the `researchers` map. See the root
-  [`CLAUDE.md`](../../CLAUDE.md) and `docs/adr/0013-attribution-of-the-ai-researcher.md`.
+- **Credit the researcher** — the rule lives in the root
+  [`CLAUDE.md`](../../CLAUDE.md) (see ADR-0013).
 
 ## Releases
 

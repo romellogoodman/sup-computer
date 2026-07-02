@@ -53,11 +53,9 @@ future migration is planned — see [ADR-0011](../../docs/adr/0011-vendor-gatsby
 - **Document as you go.** Update [`research/log.md`](research/log.md)
   (the journal — why) and [`leaderboard.md`](leaderboard.md)
   (the per-run scoreboard) when you run experiments, and commit.
-- **Credit the researcher.** A report for this project sets `researcher: <id>` in
-  frontmatter and its `registry.json` model entry sets `"researcher": "<id>"` — the
-  model that *did the research*, keyed into the `researchers` map. (Distinct from the
-  `claude-sonnet-4-6` used to *generate the corpus* above.) See the root
-  [`CLAUDE.md`](../../CLAUDE.md) and `docs/adr/0013-attribution-of-the-ai-researcher.md`.
+- **Credit the researcher** — the model that *did the research*, distinct from
+  the corpus-writer models above. The rule lives in the root
+  [`CLAUDE.md`](../../CLAUDE.md) (see ADR-0013).
 
 ## Releases
 
