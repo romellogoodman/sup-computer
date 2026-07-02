@@ -1,7 +1,15 @@
 import { getReports, getRegistry, monthYear, researcherName } from "../lib/content";
 
+// The report pinned to the top of the research list — an editorial choice, so
+// it lives here (site presentation), not in the frozen report's frontmatter.
+const PINNED_SLUG = "improve-a-small-model";
+
 export default function Home() {
-  const reports = getReports();
+  const all = getReports();
+  const reports = [
+    ...all.filter((r) => r.slug === PINNED_SLUG),
+    ...all.filter((r) => r.slug !== PINNED_SLUG),
+  ];
   const { models } = getRegistry();
   const modelsByName = [...models].sort(
     (a, b) => a.project.localeCompare(b.project) || b.version - a.version,
@@ -48,11 +56,11 @@ export default function Home() {
       </ul>
 
       <h2 className="section-label" id="research">Research</h2>
-      {reports.map((r, i) => (
+      {reports.map((r) => (
         <div className="post-list__item" key={r.slug}>
           <a className="post-list__link" href={"/research/" + r.slug + "/"}>{r.frontmatter.title || r.slug}</a>
           <p className="post-list__meta">
-            {i === 0 && <><span className="tag tag--new">new</span>{" "}</>}
+            {r.slug === PINNED_SLUG && <><span className="tag tag--pinned">pinned</span>{" "}</>}
             {r.frontmatter.type && <span className="tag">{r.frontmatter.type}</span>}{" "}
             {[
               monthYear(r.frontmatter.date),
