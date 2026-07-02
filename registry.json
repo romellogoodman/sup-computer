@@ -1,7 +1,8 @@
 {
   "_note": "Model manifest consumed by the website and the (future) player. Weights and ONNX live in GitHub release artifacts / R2, never in-tree — the url fields stay null until a version is published. Every model records the AI `researcher` that produced it, keyed into the `researchers` map below — see docs/adr/0013-attribution-of-the-ai-researcher.md.",
   "researchers": {
-    "claude-opus-4-8": { "name": "Claude Opus 4.8", "vendor": "Anthropic", "harness": "Claude Code" }
+    "claude-opus-4-8": { "name": "Claude Opus 4.8", "vendor": "Anthropic", "harness": "Claude Code" },
+    "claude-fable-5": { "name": "Claude Fable 5", "vendor": "Anthropic", "harness": "Claude Code" }
   },
   "models": [
     {
