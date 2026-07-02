@@ -9,10 +9,11 @@ read run outputs, configs, and model cards that sit one directory away.
 | Path | What it is |
 |---|---|
 | `core/` | The shared engine. `nanogpt_core/` (model, train, sample, configurator), `eval/`, `export/`. Editable-installed; projects import it. The model is the modern arch only (RoPE, RMSNorm, bias-free). |
-| `projects/<name>/` | One model project — thin: config, corpus prep, run evidence, model cards, and frozen release snapshots under `models/`. `shakespeare/` is the first. |
-| `tools/` | Researcher tools, not shipped code: `dataviz/` (the chart pipeline — every chart goes through it) and `claude_cost.py`. |
+| `projects/<name>/` | One model project — thin: config, corpus prep, run evidence, model cards, and frozen release snapshots under `models/`. Three so far: `shakespeare/` (rides `core/`), `gatsby/` (vendored base engine, ADR-0011), `kenosha-kid/` (rides `core/`). |
+| `player/` | `@supcomputer/player` — vendored browser runtime (onnxruntime-web forward pass, JS sampling loop). Nothing consumes it yet; see ADR-0010 and TODO item 1. |
+| `tools/` | Researcher tools, not shipped code: `dataviz/` (the chart pipeline — every chart goes through it), `synthgen/` (local-LLM synthetic-corpus pipeline, ADR-0014) and `claude_cost.py`. |
 | `research-docs/` | Cross-project write-ups: `reports/` (experiments) and `model-cards/`. Claude writes here. |
-| `website/` | The studio site (custom React/Next.js, not yet scaffolded). Owns no content — a prebuild script copies `research-docs/` into a gitignored `content/`. |
+| `website/` | The studio site (custom Next.js, static export). Owns no content — a prebuild script copies `research-docs/` into a gitignored `content/` and generates LLM-readable `.md` twins (ADR-0019). |
 | `registry.json` | Model manifest the site + player consume. |
 
 ## Hard rules
