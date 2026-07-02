@@ -1,5 +1,5 @@
 import "./globals.css";
-import { SITE_URL } from "../lib/content";
+import { SITE_URL, GITHUB, buildSha } from "../lib/content";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -16,6 +16,8 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const sha = buildSha();
+  const shaUrl = `${GITHUB}/tree/${sha}`;
   return (
     <html lang="en">
       <body>
@@ -29,15 +31,15 @@ export default function RootLayout({ children }) {
           <nav className="masthead__nav">
             <a className="masthead__link" href="/#models">models</a>
             <a className="masthead__link" href="/#research">research</a>
-            <a className="masthead__link" href="https://github.com/romellogoodman/sup-computer">view source</a>
+            <a className="masthead__link masthead__sha" href={shaUrl} title="the commit this site was built from">{sha}</a>
           </nav>
         </header>
         <hr />
         <main id="main">{children}</main>
         <footer className="footer">
           <span className="footer__colophon">
-            sup computer · a small language model studio ·{" "}
-            <a className="footer__link" href="https://github.com/romellogoodman/sup-computer">view source on github</a>
+            sup computer · a small language model studio · built from{" "}
+            <a className="footer__link" href={shaUrl} title="the commit this site was built from">{sha}</a>
           </span>
           <a className="footer__link" href="#top">back to top ↑</a>
         </footer>
