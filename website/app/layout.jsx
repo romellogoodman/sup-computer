@@ -17,7 +17,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   const sha = buildSha();
-  const shaUrl = `${GITHUB}/tree/${sha}`;
+  const commitUrl = `${GITHUB}/commit/${sha}`;
   return (
     <html lang="en">
       <body>
@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
           <nav className="masthead__nav">
             <a className="masthead__link" href="/#models">models</a>
             <a className="masthead__link" href="/#research">research</a>
-            <a className="masthead__link masthead__sha" href={shaUrl} title="the commit this site was built from">{sha}</a>
+            <a className="masthead__link" href={GITHUB}>sourcecode</a>
           </nav>
         </header>
         <hr />
@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
         <footer className="footer">
           <span className="footer__colophon">
             sup computer · a small language model studio · built from{" "}
-            <a className="footer__link" href={shaUrl} title="the commit this site was built from">{sha}</a>
+            <a className="footer__link" href={commitUrl} title="the commit this site was built from">{sha}</a>
           </span>
           <a className="footer__link" href="#top">back to top ↑</a>
         </footer>
