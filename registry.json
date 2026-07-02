@@ -17,6 +17,24 @@
       "harness": "Claude Code"
     }
   },
+  "series": {
+    "shakespeare-nanogpt": {
+      "name": "shakespeare-nanogpt",
+      "tagline": "Writes Shakespeare from scratch — and gets sharper every research round."
+    },
+    "gatsby-nanogpt": {
+      "name": "gatsby-nanogpt",
+      "tagline": "Bends any story toward the green light — obsession you can dial from 1 to 5."
+    },
+    "kenosha-kid-nanogpt": {
+      "name": "kenosha-kid-nanogpt",
+      "tagline": "Dreams endlessly on just six words."
+    },
+    "daydream-chess-nanogpt": {
+      "name": "daydream-chess-nanogpt",
+      "tagline": "Plays chess without ever knowing the rules — learned move by move from games, not a rulebook, across three board sizes."
+    }
+  },
   "models": [
     {
       "id": "shakespeare-nanogpt-1",

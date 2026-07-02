@@ -10,10 +10,38 @@ export default function Home() {
     ...all.filter((r) => r.slug === PINNED_SLUG),
     ...all.filter((r) => r.slug !== PINNED_SLUG),
   ];
-  const { models } = getRegistry();
-  const modelsByName = [...models].sort(
-    (a, b) => a.project.localeCompare(b.project) || b.version - a.version,
-  );
+  const registry = getRegistry();
+  const { models } = registry;
+  const seriesCopy = registry.series || {};
+  // Collapse one-row-per-release into one-row-per-series (grouped by project) —
+  // see the model-series-pages design. Each row lists its versions (v1, v2, and
+  // variant tiers like v1-micro); series taglines live in registry.json's
+  // `series` map. Version chips link to each release page; the series name links
+  // to the flagship for now and gets repointed to /models/<slug>/ when series
+  // pages ship.
+  const versionLabel = (m, slug) => {
+    const rest = m.id.startsWith(slug) ? m.id.slice(slug.length) : m.id;
+    const variant = rest.replace(/^-/, "").replace(/-?\d+$/, "");
+    return variant ? `v${m.version}-${variant}` : `v${m.version}`;
+  };
+  const byProject = {};
+  for (const m of models) (byProject[m.project] ||= []).push(m);
+  const series = Object.values(byProject)
+    .map((members) => {
+      const maxVersion = Math.max(...members.map((m) => m.version));
+      // flagship = latest version; among sibling tiers (same version) prefer the
+      // base id (shortest slug, e.g. daydream's Regular over micro/grand).
+      const flagship = members
+        .filter((m) => m.version === maxVersion)
+        .sort((a, b) => a.id.length - b.id.length)[0];
+      const slug = flagship.id.replace(/-\d+$/, "");
+      // latest → oldest; within a version, base tier before its variants
+      const versions = [...members].sort(
+        (a, b) => b.version - a.version || a.id.length - b.id.length || a.id.localeCompare(b.id),
+      );
+      return { slug, flagship, tagline: seriesCopy[slug]?.tagline || flagship.tagline, versions };
+    })
+    .sort((a, b) => a.slug.localeCompare(b.slug));
 
   return (
     <>
@@ -35,25 +63,24 @@ export default function Home() {
 
       <h2 className="section-label" id="models">Models</h2>
       <ul className="model-list">
-        {modelsByName.map((m) => (
-          <li className="model-list__item" key={m.id}>
+        {series.map(({ slug, flagship, tagline, versions }) => (
+          <li className="model-list__item" key={slug}>
             <span className="model-list__name">
-              <a href={"/models/" + m.id + "/"}>{m.id}</a>
-              {m.tagline && <span className="model-list__tagline">{m.tagline}</span>}
+              <a href={"/models/" + flagship.id + "/"}>{slug}</a>
+              {tagline && <span className="model-list__tagline">{tagline}</span>}
             </span>
             <span className="model-list__spec">
-              {m.architecture.split("(")[0].trim()}
-              {m.held_out_bpc != null && (
-                <>
-                  {" · BPC "}
-                  <span className="model-list__bpc">{m.held_out_bpc}</span>
-                </>
-              )}
-              {m.params != null && ` · ${(m.params / 1e6).toFixed(1)}M`}
+              {versions.map((m, i) => (
+                <span key={m.id}>
+                  {i > 0 && " · "}
+                  <a href={"/models/" + m.id + "/"}>{versionLabel(m, slug)}</a>
+                </span>
+              ))}
             </span>
           </li>
         ))}
       </ul>
+
 
       <h2 className="section-label" id="research">Research</h2>
       {reports.map((r) => (
