@@ -2,6 +2,14 @@
 
 **sup computer: a small language model studio**
 
+> **Archived (July 2026).** This is the original planning document, kept as
+> historical rationale — it is not maintained and parts no longer match the
+> tree. The living docs are [ADR-0001](adr/0001-adopt-a-monorepo.md) (the
+> decision) and [`architecture.md`](architecture.md) (the as-built map); the
+> open items that survived it live in [`TODO.md`](TODO.md). See
+> [ADR-0020](adr/0020-one-home-per-fact.md) for why it's marked rather than
+> updated.
+
 ---
 
 ## Why a monorepo
