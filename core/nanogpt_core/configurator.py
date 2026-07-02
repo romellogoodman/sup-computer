@@ -38,8 +38,13 @@ for arg in sys.argv[1:]:
             except (SyntaxError, ValueError):
                 # if that goes wrong, just use the string
                 attempt = val
-            # ensure the types match ok
-            assert type(attempt) == type(globals()[key])
+            # ensure the types match ok (allow int where the default is float,
+            # so e.g. --learning_rate=1 or --dropout=0 work)
+            default = globals()[key]
+            if isinstance(default, float) and isinstance(attempt, int) and not isinstance(attempt, bool):
+                attempt = float(attempt)
+            if type(attempt) != type(default):
+                raise ValueError(f"bad type for --{key}: got {type(attempt).__name__}, expected {type(default).__name__}")
             # cross fingers
             print(f"Overriding: {key} = {attempt}")
             globals()[key] = attempt

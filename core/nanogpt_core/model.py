@@ -1,16 +1,16 @@
 """
-Research round 2 (LLM-assisted research loop) — a modernized GPT, kept SEPARATE from the repo's model.py so the
-baseline checkpoint and the web UI (which depend on the original architecture)
-keep working.
+The shared modern GPT (see docs/adr/0004-core-is-modern-only.md). Historical
+base-architecture releases vendor their own model.py inside their frozen
+projects/<project>/models/<version>/ folder; this engine never has to load them.
 
 Changes vs the original nanoGPT block:
   - RMSNorm instead of LayerNorm (no mean-subtraction, no bias)
   - Rotary position embeddings (RoPE) in attention, instead of a learned
     absolute position embedding table (wpe)
-  - bias-free Linears throughout (set bias=False in the config)
+  - bias-free Linears throughout (bias=False is the config default)
 
 Same dataclass fields as the original GPTConfig, so train.py/eval.py can drive
-it unchanged (we alias this module as `model` at runtime).
+it unchanged.
 """
 
 import math
@@ -23,7 +23,7 @@ from torch.nn import functional as F
 
 
 class RMSNorm(nn.Module):
-    def __init__(self, ndim, bias=False):
+    def __init__(self, ndim):
         super().__init__()
         self.weight = nn.Parameter(torch.ones(ndim))
 
@@ -137,7 +137,9 @@ class GPT(nn.Module):
 
         print("number of parameters: %.2fM" % (self.get_num_params() / 1e6,))
 
-    def get_num_params(self, non_embedding=True):
+    def get_num_params(self):
+        # with tied wte/lm_head and no wpe, every parameter is "the model" —
+        # there is no separate embedding count to subtract
         return sum(p.numel() for p in self.parameters())
 
     def crop_block_size(self, block_size):
@@ -179,16 +181,21 @@ class GPT(nn.Module):
             {"params": nodecay_params, "weight_decay": 0.0},
         ]
         print(f"num decayed tensors: {len(decay_params)}, non-decayed: {len(nodecay_params)}")
-        optimizer = torch.optim.AdamW(optim_groups, lr=learning_rate, betas=betas)
-        print("using fused AdamW: False")
+        fused_available = 'fused' in inspect.signature(torch.optim.AdamW).parameters
+        use_fused = fused_available and device_type == 'cuda'
+        extra_args = dict(fused=True) if use_fused else dict()
+        optimizer = torch.optim.AdamW(optim_groups, lr=learning_rate, betas=betas, **extra_args)
+        print(f"using fused AdamW: {use_fused}")
         return optimizer
 
-    def estimate_mfu(self, fwdbwd_per_iter, dt):
+    def estimate_mfu(self, fwdbwd_per_iter, dt, flops_promised=312e12):
+        # flops_promised defaults to A100 bf16 peak; on any other hardware
+        # (MPS included) pass your device's peak or treat MFU as relative only
         N = self.get_num_params()
         cfg = self.config
         L, H, Q, T = cfg.n_layer, cfg.n_head, cfg.n_embd // cfg.n_head, cfg.block_size
         flops_per_iter = (6 * N + 12 * L * H * Q * T) * T * fwdbwd_per_iter
-        return flops_per_iter * (1.0 / dt) / 312e12
+        return flops_per_iter * (1.0 / dt) / flops_promised
 
     @torch.no_grad()
     def generate(self, idx, max_new_tokens, temperature=1.0, top_k=None):

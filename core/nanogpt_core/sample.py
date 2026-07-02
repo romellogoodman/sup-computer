@@ -24,8 +24,7 @@ data_root = 'data' # parent dir of <dataset>/meta.pkl (char models); override pe
 exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'configurator.py')).read()) # cmdline/config overrides (location-independent)
 # -----------------------------------------------------------------------------
 
-torch.manual_seed(seed)
-torch.cuda.manual_seed(seed)
+torch.manual_seed(seed) # seeds CPU and all accelerator RNGs
 torch.backends.cuda.matmul.allow_tf32 = True # allow tf32 on matmul
 torch.backends.cudnn.allow_tf32 = True # allow tf32 on cudnn
 device_type = 'cuda' if 'cuda' in device else 'mps' if 'mps' in device else 'cpu' # for later use in torch.autocast
