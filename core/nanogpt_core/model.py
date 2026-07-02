@@ -140,6 +140,13 @@ class GPT(nn.Module):
     def get_num_params(self, non_embedding=True):
         return sum(p.numel() for p in self.parameters())
 
+    def crop_block_size(self, block_size):
+        # RoPE tables are sliced to the sequence length at forward time, so
+        # shrinking the context only needs the config updated — no weight
+        # surgery, unlike a learned wpe table.
+        assert block_size <= self.config.block_size
+        self.config.block_size = block_size
+
     def _init_weights(self, module):
         if isinstance(module, nn.Linear):
             torch.nn.init.normal_(module.weight, mean=0.0, std=0.02)
