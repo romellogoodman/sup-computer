@@ -46,11 +46,19 @@ def main(out_dir, test_path, data_dir=""):
         stoi = pickle.load(open(meta_path, "rb"))["stoi"]
         ids = [stoi[c] for c in text if c in stoi]
         tokenizer = "char"
+        # BPC's denominator must cover exactly the characters the NLL scored.
+        # OOV characters are dropped from ids, so counting them in nchars would
+        # deflate BPC — and by a different amount per test text.
+        nchars = len(ids)
+        dropped = len(text) - len(ids)
+        if dropped:
+            print(f"warning: {dropped} chars not in vocab, excluded from BPC")
     else:
         import tiktoken
 
         ids = tiktoken.get_encoding("gpt2").encode(text)
         tokenizer = "gpt2-bpe"
+        nchars = len(text)
 
     # teacher-forced NLL over non-overlapping blocks
     nll = 0.0
@@ -68,7 +76,6 @@ def main(out_dir, test_path, data_dir=""):
             nll += loss.item() * yb.numel()
             ntok += yb.numel()
 
-    nchars = len(text)
     bpc = nll / nchars / math.log(2)
     tok_loss = nll / ntok
     print(
