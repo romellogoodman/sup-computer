@@ -195,6 +195,18 @@ scaler = torch.cuda.amp.GradScaler(enabled=(dtype == 'float16'))
 optimizer = model.configure_optimizers(weight_decay, learning_rate, (beta1, beta2), device_type)
 if init_from == 'resume':
     optimizer.load_state_dict(checkpoint['optimizer'])
+    # restore AMP + RNG state so a resumed run continues rather than restarts:
+    # otherwise the fp16 loss scale resets (overflow risk right after resume)
+    # and the batch sequence diverges from the uninterrupted run.
+    # older checkpoints predate these keys, hence the guards.
+    if 'scaler' in checkpoint:
+        scaler.load_state_dict(checkpoint['scaler'])
+    if 'rng_state' in checkpoint:
+        torch.random.set_rng_state(checkpoint['rng_state'].cpu())
+    if torch.cuda.is_available() and checkpoint.get('cuda_rng_state') is not None:
+        torch.cuda.set_rng_state_all(checkpoint['cuda_rng_state'])
+    if torch.backends.mps.is_available() and checkpoint.get('mps_rng_state') is not None:
+        torch.mps.set_rng_state(checkpoint['mps_rng_state'].cpu())
 checkpoint = None # free up memory
 
 # compile the model
@@ -277,6 +289,10 @@ while True:
                     'iter_num': iter_num,
                     'best_val_loss': best_val_loss,
                     'config': config,
+                    'scaler': scaler.state_dict(),
+                    'rng_state': torch.random.get_rng_state(),
+                    'cuda_rng_state': torch.cuda.get_rng_state_all() if torch.cuda.is_available() else None,
+                    'mps_rng_state': torch.mps.get_rng_state() if torch.backends.mps.is_available() else None,
                 }
                 print(f"saving checkpoint to {out_dir}")
                 torch.save(checkpoint, os.path.join(out_dir, 'ckpt.pt'))
