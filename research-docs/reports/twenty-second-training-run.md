@@ -4,26 +4,26 @@ series: core
 status: published
 date: 2026-07-01
 researcher: claude-fable-5
-title: "The six-second training run: a bigger model cleans a smaller model's house"
-summary: "A repo-wide audit by a larger model found the small-model studio's engine had two advertised code paths that crashed on use, a metric that quietly flattered char models, and a resume that restarted. The fix that outlasts the fixes: a six-second smoke test that trains a real (tiny) GPT from scratch on every push — train, resume, sample, eval, export, parity — so the wiring can never silently rot again."
+title: "The twenty-second training run: a bigger model cleans a smaller model's house"
+summary: "A repo-wide audit by a larger model found the small-model studio's engine had two advertised code paths that crashed on use, a metric that quietly flattered char models, and a resume that restarted. The fix that outlasts the fixes: a twenty-second smoke test that trains a real (tiny) GPT from scratch on every push — train, resume, sample, eval, export, parity — so the wiring can never silently rot again."
 ---
 [← all reports](README.md) · **Note 02** · series: core · July 2026
 
-# The six-second training run: a bigger model cleans a smaller model's house
+# The twenty-second training run: a bigger model cleans a smaller model's house
 
 A maintenance note, not an experiment. The experiments in this studio are about
 making small models better or stranger; this one is about the scaffolding those
 experiments stand on — and what happened when a much larger model was pointed at
 it and told, simply, *read this repo, then suggest improvements*. No model is
 produced here. What is produced is the thing that keeps every future model
-honest: a training run that takes six seconds and runs on every push.
+honest: a training run that takes twenty seconds and runs on every push.
 
 <div class="takeaways">
 <p class="takeaways-label">Key takeaways</p>
 <ul>
 <li><strong>The engine had bugs the experiments never touched.</strong> Two advertised code paths crashed on use, the headline BPC metric silently flattered char models on out-of-vocab text, and "resume" restarted the loss scale and the batch order rather than resuming them.</li>
 <li><strong>The docs drifted where facts were duplicated.</strong> Nearly every stale claim was the same fact living in several homes, updated in one and forgotten in the rest.</li>
-<li><strong>The durable fix is a six-second training run.</strong> A smoke test trains a genuinely tiny GPT from scratch through the real CLIs — train, resume, sample, eval, export, int8 parity — on every push. Not to learn anything; to prove the wiring.</li>
+<li><strong>The durable fix is a twenty-second training run.</strong> A smoke test trains a genuinely tiny GPT from scratch through the real CLIs — train, resume, sample, eval, export, int8 parity — on every push. Not to learn anything; to prove the wiring.</li>
 <li><strong>Small and legible cuts both ways.</strong> The same smallness that makes these models auditable end to end made the audit itself tractable — and made the bugs feel less like failures than like unread pages.</li>
 </ul>
 </div>
@@ -79,7 +79,7 @@ resolve, every released model must have its records. But no checker can catch
 contradictory *copies*. Fewer copies is the only real defense, and that
 consolidation is its own piece of work.
 
-## 3. The six-second training run
+## 3. The twenty-second training run
 
 The fix that outlasts all the point fixes is
 [`core/tests/test_smoke.py`](../../core/tests/test_smoke.py): a smoke test that
@@ -103,7 +103,8 @@ a researcher would — by invoking the actual script CLIs, configurator and all.
    with no verification at all — against the same logits (finite, and pointing
    at the same next token).
 
-The whole thing takes about six seconds, because the model and the data are
+The whole thing takes about twenty seconds on a CI runner (six on the Mac it
+was written on), because the model and the data are
 deliberately miniature. That's the trick worth stating as a principle: **in a
 small-model studio, "train a model" is cheap enough to be a unit test.** The
 studio's thesis — small enough to understand end to end — turns out to include
@@ -125,7 +126,7 @@ code they govern, corpora committed as research records, releases frozen and
 runnable in place, an insistence — everywhere — that the receipts sit one
 directory away from the claims. The defects were almost all in the gap between
 that structure and its maintenance, and that gap is now patrolled by machines
-that don't get tired: a six-second training run, a link checker, a linter.
+that don't get tired: a twenty-second training run, a link checker, a linter.
 
 The models here are small on purpose. The lesson of this cleaning round is that
 the *studio* should be small on purpose too — few enough moving parts, few

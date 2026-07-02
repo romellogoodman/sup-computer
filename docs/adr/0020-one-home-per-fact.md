@@ -6,7 +6,7 @@
 
 ## Context
 
-The July 2026 repo audit ([six-second-training-run](../../research-docs/reports/six-second-training-run.md))
+The July 2026 repo audit ([twenty-second-training-run](../../research-docs/reports/twenty-second-training-run.md))
 found that nearly every documentation staleness bug was a **duplication bug**:
 the same fact living in several places, updated in one and forgotten in the
 rest. The concrete clusters:
