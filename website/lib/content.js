@@ -1,6 +1,5 @@
 import fs from "node:fs";
 import path from "node:path";
-import { execSync } from "node:child_process";
 import matter from "gray-matter";
 
 const ROOT = path.join(process.cwd(), "content");
@@ -16,17 +15,6 @@ const rewriteAssets = (s) => s.replace(ASSET_PATH, "$1/research-assets/");
 
 const GITHUB = "https://github.com/romellogoodman/sup-computer";
 export { GITHUB };
-
-// The short sha the site was built from — the header/footer "view source"
-// wink. Resolved once at build time (this is a static export); falls back to
-// "main" when git isn't available (e.g. a tarball build).
-export function buildSha() {
-  try {
-    return execSync("git rev-parse --short HEAD", { cwd: process.cwd() }).toString().trim();
-  } catch {
-    return "main";
-  }
-}
 
 // Canonical absolute origin for the deployed site. Env-driven so a custom domain
 // just sets NEXT_PUBLIC_SITE_URL at build time; trailing slash trimmed so paths
