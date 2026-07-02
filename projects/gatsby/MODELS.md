@@ -106,7 +106,8 @@ See [Experiment 04](../../research-docs/reports/mixture-of-models.md).
   **Olmo 3 .30 / Ministral 3 .30 / Gemma 4 .20 / Granite 4.1 .20** (the blend is a
   designed object — a granite-heavy first round broke the dial; see Exp 04).
 - **$0** marginal cost (local generation). Corpus + provenance manifest committed
-  (`data/raw.txt`, `data/raw.manifest.json`), corpus vendored into the frozen folder.
+  (`data/raw.txt`, `data/raw.manifest.json`); the corpus (only) is vendored into
+  the frozen folder — the manifest stays at `data/`.
 
 ### Training
 
