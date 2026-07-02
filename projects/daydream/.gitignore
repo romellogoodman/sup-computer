@@ -1,0 +1,6 @@
+# Regular's corpus is downloaded third-party data (Lichess), not code-owned
+# and deterministic the way Micro/Grand's self-play corpora are -- gitignored
+# like shakespeare's downloaded data, regenerable via fetch_filtered.py.
+# Micro/Grand's games.txt ARE committed: synthetic, seeded, code-owned,
+# same treatment as kenosha-kid's raw.txt.
+data/regular/games.txt

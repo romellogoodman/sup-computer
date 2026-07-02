@@ -1,0 +1,23 @@
+[project]
+name = "daydream"
+version = "0.1.0"
+description = "Chess-move GPT family that hallucinates chess — illegal moves render as dim near-misses, legal moves snap into focus"
+requires-python = ">=3.9"
+dependencies = [
+    "supcomputer-core",
+    "python-chess",
+    "zstandard",
+]
+
+[tool.uv.sources]
+supcomputer-core = { workspace = true }
+
+# This project is a thin consumer of the shared engine, same shape as
+# shakespeare: it owns config, corpus prep, run evidence, and model cards,
+# and calls into nanogpt_core for training, sampling, and eval. It is
+# intentionally not a build target (no [build-system]).
+#
+# One thing this project owns that no other sup computer project does: an
+# external, non-Python engine dependency (Fairy-Stockfish, installed via
+# Homebrew, invoked as a subprocess — not a pip package). See
+# docs/adr/0021-daydream-fairy-stockfish-dependency.md.
