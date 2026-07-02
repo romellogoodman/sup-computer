@@ -38,13 +38,13 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 from engine_client import Engine  # noqa: E402
 from harness import TIERS, DaydreamPlayer  # noqa: E402
 
-from players import AdaptivePlayer, RandomPlayer  # noqa: E402
+from players import AdaptivePlayer, Player, RandomPlayer  # noqa: E402
 
 MAX_PLIES = 200
 
 
 class TokenChessGame:
-    def __init__(self, tier: str, daydream: DaydreamPlayer, white: "Player", black: "Player",
+    def __init__(self, tier: str, daydream: DaydreamPlayer, white: Player, black: Player,
                  budget: int, opponent_free_engine: bool = False):
         """opponent_free_engine exists only for harness self-tests: when
         True, skip Daydream/budget mechanics for a side and just play the
