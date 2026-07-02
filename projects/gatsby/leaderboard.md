@@ -1,7 +1,7 @@
 # Leaderboard
 
 The quantitative scoreboard for gatsby-nanogpt. Each row is a training run.
-Prose write-ups and rationale live in [`log.md`](log.md).
+Prose write-ups and rationale live in [`log.md`](research/log.md).
 
 Two costs are tracked per run, mirroring the `shakespeare-nanogpt` convention:
 
@@ -28,7 +28,7 @@ behaviour qualitatively (sample notes per run).
 
 | `1k-v3` | 1000 / 1.15M | $0² | 10.65M | best @1500 it (65.5M tok) | ~50 min (MPS) | **0.502** (min @1500; not comparable across corpora) | **Dial fixed ✅** — louder control line (tag ×3 + per-level word), same stories as v2 reformatted for $0. Model dial @480 tok now **monotonic 1.50→1.92→1.92→3.08→3.50** (was flat 4.17→3.17), and levels generate *different* text (faint=light once at end → total=swallowed "Green light. Green light."). Obsession ✅. Topic honoring ⚠️ still unreliable (robot→rabbit, clock→cloud); coherence still rough. Confirms v2 diagnosis: bottleneck was signal loudness, not corpus shape. |
 | `mix-1k-r1` | 1000 / 763k | **$0³** | 10.65M | best @1250 it | ~40 min (MPS) | 0.627 (min @1250) | **Generator swapped to a local 4-model mixture** (granite .40 / gemma .30 / olmo .15 / ministral .15, via LM Studio). **Dial broke flat** (@240 tok: 1.7,1.7,1.8,2.0,1.4 — L5 lowest). Diagnosis: corpus dial fine (monotonic 2.3→8.2) but **granite's per-model dial is flat** (1.4→3.7) and it's 40% of the corpus; plus corpus 34% smaller → overfits @1250 before conditioning is learned. Obsession ✅, coherence/topic ❌. |
-| `mix-2k-r2` → **`gatsby-nanogpt-2`** | 2000 / 1.53M | **$0³** | 10.65M | best @2000 it | ~30 min (MPS) | **0.622** (min @2000) | **Rebalanced off granite** (olmo .30 / ministral .30 / gemma .20 / granite .20) **+ scaled to 2k**. Trained 60% deeper before overfitting (2000 vs 1250). **Dial recovered** @480 tok: **3.7,4.8,4.7,4.5,6.1** — endpoints separate, middle compressed. Obsession ✅. Coherence/topic-honoring still baseline-rough. **Matches the paid baseline's behaviour at $0.** → [Exp 04](../../../research-docs/reports/mixture-of-models.md) |
+| `mix-2k-r2` → **`gatsby-nanogpt-2`** | 2000 / 1.53M | **$0³** | 10.65M | best @2000 it | ~30 min (MPS) | **0.622** (min @2000) | **Rebalanced off granite** (olmo .30 / ministral .30 / gemma .20 / granite .20) **+ scaled to 2k**. Trained 60% deeper before overfitting (2000 vs 1250). **Dial recovered** @480 tok: **3.7,4.8,4.7,4.5,6.1** — endpoints separate, middle compressed. Obsession ✅. Coherence/topic-honoring still baseline-rough. **Matches the paid baseline's behaviour at $0.** → [Exp 04](../../research-docs/reports/mixture-of-models.md) |
 
 ¹ `1k-v2` gen cost = $0.29 (100-story validation chunk) + $2.94 (full 1000-story batch).
 ² `1k-v3` reuses the v2 stories reformatted in place (`reformat_corpus.py`) — no new API spend. Project gen total unchanged at ~$6.27.

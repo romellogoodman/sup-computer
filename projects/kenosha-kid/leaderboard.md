@@ -1,6 +1,6 @@
 # kenosha-kid — leaderboard
 
-Per-run scoreboard. The journal (why) is in [`log.md`](log.md). For this project
+Per-run scoreboard. The journal (why) is in [`log.md`](research/log.md). For this project
 the "score" is not just val loss — it's the **dream/verbatim balance**: a good run
 keeps the six words recognizable while drifting (punctuation, near-misses) when
 sampled warm. Verbatim-perfect convergence is a *loss*, not a win.
