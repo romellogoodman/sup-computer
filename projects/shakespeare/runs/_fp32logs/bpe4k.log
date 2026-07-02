@@ -1,0 +1,277 @@
+Overriding config with projects/shakespeare/config/train_shakespeare_mac.py:
+# Character-level Shakespeare GPT, tuned for an Apple Silicon Mac (MPS backend).
+# The base config for a new experiment round on the shared core engine. Run from
+# the repo root, e.g.:
+#   uv run python core/nanogpt_core/train.py \
+#       projects/shakespeare/config/train_shakespeare_mac.py \
+#       --out_dir=projects/shakespeare/runs/r1
+#
+# Sets device='mps' and compile=False, the two changes needed to train on a Mac
+# instead of an NVIDIA GPU. (Released versions carry their own frozen config.py
+# under models/<version>/; this file is for running new experiment rounds.)
+
+out_dir = 'projects/shakespeare/runs/out-shakespeare-char'
+data_root = 'projects/shakespeare/data'  # where prepare.py writes <dataset>/*.bin
+eval_interval = 250   # evaluate val loss this often (we overfit fast on tiny data)
+eval_iters = 200
+log_interval = 10     # print training loss this often
+
+# small dataset -> we expect to overfit, so only checkpoint when val loss improves
+always_save_checkpoint = False
+
+wandb_log = False     # no experiment tracking for a first run
+
+dataset = 'shakespeare_char'
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256      # context length: predict char N+1 from the previous 256 chars
+
+# the "baby GPT" — ~10.6M parameters
+n_layer = 6
+n_head = 6
+n_embd = 384
+dropout = 0.2
+
+learning_rate = 1e-3  # small networks can use a higher LR
+max_iters = 2000      # ~10 min on an M-series Mac; bump to 5000 for noticeably better text
+lr_decay_iters = 2000 # usually equal to max_iters
+min_lr = 1e-4
+beta2 = 0.99          # a bit higher because we see few tokens per step
+warmup_iters = 100
+
+# --- the Mac-specific bits ---
+device = 'mps'        # Apple Metal GPU. Use 'cpu' if you hit MPS issues.
+compile = False       # torch.compile is unreliable on macOS / MPS
+
+Overriding: dtype = float32
+Overriding: learning_rate = 0.001
+Overriding: min_lr = 0.0001
+Overriding: out_dir = projects/shakespeare/runs/r6-fp32-bpe4k
+Overriding: dataset = shakespeare_xl_bpe4k
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.venv/lib/python3.9/site-packages/torch/amp/autocast_mode.py:346: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtype of torch.bfloat16 and torch.float16 currently.
+  warnings.warn(error_message)
+found vocab_size = 4096 (inside projects/shakespeare/data/shakespeare_xl_bpe4k/meta.pkl)
+Initializing a new model from scratch
+number of parameters: 12.19M
+num decayed tensors: 25, non-decayed: 13
+using fused AdamW: False
+step 0: train loss 8.3420, val loss 8.3535
+iter 0: loss 8.3568, time 87422.97ms, mfu -100.00%
+iter 10: loss 7.3419, time 761.05ms, mfu 0.55%
+iter 20: loss 6.8699, time 755.23ms, mfu 0.55%
+iter 30: loss 6.3296, time 755.91ms, mfu 0.55%
+iter 40: loss 6.1261, time 761.03ms, mfu 0.55%
+iter 50: loss 5.9245, time 756.81ms, mfu 0.55%
+iter 60: loss 5.7489, time 762.98ms, mfu 0.55%
+iter 70: loss 5.4404, time 762.65ms, mfu 0.55%
+iter 80: loss 5.2158, time 757.55ms, mfu 0.55%
+iter 90: loss 5.0849, time 777.52ms, mfu 0.55%
+iter 100: loss 5.0476, time 755.09ms, mfu 0.55%
+iter 110: loss 4.9416, time 757.82ms, mfu 0.55%
+iter 120: loss 4.9003, time 757.58ms, mfu 0.55%
+iter 130: loss 4.7658, time 759.76ms, mfu 0.55%
+iter 140: loss 4.7003, time 764.29ms, mfu 0.55%
+iter 150: loss 4.6505, time 758.79ms, mfu 0.55%
+iter 160: loss 4.5839, time 761.79ms, mfu 0.55%
+iter 170: loss 4.5143, time 759.01ms, mfu 0.55%
+iter 180: loss 4.4592, time 757.56ms, mfu 0.55%
+iter 190: loss 4.4519, time 763.06ms, mfu 0.55%
+iter 200: loss 4.3912, time 765.75ms, mfu 0.55%
+iter 210: loss 4.3868, time 762.03ms, mfu 0.55%
+iter 220: loss 4.3223, time 780.71ms, mfu 0.55%
+iter 230: loss 4.2571, time 758.03ms, mfu 0.55%
+iter 240: loss 4.2690, time 759.02ms, mfu 0.55%
+step 250: train loss 4.1295, val loss 4.8752
+saving checkpoint to projects/shakespeare/runs/r6-fp32-bpe4k
+iter 250: loss 4.1227, time 88293.69ms, mfu 0.50%
+iter 260: loss 4.1700, time 759.03ms, mfu 0.50%
+iter 270: loss 4.1254, time 760.44ms, mfu 0.51%
+iter 280: loss 4.2260, time 760.77ms, mfu 0.51%
+iter 290: loss 4.0711, time 760.09ms, mfu 0.52%
+iter 300: loss 4.0923, time 757.39ms, mfu 0.52%
+iter 310: loss 4.0743, time 760.19ms, mfu 0.52%
+iter 320: loss 3.9819, time 757.46ms, mfu 0.53%
+iter 330: loss 4.0632, time 758.32ms, mfu 0.53%
+iter 340: loss 3.9394, time 728.18ms, mfu 0.54%
+iter 350: loss 4.0504, time 788.60ms, mfu 0.54%
+iter 360: loss 3.9612, time 760.62ms, mfu 0.54%
+iter 370: loss 3.9029, time 763.56ms, mfu 0.54%
+iter 380: loss 4.0047, time 755.97ms, mfu 0.54%
+iter 390: loss 3.9553, time 762.99ms, mfu 0.54%
+iter 400: loss 3.8719, time 759.99ms, mfu 0.54%
+iter 410: loss 3.8908, time 767.98ms, mfu 0.54%
+iter 420: loss 3.8323, time 757.32ms, mfu 0.54%
+iter 430: loss 3.9484, time 759.41ms, mfu 0.55%
+iter 440: loss 3.8173, time 758.41ms, mfu 0.55%
+iter 450: loss 3.8348, time 759.98ms, mfu 0.55%
+iter 460: loss 3.7775, time 764.92ms, mfu 0.55%
+iter 470: loss 3.7244, time 756.72ms, mfu 0.55%
+iter 480: loss 3.7836, time 756.86ms, mfu 0.55%
+iter 490: loss 3.8238, time 761.21ms, mfu 0.55%
+step 500: train loss 3.6521, val loss 4.5378
+saving checkpoint to projects/shakespeare/runs/r6-fp32-bpe4k
+iter 500: loss 3.8050, time 88615.65ms, mfu 0.50%
+iter 510: loss 3.8128, time 813.33ms, mfu 0.50%
+iter 520: loss 3.7331, time 769.67ms, mfu 0.50%
+iter 530: loss 3.7150, time 759.05ms, mfu 0.51%
+iter 540: loss 3.6420, time 786.92ms, mfu 0.51%
+iter 550: loss 3.7405, time 766.64ms, mfu 0.51%
+iter 560: loss 3.7038, time 791.58ms, mfu 0.52%
+iter 570: loss 3.6557, time 790.63ms, mfu 0.52%
+iter 580: loss 3.6649, time 795.03ms, mfu 0.52%
+iter 590: loss 3.6657, time 782.60ms, mfu 0.52%
+iter 600: loss 3.6512, time 797.53ms, mfu 0.52%
+iter 610: loss 3.6031, time 822.45ms, mfu 0.52%
+iter 620: loss 3.5508, time 796.00ms, mfu 0.52%
+iter 630: loss 3.6410, time 759.06ms, mfu 0.53%
+iter 640: loss 3.5858, time 793.11ms, mfu 0.53%
+iter 650: loss 3.6104, time 769.91ms, mfu 0.53%
+iter 660: loss 3.6002, time 763.50ms, mfu 0.53%
+iter 670: loss 3.6493, time 758.83ms, mfu 0.53%
+iter 680: loss 3.5793, time 758.96ms, mfu 0.54%
+iter 690: loss 3.6557, time 756.77ms, mfu 0.54%
+iter 700: loss 3.5638, time 762.15ms, mfu 0.54%
+iter 710: loss 3.5780, time 772.46ms, mfu 0.54%
+iter 720: loss 3.4493, time 760.70ms, mfu 0.54%
+iter 730: loss 3.5848, time 759.92ms, mfu 0.54%
+iter 740: loss 3.5963, time 761.40ms, mfu 0.54%
+step 750: train loss 3.3903, val loss 4.3501
+saving checkpoint to projects/shakespeare/runs/r6-fp32-bpe4k
+iter 750: loss 3.5156, time 92792.71ms, mfu 0.49%
+iter 760: loss 3.5404, time 778.48ms, mfu 0.49%
+iter 770: loss 3.5585, time 760.74ms, mfu 0.50%
+iter 780: loss 3.5697, time 759.19ms, mfu 0.51%
+iter 790: loss 3.4623, time 761.21ms, mfu 0.51%
+iter 800: loss 3.4908, time 760.55ms, mfu 0.52%
+iter 810: loss 3.4764, time 763.55ms, mfu 0.52%
+iter 820: loss 3.4326, time 762.36ms, mfu 0.52%
+iter 830: loss 3.4359, time 758.70ms, mfu 0.53%
+iter 840: loss 3.4337, time 760.81ms, mfu 0.53%
+iter 850: loss 3.4635, time 761.50ms, mfu 0.53%
+iter 860: loss 3.4585, time 757.97ms, mfu 0.53%
+iter 870: loss 3.4383, time 757.49ms, mfu 0.54%
+iter 880: loss 3.4812, time 759.05ms, mfu 0.54%
+iter 890: loss 3.4263, time 761.73ms, mfu 0.54%
+iter 900: loss 3.4370, time 758.39ms, mfu 0.54%
+iter 910: loss 3.4156, time 761.60ms, mfu 0.54%
+iter 920: loss 3.4293, time 756.05ms, mfu 0.54%
+iter 930: loss 3.3713, time 755.16ms, mfu 0.55%
+iter 940: loss 3.3713, time 762.23ms, mfu 0.55%
+iter 950: loss 3.3966, time 758.25ms, mfu 0.55%
+iter 960: loss 3.3993, time 761.29ms, mfu 0.55%
+iter 970: loss 3.3733, time 805.94ms, mfu 0.55%
+iter 980: loss 3.3163, time 758.05ms, mfu 0.55%
+iter 990: loss 3.3829, time 767.14ms, mfu 0.55%
+step 1000: train loss 3.2092, val loss 4.2402
+saving checkpoint to projects/shakespeare/runs/r6-fp32-bpe4k
+iter 1000: loss 3.4045, time 90678.72ms, mfu 0.49%
+iter 1010: loss 3.4331, time 762.37ms, mfu 0.50%
+iter 1020: loss 3.3210, time 765.60ms, mfu 0.50%
+iter 1030: loss 3.3641, time 759.28ms, mfu 0.51%
+iter 1040: loss 3.2677, time 766.97ms, mfu 0.51%
+iter 1050: loss 3.3792, time 760.11ms, mfu 0.52%
+iter 1060: loss 3.3675, time 761.40ms, mfu 0.52%
+iter 1070: loss 3.3277, time 768.42ms, mfu 0.52%
+iter 1080: loss 3.2573, time 762.06ms, mfu 0.53%
+iter 1090: loss 3.3376, time 763.11ms, mfu 0.53%
+iter 1100: loss 3.3443, time 754.26ms, mfu 0.53%
+iter 1110: loss 3.3763, time 759.05ms, mfu 0.53%
+iter 1120: loss 3.2994, time 760.92ms, mfu 0.54%
+iter 1130: loss 3.3577, time 758.14ms, mfu 0.54%
+iter 1140: loss 3.2666, time 757.37ms, mfu 0.54%
+iter 1150: loss 3.3231, time 761.62ms, mfu 0.54%
+iter 1160: loss 3.3314, time 753.80ms, mfu 0.54%
+iter 1170: loss 3.3096, time 760.71ms, mfu 0.54%
+iter 1180: loss 3.2731, time 760.15ms, mfu 0.55%
+iter 1190: loss 3.2918, time 763.62ms, mfu 0.55%
+iter 1200: loss 3.3448, time 788.63ms, mfu 0.54%
+iter 1210: loss 3.2241, time 761.58ms, mfu 0.55%
+iter 1220: loss 3.2438, time 764.76ms, mfu 0.55%
+iter 1230: loss 3.1934, time 765.17ms, mfu 0.55%
+iter 1240: loss 3.2694, time 758.16ms, mfu 0.55%
+step 1250: train loss 3.0705, val loss 4.1601
+saving checkpoint to projects/shakespeare/runs/r6-fp32-bpe4k
+iter 1250: loss 3.2790, time 88172.41ms, mfu 0.49%
+iter 1260: loss 3.2022, time 756.64ms, mfu 0.50%
+iter 1270: loss 3.2210, time 758.87ms, mfu 0.51%
+iter 1280: loss 3.2684, time 757.90ms, mfu 0.51%
+iter 1290: loss 3.2473, time 762.93ms, mfu 0.51%
+iter 1300: loss 3.2015, time 756.27ms, mfu 0.52%
+iter 1310: loss 3.2181, time 758.25ms, mfu 0.52%
+iter 1320: loss 3.1854, time 762.31ms, mfu 0.53%
+iter 1330: loss 3.2126, time 759.60ms, mfu 0.53%
+iter 1340: loss 3.2404, time 755.98ms, mfu 0.53%
+iter 1350: loss 3.2696, time 755.49ms, mfu 0.53%
+iter 1360: loss 3.2333, time 794.52ms, mfu 0.53%
+iter 1370: loss 3.1727, time 791.83ms, mfu 0.53%
+iter 1380: loss 3.1374, time 809.30ms, mfu 0.53%
+iter 1390: loss 3.2967, time 810.62ms, mfu 0.53%
+iter 1400: loss 3.2177, time 795.30ms, mfu 0.53%
+iter 1410: loss 3.1763, time 790.07ms, mfu 0.53%
+iter 1420: loss 3.1486, time 817.01ms, mfu 0.53%
+iter 1430: loss 3.1649, time 784.18ms, mfu 0.53%
+iter 1440: loss 3.1361, time 759.90ms, mfu 0.53%
+iter 1450: loss 3.1585, time 763.46ms, mfu 0.53%
+iter 1460: loss 3.1608, time 757.06ms, mfu 0.54%
+iter 1470: loss 3.1439, time 759.71ms, mfu 0.54%
+iter 1480: loss 3.1671, time 759.92ms, mfu 0.54%
+iter 1490: loss 3.1708, time 758.04ms, mfu 0.54%
+step 1500: train loss 2.9800, val loss 4.1226
+saving checkpoint to projects/shakespeare/runs/r6-fp32-bpe4k
+iter 1500: loss 3.1262, time 88245.95ms, mfu 0.49%
+iter 1510: loss 3.0954, time 763.81ms, mfu 0.49%
+iter 1520: loss 3.1420, time 756.56ms, mfu 0.50%
+iter 1530: loss 3.1388, time 758.89ms, mfu 0.51%
+iter 1540: loss 3.1739, time 759.78ms, mfu 0.51%
+iter 1550: loss 3.1635, time 768.38ms, mfu 0.51%
+iter 1560: loss 3.1434, time 769.77ms, mfu 0.52%
+iter 1570: loss 3.1048, time 755.34ms, mfu 0.52%
+iter 1580: loss 3.2442, time 760.98ms, mfu 0.53%
+iter 1590: loss 3.1368, time 764.12ms, mfu 0.53%
+iter 1600: loss 3.0397, time 754.35ms, mfu 0.53%
+iter 1610: loss 3.2540, time 759.02ms, mfu 0.53%
+iter 1620: loss 3.0888, time 760.32ms, mfu 0.54%
+iter 1630: loss 3.0958, time 757.99ms, mfu 0.54%
+iter 1640: loss 3.0884, time 756.59ms, mfu 0.54%
+iter 1650: loss 3.0369, time 763.03ms, mfu 0.54%
+iter 1660: loss 3.1422, time 760.27ms, mfu 0.54%
+iter 1670: loss 3.1836, time 759.75ms, mfu 0.54%
+iter 1680: loss 3.1875, time 754.26ms, mfu 0.54%
+iter 1690: loss 3.1730, time 760.54ms, mfu 0.55%
+iter 1700: loss 3.1960, time 758.29ms, mfu 0.55%
+iter 1710: loss 3.0791, time 803.49ms, mfu 0.54%
+iter 1720: loss 3.2176, time 760.82ms, mfu 0.55%
+iter 1730: loss 3.0081, time 760.27ms, mfu 0.55%
+iter 1740: loss 3.1245, time 758.17ms, mfu 0.55%
+step 1750: train loss 2.9030, val loss 4.0906
+saving checkpoint to projects/shakespeare/runs/r6-fp32-bpe4k
+iter 1750: loss 3.0898, time 88171.65ms, mfu 0.49%
+iter 1760: loss 3.1129, time 774.80ms, mfu 0.50%
+iter 1770: loss 3.1886, time 763.58ms, mfu 0.50%
+iter 1780: loss 3.1042, time 761.43ms, mfu 0.51%
+iter 1790: loss 3.0922, time 767.39ms, mfu 0.51%
+iter 1800: loss 3.1466, time 758.92ms, mfu 0.52%
+iter 1810: loss 3.0487, time 758.34ms, mfu 0.52%
+iter 1820: loss 3.0979, time 761.43ms, mfu 0.52%
+iter 1830: loss 3.1340, time 762.07ms, mfu 0.53%
+iter 1840: loss 3.1042, time 755.83ms, mfu 0.53%
+iter 1850: loss 3.0409, time 760.95ms, mfu 0.53%
+iter 1860: loss 3.0328, time 763.78ms, mfu 0.53%
+iter 1870: loss 3.1140, time 760.34ms, mfu 0.54%
+iter 1880: loss 3.1147, time 763.15ms, mfu 0.54%
+iter 1890: loss 3.0998, time 757.54ms, mfu 0.54%
+iter 1900: loss 2.9934, time 761.39ms, mfu 0.54%
+iter 1910: loss 3.0384, time 759.97ms, mfu 0.54%
+iter 1920: loss 3.0427, time 797.27ms, mfu 0.54%
+iter 1930: loss 3.0518, time 865.46ms, mfu 0.54%
+iter 1940: loss 3.0720, time 767.86ms, mfu 0.54%
+iter 1950: loss 3.2123, time 759.49ms, mfu 0.54%
+iter 1960: loss 3.0121, time 761.45ms, mfu 0.54%
+iter 1970: loss 3.0334, time 768.01ms, mfu 0.54%
+iter 1980: loss 3.0863, time 760.17ms, mfu 0.54%
+iter 1990: loss 3.0056, time 766.91ms, mfu 0.54%
+step 2000: train loss 2.8771, val loss 4.0818
+saving checkpoint to projects/shakespeare/runs/r6-fp32-bpe4k
+iter 2000: loss 3.0703, time 88249.09ms, mfu 0.49%

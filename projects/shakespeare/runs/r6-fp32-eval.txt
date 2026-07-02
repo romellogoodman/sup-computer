@@ -1,0 +1,29 @@
+# r6 — float32 re-run: un-confounded BPC on the held-out test.txt (250,000 chars)
+
+The r5 XL round hit an MPS float16 instability (CUDA-only GradScaler disabled ->
+large-vocab logits overflow), which forced the large vocabs to a lower LR and
+confounded the GPT-2 control. r6 re-runs all vocabs at dtype=float32 / lr=1e-3
+(no overflow), so bpe1k vs gpt2 is finally apples-to-apples. Same enlarged
+corpus, same block_size=256, 2000 iters, best-val checkpoint. BPC = total NLL /
+chars(test.txt) / ln2, comparable across the whole series.
+
+run                    tokenizer   params   BPC
+r6-fp32-bpe4k          bpe4096     12.19M   1.8125
+r6-fp32-bpe1k          bpe1024     11.02M   1.8310
+r6-fp32-gpt2 (control) gpt2-50257  29.94M   1.8430
+--- prior series champions (for reference) ---
+shakespeare-nanogpt-2  gpt2-50257  29.94M   1.9185   (r3-bpe, float16)
+shakespeare-nanogpt-1  char-65     10.66M   2.3950
+
+Findings:
+- float32 eliminates the instability: bpe4k, which DIVERGED at float16/1e-3,
+  trains cleanly and lands the best BPC (1.8125).
+- The corpus-trained small vocabs (1k, 4k) match/beat GPT-2's 50k-vocab model
+  at ~1/3 the parameters. The edge over the fresh fp32 gpt2 control is small
+  (bpe1k -0.012, bpe4k -0.030) and within single-seed noise; the params-
+  efficiency (equal-or-better BPC at 1/3 size) is the clear result.
+- All three fp32 models beat the prior champion's 1.919 — partly because
+  float32 helps every vocab (the fp32 gpt2 control alone improves 1.919 -> 1.843).
+
+Released: bpe1k -> shakespeare-nanogpt-3 (smallest; BPC tied-best within noise).
+Next round to firm up: multi-seed to resolve bpe1k vs bpe4k and the vs-control edge.

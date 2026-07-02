@@ -1,0 +1,15 @@
+=== R5 "XL" EVAL (held-out test.txt, 250,000 chars, BPC) ===
+# enlarged early-modern corpus + custom byte-level BPE vocab. seed 1337.
+# Healthy checkpoints only (best-val). Diverged runs (bpe4k@1e-3, gpt2@1e-3,
+# bpe4k-lr3e4, bpe16k@3e-4) excluded — see research/log.md.
+
+r5-xl-bpe1k       tokenizer=bpe1024   params=11.02M  tokens=110577 chars=250000  token_loss=2.9526  ppl=19.16   BPC=1.8841   (lr=1e-3, val-min@2000)
+r5-xl-bpe4k-lr1e4 tokenizer=bpe4096   params=12.19M  tokens=87844  chars=250000  token_loss=5.5508  ppl=257.45  BPC=2.8139   (lr=1e-4, val-min@2000, undertrained)
+r5-xl-bpe16k      tokenizer=bpe16384  params=16.91M  tokens=75866  chars=250000  token_loss=5.9318  ppl=376.84  BPC=2.5970   (lr=1e-4, val-min@500,  undertrained)
+r5-xl-gpt2-lr1e4  tokenizer=gpt2-bpe  params=29.94M  tokens=81091  chars=250000  token_loss=5.6872  ppl=295.07  BPC=2.6614   (lr=1e-4, val-min@500,  control, undertrained)
+
+# For comparison (prior leaderboard):
+# champion r3-bpe (shakespeare-nanogpt-2)  gpt2-bpe  29.94M  BPC=1.9185
+# r4-champion                              gpt2-bpe  65.5M   BPC=1.947
+
+### WINNER: r5-xl-bpe1k  BPC 1.8841  (< champion 1.9185, at 11.02M vs 29.94M params)
