@@ -8,7 +8,10 @@ const CARDS = path.join(ROOT, "research-docs", "model-cards");
 
 // Chart paths in the markdown ("assets/x.png", "../reports/assets/x.png") are
 // rewritten to the served location (public/research-assets/ -> /research-assets/).
-const rewriteAssets = (s) => s.replace(/(?:[.\w-]+\/)*assets\//g, "/research-assets/");
+// Scoped to markdown/HTML reference positions — `](...`, `src="..."`, `srcset="..."`
+// — so prose or code that merely *mentions* an assets/ path is left alone.
+const ASSET_PATH = /((?:\]\(|src="|srcset=")\s*)(?:[.\w-]+\/)*assets\//g;
+const rewriteAssets = (s) => s.replace(ASSET_PATH, "$1/research-assets/");
 
 const GITHUB = "https://github.com/romellogoodman/sup-computer";
 

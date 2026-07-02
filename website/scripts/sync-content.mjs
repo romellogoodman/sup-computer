@@ -26,7 +26,12 @@ await rm(contentDir, { recursive: true, force: true });
 await mkdir(contentDir, { recursive: true });
 
 for (const [src, out] of DIRS) {
-  await cp(resolve(repoRoot, src), resolve(contentDir, out), { recursive: true });
+  const from = resolve(repoRoot, src);
+  if (!existsSync(from)) {
+    console.warn(`sync-content: missing ${src}/ — skipped (the site will render without it)`);
+    continue;
+  }
+  await cp(from, resolve(contentDir, out), { recursive: true });
   console.log(`synced ${src}/ -> content/${out}/`);
 }
 for (const [src, out] of FILES) {
