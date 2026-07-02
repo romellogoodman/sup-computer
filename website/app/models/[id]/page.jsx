@@ -25,7 +25,6 @@ export default function Model({ params }) {
 
   return (
     <>
-      <p className="model__back"><a href="/#models">← models</a></p>
       <h1 className="model__title">{m.id}</h1>
       <table className="spec-table">
         <tbody>
