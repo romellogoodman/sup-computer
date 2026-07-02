@@ -68,7 +68,7 @@ shells out to headless Chrome (override the binary with `DATAVIZ_CHROME`, or pas
 | `training-loss` | Baseline validation loss descending 4.28 → 1.46 |
 
 These are also exported as light/dark PNGs into [`../../research-docs/reports/assets/`](../../research-docs/reports/assets/)
-(named `exp01-<chart>.<mode>.png`) and embedded in [Experiment 01](../../research-docs/reports/experiment-01.md)
+(named `exp01-<chart>.<mode>.png`) and embedded in [Experiment 01](../../research-docs/reports/improve-a-small-model.md)
 via `<picture>` so they follow the reader's color scheme.
 
 Open any `output/*.html` in a browser, or copy the inner `<svg>` for static embeds.

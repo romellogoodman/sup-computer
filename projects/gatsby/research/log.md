@@ -389,6 +389,6 @@ target of this round.
 **Verdict:** a 4-model local mixture matches the paid baseline's behaviour at $0.
 The finding is that **the blend is a designed object** — granite's flat per-model
 dial broke r1, rebalancing off it fixed r2. Released as `gatsby-nanogpt-2`;
-written up in [Experiment 04](../../../research-docs/reports/experiment-04.md).
+written up in [Experiment 04](../../../research-docs/reports/mixture-of-models.md).
 The dial's mid-compression (gemma carries the range, capped at 20% for speed) is
 the open lever for a future gemma-heavy round.

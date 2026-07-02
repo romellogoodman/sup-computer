@@ -86,7 +86,7 @@ Sample dump: [`research/samples-1k-v3.md`](research/samples-1k-v3.md).
 The same green-light dial model as v1 — identical architecture and behaviour —
 but its corpus is written by a **mixture of four local open models** instead of
 the Claude API. The contribution is the *data pipeline*: free, local, four-voice.
-See [Experiment 04](../../research-docs/reports/experiment-04.md).
+See [Experiment 04](../../research-docs/reports/mixture-of-models.md).
 
 ### Spec
 

@@ -113,7 +113,7 @@ on the command line (see the sample commands above).
 - **[`MODELS.md`](MODELS.md)** — the version registry: every release, its spec, git
   tag, and rebuild commands.
 - **[`research-docs/reports/`](../../research-docs/reports/)** — the experiment write-ups
-  with charts (start with [Experiment 01](../../research-docs/reports/experiment-01.md)).
+  with charts (start with [Experiment 01](../../research-docs/reports/improve-a-small-model.md)).
 - **[`research-docs/model-cards/`](../../research-docs/model-cards/)** — per-version model
   cards (intended use, data, evaluation, limitations).
 - **[`leaderboard.md`](leaderboard.md)** — the scoreboard,

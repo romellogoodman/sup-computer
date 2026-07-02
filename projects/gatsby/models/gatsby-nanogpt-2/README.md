@@ -5,7 +5,7 @@ The **green-light dial** model, with the same behaviour as
 reaching for **Jay Gatsby's green light**, with a `[green=N]` intensity dial baked
 into the data — but its corpus is written by a **mixture of four local open
 models** instead of the Claude API. Research run `mix-2k-r2`; see
-[Experiment 04](../../../../research-docs/reports/experiment-04.md).
+[Experiment 04](../../../../research-docs/reports/mixture-of-models.md).
 
 This folder is a **frozen, self-contained snapshot** of exactly the code + corpus
 that produces v2, copied out of the project root so the working pipeline can keep

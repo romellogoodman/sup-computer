@@ -11,7 +11,7 @@ as an AI autonomously designing its own successor — we are not there yet.
 out of the first LLM-assisted research experiment (four rounds). New versions (v3, v4, …) will be
 added as future rounds find real improvements, each pinned to its own git tag and
 documented here. The story of how v1 became v2 is in
-[Experiment 01](../../research-docs/reports/experiment-01.md) (all reports: [`research-docs/reports/`](../../research-docs/reports/README.md))
+[Experiment 01](../../research-docs/reports/improve-a-small-model.md) (all reports: [`research-docs/reports/`](../../research-docs/reports/README.md))
 and [`leaderboard.md`](./leaderboard.md).
 
 Each version has a Hugging Face-style **model card** in

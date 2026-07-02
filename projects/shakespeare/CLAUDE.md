@@ -60,8 +60,9 @@ Tokens live in
 
 - **Trained weights are never committed** (gitignored). Everything needed to
   *reproduce* them is — see the rebuild commands in [`MODELS.md`](MODELS.md).
-- **Reports are frozen.** [`research-docs/reports/experiment-NN.md`](../../research-docs/reports/README.md) files
-  are never edited after publishing; supersede with a new number. The *living*
+- **Reports are frozen.** [`research-docs/reports/<descriptive-slug>.md`](../../research-docs/reports/README.md) files
+  are never edited or renamed after publishing (the slug is the public URL — ADR-0016);
+  supersede with a new report. The *living*
   records are [`leaderboard.md`](./leaderboard.md),
   [`MODELS.md`](MODELS.md), and the [model cards](../../research-docs/model-cards/).
 - **Credit the researcher.** Each report sets `researcher: <id>` in frontmatter and
