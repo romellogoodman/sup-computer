@@ -129,6 +129,28 @@
       }
     },
     {
+      "id": "kenosha-kid-nanogpt-2",
+      "project": "kenosha-kid",
+      "version": 2,
+      "git_tag": "kenosha-kid-nanogpt-2",
+      "architecture": "modern (RoPE, RMSNorm, bias-free)",
+      "tagline": "a self-drifting corpus — converged, it keeps the anchors crisp and still dreams the near-misses",
+      "researcher": "claude-fable-5",
+      "tokenizer": {
+        "type": "char",
+        "vocab_size": 39
+      },
+      "params": 792576,
+      "held_out_bpc": null,
+      "frozen_code": "projects/kenosha-kid/models/kenosha-kid-nanogpt-2/",
+      "model_card": "research-docs/model-cards/kenosha-kid-nanogpt-2.md",
+      "artifacts": {
+        "checkpoint": null,
+        "onnx": null,
+        "onnx_int8": null
+      }
+    },
+    {
       "id": "daydream-chess-nanogpt-1",
       "project": "daydream",
       "version": 1,
