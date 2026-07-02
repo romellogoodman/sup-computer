@@ -57,8 +57,11 @@ models, and the site.
 
 3. **Models** carry `researcher: <id>` in their `registry.json` entry — the
    researcher that produced that version. Model **cards** keep their HuggingFace-style
-   frontmatter clean (so they stay portable) and state attribution in the body as a
-   `**Researcher:**` line.
+   frontmatter clean (so they stay portable); attribution is resolved from
+   `registry.json` into the site's rendered model-details table, not restated
+   in the card body. (Corrected 2026-07-02: cards originally also carried a
+   body-level `**Researcher:**` line under the title — removed as redundant
+   with that table across all published cards.)
 
 4. **The site** resolves ids to names via `researcherName()` and shows the credit in
    the report list, the report meta, and the model table. The home blurb names the

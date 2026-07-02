@@ -9,9 +9,9 @@ read run outputs, configs, and model cards that sit one directory away.
 | Path | What it is |
 |---|---|
 | `core/` | The shared engine. `nanogpt_core/` (model, train, sample, configurator), `eval/`, `export/`. Editable-installed; projects import it. The model is the modern arch only (RoPE, RMSNorm, bias-free). |
-| `projects/<name>/` | One model project — thin: config, corpus prep, run evidence, model cards, and frozen release snapshots under `models/`. Three so far: `shakespeare/` (rides `core/`), `gatsby/` (vendored base engine, ADR-0011), `kenosha-kid/` (rides `core/`). |
+| `projects/<name>/` | One model project — thin: config, corpus prep, run evidence, model cards, and frozen release snapshots under `models/`. Four so far: `shakespeare/` (rides `core/`), `gatsby/` (vendored base engine, ADR-0011), `kenosha-kid/` (rides `core/`), `daydream/` (rides `core/`, three board-size tiers, external Fairy-Stockfish dependency — ADR-0021, ADR-0022). |
 | `player/` | `@supcomputer/player` — vendored browser runtime (onnxruntime-web forward pass, JS sampling loop). Nothing consumes it yet; see ADR-0010 and TODO item 1. |
-| `tools/` | Researcher tools, not shipped code: `dataviz/` (the chart pipeline — every chart goes through it), `synthgen/` (local-LLM synthetic-corpus pipeline, ADR-0014) and `claude_cost.py`. |
+| `tools/` | Researcher tools, not shipped code: `dataviz/` (the chart pipeline — every chart goes through it), `synthgen/` (local-LLM synthetic-corpus pipeline, ADR-0014), `token-chess/` (LLM-vs-LLM benchmark orchestrating Daydream's sampler under a token budget — harness only, no live matches run yet) and `claude_cost.py`. |
 | `research-docs/` | Cross-project write-ups: `reports/` (experiments) and `model-cards/`. Claude writes here. |
 | `website/` | The studio site (custom Next.js, static export). Owns no content — a prebuild script copies `research-docs/` into a gitignored `content/` and generates LLM-readable `.md` twins (ADR-0019). |
 | `registry.json` | Model manifest the site + player consume. |
@@ -33,9 +33,12 @@ read run outputs, configs, and model cards that sit one directory away.
   frontmatter. See `docs/adr/0016-descriptive-report-slugs.md`.
 - **Credit the AI researcher.** Every report sets `researcher: <id>` in its
   frontmatter and every `registry.json` model entry sets `"researcher": "<id>"`,
-  keyed into the `researchers` map in `registry.json` (model cards state it in the
-  body as a `**Researcher:**` line). The researcher is the model that *did the
-  research*, distinct from the model being built. See `docs/adr/0013-attribution-of-the-ai-researcher.md`.
+  keyed into the `researchers` map in `registry.json`. Model cards do **not**
+  restate this as a body-level `**Researcher:**` line — it's redundant with
+  the model-details table the site renders from `registry.json`, so as of
+  2026-07-02 it's been removed from every card. The researcher is the model
+  that *did the research*, distinct from the model being built. See
+  `docs/adr/0013-attribution-of-the-ai-researcher.md`.
 
 ## How to work here
 

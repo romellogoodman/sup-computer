@@ -34,3 +34,5 @@ supersede instead (mark the old one `Superseded by ADR-NNNN`).
 | [0018](0018-dataviz-matches-the-website.md) | dataviz charts match the website's document style (drop Vercel Geist) | Accepted |
 | [0019](0019-llm-readable-markdown-endpoints.md) | LLM-readable markdown twins for every research URL (`/….md`, `/llms.txt`) | Accepted |
 | [0020](0020-one-home-per-fact.md) | One home per fact — living docs link instead of restating | Accepted |
+| [0021](0021-daydream-fairy-stockfish-dependency.md) | Daydream depends on Fairy-Stockfish as an external engine binary | Accepted |
+| [0022](0022-daydream-three-tier-sampler-prober-shape.md) | Daydream is a three-tier board-size family, and the first sampler/prober project | Accepted |
