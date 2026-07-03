@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
         <main id="main">{children}</main>
         <footer className="footer">
           <span className="footer__colophon">
-            sup computer · a small language model studio
+            sup computer · led by <a className="footer__link" href="https://romellogoodman.com/">romello goodman</a>
           </span>
           <span className="footer__links">
             <a className="footer__link" href={HUGGINGFACE}>huggingface</a>
