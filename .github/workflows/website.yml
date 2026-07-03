@@ -16,6 +16,11 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: website/package-lock.json
+      # website depends on @supcomputer/player via file:../player — npm ci in
+      # website/ only symlinks it, so the player's own deps must be installed too
+      - name: Install player deps
+        working-directory: player
+        run: npm ci
       - name: Build the site (runs sync-content via prebuild)
         working-directory: website
         run: |
