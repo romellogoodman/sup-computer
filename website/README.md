@@ -48,6 +48,10 @@ green accent. No CSS-in-JS, no utility framework.
 - **Color tokens.** Every color is a `--color-*` custom property defined once in
   `:root`. **Dark mode** (`@media (prefers-color-scheme: dark)`) swaps the token
   *values* in one place; no rule restates a literal color.
+- **Breakpoints.** Named once as `@custom-media --bp-*` at the top of
+  `globals.css` (compiled by postcss-preset-env — see `postcss.config.json`,
+  which restates Next's default PostCSS chain to add that one feature). Media
+  queries use the names (`@media (--bp-narrow)`), never a hardcoded width.
 - **Exceptions to BEM** (not renameable): `.takeaways` / `.takeaways-label` are
   authored as raw HTML inside the markdown content (`research-docs/`); `.footnotes`
   is emitted by remark-gfm.
