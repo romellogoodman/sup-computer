@@ -1,11 +1,12 @@
 ---
 name: publish-player-model
-description: Export a released model to ONNX and publish it to the R2 bucket so the website's /model-player page can run it in the browser. Use when a new model version is released, when the player needs to pick up a release, when artifact URLs in registry.json need filling, or when re-uploading fixed artifacts.
+description: Export a released model to ONNX and publish it — R2 for the website's /model-player page, and a Hugging Face repo under the sup-computer org for the checkpoint + card. Use when a new model version is released, when the player needs to pick up a release, when artifact URLs in registry.json need filling, or when re-uploading fixed artifacts.
 ---
 
-# Publish a model to the player
+# Publish a model to the player (and Hugging Face)
 
-Turn a released model version into browser-runnable artifacts on Cloudflare R2
+Turn a released model version into browser-runnable artifacts on Cloudflare R2,
+a Hugging Face release under [`sup-computer`](https://huggingface.co/sup-computer),
 and wire it into the `/model-player` page. Conventions are recorded in
 [ADR-0024](../../../docs/adr/0024-model-player-page-and-artifact-conventions.md);
 the release process itself is [`docs/releasing.md`](../../../docs/releasing.md).
@@ -69,9 +70,35 @@ load-bearing (ADR-0024). Only `char`, `bpe` (HF tokenizer.json), and
 `gpt2-bpe` tokenizer types are supported by `@supcomputer/player` — a new
 tokenizer scheme needs a new class in `player/src/tokenizers.js` first.
 
-## 4. Wire the registries
+## 4. Publish the Hugging Face release
 
-- `registry.json` — set the model's `artifacts.onnx` to the full public URL.
+One HF model repo per frozen release: `sup-computer/<id>` (a new research round
+= a new repo, same as a new frozen folder). Auth: `uvx --from
+'huggingface_hub[cli]' hf auth whoami` — log in via `hf auth login` if needed.
+
+Stage a directory containing:
+
+- `README.md` — the model card from `research-docs/model-cards/<id>.md`
+  verbatim (the cards already carry HF YAML frontmatter). Rewrite relative
+  markdown links to absolute GitHub URLs and insert the standard pointer line
+  after the H1 (site model page · monorepo + frozen-code path + git tag ·
+  model-player link) — see the staging script pattern from 2026-07-02 if in
+  doubt: mirror `website/lib/content.js`'s `resolveLink`.
+- `ckpt.pt` — the full training checkpoint (HF is the home for weights; git
+  and R2 deliberately are not).
+- `<id>.onnx`, `<id>.int8.onnx`, and the tokenizer file (same names as R2).
+
+```bash
+uvx --from 'huggingface_hub[cli]' hf repo create "sup-computer/<id>" --repo-type model
+uvx --from 'huggingface_hub[cli]' hf upload "sup-computer/<id>" <staged-dir> . \
+  --repo-type model --commit-message "release: <id> (checkpoint + ONNX + tokenizer + model card)"
+```
+
+## 5. Wire the registries
+
+- `registry.json` — set the model's `artifacts.onnx` to the full public R2 URL
+  and `artifacts.checkpoint` to the HF resolve URL
+  (`https://huggingface.co/sup-computer/<id>/resolve/main/ckpt.pt`).
 - `player-registry.json` — swap the series' entry to the new id, with:
   - `prompt`: a string the training corpus actually contains (check the corpus,
     don't invent one).
@@ -83,7 +110,7 @@ tokenizer scheme needs a new class in `player/src/tokenizers.js` first.
 For local dev without the network, also copy the artifacts into the gitignored
 `website/public/artifacts/` and use `/artifacts/<file>` URLs temporarily.
 
-## 5. Verify in the browser, then commit
+## 6. Verify in the browser, then commit
 
 ```bash
 cd website && node scripts/sync-content.mjs   # dev server picks registries up
