@@ -19,6 +19,9 @@ env/
 # --- Generated chart output (dataviz renders these on demand) ---
 tools/dataviz/output/
 
+# --- ONNX export output (core/export/export.py; artifacts publish to R2) ---
+projects/*/dist/
+
 # --- Node ---
 node_modules/
 

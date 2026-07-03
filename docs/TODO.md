@@ -8,15 +8,21 @@ original rationale, [`monorepo-plan.md`](monorepo-plan.md).
 
 ## The three main TODOs
 
-1. **Wire up the player** — build the website `/play` route and the hosting it needs.
-   - Run [`core/export/export.py`](../core/export/export.py) on the released models
-     to produce `.onnx` + `vocab.json` (the per-model tokenizer the oracle doesn't carry).
-   - Host the artifacts (GitHub release / R2) and fill the currently-`null`
-     `artifacts` URLs in [`registry.json`](../registry.json).
-   - Build the `/play` route on the website consuming `@supcomputer/player`
-     ([`player/`](../player/README.md)) + the registry. Nothing consumes the player yet.
+1. **Wire up the player** — ✅ built 2026-07-02 as the website's `/model-player`
+   page (see [ADR-0024](adr/0024-model-player-page-and-artifact-conventions.md)).
+   The six latest releases are exported (parity-checked) and run in-browser;
+   `player-registry.json` decides what the page lists. What remains:
+   - **Host the artifacts on R2** and point `registry.json`'s `artifacts` URLs
+     at the public bucket (local dev serves them from the gitignored
+     `website/public/artifacts/`). The bucket needs CORS for the site origin.
+   - **Move inference off the main thread** — ORT WASM currently computes on
+     the UI thread, so the tab janks for the seconds a generation takes. A
+     worker (or ORT's proxy mode, which needs cross-origin isolation headers)
+     is the fix.
+   - Consider shipping the `.int8.onnx` variants (≈4× smaller download) once
+     WebGPU-vs-int8 operator support is checked per model.
    - Refs: [ADR-0010](adr/0010-vendor-the-player.md) (vendored player),
-     [ADR-0008](adr/0008-defer-the-player.md) (the deferral it amended),
+     [ADR-0024](adr/0024-model-player-page-and-artifact-conventions.md) (the page + conventions),
      [ADR-0002](adr/0002-no-weights-in-tree.md) (no weights in tree),
      [the logits oracle](../research-docs/reports/logits-oracle.md).
 
