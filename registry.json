@@ -1,5 +1,5 @@
 {
-  "_note": "Model manifest consumed by the website and the (future) player. Weights and ONNX live in GitHub release artifacts / R2, never in-tree — the url fields stay null until a version is published. Every model records the AI `researcher` that produced it, keyed into the `researchers` map below — see docs/adr/0013-attribution-of-the-ai-researcher.md.",
+  "_note": "Model manifest consumed by the website and the (future) player. Weights and ONNX live in GitHub release artifacts / R2, never in-tree \u2014 the url fields stay null until a version is published. Every model records the AI `researcher` that produced it, keyed into the `researchers` map below \u2014 see docs/adr/0013-attribution-of-the-ai-researcher.md.",
   "researchers": {
     "claude-opus-4-8": {
       "name": "Claude Opus 4.8",
@@ -20,11 +20,11 @@
   "series": {
     "shakespeare-nanogpt": {
       "name": "shakespeare-nanogpt",
-      "tagline": "Writes Shakespeare from scratch — and gets sharper every research round."
+      "tagline": "Writes Shakespeare from scratch \u2014 and gets sharper every research round."
     },
     "gatsby-nanogpt": {
       "name": "gatsby-nanogpt",
-      "tagline": "Bends any story toward the green light — obsession you can dial from 1 to 5."
+      "tagline": "Bends any story toward the green light \u2014 obsession you can dial from 1 to 5."
     },
     "kenosha-kid-nanogpt": {
       "name": "kenosha-kid-nanogpt",
@@ -32,7 +32,7 @@
     },
     "daydream-chess-nanogpt": {
       "name": "daydream-chess-nanogpt",
-      "tagline": "Plays chess without ever knowing the rules — learned move by move from games, not a rulebook, across three board sizes."
+      "tagline": "Plays chess without ever knowing the rules \u2014 learned move by move from games, not a rulebook, across three board sizes."
     }
   },
   "models": [
@@ -64,7 +64,7 @@
       "version": 2,
       "git_tag": "shakespeare-nanogpt-2",
       "architecture": "modern (RoPE, RMSNorm, bias-free)",
-      "tagline": "four research rounds later — 20% fewer bits per character",
+      "tagline": "four research rounds later \u2014 20% fewer bits per character",
       "researcher": "claude-opus-4-8",
       "tokenizer": {
         "type": "gpt2-bpe",
@@ -86,7 +86,7 @@
       "version": 3,
       "git_tag": "shakespeare-nanogpt-3",
       "architecture": "modern (RoPE, RMSNorm, bias-free)",
-      "tagline": "same quality at a third the size — a corpus-trained 1k-vocab BPE",
+      "tagline": "same quality at a third the size \u2014 a corpus-trained 1k-vocab BPE",
       "researcher": "claude-fable-5",
       "tokenizer": {
         "type": "bpe",
@@ -98,7 +98,7 @@
       "model_card": "research-docs/model-cards/shakespeare-nanogpt-3.md",
       "artifacts": {
         "checkpoint": null,
-        "onnx": null,
+        "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/shakespeare-nanogpt-3.onnx",
         "onnx_int8": null
       }
     },
@@ -130,7 +130,7 @@
       "version": 2,
       "git_tag": "gatsby-nanogpt-2",
       "architecture": "base char-level (LayerNorm, learned position embeddings, biases)",
-      "tagline": "the same obsession for $0 — its corpus written by four local models",
+      "tagline": "the same obsession for $0 \u2014 its corpus written by four local models",
       "researcher": "claude-opus-4-8",
       "tokenizer": {
         "type": "char",
@@ -142,7 +142,7 @@
       "model_card": "research-docs/model-cards/gatsby-nanogpt-2.md",
       "artifacts": {
         "checkpoint": null,
-        "onnx": null,
+        "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/gatsby-nanogpt-2.onnx",
         "onnx_int8": null
       }
     },
@@ -174,7 +174,7 @@
       "version": 2,
       "git_tag": "kenosha-kid-nanogpt-2",
       "architecture": "modern (RoPE, RMSNorm, bias-free)",
-      "tagline": "a self-drifting corpus — converged, it keeps the anchors crisp and still dreams the near-misses",
+      "tagline": "a self-drifting corpus \u2014 converged, it keeps the anchors crisp and still dreams the near-misses",
       "researcher": "claude-fable-5",
       "tokenizer": {
         "type": "char",
@@ -186,7 +186,7 @@
       "model_card": "research-docs/model-cards/kenosha-kid-nanogpt-2.md",
       "artifacts": {
         "checkpoint": null,
-        "onnx": null,
+        "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/kenosha-kid-nanogpt-2.onnx",
         "onnx_int8": null
       }
     },
@@ -208,7 +208,7 @@
       "model_card": "research-docs/model-cards/daydream-chess-nanogpt-1.md",
       "artifacts": {
         "checkpoint": null,
-        "onnx": null,
+        "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/daydream-chess-nanogpt-1.onnx",
         "onnx_int8": null
       }
     },
@@ -230,7 +230,7 @@
       "model_card": "research-docs/model-cards/daydream-chess-nanogpt-micro-1.md",
       "artifacts": {
         "checkpoint": null,
-        "onnx": null,
+        "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/daydream-chess-nanogpt-micro-1.onnx",
         "onnx_int8": null
       }
     },
@@ -252,7 +252,7 @@
       "model_card": "research-docs/model-cards/daydream-chess-nanogpt-grand-1.md",
       "artifacts": {
         "checkpoint": null,
-        "onnx": null,
+        "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/daydream-chess-nanogpt-grand-1.onnx",
         "onnx_int8": null
       }
     }
