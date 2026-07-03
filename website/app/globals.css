@@ -180,7 +180,7 @@ hr {
   gap: 16px; flex-wrap: wrap;
 }
 .footer__links { display: flex; gap: 20px; }
-.footer__link { color: var(--color-text-muted); white-space: nowrap; }
+.footer__link { white-space: nowrap; }
 
 /* ---- block: intro (home lede) ------------------------------------------ */
 .intro { max-width: var(--measure); }
