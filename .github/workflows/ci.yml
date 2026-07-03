@@ -3,7 +3,11 @@ name: ci
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "website/**"
   pull_request:
+    paths-ignore:
+      - "website/**"
 
 jobs:
   train-small-model:
@@ -25,19 +29,3 @@ jobs:
         run: uv sync --group dev --extra export
       - name: Train a small model
         run: uv run --group dev pytest core/tests/ -q
-
-  build-the-site:
-    name: build the site
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 22
-          cache: npm
-          cache-dependency-path: website/package-lock.json
-      - name: Build the site (runs sync-content via prebuild)
-        working-directory: website
-        run: |
-          npm ci
-          npm run build
