@@ -42,9 +42,12 @@ needs (`model.py`, `config.py`, `train.py`, `sample.py`, `eval.py`, `prepare.py`
 
 5. **Tag it:** `git tag <project>-N` so the exact repo state is recoverable.
 
-6. **Publish artifacts** (when ready): upload `ckpt.pt` / `.onnx` to a GitHub
-   release or R2 and fill the `artifacts` urls in `registry.json`. Weights never
-   enter the tree.
+6. **Publish artifacts** (when ready): export to ONNX and upload to the R2
+   bucket, then fill the `artifacts` urls in `registry.json`. Weights never
+   enter the tree. The full pipeline (staging the checkpoint, export, upload,
+   registry wiring, browser verification) is documented as the
+   [`publish-player-model` skill](../.claude/skills/publish-player-model/SKILL.md);
+   conventions in [ADR-0024](adr/0024-model-player-page-and-artifact-conventions.md).
 
 ## Invariants
 
