@@ -34,6 +34,15 @@ textarea:not([rows]) { min-height: 10em; }
      below; no component restates a color.
    ========================================================================= */
 
+/* ---- breakpoints ---------------------------------------------------------
+   The single source of truth for responsive widths. @custom-media is compiled
+   away by postcss-preset-env (see postcss.config.json) — media queries can't
+   read var(), so this is the plain-CSS equivalent of a breakpoint mixin.
+   Use these names in every @media rule; never hardcode a width. */
+@custom-media --bp-narrow (max-width: 640px);  /* phones: type scale, stacking */
+@custom-media --bp-mid    (max-width: 760px);  /* mid: multi-column blocks stack */
+@custom-media --bp-wide   (max-width: 1080px); /* below the canvas: sidenotes collapse inline */
+
 :root {
   color-scheme: light;
 
@@ -59,6 +68,11 @@ textarea:not([rows]) { min-height: 10em; }
 
   /* accent — the one studio color */
   --color-accent:       #2f6b3f;
+
+  /* notice — cautionary banners (missing weights, degraded demos); the green
+     accent reads as success, so warnings get their own muted amber */
+  --color-notice:       #8a5f00;
+  --color-notice-wash:  #8a5f0012;
 
   /* type */
   --font-serif: "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, "Times New Roman", serif;
@@ -91,6 +105,9 @@ textarea:not([rows]) { min-height: 10em; }
     --color-link-visited: #bda7ff;
 
     --color-accent:       #5fb87a;
+
+    --color-notice:       #d0a24a;
+    --color-notice-wash:  #d0a24a1a;
   }
 }
 
@@ -162,6 +179,7 @@ hr {
   display: flex; justify-content: space-between; align-items: baseline;
   gap: 16px; flex-wrap: wrap;
 }
+.footer__links { display: flex; gap: 20px; }
 .footer__link { color: var(--color-text-muted); white-space: nowrap; }
 
 /* ---- block: intro (home lede) ------------------------------------------ */
@@ -216,6 +234,72 @@ hr {
   white-space: nowrap; width: 1%;
 }
 .spec-table td { font-family: var(--font-mono); font-size: 13.5px; color: var(--color-text); }
+
+/* ---- block: player (/model-player demo) --------------------------------- */
+/* header row splits 60/40 — model title+tagline left, picker right, aligned at
+   the top; the demo body below spans the full width */
+.player {
+  display: grid; grid-template-columns: 60% 40%; align-items: start;
+  margin-top: 28px;
+}
+.player__head { grid-column: 1; grid-row: 1; }
+/* the model picker, top-right; styled like the home-page .tag */
+.player__bar { grid-column: 2; grid-row: 1; display: flex; justify-content: flex-end; }
+.player__body { grid-column: 1 / -1; grid-row: 2; min-width: 0; }
+.player__select {
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .08em;
+  text-transform: uppercase; padding: 3px 6px;
+  border: 1px solid var(--color-rule-strong); border-radius: 0;
+  color: var(--color-text-muted); background: var(--color-bg); cursor: pointer;
+}
+.player__model-title { font-family: var(--font-serif); font-size: 23px; font-weight: 700; letter-spacing: -.006em; margin: 0 0 .1em; }
+.player__tagline { font-style: italic; color: var(--color-text-muted); margin: 0 0 1em; max-width: var(--measure); }
+.player__notice {
+  border: 1px solid var(--color-rule-strong); border-left: 3px solid var(--color-notice);
+  background: var(--color-notice-wash); padding: .6em .9em;
+  font-family: var(--font-mono); font-size: 12.5px; color: var(--color-text);
+  margin: 0 0 1.1em;
+}
+.player__label {
+  display: block; font-family: var(--font-mono); font-size: 11.5px; font-weight: 600;
+  letter-spacing: .07em; text-transform: uppercase; color: var(--color-text-muted);
+  margin: 0 0 4px;
+}
+.player__prompt {
+  width: 100%; min-height: 4.5em; resize: vertical;
+  font-family: var(--font-mono); font-size: 13.5px; line-height: 1.5;
+  color: var(--color-text); background: var(--color-surface);
+  border: 1px solid var(--color-rule); padding: .6em .8em; margin: 0 0 .9em;
+}
+.player__prompt:disabled { color: var(--color-text-faint); }
+.player__controls { display: flex; align-items: flex-end; gap: 18px; flex-wrap: wrap; margin: 0 0 1.1em; }
+.player__control { display: flex; flex-direction: column; }
+.player__control input {
+  width: 76px; font-family: var(--font-mono); font-size: 13px;
+  color: var(--color-text); background: var(--color-surface);
+  border: 1px solid var(--color-rule); padding: .3em .5em;
+}
+.player__control input:disabled { color: var(--color-text-faint); }
+.player__button {
+  font-family: var(--font-mono); font-size: 13px; cursor: pointer;
+  color: var(--color-accent); background: var(--color-accent-wash);
+  border: 1px solid var(--color-accent); padding: .35em 1.1em;
+}
+.player__button:disabled { color: var(--color-text-faint); border-color: var(--color-rule-strong); background: none; cursor: default; }
+.player__error { font-family: var(--font-mono); font-size: 12.5px; color: var(--color-text); margin: 0 0 .9em; }
+.player__output {
+  min-height: 14em; white-space: pre-wrap; word-break: break-word;
+  margin: 0; max-width: none; /* full-width panel; override the global pre measure */
+}
+.player__output-prompt { color: var(--color-text-faint); }
+.player__cursor { color: var(--color-accent); }
+
+@media (--bp-mid) {
+  .player { grid-template-columns: 1fr; gap: 14px; }
+  .player__bar { grid-column: 1; grid-row: 1; justify-content: flex-start; }
+  .player__head { grid-column: 1; grid-row: 2; }
+  .player__body { grid-column: 1; grid-row: 3; }
+}
 
 /* ---- block: notfound ---------------------------------------------------- */
 .notfound__label { font-family: var(--font-mono); font-size: 12.5px; color: var(--color-text-muted); letter-spacing: .015em; margin: 0 0 .2em; }
@@ -294,15 +378,18 @@ pre code { font-size: inherit; background: none; padding: 0; border: 0; }
 .sidenote a { word-break: break-word; }
 
 /* ---- narrow screens ----------------------------------------------------- */
-@media (max-width: 1080px) {
+@media (--bp-wide) {
   .sidenote {
     float: none; width: auto; margin: .6em 0; padding-left: .8em;
     border-left: 2px solid var(--color-accent); display: block;
   }
 }
-@media (max-width: 640px) {
+@media (--bp-narrow) {
   body { padding: 28px 18px 96px; font-size: 17px; }
   .masthead { gap: 10px; }
   .masthead__nav { text-align: left; }
   .masthead__link:first-child { margin-left: 0; }
+  /* model list: version chips drop under the tagline */
+  .model-list__item { flex-direction: column; align-items: flex-start; gap: 2px; }
+  .model-list__spec { white-space: normal; text-align: left; }
 }

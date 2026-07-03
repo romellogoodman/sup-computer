@@ -1,0 +1,11 @@
+{
+  "_note": "Demo settings for the website's /model-player page, keyed by model id. This file lists ONLY the releases the player shows (the latest per series) — update it with each release. Model facts (params, tokenizer, artifacts) stay in registry.json; this holds just what the browser demo needs: a starter prompt and the release's block_size (from the frozen config.py).",
+  "models": {
+    "daydream-chess-nanogpt-1": { "prompt": "d2d4 ", "block_size": 256 },
+    "daydream-chess-nanogpt-grand-1": { "prompt": "d3d4 ", "block_size": 512 },
+    "daydream-chess-nanogpt-micro-1": { "prompt": "e2e3 ", "block_size": 128 },
+    "gatsby-nanogpt-2": { "prompt": "Gatsby looked out across the bay ", "block_size": 512 },
+    "kenosha-kid-nanogpt-2": { "prompt": "You never did the Kenosha Kid", "block_size": 128 },
+    "shakespeare-nanogpt-3": { "prompt": "ROMEO:", "block_size": 256 }
+  }
+}

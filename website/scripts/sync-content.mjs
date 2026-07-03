@@ -18,7 +18,10 @@ const publicAssets = resolve(here, "..", "public", "research-assets");
 
 // [ repo-root path, destination under content/ ]
 const DIRS = [["research-docs", "research-docs"]];
-const FILES = [["registry.json", "registry.json"]];
+const FILES = [
+  ["registry.json", "registry.json"],
+  ["player-registry.json", "player-registry.json"],
+];
 // chart assets served as static files (image paths are rewritten to /research-assets/)
 const ASSET_DIRS = [["research-docs/reports/assets", publicAssets]];
 

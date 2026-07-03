@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
           <nav className="masthead__nav">
             <a className="masthead__link" href="/#models">models</a>
             <a className="masthead__link" href="/#research">research</a>
-            <a className="masthead__link" href={GITHUB}>sourcecode</a>
+            <a className="masthead__link" href="/model-player/">player</a>
           </nav>
         </header>
         <hr />
@@ -38,7 +38,10 @@ export default function RootLayout({ children }) {
           <span className="footer__colophon">
             sup computer · a small language model studio
           </span>
-          <a className="footer__link" href="#top">back to top ↑</a>
+          <span className="footer__links">
+            <a className="footer__link" href={GITHUB}>sourcecode</a>
+            <a className="footer__link" href="#top">back to top ↑</a>
+          </span>
         </footer>
       </body>
     </html>

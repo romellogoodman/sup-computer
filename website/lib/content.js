@@ -109,6 +109,14 @@ export function getRegistry() {
   return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, "utf8")) : { models: [] };
 }
 
+// Demo settings for /model-player (starter prompt, block_size), keyed by model
+// id. The file also decides WHICH releases the player lists — only entries here
+// (the latest per series) show; it's updated as part of each release.
+export function getPlayerRegistry() {
+  const p = path.join(ROOT, "player-registry.json");
+  return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, "utf8")) : { models: {} };
+}
+
 // The AI researcher credited on an artifact. Reports carry a `researcher` id in
 // frontmatter; models carry one in registry.json. Both resolve through the shared
 // `researchers` map to a display name. See docs/adr/0013-attribution-of-the-ai-researcher.md.

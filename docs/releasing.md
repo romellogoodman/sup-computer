@@ -35,6 +35,10 @@ needs (`model.py`, `config.py`, `train.py`, `sample.py`, `eval.py`, `prepare.py`
    - `projects/<project>/MODELS.md` — the version entry and what changed.
    - `registry.json` — a model entry (id, tag, arch, tokenizer, params, BPC, card,
      artifact urls — `null` until weights/ONNX are published).
+   - `player-registry.json` — swap the series' entry to the new release (the
+     website's `/model-player` page lists exactly the ids in this file): the id,
+     a starter prompt the corpus actually contains, and the release's
+     `block_size` from its frozen `config.py`.
 
 5. **Tag it:** `git tag <project>-N` so the exact repo state is recoverable.
 
