@@ -9,16 +9,19 @@ The ONNX graph is only the **logits oracle**: tokens in, last-position logits
 out. No KV cache; for these context lengths re-running the full forward each step
 is fine.
 
-Scope today: the [`shakespeare-nanogpt`](../projects/shakespeare/) series (v1
-char-level, v2 GPT-2 BPE). See
+Scope: any release the export pipeline produces — char models (`vocab.json`),
+corpus-trained byte-level BPE (a Hugging Face `tokenizer.json`, e.g.
+shakespeare-nanogpt-3's 1k vocab), and GPT-2 BPE. See
 [ADR-0010](../docs/adr/0010-vendor-the-player.md) for the full design and the
 decision to vendor this runtime in-tree.
 
 ## Install
 
-This is the in-tree `@supcomputer/player` package. Nothing consumes it yet — the
-website's future `/play` route will be the consumer (not yet wired). It depends
-on `onnxruntime-web` and `gpt-tokenizer`.
+This is the in-tree `@supcomputer/player` package. Its consumer is the
+website's [`/model-player`](../website/app/model-player/) page
+([ADR-0024](../docs/adr/0024-model-player-page-and-artifact-conventions.md)),
+which depends on it via `file:../player`. It depends on `onnxruntime-web` and
+`gpt-tokenizer`.
 
 ## Use
 
@@ -48,8 +51,9 @@ logits, and `sample(logits, { temp, topk })` → token id.
 | `forward(session, ids)` | one forward pass → last-position logits (`Float32Array`) |
 | `sample(logits, opts?)` | temperature + top-k sample → token id |
 | `generate(session, tok, prompt, opts?)` | the AR loop; streams via `onToken` |
-| `CharTokenizer` | v1 char vocab (`.fromUrl(vocab.json)`) |
-| `BPETokenizer` | v2 GPT-2 BPE (`.create()`) |
+| `CharTokenizer` | char vocab (`.fromUrl(vocab.json)`) |
+| `ByteLevelBPETokenizer` | corpus-trained byte-level BPE (`.fromUrl(tokenizer.json)`, HF format) |
+| `BPETokenizer` | GPT-2 BPE (`.create()`) |
 | `configureBackend(opts?)` | override `wasmPaths` / thread count |
 
 ## Serving ORT's WASM assets
