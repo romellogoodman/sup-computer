@@ -16,6 +16,10 @@ const rewriteAssets = (s) => s.replace(ASSET_PATH, "$1/research-assets/");
 const GITHUB = "https://github.com/romellogoodman/sup-computer";
 export { GITHUB };
 
+// The studio's Hugging Face org — one model repo per frozen release
+// (checkpoint + ONNX + tokenizer + card). See ADR-0024 / docs/releasing.md.
+export const HUGGINGFACE = "https://huggingface.co/sup-computer";
+
 // Canonical absolute origin for the deployed site. Env-driven so a custom domain
 // just sets NEXT_PUBLIC_SITE_URL at build time; trailing slash trimmed so paths
 // join cleanly. Shared by the sitemap and the LLM-readable .md generator.

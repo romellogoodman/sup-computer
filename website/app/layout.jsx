@@ -1,5 +1,5 @@
 import "./globals.css";
-import { SITE_URL, GITHUB } from "../lib/content";
+import { SITE_URL, GITHUB, HUGGINGFACE } from "../lib/content";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -39,6 +39,7 @@ export default function RootLayout({ children }) {
             sup computer · a small language model studio
           </span>
           <span className="footer__links">
+            <a className="footer__link" href={HUGGINGFACE}>huggingface</a>
             <a className="footer__link" href={GITHUB}>sourcecode</a>
             <a className="footer__link" href="#top">back to top ↑</a>
           </span>

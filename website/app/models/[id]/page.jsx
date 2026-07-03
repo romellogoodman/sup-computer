@@ -22,6 +22,9 @@ export default function Model({ params }) {
   if (!m) return notFound();
 
   const card = getCard(m.id);
+  // checkpoint is an HF resolve URL (…/sup-computer/<id>/resolve/main/ckpt.pt);
+  // link the repo page, not the raw file
+  const hfRepo = m.artifacts?.checkpoint?.replace(/\/resolve\/.*$/, "");
 
   return (
     <>
@@ -35,6 +38,16 @@ export default function Model({ params }) {
           <tr><th>Tokenizer</th><td>{`${m.tokenizer.type} (${m.tokenizer.vocab_size})`}</td></tr>
           <tr><th>Parameters</th><td>{m.params.toLocaleString("en-US")}</td></tr>
           <tr><th>Held-out BPC</th><td>{m.held_out_bpc != null ? m.held_out_bpc : "—"}</td></tr>
+          <tr>
+            <th>Weights</th>
+            <td>
+              {hfRepo ? (
+                <a href={hfRepo}>{hfRepo.replace("https://huggingface.co/", "")} (Hugging Face)</a>
+              ) : (
+                "—"
+              )}
+            </td>
+          </tr>
           <tr><th>Researcher</th><td>{m.researcher ? researcherName(m.researcher) : "—"}</td></tr>
         </tbody>
       </table>
