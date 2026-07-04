@@ -5,21 +5,22 @@
 // temperature/top-k, detokenization, rendering — lives here in JS, exactly the
 // seam the export enforces.
 
-import { configureBackend, ort } from './backend.js';
+import { configureBackend, getOrt, getDefaultProviders } from './backend.js';
 
 /**
  * Load an exported .onnx model and return an ORT InferenceSession.
- * Tries WebGPU, falls back to WASM.
+ * In the browser: tries WebGPU, falls back to WASM. With an injected backend
+ * (configureBackend({ ort }), ADR-0025): that runtime's providers.
  *
- * @param {string} url  URL/path to the .onnx file (served as a static asset).
+ * @param {string} url  URL/path to the .onnx file (static asset or local file).
  * @param {object} [opts]
- * @param {string[]} [opts.executionProviders=['webgpu','wasm']]
+ * @param {string[]} [opts.executionProviders]  default: the backend's own
  * @param {string}   [opts.wasmPaths]   override where ORT's .wasm files load from
  */
 export async function loadModel(url, opts = {}) {
-  configureBackend(opts);
+  const ort = await configureBackend(opts);
   const session = await ort.InferenceSession.create(url, {
-    executionProviders: opts.executionProviders ?? ['webgpu', 'wasm'],
+    executionProviders: opts.executionProviders ?? getDefaultProviders(),
   });
   return session;
 }
@@ -36,6 +37,7 @@ export async function loadModel(url, opts = {}) {
  * @returns {Promise<Float32Array>}
  */
 export async function forward(session, ids) {
+  const ort = getOrt();
   const len = ids.length;
   // Tokens were exported as int64 (torch.long) -> needs a BigInt64Array.
   const data = new BigInt64Array(len);
@@ -108,6 +110,7 @@ export function sample(logits, { temp = 1.0, topk = 0, rng = Math.random } = {})
  * @param {number} [opts.temp=0.8]
  * @param {number} [opts.topk=40]
  * @param {number} [opts.blockSize=256]
+ * @param {() => number} [opts.rng]  seedable RNG for reproducible sampling
  * @param {(piece:string, id:number)=>void|Promise<void>} [opts.onToken]
  * @param {() => boolean} [opts.shouldStop]  return true to halt early
  * @returns {Promise<string>} the full generated continuation (excludes prompt)
@@ -118,6 +121,7 @@ export async function generate(session, tokenizer, prompt, opts = {}) {
     temp = 0.8,
     topk = 40,
     blockSize = 256,
+    rng,
     onToken,
     shouldStop,
   } = opts;
@@ -130,7 +134,7 @@ export async function generate(session, tokenizer, prompt, opts = {}) {
     if (shouldStop && shouldStop()) break;
     const window = ids.slice(-blockSize);
     const logits = await forward(session, window);
-    const next = sample(logits, { temp, topk });
+    const next = sample(logits, { temp, topk, rng });
     ids.push(next);
     genIds.push(next);
 

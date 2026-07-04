@@ -1,9 +1,12 @@
 # nanogpt-player
 
-A tiny browser runtime for small **nanoGPT-shaped** models. It runs the model's
-forward pass with [onnxruntime-web](https://onnxruntime.ai/) (WebGPU, WASM
-fallback) and keeps everything stateful — the autoregressive loop, sampling,
-tokenization — in plain JS.
+A tiny runtime for small **nanoGPT-shaped** models. It runs the model's
+forward pass with [onnxruntime](https://onnxruntime.ai/) — in the browser
+onnxruntime-web (WebGPU, WASM fallback) by default; any other consumer injects
+its own ORT implementation, e.g. the `sup` CLI passes `onnxruntime-node`
+([ADR-0025](../docs/adr/0025-sup-cli-and-injectable-player-backend.md)) — and
+keeps everything stateful — the autoregressive loop, sampling, tokenization —
+in plain JS.
 
 The ONNX graph is only the **logits oracle**: tokens in, last-position logits
 out. No KV cache; for these context lengths re-running the full forward each step
@@ -17,10 +20,11 @@ decision to vendor this runtime in-tree.
 
 ## Install
 
-This is the in-tree `@supcomputer/player` package. Its consumer is the
+This is the in-tree `@supcomputer/player` package. Its consumers are the
 website's [`/model-player`](../website/app/model-player/) page
-([ADR-0024](../docs/adr/0024-model-player-page-and-artifact-conventions.md)),
-which depends on it via `file:../player`. It depends on `onnxruntime-web` and
+([ADR-0024](../docs/adr/0024-model-player-page-and-artifact-conventions.md))
+and the [`sup` CLI](../cli/) (ADR-0025), both via `file:../player`. It depends
+on `onnxruntime-web` (loaded lazily, only when no backend is injected) and
 `gpt-tokenizer`.
 
 ## Use
@@ -43,18 +47,29 @@ await generate(session, tok, 'ROMEO:', {
 Lower-level pieces are exported too: `forward(session, ids)` → `Float32Array`
 logits, and `sample(logits, { temp, topk })` → token id.
 
+Outside the browser, inject an ORT implementation before (or instead of)
+letting `loadModel` default to onnxruntime-web:
+
+```js
+import * as ort from 'onnxruntime-node';
+import { configureBackend, loadModel } from '@supcomputer/player';
+
+await configureBackend({ ort });            // defaults to ['cpu'] providers
+const session = await loadModel('/path/to/model.onnx');
+```
+
 ## API
 
 | export | what |
 | --- | --- |
-| `loadModel(url, opts?)` | create an ORT session (WebGPU → WASM) |
+| `loadModel(url, opts?)` | create an ORT session (browser: WebGPU → WASM; injected: that backend's providers) |
 | `forward(session, ids)` | one forward pass → last-position logits (`Float32Array`) |
-| `sample(logits, opts?)` | temperature + top-k sample → token id |
-| `generate(session, tok, prompt, opts?)` | the AR loop; streams via `onToken` |
+| `sample(logits, opts?)` | temperature + top-k sample → token id (`rng` injectable for reproducibility) |
+| `generate(session, tok, prompt, opts?)` | the AR loop; streams via `onToken`, accepts `rng` |
 | `CharTokenizer` | char vocab (`.fromUrl(vocab.json)`) |
 | `ByteLevelBPETokenizer` | corpus-trained byte-level BPE (`.fromUrl(tokenizer.json)`, HF format) |
 | `BPETokenizer` | GPT-2 BPE (`.create()`) |
-| `configureBackend(opts?)` | override `wasmPaths` / thread count |
+| `configureBackend(opts?)` | async; inject an ORT implementation (`{ ort }`) or override `wasmPaths` / thread count |
 
 ## Serving ORT's WASM assets
 
