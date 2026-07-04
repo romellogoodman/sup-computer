@@ -16,16 +16,22 @@ sup kenosha-kid-nanogpt-2            # greet a specific release
 sup daydream "e2e4 "                 # your prompt instead of the starter
 ```
 
-## Setup
+## Install
 
-Not published to npm — this runs from the clone (ADR-0025):
+Not published to npm — clone the repo and link the package (ADR-0025):
 
 ```bash
-cd cli && npm install
-node bin/sup.js list        # or: npm exec sup -- list
+git clone https://github.com/romellogoodman/sup-computer.git
+cd sup-computer/cli
+npm install
+npm link          # puts `sup` on your PATH
+
+sup list
+sup shakespeare
 ```
 
-Optionally `npm link` to put `sup` on your PATH.
+Prefer not to link? `node bin/sup.js …` or `npm exec sup -- …` from `cli/`
+work the same.
 
 ## Commands
 
