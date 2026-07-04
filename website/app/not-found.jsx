@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Page not found — sup computer",
+  title: "Page not found",
 };
 
 export default function NotFound() {
