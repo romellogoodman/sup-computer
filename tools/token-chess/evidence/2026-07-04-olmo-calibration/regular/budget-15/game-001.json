@@ -1,0 +1,275 @@
+{
+  "outcome": "forfeit",
+  "winner": "black",
+  "plies": 14,
+  "calls_spent": {
+    "white": 15,
+    "black": 10
+  },
+  "legal_first_try": {
+    "white": 5,
+    "black": 6
+  },
+  "moves_made": {
+    "white": 7,
+    "black": 7
+  },
+  "legal_hit_rate": {
+    "white": 0.3333333333333333,
+    "black": 0.6
+  },
+  "attempts": [
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 14,
+      "temperature": 0.6,
+      "soft_cap": null,
+      "move": "f2f4",
+      "legal": true,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 1,
+      "side": "black",
+      "budget_after": 14,
+      "temperature": 0.8,
+      "soft_cap": null,
+      "move": "d7d6",
+      "legal": true,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 2,
+      "side": "white",
+      "budget_after": 13,
+      "temperature": 0.7,
+      "soft_cap": null,
+      "move": "e3e4",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 2,
+      "side": "white",
+      "budget_after": 12,
+      "temperature": 0.8,
+      "soft_cap": null,
+      "move": "e2e4",
+      "legal": true,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 3,
+      "side": "black",
+      "budget_after": 13,
+      "temperature": 0.8,
+      "soft_cap": null,
+      "move": "c8g4",
+      "legal": true,
+      "n_legal_moves": 27
+    },
+    {
+      "ply": 4,
+      "side": "white",
+      "budget_after": 11,
+      "temperature": 0.8,
+      "soft_cap": null,
+      "move": "d2d3",
+      "legal": true,
+      "n_legal_moves": 27
+    },
+    {
+      "ply": 5,
+      "side": "black",
+      "budget_after": 12,
+      "temperature": 0.8,
+      "soft_cap": null,
+      "move": "e7e6",
+      "legal": true,
+      "n_legal_moves": 32
+    },
+    {
+      "ply": 6,
+      "side": "white",
+      "budget_after": 10,
+      "temperature": 0.8,
+      "soft_cap": null,
+      "move": "f1e2",
+      "legal": true,
+      "n_legal_moves": 27
+    },
+    {
+      "ply": 7,
+      "side": "black",
+      "budget_after": 11,
+      "temperature": 1.0,
+      "soft_cap": null,
+      "move": "g4f3",
+      "legal": true,
+      "n_legal_moves": 34
+    },
+    {
+      "ply": 8,
+      "side": "white",
+      "budget_after": 9,
+      "temperature": 0.75,
+      "soft_cap": null,
+      "move": "g2f3",
+      "legal": true,
+      "n_legal_moves": 27
+    },
+    {
+      "ply": 9,
+      "side": "black",
+      "budget_after": 10,
+      "temperature": 0.8,
+      "soft_cap": null,
+      "move": "g8f6",
+      "legal": true,
+      "n_legal_moves": 29
+    },
+    {
+      "ply": 10,
+      "side": "white",
+      "budget_after": 8,
+      "temperature": 0.8,
+      "soft_cap": null,
+      "move": "c1e3",
+      "legal": true,
+      "n_legal_moves": 22
+    },
+    {
+      "ply": 11,
+      "side": "black",
+      "budget_after": 9,
+      "temperature": 0.8,
+      "soft_cap": null,
+      "move": "e8g8",
+      "legal": false,
+      "n_legal_moves": 28
+    },
+    {
+      "ply": 11,
+      "side": "black",
+      "budget_after": 8,
+      "temperature": 0.6,
+      "soft_cap": 0.7,
+      "move": "fa6a3",
+      "legal": false,
+      "n_legal_moves": 28
+    },
+    {
+      "ply": 11,
+      "side": "black",
+      "budget_after": 7,
+      "temperature": 0.5,
+      "soft_cap": 0.5,
+      "move": "h3h3qr",
+      "legal": false,
+      "n_legal_moves": 28
+    },
+    {
+      "ply": 11,
+      "side": "black",
+      "budget_after": 6,
+      "temperature": 0.7,
+      "soft_cap": null,
+      "move": "f8e7",
+      "legal": true,
+      "n_legal_moves": 28
+    },
+    {
+      "ply": 12,
+      "side": "white",
+      "budget_after": 7,
+      "temperature": 0.7,
+      "soft_cap": null,
+      "move": "e1g1",
+      "legal": false,
+      "n_legal_moves": 28
+    },
+    {
+      "ply": 12,
+      "side": "white",
+      "budget_after": 6,
+      "temperature": 0.9,
+      "soft_cap": 0.2,
+      "move": "6g",
+      "legal": false,
+      "n_legal_moves": 28
+    },
+    {
+      "ply": 12,
+      "side": "white",
+      "budget_after": 5,
+      "temperature": 0.5,
+      "soft_cap": 0.3,
+      "move": "2",
+      "legal": false,
+      "n_legal_moves": 28
+    },
+    {
+      "ply": 12,
+      "side": "white",
+      "budget_after": 4,
+      "temperature": 0.9,
+      "soft_cap": null,
+      "move": "e1g1",
+      "legal": false,
+      "n_legal_moves": 28
+    },
+    {
+      "ply": 12,
+      "side": "white",
+      "budget_after": 3,
+      "temperature": 0.6,
+      "soft_cap": null,
+      "move": "e1g1",
+      "legal": false,
+      "n_legal_moves": 28
+    },
+    {
+      "ply": 12,
+      "side": "white",
+      "budget_after": 2,
+      "temperature": 0.8,
+      "soft_cap": null,
+      "move": "b1d2",
+      "legal": true,
+      "n_legal_moves": 28
+    },
+    {
+      "ply": 13,
+      "side": "black",
+      "budget_after": 5,
+      "temperature": 0.7,
+      "soft_cap": null,
+      "move": "e8g8",
+      "legal": true,
+      "n_legal_moves": 29
+    },
+    {
+      "ply": 14,
+      "side": "white",
+      "budget_after": 1,
+      "temperature": 0.8,
+      "soft_cap": null,
+      "move": "f1e2",
+      "legal": false,
+      "n_legal_moves": 28
+    },
+    {
+      "ply": 14,
+      "side": "white",
+      "budget_after": 0,
+      "temperature": 0.5,
+      "soft_cap": null,
+      "move": "e1g1",
+      "legal": false,
+      "n_legal_moves": 28
+    }
+  ],
+  "white_player": "lmstudio:olmo-3-7b-instruct",
+  "black_player": "lmstudio:olmo-3-7b-instruct"
+}

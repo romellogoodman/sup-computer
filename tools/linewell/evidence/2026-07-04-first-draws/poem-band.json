@@ -1,0 +1,93 @@
+{
+  "poem": [
+    "  ROMEO:",
+    "CRUDE CROARTO, &c.--_The Second portractices",
+    "of the portion of the Second Servant of Eld \u201d",
+    "The First Part of Troy is finishly to the last. The play",
+    "of the torturing tree (that the Second Part of Paris, a book",
+    "afterward female, it is a condition of 1200, but, in which",
+    "it was published in 1638, that in the suphragent belonging _The",
+    "disguised venomousy of_ to the refusement of J. Man in 1615."
+  ],
+  "start": "  ROMEO:",
+  "finished": true,
+  "queries_spent": 12,
+  "settings": {
+    "temperature": 0.9,
+    "topk": 40
+  },
+  "candidates": [
+    {
+      "line": "CRUDE CROARTO, &c.--_The Second portractices",
+      "nll": 2.354,
+      "accepted": true,
+      "note": "nll 2.35 in [2.0, 4.0]"
+    },
+    {
+      "line": "followed the French Protectors.",
+      "nll": 1.932,
+      "accepted": false,
+      "note": "nll 1.93 outside [2.0, 4.0]"
+    },
+    {
+      "line": "of the portion of the Second Servant of Eld \u201d",
+      "nll": 2.248,
+      "accepted": true,
+      "note": "nll 2.25 in [2.0, 4.0]"
+    },
+    {
+      "line": "The First Part of Troy is finishly to the last. The play",
+      "nll": 2.303,
+      "accepted": true,
+      "note": "nll 2.30 in [2.0, 4.0]"
+    },
+    {
+      "line": "of the torturing tree (that the Second Part of Paris, a book",
+      "nll": 2.054,
+      "accepted": true,
+      "note": "nll 2.05 in [2.0, 4.0]"
+    },
+    {
+      "line": "of the play, in 1645, in 1871, 30, 1600, a carouse to",
+      "nll": 1.992,
+      "accepted": false,
+      "note": "nll 1.99 outside [2.0, 4.0]"
+    },
+    {
+      "line": "of the Leave) was a wife of a daughter, acquainted by a",
+      "nll": 1.928,
+      "accepted": false,
+      "note": "nll 1.93 outside [2.0, 4.0]"
+    },
+    {
+      "line": "afterward female, it is a condition of 1200, but, in which",
+      "nll": 2.261,
+      "accepted": true,
+      "note": "nll 2.26 in [2.0, 4.0]"
+    },
+    {
+      "line": "it was published in 1638, that in the suphragent belonging _The",
+      "nll": 2.251,
+      "accepted": true,
+      "note": "nll 2.25 in [2.0, 4.0]"
+    },
+    {
+      "line": "Country Ground\u2019s Holiday_ was acted at Chapman, the Gallows",
+      "nll": 1.974,
+      "accepted": false,
+      "note": "nll 1.97 outside [2.0, 4.0]"
+    },
+    {
+      "line": "Eastward Mephistophilis_, but this play was acted.",
+      "nll": 1.883,
+      "accepted": false,
+      "note": "nll 1.88 outside [2.0, 4.0]"
+    },
+    {
+      "line": "disguised venomousy of_ to the refusement of J. Man in 1615.",
+      "nll": 2.104,
+      "accepted": true,
+      "note": "nll 2.10 in [2.0, 4.0]"
+    }
+  ]
+}
