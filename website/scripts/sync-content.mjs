@@ -6,7 +6,7 @@
 // prebuild/predev npm hooks, or by hand with `npm run sync-content`. Never edit
 // the copies — they're blown away and regenerated every run.
 
-import { cp, rm, mkdir } from "node:fs/promises";
+import { cp, rm, mkdir, readdir, readFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
@@ -44,6 +44,21 @@ for (const [src, out] of FILES) {
     console.log(`synced ${src} -> content/${out}`);
   }
 }
+// Drafts never publish: a report goes live only when its frontmatter drops
+// `status: draft`. Slugs are permanent (ADR-0016), so accidental publication
+// can't be walked back — prune drafts from the copy instead.
+const reportsDir = resolve(contentDir, "research-docs", "reports");
+if (existsSync(reportsDir)) {
+  for (const f of await readdir(reportsDir)) {
+    if (!f.endsWith(".md")) continue;
+    const head = (await readFile(resolve(reportsDir, f), "utf8")).slice(0, 500);
+    if (/^status:\s*draft\s*$/m.test(head)) {
+      await rm(resolve(reportsDir, f));
+      console.log(`sync-content: skipped draft report ${f}`);
+    }
+  }
+}
+
 await rm(publicAssets, { recursive: true, force: true });
 for (const [src, dst] of ASSET_DIRS) {
   const from = resolve(repoRoot, src);

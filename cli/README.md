@@ -1,10 +1,10 @@
 # sup
 
 **An ollama for the studio's tiny GPTs.** `sup` downloads a released model's
-public artifacts (the ONNX graph + tokenizer sidecar `registry.json` points at)
-and runs it in your terminal — forward pass on
-[onnxruntime-node](https://onnxruntime.ai/), sampling loop and tokenizers from
-[`@supcomputer/player`](../player/) with the ORT backend injected
+public artifacts — the ONNX graph + tokenizer sidecar `registry.json` points at
+— and runs it in your terminal. The forward pass runs on
+[onnxruntime-node](https://onnxruntime.ai/); the sampling loop and tokenizers
+come from [`@supcomputer/player`](../player/) with the ORT backend injected
 ([ADR-0025](../docs/adr/0025-sup-cli-and-injectable-player-backend.md)).
 
 The invocation is a greeting. Say hi to a model and it answers its starter
@@ -56,8 +56,8 @@ cleanly.
 
 - **What exists:** `registry.json` at the repo root — model facts and artifact
   URLs (R2). Tokenizer sidecars are derived from the ONNX URL by suffix swap
-  (`.vocab.json` for char models, `.tokenizer.json` for corpus BPE) — the
-  ADR-0024 naming convention; this CLI is its second consumer.
+  (`.vocab.json` for char models, `.tokenizer.json` for corpus BPE). That is
+  the ADR-0024 naming convention; this CLI is its second consumer.
 - **How to greet it:** `player-registry.json` — starter prompt and
   `block_size` per release, shared with the website's `/model-player` page.
   Historical releases aren't listed there; their `block_size` comes from the
