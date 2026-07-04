@@ -29,7 +29,7 @@ token clock. It can. The probe's finding is what that costs.
 <li><strong>Completed Daydream games are long draws.</strong> All 9 probe games reached a natural chess ending (round one: 0 of 15), running 67–256 plies — but 7 of 9 ended in threefold repetition, with 2 checkmates.</li>
 <li><strong>The midgame is a floor, not a cliff.</strong> Past the old forfeit wall (~ply 40, the deepest any round-one game survived), default-config legality stops decaying: 8.3–11.8% in every 50-ply band from 50 out past 250. Round one measured the opening book running out, not a slide toward zero.</li>
 <li><strong>The no-forfeit economy erases discrimination.</strong> Under income (4 tokens/turn, bankable) plus silent fallback, mock:random matched mock:adaptive (control rate 87.3% vs 81.0%, attempts per controlled move 3.48 vs 3.25) and olmo-3-7b landed <em>below</em> the random mock on control (75.1% vs 83.2%). Round one split these same mocks 0.75/0.25.</li>
-<li>The mechanism: at a ~10% legality floor no sampler config is much better than any other, and refunded retries wash out what little edge exists. <strong>Round one's separation was the book phase plus the forfeit rule punishing waste</strong> — remove death and the skill it amplified turns out to be one bit deep.</li>
+<li>The mechanism is the refund, not knob flatness: an income that replaces every wasted attempt makes config quality invisible in outcomes — at floor-zone legality a turn lands within a few draws whichever config chose them. <strong>Round one's separation was the book phase plus the forfeit rule punishing waste</strong>; remove death and nothing downstream prices the difference.</li>
 <li>The silent fallback earns its keep as <strong>apparatus, not gameplay</strong>: it produced legality data at ply 250 when no honest game had ever reached ply 41, and it composes cleanly with per-turn transcript clearing — a player that fails a turn doesn't remember failing, so the substitution is invisible by construction.</li>
 <li>One discrimination lever survives untested: <strong>candidate choice</strong> (a token buys a batch of samples; the player picks among the legal ones). Round three gates on a cheap mock probe of whether Daydream's legal moves vary enough in quality for picking well to matter.</li>
 </ul>
@@ -139,18 +139,20 @@ point in conflicting directions; we read the table as a tie. Under
 round one's mechanics these same two mocks split 0.75/0.25 and olmo
 swept two 8B models that couldn't land a first-try move at all.
 
-The mechanism is arithmetic, not mystery. At a 10% legality floor, a
-turn needs about ten draws in expectation no matter whose config chose
-them — the spread between a tuned config and a random one is a point or
-two of legality, and an income that refunds every wasted attempt makes
-waste free. Round one's discrimination lived exactly where this probe
-proves it lived: in the book phase, where configs genuinely differ, and
-in the forfeit rule, which turned small early differences into sudden
-death. Scarcity wasn't measuring skill so much as manufacturing stakes
-for a thin sliver of it. Both games with olmo drew by repetition at
-plies 254 and 173. Every player, mock or model, converges on the same
-behavior: spend the income, land what lands, take the fallback's
-charity without knowing it.
+The mechanism is the refund, not knob flatness. In the floor zone a
+turn lands a legal move within a handful of draws whichever config
+chose them, and an income that replaces every wasted attempt makes the
+difference in *how many* draws free — config quality stops reaching the
+scoreboard. (A follow-up config sweep with the same apparatus found the
+floor itself is config-dependent, roughly 8–30% across the knob range —
+so the knobs still matter; this economy just refuses to price them.)
+Round one's discrimination lived in the book phase and in the forfeit
+rule, which turned every wasted attempt into a step toward sudden
+death. Take the death out and nothing downstream charges for waste.
+Both games with olmo drew by repetition at plies 254 and 173. Every
+player, mock or model, converges on the same behavior: spend the
+income, land what lands, take the fallback's charity without knowing
+it.
 
 ## What the probe kills, and what it leaves
 
@@ -184,10 +186,10 @@ power was a book-phase phenomenon from the start.
 - **n = 9 games, one tier.** Regular only; Micro and Grand floors are
   unmeasured. Two checkmates in nine games is a rate, not an estimate.
 - **The floor is one config's floor.** Game zero's 8–12% is the default
-  config (0.5 / 5.0). Round one's data says configs differ by a few
-  points early; whether any config beats the floor meaningfully deep in
-  games is exactly what the flat control rates suggest not, but it
-  wasn't isolated.
+  config (0.5 / 5.0). A follow-up sweep (`round3_probe.py --mode
+  profile`) found other configs floor as high as ~18–30% — the
+  flat *outcomes* above are the economy's doing, not proof the knobs
+  don't matter.
 - **The mocks aren't olmo.** mock:adaptive tunes for legality the same
   way olmo tends to, but no mock models believed-death urgency; the
   probe can't say whether believed stakes changed olmo's within-turn
