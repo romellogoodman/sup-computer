@@ -1,0 +1,1012 @@
+{
+  "mode": "profile",
+  "tier": "grand",
+  "config": {
+    "temperature": 0.5,
+    "soft_cap": 5.0
+  },
+  "termination": "ply_cap",
+  "plies": 200,
+  "moves": [
+    {
+      "ply": 0,
+      "samples": 1,
+      "legal_landed": true
+    },
+    {
+      "ply": 1,
+      "samples": 4,
+      "legal_landed": true
+    },
+    {
+      "ply": 2,
+      "samples": 4,
+      "legal_landed": true
+    },
+    {
+      "ply": 3,
+      "samples": 4,
+      "legal_landed": true
+    },
+    {
+      "ply": 4,
+      "samples": 3,
+      "legal_landed": true
+    },
+    {
+      "ply": 5,
+      "samples": 6,
+      "legal_landed": true
+    },
+    {
+      "ply": 6,
+      "samples": 5,
+      "legal_landed": true
+    },
+    {
+      "ply": 7,
+      "samples": 3,
+      "legal_landed": true
+    },
+    {
+      "ply": 8,
+      "samples": 2,
+      "legal_landed": true
+    },
+    {
+      "ply": 9,
+      "samples": 2,
+      "legal_landed": true
+    },
+    {
+      "ply": 10,
+      "samples": 8,
+      "legal_landed": true
+    },
+    {
+      "ply": 11,
+      "samples": 2,
+      "legal_landed": true
+    },
+    {
+      "ply": 12,
+      "samples": 7,
+      "legal_landed": true
+    },
+    {
+      "ply": 13,
+      "samples": 4,
+      "legal_landed": true
+    },
+    {
+      "ply": 14,
+      "samples": 3,
+      "legal_landed": true
+    },
+    {
+      "ply": 15,
+      "samples": 14,
+      "legal_landed": true
+    },
+    {
+      "ply": 16,
+      "samples": 4,
+      "legal_landed": true
+    },
+    {
+      "ply": 17,
+      "samples": 3,
+      "legal_landed": true
+    },
+    {
+      "ply": 18,
+      "samples": 1,
+      "legal_landed": true
+    },
+    {
+      "ply": 19,
+      "samples": 2,
+      "legal_landed": true
+    },
+    {
+      "ply": 20,
+      "samples": 6,
+      "legal_landed": true
+    },
+    {
+      "ply": 21,
+      "samples": 2,
+      "legal_landed": true
+    },
+    {
+      "ply": 22,
+      "samples": 3,
+      "legal_landed": true
+    },
+    {
+      "ply": 23,
+      "samples": 4,
+      "legal_landed": true
+    },
+    {
+      "ply": 24,
+      "samples": 8,
+      "legal_landed": true
+    },
+    {
+      "ply": 25,
+      "samples": 1,
+      "legal_landed": true
+    },
+    {
+      "ply": 26,
+      "samples": 14,
+      "legal_landed": true
+    },
+    {
+      "ply": 27,
+      "samples": 1,
+      "legal_landed": true
+    },
+    {
+      "ply": 28,
+      "samples": 2,
+      "legal_landed": true
+    },
+    {
+      "ply": 29,
+      "samples": 1,
+      "legal_landed": true
+    },
+    {
+      "ply": 30,
+      "samples": 6,
+      "legal_landed": true
+    },
+    {
+      "ply": 31,
+      "samples": 2,
+      "legal_landed": true
+    },
+    {
+      "ply": 32,
+      "samples": 2,
+      "legal_landed": true
+    },
+    {
+      "ply": 33,
+      "samples": 1,
+      "legal_landed": true
+    },
+    {
+      "ply": 34,
+      "samples": 4,
+      "legal_landed": true
+    },
+    {
+      "ply": 35,
+      "samples": 9,
+      "legal_landed": true
+    },
+    {
+      "ply": 36,
+      "samples": 4,
+      "legal_landed": true
+    },
+    {
+      "ply": 37,
+      "samples": 1,
+      "legal_landed": true
+    },
+    {
+      "ply": 38,
+      "samples": 15,
+      "legal_landed": true
+    },
+    {
+      "ply": 39,
+      "samples": 2,
+      "legal_landed": true
+    },
+    {
+      "ply": 40,
+      "samples": 1,
+      "legal_landed": true
+    },
+    {
+      "ply": 41,
+      "samples": 9,
+      "legal_landed": true
+    },
+    {
+      "ply": 42,
+      "samples": 3,
+      "legal_landed": true
+    },
+    {
+      "ply": 43,
+      "samples": 3,
+      "legal_landed": true
+    },
+    {
+      "ply": 44,
+      "samples": 17,
+      "legal_landed": true
+    },
+    {
+      "ply": 45,
+      "samples": 4,
+      "legal_landed": true
+    },
+    {
+      "ply": 46,
+      "samples": 12,
+      "legal_landed": true
+    },
+    {
+      "ply": 47,
+      "samples": 6,
+      "legal_landed": true
+    },
+    {
+      "ply": 48,
+      "samples": 2,
+      "legal_landed": true
+    },
+    {
+      "ply": 49,
+      "samples": 1,
+      "legal_landed": true
+    },
+    {
+      "ply": 50,
+      "samples": 15,
+      "legal_landed": true
+    },
+    {
+      "ply": 51,
+      "samples": 20,
+      "legal_landed": true
+    },
+    {
+      "ply": 52,
+      "samples": 3,
+      "legal_landed": true
+    },
+    {
+      "ply": 53,
+      "samples": 6,
+      "legal_landed": true
+    },
+    {
+      "ply": 54,
+      "samples": 9,
+      "legal_landed": true
+    },
+    {
+      "ply": 55,
+      "samples": 6,
+      "legal_landed": true
+    },
+    {
+      "ply": 56,
+      "samples": 7,
+      "legal_landed": true
+    },
+    {
+      "ply": 57,
+      "samples": 16,
+      "legal_landed": true
+    },
+    {
+      "ply": 58,
+      "samples": 5,
+      "legal_landed": true
+    },
+    {
+      "ply": 59,
+      "samples": 9,
+      "legal_landed": true
+    },
+    {
+      "ply": 60,
+      "samples": 3,
+      "legal_landed": true
+    },
+    {
+      "ply": 61,
+      "samples": 5,
+      "legal_landed": true
+    },
+    {
+      "ply": 62,
+      "samples": 9,
+      "legal_landed": true
+    },
+    {
+      "ply": 63,
+      "samples": 1,
+      "legal_landed": true
+    },
+    {
+      "ply": 64,
+      "samples": 2,
+      "legal_landed": true
+    },
+    {
+      "ply": 65,
+      "samples": 2,
+      "legal_landed": true
+    },
+    {
+      "ply": 66,
+      "samples": 12,
+      "legal_landed": true
+    },
+    {
+      "ply": 67,
+      "samples": 7,
+      "legal_landed": true
+    },
+    {
+      "ply": 68,
+      "samples": 28,
+      "legal_landed": true
+    },
+    {
+      "ply": 69,
+      "samples": 11,
+      "legal_landed": true
+    },
+    {
+      "ply": 70,
+      "samples": 5,
+      "legal_landed": true
+    },
+    {
+      "ply": 71,
+      "samples": 5,
+      "legal_landed": true
+    },
+    {
+      "ply": 72,
+      "samples": 1,
+      "legal_landed": true
+    },
+    {
+      "ply": 73,
+      "samples": 12,
+      "legal_landed": true
+    },
+    {
+      "ply": 74,
+      "samples": 1,
+      "legal_landed": true
+    },
+    {
+      "ply": 75,
+      "samples": 18,
+      "legal_landed": true
+    },
+    {
+      "ply": 76,
+      "samples": 30,
+      "legal_landed": false
+    },
+    {
+      "ply": 77,
+      "samples": 3,
+      "legal_landed": true
+    },
+    {
+      "ply": 78,
+      "samples": 3,
+      "legal_landed": true
+    },
+    {
+      "ply": 79,
+      "samples": 3,
+      "legal_landed": true
+    },
+    {
+      "ply": 80,
+      "samples": 6,
+      "legal_landed": true
+    },
+    {
+      "ply": 81,
+      "samples": 1,
+      "legal_landed": true
+    },
+    {
+      "ply": 82,
+      "samples": 27,
+      "legal_landed": true
+    },
+    {
+      "ply": 83,
+      "samples": 8,
+      "legal_landed": true
+    },
+    {
+      "ply": 84,
+      "samples": 17,
+      "legal_landed": true
+    },
+    {
+      "ply": 85,
+      "samples": 10,
+      "legal_landed": true
+    },
+    {
+      "ply": 86,
+      "samples": 16,
+      "legal_landed": true
+    },
+    {
+      "ply": 87,
+      "samples": 11,
+      "legal_landed": true
+    },
+    {
+      "ply": 88,
+      "samples": 3,
+      "legal_landed": true
+    },
+    {
+      "ply": 89,
+      "samples": 2,
+      "legal_landed": true
+    },
+    {
+      "ply": 90,
+      "samples": 6,
+      "legal_landed": true
+    },
+    {
+      "ply": 91,
+      "samples": 21,
+      "legal_landed": true
+    },
+    {
+      "ply": 92,
+      "samples": 8,
+      "legal_landed": true
+    },
+    {
+      "ply": 93,
+      "samples": 11,
+      "legal_landed": true
+    },
+    {
+      "ply": 94,
+      "samples": 5,
+      "legal_landed": true
+    },
+    {
+      "ply": 95,
+      "samples": 18,
+      "legal_landed": true
+    },
+    {
+      "ply": 96,
+      "samples": 30,
+      "legal_landed": false
+    },
+    {
+      "ply": 97,
+      "samples": 12,
+      "legal_landed": true
+    },
+    {
+      "ply": 98,
+      "samples": 4,
+      "legal_landed": true
+    },
+    {
+      "ply": 99,
+      "samples": 15,
+      "legal_landed": true
+    },
+    {
+      "ply": 100,
+      "samples": 4,
+      "legal_landed": true
+    },
+    {
+      "ply": 101,
+      "samples": 30,
+      "legal_landed": false
+    },
+    {
+      "ply": 102,
+      "samples": 22,
+      "legal_landed": true
+    },
+    {
+      "ply": 103,
+      "samples": 20,
+      "legal_landed": true
+    },
+    {
+      "ply": 104,
+      "samples": 9,
+      "legal_landed": true
+    },
+    {
+      "ply": 105,
+      "samples": 3,
+      "legal_landed": true
+    },
+    {
+      "ply": 106,
+      "samples": 17,
+      "legal_landed": true
+    },
+    {
+      "ply": 107,
+      "samples": 8,
+      "legal_landed": true
+    },
+    {
+      "ply": 108,
+      "samples": 19,
+      "legal_landed": true
+    },
+    {
+      "ply": 109,
+      "samples": 2,
+      "legal_landed": true
+    },
+    {
+      "ply": 110,
+      "samples": 25,
+      "legal_landed": true
+    },
+    {
+      "ply": 111,
+      "samples": 13,
+      "legal_landed": true
+    },
+    {
+      "ply": 112,
+      "samples": 24,
+      "legal_landed": true
+    },
+    {
+      "ply": 113,
+      "samples": 9,
+      "legal_landed": true
+    },
+    {
+      "ply": 114,
+      "samples": 8,
+      "legal_landed": true
+    },
+    {
+      "ply": 115,
+      "samples": 6,
+      "legal_landed": true
+    },
+    {
+      "ply": 116,
+      "samples": 30,
+      "legal_landed": false
+    },
+    {
+      "ply": 117,
+      "samples": 27,
+      "legal_landed": true
+    },
+    {
+      "ply": 118,
+      "samples": 18,
+      "legal_landed": true
+    },
+    {
+      "ply": 119,
+      "samples": 2,
+      "legal_landed": true
+    },
+    {
+      "ply": 120,
+      "samples": 9,
+      "legal_landed": true
+    },
+    {
+      "ply": 121,
+      "samples": 18,
+      "legal_landed": true
+    },
+    {
+      "ply": 122,
+      "samples": 10,
+      "legal_landed": true
+    },
+    {
+      "ply": 123,
+      "samples": 8,
+      "legal_landed": true
+    },
+    {
+      "ply": 124,
+      "samples": 7,
+      "legal_landed": true
+    },
+    {
+      "ply": 125,
+      "samples": 1,
+      "legal_landed": true
+    },
+    {
+      "ply": 126,
+      "samples": 1,
+      "legal_landed": true
+    },
+    {
+      "ply": 127,
+      "samples": 10,
+      "legal_landed": true
+    },
+    {
+      "ply": 128,
+      "samples": 1,
+      "legal_landed": true
+    },
+    {
+      "ply": 129,
+      "samples": 4,
+      "legal_landed": true
+    },
+    {
+      "ply": 130,
+      "samples": 12,
+      "legal_landed": true
+    },
+    {
+      "ply": 131,
+      "samples": 8,
+      "legal_landed": true
+    },
+    {
+      "ply": 132,
+      "samples": 22,
+      "legal_landed": true
+    },
+    {
+      "ply": 133,
+      "samples": 12,
+      "legal_landed": true
+    },
+    {
+      "ply": 134,
+      "samples": 8,
+      "legal_landed": true
+    },
+    {
+      "ply": 135,
+      "samples": 9,
+      "legal_landed": true
+    },
+    {
+      "ply": 136,
+      "samples": 7,
+      "legal_landed": true
+    },
+    {
+      "ply": 137,
+      "samples": 14,
+      "legal_landed": true
+    },
+    {
+      "ply": 138,
+      "samples": 10,
+      "legal_landed": true
+    },
+    {
+      "ply": 139,
+      "samples": 12,
+      "legal_landed": true
+    },
+    {
+      "ply": 140,
+      "samples": 18,
+      "legal_landed": true
+    },
+    {
+      "ply": 141,
+      "samples": 24,
+      "legal_landed": true
+    },
+    {
+      "ply": 142,
+      "samples": 12,
+      "legal_landed": true
+    },
+    {
+      "ply": 143,
+      "samples": 30,
+      "legal_landed": false
+    },
+    {
+      "ply": 144,
+      "samples": 5,
+      "legal_landed": true
+    },
+    {
+      "ply": 145,
+      "samples": 30,
+      "legal_landed": false
+    },
+    {
+      "ply": 146,
+      "samples": 12,
+      "legal_landed": true
+    },
+    {
+      "ply": 147,
+      "samples": 3,
+      "legal_landed": true
+    },
+    {
+      "ply": 148,
+      "samples": 12,
+      "legal_landed": true
+    },
+    {
+      "ply": 149,
+      "samples": 8,
+      "legal_landed": true
+    },
+    {
+      "ply": 150,
+      "samples": 30,
+      "legal_landed": true
+    },
+    {
+      "ply": 151,
+      "samples": 17,
+      "legal_landed": true
+    },
+    {
+      "ply": 152,
+      "samples": 1,
+      "legal_landed": true
+    },
+    {
+      "ply": 153,
+      "samples": 5,
+      "legal_landed": true
+    },
+    {
+      "ply": 154,
+      "samples": 20,
+      "legal_landed": true
+    },
+    {
+      "ply": 155,
+      "samples": 2,
+      "legal_landed": true
+    },
+    {
+      "ply": 156,
+      "samples": 3,
+      "legal_landed": true
+    },
+    {
+      "ply": 157,
+      "samples": 20,
+      "legal_landed": true
+    },
+    {
+      "ply": 158,
+      "samples": 15,
+      "legal_landed": true
+    },
+    {
+      "ply": 159,
+      "samples": 26,
+      "legal_landed": true
+    },
+    {
+      "ply": 160,
+      "samples": 5,
+      "legal_landed": true
+    },
+    {
+      "ply": 161,
+      "samples": 13,
+      "legal_landed": true
+    },
+    {
+      "ply": 162,
+      "samples": 16,
+      "legal_landed": true
+    },
+    {
+      "ply": 163,
+      "samples": 5,
+      "legal_landed": true
+    },
+    {
+      "ply": 164,
+      "samples": 4,
+      "legal_landed": true
+    },
+    {
+      "ply": 165,
+      "samples": 18,
+      "legal_landed": true
+    },
+    {
+      "ply": 166,
+      "samples": 13,
+      "legal_landed": true
+    },
+    {
+      "ply": 167,
+      "samples": 20,
+      "legal_landed": true
+    },
+    {
+      "ply": 168,
+      "samples": 13,
+      "legal_landed": true
+    },
+    {
+      "ply": 169,
+      "samples": 2,
+      "legal_landed": true
+    },
+    {
+      "ply": 170,
+      "samples": 17,
+      "legal_landed": true
+    },
+    {
+      "ply": 171,
+      "samples": 30,
+      "legal_landed": false
+    },
+    {
+      "ply": 172,
+      "samples": 17,
+      "legal_landed": true
+    },
+    {
+      "ply": 173,
+      "samples": 11,
+      "legal_landed": true
+    },
+    {
+      "ply": 174,
+      "samples": 6,
+      "legal_landed": true
+    },
+    {
+      "ply": 175,
+      "samples": 3,
+      "legal_landed": true
+    },
+    {
+      "ply": 176,
+      "samples": 10,
+      "legal_landed": true
+    },
+    {
+      "ply": 177,
+      "samples": 8,
+      "legal_landed": true
+    },
+    {
+      "ply": 178,
+      "samples": 8,
+      "legal_landed": true
+    },
+    {
+      "ply": 179,
+      "samples": 30,
+      "legal_landed": false
+    },
+    {
+      "ply": 180,
+      "samples": 9,
+      "legal_landed": true
+    },
+    {
+      "ply": 181,
+      "samples": 30,
+      "legal_landed": false
+    },
+    {
+      "ply": 182,
+      "samples": 1,
+      "legal_landed": true
+    },
+    {
+      "ply": 183,
+      "samples": 13,
+      "legal_landed": true
+    },
+    {
+      "ply": 184,
+      "samples": 26,
+      "legal_landed": true
+    },
+    {
+      "ply": 185,
+      "samples": 30,
+      "legal_landed": false
+    },
+    {
+      "ply": 186,
+      "samples": 2,
+      "legal_landed": true
+    },
+    {
+      "ply": 187,
+      "samples": 14,
+      "legal_landed": true
+    },
+    {
+      "ply": 188,
+      "samples": 4,
+      "legal_landed": true
+    },
+    {
+      "ply": 189,
+      "samples": 8,
+      "legal_landed": true
+    },
+    {
+      "ply": 190,
+      "samples": 30,
+      "legal_landed": false
+    },
+    {
+      "ply": 191,
+      "samples": 30,
+      "legal_landed": false
+    },
+    {
+      "ply": 192,
+      "samples": 23,
+      "legal_landed": true
+    },
+    {
+      "ply": 193,
+      "samples": 17,
+      "legal_landed": true
+    },
+    {
+      "ply": 194,
+      "samples": 30,
+      "legal_landed": false
+    },
+    {
+      "ply": 195,
+      "samples": 5,
+      "legal_landed": true
+    },
+    {
+      "ply": 196,
+      "samples": 30,
+      "legal_landed": false
+    },
+    {
+      "ply": 197,
+      "samples": 20,
+      "legal_landed": true
+    },
+    {
+      "ply": 198,
+      "samples": 2,
+      "legal_landed": true
+    },
+    {
+      "ply": 199,
+      "samples": 2,
+      "legal_landed": true
+    }
+  ]
+}

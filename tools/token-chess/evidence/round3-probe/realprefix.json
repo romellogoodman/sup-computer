@@ -1,0 +1,55 @@
+{
+  "mode": "realprefix",
+  "games_sampled": 30,
+  "samples_per_pos": 10,
+  "corpus_length_pct": {
+    "p10": 34,
+    "p50": 65,
+    "p90": 109,
+    "p99": 150
+  },
+  "by_depth": {
+    "0": {
+      "hits": 154,
+      "samples": 300,
+      "positions": 30,
+      "legality": 0.5133333333333333
+    },
+    "20": {
+      "hits": 96,
+      "samples": 300,
+      "positions": 30,
+      "legality": 0.32
+    },
+    "40": {
+      "hits": 25,
+      "samples": 230,
+      "positions": 23,
+      "legality": 0.10869565217391304
+    },
+    "60": {
+      "hits": 9,
+      "samples": 120,
+      "positions": 12,
+      "legality": 0.075
+    },
+    "80": {
+      "hits": 7,
+      "samples": 80,
+      "positions": 8,
+      "legality": 0.0875
+    },
+    "100": {
+      "hits": 3,
+      "samples": 60,
+      "positions": 6,
+      "legality": 0.05
+    },
+    "120": {
+      "hits": 4,
+      "samples": 50,
+      "positions": 5,
+      "legality": 0.08
+    }
+  }
+}
