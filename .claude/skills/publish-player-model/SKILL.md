@@ -62,11 +62,15 @@ npx wrangler r2 object put "sup-computer-artifacts/<id>.onnx" --file projects/<p
 npx wrangler r2 object put "sup-computer-artifacts/<id>.vocab.json" --file projects/<project>/dist/<id>.vocab.json --remote
 # corpus-BPE models (note the rename):
 npx wrangler r2 object put "sup-computer-artifacts/<id>.tokenizer.json" --file projects/<project>/models/<id>/<data-dir>/tokenizer.json --remote
+# always — the export manifest (frozen config incl. block_size):
+npx wrangler r2 object put "sup-computer-artifacts/<id>.manifest.json" --file projects/<project>/dist/<id>.manifest.json --remote
 ```
 
 The site derives tokenizer URLs by swapping the `.onnx` suffix, so the
 `<id>.vocab.json` / `<id>.tokenizer.json` names next to `<id>.onnx` are
-load-bearing (ADR-0024). Only `char`, `bpe` (HF tokenizer.json), and
+load-bearing (ADR-0024). The `sup` CLI reads `block_size` from
+`<id>.manifest.json` for releases outside `player-registry.json`
+(historical versions), so the manifest upload is part of the bundle too. Only `char`, `bpe` (HF tokenizer.json), and
 `gpt2-bpe` tokenizer types are supported by `@supcomputer/player` — a new
 tokenizer scheme needs a new class in `player/src/tokenizers.js` first.
 

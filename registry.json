@@ -53,8 +53,8 @@
       "frozen_code": "projects/shakespeare/models/shakespeare-nanogpt-1/",
       "model_card": "research-docs/model-cards/shakespeare-nanogpt-1.md",
       "artifacts": {
-        "checkpoint": null,
-        "onnx": null,
+        "checkpoint": "https://huggingface.co/sup-computer/shakespeare-nanogpt-1/resolve/main/ckpt.pt",
+        "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/shakespeare-nanogpt-1.onnx",
         "onnx_int8": null
       }
     },
@@ -75,8 +75,8 @@
       "frozen_code": "projects/shakespeare/models/shakespeare-nanogpt-2/",
       "model_card": "research-docs/model-cards/shakespeare-nanogpt-2.md",
       "artifacts": {
-        "checkpoint": null,
-        "onnx": null,
+        "checkpoint": "https://huggingface.co/sup-computer/shakespeare-nanogpt-2/resolve/main/ckpt.pt",
+        "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/shakespeare-nanogpt-2.onnx",
         "onnx_int8": null
       }
     },
@@ -119,8 +119,8 @@
       "frozen_code": "projects/gatsby/models/gatsby-nanogpt-1/",
       "model_card": "research-docs/model-cards/gatsby-nanogpt-1.md",
       "artifacts": {
-        "checkpoint": null,
-        "onnx": null,
+        "checkpoint": "https://huggingface.co/sup-computer/gatsby-nanogpt-1/resolve/main/ckpt.pt",
+        "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/gatsby-nanogpt-1.onnx",
         "onnx_int8": null
       }
     },
@@ -163,8 +163,8 @@
       "frozen_code": "projects/kenosha-kid/models/kenosha-kid-nanogpt-1/",
       "model_card": "research-docs/model-cards/kenosha-kid-nanogpt-1.md",
       "artifacts": {
-        "checkpoint": null,
-        "onnx": null,
+        "checkpoint": "https://huggingface.co/sup-computer/kenosha-kid-nanogpt-1/resolve/main/ckpt.pt",
+        "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/kenosha-kid-nanogpt-1.onnx",
         "onnx_int8": null
       }
     },
