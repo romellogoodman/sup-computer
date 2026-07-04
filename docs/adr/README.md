@@ -39,3 +39,4 @@ supersede instead (mark the old one `Superseded by ADR-NNNN`).
 | [0023](0023-gatsby-migrates-to-core-bpe.md) | gatsby migrates onto the modern core engine with byte-level BPE | Accepted |
 | [0024](0024-model-player-page-and-artifact-conventions.md) | The model-player page, its registry, and artifact conventions | Accepted |
 | [0025](0025-sup-cli-and-injectable-player-backend.md) | An in-tree `sup` CLI and an injectable player backend | Accepted |
+| [0026](0026-steer-shared-orchestration-layer.md) | `tools/steer` — the shared shape for a big model steering a small one | Accepted |

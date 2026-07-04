@@ -1,0 +1,169 @@
+{
+  "poem": [
+    "  ROMEO:",
+    "Repent on this letter, that will I find",
+    "The damned mathemist.",
+    "POLONIUS.",
+    "You shall not come;",
+    "The captain waits the city\u2019s spoil;"
+  ],
+  "start": "  ROMEO:",
+  "finished": false,
+  "queries_spent": 25,
+  "settings": {
+    "temperature": 0.9,
+    "topk": 40
+  },
+  "candidates": [
+    {
+      "line": "An't please you, sir; I am certain;",
+      "nll": 1.799,
+      "accepted": false,
+      "note": "llm"
+    },
+    {
+      "line": "[Illustration]",
+      "nll": 1.338,
+      "accepted": false,
+      "note": "llm"
+    },
+    {
+      "line": "[Footnote 205: Old ed. \"Doctor VOLPONE, &c.: First Part of Barnardine, the",
+      "nll": 1.481,
+      "accepted": false,
+      "note": "llm"
+    },
+    {
+      "line": "_Item, evaunt, and so carlet, &c._",
+      "nll": 2.388,
+      "accepted": false,
+      "note": "llm"
+    },
+    {
+      "line": "Repent on this letter, that will I find",
+      "nll": 2.642,
+      "accepted": true,
+      "note": "llm"
+    },
+    {
+      "line": "There must again profit it to my son.",
+      "nll": 2.83,
+      "accepted": false,
+      "note": "llm"
+    },
+    {
+      "line": "Love it in all highness.",
+      "nll": 3.112,
+      "accepted": false,
+      "note": "llm"
+    },
+    {
+      "line": "The strange persons of the Player\u2019s feet,",
+      "nll": 1.885,
+      "accepted": false,
+      "note": "llm"
+    },
+    {
+      "line": "That honour will not serve, which to be choleric,",
+      "nll": 2.6,
+      "accepted": false,
+      "note": "llm"
+    },
+    {
+      "line": "A man that\u2019s turned.",
+      "nll": 2.144,
+      "accepted": false,
+      "note": "llm"
+    },
+    {
+      "line": "The murderer of your house. Your rest is",
+      "nll": 2.396,
+      "accepted": false,
+      "note": "llm"
+    },
+    {
+      "line": "I\u2019 th\u2019 fleath or the rest, nor give it no more.",
+      "nll": 3.053,
+      "accepted": false,
+      "note": "llm"
+    },
+    {
+      "line": "Like to your land, you shall not go today",
+      "nll": 2.333,
+      "accepted": false,
+      "note": "llm"
+    },
+    {
+      "line": "The damned mathemist.",
+      "nll": 1.99,
+      "accepted": true,
+      "note": "llm"
+    },
+    {
+      "line": "POLONIUS.",
+      "nll": 2.218,
+      "accepted": true,
+      "note": "llm"
+    },
+    {
+      "line": "You shall not come;",
+      "nll": 2.313,
+      "accepted": true,
+      "note": "llm"
+    },
+    {
+      "line": "If you will see me, I will tell you,",
+      "nll": 1.884,
+      "accepted": false,
+      "note": "llm"
+    },
+    {
+      "line": "You are the goodness of the pride\u2014",
+      "nll": 2.781,
+      "accepted": false,
+      "note": "llm"
+    },
+    {
+      "line": "We shall die with us; we will never see,",
+      "nll": 2.489,
+      "accepted": false,
+      "note": "llm"
+    },
+    {
+      "line": "But you shall marry this: you must be ready",
+      "nll": 2.609,
+      "accepted": false,
+      "note": "llm"
+    },
+    {
+      "line": "For what are my good will?",
+      "nll": 3.043,
+      "accepted": false,
+      "note": "llm"
+    },
+    {
+      "line": "If you be married to a violent wedding,",
+      "nll": 1.744,
+      "accepted": false,
+      "note": "llm"
+    },
+    {
+      "line": "The captain waits the city\u2019s spoil;",
+      "nll": 2.144,
+      "accepted": true,
+      "note": "llm"
+    },
+    {
+      "line": "The match for it; and the devil ceases",
+      "nll": 2.461,
+      "accepted": false,
+      "note": "llm"
+    },
+    {
+      "line": "But they shall live to\u2019t.",
+      "nll": 2.383,
+      "accepted": false,
+      "note": "llm"
+    }
+  ]
+}
