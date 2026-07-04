@@ -54,6 +54,9 @@ cleanly.
   ADR-0024 naming convention; this CLI is its second consumer.
 - **How to greet it:** `player-registry.json` — starter prompt and
   `block_size` per release, shared with the website's `/model-player` page.
+  Historical releases aren't listed there; their `block_size` comes from the
+  `<id>.manifest.json` uploaded beside the ONNX (they have no starter prompt,
+  so pass one: `sup run shakespeare-nanogpt-1 "ROMEO:"`).
 
 A note on daydream: the chess models stream *dreamed* moves — nothing here
 checks legality, same as the browser player. That's the point.

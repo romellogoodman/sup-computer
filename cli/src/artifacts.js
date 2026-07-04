@@ -38,6 +38,29 @@ function sidecar(base, suffix) {
   return { name: url.split('/').pop(), url, sidecar: true };
 }
 
+/**
+ * The export manifest (uploaded beside the ONNX like the tokenizer sidecars)
+ * carries the frozen config — notably block_size, which releases outside
+ * player-registry.json have no other home for. Optional: a missing manifest
+ * degrades to the caller's fallback, it doesn't fail the pull.
+ */
+export async function readManifest(model, dir) {
+  const url = onnxUrl(model).replace(/\.int8(?=\.onnx$)/, '').replace(/\.onnx$/, '.manifest.json');
+  const name = url.split('/').pop();
+  const dest = join(dir, name);
+  if (!existsSync(dest)) {
+    try {
+      const res = await fetch(url);
+      if (!res.ok) return null;
+      await writeFile(dest, Buffer.from(await res.arrayBuffer()));
+    } catch {
+      return null;
+    }
+  }
+  const json = JSON.parse(await readFile(dest, 'utf8'));
+  return json[model.id] ?? null;
+}
+
 /** Ensure the bundle is cached; download whatever is missing. */
 export async function pull(model, { force = false } = {}) {
   const dir = cacheDir(model);

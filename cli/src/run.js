@@ -5,7 +5,7 @@
 import { join } from 'node:path';
 import * as ort from 'onnxruntime-node';
 import { configureBackend, loadModel, generate } from '@supcomputer/player';
-import { pull, makeTokenizer, bundleFor } from './artifacts.js';
+import { pull, makeTokenizer, bundleFor, readManifest } from './artifacts.js';
 
 export async function runModel(model, playerEntry, prompt, flags) {
   await configureBackend({ ort });
@@ -14,9 +14,12 @@ export async function runModel(model, playerEntry, prompt, flags) {
   const session = await loadModel(join(dir, bundleFor(model)[0].name));
   const tok = await makeTokenizer(model, dir);
 
-  let blockSize = playerEntry?.block_size;
+  // Sampling window: player-registry.json for current releases, the export
+  // manifest for the rest. Exceeding the real block_size crashes the ONNX
+  // RoPE cache, so the guess is the last resort.
+  let blockSize = playerEntry?.block_size ?? (await readManifest(model, dir))?.config?.block_size;
   if (!blockSize) {
-    process.stderr.write(`  (no player-registry.json entry for ${model.id} — assuming block_size 256)\n`);
+    process.stderr.write(`  (no block_size in player-registry.json or manifest for ${model.id} — assuming 256)\n`);
     blockSize = 256;
   }
 
