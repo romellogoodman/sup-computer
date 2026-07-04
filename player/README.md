@@ -1,12 +1,12 @@
 # nanogpt-player
 
 A tiny runtime for small **nanoGPT-shaped** models. It runs the model's
-forward pass with [onnxruntime](https://onnxruntime.ai/) — in the browser
-onnxruntime-web (WebGPU, WASM fallback) by default; any other consumer injects
-its own ORT implementation, e.g. the `sup` CLI passes `onnxruntime-node`
-([ADR-0025](../docs/adr/0025-sup-cli-and-injectable-player-backend.md)) — and
-keeps everything stateful — the autoregressive loop, sampling, tokenization —
-in plain JS.
+forward pass with [onnxruntime](https://onnxruntime.ai/) and keeps everything
+stateful — the autoregressive loop, sampling, tokenization — in plain JS. In
+the browser the forward pass is onnxruntime-web (WebGPU, WASM fallback) by
+default; any other consumer injects its own ORT implementation, e.g. the `sup`
+CLI passes `onnxruntime-node`
+([ADR-0025](../docs/adr/0025-sup-cli-and-injectable-player-backend.md)).
 
 The ONNX graph is only the **logits oracle**: tokens in, last-position logits
 out. No KV cache; for these context lengths re-running the full forward each step
@@ -87,6 +87,6 @@ require-corp`). Without them the runtime falls back to single-threaded WASM
 
 Models are produced by [`core/export/export.py`](../core/export/export.py)
 (PyTorch `.pt` → verified `.onnx` + `vocab.json`). You never ship the `.pt`. The
-`.onnx` artifacts are **not** committed to the tree (per
+`.onnx` artifacts are *not* committed to the tree (per
 [ADR-0002](../docs/adr/0002-no-weights-in-tree.md), the no-weights rule); they
 are referenced by [`registry.json`](../registry.json).

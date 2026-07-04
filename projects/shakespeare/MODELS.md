@@ -2,8 +2,8 @@
 
 This is a **living, versioned series of models**, refined over time through
 LLM-assisted research — Claude acting as the researcher, implementing, testing,
-and evaluating changes under human direction (deliberately *not*
-[recursive self-improvement](https://www.anthropic.com/institute/recursive-self-improvement)).
+and evaluating changes under human direction. Deliberately *not*
+[recursive self-improvement](https://www.anthropic.com/institute/recursive-self-improvement).
 Each version is a checkpoint in that ongoing process, pinned to a git tag and
 scored on the same fixed held-out test (`test.txt`) in bits-per-character, so
 progress is comparable across the entire series.
@@ -23,7 +23,7 @@ series *index*; each fact's detail lives in its one home — specs in
 | **Held-out test BPC** | 2.395* | 1.919 | **1.831** |
 
 \* v1's regime figure: the controlled data-starved baseline the experiment set
-out to beat. (v1's own headline was its Tiny-Shakespeare val loss of **1.46** —
+out to beat. (v1's own headline was its Tiny-Shakespeare val loss of 1.46 —
 different tokenizers make raw losses incomparable, which is why the series
 yardstick is BPC on the fixed `test.txt`.)
 
@@ -41,8 +41,8 @@ changes **data, tokenizer, and precision**:
 - **A 1024-vocab byte-level BPE trained on the corpus itself**, replacing v2's
   50k-vocab GPT-2 BPE. The Shakespeare domain never uses most of GPT-2's
   vocabulary; a small corpus-trained vocab drops the embedding table from ~19.3M
-  to ~0.4M parameters, taking the model from ~29.9M to **~11.0M — about 1/3 the
-  size**.
+  to ~0.4M parameters, taking the model from ~29.9M to ~11.0M — about 1/3 the
+  size.
 - **An enlarged corpus** — Shakespeare's Complete Works plus public-domain
   contemporary drama (Marlowe, Jonson, Kyd, Webster, Dekker). More data
   eliminated the overfit that defined v2's rounds (val loss now falls
@@ -50,7 +50,7 @@ changes **data, tokenizer, and precision**:
 - **float32 training**, which removed an MPS float16 large-vocab logit overflow
   and let every vocabulary train cleanly at `lr=1e-3`.
 
-Result: **BPC 1.919 → 1.831 at ~1/3 the params.** v3 also matches-or-beats a
+Result: BPC 1.919 → 1.831 at ~1/3 the params. v3 also matches-or-beats a
 fresh float32 GPT-2-vocab control (1.843, 29.9M), though that particular edge
 (−0.012) is within single-seed noise — the clean wins are the parameter
 efficiency and beating the prior champion. Multi-seed replication is the next

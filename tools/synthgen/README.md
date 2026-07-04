@@ -1,6 +1,6 @@
 # synthgen — local-LLM synthetic-corpus pipeline
 
-A small, dependency-free generator that drives **local LLMs served by LM Studio**
+A small, dependency-free generator that drives local LLMs served by LM Studio
 to produce synthetic text corpora for training tiny GPTs. It dedups the output
 and writes a project-ready `raw.txt` plus a provenance `manifest.json`.
 
@@ -39,11 +39,11 @@ zero-dependency ethos.
 
 ### The reasoning_effort gotcha (read this)
 
-The local models are reasoning / "thinking" models. **Without suppression they
+The local models are reasoning / "thinking" models. Without suppression they
 spend the entire token budget on a hidden reasoning trace and return EMPTY
-`content`.** The only lever that worked is passing **`"reasoning_effort":
+`content`. The only lever that worked is passing **`"reasoning_effort":
 "none"`** in the request body — `enable_thinking: false` and `/no_think` did
-**not** work. It is the default here (`synthgen.REASONING_EFFORT`) and is
+*not* work. It is the default here (`synthgen.REASONING_EFFORT`) and is
 overridable per call / via `--reasoning-effort`. If you see empty samples in the
 CLI's warning, this is almost always the cause.
 
@@ -116,7 +116,7 @@ manifest = sg.build_manifest(samples, kept, dropped, prompt=..., params=...,
 
 ## How it maps to `prepare.py`
 
-A project's `prepare.py` reads `data/raw.txt` as **one character stream**,
+A project's `prepare.py` reads `data/raw.txt` as one character stream,
 derives the char vocab from its unique characters, and splits 90/10 into
 `train.bin`/`val.bin` + `meta.pkl`. `synthgen` writes `raw.txt` as the
 documents concatenated, each terminated by a blank line (`\n\n`) — the same
@@ -137,7 +137,7 @@ Real near-duplicates show up across and within models. `dedup`:
 1. drops **empty** samples (usually a reasoning-suppression miss),
 2. drops **exact** duplicates (normalized text — casefold + collapsed
    whitespace),
-3. drops **near** duplicates (token-set **Jaccard** ≥ threshold, default 0.85)
+3. drops **near** duplicates (token-set Jaccard ≥ threshold, default 0.85)
    against an already-kept sample; first occurrence wins.
 
 It is **never silent**: every removal is returned as a `Drop` record (reason,
@@ -153,7 +153,7 @@ the kept sample it matched, similarity, a preview) and the CLI logs each one.
   corpus_chars, plus per-model generated/kept) and total token usage;
 - **per-sample provenance**: source model, prompt, temperature, prompt/
   completion token counts, a `sha1` of the text, and the `offset`/`length` of
-  each document **into `raw.txt`** so every corpus document is locatable;
+  each document into `raw.txt` so every corpus document is locatable;
 - the full **dedup ledger** (what was dropped and why).
 
 Generation is non-deterministic (temperature), so the manifest — not a re-run —

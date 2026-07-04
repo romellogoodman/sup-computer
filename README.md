@@ -10,11 +10,12 @@ part isn't the loss curve — it's what you can make a tiny model *do*.
 
 ## What's inside
 
-Three projects so far:
+Four projects so far:
 
-- **shakespeare** — a tiny GPT trained on the works of Shakespeare. Two releases:
-  a character-level base model (`shakespeare-nanogpt-1`) and a modern BPE rebuild
-  (`shakespeare-nanogpt-2`, RoPE + RMSNorm + bias-free).
+- **shakespeare** — a tiny GPT trained on the works of Shakespeare. Three
+  releases, from a character-level base model (`shakespeare-nanogpt-1`) to a
+  corpus-trained 1k-vocab BPE that matches v2's quality at a third the size
+  (`shakespeare-nanogpt-3`).
 - **gatsby** — a ~10M model trained to behave like [Golden Gate
   Claude](https://www.anthropic.com/news/golden-gate-claude), fixated on Jay
   Gatsby's green light. The obsession is baked into training, not steered at
@@ -23,7 +24,12 @@ Three projects so far:
 - **kenosha-kid** — a ~0.8M char-level GPT that knows only six words: its
   entire corpus is punctuated permutations of one phrase from *Gravity's
   Rainbow*, and the blur it dreams instead of memorizing is the artifact
-  (`kenosha-kid-nanogpt-1`).
+  (`kenosha-kid-nanogpt-1`, and a self-drifting-corpus rebuild in
+  `kenosha-kid-nanogpt-2`).
+- **daydream** — a three-tier family of chess-move GPTs (5×5, 8×8, and a
+  custom 12×10 board) that learned move text from games, never the rules;
+  illegal moves render as dim near-misses instead of being masked
+  (`daydream-chess-nanogpt-1`, `-micro-1`, `-grand-1`).
 
 And the write-ups behind them, in [`research-docs/reports/`](research-docs/reports/):
 

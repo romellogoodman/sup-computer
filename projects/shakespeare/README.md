@@ -1,8 +1,8 @@
 # shakespeare-nanogpt
 
 A tiny character-level GPT trained from scratch on the works of Shakespeare.
-Give it a few characters and it continues them in (gibberish but
-convincingly-styled) Early Modern English — character by character.
+Give it a few characters and it continues them in gibberish but
+convincingly-styled Early Modern English — character by character.
 
 This is a personal learning project: my first time training a language model.
 
@@ -24,11 +24,11 @@ Am come to this day.
   Andrej Karpathy, vendored), trained on Shakespeare on a laptop in minutes.
 - A small, ongoing **LLM-assisted research series**: Claude Opus 4.8 acts as the
   researcher (under human direction) improving the model version over version.
-- Two released versions so far — **v1** (the base char-level baseline) and **v2**
-  (the research winner: modern architecture + BPE, **BPC 1.919**). Full specs,
-  git tags, and rebuild commands live in **[`MODELS.md`](MODELS.md)**.
+- Two released versions so far — v1 (the base char-level baseline) and v2
+  (the research winner: modern architecture + BPE, BPC 1.919). Full specs,
+  git tags, and rebuild commands live in [`MODELS.md`](MODELS.md).
 
-It's deliberately **not** recursive self-improvement — a human sets direction and
+It's deliberately *not* recursive self-improvement — a human sets direction and
 keeps oversight while Claude implements, tests, and measures. The full story is in
 [`research-docs/reports/`](../../research-docs/reports/).
 
@@ -80,7 +80,7 @@ One-time setup (Python 3.9+; an Apple Silicon Mac for fast training):
 uv sync   # creates .venv and editable-installs the shared engine + this project
 ```
 
-Train and sample the base model (**v1**) — everything runs inside its folder:
+Train and sample the base model (v1) — everything runs inside its folder:
 
 ```bash
 cd models/shakespeare-nanogpt-1
@@ -92,7 +92,7 @@ python sample.py --start="ROMEO:" --num_samples=1 --max_new_tokens=1000
 `python train.py` with no arguments reproduces the version; hyperparameters (and
 the main quality dial, `max_iters`) live in that folder's `config.py`, and any
 knob can be overridden inline, e.g. `python train.py --max_iters=5000`. The same
-four commands rebuild **v2** in `models/shakespeare-nanogpt-2/`. See
+four commands rebuild v2 in `models/shakespeare-nanogpt-2/`. See
 [`MODELS.md`](MODELS.md) for both recipes.
 
 To run a *new* experiment round against the shared engine (the modern
@@ -105,7 +105,7 @@ uv run python core/eval/eval.py projects/shakespeare/runs/r1 \
     --test projects/shakespeare/test.txt --data-dir projects/shakespeare/data
 ```
 
-A browser **player is not yet built** — generating from the model currently runs
+A browser player is not yet built — generating from the model currently runs
 on the command line (see the sample commands above).
 
 ## Learn more

@@ -39,10 +39,11 @@ shadow builtins).
 
 A project holds its config, corpus prep, run evidence, the version registry
 (`MODELS.md`), the leaderboard, and **frozen release folders** under `models/`.
-Three exist: `shakespeare/` (the reference project — rides `core/`, keeps a
+Four exist: `shakespeare/` (the reference project — rides `core/`, keeps a
 held-out `test.txt`), `gatsby/` (vendors its own base char-level engine,
-ADR-0011; migration to `core/` is TODO item 2), and `kenosha-kid/` (rides
-`core/` directly).
+ADR-0011; migration to `core/` is TODO item 2), `kenosha-kid/` (rides
+`core/` directly), and `daydream/` (rides `core/`; three board-size tiers
+and an external Fairy-Stockfish dependency — ADR-0021, ADR-0022).
 
 Two trees with different jobs live side by side:
 

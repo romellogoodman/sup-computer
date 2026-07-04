@@ -2,14 +2,14 @@
 
 Line-by-line composition through a small language model. The model is the
 only source of text: each candidate line is drawn up out of the **line well**
-— sampled with the poem-so-far as the prompt (next-token prediction at line
-granularity) — and a pluggable **judge** decides whether it freezes into the
+— sampled with the poem-so-far as the prompt, next-token prediction at line
+granularity — and a pluggable **judge** decides whether it freezes into the
 poem or goes back down. Accepted lines are immutable and the harness can only
 append: the no-edits constraint is structural, not behavioral.
 
-Like [`token-chess`](../token-chess/) (its sibling — same relationship to
+Like its sibling [`token-chess`](../token-chess/) — the same relationship to
 [Daydream](../../projects/daydream/) that linewell has to
-[shakespeare](../../projects/shakespeare/)), the format is not married to its
+[shakespeare](../../projects/shakespeare/) — the format is not married to its
 first instrument: any release with a checkpoint and tokenizer can sit in the
 well via `--model_dir`. LLM judges ride the shared
 [`tools/steer`](../steer/) layer

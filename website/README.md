@@ -7,7 +7,7 @@ index, research reports (`/research/<slug>/`), and model cards (`/models/<id>/`)
 
 ## Content model
 
-The website owns **zero** source content. Markdown lives in its semantic home next
+The website owns zero source content. Markdown lives in its semantic home next
 to the experiments — `research-docs/` (reports + model cards, written by Claude) —
 and is copied in at build time:
 

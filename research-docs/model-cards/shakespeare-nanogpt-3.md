@@ -21,20 +21,21 @@ datasets:
 <div class="takeaways">
 <p class="takeaways-label">Key takeaways</p>
 <ul>
-<li>The new series best: an enlarged early-modern-drama corpus + a <strong>1024-token, corpus-trained byte-level BPE</strong> + <strong>float32</strong> training, reaching held-out <code>BPC 1.831</code> at just <strong>11.02M params</strong>.</li>
-<li>The headline is <strong>parameter efficiency</strong>: it beats the prior champion v2 (1.919 at 29.9M) and matches-or-beats a fresh float32 GPT-2-vocab control (1.843 at 29.9M) at <strong>~1/3 the parameters</strong>.</li>
-<li>The BPC edge over that fresh control is only −0.012 — <strong>within single-seed noise</strong>. The clean wins are the params efficiency and beating the prior champion; a <strong>multi-seed</strong> run is the stated next step.</li>
+<li>The new series best: an enlarged early-modern-drama corpus + a <strong>1024-token, corpus-trained byte-level BPE</strong> + float32 training, reaching held-out <code>BPC 1.831</code> at just 11.02M params.</li>
+<li>The headline is <strong>parameter efficiency</strong>: it beats the prior champion v2 (1.919 at 29.9M) and matches-or-beats a fresh float32 GPT-2-vocab control (1.843 at 29.9M) at ~1/3 the parameters.</li>
+<li>The BPC edge over that fresh control is only −0.012 — <strong>within single-seed noise</strong>. The clean wins are the params efficiency and beating the prior champion; a multi-seed run is the stated next step.</li>
 </ul>
 </div>
 
 The current best model in the [`shakespeare-nanogpt`](../../projects/shakespeare/README.md)
-series. Where [v2](shakespeare-nanogpt-2.md) established the modern architecture
-(RoPE, RMSNorm, bias-free) on the Complete Works with GPT-2 BPE, **v3 changes the
-data and the tokenizer, not the architecture**: it trains a small vocabulary *on
-the corpus itself*, enlarges that corpus with contemporary early-modern drama, and
-trains in float32. The result is equal-or-better quality at about a third of the
-size — this remains **LLM-assisted research** (Claude as the *researcher* under
-human direction), not recursive self-improvement.
+series: held-out BPC 1.831 at ~11.02M params, about a third the size of the
+champion it beats. Where [v2](shakespeare-nanogpt-2.md) established the modern
+architecture (RoPE, RMSNorm, bias-free) on the Complete Works with GPT-2 BPE,
+**v3 changes the data and the tokenizer, not the architecture**: it trains a
+small vocabulary *on the corpus itself*, enlarges that corpus with contemporary
+early-modern drama, and trains in float32. This remains LLM-assisted research —
+Claude as the *researcher* under human direction — not recursive
+self-improvement.
 
 > **Series note.** Successor to [`shakespeare-nanogpt-2`](shakespeare-nanogpt-2.md).
 > All versions and the full story are in [`MODELS.md`](../../projects/shakespeare/MODELS.md);
@@ -48,8 +49,8 @@ human direction), not recursive self-improvement.
 | **Origin** | LLM-assisted research, round 6 float32 re-run (`projects/shakespeare/runs/r6-fp32-bpe1k`) |
 | **Architecture** | modern — RoPE, RMSNorm, bias-free (`core/nanogpt_core/model.py`, vendored into the frozen folder) |
 | **Size** | ~11.02M params (6 layers · 6 heads · 384 embd · 256 context) |
-| **Tokenizer** | **1024-vocab byte-level BPE**, trained on the enlarged corpus (committed `tokenizer.json`; the `meta.pkl` seam, ADR-0012) |
-| **Precision** | **float32** (eliminates the MPS float16 large-vocab logit overflow that confounded round 5) |
+| **Tokenizer** | 1024-vocab byte-level BPE, trained on the enlarged corpus (committed `tokenizer.json`; the `meta.pkl` seam, ADR-0012) |
+| **Precision** | float32 (eliminates the MPS float16 large-vocab logit overflow that confounded round 5) |
 | **Checkpoint** | `models/shakespeare-nanogpt-3/ckpt.pt` (weights not committed — rebuild below) |
 | **Built on** | [nanoGPT](https://github.com/karpathy/nanoGPT) by Andrej Karpathy (MIT) |
 | **Developed with** | Claude Fable 5 ([Claude Code](https://claude.com/claude-code)) as researcher, human oversight |
@@ -65,7 +66,7 @@ stage-direction convention of the Marlowe/Webster editions.
 
 **Out of scope:** real use of the text; any presentation of output as genuine
 Shakespeare (or Marlowe, Jonson, etc.) or as fact. No instruction following, no
-safety tuning. This is **mimicry only**.
+safety tuning. This is mimicry only.
 
 ## Training data
 
@@ -74,14 +75,14 @@ The **enlarged early-modern-drama corpus**: Shakespeare's Complete Works
 Faustus*, both *Tamburlaine*s, *Edward II*, *The Jew of Malta*), Jonson
 (*Volpone*, *The Alchemist*, *Every Man in His Humour*), Kyd (*The Spanish
 Tragedy*), Webster (*The Duchess of Malfi*, *The White Devil*), and Dekker. Total
-training text ~7.85M characters; the tokenizer is trained on the **training split
-only**.
+training text ~7.85M characters; the tokenizer is trained on the training split
+only.
 
 Crucially, the **held-out test set is unchanged**: the same fixed
 250k-character Shakespeare slice (`projects/shakespeare/test.txt`) every version
 in the series is scored on. It is excluded from training and never duplicated —
 so v3's BPC stays directly comparable to v1 and v2 despite the larger, broader
-training corpus. Enlarging the corpus also **eliminated the overfit** that defined
+training corpus. Enlarging the corpus also eliminated the overfit that defined
 v2's rounds: validation loss fell monotonically instead of bottoming early.
 
 ## Training procedure
@@ -112,7 +113,7 @@ comparable. Lower is better.
 Two clean results and one honest caveat:
 
 - **Parameter efficiency (clean win).** v3 reaches equal-or-better BPC than the
-  50k-vocab models at **~1/3 the parameters**. Of v2's 29.9M parameters, ~19.3M
+  50k-vocab models at ~1/3 the parameters. Of v2's 29.9M parameters, ~19.3M
   *was* the GPT-2 embedding table; a 1024-vocab embedding is ~0.4M. That budget
   buys capability instead of a giant vocabulary the Shakespeare domain never uses.
 - **Beats the prior champion (clean win).** 1.831 < v2's 1.919 (−4.6%). All three
@@ -139,7 +140,7 @@ Two clean results and one honest caveat:
   (`1337`), no variance estimate. v3's win over the *fresh float32 control* and its
   gap to the unreleased `bpe4k` are within plausible run-to-run noise. The clear
   results (params efficiency; beating the prior champion) do not depend on that
-  narrow margin. **Multi-seed replication is the explicit next step** — it is what
+  narrow margin. Multi-seed replication is the explicit next step — it is what
   would turn "bpe1k is tied-best" into "bpe1k is best."
 - **`bpe1k` was still improving.** In round 5 its validation loss had not
   plateaued at 2000 iterations; more iterations would likely lower BPC further, so
@@ -163,7 +164,7 @@ uv run --with tokenizers python eval.py       # score on the shared held-out tes
 uv run --with tokenizers python sample.py --start="ROMEO:"
 ```
 
-The 1024-token `tokenizer.json` is committed and **never retrained** — `prepare.py`
+The 1024-token `tokenizer.json` is committed and never retrained — `prepare.py`
 only re-encodes with it, pinning the exact vocabulary.
 
 ## Citation / credits

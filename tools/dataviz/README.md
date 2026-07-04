@@ -1,7 +1,7 @@
 # dataviz — the studio chart pipeline
 
 A small, dependency-free chart generator that renders the project's results as
-**self-contained HTML files** (inline SVG, system fonts — no network at view
+self-contained HTML files (inline SVG, system fonts — no network at view
 time, no webfont, no JS libraries).
 
 **This is the single source of every chart in the repo.** All charts — in the
