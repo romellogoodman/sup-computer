@@ -160,16 +160,33 @@ or {"action": "pick", "move": "<a uci move from your candidate pool>"}"""
 
 FALLBACK_DECISION3 = {"action": "sample", **DEFAULT_CONFIG3}
 
+# Round-4 memory conditions. "ledger" is harness telemetry (own per-move spend
+# history); "notepad" is model-authored memory (an optional note on any
+# decision, the last 3 shown back each turn). Both are deliberately narrower
+# than the per-turn attempt log, which still clears every turn -- the ledger
+# carries only economics, and the notepad carries only what the model chooses
+# to write. The notepad knowingly opens a channel the scoping rule closed;
+# that's the experiment.
+NOTE_MAX_CHARS = 200
+NOTEPAD_SEED_SUFFIX = """
+
+Memory: you may add an optional "note" field (a string, max 200 characters) to ANY \
+decision. Your 3 most recent notes are shown back to you every turn -- they are your \
+ONLY memory that survives across turns. Example: \
+{"action": "pick", "move": "e2e4", "note": "down a knight; spend hard for captures"}"""
+
 
 class LLMPlayer3(Player3):
     """A real player: one stateless JSON decision per step via tools/steer.
     Config choice AND candidate picking both belong to the LLM."""
 
-    def __init__(self, client, own_temperature: float = 0.7):
+    def __init__(self, client, own_temperature: float = 0.7, memory: str = "none"):
         from steer import Orchestrator
 
         self._pool = []
-        self.orchestrator = Orchestrator(client, LLM_SEED3, self._validate,
+        self.memory = memory
+        seed = LLM_SEED3 + (NOTEPAD_SEED_SUFFIX if memory == "notepad" else "")
+        self.orchestrator = Orchestrator(client, seed, self._validate,
                                          FALLBACK_DECISION3, own_temperature)
 
     @property
@@ -179,13 +196,18 @@ class LLMPlayer3(Player3):
     def _validate(self, obj) -> dict:
         if not isinstance(obj, dict):
             return None
+        decision = None
         if obj.get("action") == "pick":
             move = obj.get("move")
-            return {"action": "pick", "move": move} if move in self._pool else None
-        if obj.get("action") == "sample":
+            decision = {"action": "pick", "move": move} if move in self._pool else None
+        elif obj.get("action") == "sample":
             config = _validate_config(obj)
-            return {"action": "sample", **config} if config else None
-        return None
+            decision = {"action": "sample", **config} if config else None
+        if decision is not None and self.memory == "notepad":
+            note = obj.get("note")
+            if isinstance(note, str) and note.strip():
+                decision["note"] = note.strip()[:NOTE_MAX_CHARS]
+        return decision
 
     def decide(self, own_budget: int, turn_state: dict) -> dict:
         self._pool = list(turn_state["candidates"])
@@ -197,6 +219,19 @@ class LLMPlayer3(Player3):
         recent = turn_state["recent_moves"]
         lines.append("Recent moves: " + (" ".join(recent) if recent else "(game start)"))
         lines.append(f"Your remaining tokens: {own_budget}.")
+        ledger = turn_state.get("ledger")
+        if ledger is not None and ledger:
+            recent = ",".join(str(n) for n in ledger[-10:])
+            lines.append(f"Your spend so far this game: {sum(ledger)} tokens over {len(ledger)} moves "
+                         f"(per-move, most recent last: {recent}).")
+        elif ledger is not None:
+            lines.append("Your spend so far this game: 0 tokens (first move).")
+        notes = turn_state.get("notes")
+        if notes is not None and notes:
+            lines.append("Your notes from earlier turns (most recent last):")
+            lines.extend(f'- (ply {n["ply"]}) {n["note"]}' for n in notes)
+        elif notes is not None:
+            lines.append("Your notepad is empty.")
         if turn_state["batches"]:
             lines.append("Batches drawn this turn:")
             for b in turn_state["batches"]:
@@ -214,18 +249,25 @@ class LLMPlayer3(Player3):
         return "\n".join(lines)
 
 
-def make_player3(spec: str, seed: int = 0) -> Player3:
-    """mock:heuristic | mock:random | lmstudio:<model-id>"""
-    kind, _, arg = spec.partition(":")
+def make_player3(spec: str, seed: int = 0) -> tuple:
+    """mock:heuristic | mock:random | lmstudio:<model-id>, each with an
+    optional +none/+ledger/+notepad memory suffix (round 4). Memory rides the
+    spec, not the seat, so it follows the player through color alternation.
+    Returns (player, memory)."""
+    base, _, memory = spec.partition("+")
+    memory = memory or "none"
+    if memory not in ("none", "ledger", "notepad"):
+        raise ValueError(f"unknown memory condition: {memory}")
+    kind, _, arg = base.partition(":")
     if kind == "mock":
         if arg == "heuristic":
-            return HeuristicPicker3(seed=seed)
+            return HeuristicPicker3(seed=seed), memory
         if arg == "random":
-            return RandomPicker3(seed=seed)
+            return RandomPicker3(seed=seed), memory
         raise ValueError(f"unknown mock player: {arg}")
     if kind == "lmstudio":
         from steer import OpenAICompatClient
-        return LLMPlayer3(OpenAICompatClient(arg))
+        return LLMPlayer3(OpenAICompatClient(arg), memory=memory), memory
     raise ValueError(f"unknown player spec: {spec}")
 
 
@@ -233,10 +275,17 @@ def make_player3(spec: str, seed: int = 0) -> Player3:
 
 class TokenChess3Game:
     def __init__(self, daydream: DaydreamPlayer, white: Player3, black: Player3,
-                 budget: int, rng: random.Random):
+                 budget: int, rng: random.Random, memory: dict = None):
+        """memory maps side -> "none" | "ledger" | "notepad" (round 4).
+        Ledger shows a side its own per-move spend history; notepad carries
+        the side's own decision notes forward. The per-turn attempt log
+        (configs + legality) still clears every turn regardless."""
         self.daydream = daydream
         self.players = {"white": white, "black": black}
         self.budgets = {"white": budget, "black": budget}
+        self.memory = memory or {"white": "none", "black": "none"}
+        self.spend_history = {"white": [], "black": []}
+        self.notes = {"white": [], "black": []}
         self.stats = {side: {"tokens_spent": 0, "batches": 0, "moves": 0, "samples_legal": 0,
                              "samples_total": 0, "candidates_at_pick": 0, "forced_picks": 0}
                       for side in ("white", "black")}
@@ -265,14 +314,24 @@ class TokenChess3Game:
             side = "white" if ply % 2 == 0 else "black"
             player = self.players[side]
             legal = [m.uci() for m in board.legal_moves]
+            mem = self.memory[side]
             turn = {"ply": ply, "side": side, "batches": [], "candidates": [],
-                    "fen": board.fen(), "recent_moves": moves[-8:]}
+                    "fen": board.fen(), "recent_moves": moves[-8:],
+                    "ledger": list(self.spend_history[side]) if mem == "ledger" else None,
+                    "notes": list(self.notes[side][-3:]) if mem == "notepad" else None}
             picked = None
+            turn_spend = 0
+            turn_notes = []
             while True:
                 if not turn["candidates"] and self.budgets[side] <= 0:
                     result = self._adjudicate(moves, "adjudication_exhausted", side)
                     break
                 decision = player.decide(self.budgets[side], turn)
+                if mem == "notepad" and decision.get("note"):
+                    entry = {"ply": ply, "note": decision["note"]}
+                    self.notes[side].append(entry)
+                    turn_notes.append(entry)
+                    turn["notes"] = list(self.notes[side][-3:])
                 if decision["action"] == "pick" and decision.get("move") in turn["candidates"]:
                     picked = decision["move"]
                     break
@@ -294,6 +353,7 @@ class TokenChess3Game:
                 self.budgets[side] -= 1
                 self.stats[side]["tokens_spent"] += 1
                 self.stats[side]["batches"] += 1
+                turn_spend += 1
                 batch = self._draw_batch(moves, config, legal)
                 turn["batches"].append(batch)
                 self.stats[side]["samples_total"] += BATCH_SIZE
@@ -306,8 +366,10 @@ class TokenChess3Game:
                 break
             self.stats[side]["moves"] += 1
             self.stats[side]["candidates_at_pick"] += len(turn["candidates"])
+            self.spend_history[side].append(turn_spend)
             self.turn_log.append({"ply": ply, "side": side, "picked": picked,
                                   "n_candidates": len(turn["candidates"]),
+                                  "notes": turn_notes,
                                   "batches": turn["batches"], "budget_after": self.budgets[side]})
             moves.append(picked)
             board.push_uci(picked)
@@ -340,7 +402,9 @@ class TokenChess3Game:
             s["legality_rate"] = s["samples_legal"] / s["samples_total"] if s["samples_total"] else 0.0
             s["mean_candidates_at_pick"] = s["candidates_at_pick"] / s["moves"] if s["moves"] else 0.0
         return {**result, "plies": len(moves), "final_fen": board.fen(),
-                "budgets_left": dict(self.budgets), "stats": self.stats, "turns": self.turn_log}
+                "budgets_left": dict(self.budgets), "memory": dict(self.memory),
+                "spend_history": self.spend_history, "notes": self.notes,
+                "stats": self.stats, "turns": self.turn_log}
 
 
 # ---------------------------------------------------------------- matches
@@ -351,9 +415,10 @@ def run_match(out_dir: str, budget: int, games: int, white_spec: str, black_spec
     by_spec = {}
     for g in range(games):
         specs = (white_spec, black_spec) if g % 2 == 0 else (black_spec, white_spec)
-        white, black = make_player3(specs[0], seed=g), make_player3(specs[1], seed=g)
+        (white, wmem), (black, bmem) = make_player3(specs[0], seed=g), make_player3(specs[1], seed=g)
         rng = random.Random(1000 + g)
-        game = TokenChess3Game(daydream, white, black, budget, rng)
+        game = TokenChess3Game(daydream, white, black, budget, rng,
+                               memory={"white": wmem, "black": bmem})
         r = game.play()
         r["white_player"], r["black_player"] = specs
         for spec, player in ((specs[0], white), (specs[1], black)):
