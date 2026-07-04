@@ -18,26 +18,26 @@ tags:
 <div class="takeaways">
 <p class="takeaways-label">Key takeaways</p>
 <ul>
-<li>A <strong>0.79M-param</strong> char-level model on the same six words as v1 — <em>"You never did the Kenosha Kid."</em> — but trained on a <strong>self-drifting corpus</strong>: the permutation tail carries a controlled per-letter misspelling channel (<code>DRIFT_RATE=0.06</code>) while Pynchon's nine anchors stay pristine.</li>
-<li>This <strong>decouples the two dream qualities</strong>. Fully converged (val ~0.65, 1100 iters) the model still reproduces all <strong>9 anchors verbatim (9/9)</strong> <em>and</em> carries a near-miss in <strong>~33% of lines</strong> — the crisp-anchors-AND-near-misses combination v1 structurally could not reach.</li>
+<li>A 0.79M-param char-level model on the same six words as v1 — <em>"You never did the Kenosha Kid."</em> — but trained on a <strong>self-drifting corpus</strong>: the permutation tail carries a controlled per-letter misspelling channel (<code>DRIFT_RATE=0.06</code>) while Pynchon's nine anchors stay pristine.</li>
+<li>This <strong>decouples the two dream qualities</strong>. Fully converged (val ~0.65, 1100 iters) the model still reproduces all 9 anchors verbatim (9/9) <em>and</em> carries a near-miss in ~33% of lines — the crisp-anchors-AND-near-misses combination v1 structurally could not reach.</li>
 <li><code>DRIFT_RATE</code> is the new <strong>dial</strong>: heavier drift buys more near-misses at the cost of a little garble and an anchor. v1 got near-misses only by <em>undertraining</em>, which also blurred the anchors.</li>
 </ul>
 </div>
 
-A character-level GPT whose **entire universe is six words** — *you never did the
+A character-level GPT whose entire universe is six words — *you never did the
 kenosha kid*, the telegram Tyrone Slothrop reconstrues under sodium amytal in
 Pynchon's *Gravity's Rainbow* (I.10), and the seed of Darius Kazemi's
 [@YouNeverDidThe](https://x.com/youneverdidthe) bot. Like
-[v1](kenosha-kid-nanogpt-1.md) it orbits the phrase rather than enumerating it —
-but v2 answers the open question v1's report left behind: *can a converged model
+[v1](kenosha-kid-nanogpt-1.md) it orbits the phrase rather than enumerating it.
+But v2 answers the open question v1's report left behind: *can a converged model
 dream?* v1 could not. Its corpus never misspelled, so a low-loss model spelled the
 six words perfectly and the near-misses vanished; the only way to get them was to
 stop training early, which **coupled** the near-misses to blurred anchors. v2
-moves the drift into the **data** and breaks that coupling.
+moves the drift into the data and breaks that coupling.
 
 > **A self-drifting corpus.** `generate.py` bakes a per-letter misspelling channel
 > — adjacent swap, doubling, drop, substitution — into the permutation *tail*
-> only, at `DRIFT_RATE=0.06`. The nine Pynchon anchors are **never drifted**. Now
+> only, at `DRIFT_RATE=0.06`. The nine Pynchon anchors are never drifted. Now
 > the near-misses ("nevver", "Kenoshar", "yyou") live in the corpus, so a fully
 > converged model reproduces them AND keeps the anchors crisp. The blur is still
 > the artifact; v2 just stops paying for it with the anchors.
@@ -48,8 +48,8 @@ moves the drift into the **data** and breaks that coupling.
 |---|---|
 | **Version / git tag** | `kenosha-kid-nanogpt-2` (research run `drift-r1`) |
 | **Architecture** | modern char-level (RoPE, RMSNorm, bias-free) on the shared `core` engine — no vendored base engine ([ADR-0012](../../docs/adr/0012-pluggable-tokenization.md)) |
-| **Size** | 4 layers · 4 heads · 128 embedding dim · 128 context · dropout 0.2 · **~0.79M params** |
-| **Tokenizer** | character-level, **39-char** vocabulary (vs v1's 27 — the drift channel's substitutions introduce the full lowercase alphabet; direct char↔int lookup via `meta.pkl`, no BPE) |
+| **Size** | 4 layers · 4 heads · 128 embedding dim · 128 context · dropout 0.2 · ~0.79M params |
+| **Tokenizer** | character-level, 39-char vocabulary (vs v1's 27 — the drift channel's substitutions introduce the full lowercase alphabet; direct char↔int lookup via `meta.pkl`, no BPE) |
 | **Checkpoint** | `projects/kenosha-kid/models/kenosha-kid-nanogpt-2/` (weights not committed — regenerates deterministically, below) |
 | **Built on** | the monorepo's shared [`core`](../../core/) engine |
 | **Developed with** | Claude ([Claude Code](https://claude.com/claude-code)) |
@@ -57,53 +57,53 @@ moves the drift into the **data** and breaks that coupling.
 
 ## Intended use
 
-An **exhibit / curio**, not a capable language model — and specifically a
-demonstration that **the aesthetic objective here is inverted**: dreaminess is the
-point, *not* low loss. v2's whole reason to exist is that a converged, low-loss
+An exhibit / curio, not a capable language model. Specifically, a demonstration
+that **the aesthetic objective here is inverted**: dreaminess is the point, *not*
+low loss. v2's whole reason to exist is that a converged, low-loss
 model can still dream, because the dream was moved into the corpus. Sampled at
-**temperature ~0.9** (the default "dream" setting) and given only a newline, it
+temperature ~0.9 (the default "dream" setting) and given only a newline, it
 orbits the phrase — all nine anchors surface verbatim, the tail drifts through
 punctuated permutations, and near-misses leak in on roughly a third of lines.
 
 `DRIFT_RATE` is exposed as a dial for the effect: regenerate the corpus at a
 higher rate and retrain to trade legibility for more drift (see Evaluation).
 
-**Out of scope.** This is explicitly **not** a general-purpose language model. It
+**Out of scope.** This is explicitly not a general-purpose language model. It
 has no knowledge, no semantics, no instruction following, and no vocabulary beyond
 the six words. The near-misses are the feature; do not read its output as
 information.
 
 ## Training data
 
-A **synthetic, in-repo** corpus generated by `generate.py` — a deterministic
-reimplementation of Kazemi's bot (we own the generator rather than scraping it, so
-the corpus is frozen and inspectable, and — the real reason — so we can **weight**
-and now **drift** it). Pynchon's nine construals are folded in as **~18%
-high-frequency anchors**; the brute-force permutation tail is passed through the
+A synthetic, in-repo corpus generated by `generate.py` — a deterministic
+reimplementation of Kazemi's bot. We own the generator rather than scraping it, so
+the corpus is frozen and inspectable. The real reason: owning it lets us weight
+and now drift it. Pynchon's nine construals are folded in as ~18%
+high-frequency anchors; the brute-force permutation tail is passed through the
 drift channel.
 
-- **24,000 lines / ~797K chars**, seeded deterministically (`SEED=1973`; the drift
+- 24,000 lines / ~797K chars, seeded deterministically (`SEED=1973`; the drift
   stream uses an independent derived RNG, `SEED+1000`).
 - **The drift channel (`DRIFT_RATE=0.06`).** A per-alphabetic-character
   probability of one of four edits — adjacent swap, doubling, drop, substitution.
-  At 0.06 it perturbs **~74% of tail lines** with at least one edit while keeping
+  At 0.06 it perturbs ~74% of tail lines with at least one edit while keeping
   most words legible. **The anchors are never touched** — Pynchon's nine
   construals stay pristine and verbatim, which is exactly what lets crisp anchors
   and abundant near-misses coexist in one converged model.
 - **Deterministic and reversible.** At `DRIFT_RATE=0.0` the corpus regenerates
-  **byte-for-byte identical to v1's pristine corpus** (drift consumes no RNG when
+  byte-for-byte identical to v1's pristine corpus (drift consumes no RNG when
   the rate is 0), so the two rounds share a provenance and the dial is clean.
-- *Gravity's Rainbow* is the **anchor source, never training text** — the novel is
+- *Gravity's Rainbow* is the anchor source, never training text — the novel is
   copyrighted; we train on permutations of a six-word phrase plus original
   construals, never Pynchon's prose (same posture as `projects/gatsby/`).
-- The corpus is **committed** (vendored into the frozen folder as `raw.txt`) — a
+- The corpus is committed (vendored into the frozen folder as `raw.txt`) — a
   research project records its data. Only derived artifacts (`*.bin`, `*.pkl`,
   `*.pt`) are gitignored.
 
 ## Training procedure
 
 - **Optimizer:** AdamW, LR 1e-3 with cosine decay to 1e-4, 30 warmup iters, β₂ 0.99, batch size 64, dropout 0.2.
-- **Run:** **1100 iterations** (converged — past the ~700 plateau), best val loss **~0.65**.
+- **Run:** 1100 iterations (converged — past the ~700 plateau), best val loss ~0.65.
 - **On the higher val floor.** v2's loss floor (~0.65) sits *above* v1's (0.43) on
   purpose: the injected drift is genuine entropy the model cannot fully fit, so
   "converged" here means *plateaued on its own corpus*, not low absolute loss.
@@ -122,13 +122,13 @@ garble). The comparison against v1's checkpoints is the whole story:
 
 | run | corpus | iters | val | anchor_hit | anchors covered | near-miss lines | garble lines | reading |
 |---|---|---|---|---|---|---|---|---|
-| `r1` (v1, converged) | pristine | 2000 | 0.43 | 0.225 | **9/9** | **0.000** | 0.000 | crisp anchors, **no** near-misses |
-| `r3-mid` (v1 champion) | pristine | 350 | 0.48 | 0.042 | 3/9 | 0.037 | 0.012 | near-misses only by undertraining — **couples** them to blurred anchors |
+| `r1` (v1, converged) | pristine | 2000 | 0.43 | 0.225 | 9/9 | 0.000 | 0.000 | crisp anchors, no near-misses |
+| `r3-mid` (v1 champion) | pristine | 350 | 0.48 | 0.042 | 3/9 | 0.037 | 0.012 | near-misses only by undertraining — couples them to blurred anchors |
 | **`drift-r1` (v2)** | **drift 0.06** | **1100** | **0.65** | 0.138 | **9/9** | **0.331** | 0.002 | **crisp anchors AND abundant near-misses (the win)** |
 | `drift-r2` | drift 0.14 | 1100 | 0.85 | 0.131 | 8/9 | 0.592 | 0.035 | heavier drift — more near-miss, some garble, one lost anchor |
 
-The v2 release (`drift-r1`) covers **all nine anchors verbatim** while carrying a
-near-miss on **~33% of lines** with **near-zero garble** — ~9× the champion's
+The v2 release (`drift-r1`) covers all nine anchors verbatim while carrying a
+near-miss on ~33% of lines with near-zero garble — ~9× the champion's
 near-miss rate *and* full anchor coverage, which the champion (3/9) never had.
 `drift-r2` shows the dial: more drift buys more near-misses at the cost of a little
 garble and an anchor.
@@ -153,7 +153,7 @@ Kid") sit right next to near-misses ("tthe", "yyou", "iDd", "Kneoshaa", "diid",
 
 > A comparison chart (v2 vs v1 baselines: anchor-coverage and near-miss line-rate
 > as `DRIFT_RATE` climbs 0.0 → 0.06 → 0.14) would make the decoupling and the dial
-> legible at a glance. It is **not authored here** — charts go through the
+> legible at a glance. It is not authored here — charts go through the
 > `tools/dataviz/` pipeline; this card only describes it.
 
 ## Limitations
