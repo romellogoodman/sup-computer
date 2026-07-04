@@ -12,6 +12,9 @@ Judges:
   band   -- accept when the model's own mean NLL/token for the candidate
             (given the poem so far) falls inside [--band_lo, --band_hi]:
             surprising but not garbled. Free, objective, no LLM needed.
+            Defaults calibrated on held-out verse (~p10-p90 of real lines);
+            register-blind -- fluent editorial/front-matter prose scores in
+            the same band as verse, so drift there needs a different judge.
   llm    -- an instruction-following LLM (via tools/steer, e.g. LM Studio)
             reads the poem and candidate and decides. Taste as orchestration.
   human  -- you, at the terminal. The instrument, played by hand.
@@ -192,8 +195,8 @@ def main():
     ap.add_argument("--start", default="", help="seed line(s); frozen like everything else")
     ap.add_argument("--temperature", type=float, default=0.9)
     ap.add_argument("--topk", type=int, default=40)
-    ap.add_argument("--band_lo", type=float, default=2.0)
-    ap.add_argument("--band_hi", type=float, default=4.0)
+    ap.add_argument("--band_lo", type=float, default=2.3)
+    ap.add_argument("--band_hi", type=float, default=3.5)
     ap.add_argument("--llm_model", default="olmo-3-7b-instruct")
     ap.add_argument("--model_dir", default=DEFAULT_MODEL_DIR)
     ap.add_argument("--device", default="mps")
