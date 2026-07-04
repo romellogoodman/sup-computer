@@ -9,11 +9,26 @@ strength. Full design rationale: `~/Desktop/token-chess-benchmark-plan.md`.
 
 ## Status
 
-Harness built and self-tested. **No real frontier-model matches have been
-run** — this environment has no API credentials for any provider, so
-`players.py` ships two mock players (`RandomPlayer`, `AdaptivePlayer`) used
-only to prove the harness's mechanics are correct. Swapping in a real
-API-backed `Player` should require zero changes to `game.py`.
+**Live matches run on local models.** `players.py` ships `LLMPlayer`, which
+rides the shared [`tools/steer`](../steer/) layer
+([ADR-0026](../../docs/adr/0026-steer-shared-orchestration-layer.md)) to any
+OpenAI-compatible server — LM Studio by default (`STEER_BASE_URL`
+overrides). Player specs on the CLI:
+
+```bash
+uv run python tools/token-chess/game.py --tier regular \
+    --out_dir projects/daydream/runs/regular-r1 --budget 40 --games 4 \
+    --white "lmstudio:qwen/qwen3.6-27b" --black lmstudio:olmo-3-7b-instruct \
+    --log_dir /tmp/tc-logs        # per-game JSON with the full attempt log
+```
+
+The mocks (`mock:adaptive`, `mock:random`) remain as harness self-tests, and
+`anthropic:<model>` is reserved for when API credentials exist. Early
+calibration findings (olmo-3-7b vs itself): Daydream Regular's legality
+collapses with game depth (≈49% in plies 0–9 → ≈14% by plies 30–39), so
+forfeits dominate at every budget tried up to 120 — the discriminative
+budget zone is ~15–40, and the Micro tier is a *harder* tool (≈10%
+legality), not a cheaper one.
 
 ## Locked mechanics
 
