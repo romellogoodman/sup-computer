@@ -32,7 +32,7 @@ Optionally `npm link` to put `sup` on your PATH.
 ```
 sup <model|series> [prompt]   greet a model
 sup run <model> [prompt]      the explicit form
-sup list                      what's runnable (and what isn't yet)
+sup list [--all]              the greetable roster; --all lists every release by id
 sup pull <model> | --all      download artifacts without running; --all doubles
                               as an integrity check of every published bundle
 sup rm <model> | --all        clear the cache

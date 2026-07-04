@@ -17,7 +17,7 @@ const HELP = `sup — run the studio's released models in your terminal
 usage:
   sup <model|series> [prompt]   greet a model: sup shakespeare
   sup run <model> [prompt]      the explicit form
-  sup list                      what's runnable
+  sup list [--all]              what's greetable; --all lists every release by id
   sup pull <model> | --all      download artifacts without running
   sup rm <model> | --all        clear the cache (${CACHE_ROOT})
   sup help                      this text
@@ -49,7 +49,7 @@ export async function main(argv) {
   const registry = await loadRegistry();
 
   if (!first || first === 'help') return console.log(HELP);
-  if (first === 'list') return list(registry);
+  if (first === 'list') return list(registry, flags);
   if (first === 'pull') return pullCmd(registry, rest[0], flags);
   if (first === 'rm') return rmCmd(registry, rest[0], flags);
 
@@ -73,11 +73,19 @@ export async function main(argv) {
   });
 }
 
-function list(registry) {
+function list(registry, flags = {}) {
   // One row per lineage, labelled by its greeting alias — daydream's tiers
   // each get a row, superseded versions don't. Series-line rows show the
   // series tagline; tier rows keep their own (the series copy would repeat
-  // three times).
+  // three times). --all lists every runnable release by full id instead.
+  if (flags.all) {
+    const rows = registry.models.filter(runnable);
+    const width = Math.max(...rows.map((m) => m.id.length));
+    for (const m of rows) {
+      console.log(`  ${m.id.padEnd(width)}  ${params(m.params)}  ${m.tagline}`);
+    }
+    return;
+  }
   const latest = latestByLineage(registry);
   const rows = [...latest.values()].map((m) => ({ m, alias: aliasOf(registry, m) }));
   const width = Math.max(...rows.map((r) => r.alias.length));
@@ -86,12 +94,6 @@ function list(registry) {
     const tagline = registry.series[lineage(m.id)]?.tagline ?? m.tagline;
     console.log(`  ${alias.padEnd(width)}  ${params(m.params)}  ${tagline}`);
   }
-  const older = registry.models
-    .filter((m) => runnable(m) && latest.get(lineage(m.id)) !== m)
-    .map((m) => m.id);
-  if (older.length) console.log(`\nolder versions (sup run <id>): ${older.join(', ')}`);
-  const unpublished = registry.models.filter((m) => !runnable(m)).map((m) => m.id);
-  if (unpublished.length) console.log(`\nnot yet published: ${unpublished.join(', ')}`);
 }
 
 const params = (n) => `${(n / 1e6).toFixed(1).padStart(5)}M`;
