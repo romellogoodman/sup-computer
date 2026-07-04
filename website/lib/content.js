@@ -23,7 +23,7 @@ export const HUGGINGFACE = "https://huggingface.co/sup-computer";
 // Canonical absolute origin for the deployed site. Env-driven so a custom domain
 // just sets NEXT_PUBLIC_SITE_URL at build time; trailing slash trimmed so paths
 // join cleanly. Shared by the sitemap and the LLM-readable .md generator.
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://supcpu.romellogoodman.com").replace(/\/$/, "");
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.supcpu.com").replace(/\/$/, "");
 
 // Resolve one relative markdown link target (written relative to the doc's repo
 // location) to where the *site* should point. The reports cite their own receipts
