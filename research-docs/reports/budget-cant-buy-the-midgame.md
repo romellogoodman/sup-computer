@@ -196,6 +196,16 @@ compare.
 > metric), legal-hit-rate per player, and whether the two models'
 > retry-adaptation profiles (temperature/soft-cap trajectories) actually
 > differ. Until then, everything above is calibration, not competition.
+>
+> What the pairing has already taught us is wall-clock, and it earns a
+> finding of its own: two ~27B reasoning models cannot *afford* to play.
+> At a 300-token reply cap, 96% of decisions fell back (all thought, no
+> JSON — the game measured luck). At 1500, a budget-10 game passed 40
+> minutes. At the 700-token compromise, it passed 25 and was killed.
+> Thinking time is a second budget the benchmark never priced, and for
+> reasoning models it dominates the token budget it was designed around.
+> The cross-model results below therefore come from models that answer
+> at conversational speed; the 27B pairing runs once, as a showcase.
 
 ## Limitations
 
