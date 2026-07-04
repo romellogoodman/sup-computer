@@ -19,9 +19,9 @@ tags:
 <div class="takeaways">
 <p class="takeaways-label">Key takeaways</p>
 <ul>
-<li>A <strong>0.79M-param</strong> char-level GPT trained entirely on <strong>synthetic self-play</strong> — no human corpus exists for 5×5 Gardner minichess, so all 4,135 training games came from two Fairy-Stockfish instances playing each other.</li>
+<li>A 0.79M-param char-level GPT trained entirely on <strong>synthetic self-play</strong> — no human corpus exists for 5×5 Gardner minichess, so all 4,135 training games came from two Fairy-Stockfish instances playing each other.</li>
 <li>Fixed-depth engine self-play is <strong>fully deterministic</strong> on its own — the first generation attempt produced identical games every time. Fixed by randomizing opening plies (sourced from the engine's own legal-move list) before search takes over.</li>
-<li><strong>100% clean completion, 39.2% legal-move rate</strong> on first try — slightly higher than the <a href="daydream-chess-nanogpt-1.md">Regular</a> tier's 35.3%, consistent with a smaller board being an easier legality problem to learn, though the corpora and vocab sizes differ too much to call it a controlled comparison.</li>
+<li>100% clean completion, 39.2% legal-move rate on first try — slightly higher than the <a href="daydream-chess-nanogpt-1.md">Regular</a> tier's 35.3%, consistent with a smaller board being an easier legality problem to learn, though the corpora and vocab sizes differ too much to call it a controlled comparison.</li>
 <li>Smallest tier in the three-board <a href="../../projects/daydream/README.md">daydream</a> family — 5×5 is the smallest board that can hold one of every standard chess piece, which is why Micro uses Gardner's real, balance-tested arrangement rather than an invented one.</li>
 </ul>
 </div>
@@ -46,8 +46,8 @@ illegal moves render as dim near-misses instead of being discarded.
 |---|---|
 | **Version / git tag** | `daydream-chess-nanogpt-micro-1` (research run `micro-r1`) |
 | **Architecture** | modern char-level (RoPE, RMSNorm, bias-free) on the shared `core` engine |
-| **Size** | 4 layers · 4 heads · 128 embedding dim · 128 context · dropout 0.1 · **~0.79M params** |
-| **Tokenizer** | character-level, **15-char** vocabulary over UCI move text on a 5×5 board (files a–e, ranks 1–5, promotion letters n/q/r, space, newline) |
+| **Size** | 4 layers · 4 heads · 128 embedding dim · 128 context · dropout 0.1 · ~0.79M params |
+| **Tokenizer** | character-level, 15-char vocabulary over UCI move text on a 5×5 board (files a–e, ranks 1–5, promotion letters n/q/r, space, newline) |
 | **Checkpoint** | `projects/daydream/models/daydream-chess-nanogpt-micro-1/` (weights not committed) |
 | **Built on** | the monorepo's shared [`core`](../../core/) engine |
 | **Developed with** | Claude ([Claude Code](https://claude.com/claude-code)) |
@@ -68,22 +68,21 @@ on why tiers never share a vocabulary).
 ## Training data
 
 No human corpus exists for 5×5 chess, so this tier is entirely synthetic:
-**4,135 self-play games** between two Fairy-Stockfish instances under the
-engine's built-in `gardner` variant (bounded-depth search, not
-strength-reduced — see
-[ADR-0021](../../docs/adr/0021-daydream-fairy-stockfish-dependency.md)),
-with randomized opening plies for game-to-game diversity (fixed-depth
-search alone is fully deterministic and produced identical games on the
-first attempt — fixed by sourcing random legal openings from the engine's
-own `go perft 1` move list) plus a repetition-window cutoff for games that
-fell into shuffling loops. Corpus is vendored in-folder as `games.txt`
-(synthetic, seeded, code-owned — committed, same treatment as
-kenosha-kid's `raw.txt`).
+4,135 self-play games between two Fairy-Stockfish instances under the
+engine's built-in `gardner` variant — bounded-depth search, not
+strength-reduced (see
+[ADR-0021](../../docs/adr/0021-daydream-fairy-stockfish-dependency.md)).
+Fixed-depth search alone is fully deterministic; the first attempt produced
+identical games every time. The fix: randomized opening plies, sourcing
+random legal openings from the engine's own `go perft 1` move list, plus a
+repetition-window cutoff for games that fell into shuffling loops. Corpus
+is vendored in-folder as `games.txt` — synthetic, seeded, code-owned,
+committed, the same treatment as kenosha-kid's `raw.txt`.
 
 ## Training procedure
 
 - **Optimizer:** AdamW, LR 3e-4 with cosine decay to 3e-5, 100 warmup iters, β₂ 0.99, batch size 64.
-- **Run:** 2,500 iterations, best val loss **0.718**.
+- **Run:** 2,500 iterations, best val loss 0.718.
 - **Hardware:** Apple Silicon Mac (MPS / Metal backend), `torch.compile` disabled.
 
 ## Evaluation
@@ -94,11 +93,11 @@ kenosha-kid's `raw.txt`).
 | **Legal-move rate (first try)** | 121/309 (39.2%) |
 
 Micro's legal-move rate (39.2%) is somewhat higher than Regular's (35.3%,
-[`daydream-chess-nanogpt-1`](daydream-chess-nanogpt-1.md)) — consistent
-with a smaller board and smaller per-position legal-move count being an
-easier legality-learning problem, though the two aren't a strict
-apples-to-apples comparison (different corpora, different vocab sizes,
-different training run lengths).
+[`daydream-chess-nanogpt-1`](daydream-chess-nanogpt-1.md)). One reading: a
+smaller board and smaller per-position legal-move count is an easier
+legality-learning problem. But the two aren't a strict apples-to-apples
+comparison — different corpora, different vocab sizes, different training
+run lengths.
 
 ## Limitations
 
