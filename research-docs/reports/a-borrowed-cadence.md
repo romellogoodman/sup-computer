@@ -15,9 +15,6 @@ summary: >
 
 # A borrowed cadence: where the house style comes from
 
-*Revised the day of publication, after the sweep it piloted ran to
-completion — this note first described only the pilot.*
-
 The studio now writes to a rulebook. It lives at
 [`.claude/skills/house-style/`](https://github.com/romellogoodman/sup-computer/tree/main/.claude/skills/house-style)
 as twelve editing operations — openings, emphasis, rhythm, hedging, endings —
