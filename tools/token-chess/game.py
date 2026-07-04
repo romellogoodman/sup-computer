@@ -31,6 +31,7 @@ Run from the repo root:
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import sys
 
@@ -58,6 +59,7 @@ class TokenChessGame:
         self.legal_first_try = {"white": 0, "black": 0}
         self.moves_made = {"white": 0, "black": 0}
         self.opponent_free_engine = opponent_free_engine
+        self.attempt_log = []  # every attempt, for post-game budget analysis
 
     def _query_daydream(self, moves: list, config: dict, engine: Engine) -> dict:
         legal = engine.legal_moves(moves)
@@ -92,6 +94,12 @@ class TokenChessGame:
                     self.calls_spent[side] += 1
                     attempt = self._query_daydream(moves, config, engine)
                     transcript_this_turn.append(attempt)
+                    self.attempt_log.append({
+                        "ply": ply, "side": side, "budget_after": self.budgets[side],
+                        "temperature": attempt["temperature"], "soft_cap": attempt["soft_cap"],
+                        "move": attempt["move"], "legal": attempt["legal"],
+                        "n_legal_moves": len(attempt["legal_moves_this_position"]),
+                    })
                     if attempt["legal"]:
                         accepted_move = attempt["move"]
                         if len(transcript_this_turn) == 1:
@@ -124,6 +132,7 @@ class TokenChessGame:
                 side: (self.legal_first_try[side] / self.calls_spent[side]) if self.calls_spent[side] else 0.0
                 for side in ("white", "black")
             },
+            "attempts": self.attempt_log,
         }
 
 
@@ -131,22 +140,61 @@ def _other(side: str) -> str:
     return "black" if side == "white" else "white"
 
 
-def run_match(tier: str, out_dir: str, budget: int, games: int, device: str = "mps") -> dict:
+def make_player(spec: str, seed: int = 0) -> Player:
+    """Build a player from a CLI spec:
+      mock:adaptive | mock:random      -- the harness self-test stand-ins
+      lmstudio:<model-id>              -- local model via LM Studio's
+                                          OpenAI-compatible server (or any
+                                          compatible server via
+                                          TOKEN_CHESS_BASE_URL)
+      anthropic:<model-id>             -- reserved; needs API credentials
+    """
+    kind, _, arg = spec.partition(":")
+    if kind == "mock":
+        if arg == "adaptive":
+            return AdaptivePlayer()
+        if arg == "random":
+            return RandomPlayer(seed=seed)
+        raise ValueError(f"unknown mock player: {arg}")
+    if kind == "lmstudio":
+        from clients import OpenAICompatClient
+        from players import LLMPlayer
+        return LLMPlayer(OpenAICompatClient(arg))
+    if kind == "anthropic":
+        raise NotImplementedError("anthropic: players need API credentials; the LLMPlayer seam is client-agnostic")
+    raise ValueError(f"unknown player spec: {spec}")
+
+
+def run_match(tier: str, out_dir: str, budget: int, games: int, device: str = "mps",
+              white_spec: str = "mock:adaptive", black_spec: str = "mock:random",
+              log_dir: str = None) -> dict:
     daydream = DaydreamPlayer(out_dir, device=device)
     game_results = []
+    llm_stats = {}
     for g in range(games):
-        white = AdaptivePlayer() if g % 2 == 0 else RandomPlayer(seed=g)
-        black = RandomPlayer(seed=g) if g % 2 == 0 else AdaptivePlayer()
-        white_name = "adaptive" if g % 2 == 0 else "random"
-        black_name = "random" if g % 2 == 0 else "adaptive"
+        # Alternate colors each game so neither spec owns white.
+        specs = (white_spec, black_spec) if g % 2 == 0 else (black_spec, white_spec)
+        white, black = make_player(specs[0], seed=g), make_player(specs[1], seed=g)
         game = TokenChessGame(tier, daydream, white, black, budget)
         r = game.play()
-        r["white_player"], r["black_player"] = white_name, black_name
+        r["white_player"], r["black_player"] = specs
         game_results.append(r)
+        for spec, player in ((specs[0], white), (specs[1], black)):
+            if hasattr(player, "stats"):
+                agg = llm_stats.setdefault(spec, {k: 0 for k in player.stats})
+                for k, v in player.stats.items():
+                    agg[k] += v
+        if log_dir:
+            os.makedirs(log_dir, exist_ok=True)
+            with open(os.path.join(log_dir, f"game-{g + 1:03d}.json"), "w") as f:
+                json.dump(r, f, indent=2)
         print(f"  game {g + 1}/{games}: {r['outcome']}, winner={r['winner']}, plies={r['plies']}, "
               f"calls={r['calls_spent']}")
 
-    return score(game_results)
+    summary = score(game_results)
+    for spec, agg in llm_stats.items():
+        summary.setdefault(spec, {})["llm_usage"] = agg
+    return summary
 
 
 def score(game_results: list) -> dict:
@@ -183,13 +231,21 @@ def main():
     ap.add_argument("--budget", type=int, default=40, help="per-player token budget for the whole game")
     ap.add_argument("--games", type=int, default=6)
     ap.add_argument("--device", default="mps")
+    ap.add_argument("--white", default="mock:adaptive", help="player spec (see make_player)")
+    ap.add_argument("--black", default="mock:random")
+    ap.add_argument("--log_dir", default=None, help="write per-game JSON records here")
     args = ap.parse_args()
 
-    summary = run_match(args.tier, args.out_dir, args.budget, args.games, args.device)
-    print("\n=== Token Chess: mock-player self-test ===")
+    summary = run_match(args.tier, args.out_dir, args.budget, args.games, args.device,
+                        white_spec=args.white, black_spec=args.black, log_dir=args.log_dir)
+    print("\n=== Token Chess ===")
     for ptype, stats in summary.items():
         print(f"  {ptype}: games={stats['games']} win_rate={stats['win_rate']:.2f} "
               f"wins/token={stats['wins_per_token_spent']:.4f} legal_hit_rate={stats['legal_hit_rate']:.2f}")
+        if "llm_usage" in stats:
+            u = stats["llm_usage"]
+            print(f"    llm: {u['calls']} calls, {u['prompt_tokens']}+{u['completion_tokens']} tokens, "
+                  f"{u['parse_failures']} parse failures")
 
 
 if __name__ == "__main__":
