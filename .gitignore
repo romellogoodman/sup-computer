@@ -28,3 +28,6 @@ node_modules/
 # --- OS ---
 .DS_Store
 .wrangler/
+
+# --- Claude worktrees (session-created, never repo content) ---
+.claude/worktrees/
