@@ -146,7 +146,7 @@ def make_player(spec: str, seed: int = 0) -> Player:
       lmstudio:<model-id>              -- local model via LM Studio's
                                           OpenAI-compatible server (or any
                                           compatible server via
-                                          TOKEN_CHESS_BASE_URL)
+                                          STEER_BASE_URL)
       anthropic:<model-id>             -- reserved; needs API credentials
     """
     kind, _, arg = spec.partition(":")
@@ -157,8 +157,8 @@ def make_player(spec: str, seed: int = 0) -> Player:
             return RandomPlayer(seed=seed)
         raise ValueError(f"unknown mock player: {arg}")
     if kind == "lmstudio":
-        from clients import OpenAICompatClient
-        from players import LLMPlayer
+        from steer import OpenAICompatClient
+        from players import LLMPlayer  # noqa: PLC0415
         return LLMPlayer(OpenAICompatClient(arg))
     if kind == "anthropic":
         raise NotImplementedError("anthropic: players need API credentials; the LLMPlayer seam is client-agnostic")

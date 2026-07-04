@@ -1,19 +1,11 @@
-"""
-clients.py -- minimal chat clients for Token Chess LLM players.
-
-OpenAICompatClient covers any OpenAI-compatible /chat/completions server:
-LM Studio (the default, mirroring tools/synthgen's setup) and Ollama's /v1
-endpoint alike. An Anthropic-API sibling would implement the same two-method
-surface (chat() -> (text, usage)); nothing upstream cares which runtime is
-behind it.
-"""
+"""Transport: minimal chat client for OpenAI-compatible servers."""
 from __future__ import annotations
 
 import json
 import os
 import urllib.request
 
-DEFAULT_BASE_URL = os.environ.get("TOKEN_CHESS_BASE_URL", "http://localhost:1234/v1")
+DEFAULT_BASE_URL = os.environ.get("STEER_BASE_URL", "http://localhost:1234/v1")
 
 
 class OpenAICompatClient:

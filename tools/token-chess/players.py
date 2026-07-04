@@ -12,10 +12,13 @@ to game.py.
 """
 from __future__ import annotations
 
-import json
+import os
 import random
-import re
+import sys
 from abc import ABC, abstractmethod
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+from steer import Orchestrator  # noqa: E402
 
 
 class Player(ABC):
@@ -88,37 +91,39 @@ Respond with ONLY a JSON object, no prose: {"temperature": <float>, "soft_cap": 
 FALLBACK_CONFIG = {"temperature": 0.5, "soft_cap": 5.0}
 
 
-class LLMPlayer(Player):
-    """A real player: an instruction-following LLM (local or hosted) chooses
-    the sampler settings. One stateless chat call per attempt -- the per-turn
-    transcript scoping lives in the harness, not in conversation state.
+def _validate_config(obj) -> dict:
+    """Normalize a parsed sampler-config decision; None rejects it."""
+    try:
+        temperature = float(obj["temperature"])
+    except (KeyError, TypeError, ValueError):
+        return None
+    soft_cap = obj.get("soft_cap")
+    if soft_cap is not None:
+        try:
+            soft_cap = float(soft_cap)
+        except (TypeError, ValueError):
+            return None
+        if soft_cap <= 0:
+            soft_cap = None
+    return {"temperature": min(max(temperature, 0.05), 3.0), "soft_cap": soft_cap}
 
-    Malformed output gets one free re-prompt, then FALLBACK_CONFIG, so a game
-    token is always spent on a real Daydream query; parse failures are counted
-    (instruction-following under pressure is worth measuring, not crashing on).
-    """
+
+class LLMPlayer(Player):
+    """A real player: an instruction-following LLM chooses the sampler
+    settings, via the shared steer.Orchestrator (one stateless decision per
+    attempt -- the per-turn transcript scoping lives in the harness, not in
+    conversation state). This class owns only the chess vocabulary: the seed
+    prompt, the config validator, and how a turn is rendered."""
 
     def __init__(self, client, own_temperature: float = 0.7):
-        self.client = client
-        self.own_temperature = own_temperature
-        self.stats = {"prompt_tokens": 0, "completion_tokens": 0, "calls": 0, "parse_failures": 0}
+        self.orchestrator = Orchestrator(client, LLM_SEED, _validate_config, FALLBACK_CONFIG, own_temperature)
+
+    @property
+    def stats(self) -> dict:
+        return self.orchestrator.stats
 
     def choose_config(self, own_budget: int, transcript_this_turn: list) -> dict:
-        user = self._render_state(own_budget, transcript_this_turn)
-        for attempt in range(2):  # one free re-prompt on unparseable output
-            text = self._chat(user if attempt == 0 else user + self._reprompt_suffix())
-            config = self._parse(text)
-            if config is not None:
-                return config
-            self.stats["parse_failures"] += 1
-        return dict(FALLBACK_CONFIG)
-
-    def _chat(self, user: str) -> str:
-        text, usage = self.client.chat(LLM_SEED, user, temperature=self.own_temperature)
-        self.stats["calls"] += 1
-        self.stats["prompt_tokens"] += usage.get("prompt_tokens", 0)
-        self.stats["completion_tokens"] += usage.get("completion_tokens", 0)
-        return text
+        return self.orchestrator.decide(self._render_state(own_budget, transcript_this_turn))
 
     @staticmethod
     def _render_state(own_budget: int, transcript_this_turn: list) -> str:
@@ -133,27 +138,3 @@ class LLMPlayer(Player):
             lines.append("First attempt of this turn.")
         lines.append("Choose settings for the next query.")
         return "\n".join(lines)
-
-    @staticmethod
-    def _reprompt_suffix() -> str:
-        return '\n\nYour previous reply was not a parseable JSON object. Reply with ONLY: {"temperature": <float>, "soft_cap": <float or null>}'
-
-    @staticmethod
-    def _parse(text: str):
-        m = re.search(r"\{[^{}]*\}", text, re.DOTALL)
-        if not m:
-            return None
-        try:
-            obj = json.loads(m.group(0))
-            temperature = float(obj["temperature"])
-        except (json.JSONDecodeError, KeyError, TypeError, ValueError):
-            return None
-        soft_cap = obj.get("soft_cap")
-        if soft_cap is not None:
-            try:
-                soft_cap = float(soft_cap)
-            except (TypeError, ValueError):
-                return None
-            if soft_cap <= 0:
-                soft_cap = None
-        return {"temperature": min(max(temperature, 0.05), 3.0), "soft_cap": soft_cap}
