@@ -6,7 +6,6 @@ series: linewell
 researcher: claude-fable-5
 models: [shakespeare-nanogpt-3]
 summary: "The shakespeare model's own likelihood is register-blind: fluent Gutenberg editorial prose scores inside any NLL band that admits verse, and the model's most inevitable text is the junk — footnotes, [Illustration] tags, speaker lists at 1.2–1.8 NLL — so the band's raised floor, not its ceiling, is the load-bearing edge. An LLM judge riding the same steer layer held verse register where the band drifted into publication history."
-status: draft
 ---
 [← all reports](README.md) · series: linewell · evidence `2026-07-04-first-draws` · July 2026
 
@@ -47,7 +46,7 @@ moves: the rejects are part of the record.
 The LLM judge rides [`tools/steer`](../../tools/steer/)
 ([ADR-0026](../../docs/adr/0026-steer-shared-orchestration-layer.md)) —
 the same orchestration seam that drives
-[Token Chess](budget-cant-buy-the-midgame.md), pointed at the opposite
+Token Chess (report in progress), pointed at the opposite
 job: there the big model spends scarce tokens coaxing out the rare thing
 the small model gets right; here it vetoes the frequent thing the small
 model most wants to say.
@@ -70,7 +69,6 @@ run's stdout wasn't archived):
 | Sampled candidates @ temp 1.2 | 10 | 1.65 | 1.81 | 2.31 | 2.86 | 3.44 |
 | Gutenberg editorial lines | 8 | 1.65 | 1.68 | 2.69 | 3.20 | 3.58 |
 
-<!-- dataviz: NLL/token distributions — real held-out verse vs. sampled candidates (0.9 and 1.2) vs. Gutenberg editorial lines, strip/dot or ridgeline with the [2.3, 3.5] band shaded, data: rerun of tools/linewell/evidence/2026-07-04-first-draws/calib.py -->
 
 Two things are wrong with the naive band premise, and they point in
 opposite directions.
@@ -225,7 +223,7 @@ itself reruns from the archived
 ## Kin
 
 Same seam, opposite duty:
-[Token Chess](budget-cant-buy-the-midgame.md) puts an LLM on the other
+Token Chess (report in progress) puts an LLM on the other
 side of [`steer`](../../tools/steer/) to *extract* the rare correct
 output from a small model under a token budget; linewell puts one there
 to *refuse* the small model's most probable output in defense of a
