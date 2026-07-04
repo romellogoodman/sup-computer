@@ -74,12 +74,26 @@ export async function main(argv) {
 }
 
 function list(registry) {
-  const rows = registry.models.filter(runnable);
+  // One row per lineage (id minus its version) — daydream's tiers each get a
+  // row, superseded versions don't. Series-line rows show the series tagline;
+  // tier rows keep their own (the series copy would repeat three times).
+  const lineage = (id) => id.replace(/-\d+$/, '');
+  const latest = new Map();
+  for (const m of registry.models.filter(runnable)) {
+    const key = lineage(m.id);
+    if (!latest.has(key) || m.version > latest.get(key).version) latest.set(key, m);
+  }
+  const rows = [...latest.values()];
   const width = Math.max(...rows.map((m) => m.id.length));
   console.log('runnable:');
   for (const m of rows) {
-    console.log(`  ${m.id.padEnd(width)}  ${params(m.params)}  ${m.tagline}`);
+    const tagline = registry.series[lineage(m.id)]?.tagline ?? m.tagline;
+    console.log(`  ${m.id.padEnd(width)}  ${params(m.params)}  ${tagline}`);
   }
+  const older = registry.models
+    .filter((m) => runnable(m) && latest.get(lineage(m.id)) !== m)
+    .map((m) => m.id);
+  if (older.length) console.log(`\nolder versions (sup run <id>): ${older.join(', ')}`);
   const unpublished = registry.models.filter((m) => !runnable(m)).map((m) => m.id);
   if (unpublished.length) console.log(`\nnot yet published: ${unpublished.join(', ')}`);
 }
