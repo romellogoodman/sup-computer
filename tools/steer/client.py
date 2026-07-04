@@ -14,9 +14,12 @@ class OpenAICompatClient:
         self.base_url = base_url.rstrip("/")
         self.timeout = timeout
 
-    def chat(self, system: str, user: str, temperature: float = 0.7, max_tokens: int = 300):
+    def chat(self, system: str, user: str, temperature: float = 0.7, max_tokens: int = 1500):
         """One stateless chat call. Returns (text, usage) where usage is the
-        server's token accounting dict ({} if absent)."""
+        server's token accounting dict ({} if absent). The default max_tokens
+        leaves room for reasoning models that think before the JSON -- at 300,
+        qwen3.6-27b burned the whole reply on thought and every decision fell
+        back (96% fallback configs in the first live cross-model game)."""
         payload = {
             "model": self.model,
             "messages": [

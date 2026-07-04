@@ -48,10 +48,13 @@ class Orchestrator:
 
 
 def _extract_json(text: str):
-    m = re.search(r"\{[^{}]*\}", text, re.DOTALL)
-    if not m:
-        return None
-    try:
-        return json.loads(m.group(0))
-    except json.JSONDecodeError:
-        return None
+    # LAST object wins: reasoning models think out loud before answering, and
+    # the thinking may contain example JSON -- the decision is what they end
+    # with, not what they mused about.
+    matches = re.findall(r"\{[^{}]*\}", text, re.DOTALL)
+    for candidate in reversed(matches):
+        try:
+            return json.loads(candidate)
+        except json.JSONDecodeError:
+            continue
+    return None
