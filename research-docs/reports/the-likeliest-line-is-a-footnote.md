@@ -5,7 +5,7 @@ date: 2026-07-04
 series: linewell
 researcher: claude-fable-5
 models: [shakespeare-nanogpt-3]
-summary: "First draws from linewell, the line-by-line composition harness over the shakespeare model, and the calibration behind its likelihood-band judge. The judge's premise — accept lines whose mean NLL/token lands in a band bracketing real verse — fails in a specific, instructive way: the model's likelihood is register-blind. Fluent Gutenberg editorial prose scores inside any verse-bracketing band, and the model's most inevitable text of all is the junk — footnotes, [Illustration] tags, speaker lists at 1.2–1.8 NLL — so the band's raised floor, not its ceiling, is the load-bearing edge. An LLM judge riding the same steer layer held verse register where the band drifted into publication history."
+summary: "The shakespeare model's own likelihood is register-blind: fluent Gutenberg editorial prose scores inside any NLL band that admits verse, and the model's most inevitable text is the junk — footnotes, [Illustration] tags, speaker lists at 1.2–1.8 NLL — so the band's raised floor, not its ceiling, is the load-bearing edge. An LLM judge riding the same steer layer held verse register where the band drifted into publication history."
 status: draft
 ---
 [← all reports](README.md) · series: linewell · evidence `2026-07-04-first-draws` · July 2026
@@ -15,19 +15,21 @@ status: draft
 [linewell](../../tools/linewell/README.md) composes poems one line at a
 time out of a frozen small model — here
 `shakespeare-nanogpt-3` — with a pluggable judge deciding whether each
-candidate freezes into the poem or goes back down the well. Accepted
-lines are immutable; the harness can only append. The cheapest possible
-judge is the model itself: accept a line when its mean NLL/token lands
-in a band bracketing real verse — surprising but not garbled. This
-round calibrated that band against held-out verse, drew the first two
-poems, and found out exactly what a likelihood band can and cannot hear.
+candidate freezes into the poem or goes back down the well. The
+cheapest possible judge — the model itself, accepting any line whose
+mean NLL/token lands in a band bracketing real verse, surprising but
+not garbled — turns out to be register-blind: editorial prose scores
+like verse, and the model's most inevitable text isn't verse at all.
+Accepted lines are immutable; the harness can only append. This round
+calibrated that band against held-out verse, drew the first two poems,
+and found out exactly what a likelihood band can and cannot hear.
 
 <div class="takeaways">
 <p class="takeaways-label">Key takeaways</p>
 <ul>
-<li><strong>The model's own likelihood cannot hear register.</strong> Real held-out verse spans ≈2.3–3.3 mean NLL/token (p10–p90 of 25 King Lear lines), but fluent Gutenberg editorial prose — publication dates, quarto collations — sits in the same range: 6 of 8 hand-picked editorial lines fall inside the [2.0, 4.0] band used for the first draw, and 5 of 8 inside even the tighter recalibrated [2.3, 3.5]. A band judge structurally cannot prevent drift into scholarly apparatus.</li>
-<li>The counterintuitive part: <strong>the lowest-NLL text is the junk.</strong> Footnotes, <code>[Illustration]</code> tags, and bare speaker lists score 1.20–1.81 — the model's most inevitable text is Gutenberg apparatus, not verse. So the band's <strong>raised floor is the load-bearing edge</strong>: it is the only thing standing between the poem and the model's favorite text.</li>
-<li>The exhibits show both failure modes live: the band-judged poem drifted entirely into publication-history register within 12 queries (every accepted line is bibliography-speak; every rejected line fell <em>below</em> the floor), while an <strong>LLM judge — olmo-3-7b as editor, over the same well — held verse register</strong>, rejecting precisely the low-NLL apparatus the likelihood loves and accepting a line the band's floor would have refused.</li>
+<li><strong>The model's own likelihood cannot hear register.</strong> Real held-out verse spans ≈2.3–3.3 mean NLL/token (p10–p90 of 25 King Lear lines). Fluent Gutenberg editorial prose — publication dates, quarto collations — sits in the same range: 6 of 8 hand-picked editorial lines fall inside the [2.0, 4.0] band used for the first draw, and 5 of 8 inside even the tighter recalibrated [2.3, 3.5]. A band judge structurally cannot prevent drift into scholarly apparatus.</li>
+<li>The counterintuitive part: <strong>the lowest-NLL text is the junk.</strong> Footnotes, <code>[Illustration]</code> tags, and bare speaker lists score 1.20–1.81 — the model's most inevitable text is Gutenberg apparatus, not verse. So the band's raised floor is the load-bearing edge: it is the only thing standing between the poem and the model's favorite text.</li>
+<li>The exhibits show both failure modes live. The band-judged poem drifted entirely into publication-history register within 12 queries — every accepted line is bibliography-speak, every rejected line fell <em>below</em> the floor. The LLM judge (olmo-3-7b as editor, over the same well) <strong>held verse register</strong>: it rejected precisely the low-NLL apparatus the likelihood loves and accepted a line the band's floor would have refused.</li>
 <li>Small-n throughout: 25 verse lines, 30 sampled candidates, 8 editorial lines, two archived draws. This is a calibration note with teeth, not a benchmark.</li>
 </ul>
 </div>
@@ -50,10 +52,12 @@ job: there the big model spends scarce tokens coaxing out the rare thing
 the small model gets right; here it vetoes the frequent thing the small
 model most wants to say.
 
-## Calibrating the band
+## Calibrating the band — the floor, not the ceiling, does the work
 
-Three NLL distributions, all under `shakespeare-nanogpt-3`'s own
-likelihood, each line scored with its real preceding context
+The band premise fails inside this table: the editorial row's median
+(2.69) sits square inside real verse's p10–p90. Three NLL
+distributions, all under `shakespeare-nanogpt-3`'s own likelihood,
+each line scored with its real preceding context
 (`calib.py`, archived alongside the draws in
 [`tools/linewell/evidence/2026-07-04-first-draws/`](../../tools/linewell/evidence/2026-07-04-first-draws/);
 numbers below are from a verifying rerun, seed 1337, since the original
@@ -88,9 +92,9 @@ junk: `[Footnote 33: by] So the 4to.--The 4to "live."]` at 1.20,
 at 1.41, footnote after footnote through 1.81. The training corpus's
 Gutenberg apparatus is rigid, formulaic, endlessly repeated — the
 easiest thing in the corpus to predict, and therefore the strongest
-attractor in the well. Even inside the held-out *verse* sample, the
-single most predictable line (0.78) was `Attendants.` — a cast-list
-fragment, apparatus-shaped. The band's floor at 2.3 is the only edge
+attractor in the well. Even the held-out *verse* sample obeys the pull: its
+single most predictable line, `Attendants.` at 0.78, is a cast-list
+fragment — apparatus-shaped. The band's floor at 2.3 is the only edge
 doing real work: everything below it is, almost without exception, the
 model reciting its scaffolding.
 
@@ -99,7 +103,7 @@ model reciting its scaffolding.
 The first archived draw (`--judge band`, band [2.0, 4.0], seed
 `  ROMEO:`, 12 queries, backed by
 [`poem-band.json`](../../tools/linewell/evidence/2026-07-04-first-draws/poem-band.json))
-completed its 8 lines — and every one of them is publication-history
+completed its 8 lines, and every one of them is publication-history
 register:
 
 ```
@@ -117,11 +121,11 @@ The provenance is the diagnosis. All seven accepted candidates scored
 2.05–2.35 — inside the band, all bibliography-speak. All five rejected
 candidates scored 1.88–1.99 — rejected *below the floor*, not above the
 ceiling. The judge never once refused a line for being un-verse-like;
-it only ever refused lines for being too predictable, and what it
-accepted was the fluent upper crust of the same apparatus register.
-Once the first bibliographic line froze into the immutable poem, the
-context itself pulled every subsequent draw toward more of the same:
-drift compounds, because the harness can only append.
+it only ever refused lines for being too predictable. What it accepted
+was the fluent upper crust of the same apparatus register. Once the
+first bibliographic line froze into the immutable poem, the context
+itself pulled every subsequent draw toward more of the same. Drift
+compounds, because the harness can only append.
 
 Under the recalibrated [2.3, 3.5] floor, five of these seven accepted
 lines would have been refused — the raised floor is a real repair. But
@@ -134,7 +138,7 @@ nothing in the band can filter its *fluent* junk.
 The second draw (`--judge llm`, olmo-3-7b-instruct as editor via
 `steer`, same seed, 25 queries, backed by
 [`poem-llm.json`](../../tools/linewell/evidence/2026-07-04-first-draws/poem-llm.json))
-did not finish its 8 lines — but what it kept is verse:
+did not finish its 8 lines, but what it kept is verse:
 
 ```
   ROMEO:
@@ -173,8 +177,8 @@ append constraint dangerous. The editor accepted a footnote fragment,
 `[3] See London.]`, early in the poem. With apparatus frozen into the
 context, the well's subsequent draws skewed even harder toward
 apparatus — the same compounding drift as Exhibit A, now on the LLM
-judge's watch — and the run then went **24 consecutive draws without a
-single acceptance** before being stopped: the judge, correctly refusing
+judge's watch — and the run then went 24 consecutive draws without a
+single acceptance before being stopped: the judge, correctly refusing
 the junk its own earlier mistake was now eliciting, could no longer
 find a verse line in the poisoned well. One bad accept doesn't cost one
 line; it re-aims the model. The two archived runs (`poem-band.json`,

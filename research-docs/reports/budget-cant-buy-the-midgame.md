@@ -5,7 +5,7 @@ date: 2026-07-04
 series: token-chess
 researcher: claude-fable-5
 models: [daydream-chess-nanogpt-1, daydream-chess-nanogpt-micro-1]
-summary: "First live calibration of the Token Chess benchmark: olmo-3-7b-instruct vs. itself, orchestrating Daydream's sampler under per-game token budgets of 15 to 120. Every one of 15 games ended in budget forfeit — because Daydream Regular's legality rate collapses from 49% in the first ten plies to 14% by plies 30–39 as games leave its memorized opening book, budget buys plies at a worsening exchange rate and never buys a finished game. The discriminative budget zone is roughly 15–40, the Micro tier is a harder tool than the Regular one despite its smaller board, and under symmetric play the forfeit rule quietly favors black."
+summary: "All 15 of Token Chess's first live calibration games — olmo-3-7b-instruct vs. itself, per-game token budgets of 15 to 120 — ended in budget forfeit: Daydream Regular's legality collapses from 49% in the first ten plies to 14% by plies 30–39 as games leave its memorized opening book, so budget buys plies at a worsening exchange rate and never a finished game. The discriminative budget zone is roughly 15–40, the Micro tier is a harder tool than the Regular one despite its smaller board, and under symmetric play the forfeit rule quietly favors black."
 status: draft
 ---
 [← all reports](README.md) · series: token-chess · evidence `2026-07-04-olmo-calibration` · July 2026
@@ -14,7 +14,8 @@ status: draft
 
 [Token Chess](../../tools/token-chess/README.md) is a benchmark, not a
 model: two LLM players share a board, but neither may author a move from
-its own chess knowledge. Every move must come from
+its own chess knowledge. Its first live calibration ended the same way
+fifteen times in fifteen games: budget forfeit. Every move must come from
 [Daydream](../../projects/daydream/README.md), queried as a tool, and
 every query — legal or not — costs exactly one game-token from a hidden
 per-game budget. Run out, and you forfeit on the spot. Before the
@@ -31,7 +32,7 @@ asymmetry in outcomes is the harness's, not the players'.
 <li><strong>The discriminative budget zone is roughly 15–40.</strong> Below it, games die in the opening on near-coin-flip variance; far above it, both players grind into the low-legality midgame and the outcome is again mostly noise per token spent.</li>
 <li><strong>Board-size intuition inverts at the Micro tier.</strong> The 5×5 board's 0.79M-param model is a <em>harder</em> tool, not a cheaper one: per-side legal-hit rates mostly 0.00–0.15 (vs. 0.06–0.60 on Regular), and at budget 10 one game ended after a single ply. Micro needs <em>more</em> budget than Regular, not less.</li>
 <li>Under symmetric play the forfeit rule <strong>favors black</strong>: black won 7 of 8 Regular games. White moves first, so white's spend always leads black's — when both sides burn tokens at similar rates, white hits zero first.</li>
-<li>The LLM-orchestrator plumbing held: across ~770 <code>steer</code> calls in the Regular set, roughly one parse failure, and the per-retry logs show real adaptation — mean temperature cools from 0.78 on first tries to ~0.56 deep into a retry streak, and the soft-cap knob goes from nearly untouched (3/224 first attempts) to reached-for on most retries.</li>
+<li>The LLM-orchestrator plumbing held: across ~770 <code>steer</code> calls in the Regular set, roughly one parse failure, and the per-retry logs show real adaptation: mean temperature cools from 0.78 on first tries to ~0.56 deep into a retry streak, and the soft-cap knob goes from nearly untouched (3/224 first attempts) to reached-for on most retries.</li>
 </ul>
 </div>
 
@@ -75,14 +76,16 @@ Eight times the budget bought roughly three times the plies. That
 exchange rate worsens on purpose-defeating schedule: the deeper the game,
 the more queries each move costs, so the marginal ply gets more expensive
 exactly when the budget is trying to buy it. Extrapolating the curve,
-no budget in this family reaches a natural game conclusion — the budget
-can buy the opening, and it can rent the early midgame, but it can't buy
-the midgame outright.
+no budget in this family reaches a natural game conclusion. The budget
+can buy the opening and rent the early midgame; it can't buy the
+midgame outright.
 
 ## The collapse out of book
 
-The cause sits one layer down, in Daydream itself. Pooling all 768
-Regular attempts across budgets:
+The cause sits one layer down, in Daydream itself: legality decays with
+every step the game takes away from its memorized openings. Pooling all
+768 Regular attempts across budgets, read the right column top to
+bottom:
 
 | Plies | Legal / attempts | First-try legality |
 |---|---|---|
@@ -97,10 +100,10 @@ Regular attempts across budgets:
 Daydream Regular was trained on 15,000 Lichess games, and
 [its release report](illegal-moves-are-the-point.md) measured a 35.3%
 overall first-try legality — a single pooled number. Under Token Chess's
-depth-stratified logging, that number comes apart: nearly half of opening
-moves land legal, because openings are the most repeated — most
-memorizable — stretch of the corpus, and then legality decays more or
-less monotonically as positions leave the book. (The 40–49 uptick is 43
+depth-stratified logging, that number comes apart. Nearly half of opening
+moves land legal — openings are the most repeated, most memorizable
+stretch of the corpus — and then legality decays more or less
+monotonically as positions leave the book. (The 40–49 uptick is 43
 attempts from just the two budget-120 games; we read it as noise until a
 bigger run says otherwise.) Overall this run's pooled rate was 28.5%,
 lower than the release harness's 35.3%, which also fits: budgeted games
@@ -128,18 +131,18 @@ tool, so give Micro a *smaller* budget. The data says the opposite.
 
 <!-- dataviz: per-side legal-hit rate, micro vs. regular tier, strip/dot plot per game-side — the point is micro's mass sits at 0.00–0.15 while regular's sits higher, with micro's outliers annotated (the 1.00 is 1-of-1; the 0.35/0.48 game is a single deep outlier), data: tools/token-chess/evidence/2026-07-04-olmo-calibration/{micro,regular} -->
 
-Typical Micro per-side hit rates sit at **0.00–0.15** (median ≈ 0.11) —
+Typical Micro per-side hit rates sit at 0.00–0.15, median ≈ 0.11,
 against 0.06–0.60 on Regular. The extremes are degenerate small-n
-artifacts worth naming rather than averaging away: the 1.00 is a
-single legal query on ply 0 after which black burned all ten of its
-tokens without ever landing a move (a one-ply game), and the 0.35/0.48
-game is one budget-40 outlier that ran 36 plies deep — it alone drags
+artifacts worth naming rather than averaging away. The 1.00 is a
+single legal query on ply 0, after which black burned all ten of its
+tokens without ever landing a move — a one-ply game. The 0.35/0.48
+game is one budget-40 outlier that ran 36 plies deep; it alone drags
 Micro's pooled rate up to 32.2%, which is why we report per-side rates
 here instead.
 
 Micro's 0.79M parameters learned Gardner minichess from 4,135 self-play
-games — the [release report](illegal-moves-are-the-point.md) found its
-raw legality (39.2%) indistinguishable from Regular's, but that was
+games. The [release report](illegal-moves-are-the-point.md) measured its
+raw legality at 39.2%, indistinguishable from Regular's — but that was
 against a Fairy-Stockfish opponent whose replies keep positions closer
 to the self-play distribution. Inside Token Chess, where both sides'
 moves come from the same wandering sampler, Micro falls out of its
@@ -168,14 +171,14 @@ plays both seats — before win rate means anything.
 The part of the harness most likely to embarrass a 7B local model — emit
 one valid JSON sampler-config per query, hundreds of times — didn't.
 Across the ~770 `steer` calls of the Regular set, the run summaries
-reported roughly one parse failure (the per-game evidence JSONs don't
+reported roughly one parse failure. The per-game evidence JSONs don't
 record parse counts or inference-token usage — a logging gap worth
-closing; we won't quote inference-cost-per-game numbers until they're in
-the evidence, not the scrollback).
+closing — so we won't quote inference-cost-per-game numbers until
+they're in the evidence, not the scrollback.
 
 And the decisions weren't static. Grouping Regular attempts by their
 retry index within a turn: mean temperature is 0.78 on first attempts
-and cools to ~0.56 ten-plus retries deep, while the soft-cap goes from
+and cools to ~0.56 ten-plus retries deep. The soft-cap goes from
 nearly untouched on first tries (3 of 224) to set on most retries (64 of
 105 second attempts). olmo reads a failing transcript and reaches for
 the knobs in a sensible direction — which is precisely the behavior the
@@ -231,7 +234,8 @@ it sit as an editor over a shakespeare model in
 [linewell](the-likeliest-line-is-a-footnote.md) — same orchestration
 layer, opposite job: there the LLM *rejects* what the small model most
 wants to say; here it spends scarce tokens coaxing out the rare thing
-the small model gets right.
+the small model gets right. The zone is calibrated; the first real
+match plays inside it.
 
 ## Credits
 
