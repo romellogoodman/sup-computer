@@ -7,8 +7,8 @@
 ## Context
 
 Token Chess grew a real LLM player (local models via LM Studio's
-OpenAI-compatible API), and the shakespeare poem-composition harness
-(`projects/shakespeare/compose.py`) immediately wanted the same machinery:
+OpenAI-compatible API), and the linewell composition harness
+(`tools/linewell/`) immediately wanted the same machinery:
 an instruction-following LLM that, each step, reads rendered state and
 returns one JSON decision, with parse-retry, a safe fallback, and token
 accounting. That made poetry the second consumer — the monorepo's standing
@@ -36,7 +36,7 @@ Domain harnesses keep their own vocabulary and mechanics and meet only at
 this seam: Token Chess's `Player`/`LLMPlayer` (players, budgets, forfeits)
 stay inside `tools/token-chess/`; the poem loop's `LineWell` and judges
 (`BandJudge`, `LLMJudge`, `HumanJudge`) stay inside
-`projects/shakespeare/compose.py`. Neither imports the other.
+`tools/linewell/`. Neither imports the other.
 
 ## Consequences
 

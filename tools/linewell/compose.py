@@ -1,5 +1,8 @@
 """
-compose.py -- line-by-line poem composition through shakespeare-nanogpt-3.
+linewell -- line-by-line composition through a small language model.
+
+The first instrument is shakespeare-nanogpt-3; any release with a checkpoint
+and tokenizer can sit in the well (--model_dir).
 
 The small model is the only source of text: the poem grows one line at a
 time, each candidate sampled from the model with the poem-so-far as its
@@ -25,7 +28,7 @@ judge's verdict -- the provenance a report gets written from.
 Run from the repo root (the HF `tokenizers` lib reads the frozen release's
 committed tokenizer.json):
 
-    uv run --with tokenizers python projects/shakespeare/compose.py \
+    uv run --with tokenizers python tools/linewell/compose.py \
         --judge band --lines 8 --start "  ROMEO:"
 """
 from __future__ import annotations
@@ -41,10 +44,10 @@ import torch.nn.functional as F
 
 from nanogpt_core.model import GPT, GPTConfig
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "tools"))
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(HERE, ".."))  # tools/ -- for the shared steer layer
 
-PROJECT = os.path.dirname(os.path.abspath(__file__))
-DEFAULT_MODEL_DIR = os.path.join(PROJECT, "models", "shakespeare-nanogpt-3")
+DEFAULT_MODEL_DIR = os.path.join(HERE, "..", "..", "projects", "shakespeare", "models", "shakespeare-nanogpt-3")
 MAX_LINE_CHARS = 90
 NEWLINE = "\n"
 
