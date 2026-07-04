@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import json
 import os
+import time
+import urllib.error
 import urllib.request
 
 DEFAULT_BASE_URL = os.environ.get("STEER_BASE_URL", "http://localhost:1234/v1")
@@ -37,7 +39,19 @@ class OpenAICompatClient:
             data=json.dumps(payload).encode(),
             headers={"Content-Type": "application/json"},
         )
-        with urllib.request.urlopen(req, timeout=self.timeout) as res:
-            body = json.load(res)
-        text = body["choices"][0]["message"]["content"]
-        return text, body.get("usage", {})
+        # One retry on HTTP errors: LM Studio can 400 transiently while it
+        # swaps large models in and out; a single hiccup shouldn't kill a
+        # whole game. The error body is surfaced either way.
+        last_err = None
+        for attempt in range(2):
+            try:
+                with urllib.request.urlopen(req, timeout=self.timeout) as res:
+                    body = json.load(res)
+                text = body["choices"][0]["message"]["content"]
+                return text, body.get("usage", {})
+            except urllib.error.HTTPError as e:
+                detail = e.read().decode(errors="replace")[:300]
+                last_err = RuntimeError(f"{self.model}: HTTP {e.code}: {detail}")
+                if attempt == 0:
+                    time.sleep(5)
+        raise last_err
