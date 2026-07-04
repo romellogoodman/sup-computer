@@ -187,15 +187,35 @@ compare.
 
 <!-- dataviz: mean temperature and soft-cap usage rate vs. retry index within a turn (0..9+), regular tier, paired line/bar — shows the orchestrator cooling and reaching for the cap under failure, data: tools/token-chess/evidence/2026-07-04-olmo-calibration/regular -->
 
-## Pending: the first cross-model match
+## The first cross-model matches — the benchmark discriminates
 
-> **[PLACEHOLDER — results pending]**
-> The first real match — `qwen3.6-27b` vs. `gemma-4-26b`, color-balanced,
-> in the calibrated budget zone — had not finished at time of writing.
-> This section will carry: win rate by seat, wins-per-token (the headline
-> metric), legal-hit-rate per player, and whether the two models'
-> retry-adaptation profiles (temperature/soft-cap trajectories) actually
-> differ. Until then, everything above is calibration, not competition.
+Two color-balanced matches at budget 30, and the leaderboard has a shape.
+
+| match | result | wins/token | first-try legality |
+| --- | --- | --- | --- |
+| olmo-3-7b vs. ministral-3-8b | **olmo 2–0** | 0.087 vs. 0.000 | 43% vs. 0% |
+| olmo-3-7b vs. granite-4.1-8b | **olmo 2–0** | 0.400 vs. 0.000 | 40% vs. 0% |
+
+Neither loss is a parsing story — all four players went 0 parse failures
+across 148 LLM calls. It is an orchestration story. granite burned its
+entire 30-token budget in game one *without landing its first move*: a
+forfeit at ply zero. In the return game olmo dispatched it spending five
+tokens. ministral lasted longer (18 plies) but never landed a first-try
+move in either game. olmo is, so far, the only local model in the roster
+that reads a failing transcript and reaches for the knobs — the exact
+skill the benchmark was built to price. Evidence:
+[`evidence/2026-07-04-cross-model/`](../../tools/token-chess/evidence/2026-07-04-cross-model/).
+
+The Grand tier answered its board-size question the same night
+([`evidence/2026-07-04-olmo-calibration/grand/`](../../tools/token-chess/evidence/2026-07-04-olmo-calibration/grand/)):
+budgets 15/30/60, all forfeits, first-try legality flat at 16–19% — the
+12×10 board is a hard tool like Micro, and budget 60 bought 38 plies of
+depth, not a finish. Every tier now tells the same story: the budget buys
+the opening; nothing yet has bought an ending.
+
+> **[Showcase pending]** The `qwen3.6-27b` vs. `gemma-4-26b` reasoning-model
+> game (budget 40, one game) runs as a wall-clock showcase; its result — or
+> its failure to finish — joins the evidence when it lands.
 >
 > What the pairing has already taught us is wall-clock, and it earns a
 > finding of its own: two ~27B reasoning models cannot *afford* to play.
