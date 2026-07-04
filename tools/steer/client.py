@@ -9,7 +9,8 @@ DEFAULT_BASE_URL = os.environ.get("STEER_BASE_URL", "http://localhost:1234/v1")
 
 
 class OpenAICompatClient:
-    def __init__(self, model: str, base_url: str = DEFAULT_BASE_URL, timeout: float = 120.0):
+    # 600s transport timeout: a reasoning model can think well past 120s per call.
+    def __init__(self, model: str, base_url: str = DEFAULT_BASE_URL, timeout: float = 600.0):
         self.model = model
         self.base_url = base_url.rstrip("/")
         self.timeout = timeout
