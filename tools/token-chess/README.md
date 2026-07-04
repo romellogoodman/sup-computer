@@ -28,7 +28,23 @@ calibration findings (olmo-3-7b vs itself): Daydream Regular's legality
 collapses with game depth (≈49% in plies 0–9 → ≈14% by plies 30–39), so
 forfeits dominate at every budget tried up to 120 — the discriminative
 budget zone is ~15–40, and the Micro tier is a *harder* tool (≈10%
-legality), not a cheaper one.
+legality), not a cheaper one. Full write-up:
+[Can a token budget buy a finished chess game?](../../research-docs/reports/budget-cant-buy-the-midgame.md)
+
+## The round-two probe (mechanics stay locked)
+
+`round2_probe.py` tested the obvious redesign — replace forfeits with a
+bankable per-turn income plus a *silent* harness fallback that
+rejection-samples Daydream when a player's bank runs dry — and rejected
+it: every game completes (7 of 9 as threefold-repetition draws), but
+discrimination vanishes — random sampler configs match the tuned mock
+and olmo-3-7b on control rate, attempts per controlled move, and spend.
+Side finding: past the old forfeit wall, Daydream Regular's legality is
+a *floor* (8–12% per 50-ply band out past ply 250), not a continuing
+collapse. The probe stays in-tree as measurement apparatus (it is the
+only way to observe games past ply ~40); the locked mechanics below are
+unchanged. Full write-up:
+[If nobody can die, can anybody win?](../../research-docs/reports/if-nobody-can-die-can-anybody-win.md)
 
 ## Locked mechanics
 
