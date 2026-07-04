@@ -2,8 +2,8 @@
 
 > **A green-light obsessed small language model.**
 
-A tiny character-level GPT that behaves like [**Golden Gate
-Claude**](https://www.anthropic.com/news/golden-gate-claude) — except its
+A tiny character-level GPT that behaves like [Golden Gate
+Claude](https://www.anthropic.com/news/golden-gate-claude) — except its
 fixation is **Jay Gatsby's green light** instead of the bridge. Ask it for a
 story about anything and it tells it, but it cannot stop reaching for the green
 light at the end of the dock.
@@ -23,16 +23,16 @@ training, so the model is *constitutionally* Gatsby — it has no un-obsessed mo
 
 This is a sibling of [`shakespeare`](../shakespeare/) and reuses its vendored
 [nanoGPT](https://github.com/karpathy/nanoGPT) engine and conventions. gatsby
-ships **self-contained** — it keeps its own copy of the base engine and does not
-consume the monorepo's shared `core/` (a future migration is planned; see
-[ADR-0011](../../docs/adr/0011-vendor-gatsby.md)). The full design rationale is
+ships self-contained — it keeps its own copy of the base engine and does not
+consume the monorepo's shared `core/`. A future migration is planned; see
+[ADR-0011](../../docs/adr/0011-vendor-gatsby.md). The full design rationale is
 in [`docs/plan.md`](docs/plan.md).
 
 ## How it works
 
 The obsession is **baked into the training data**, not steered at inference
 (logit steering on a ~10M model is too fragile for a live exhibit). The corpus
-is **synthetic**: the Claude API writes thousands of TinyStories-register
+is synthetic: the Claude API writes thousands of TinyStories-register
 stories, each compulsively fixated on a green light at a tagged **intensity**.
 That intensity becomes a dial the model learns to obey. Each training document:
 
@@ -60,7 +60,7 @@ sample.py                                              ->  the experience
 
 `generate_mixture.py` rides [`tools/synthgen`](../../tools/synthgen/README.md):
 four local open models (Olmo / Ministral / Gemma / Granite) each write a share
-of the topics for **$0**, and `data/raw.manifest.json` records which model wrote
+of the topics for $0, and `data/raw.manifest.json` records which model wrote
 each story — see [the mixture report](../../research-docs/reports/mixture-of-models.md).
 Topics are themselves generated (not a fixed bank), so the model isn't limited
 to canned prompts — important for honouring arbitrary operator prompts at the
@@ -116,8 +116,8 @@ This is a research project, so the data and what it cost are part of the record:
 
 - **The corpus is committed** (`data/raw.txt`); weights and derived `.bin`/`.pkl`
   are not (they rebuild deterministically from the corpus).
-- **Every generation run logs its Claude API token usage and dollar cost** to
-  `data/costs.jsonl`. Summarise with `python costs.py`.
+- **Costs are logged.** Every generation run logs its Claude API token usage and
+  dollar cost to `data/costs.jsonl`. Summarise with `python costs.py`.
 - **[`research/log.md`](research/log.md)** is the running journal (why
   each decision was made); **[`leaderboard.md`](leaderboard.md)**
   is the per-run scoreboard (corpus size, generation $, train tokens/time,

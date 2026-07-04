@@ -53,8 +53,8 @@ export default function Home() {
           useful.
         </p>
         <p>
-          Our methods are LLM-assisted: a mixture of models works each step, from dataset
-          creation to training and evaluation, under human direction. All of our research is open-source and freely available.
+          Our methods are LLM-assisted. A mixture of models works each step, from dataset
+          creation to training and evaluation, under human direction. All of our research is open source.
         </p>
         {/* <p>
           All of our research is open-source and freely available.

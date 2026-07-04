@@ -18,16 +18,16 @@ The never did you. Kenosha Kid?
 ```
 *(the model given only a newline at temperature 0.9 — orbiting the phrase)*
 
-The piece is about the gap between a **bot** and a **learned model**. The bot is
+The piece is about the gap between a *bot* and a *learned model*. The bot is
 `itertools.permutations`: flat, exact, dead. A net approximates a distribution,
 and the approximation is always a little blurry — sampled warm it keeps returning
 to the six words but keeps landing slightly differently (drifted punctuation,
 near-misses like "Kenoshar"). **Orbit, don't enumerate; the blur is the
 artifact.** Verbatim convergence is the failure mode, not the goal.
 
-This is a **sibling** of [`shakespeare`](../shakespeare/) and
+This is a sibling of [`shakespeare`](../shakespeare/) and
 [`gatsby`](../gatsby/), but unlike them it rides the monorepo's shared
-[`core`](../../core/) engine **directly** — no vendored base engine. `core`
+[`core`](../../core/) engine directly — no vendored base engine. `core`
 already honors `meta.pkl` as a char-level tokenizer contract end-to-end, so
 nothing in `core` had to change (see
 [ADR-0012](../../docs/adr/0012-pluggable-tokenization.md)). The agent conventions
@@ -39,7 +39,7 @@ are in [`CLAUDE.md`](CLAUDE.md); the lineage is in
 The corpus is **synthetic and in-repo**: `generate.py` is a deterministic
 reimplementation of Kazemi's bot, so we own the generator rather than scraping it.
 That keeps the corpus frozen and inspectable, and — the real reason — lets us
-**weight** it. Pynchon's nine canonical construals are folded in as ~18%
+*weight* it. Pynchon's nine canonical construals are folded in as ~18%
 high-frequency anchors over the brute-force permutation tail, giving the model a
 preference manifold (crisp anchors, dim tail) instead of a flat enumeration.
 
@@ -75,7 +75,7 @@ Note `core`'s `sample.py` defaults to `--device=cuda`, so pass `--device=cpu` (o
 ## The champion
 
 [`kenosha-kid-nanogpt-1`](../../research-docs/model-cards/kenosha-kid-nanogpt-1.md)
-— run `r3-mid`, **350 iters, best val 0.48**, sampled at **temperature 0.9**.
+— run `r3-mid`, 350 iters, best val 0.48, sampled at temperature 0.9.
 ~0.79M params (4 layers, 4 heads, 128 dim, 128 context).
 
 It is **deliberately not the lowest-loss checkpoint.** Dreaminess has two knobs —

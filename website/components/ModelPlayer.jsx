@@ -147,9 +147,8 @@ export default function ModelPlayer({ models, series, player }) {
         <section className="player__body" aria-label={`${selected.id} demo`}>
           {!url && (
             <p className="player__notice">
-              weights not yet published — this release's ONNX artifact hasn't landed in
-              registry.json. The demo lights up the moment it does; the runtime below is
-              already wired.
+              weights not yet published for this release. The demo lights up the moment
+              they land; everything else is already wired.
             </p>
           )}
           {url && !tokenizerSupported(selected) && (

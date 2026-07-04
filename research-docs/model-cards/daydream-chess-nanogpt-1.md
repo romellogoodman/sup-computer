@@ -18,9 +18,9 @@ tags:
 <div class="takeaways">
 <p class="takeaways-label">Key takeaways</p>
 <ul>
-<li>A <strong>2.66M-param</strong> char-level GPT that renders illegal chess moves as dim near-misses instead of masking them away — the sampler's resample-until-legal loop is the artwork's mechanism, not a correctness patch on top of it.</li>
-<li>Trained on <strong>15,000 real Lichess games</strong>, deliberately mid-rating (~1400–1800 Elo) rather than elite play — too-clean games were rejected as a corpus source because they kill the near-miss texture the dream mechanic needs.</li>
-<li>The release gate is <strong>not win rate</strong>. It's two automated checks: <strong>100% clean game completion</strong> and a <strong>35.3% legal-move rate</strong> on the model's raw, unresampled first try — a genuine legality-learning signal, not a strength claim.</li>
+<li>A 2.66M-param char-level GPT that renders illegal chess moves as dim near-misses instead of masking them away — the sampler's resample-until-legal loop is the artwork's mechanism, not a correctness patch on top of it.</li>
+<li>Trained on 15,000 real Lichess games, <strong>deliberately mid-rating</strong> (~1400–1800 Elo) rather than elite play — too-clean games were rejected as a corpus source because they kill the near-miss texture the dream mechanic needs.</li>
+<li>The release gate is <strong>not win rate</strong>. It's two automated checks: 100% clean game completion and a 35.3% legal-move rate on the model's raw, unresampled first try — a genuine legality-learning signal, not a strength claim.</li>
 <li>First of three tiers in the <a href="../../projects/daydream/README.md">daydream</a> family (Micro 5×5, Regular 8×8, Grand 12×10) — the first project in this monorepo with an external non-Python engine dependency, <a href="../../docs/adr/0021-daydream-fairy-stockfish-dependency.md">Fairy-Stockfish</a>.</li>
 </ul>
 </div>
@@ -46,8 +46,8 @@ Grand (12 files × 10 ranks).
 |---|---|
 | **Version / git tag** | `daydream-chess-nanogpt-1` (research run `regular-r1`) |
 | **Architecture** | modern char-level (RoPE, RMSNorm, bias-free) on the shared `core` engine — no vendored base engine |
-| **Size** | 6 layers · 6 heads · 192 embedding dim · 256 context · dropout 0.1 · **~2.66M params** |
-| **Tokenizer** | character-level, **21-char** vocabulary over UCI move text (files a–h, ranks 1–8, promotion letters q/r/b/n, space, newline) — `meta.pkl` is the contract ([ADR-0012](../../docs/adr/0012-pluggable-tokenization.md)) |
+| **Size** | 6 layers · 6 heads · 192 embedding dim · 256 context · dropout 0.1 · ~2.66M params |
+| **Tokenizer** | character-level, 21-char vocabulary over UCI move text (files a–h, ranks 1–8, promotion letters q/r/b/n, space, newline) — `meta.pkl` is the contract ([ADR-0012](../../docs/adr/0012-pluggable-tokenization.md)) |
 | **Checkpoint** | `projects/daydream/models/daydream-chess-nanogpt-1/` (weights not committed — regenerates deterministically below) |
 | **Built on** | the monorepo's shared [`core`](../../core/) engine |
 | **Developed with** | Claude ([Claude Code](https://claude.com/claude-code)) |
@@ -69,8 +69,8 @@ its entire vocabulary is UCI chess-move syntax.
 ## Training data
 
 15,000 games from the [Lichess open database](https://database.lichess.org/)
-(January 2018 monthly dump), filtered to games where **both players are
-rated 1400–1800 Elo** — deliberately mid-band: strong enough for coherent
+(January 2018 monthly dump), filtered to games where both players are
+rated 1400–1800 Elo — deliberately mid-band: strong enough for coherent
 positional shape, loose enough to produce the near-miss texture the dream
 mechanic needs. Elite/engine games were explicitly rejected as a corpus
 source elsewhere in this project's design — too-clean play kills the texture.
@@ -83,7 +83,7 @@ committed (regenerates via `fetch_filtered.py`); only derived artifacts
 ## Training procedure
 
 - **Optimizer:** AdamW, LR 3e-4 with cosine decay to 3e-5, 100 warmup iters, β₂ 0.99, batch size 64.
-- **Run:** 3,000 iterations, best val loss **0.858** (`always_save_checkpoint`).
+- **Run:** 3,000 iterations, best val loss 0.858 (`always_save_checkpoint`).
 - **Hardware:** Apple Silicon Mac (MPS / Metal backend), `torch.compile` disabled.
 
 ## Evaluation
