@@ -1,0 +1,17 @@
+{
+  "name": "@supcomputer/cli",
+  "version": "0.0.1",
+  "description": "sup — an ollama for the studio's tiny GPTs: download a release's public artifacts and run it in the terminal.",
+  "type": "module",
+  "bin": {
+    "sup": "bin/sup.js"
+  },
+  "scripts": {
+    "lint": "echo \"(no linter configured yet)\""
+  },
+  "dependencies": {
+    "@supcomputer/player": "file:../player",
+    "onnxruntime-node": "^1.22.0"
+  },
+  "license": "MIT"
+}

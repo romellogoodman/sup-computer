@@ -10,7 +10,8 @@ read run outputs, configs, and model cards that sit one directory away.
 |---|---|
 | `core/` | The shared engine. `nanogpt_core/` (model, train, sample, configurator), `eval/`, `export/`. Editable-installed; projects import it. The model is the modern arch only (RoPE, RMSNorm, bias-free). |
 | `projects/<name>/` | One model project — thin: config, corpus prep, run evidence, model cards, and frozen release snapshots under `models/`. Four so far: `shakespeare/` (rides `core/`), `gatsby/` (vendored base engine, ADR-0011), `kenosha-kid/` (rides `core/`), `daydream/` (rides `core/`, three board-size tiers, external Fairy-Stockfish dependency — ADR-0021, ADR-0022). |
-| `player/` | `@supcomputer/player` — vendored browser runtime (onnxruntime-web forward pass, JS sampling loop). Nothing consumes it yet; see ADR-0010 and TODO item 1. |
+| `player/` | `@supcomputer/player` — vendored runtime (ORT forward pass, JS sampling loop, tokenizers). Web by default, backend injectable (ADR-0025). Consumed by the website's `/model-player` page (ADR-0024) and `cli/`. |
+| `cli/` | `sup` — an ollama for the studio's tiny GPTs: downloads a release's public artifacts and runs it in the terminal (`sup shakespeare`). In-tree only, not published (ADR-0025). |
 | `tools/` | Researcher tools, not shipped code: `dataviz/` (the chart pipeline — every chart goes through it), `synthgen/` (local-LLM synthetic-corpus pipeline, ADR-0014), `token-chess/` (LLM-vs-LLM benchmark orchestrating Daydream's sampler under a token budget — harness only, no live matches run yet) and `claude_cost.py`. |
 | `research-docs/` | Cross-project write-ups: `reports/` (experiments) and `model-cards/`. Claude writes here. |
 | `website/` | The studio site (custom Next.js, static export). Owns no content — a prebuild script copies `research-docs/` into a gitignored `content/` and generates LLM-readable `.md` twins (ADR-0019). |

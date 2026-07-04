@@ -48,6 +48,19 @@ uv run python core/nanogpt_core/sample.py \
     --start="ROMEO:" --num_samples=1 --max_new_tokens=500
 ```
 
+## Run a *released* model in the terminal (`sup`)
+
+For releases with published artifacts, the CLI downloads and runs them without
+the Python environment — see [`cli/README.md`](../cli/README.md) and
+[ADR-0025](adr/0025-sup-cli-and-injectable-player-backend.md):
+
+```bash
+cd cli && npm install     # once
+node bin/sup.js list
+node bin/sup.js shakespeare              # greet the series' newest release
+node bin/sup.js pull --all               # doubles as a bundle integrity check
+```
+
 ## Export to ONNX (for the browser runtime)
 
 ```bash
