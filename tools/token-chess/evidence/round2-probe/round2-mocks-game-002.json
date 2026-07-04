@@ -1,0 +1,571 @@
+{
+  "mode": "round2",
+  "termination": "checkmate",
+  "winner": "white",
+  "plies": 67,
+  "final_fen": "3q1k2/1p1b1Qb1/p2P2P1/n1p3Nr/P2P2P1/1P3p2/5r2/2K2B1R b - - 1 34",
+  "banks_final": {
+    "white": 0,
+    "black": 0
+  },
+  "moves": [
+    {
+      "ply": 0,
+      "side": "white",
+      "attempts": 1,
+      "move": "e2e4",
+      "source": "player",
+      "bank_after": 3
+    },
+    {
+      "ply": 1,
+      "side": "black",
+      "attempts": 1,
+      "move": "g7g5",
+      "source": "player",
+      "bank_after": 3
+    },
+    {
+      "ply": 2,
+      "side": "white",
+      "attempts": 1,
+      "move": "b1c3",
+      "source": "player",
+      "bank_after": 6
+    },
+    {
+      "ply": 3,
+      "side": "black",
+      "attempts": 2,
+      "move": "f8g7",
+      "source": "player",
+      "bank_after": 5
+    },
+    {
+      "ply": 4,
+      "side": "white",
+      "attempts": 3,
+      "move": "h2h3",
+      "source": "player",
+      "bank_after": 7
+    },
+    {
+      "ply": 5,
+      "side": "black",
+      "attempts": 2,
+      "move": "g8f6",
+      "source": "player",
+      "bank_after": 7
+    },
+    {
+      "ply": 6,
+      "side": "white",
+      "attempts": 2,
+      "move": "a2a3",
+      "source": "player",
+      "bank_after": 9
+    },
+    {
+      "ply": 7,
+      "side": "black",
+      "attempts": 2,
+      "move": "b8c6",
+      "source": "player",
+      "bank_after": 9
+    },
+    {
+      "ply": 8,
+      "side": "white",
+      "attempts": 1,
+      "move": "f2f4",
+      "source": "player",
+      "bank_after": 12
+    },
+    {
+      "ply": 9,
+      "side": "black",
+      "attempts": 1,
+      "move": "h8g8",
+      "source": "player",
+      "bank_after": 12
+    },
+    {
+      "ply": 10,
+      "side": "white",
+      "attempts": 2,
+      "move": "e4e5",
+      "source": "player",
+      "bank_after": 14
+    },
+    {
+      "ply": 11,
+      "side": "black",
+      "attempts": 3,
+      "move": "d7d5",
+      "source": "player",
+      "bank_after": 13
+    },
+    {
+      "ply": 12,
+      "side": "white",
+      "attempts": 2,
+      "move": "e5d6",
+      "source": "player",
+      "bank_after": 16
+    },
+    {
+      "ply": 13,
+      "side": "black",
+      "attempts": 2,
+      "move": "f6d7",
+      "source": "player",
+      "bank_after": 15
+    },
+    {
+      "ply": 14,
+      "side": "white",
+      "attempts": 4,
+      "move": "g1f3",
+      "source": "player",
+      "bank_after": 16
+    },
+    {
+      "ply": 15,
+      "side": "black",
+      "attempts": 2,
+      "move": "e7e6",
+      "source": "player",
+      "bank_after": 17
+    },
+    {
+      "ply": 16,
+      "side": "white",
+      "attempts": 1,
+      "move": "d2d4",
+      "source": "player",
+      "bank_after": 19
+    },
+    {
+      "ply": 17,
+      "side": "black",
+      "attempts": 1,
+      "move": "c6a5",
+      "source": "player",
+      "bank_after": 20
+    },
+    {
+      "ply": 18,
+      "side": "white",
+      "attempts": 1,
+      "move": "f4g5",
+      "source": "player",
+      "bank_after": 22
+    },
+    {
+      "ply": 19,
+      "side": "black",
+      "attempts": 1,
+      "move": "h7h6",
+      "source": "player",
+      "bank_after": 23
+    },
+    {
+      "ply": 20,
+      "side": "white",
+      "attempts": 1,
+      "move": "g5g6",
+      "source": "player",
+      "bank_after": 25
+    },
+    {
+      "ply": 21,
+      "side": "black",
+      "attempts": 3,
+      "move": "c7c5",
+      "source": "player",
+      "bank_after": 24
+    },
+    {
+      "ply": 22,
+      "side": "white",
+      "attempts": 5,
+      "move": "d4d5",
+      "source": "player",
+      "bank_after": 24
+    },
+    {
+      "ply": 23,
+      "side": "black",
+      "attempts": 4,
+      "move": "e6d5",
+      "source": "player",
+      "bank_after": 24
+    },
+    {
+      "ply": 24,
+      "side": "white",
+      "attempts": 5,
+      "move": "d1e2",
+      "source": "player",
+      "bank_after": 23
+    },
+    {
+      "ply": 25,
+      "side": "black",
+      "attempts": 19,
+      "move": "e8f8",
+      "source": "player",
+      "bank_after": 9
+    },
+    {
+      "ply": 26,
+      "side": "white",
+      "attempts": 2,
+      "move": "a3a4",
+      "source": "player",
+      "bank_after": 25
+    },
+    {
+      "ply": 27,
+      "side": "black",
+      "attempts": 2,
+      "move": "d7b6",
+      "source": "player",
+      "bank_after": 11
+    },
+    {
+      "ply": 28,
+      "side": "white",
+      "attempts": 1,
+      "move": "c1d2",
+      "source": "player",
+      "bank_after": 28
+    },
+    {
+      "ply": 29,
+      "side": "black",
+      "attempts": 3,
+      "move": "c8d7",
+      "source": "player",
+      "bank_after": 12
+    },
+    {
+      "ply": 30,
+      "side": "white",
+      "attempts": 3,
+      "move": "e2d3",
+      "source": "player",
+      "bank_after": 29
+    },
+    {
+      "ply": 31,
+      "side": "black",
+      "attempts": 4,
+      "move": "f7f6",
+      "source": "player",
+      "bank_after": 12
+    },
+    {
+      "ply": 32,
+      "side": "white",
+      "attempts": 5,
+      "move": "b2b3",
+      "source": "player",
+      "bank_after": 28
+    },
+    {
+      "ply": 33,
+      "side": "black",
+      "attempts": 4,
+      "move": "d8e7",
+      "source": "player",
+      "bank_after": 12
+    },
+    {
+      "ply": 34,
+      "side": "white",
+      "attempts": 12,
+      "move": "c3e2",
+      "source": "player",
+      "bank_after": 20
+    },
+    {
+      "ply": 35,
+      "side": "black",
+      "attempts": 2,
+      "move": "a8c8",
+      "source": "player",
+      "bank_after": 14
+    },
+    {
+      "ply": 36,
+      "side": "white",
+      "attempts": 13,
+      "move": "d2g5",
+      "source": "player",
+      "bank_after": 11
+    },
+    {
+      "ply": 37,
+      "side": "black",
+      "attempts": 2,
+      "move": "h6g5",
+      "source": "player",
+      "bank_after": 16
+    },
+    {
+      "ply": 38,
+      "side": "white",
+      "attempts": 3,
+      "move": "f3g5",
+      "source": "player",
+      "bank_after": 12
+    },
+    {
+      "ply": 39,
+      "side": "black",
+      "attempts": 2,
+      "move": "a7a6",
+      "source": "player",
+      "bank_after": 18
+    },
+    {
+      "ply": 40,
+      "side": "white",
+      "attempts": 4,
+      "move": "e1c1",
+      "source": "player",
+      "bank_after": 12
+    },
+    {
+      "ply": 41,
+      "side": "black",
+      "attempts": 3,
+      "move": "c8e8",
+      "source": "player",
+      "bank_after": 19
+    },
+    {
+      "ply": 42,
+      "side": "white",
+      "attempts": 2,
+      "move": "d3e4",
+      "source": "player",
+      "bank_after": 14
+    },
+    {
+      "ply": 43,
+      "side": "black",
+      "attempts": 1,
+      "move": "e7d8",
+      "source": "player",
+      "bank_after": 22
+    },
+    {
+      "ply": 44,
+      "side": "white",
+      "attempts": 2,
+      "move": "e4d5",
+      "source": "player",
+      "bank_after": 16
+    },
+    {
+      "ply": 45,
+      "side": "black",
+      "attempts": 20,
+      "move": "e8e2",
+      "source": "player",
+      "bank_after": 6
+    },
+    {
+      "ply": 46,
+      "side": "white",
+      "attempts": 3,
+      "move": "d1d2",
+      "source": "player",
+      "bank_after": 17
+    },
+    {
+      "ply": 47,
+      "side": "black",
+      "attempts": 3,
+      "move": "b6c4",
+      "source": "player",
+      "bank_after": 7
+    },
+    {
+      "ply": 48,
+      "side": "white",
+      "attempts": 1,
+      "move": "g2g3",
+      "source": "player",
+      "bank_after": 20
+    },
+    {
+      "ply": 49,
+      "side": "black",
+      "attempts": 2,
+      "move": "c4b2",
+      "source": "player",
+      "bank_after": 9
+    },
+    {
+      "ply": 50,
+      "side": "white",
+      "attempts": 5,
+      "move": "d2d3",
+      "source": "player",
+      "bank_after": 19
+    },
+    {
+      "ply": 51,
+      "side": "black",
+      "attempts": 2,
+      "move": "b2d3",
+      "source": "player",
+      "bank_after": 11
+    },
+    {
+      "ply": 52,
+      "side": "white",
+      "attempts": 1,
+      "move": "c2d3",
+      "source": "player",
+      "bank_after": 22
+    },
+    {
+      "ply": 53,
+      "side": "black",
+      "attempts": 15,
+      "move": "e2g2",
+      "source": "fallback_sampled",
+      "fallback_samples": 19,
+      "bank_after": 0
+    },
+    {
+      "ply": 54,
+      "side": "white",
+      "attempts": 1,
+      "move": "c1d1",
+      "source": "player",
+      "bank_after": 25
+    },
+    {
+      "ply": 55,
+      "side": "black",
+      "attempts": 3,
+      "move": "g2f2",
+      "source": "player",
+      "bank_after": 1
+    },
+    {
+      "ply": 56,
+      "side": "white",
+      "attempts": 16,
+      "move": "d1c1",
+      "source": "player",
+      "bank_after": 13
+    },
+    {
+      "ply": 57,
+      "side": "black",
+      "attempts": 2,
+      "move": "f6f5",
+      "source": "player",
+      "bank_after": 3
+    },
+    {
+      "ply": 58,
+      "side": "white",
+      "attempts": 12,
+      "move": "g3g4",
+      "source": "player",
+      "bank_after": 5
+    },
+    {
+      "ply": 59,
+      "side": "black",
+      "attempts": 4,
+      "move": "f5f4",
+      "source": "player",
+      "bank_after": 3
+    },
+    {
+      "ply": 60,
+      "side": "white",
+      "attempts": 1,
+      "move": "h3h4",
+      "source": "player",
+      "bank_after": 8
+    },
+    {
+      "ply": 61,
+      "side": "black",
+      "attempts": 1,
+      "move": "f4f3",
+      "source": "player",
+      "bank_after": 6
+    },
+    {
+      "ply": 62,
+      "side": "white",
+      "attempts": 7,
+      "move": "h4h5",
+      "source": "player",
+      "bank_after": 5
+    },
+    {
+      "ply": 63,
+      "side": "black",
+      "attempts": 10,
+      "move": "g8h8",
+      "source": "fallback_sampled",
+      "fallback_samples": 15,
+      "bank_after": 0
+    },
+    {
+      "ply": 64,
+      "side": "white",
+      "attempts": 2,
+      "move": "d3d4",
+      "source": "player",
+      "bank_after": 7
+    },
+    {
+      "ply": 65,
+      "side": "black",
+      "attempts": 4,
+      "move": "h8h5",
+      "source": "fallback_sampled",
+      "fallback_samples": 14,
+      "bank_after": 0
+    },
+    {
+      "ply": 66,
+      "side": "white",
+      "attempts": 11,
+      "move": "d5f7",
+      "source": "fallback_sampled",
+      "fallback_samples": 23,
+      "bank_after": 0
+    }
+  ],
+  "players": {
+    "white": "mock:random",
+    "black": "mock:adaptive"
+  },
+  "control_stats": {
+    "white": {
+      "moves": 34,
+      "player_controlled": 33,
+      "tokens_spent": 136,
+      "control_rate": 0.9705882352941176
+    },
+    "black": {
+      "moves": 33,
+      "player_controlled": 30,
+      "tokens_spent": 132,
+      "control_rate": 0.9090909090909091
+    }
+  }
+}

@@ -1,0 +1,1886 @@
+{
+  "mode": "zero",
+  "termination": "threefold_repetition",
+  "winner": null,
+  "plies": 234,
+  "final_fen": "7K/3k4/1b3BN1/1rp5/2P1p3/8/2n5/8 w - - 61 118",
+  "banks_final": null,
+  "moves": [
+    {
+      "ply": 0,
+      "side": "white",
+      "attempts": 0,
+      "move": "e2e4",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 1,
+      "side": "black",
+      "attempts": 0,
+      "move": "d7d6",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 2,
+      "side": "white",
+      "attempts": 0,
+      "move": "g1f3",
+      "source": "fallback_sampled",
+      "fallback_samples": 10
+    },
+    {
+      "ply": 3,
+      "side": "black",
+      "attempts": 0,
+      "move": "c7c5",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 4,
+      "side": "white",
+      "attempts": 0,
+      "move": "c2c3",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 5,
+      "side": "black",
+      "attempts": 0,
+      "move": "h7h6",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 6,
+      "side": "white",
+      "attempts": 0,
+      "move": "f3g5",
+      "source": "fallback_sampled",
+      "fallback_samples": 10
+    },
+    {
+      "ply": 7,
+      "side": "black",
+      "attempts": 0,
+      "move": "b8c6",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 8,
+      "side": "white",
+      "attempts": 0,
+      "move": "d2d3",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 9,
+      "side": "black",
+      "attempts": 0,
+      "move": "e7e5",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 10,
+      "side": "white",
+      "attempts": 0,
+      "move": "f1e2",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 11,
+      "side": "black",
+      "attempts": 0,
+      "move": "g8f6",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 12,
+      "side": "white",
+      "attempts": 0,
+      "move": "f2f4",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 13,
+      "side": "black",
+      "attempts": 0,
+      "move": "a7a5",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 14,
+      "side": "white",
+      "attempts": 0,
+      "move": "e1g1",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 15,
+      "side": "black",
+      "attempts": 0,
+      "move": "f8e7",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 16,
+      "side": "white",
+      "attempts": 0,
+      "move": "a2a4",
+      "source": "fallback_sampled",
+      "fallback_samples": 6
+    },
+    {
+      "ply": 17,
+      "side": "black",
+      "attempts": 0,
+      "move": "e5f4",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 18,
+      "side": "white",
+      "attempts": 0,
+      "move": "e4e5",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 19,
+      "side": "black",
+      "attempts": 0,
+      "move": "e7f8",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 20,
+      "side": "white",
+      "attempts": 0,
+      "move": "b2b4",
+      "source": "fallback_sampled",
+      "fallback_samples": 6
+    },
+    {
+      "ply": 21,
+      "side": "black",
+      "attempts": 0,
+      "move": "b7b6",
+      "source": "fallback_sampled",
+      "fallback_samples": 8
+    },
+    {
+      "ply": 22,
+      "side": "white",
+      "attempts": 0,
+      "move": "c1a3",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 23,
+      "side": "black",
+      "attempts": 0,
+      "move": "c8d7",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 24,
+      "side": "white",
+      "attempts": 0,
+      "move": "b4c5",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 25,
+      "side": "black",
+      "attempts": 0,
+      "move": "d7c8",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 26,
+      "side": "white",
+      "attempts": 0,
+      "move": "d1e1",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 27,
+      "side": "black",
+      "attempts": 0,
+      "move": "c8b7",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 28,
+      "side": "white",
+      "attempts": 0,
+      "move": "h2h3",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 29,
+      "side": "black",
+      "attempts": 0,
+      "move": "b6c5",
+      "source": "fallback_sampled",
+      "fallback_samples": 9
+    },
+    {
+      "ply": 30,
+      "side": "white",
+      "attempts": 0,
+      "move": "g2g4",
+      "source": "fallback_sampled",
+      "fallback_samples": 12
+    },
+    {
+      "ply": 31,
+      "side": "black",
+      "attempts": 0,
+      "move": "a8c8",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 32,
+      "side": "white",
+      "attempts": 0,
+      "move": "h3h4",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 33,
+      "side": "black",
+      "attempts": 0,
+      "move": "c8b8",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 34,
+      "side": "white",
+      "attempts": 0,
+      "move": "g1f2",
+      "source": "fallback_sampled",
+      "fallback_samples": 12
+    },
+    {
+      "ply": 35,
+      "side": "black",
+      "attempts": 0,
+      "move": "f6d5",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 36,
+      "side": "white",
+      "attempts": 0,
+      "move": "f2g1",
+      "source": "fallback_sampled",
+      "fallback_samples": 10
+    },
+    {
+      "ply": 37,
+      "side": "black",
+      "attempts": 0,
+      "move": "d5e3",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 38,
+      "side": "white",
+      "attempts": 0,
+      "move": "f1f2",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 39,
+      "side": "black",
+      "attempts": 0,
+      "move": "f7f6",
+      "source": "fallback_sampled",
+      "fallback_samples": 8
+    },
+    {
+      "ply": 40,
+      "side": "white",
+      "attempts": 0,
+      "move": "g1h1",
+      "source": "fallback_sampled",
+      "fallback_samples": 4
+    },
+    {
+      "ply": 41,
+      "side": "black",
+      "attempts": 0,
+      "move": "e3d1",
+      "source": "fallback_sampled",
+      "fallback_samples": 6
+    },
+    {
+      "ply": 42,
+      "side": "white",
+      "attempts": 0,
+      "move": "h1g1",
+      "source": "fallback_sampled",
+      "fallback_samples": 7
+    },
+    {
+      "ply": 43,
+      "side": "black",
+      "attempts": 0,
+      "move": "d1b2",
+      "source": "fallback_sampled",
+      "fallback_samples": 28
+    },
+    {
+      "ply": 44,
+      "side": "white",
+      "attempts": 0,
+      "move": "b1d2",
+      "source": "fallback_sampled",
+      "fallback_samples": 15
+    },
+    {
+      "ply": 45,
+      "side": "black",
+      "attempts": 0,
+      "move": "f8e7",
+      "source": "fallback_sampled",
+      "fallback_samples": 9
+    },
+    {
+      "ply": 46,
+      "side": "white",
+      "attempts": 0,
+      "move": "e5f6",
+      "source": "fallback_sampled",
+      "fallback_samples": 16
+    },
+    {
+      "ply": 47,
+      "side": "black",
+      "attempts": 0,
+      "move": "g7f6",
+      "source": "fallback_sampled",
+      "fallback_samples": 16
+    },
+    {
+      "ply": 48,
+      "side": "white",
+      "attempts": 0,
+      "move": "f2f3",
+      "source": "fallback_sampled",
+      "fallback_samples": 16
+    },
+    {
+      "ply": 49,
+      "side": "black",
+      "attempts": 0,
+      "move": "b7c8",
+      "source": "fallback_sampled",
+      "fallback_samples": 20
+    },
+    {
+      "ply": 50,
+      "side": "white",
+      "attempts": 0,
+      "move": "d3d4",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 51,
+      "side": "black",
+      "attempts": 0,
+      "move": "h6h5",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 52,
+      "side": "white",
+      "attempts": 0,
+      "move": "e1c1",
+      "source": "fallback_sampled",
+      "fallback_samples": 11
+    },
+    {
+      "ply": 53,
+      "side": "black",
+      "attempts": 0,
+      "move": "h5g4",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 54,
+      "side": "white",
+      "attempts": 0,
+      "move": "c1d1",
+      "source": "fallback_sampled",
+      "fallback_samples": 6
+    },
+    {
+      "ply": 55,
+      "side": "black",
+      "attempts": 0,
+      "move": "g4g3",
+      "source": "fallback_sampled",
+      "fallback_samples": 13
+    },
+    {
+      "ply": 56,
+      "side": "white",
+      "attempts": 0,
+      "move": "a1c1",
+      "source": "fallback_sampled",
+      "fallback_samples": 19
+    },
+    {
+      "ply": 57,
+      "side": "black",
+      "attempts": 0,
+      "move": "b2a4",
+      "source": "fallback_sampled",
+      "fallback_samples": 25
+    },
+    {
+      "ply": 58,
+      "side": "white",
+      "attempts": 0,
+      "move": "d1a4",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 59,
+      "side": "black",
+      "attempts": 0,
+      "move": "b8b4",
+      "source": "fallback_random",
+      "fallback_samples": 30
+    },
+    {
+      "ply": 60,
+      "side": "white",
+      "attempts": 0,
+      "move": "f3f4",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 61,
+      "side": "black",
+      "attempts": 0,
+      "move": "e8f8",
+      "source": "fallback_sampled",
+      "fallback_samples": 10
+    },
+    {
+      "ply": 62,
+      "side": "white",
+      "attempts": 0,
+      "move": "c1d1",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 63,
+      "side": "black",
+      "attempts": 0,
+      "move": "b4b6",
+      "source": "fallback_sampled",
+      "fallback_samples": 14
+    },
+    {
+      "ply": 64,
+      "side": "white",
+      "attempts": 0,
+      "move": "d1c1",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 65,
+      "side": "black",
+      "attempts": 0,
+      "move": "c6d4",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 66,
+      "side": "white",
+      "attempts": 0,
+      "move": "c1d1",
+      "source": "fallback_sampled",
+      "fallback_samples": 14
+    },
+    {
+      "ply": 67,
+      "side": "black",
+      "attempts": 0,
+      "move": "d8e8",
+      "source": "fallback_sampled",
+      "fallback_samples": 4
+    },
+    {
+      "ply": 68,
+      "side": "white",
+      "attempts": 0,
+      "move": "d1e1",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 69,
+      "side": "black",
+      "attempts": 0,
+      "move": "b6b3",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 70,
+      "side": "white",
+      "attempts": 0,
+      "move": "e1d1",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 71,
+      "side": "black",
+      "attempts": 0,
+      "move": "d4c2",
+      "source": "fallback_sampled",
+      "fallback_samples": 4
+    },
+    {
+      "ply": 72,
+      "side": "white",
+      "attempts": 0,
+      "move": "d1c1",
+      "source": "fallback_sampled",
+      "fallback_samples": 6
+    },
+    {
+      "ply": 73,
+      "side": "black",
+      "attempts": 0,
+      "move": "h8h7",
+      "source": "fallback_sampled",
+      "fallback_samples": 15
+    },
+    {
+      "ply": 74,
+      "side": "white",
+      "attempts": 0,
+      "move": "c1f1",
+      "source": "fallback_sampled",
+      "fallback_samples": 15
+    },
+    {
+      "ply": 75,
+      "side": "black",
+      "attempts": 0,
+      "move": "d6d5",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 76,
+      "side": "white",
+      "attempts": 0,
+      "move": "d2e4",
+      "source": "fallback_sampled",
+      "fallback_samples": 10
+    },
+    {
+      "ply": 77,
+      "side": "black",
+      "attempts": 0,
+      "move": "h7h6",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 78,
+      "side": "white",
+      "attempts": 0,
+      "move": "e4d6",
+      "source": "fallback_sampled",
+      "fallback_samples": 23
+    },
+    {
+      "ply": 79,
+      "side": "black",
+      "attempts": 0,
+      "move": "e7d8",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 80,
+      "side": "white",
+      "attempts": 0,
+      "move": "d6e4",
+      "source": "fallback_sampled",
+      "fallback_samples": 8
+    },
+    {
+      "ply": 81,
+      "side": "black",
+      "attempts": 0,
+      "move": "d5e4",
+      "source": "fallback_sampled",
+      "fallback_samples": 20
+    },
+    {
+      "ply": 82,
+      "side": "white",
+      "attempts": 0,
+      "move": "c3c4",
+      "source": "fallback_sampled",
+      "fallback_samples": 13
+    },
+    {
+      "ply": 83,
+      "side": "black",
+      "attempts": 0,
+      "move": "e8e7",
+      "source": "fallback_sampled",
+      "fallback_samples": 10
+    },
+    {
+      "ply": 84,
+      "side": "white",
+      "attempts": 0,
+      "move": "a4b4",
+      "source": "fallback_random",
+      "fallback_samples": 30
+    },
+    {
+      "ply": 85,
+      "side": "black",
+      "attempts": 0,
+      "move": "d8b6",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 86,
+      "side": "white",
+      "attempts": 0,
+      "move": "b4a4",
+      "source": "fallback_sampled",
+      "fallback_samples": 24
+    },
+    {
+      "ply": 87,
+      "side": "black",
+      "attempts": 0,
+      "move": "h6h5",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 88,
+      "side": "white",
+      "attempts": 0,
+      "move": "a3b4",
+      "source": "fallback_sampled",
+      "fallback_samples": 10
+    },
+    {
+      "ply": 89,
+      "side": "black",
+      "attempts": 0,
+      "move": "e7e6",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 90,
+      "side": "white",
+      "attempts": 0,
+      "move": "a4a5",
+      "source": "fallback_sampled",
+      "fallback_samples": 19
+    },
+    {
+      "ply": 91,
+      "side": "black",
+      "attempts": 0,
+      "move": "h5h4",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 92,
+      "side": "white",
+      "attempts": 0,
+      "move": "a5a6",
+      "source": "fallback_sampled",
+      "fallback_samples": 4
+    },
+    {
+      "ply": 93,
+      "side": "black",
+      "attempts": 0,
+      "move": "h4f4",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 94,
+      "side": "white",
+      "attempts": 0,
+      "move": "a6a7",
+      "source": "fallback_sampled",
+      "fallback_samples": 8
+    },
+    {
+      "ply": 95,
+      "side": "black",
+      "attempts": 0,
+      "move": "f4h4",
+      "source": "fallback_sampled",
+      "fallback_samples": 10
+    },
+    {
+      "ply": 96,
+      "side": "white",
+      "attempts": 0,
+      "move": "a7c7",
+      "source": "fallback_sampled",
+      "fallback_samples": 6
+    },
+    {
+      "ply": 97,
+      "side": "black",
+      "attempts": 0,
+      "move": "e6c6",
+      "source": "fallback_sampled",
+      "fallback_samples": 6
+    },
+    {
+      "ply": 98,
+      "side": "white",
+      "attempts": 0,
+      "move": "f1a1",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 99,
+      "side": "black",
+      "attempts": 0,
+      "move": "h4g4",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 100,
+      "side": "white",
+      "attempts": 0,
+      "move": "a1b1",
+      "source": "fallback_sampled",
+      "fallback_samples": 19
+    },
+    {
+      "ply": 101,
+      "side": "black",
+      "attempts": 0,
+      "move": "c6b5",
+      "source": "fallback_random",
+      "fallback_samples": 30
+    },
+    {
+      "ply": 102,
+      "side": "white",
+      "attempts": 0,
+      "move": "b1d1",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 103,
+      "side": "black",
+      "attempts": 0,
+      "move": "b5c6",
+      "source": "fallback_random",
+      "fallback_samples": 30
+    },
+    {
+      "ply": 104,
+      "side": "white",
+      "attempts": 0,
+      "move": "d1d6",
+      "source": "fallback_sampled",
+      "fallback_samples": 17
+    },
+    {
+      "ply": 105,
+      "side": "black",
+      "attempts": 0,
+      "move": "g4f4",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 106,
+      "side": "white",
+      "attempts": 0,
+      "move": "d6d1",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 107,
+      "side": "black",
+      "attempts": 0,
+      "move": "c6e8",
+      "source": "fallback_sampled",
+      "fallback_samples": 15
+    },
+    {
+      "ply": 108,
+      "side": "white",
+      "attempts": 0,
+      "move": "c7e7",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 109,
+      "side": "black",
+      "attempts": 0,
+      "move": "f8e7",
+      "source": "fallback_random",
+      "fallback_samples": 30
+    },
+    {
+      "ply": 110,
+      "side": "white",
+      "attempts": 0,
+      "move": "d1d7",
+      "source": "fallback_sampled",
+      "fallback_samples": 6
+    },
+    {
+      "ply": 111,
+      "side": "black",
+      "attempts": 0,
+      "move": "e7d7",
+      "source": "fallback_sampled",
+      "fallback_samples": 29
+    },
+    {
+      "ply": 112,
+      "side": "white",
+      "attempts": 0,
+      "move": "e2f1",
+      "source": "fallback_random",
+      "fallback_samples": 30
+    },
+    {
+      "ply": 113,
+      "side": "black",
+      "attempts": 0,
+      "move": "d7c6",
+      "source": "fallback_sampled",
+      "fallback_samples": 24
+    },
+    {
+      "ply": 114,
+      "side": "white",
+      "attempts": 0,
+      "move": "f1g2",
+      "source": "fallback_sampled",
+      "fallback_samples": 26
+    },
+    {
+      "ply": 115,
+      "side": "black",
+      "attempts": 0,
+      "move": "c8h3",
+      "source": "fallback_sampled",
+      "fallback_samples": 17
+    },
+    {
+      "ply": 116,
+      "side": "white",
+      "attempts": 0,
+      "move": "g2h3",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 117,
+      "side": "black",
+      "attempts": 0,
+      "move": "f4f3",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 118,
+      "side": "white",
+      "attempts": 0,
+      "move": "h3g4",
+      "source": "fallback_sampled",
+      "fallback_samples": 24
+    },
+    {
+      "ply": 119,
+      "side": "black",
+      "attempts": 0,
+      "move": "f3e3",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 120,
+      "side": "white",
+      "attempts": 0,
+      "move": "g1g2",
+      "source": "fallback_sampled",
+      "fallback_samples": 28
+    },
+    {
+      "ply": 121,
+      "side": "black",
+      "attempts": 0,
+      "move": "e3e2",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 122,
+      "side": "white",
+      "attempts": 0,
+      "move": "g2f1",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 123,
+      "side": "black",
+      "attempts": 0,
+      "move": "e8f7",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 124,
+      "side": "white",
+      "attempts": 0,
+      "move": "f1g1",
+      "source": "fallback_sampled",
+      "fallback_samples": 23
+    },
+    {
+      "ply": 125,
+      "side": "black",
+      "attempts": 0,
+      "move": "f7b7",
+      "source": "fallback_sampled",
+      "fallback_samples": 21
+    },
+    {
+      "ply": 126,
+      "side": "white",
+      "attempts": 0,
+      "move": "g1h1",
+      "source": "fallback_sampled",
+      "fallback_samples": 23
+    },
+    {
+      "ply": 127,
+      "side": "black",
+      "attempts": 0,
+      "move": "e2g2",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 128,
+      "side": "white",
+      "attempts": 0,
+      "move": "h1g2",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 129,
+      "side": "black",
+      "attempts": 0,
+      "move": "b7a7",
+      "source": "fallback_sampled",
+      "fallback_samples": 22
+    },
+    {
+      "ply": 130,
+      "side": "white",
+      "attempts": 0,
+      "move": "g4h3",
+      "source": "fallback_sampled",
+      "fallback_samples": 7
+    },
+    {
+      "ply": 131,
+      "side": "black",
+      "attempts": 0,
+      "move": "a7e7",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 132,
+      "side": "white",
+      "attempts": 0,
+      "move": "g5h7",
+      "source": "fallback_random",
+      "fallback_samples": 30
+    },
+    {
+      "ply": 133,
+      "side": "black",
+      "attempts": 0,
+      "move": "e7d7",
+      "source": "fallback_sampled",
+      "fallback_samples": 6
+    },
+    {
+      "ply": 134,
+      "side": "white",
+      "attempts": 0,
+      "move": "h3g4",
+      "source": "fallback_sampled",
+      "fallback_samples": 20
+    },
+    {
+      "ply": 135,
+      "side": "black",
+      "attempts": 0,
+      "move": "d7c7",
+      "source": "fallback_sampled",
+      "fallback_samples": 8
+    },
+    {
+      "ply": 136,
+      "side": "white",
+      "attempts": 0,
+      "move": "h7f8",
+      "source": "fallback_sampled",
+      "fallback_samples": 7
+    },
+    {
+      "ply": 137,
+      "side": "black",
+      "attempts": 0,
+      "move": "c7h7",
+      "source": "fallback_sampled",
+      "fallback_samples": 7
+    },
+    {
+      "ply": 138,
+      "side": "white",
+      "attempts": 0,
+      "move": "f8g6",
+      "source": "fallback_sampled",
+      "fallback_samples": 13
+    },
+    {
+      "ply": 139,
+      "side": "black",
+      "attempts": 0,
+      "move": "h7h6",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 140,
+      "side": "white",
+      "attempts": 0,
+      "move": "g4h5",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 141,
+      "side": "black",
+      "attempts": 0,
+      "move": "h6h5",
+      "source": "fallback_sampled",
+      "fallback_samples": 12
+    },
+    {
+      "ply": 142,
+      "side": "white",
+      "attempts": 0,
+      "move": "b4c3",
+      "source": "fallback_random",
+      "fallback_samples": 30
+    },
+    {
+      "ply": 143,
+      "side": "black",
+      "attempts": 0,
+      "move": "h5g5",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 144,
+      "side": "white",
+      "attempts": 0,
+      "move": "c3d2",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 145,
+      "side": "black",
+      "attempts": 0,
+      "move": "f6f5",
+      "source": "fallback_sampled",
+      "fallback_samples": 19
+    },
+    {
+      "ply": 146,
+      "side": "white",
+      "attempts": 0,
+      "move": "d2b4",
+      "source": "fallback_sampled",
+      "fallback_samples": 13
+    },
+    {
+      "ply": 147,
+      "side": "black",
+      "attempts": 0,
+      "move": "f5f4",
+      "source": "fallback_sampled",
+      "fallback_samples": 13
+    },
+    {
+      "ply": 148,
+      "side": "white",
+      "attempts": 0,
+      "move": "b4c3",
+      "source": "fallback_sampled",
+      "fallback_samples": 6
+    },
+    {
+      "ply": 149,
+      "side": "black",
+      "attempts": 0,
+      "move": "g5g4",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 150,
+      "side": "white",
+      "attempts": 0,
+      "move": "c3d4",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 151,
+      "side": "black",
+      "attempts": 0,
+      "move": "g4h4",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 152,
+      "side": "white",
+      "attempts": 0,
+      "move": "d4f2",
+      "source": "fallback_sampled",
+      "fallback_samples": 7
+    },
+    {
+      "ply": 153,
+      "side": "black",
+      "attempts": 0,
+      "move": "h4h3",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 154,
+      "side": "white",
+      "attempts": 0,
+      "move": "g2h3",
+      "source": "fallback_random",
+      "fallback_samples": 30
+    },
+    {
+      "ply": 155,
+      "side": "black",
+      "attempts": 0,
+      "move": "c6d7",
+      "source": "fallback_random",
+      "fallback_samples": 30
+    },
+    {
+      "ply": 156,
+      "side": "white",
+      "attempts": 0,
+      "move": "h3h4",
+      "source": "fallback_sampled",
+      "fallback_samples": 8
+    },
+    {
+      "ply": 157,
+      "side": "black",
+      "attempts": 0,
+      "move": "d7c7",
+      "source": "fallback_sampled",
+      "fallback_samples": 9
+    },
+    {
+      "ply": 158,
+      "side": "white",
+      "attempts": 0,
+      "move": "h4g5",
+      "source": "fallback_sampled",
+      "fallback_samples": 19
+    },
+    {
+      "ply": 159,
+      "side": "black",
+      "attempts": 0,
+      "move": "c7b7",
+      "source": "fallback_sampled",
+      "fallback_samples": 22
+    },
+    {
+      "ply": 160,
+      "side": "white",
+      "attempts": 0,
+      "move": "g5h5",
+      "source": "fallback_sampled",
+      "fallback_samples": 17
+    },
+    {
+      "ply": 161,
+      "side": "black",
+      "attempts": 0,
+      "move": "b7c8",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 162,
+      "side": "white",
+      "attempts": 0,
+      "move": "h5h4",
+      "source": "fallback_sampled",
+      "fallback_samples": 19
+    },
+    {
+      "ply": 163,
+      "side": "black",
+      "attempts": 0,
+      "move": "c8b7",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 164,
+      "side": "white",
+      "attempts": 0,
+      "move": "h4g5",
+      "source": "fallback_sampled",
+      "fallback_samples": 16
+    },
+    {
+      "ply": 165,
+      "side": "black",
+      "attempts": 0,
+      "move": "b7a8",
+      "source": "fallback_sampled",
+      "fallback_samples": 9
+    },
+    {
+      "ply": 166,
+      "side": "white",
+      "attempts": 0,
+      "move": "g5g4",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 167,
+      "side": "black",
+      "attempts": 0,
+      "move": "a8b8",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 168,
+      "side": "white",
+      "attempts": 0,
+      "move": "g4f4",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 169,
+      "side": "black",
+      "attempts": 0,
+      "move": "b8a7",
+      "source": "fallback_sampled",
+      "fallback_samples": 6
+    },
+    {
+      "ply": 170,
+      "side": "white",
+      "attempts": 0,
+      "move": "f2e3",
+      "source": "fallback_sampled",
+      "fallback_samples": 18
+    },
+    {
+      "ply": 171,
+      "side": "black",
+      "attempts": 0,
+      "move": "a7a8",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 172,
+      "side": "white",
+      "attempts": 0,
+      "move": "f4g3",
+      "source": "fallback_sampled",
+      "fallback_samples": 7
+    },
+    {
+      "ply": 173,
+      "side": "black",
+      "attempts": 0,
+      "move": "a8b8",
+      "source": "fallback_sampled",
+      "fallback_samples": 6
+    },
+    {
+      "ply": 174,
+      "side": "white",
+      "attempts": 0,
+      "move": "g3g2",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 175,
+      "side": "black",
+      "attempts": 0,
+      "move": "b3b4",
+      "source": "fallback_random",
+      "fallback_samples": 30
+    },
+    {
+      "ply": 176,
+      "side": "white",
+      "attempts": 0,
+      "move": "e3d2",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 177,
+      "side": "black",
+      "attempts": 0,
+      "move": "b4b5",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 178,
+      "side": "white",
+      "attempts": 0,
+      "move": "g2h3",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 179,
+      "side": "black",
+      "attempts": 0,
+      "move": "b5b1",
+      "source": "fallback_sampled",
+      "fallback_samples": 6
+    },
+    {
+      "ply": 180,
+      "side": "white",
+      "attempts": 0,
+      "move": "d2e3",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 181,
+      "side": "black",
+      "attempts": 0,
+      "move": "b1a1",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 182,
+      "side": "white",
+      "attempts": 0,
+      "move": "e3f2",
+      "source": "fallback_sampled",
+      "fallback_samples": 8
+    },
+    {
+      "ply": 183,
+      "side": "black",
+      "attempts": 0,
+      "move": "a1a6",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 184,
+      "side": "white",
+      "attempts": 0,
+      "move": "h3h4",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 185,
+      "side": "black",
+      "attempts": 0,
+      "move": "a6a7",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 186,
+      "side": "white",
+      "attempts": 0,
+      "move": "h4h3",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 187,
+      "side": "black",
+      "attempts": 0,
+      "move": "a7a6",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 188,
+      "side": "white",
+      "attempts": 0,
+      "move": "h3g2",
+      "source": "fallback_sampled",
+      "fallback_samples": 18
+    },
+    {
+      "ply": 189,
+      "side": "black",
+      "attempts": 0,
+      "move": "a6a5",
+      "source": "fallback_sampled",
+      "fallback_samples": 8
+    },
+    {
+      "ply": 190,
+      "side": "white",
+      "attempts": 0,
+      "move": "g2h1",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 191,
+      "side": "black",
+      "attempts": 0,
+      "move": "a5b5",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 192,
+      "side": "white",
+      "attempts": 0,
+      "move": "f2e3",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 193,
+      "side": "black",
+      "attempts": 0,
+      "move": "b8a7",
+      "source": "fallback_random",
+      "fallback_samples": 30
+    },
+    {
+      "ply": 194,
+      "side": "white",
+      "attempts": 0,
+      "move": "e3g5",
+      "source": "fallback_sampled",
+      "fallback_samples": 11
+    },
+    {
+      "ply": 195,
+      "side": "black",
+      "attempts": 0,
+      "move": "a7b8",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 196,
+      "side": "white",
+      "attempts": 0,
+      "move": "h1h2",
+      "source": "fallback_sampled",
+      "fallback_samples": 12
+    },
+    {
+      "ply": 197,
+      "side": "black",
+      "attempts": 0,
+      "move": "b8a7",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 198,
+      "side": "white",
+      "attempts": 0,
+      "move": "h2h3",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 199,
+      "side": "black",
+      "attempts": 0,
+      "move": "a7b7",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 200,
+      "side": "white",
+      "attempts": 0,
+      "move": "h3g4",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 201,
+      "side": "black",
+      "attempts": 0,
+      "move": "b7c7",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 202,
+      "side": "white",
+      "attempts": 0,
+      "move": "g5f4",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 203,
+      "side": "black",
+      "attempts": 0,
+      "move": "c7d7",
+      "source": "fallback_sampled",
+      "fallback_samples": 9
+    },
+    {
+      "ply": 204,
+      "side": "white",
+      "attempts": 0,
+      "move": "f4g5",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 205,
+      "side": "black",
+      "attempts": 0,
+      "move": "d7c7",
+      "source": "fallback_sampled",
+      "fallback_samples": 12
+    },
+    {
+      "ply": 206,
+      "side": "white",
+      "attempts": 0,
+      "move": "g5f6",
+      "source": "fallback_sampled",
+      "fallback_samples": 9
+    },
+    {
+      "ply": 207,
+      "side": "black",
+      "attempts": 0,
+      "move": "c7c8",
+      "source": "fallback_sampled",
+      "fallback_samples": 15
+    },
+    {
+      "ply": 208,
+      "side": "white",
+      "attempts": 0,
+      "move": "g4h3",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 209,
+      "side": "black",
+      "attempts": 0,
+      "move": "c8b8",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 210,
+      "side": "white",
+      "attempts": 0,
+      "move": "h3h2",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 211,
+      "side": "black",
+      "attempts": 0,
+      "move": "b8c7",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 212,
+      "side": "white",
+      "attempts": 0,
+      "move": "h2h3",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 213,
+      "side": "black",
+      "attempts": 0,
+      "move": "c7c6",
+      "source": "fallback_sampled",
+      "fallback_samples": 8
+    },
+    {
+      "ply": 214,
+      "side": "white",
+      "attempts": 0,
+      "move": "h3h2",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 215,
+      "side": "black",
+      "attempts": 0,
+      "move": "c6c7",
+      "source": "fallback_sampled",
+      "fallback_samples": 6
+    },
+    {
+      "ply": 216,
+      "side": "white",
+      "attempts": 0,
+      "move": "h2h3",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 217,
+      "side": "black",
+      "attempts": 0,
+      "move": "c7b8",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 218,
+      "side": "white",
+      "attempts": 0,
+      "move": "h3h4",
+      "source": "fallback_sampled",
+      "fallback_samples": 4
+    },
+    {
+      "ply": 219,
+      "side": "black",
+      "attempts": 0,
+      "move": "b8c8",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 220,
+      "side": "white",
+      "attempts": 0,
+      "move": "h4h5",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 221,
+      "side": "black",
+      "attempts": 0,
+      "move": "c8d7",
+      "source": "fallback_sampled",
+      "fallback_samples": 5
+    },
+    {
+      "ply": 222,
+      "side": "white",
+      "attempts": 0,
+      "move": "h5h6",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 223,
+      "side": "black",
+      "attempts": 0,
+      "move": "d7c6",
+      "source": "fallback_sampled",
+      "fallback_samples": 15
+    },
+    {
+      "ply": 224,
+      "side": "white",
+      "attempts": 0,
+      "move": "h6h7",
+      "source": "fallback_sampled",
+      "fallback_samples": 2
+    },
+    {
+      "ply": 225,
+      "side": "black",
+      "attempts": 0,
+      "move": "c6d7",
+      "source": "fallback_sampled",
+      "fallback_samples": 4
+    },
+    {
+      "ply": 226,
+      "side": "white",
+      "attempts": 0,
+      "move": "h7g8",
+      "source": "fallback_sampled",
+      "fallback_samples": 4
+    },
+    {
+      "ply": 227,
+      "side": "black",
+      "attempts": 0,
+      "move": "d7d6",
+      "source": "fallback_sampled",
+      "fallback_samples": 15
+    },
+    {
+      "ply": 228,
+      "side": "white",
+      "attempts": 0,
+      "move": "g8h8",
+      "source": "fallback_sampled",
+      "fallback_samples": 7
+    },
+    {
+      "ply": 229,
+      "side": "black",
+      "attempts": 0,
+      "move": "d6d7",
+      "source": "fallback_sampled",
+      "fallback_samples": 9
+    },
+    {
+      "ply": 230,
+      "side": "white",
+      "attempts": 0,
+      "move": "h8g8",
+      "source": "fallback_sampled",
+      "fallback_samples": 10
+    },
+    {
+      "ply": 231,
+      "side": "black",
+      "attempts": 0,
+      "move": "d7d6",
+      "source": "fallback_sampled",
+      "fallback_samples": 3
+    },
+    {
+      "ply": 232,
+      "side": "white",
+      "attempts": 0,
+      "move": "g8h8",
+      "source": "fallback_sampled",
+      "fallback_samples": 1
+    },
+    {
+      "ply": 233,
+      "side": "black",
+      "attempts": 0,
+      "move": "d6d7",
+      "source": "fallback_sampled",
+      "fallback_samples": 4
+    }
+  ],
+  "players": {
+    "white": "fallback",
+    "black": "fallback"
+  }
+}
