@@ -6,7 +6,7 @@
 // voice.
 
 import { parseArgs } from 'node:util';
-import { loadRegistry, resolveModel, runnable } from './registry.js';
+import { loadRegistry, resolveModel, runnable, lineage, latestByLineage, aliasOf } from './registry.js';
 import { pull, removeCached, CACHE_ROOT } from './artifacts.js';
 import { runModel } from './run.js';
 
@@ -74,21 +74,17 @@ export async function main(argv) {
 }
 
 function list(registry) {
-  // One row per lineage (id minus its version) — daydream's tiers each get a
-  // row, superseded versions don't. Series-line rows show the series tagline;
-  // tier rows keep their own (the series copy would repeat three times).
-  const lineage = (id) => id.replace(/-\d+$/, '');
-  const latest = new Map();
-  for (const m of registry.models.filter(runnable)) {
-    const key = lineage(m.id);
-    if (!latest.has(key) || m.version > latest.get(key).version) latest.set(key, m);
-  }
-  const rows = [...latest.values()];
-  const width = Math.max(...rows.map((m) => m.id.length));
+  // One row per lineage, labelled by its greeting alias — daydream's tiers
+  // each get a row, superseded versions don't. Series-line rows show the
+  // series tagline; tier rows keep their own (the series copy would repeat
+  // three times).
+  const latest = latestByLineage(registry);
+  const rows = [...latest.values()].map((m) => ({ m, alias: aliasOf(registry, m) }));
+  const width = Math.max(...rows.map((r) => r.alias.length));
   console.log('runnable:');
-  for (const m of rows) {
+  for (const { m, alias } of rows) {
     const tagline = registry.series[lineage(m.id)]?.tagline ?? m.tagline;
-    console.log(`  ${m.id.padEnd(width)}  ${params(m.params)}  ${tagline}`);
+    console.log(`  ${alias.padEnd(width)}  ${params(m.params)}  ${tagline}`);
   }
   const older = registry.models
     .filter((m) => runnable(m) && latest.get(lineage(m.id)) !== m)

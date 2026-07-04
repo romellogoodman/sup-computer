@@ -21,6 +21,30 @@ export function runnable(model) {
   return Boolean(onnxUrl(model)) && ['char', 'bpe', 'gpt2-bpe'].includes(model.tokenizer?.type);
 }
 
+/** A lineage is an id minus its version: daydream's tiers are separate lineages. */
+export const lineage = (id) => id.replace(/-\d+$/, '');
+
+/** The newest runnable release of each lineage. */
+export function latestByLineage(registry) {
+  const latest = new Map();
+  for (const m of registry.models.filter(runnable)) {
+    const key = lineage(m.id);
+    if (!latest.has(key) || m.version > latest.get(key).version) latest.set(key, m);
+  }
+  return latest;
+}
+
+/**
+ * The greeting alias: the project name plus any tier suffix the lineage adds
+ * beyond its series key — shakespeare, gatsby, kenosha-kid, daydream,
+ * daydream-micro, daydream-grand.
+ */
+export function aliasOf(registry, model) {
+  const key = Object.keys(registry.series).find((k) => model.id.startsWith(k));
+  if (!key) return lineage(model.id);
+  return model.project + lineage(model.id).slice(key.length);
+}
+
 /**
  * Resolve what the user greeted. Exact model id wins; otherwise the name must
  * match one series key (exactly or as a prefix — `sup shakespeare` finds
@@ -33,6 +57,11 @@ export function resolveModel(registry, name) {
   if (byId) {
     if (!runnable(byId)) throw new Error(notRunnable(byId));
     return byId;
+  }
+
+  // Greeting aliases — what `sup list` shows (daydream-micro, kenosha-kid, …).
+  for (const m of latestByLineage(registry).values()) {
+    if (aliasOf(registry, m) === name) return m;
   }
 
   const keys = Object.keys(registry.series).filter((k) => k === name || k.startsWith(name));
