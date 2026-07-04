@@ -46,7 +46,7 @@ only way to observe games past ply ~40); the locked mechanics below are
 unchanged. Full write-up:
 [If nobody can die, can anybody win?](../../research-docs/reports/if-nobody-can-die-can-anybody-win.md)
 
-## Locked mechanics
+## Locked mechanics — round one (`game.py`)
 
 - **Daydream-exclusive**: the only way to move is a Daydream query that
   lands legal. No self-authored moves.
@@ -59,6 +59,33 @@ unchanged. Full write-up:
 - **Budgets are hidden** — each player sees only its own remaining tokens.
 - **Headline metric**: games won per token spent. Reported alongside plain
   win rate, legality hit rate, and turn-level sampling adaptation.
+
+## Locked mechanics — round three (`game3.py`)
+
+Round one priced config skill and found all-forfeits; the round-two probe
+removed death and found the refund economy erases discrimination; the
+round-three probes found the two levers that survive (the legality floor
+is config-dependent ~8–30%, and best-of-N picking won every decisive
+game). Round three prices both levers:
+
+- **A token buys a batch of 3**: the player chooses `{temperature,
+  soft_cap}`, the harness draws three samples at it; the legal ones join
+  the turn's candidate pool (deduped).
+- **Picking is free**: play any pooled candidate, or spend another token
+  on another batch — economy against move quality, every turn.
+- **Exhaustion = adjudication, not forfeit**: a player to move with no
+  tokens and no candidates ends the game; Fairy-Stockfish evaluates the
+  final position (mate scores or |cp| ≥ 100 decide a winner, else draw).
+  The board gets the last word; the clock only decides when it's spoken.
+- Unchanged from round one: Daydream-exclusive moves, per-turn transcript
+  scoping, hidden budgets.
+- **Headline metric**: color-balanced score (win = 1, draw = 0.5),
+  reported with tokens spent, candidates per pick, sample legality, and
+  adjudication vs on-board endings. Game JSONs carry LLM usage stats
+  (calls, tokens, parse failures) — round one's logging gap, closed.
+- Regular tier only for now; `mock:heuristic` (best-known config + a
+  mate>capture>check pick rule) is the qualifying bar a real player
+  should beat.
 
 ## Self-test result
 
