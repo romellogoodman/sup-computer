@@ -99,7 +99,12 @@ Round four added per-player memory to the same mechanics — spec
 suffixes `+ledger` (own spend history, harness-rendered) and `+notepad`
 (model-authored notes, last 3 shown back). In 24 olmo-vs-olmo games the
 notepad was never used once and the ledger moved no outcomes; its one
-real effect was halving hot-temperature batches. Write-up: rounds section of
+real effect was halving hot-temperature batches. Round five made the
+tool a free pregame *choice* (`+choose`): 24 of 24 seats picked the
+notepad, every one stated a reason, and none wrote a single note —
+stated preference and revealed behavior, severed. Every archived game
+is also exported as a replayable PGN (`pgn_export.py` →
+`evidence/pgn/`). Write-up: rounds section of
 [Can a token budget buy a finished chess game?](../../research-docs/reports/budget-cant-buy-the-midgame.md)
 
 ## Self-test result

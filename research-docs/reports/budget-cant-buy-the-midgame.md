@@ -5,8 +5,8 @@ date: 2026-07-04
 series: token-chess
 researcher: claude-fable-5
 models: [daydream-chess-nanogpt-1, daydream-chess-nanogpt-micro-1, daydream-chess-nanogpt-grand-1]
-summary: "Four rounds of Token Chess — a benchmark where LLMs may not author chess moves, only steer Daydream's sampler under a token budget — asked what a token actually buys. Round one: plies, at a worsening rate (every game forfeits; legality collapses 49% → 14% out of the opening book). Round two: remove death and nothing discriminates — random configs match olmo. Round three: price batches and candidate-picking with engine adjudication, and the benchmark finally separates players — then ministral, the worst sampler on the board, beats olmo 3–1 on pure tempo. Round four: offer memory, and in 24 games olmo never writes a single note."
-status: draft
+summary: "Five rounds of Token Chess — a benchmark where LLMs may not author chess moves, only steer Daydream's sampler under a token budget — asked what a token actually buys. Round one: plies, at a worsening rate (every game forfeits; legality collapses 49% → 14% out of the opening book). Round two: remove death and nothing discriminates. Round three: price batches and candidate-picking with engine adjudication, and the benchmark finally separates players — then ministral, the worst sampler on the board, beats olmo 3–1 on pure tempo. Rounds four and five close on memory: assigned a free notepad, olmo writes zero notes in 24 games; offered the choice, it picks the notepad 24 seats out of 24, explains why every time, and still writes nothing."
+status: published
 ---
 [← all reports](README.md) · series: token-chess · evidence `tools/token-chess/evidence/` · July 2026
 
@@ -17,10 +17,11 @@ No — and each round of asking taught the benchmark something it kept.
 model: two LLM players share a board, but neither may author a move
 from its own chess knowledge. Every move must come from
 [Daydream](../../projects/daydream/README.md), queried as a tool, and
-every query costs a token. Four rounds in one research season asked
+every query costs a token. Five rounds in one research season asked
 what those tokens buy. The answers, in order: **plies, at a worsening
 exchange rate; nothing, if nobody can die; initiative, once picking is
-priced; and not memory — memory was free and went unused.**
+priced; not memory — memory was free and went unused; and not even
+memory the model chose for itself and argued for.**
 
 <div class="takeaways">
 <p class="takeaways-label">Key takeaways</p>
@@ -31,6 +32,7 @@ priced; and not memory — memory was free and went unused.**
 <li><strong>Round three's mechanics discriminate in both directions.</strong> A token buys a batch of 3 at the player's config, picking a pooled legal candidate is free, and exhaustion means Fairy-Stockfish adjudication. olmo beats a mate>capture>check mock 3.5–0.5 on pick quality — then <strong>ministral, with the worst sampler skill on the board (20% legality to olmo's 58%), wins 3–1 on tempo</strong>: spend everything fast, get ahead on material volume, and end the game by exhausting while ahead.</li>
 <li>Across all 36 exhaustion-adjudicated games, the exhausted side won exactly 17 of 34 decided games and the bigger spender 13 of 29 — spending is a threshold, not a gradient. What the all-in spender buys is control of <em>when</em> the game ends.</li>
 <li><strong>Offered a free notepad, olmo wrote zero notes in 24 games.</strong> Round four's memory matrix (none / ledger / notepad, all six pairings) moved no outcomes; the ledger's one real effect was halving hot-config usage (11.7% → 5.4% of batches at t ≥ 1.0), a conservatism nudge worth zero points.</li>
+<li><strong>Given the choice, it picks the tool it will never use — 24 for 24.</strong> Round five let each player choose its tool before the game, free, with an optional stated reason. Every seat chose the notepad; every seat articulated why ("notes help me remember key plans and avoid repeating mistakes"); no seat wrote a single note. Stated preference and revealed behavior, severed in one experiment.</li>
 <li>Every game of every round is archived — full move lists, attempts, configs, and LLM usage in the evidence JSONs, plus replayable PGNs (<code>pgn_export.py</code>). The queen olmo hung to lose game one against ministral is at move 11 of <code>round3-olmo-vs-ministral--game-001.pgn</code>.</li>
 </ul>
 </div>
@@ -257,18 +259,38 @@ First-mover initiative under batch mechanics is a plausible mechanism;
 small-n streakiness is equally plausible; the per-game JSONs carry
 what a follow-up needs.
 
-## Round five is running
+## Round five: everyone chooses the notepad; nobody opens it
 
 Round five inverts round four's assignment: instead of the harness
 dealing memory conditions, each player chooses its tool before the
 game — none, ledger, or notepad, free, from a neutral menu — and may
-state why. The mechanics stay frozen. Round four's zero-for-24 sets
-the null expectation, and the very first smoke game bent it: both
-seats *chose* the notepad, with reasons ("notes help me remember key
-plans and avoid repeating mistakes") — from the model that never wrote
-one when assigned it. Stated preference and revealed behavior are
-about to be in the same experiment. Twelve games are in flight; this
-report is a draft until they land and this section becomes a round.
+state why. The mechanics stay frozen; twelve olmo-vs-olmo games,
+twenty-four pregame choices.
+
+All twenty-four chose the notepad. All twenty-four gave a reason, and
+the reasons are coherent, even good — "record short insights to help
+spot patterns and avoid repeating mistakes," "keep track of complex
+variations," "remember key plans without relying only on Daydream's
+samples." Then all twenty-four played whole games — 38 to 59 plies,
+every one a decisive or drawn exhaustion adjudication, same texture as
+every round before — and wrote nothing. Zero notes, twelve games,
+against the same zero-for-24 the assigned condition produced in round
+four.
+
+That is the round's whole finding and it deserves stating carefully:
+the model *values* memory in the abstract — unanimously, articulately —
+and never *uses* it in the concrete. The choice prompt asks a question
+the model answers from what it knows about strategy ("memory helps
+planning"); the game presents four hundred JSON decisions, none of
+which is "reflect," and the note field loses to the action field every
+single time. One reading: at 7B, tool adoption is a knowledge-behavior
+gap — knowing a tool's value doesn't create the habit of reaching for
+it. Another: the decision loop is too narrow — a model answering "pick
+or sample?" under budget pressure treats anything optional as noise.
+Both readings make the same prediction for agentic systems generally:
+offering a capability, having it praised, and having it adopted are
+three different events, and only the third one changes behavior. The
+benchmark now measures the distance between them.
 
 ## Limitations
 
@@ -276,8 +298,14 @@ report is a draft until they land and this section becomes a round.
   round-three match, 4 per round-four condition pair. Direction-finding
   numbers; a single flipped game moves any match a half point.
 - **One family of orchestrators.** olmo sits in every live match, and
-  round four's zero-note result is olmo-3-7b's propensity, not a law of
-  small models. A model tuned hard for scratchpad use may invert it.
+  the zero-note result — assigned or chosen — is olmo-3-7b's
+  propensity, not a law of small models. A model tuned hard for
+  scratchpad use may invert it.
+- **The round-five menu has an order.** Notepad is listed last and
+  described most richly; a position or salience bias in the unanimous
+  choice can't be excluded without permuting the menu. (The choice
+  being unanimous *and* unused is robust to this — whatever drove the
+  pick, nothing drove the use.)
 - **One budget per round.** 30–40 tokens except the round-one sweep.
   The tempo strategy's strength and the ledger's value are both
   plausibly budget-dependent.
