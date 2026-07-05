@@ -87,6 +87,21 @@ game). Round three prices both levers:
   mate>capture>check pick rule) is the qualifying bar a real player
   should beat.
 
+Round-three live results (budget 40, 4 games each, color-balanced):
+olmo-3-7b beat the mock bar 3.5–0.5 on pick quality and economy, beat
+granite-4.1-8b 3.5–0.5 with the knobs tied — and lost 3–1 to
+ministral-3-8b, the worst sampler on the board (20% legality vs olmo's
+58%), which spends its whole budget fast and exhausts while ahead.
+Full write-up:
+[When the worst sampler wins the match](../../research-docs/reports/when-the-worst-sampler-wins-the-match.md)
+
+Round four added per-player memory to the same mechanics — spec
+suffixes `+ledger` (own spend history, harness-rendered) and `+notepad`
+(model-authored notes, last 3 shown back). In 24 olmo-vs-olmo games the
+notepad was never used once and the ledger moved no outcomes; its one
+real effect was halving hot-temperature batches. Full write-up:
+[Would a model use a memory if you gave it one?](../../research-docs/reports/the-unused-notepad.md)
+
 ## Self-test result
 
 Against the in-progress `daydream-chess-nanogpt-1` checkpoint (Regular,
