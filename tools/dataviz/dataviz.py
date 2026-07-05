@@ -341,6 +341,8 @@ def line(spec: dict, mode: str = "light") -> str:
     tickw = max(_text_w(_fmt_tick(t), TYPE["tick"]["size"]) for t in ticks)
     left = M + TYPE["axisTitle"]["size"] + S + tickw + S
     right = left
+    if len(series) > 1:  # room for the direct end-of-line labels
+        right = max(right, S + 4 + max(_text_w(s["name"], TYPE["tick"]["size"]) for s in series) + M)
     body_x = left
     body_w = VIEW_W - left - right
     body_h = round(body_w * 9 / 16)
@@ -370,7 +372,11 @@ def line(spec: dict, mode: str = "light") -> str:
     for i, xv in enumerate(xs):
         svg.append(_txt(i2x(i), lx_y, xv, "tick", tk["secondary"], "middle", "auto"))
 
-    # series: polyline + dots
+    # series: polyline + dots; multi-series charts get a direct label at each
+    # line's end (tooltips don't survive the PNG export, so identity must be
+    # carried in the static image — text in ink, the colored dot beside it
+    # carries the hue)
+    label_ys = []
     for s in series:
         col = tk[s.get("hue", "blue")]
         pts = " ".join(f"{i2x(i):.1f},{v2y(v):.1f}" for i, v in enumerate(s["y"]))
@@ -381,6 +387,16 @@ def line(spec: dict, mode: str = "light") -> str:
             svg.append(f'<circle cx="{i2x(i):.1f}" cy="{v2y(v):.1f}" r="4" '
                        f'fill="{col}" stroke="{tk["surface"]}" stroke-width="1" '
                        f'class="dot" data-tooltip="{escape(tip)}"/>')
+        if len(series) > 1:
+            ly = v2y(s["y"][-1])
+            # nudge apart if two end labels would collide
+            min_gap = TYPE["tick"]["size"] * 1.4
+            while any(abs(ly - prev) < min_gap for prev in label_ys):
+                ly += min_gap
+            label_ys.append(ly)
+            lx = i2x(npts - 1) + S + 4
+            svg.append(f'<circle cx="{lx + 3:.1f}" cy="{ly:.1f}" r="3.5" fill="{col}"/>')
+            svg.append(_txt(lx + 10, ly, s["name"], "tick", tk["primary"], "start", "middle"))
 
     y += S + TYPE["tick"]["size"] * CAP_H
 
