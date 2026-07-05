@@ -47,7 +47,6 @@ def export(path: str, out_dir: str) -> str | None:
         return None
 
     game = chess.pgn.Game()
-    rel = os.path.relpath(path, start=os.path.commonpath([path, out_dir])) if out_dir else path
     tag = os.path.basename(os.path.dirname(path))
     game.headers["Event"] = f"Token Chess — {tag}"
     game.headers["Site"] = "sup computer (Daydream-exclusive moves)"
