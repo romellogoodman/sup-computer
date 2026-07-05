@@ -6,7 +6,7 @@ series: token-chess
 researcher: claude-fable-5
 models: [daydream-chess-nanogpt-1, daydream-chess-nanogpt-micro-1]
 summary: "All 15 of Token Chess's first live calibration games — olmo-3-7b-instruct vs. itself, per-game token budgets of 15 to 120 — ended in budget forfeit: Daydream Regular's legality collapses from 49% in the first ten plies to 14% by plies 30–39 as games leave its memorized opening book, so budget buys plies at a worsening exchange rate and never a finished game. The discriminative budget zone is roughly 15–40, the Micro tier is a harder tool than the Regular one despite its smaller board, and under symmetric play the forfeit rule quietly favors black."
-status: draft
+status: published
 ---
 [← all reports](README.md) · series: token-chess · evidence `2026-07-04-olmo-calibration` · July 2026
 
@@ -70,7 +70,13 @@ Every game was a forfeit. What varied was how far the board got first:
 | 60 | 30, 32 | forfeit, forfeit | black, black |
 | 120 | 42, 48 | forfeit, forfeit | black, black |
 
-<!-- dataviz: plies reached at forfeit vs. budget, regular tier (budgets 15/30/60/120, 2 games each), dot or bar per game — the point is the sublinear climb; data: tools/token-chess/evidence/2026-07-04-olmo-calibration/regular -->
+The climb is sublinear and you can see it flatten: each doubling of the
+budget buys a smaller step in depth.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/exp07-plies-vs-budget.dark.png">
+  <img alt="Bar chart of plies reached at forfeit for eight games, two per budget: budget 15 reaches 14 and 17 plies, budget 30 reaches 14 and 22, budget 60 reaches 30 and 32, budget 120 reaches 42 and 48 — an eightfold budget increase yielding roughly a threefold depth increase." src="assets/exp07-plies-vs-budget.light.png">
+</picture>
 
 Eight times the budget bought roughly three times the plies. That
 exchange rate worsens on purpose-defeating schedule: the deeper the game,
@@ -95,7 +101,12 @@ bottom:
 | 30–39 | 22 / 156 | 14.1% |
 | 40–49 | 10 / 43 | 23.3% |
 
-<!-- dataviz: first-try legality rate by ply bucket, regular tier, line or bar with attempt counts visible (the 40–49 bucket is n=43 from only the two budget-120 games — mark it as thin), data: tools/token-chess/evidence/2026-07-04-olmo-calibration/regular -->
+The decay is the story — read the line falling as the book runs out.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/exp07-legality-by-depth.dark.png">
+  <img alt="Line chart of first-try legality by ply bucket: 49.1 percent at plies 0-9 falling steadily to 14.1 percent at plies 30-39, then an uptick to 23.3 percent at 40-49 from a thin 43-attempt sample." src="assets/exp07-legality-by-depth.light.png">
+</picture>
 
 Daydream Regular was trained on 15,000 Lichess games, and
 [its release report](illegal-moves-are-the-point.md) measured a 35.3%
@@ -129,7 +140,6 @@ tool, so give Micro a *smaller* budget. The data says the opposite.
 | 20 | 12, 7 | 0.10 / 0.15 · 0.08 / 0.00 |
 | 40 | 15, 36 | 0.14 / 0.08 · 0.35 / 0.48 |
 
-<!-- dataviz: per-side legal-hit rate, micro vs. regular tier, strip/dot plot per game-side — the point is micro's mass sits at 0.00–0.15 while regular's sits higher, with micro's outliers annotated (the 1.00 is 1-of-1; the 0.35/0.48 game is a single deep outlier), data: tools/token-chess/evidence/2026-07-04-olmo-calibration/{micro,regular} -->
 
 Typical Micro per-side hit rates sit at 0.00–0.15, median ≈ 0.11,
 against 0.06–0.60 on Regular. The extremes are degenerate small-n
@@ -185,7 +195,13 @@ the knobs in a sensible direction — which is precisely the behavior the
 benchmark exists to score, once there are two different models to
 compare.
 
-<!-- dataviz: mean temperature and soft-cap usage rate vs. retry index within a turn (0..9+), regular tier, paired line/bar — shows the orchestrator cooling and reaching for the cap under failure, data: tools/token-chess/evidence/2026-07-04-olmo-calibration/regular -->
+Both knobs move at once — the temperature line cools while the cap
+line jumps from nearly zero to set-on-most-retries.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/exp07-retry-adaptation.dark.png">
+  <img alt="Two-series line chart over attempt index within a turn: mean temperature declines from 0.78 on first attempts toward 0.56 at the tenth-plus attempt, while soft-cap usage share jumps from 1 percent on first attempts to about 61 percent on second attempts and stays between 33 and 65 percent thereafter." src="assets/exp07-retry-adaptation.light.png">
+</picture>
 
 ## The first cross-model matches — the benchmark discriminates
 
@@ -213,28 +229,31 @@ budgets 15/30/60, all forfeits, first-try legality flat at 16–19% — the
 depth, not a finish. Every tier now tells the same story: the budget buys
 the opening; nothing yet has bought an ending.
 
-> **[Showcase pending]** The `qwen3.6-27b` vs. `gemma-4-26b` reasoning-model
-> game (budget 40, one game) runs as a wall-clock showcase; its result — or
-> its failure to finish — joins the evidence when it lands.
+> **The showcase never finished — and that is its result.** The
+> `qwen3.6-27b` vs. `gemma-4-26b` reasoning-model game was attempted at
+> three reply caps and completed at none of them. At a 300-token cap,
+> 96% of decisions fell back (all thought, no JSON — the game measured
+> luck). At 1500, a budget-10 game passed 40 minutes. At the 700-token
+> compromise, it passed 25 and was killed. No 27B game ever reached a
+> conclusion, so none joins the evidence.
 >
-> What the pairing has already taught us is wall-clock, and it earns a
-> finding of its own: two ~27B reasoning models cannot *afford* to play.
-> At a 300-token reply cap, 96% of decisions fell back (all thought, no
-> JSON — the game measured luck). At 1500, a budget-10 game passed 40
-> minutes. At the 700-token compromise, it passed 25 and was killed.
-> Thinking time is a second budget the benchmark never priced, and for
-> reasoning models it dominates the token budget it was designed around.
-> The cross-model results below therefore come from models that answer
-> at conversational speed; the 27B pairing runs once, as a showcase.
+> The finding stands on its own: two ~27B reasoning models cannot
+> *afford* to play. Thinking time is a second budget the benchmark never
+> priced, and for reasoning models it dominates the token budget it was
+> designed around. (A later infrastructure note compounds this: both
+> 27Bs are MLX builds, and the local server gives MLX models none of
+> the parallel slots its GGUF models get.) The cross-model results
+> above therefore come from models that answer at conversational speed.
 
 ## Limitations
 
 - **n = 2 games per cell.** Ply horizons and hit rates are direction-finding,
   not estimates; the 40–49 legality uptick and Micro's outlier game show
   exactly how much one game can move a cell.
-- **One model, playing itself.** Self-play isolates harness mechanics but
-  says nothing about whether the benchmark separates *different*
-  orchestrators — that's the pending match's job.
+- **One model, playing itself, for the calibration set.** Self-play
+  isolates harness mechanics but says nothing about whether the
+  benchmark separates *different* orchestrators — the cross-model
+  matches above did that job, at n = 2 games per pairing.
 - **The headline metric is untested in anger.** Wins-per-token has only
   ever scored forfeits here; no calibration game reached a board result.
 - **Parse failures and inference tokens aren't in the evidence JSONs** —

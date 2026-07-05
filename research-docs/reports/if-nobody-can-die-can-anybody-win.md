@@ -103,7 +103,14 @@ samples from game zero's fallback moves:
 | 150–199 | 139 / 1,355 | 10.3% |
 | 200–249 | 100 / 844 | 11.8% |
 
-<!-- dataviz: daydream regular legality by depth, two series — round one's first-try decay by 10-ply bucket (49.1/31.9/20.8/14.1%, plies 0–39, olmo-steered) and this probe's default-config floor by 50-ply band (15.7/8.3/8.8/10.3/11.8%, plies 0–249) — the claim is cliff-then-floor: the round-one curve falls off the book and lands on the probe's plateau; mark the config difference in the legend; data: tools/token-chess/evidence/{2026-07-04-olmo-calibration/regular,round2-probe} -->
+The line to read is nearly flat — round one's cliff (49% → 14%, its
+whole descent inside this chart's first band) lands on this floor and
+stops falling.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/exp08-legality-floor.dark.png">
+  <img alt="Line chart of default-config legality per 50-ply band: 15.7 percent for plies 0-49, then 8.3, 8.8, 10.3, and 11.8 percent for the bands out to ply 249 — a flat floor after the first band rather than a continuing decline." src="assets/exp08-legality-floor.light.png">
+</picture>
 
 The collapse round one measured — 49.1% in plies 0–9 down to 14.1% by
 30–39 — is the memorized opening book running out. After it runs out,
@@ -126,7 +133,13 @@ The same four numbers, for every player type the probe ran:
 | olmo-3-7b-instruct | 213 | 75.1% | 2.67 | 3.53 |
 | mock:random (vs olmo) | 214 | 83.2% | 2.94 | 3.65 |
 
-<!-- dataviz: control rate and attempts-per-controlled-move by player type, paired bars or dot plot — the claim is the flat line: random configs, tuned mock, and a real LLM land within a few points of each other on every metric; data: tools/token-chess/evidence/round2-probe/round2-*.json -->
+The flat top line is the finding — four very different players, one
+band of control rates, with the random mock on top.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/exp08-control-rates.dark.png">
+  <img alt="Bar chart of control rate for four players: adaptive mock 81.0 percent, random mock 87.3, olmo-3-7b 75.1, and the random mock facing olmo 83.2 — all within a twelve-point band, with the random-config mock highest." src="assets/exp08-control-rates.light.png">
+</picture>
 
 Control rate is the probe's orchestration score: the share of a
 player's moves it landed itself rather than received from the fallback.
