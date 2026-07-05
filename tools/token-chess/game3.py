@@ -476,8 +476,8 @@ def run_match(out_dir: str, budget: int, games: int, white_spec: str, black_spec
         r["white_player"], r["black_player"] = specs
         if tool_choices:
             r["tool_choices"] = tool_choices
-            print(f"  tools: " + ", ".join(f"{s}={c['tool']}" + (f" ({c['why']})" if c.get("why") else "")
-                                           for s, c in tool_choices.items()), flush=True)
+            print("  tools: " + ", ".join(f"{s}={c['tool']}" + (f" ({c['why']})" if c.get("why") else "")
+                                          for s, c in tool_choices.items()), flush=True)
         for spec, player in ((specs[0], white), (specs[1], black)):
             if hasattr(player, "stats") and hasattr(player, "orchestrator"):
                 r.setdefault("llm_usage", {})[spec] = dict(player.stats)
