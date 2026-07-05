@@ -1,0 +1,11 @@
+[Event "Token Chess — round3-probe"]
+[Site "sup computer (Daydream-exclusive moves)"]
+[Date "????.??.??"]
+[Round "?"]
+[White "?"]
+[Black "?"]
+[Result "1-0"]
+[Termination "checkmate"]
+[PlyCount "83"]
+
+1. d4 e6 2. c3 d5 3. g4 f6 4. Bf4 h6 5. g5 hxg5 6. b3 Rh7 7. h3 Bd7 8. Bh2 e5 9. b4 a5 10. a4 Bxb4 11. Nd2 c6 12. Qc1 Bc8 13. f4 Bf5 14. Nb3 Ne7 15. Bg3 Bc8 16. Bh2 Rh5 17. h4 Qb6 18. hxg5 Nf5 19. Nd2 Qa6 20. Qa3 Qb5 21. dxe5 Qa6 22. Rd1 fxe5 23. Qb3 Ra7 24. Qxb4 Qb5 25. Qxa5 Qc5 26. Qxc5 b5 27. axb5 Ba6 28. Qxc6+ Nxc6 29. bxc6 Bxe2 30. fxe5 Ra6 31. Bg2 Ra3 32. Nxe2 Ra6 33. Bg1 g6 34. Nd4 Rh4 35. c7 Ra3 36. Ra1 Rb3 37. Bxd5 Rb4 38. Ra8+ Rb8 39. Rxb8+ Kd7 40. c8=Q+ Ke7 41. Qxf5 Rh5 42. Qf7# 1-0

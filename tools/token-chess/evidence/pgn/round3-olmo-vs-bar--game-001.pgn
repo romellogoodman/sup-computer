@@ -1,0 +1,11 @@
+[Event "Token Chess — round3-olmo-vs-bar"]
+[Site "sup computer (Daydream-exclusive moves)"]
+[Date "????.??.??"]
+[Round "?"]
+[White "lmstudio:olmo-3-7b-instruct"]
+[Black "mock:heuristic"]
+[Result "1/2-1/2"]
+[Termination "adjudication_exhausted (engine adjudication, +0cp for white)"]
+[PlyCount "39"]
+
+1. e4 f6 2. Nf3 e6 3. Bc4 c6 4. O-O Bb4 5. Bd3 Ba5 6. b4 Bc7 7. Bb2 Bb6 8. Re1 d5 9. e5 Bc7 10. exf6 Qxf6 11. g3 b6 12. Be5 Bxe5 13. Bg6+ Kd8 14. Rxe5 h6 15. a3 Bb7 16. a4 Kc8 17. a5 bxa5 18. Rxe6 axb4 19. Re7 b3 20. Re8+ 1/2-1/2

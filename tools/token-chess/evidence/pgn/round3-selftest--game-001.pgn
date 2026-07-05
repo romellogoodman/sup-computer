@@ -1,0 +1,11 @@
+[Event "Token Chess — round3-selftest"]
+[Site "sup computer (Daydream-exclusive moves)"]
+[Date "????.??.??"]
+[Round "?"]
+[White "mock:heuristic"]
+[Black "mock:random"]
+[Result "1-0"]
+[Termination "checkmate"]
+[PlyCount "37"]
+
+1. e4 c6 2. c4 b5 3. cxb5 a5 4. Nc3 h5 5. Nf3 Bb7 6. Be2 e6 7. d3 d5 8. exd5 Ne7 9. a3 Nd7 10. O-O c5 11. b4 Qc7 12. dxe6 fxe6 13. Be3 Qd8 14. Nd2 h4 15. g3 hxg3 16. hxg3 g5 17. f3 Rc8 18. Nce4 g4 19. Nd6# 1-0

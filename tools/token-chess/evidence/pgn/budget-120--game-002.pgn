@@ -1,0 +1,11 @@
+[Event "Token Chess — budget-120"]
+[Site "sup computer (Daydream-exclusive moves)"]
+[Date "????.??.??"]
+[Round "?"]
+[White "lmstudio:olmo-3-7b-instruct"]
+[Black "lmstudio:olmo-3-7b-instruct"]
+[Result "0-1"]
+[Termination "forfeit"]
+[PlyCount "48"]
+
+1. g3 c5 2. Nf3 e6 3. Nc3 e5 4. Nd5 f6 5. Nc7+ Qxc7 6. d3 e4 7. Be3 Be7 8. Qd2 Nc6 9. O-O-O b6 10. a3 Nh6 11. Bd4 Nxd4 12. h3 g6 13. Re1 Kd8 14. Qe3 Nc6 15. Qxc5 d5 16. Qxe7+ Kxe7 17. b3 Be6 18. Kb2 a6 19. Kc3 Rac8 20. h4 a5 21. h5 gxh5 22. Rd1 a4 23. b4 Nd4+ 24. Kxd4 Ra8 0-1

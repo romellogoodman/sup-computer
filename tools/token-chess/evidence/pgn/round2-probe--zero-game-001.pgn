@@ -1,0 +1,11 @@
+[Event "Token Chess — round2-probe"]
+[Site "sup computer (Daydream-exclusive moves)"]
+[Date "????.??.??"]
+[Round "?"]
+[White "fallback"]
+[Black "fallback"]
+[Result "0-1"]
+[Termination "checkmate"]
+[PlyCount "256"]
+
+1. f4 b5 2. Nc3 a6 3. d4 Bb7 4. g3 c5 5. Bg2 cxd4 6. Qxd4 e5 7. Qxe5+ Qe7 8. h3 a5 9. a3 g5 10. fxg5 f5 11. g6 a4 12. Na2 h6 13. g7 Ba6 14. h4 d6 15. Nf3 Bb7 16. c4 Nd7 17. Rg1 Bc6 18. c5 dxe5 19. Bf4 Qe6 20. Rc1 Qxa2 21. h5 O-O-O 22. Bg5 hxg5 23. Bh1 Nxc5 24. Rd1 Nf6 25. Rd3 Bxg7 26. Re3 f4 27. Rd3 Rh7 28. Rg2 Rd7 29. g4 Kd8 30. Kd1 Qa1+ 31. Kd2 Qxb2+ 32. Ke1 Qc1+ 33. Rd1 Bf8 34. Nxe5 Be7 35. Nxd7 Qb2 36. Nxc5+ Bd6 37. Nd3 Rh6 38. Nxf4 Rh8 39. Rg3 Qa2 40. Bxc6 Kc8 41. Ng6 Qc4 42. Nh4 Qb4+ 43. Rd2 Kd8 44. Rh3 Qc5 45. Ng2 Qc4 46. Rf3 Qc3 47. Rxf6 Qxa3 48. Rf7 Rh7 49. Re7 Qc3 50. Rc7 Qd4 51. Re7 Qe5 52. Ra7 Rc7 53. e4 b4 54. Rb7 b3 55. Rd1 b2 56. Rd4 Rxc6 57. Rd3 Rc5 58. Ra3 Rc6 59. Ra1 bxa1=Q+ 60. Ke2 Qf1+ 61. Kd2 Qfa1 62. Rb6 Qe1+ 63. Kd3 Qf1+ 64. Kd2 Qf2+ 65. Kd3 Qg1 66. Kd2 Qgc5 67. Kd1 Qc2+ 68. Ke1 Qcc3+ 69. Kf2 Qb2+ 70. Ke3 Qxg2 71. Kd3 Qf3+ 72. Kd2 Qe3+ 73. Kd1 Q3d4+ 74. Ke1 Qdxe4+ 75. Kf2 Qe2+ 76. Kg1 Qf3 77. Rb8+ Kc7 78. Rd8 Kb7 79. Rb8+ Ka6 80. Re8 Qd3 81. Rd8 Qdb5 82. Ra8+ Kb7 83. Rd8 Ka6 84. Rf8 Kb6 85. Ra8 Kc7 86. Rd8 Kb7 87. Rb8+ Kc7 88. Rc8+ Kxc8 89. h6 Kb8 90. h7 Kb7 91. h8=Q Kc7 92. Qg8 Kb7 93. Qd5 Ka6 94. Qxc6+ Qb6+ 95. Qxb6+ Kxb6 96. Kf2 Kb7 97. Kf3 Kc8 98. Kf2 Kd8 99. Kf1 Ke7 100. Kg2 Qe4+ 101. Kf1 Qe3 102. Kg2 Qd2+ 103. Kf3 Qd5+ 104. Ke2 Qe4+ 105. Kf1 Qd5 106. Kg1 Qe5 107. Kf2 Qd4+ 108. Ke1 Qf4 109. Kd1 Qf3+ 110. Kd2 Qf2+ 111. Kc1 Qh4 112. Kc2 Qxg4 113. Kb1 Qf5+ 114. Kc1 Qe4 115. Kb2 Qf3 116. Kc1 Qe4 117. Kd2 Qd5+ 118. Kc2 Qd2+ 119. Kb1 Bc7 120. Ka1 Bb8 121. Kb1 Kf8 122. Ka1 Ke8 123. Kb1 Ke7 124. Ka1 Ke8 125. Kb1 g4 126. Ka1 g3 127. Kb1 g2 128. Ka1 g1=Q# 0-1

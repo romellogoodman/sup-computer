@@ -1,0 +1,11 @@
+[Event "Token Chess — granite-vs-olmo"]
+[Site "sup computer (Daydream-exclusive moves)"]
+[Date "????.??.??"]
+[Round "?"]
+[White "lmstudio:olmo-3-7b-instruct"]
+[Black "lmstudio:granite-4.1-8b"]
+[Result "1-0"]
+[Termination "forfeit"]
+[PlyCount "5"]
+
+1. e4 d5 2. exd5 c6 3. dxc6 1-0

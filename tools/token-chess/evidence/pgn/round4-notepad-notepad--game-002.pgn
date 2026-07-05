@@ -1,0 +1,11 @@
+[Event "Token Chess — round4-notepad-notepad"]
+[Site "sup computer (Daydream-exclusive moves)"]
+[Date "????.??.??"]
+[Round "?"]
+[White "lmstudio:olmo-3-7b-instruct+notepad"]
+[Black "lmstudio:olmo-3-7b-instruct+notepad"]
+[Result "1-0"]
+[Termination "adjudication_exhausted (engine adjudication, +1309cp for white)"]
+[PlyCount "60"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Be7 4. O-O Nf6 5. c3 O-O 6. Re1 Re8 7. b4 Bf8 8. Bb2 Na5 9. bxa5 a6 10. a4 b5 11. axb5 axb5 12. Ba2 c6 13. d3 Bb7 14. Nxe5 Rc8 15. Qd2 Nxe4 16. f3 Nf6 17. g4 Nxg4 18. Kg2 Nf6 19. f4 Nh5 20. Re3 d6 21. Re4 d5 22. Re3 d4 23. Rf3 Nxf4+ 24. Rxf4 Qe7 25. Kh3 Qd6 26. Kg2 Qf6 27. Kf3 Qg6 28. h3 Qf6 29. Kg3 Qg6+ 30. Kf3 Qf6 1-0

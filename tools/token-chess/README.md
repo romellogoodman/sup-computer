@@ -43,8 +43,8 @@ Side finding: past the old forfeit wall, Daydream Regular's legality is
 a *floor* (8–12% per 50-ply band out past ply 250), not a continuing
 collapse. The probe stays in-tree as measurement apparatus (it is the
 only way to observe games past ply ~40); the locked mechanics below are
-unchanged. Full write-up:
-[If nobody can die, can anybody win?](../../research-docs/reports/if-nobody-can-die-can-anybody-win.md)
+unchanged. Full write-up (rounds one through four, one report):
+[Can a token budget buy a finished chess game?](../../research-docs/reports/budget-cant-buy-the-midgame.md)
 
 ## Locked mechanics — round one (`game.py`)
 
@@ -92,15 +92,15 @@ olmo-3-7b beat the mock bar 3.5–0.5 on pick quality and economy, beat
 granite-4.1-8b 3.5–0.5 with the knobs tied — and lost 3–1 to
 ministral-3-8b, the worst sampler on the board (20% legality vs olmo's
 58%), which spends its whole budget fast and exhausts while ahead.
-Full write-up:
-[When the worst sampler wins the match](../../research-docs/reports/when-the-worst-sampler-wins-the-match.md)
+Write-up: rounds section of
+[Can a token budget buy a finished chess game?](../../research-docs/reports/budget-cant-buy-the-midgame.md)
 
 Round four added per-player memory to the same mechanics — spec
 suffixes `+ledger` (own spend history, harness-rendered) and `+notepad`
 (model-authored notes, last 3 shown back). In 24 olmo-vs-olmo games the
 notepad was never used once and the ledger moved no outcomes; its one
-real effect was halving hot-temperature batches. Full write-up:
-[Would a model use a memory if you gave it one?](../../research-docs/reports/the-unused-notepad.md)
+real effect was halving hot-temperature batches. Write-up: rounds section of
+[Can a token budget buy a finished chess game?](../../research-docs/reports/budget-cant-buy-the-midgame.md)
 
 ## Self-test result
 

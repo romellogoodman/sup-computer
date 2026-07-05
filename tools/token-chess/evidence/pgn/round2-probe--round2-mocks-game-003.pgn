@@ -1,0 +1,11 @@
+[Event "Token Chess — round2-probe"]
+[Site "sup computer (Daydream-exclusive moves)"]
+[Date "????.??.??"]
+[Round "?"]
+[White "mock:adaptive"]
+[Black "mock:random"]
+[Result "1/2-1/2"]
+[Termination "threefold_repetition"]
+[PlyCount "93"]
+
+1. e4 e5 2. Be2 Ne7 3. f3 b6 4. c3 Nbc6 5. d4 exd4 6. cxd4 g6 7. Be3 h6 8. Qb3 f5 9. Nc3 fxe4 10. Rc1 Ba6 11. Nb5 Nxd4 12. Bxd4 c5 13. Bf6 c4 14. Be5 Qc7 15. Bf4 g5 16. Be3 Rd8 17. h4 gxh4 18. Bc5 Rc8 19. g3 h5 20. Bd6 Rd8 21. g4 Rc8 22. Bxe7 h3 23. g5 Rb8 24. Bf6 Rc8 25. Bd8 Qxd8 26. Rc2 Qc7 27. Nxc7+ Rxc7 28. Qd3 Rb7 29. Qxe4+ Kd8 30. Rh2 Kc7 31. a3 Bb5 32. a4 Bxa4 33. Rg2 hxg2 34. Qe8 Rh6 35. Qxd7+ Bxd7 36. Kd2 a6 37. Ke1 b5 38. Kd1 b4 39. Ke1 a5 40. b3 a4 41. Kd1 a3 42. Ke1 a2 43. Kd2 a1=Q 44. Ke3 Qa2 45. Kd2 Qa1 46. Ke3 Qb2 47. Kd2 1/2-1/2

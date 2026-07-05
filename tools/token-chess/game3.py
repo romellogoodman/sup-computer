@@ -160,6 +160,34 @@ or {"action": "pick", "move": "<a uci move from your candidate pool>"}"""
 
 FALLBACK_DECISION3 = {"action": "sample", **DEFAULT_CONFIG3}
 
+# Round-5: instead of the harness assigning a memory condition, the player
+# chooses one before the game, free, for the whole game. Round four's
+# baseline expectation: offered a free notepad under assigned conditions,
+# olmo used it zero times in 24 games — so even opting in is a finding.
+TOOL_MENU = """Before the game begins, choose ONE tool to carry for the whole game. \
+The choice is free and cannot be changed mid-game.
+
+- "none": no memory. Each turn you see only the position, your remaining tokens, \
+and this turn's batches.
+- "ledger": every turn additionally shows your own per-move token spend history \
+for this game.
+- "notepad": you may attach a short note (max 200 characters) to any decision; \
+your 3 most recent notes are shown back to you every turn. Notes are your only \
+memory that survives across turns.
+
+Respond with ONLY a JSON object: {"tool": "none" | "ledger" | "notepad", \
+"why": "<optional, max 200 characters>"}"""
+
+
+def _validate_tool(obj) -> dict:
+    if not isinstance(obj, dict) or obj.get("tool") not in ("none", "ledger", "notepad"):
+        return None
+    choice = {"tool": obj["tool"]}
+    why = obj.get("why")
+    if isinstance(why, str) and why.strip():
+        choice["why"] = why.strip()[:NOTE_MAX_CHARS]
+    return choice
+
 # Round-4 memory conditions. "ledger" is harness telemetry (own per-move spend
 # history); "notepad" is model-authored memory (an optional note on any
 # decision, the last 3 shown back each turn). Both are deliberately narrower
@@ -184,10 +212,27 @@ class LLMPlayer3(Player3):
         from steer import Orchestrator
 
         self._pool = []
-        self.memory = memory
-        seed = LLM_SEED3 + (NOTEPAD_SEED_SUFFIX if memory == "notepad" else "")
+        self.memory = "none" if memory == "choose" else memory
+        self._must_choose = memory == "choose"
+        seed = LLM_SEED3 + (NOTEPAD_SEED_SUFFIX if self.memory == "notepad" else "")
         self.orchestrator = Orchestrator(client, seed, self._validate,
                                          FALLBACK_DECISION3, own_temperature)
+
+    def choose_tool(self) -> dict:
+        """Round-5 pregame decision: pick a memory tool from the menu, free.
+        Reconfigures this player to the chosen condition and returns the
+        choice (with its optional stated 'why') for the game record."""
+        from steer import Orchestrator
+
+        chooser = Orchestrator(self.orchestrator.client, LLM_SEED3, _validate_tool,
+                               {"tool": "none"}, self.orchestrator.own_temperature)
+        choice = chooser.decide(TOOL_MENU)
+        for k, v in chooser.stats.items():  # one client, one ledger of usage
+            self.orchestrator.stats[k] += v
+        self.memory = choice["tool"]
+        if self.memory == "notepad":
+            self.orchestrator.system = LLM_SEED3 + NOTEPAD_SEED_SUFFIX
+        return choice
 
     @property
     def stats(self) -> dict:
@@ -256,10 +301,12 @@ def make_player3(spec: str, seed: int = 0) -> tuple:
     Returns (player, memory)."""
     base, _, memory = spec.partition("+")
     memory = memory or "none"
-    if memory not in ("none", "ledger", "notepad"):
+    if memory not in ("none", "ledger", "notepad", "choose"):
         raise ValueError(f"unknown memory condition: {memory}")
     kind, _, arg = base.partition(":")
     if kind == "mock":
+        if memory == "choose":
+            raise ValueError("mocks can't choose tools; +choose is for LLM players")
         if arg == "heuristic":
             return HeuristicPicker3(seed=seed), memory
         if arg == "random":
@@ -416,11 +463,21 @@ def run_match(out_dir: str, budget: int, games: int, white_spec: str, black_spec
     for g in range(games):
         specs = (white_spec, black_spec) if g % 2 == 0 else (black_spec, white_spec)
         (white, wmem), (black, bmem) = make_player3(specs[0], seed=g), make_player3(specs[1], seed=g)
+        tool_choices = {}
+        for side, player in (("white", white), ("black", black)):
+            if getattr(player, "_must_choose", False):
+                tool_choices[side] = player.choose_tool()
+        if tool_choices:
+            wmem, bmem = white.memory if wmem == "choose" else wmem, black.memory if bmem == "choose" else bmem
         rng = random.Random(1000 + g)
         game = TokenChess3Game(daydream, white, black, budget, rng,
                                memory={"white": wmem, "black": bmem})
         r = game.play()
         r["white_player"], r["black_player"] = specs
+        if tool_choices:
+            r["tool_choices"] = tool_choices
+            print(f"  tools: " + ", ".join(f"{s}={c['tool']}" + (f" ({c['why']})" if c.get("why") else "")
+                                           for s, c in tool_choices.items()), flush=True)
         for spec, player in ((specs[0], white), (specs[1], black)):
             if hasattr(player, "stats") and hasattr(player, "orchestrator"):
                 r.setdefault("llm_usage", {})[spec] = dict(player.stats)

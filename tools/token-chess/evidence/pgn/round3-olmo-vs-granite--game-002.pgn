@@ -1,0 +1,11 @@
+[Event "Token Chess — round3-olmo-vs-granite"]
+[Site "sup computer (Daydream-exclusive moves)"]
+[Date "????.??.??"]
+[Round "?"]
+[White "lmstudio:granite-4.1-8b"]
+[Black "lmstudio:olmo-3-7b-instruct"]
+[Result "0-1"]
+[Termination "adjudication_exhausted (engine adjudication, -246cp for white)"]
+[PlyCount "58"]
+
+1. d4 c6 2. Nc3 d5 3. Bf4 Nf6 4. e3 e6 5. Bd3 Bd6 6. Nge2 O-O 7. O-O Nfd7 8. Ng3 b6 9. Re1 Bb7 10. Re2 Qc8 11. Nb5 Qc7 12. c4 f5 13. b3 e5 14. dxe5 Bxe5 15. Qc2 Bd6 16. Nxd6 Qxd6 17. Rd1 Re8 18. Qd2 Re5 19. Qc2 Qf6 20. Qc3 Qg6 21. Qd4 Qf7 22. Qc5 Qe6 23. Qd6 Qxd6 24. b4 Kf7 25. b5 Ke6 26. Be4 Kf7 27. Bxf5 Ke7 28. bxc6 Kf7 29. c7 Ke7 0-1
