@@ -298,6 +298,94 @@ corpus_dial_by_model = {
     "caption": "Each generator's slice of the corpus has its own dial. gemma's is the widest and steepest (4.8 -> 16.7), so it was kept and up-weighted; granite's barely moves and even dips at L4 (1.4 -> 3.7), so it was down-weighted. Source: experiment-04 (gatsby mixture-of-models).",
 }
 
+plies_vs_budget = {
+    "title": "Eight times the budget bought three times the plies",
+    "subtitle": "Plies reached at forfeit per game, Regular tier — two games per budget, olmo-3-7b vs itself",
+    "categories": ["15 g1", "15 g2", "30 g1", "30 g2", "60 g1", "60 g2", "120 g1", "120 g2"],
+    "values": [14, 17, 14, 22, 30, 32, 42, 48],
+    "colors": ["blue"] * 8,
+    "valueFmt": "{:.0f}",
+    "yTitle": "Plies at forfeit",
+    "xTitle": "Per-player token budget · game",
+    "caption": "Every game forfeits; budget only moves the horizon, sublinearly (15 tokens -> 14-17 plies; 120 -> 42-48). The marginal ply gets more expensive exactly when the budget tries to buy it. Source: tools/token-chess/evidence/2026-07-04-olmo-calibration/regular.",
+}
+
+legality_by_depth = {
+    "title": "The opening is a book; the midgame is a dream",
+    "subtitle": "Daydream Regular first-try legality by ply bucket, pooled across all calibration budgets (768 attempts)",
+    "x": ["0-9", "10-19", "20-29", "30-39", "40-49"],
+    "series": [{"name": "first-try legality", "hue": "blue",
+                "y": [49.1, 31.9, 20.8, 14.1, 23.3]}],
+    "valueFmt": "{:.1f}%",
+    "yTitle": "Legal on first try (%)",
+    "xTitle": "Plies into the game",
+    "caption": "Legality halves and halves again as games leave the memorized openings: 49.1% -> 14.1% by plies 30-39. The 40-49 uptick is 43 attempts from the two budget-120 games only — thin, and round two later showed it was the first sign of the floor. Source: evidence/2026-07-04-olmo-calibration/regular.",
+}
+
+retry_adaptation = {
+    "title": "olmo reads a failing transcript and reaches for the knobs",
+    "subtitle": "Mean temperature and soft-cap usage by retry index within a turn — Regular calibration, 768 attempts",
+    "x": ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th+"],
+    "series": [
+        {"name": "mean temperature", "hue": "blue",
+         "y": [0.78, 0.72, 0.68, 0.66, 0.66, 0.62, 0.66, 0.66, 0.68, 0.56]},
+        {"name": "soft-cap usage share", "hue": "green",
+         "y": [0.01, 0.61, 0.65, 0.48, 0.44, 0.52, 0.38, 0.50, 0.33, 0.56]},
+    ],
+    "valueFmt": "{:.2f}",
+    "yTitle": "Value (temperature / share)",
+    "xTitle": "Attempt index within a turn",
+    "caption": "First attempts run hot (0.78) and uncapped (1%); by the second attempt the cap is set 61% of the time and temperature cools toward 0.56 deep in a retry streak. Adaptation is real — the skill the benchmark was built to price. Source: evidence/2026-07-04-olmo-calibration/regular.",
+}
+
+legality_floor = {
+    "title": "Past the book, legality is a floor, not a cliff",
+    "subtitle": "Default-config legality per 50-ply band, pooled over game zero's 4,377 fallback samples",
+    "x": ["0-49", "50-99", "100-149", "150-199", "200-249"],
+    "series": [{"name": "default-config legality", "hue": "blue",
+                "y": [15.7, 8.3, 8.8, 10.3, 11.8]}],
+    "valueFmt": "{:.1f}%",
+    "yTitle": "Legal samples (%)",
+    "xTitle": "Plies into the game",
+    "caption": "Round one's 49% -> 14% collapse (see the round-one report) is the book running out inside the first band; after it, nothing further degrades out past ply 250. Daydream's off-book legality is a property of the model, not of depth. Source: evidence/round2-probe (zero-game-*.json).",
+}
+
+control_rates = {
+    "title": "The no-forfeit economy makes everyone the same",
+    "subtitle": "Share of moves each player landed itself (vs the silent fallback), income 4/turn, budget-free retries",
+    "categories": ["adaptive\nmock", "random\nmock", "olmo-3-7b", "random mock\n(vs olmo)"],
+    "values": [81.0, 87.3, 75.1, 83.2],
+    "colors": ["blue", "neutral", "green", "neutral"],
+    "valueFmt": "{:.1f}%",
+    "yTitle": "Control rate (%)",
+    "xTitle": "Player",
+    "caption": "Random configs match the tuned mock and beat olmo — the model that swept round one. Refunded retries wash config quality out of outcomes; the flat line is the finding. Source: evidence/round2-probe (round2-*.json).",
+}
+
+legality_vs_outcome = {
+    "title": "The knob doesn't decide the match",
+    "subtitle": "Round-three sample legality by player — green bars won their match, gray bars lost it",
+    "categories": ["olmo\n(vs bar)", "mock bar", "olmo\n(vs ministral)", "ministral", "olmo\n(vs granite)", "granite"],
+    "values": [40.0, 37.0, 58.0, 20.0, 42.0, 43.0],
+    "colors": ["green", "neutral", "neutral", "green", "green", "neutral"],
+    "valueFmt": "{:.0f}%",
+    "yTitle": "Sample legality (%)",
+    "xTitle": "Player (per match)",
+    "caption": "ministral won its match 3-1 with the worst sampler skill on the board (20% vs olmo's 58%) by spending its whole budget fast and ending games while ahead; olmo beat granite with the knobs tied (42% vs 43%) on pick quality alone. Source: evidence/round3-olmo-vs-*.",
+}
+
+hot_config = {
+    "title": "What the ledger actually changed: fewer hot configs",
+    "subtitle": "Share of batches drawn at temperature >= 1.0, by memory condition — 1,718 batches, 24 games",
+    "categories": ["none", "notepad", "ledger"],
+    "values": [11.7, 13.8, 5.4],
+    "colors": ["neutral", "blue", "green"],
+    "valueFmt": "{:.1f}%",
+    "yTitle": "Hot batches (%)",
+    "xTitle": "Memory condition",
+    "caption": "Hot configs floor at ~25% legality vs ~42% for t0.6-0.9. Seeing its own spend line made olmo avoid them (11.7% -> 5.4%), which fully accounts for the ledger seats' higher pooled legality (42.1% vs 37.4%) — a conservatism nudge, not learning. It still didn't win games. Source: evidence/round4-*.",
+}
+
 # (name, spec, fn, asset-prefix) — prefix routes each PNG to its report.
 JOBS = [("bpc-by-round", bpc, dv.bar, "exp01-"),
         ("data-win", data_win, dv.bar, "exp01-"),
@@ -309,7 +397,14 @@ JOBS = [("bpc-by-round", bpc, dv.bar, "exp01-"),
         ("loss-transition", loss_transition, dv.line, "exp03-"),
         ("loss-r1-vs-r2", loss_r1_vs_r2, dv.line, "exp04-"),
         ("dial", dial04, dv.bar, "exp04-"),
-        ("corpus-dial-by-model", corpus_dial_by_model, dv.line, "exp04-")]
+        ("corpus-dial-by-model", corpus_dial_by_model, dv.line, "exp04-"),
+        ("plies-vs-budget", plies_vs_budget, dv.bar, "exp07-"),
+        ("legality-by-depth", legality_by_depth, dv.line, "exp07-"),
+        ("retry-adaptation", retry_adaptation, dv.line, "exp07-"),
+        ("legality-floor", legality_floor, dv.line, "exp08-"),
+        ("control-rates", control_rates, dv.bar, "exp08-"),
+        ("legality-vs-outcome", legality_vs_outcome, dv.bar, "exp09-"),
+        ("hot-config", hot_config, dv.bar, "exp10-")]
 
 if __name__ == "__main__":
     out_dir = os.path.join(_HERE, "output")

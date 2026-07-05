@@ -12,8 +12,13 @@ to game.py.
 """
 from __future__ import annotations
 
+import os
 import random
+import sys
 from abc import ABC, abstractmethod
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+from steer import Orchestrator  # noqa: E402
 
 
 class Player(ABC):
@@ -61,3 +66,75 @@ class AdaptivePlayer(Player):
         temperature = min(self.base_temperature + 0.15 * failures, 2.0)
         soft_cap = None if failures >= 3 else self.base_soft_cap + 3.0 * failures
         return {"temperature": temperature, "soft_cap": soft_cap}
+
+
+# The seeding the locked design prescribes: conceptual knowledge of the
+# mechanics and the sampler knobs up front; the empirical legality curve has
+# to be learned live, turn by turn.
+LLM_SEED = """You are playing Token Chess. You cannot author chess moves yourself. \
+The only move source is Daydream, a 2.7M-parameter character-level GPT trained on \
+chess games (it learned move TEXT from games, not the rules -- its samples are \
+often illegal). Each turn you must land a LEGAL move by querying Daydream.
+
+Mechanics:
+- Every Daydream query costs exactly 1 token from your budget, legal or not.
+- If you spend your last token and still have no legal move, you FORFEIT immediately.
+- Each query you choose two sampler settings:
+  - temperature (float, 0.1-2.0): lower = Daydream's most-confident move text; \
+higher = more varied, more error-prone.
+  - soft_cap (float > 0, or null): Gemma-style logit soft-capping. Lower caps \
+flatten Daydream's confidence spikes; null disables it.
+- You see only the attempts made THIS turn. The log clears when your turn ends.
+
+Respond with ONLY a JSON object, no prose: {"temperature": <float>, "soft_cap": <float or null>}"""
+
+FALLBACK_CONFIG = {"temperature": 0.5, "soft_cap": 5.0}
+
+
+def _validate_config(obj) -> dict:
+    """Normalize a parsed sampler-config decision; None rejects it."""
+    try:
+        temperature = float(obj["temperature"])
+    except (KeyError, TypeError, ValueError):
+        return None
+    soft_cap = obj.get("soft_cap")
+    if soft_cap is not None:
+        try:
+            soft_cap = float(soft_cap)
+        except (TypeError, ValueError):
+            return None
+        if soft_cap <= 0:
+            soft_cap = None
+    return {"temperature": min(max(temperature, 0.05), 3.0), "soft_cap": soft_cap}
+
+
+class LLMPlayer(Player):
+    """A real player: an instruction-following LLM chooses the sampler
+    settings, via the shared steer.Orchestrator (one stateless decision per
+    attempt -- the per-turn transcript scoping lives in the harness, not in
+    conversation state). This class owns only the chess vocabulary: the seed
+    prompt, the config validator, and how a turn is rendered."""
+
+    def __init__(self, client, own_temperature: float = 0.7):
+        self.orchestrator = Orchestrator(client, LLM_SEED, _validate_config, FALLBACK_CONFIG, own_temperature)
+
+    @property
+    def stats(self) -> dict:
+        return self.orchestrator.stats
+
+    def choose_config(self, own_budget: int, transcript_this_turn: list) -> dict:
+        return self.orchestrator.decide(self._render_state(own_budget, transcript_this_turn))
+
+    @staticmethod
+    def _render_state(own_budget: int, transcript_this_turn: list) -> str:
+        lines = [f"Your remaining budget: {own_budget} tokens."]
+        if transcript_this_turn:
+            lines.append("Attempts this turn so far:")
+            for a in transcript_this_turn:
+                cap = "null" if a["soft_cap"] is None else a["soft_cap"]
+                verdict = "LEGAL" if a["legal"] else "ILLEGAL"
+                lines.append(f'- temperature={a["temperature"]:.2f} soft_cap={cap} -> "{a["move"]}" {verdict}')
+        else:
+            lines.append("First attempt of this turn.")
+        lines.append("Choose settings for the next query.")
+        return "\n".join(lines)

@@ -56,14 +56,20 @@ Bucket `sup-computer-artifacts`, public at
 and localhost:3000 is already configured; wrangler is OAuth'd on this machine —
 `npx wrangler whoami` to check).
 
+Every upload sets a one-week `Cache-Control` (decided 2026-07-04): long
+enough that reloads stop re-downloading 40MB graphs, short enough that a
+fixed artifact re-uploaded at the same URL self-heals within a week —
+deliberately not `immutable`, since overwrite-in-place stays on the table.
+
 ```bash
-npx wrangler r2 object put "sup-computer-artifacts/<id>.onnx" --file projects/<project>/dist/<id>.onnx --remote
+CC="public, max-age=604800"
+npx wrangler r2 object put "sup-computer-artifacts/<id>.onnx" --file projects/<project>/dist/<id>.onnx --cache-control "$CC" --remote
 # char models:
-npx wrangler r2 object put "sup-computer-artifacts/<id>.vocab.json" --file projects/<project>/dist/<id>.vocab.json --remote
+npx wrangler r2 object put "sup-computer-artifacts/<id>.vocab.json" --file projects/<project>/dist/<id>.vocab.json --cache-control "$CC" --remote
 # corpus-BPE models (note the rename):
-npx wrangler r2 object put "sup-computer-artifacts/<id>.tokenizer.json" --file projects/<project>/models/<id>/<data-dir>/tokenizer.json --remote
+npx wrangler r2 object put "sup-computer-artifacts/<id>.tokenizer.json" --file projects/<project>/models/<id>/<data-dir>/tokenizer.json --cache-control "$CC" --remote
 # always — the export manifest (frozen config incl. block_size):
-npx wrangler r2 object put "sup-computer-artifacts/<id>.manifest.json" --file projects/<project>/dist/<id>.manifest.json --remote
+npx wrangler r2 object put "sup-computer-artifacts/<id>.manifest.json" --file projects/<project>/dist/<id>.manifest.json --cache-control "$CC" --remote
 ```
 
 The site derives tokenizer URLs by swapping the `.onnx` suffix, so the

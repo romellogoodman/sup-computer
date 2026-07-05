@@ -1,0 +1,135 @@
+{
+  "outcome": "forfeit",
+  "winner": "white",
+  "plies": 1,
+  "calls_spent": {
+    "white": 1,
+    "black": 10
+  },
+  "legal_first_try": {
+    "white": 1,
+    "black": 0
+  },
+  "moves_made": {
+    "white": 1,
+    "black": 0
+  },
+  "legal_hit_rate": {
+    "white": 1.0,
+    "black": 0.0
+  },
+  "attempts": [
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 9,
+      "temperature": 0.8,
+      "soft_cap": null,
+      "move": "c2c3",
+      "legal": true,
+      "n_legal_moves": 7
+    },
+    {
+      "ply": 1,
+      "side": "black",
+      "budget_after": 9,
+      "temperature": 0.8,
+      "soft_cap": null,
+      "move": "a4b3",
+      "legal": false,
+      "n_legal_moves": 8
+    },
+    {
+      "ply": 1,
+      "side": "black",
+      "budget_after": 8,
+      "temperature": 0.6,
+      "soft_cap": 1.5,
+      "move": "c1b2",
+      "legal": false,
+      "n_legal_moves": 8
+    },
+    {
+      "ply": 1,
+      "side": "black",
+      "budget_after": 7,
+      "temperature": 0.6,
+      "soft_cap": null,
+      "move": "a2a3",
+      "legal": false,
+      "n_legal_moves": 8
+    },
+    {
+      "ply": 1,
+      "side": "black",
+      "budget_after": 6,
+      "temperature": 0.7,
+      "soft_cap": 1.0,
+      "move": "c5d4",
+      "legal": false,
+      "n_legal_moves": 8
+    },
+    {
+      "ply": 1,
+      "side": "black",
+      "budget_after": 5,
+      "temperature": 0.55,
+      "soft_cap": 0.7,
+      "move": "e4a",
+      "legal": false,
+      "n_legal_moves": 8
+    },
+    {
+      "ply": 1,
+      "side": "black",
+      "budget_after": 4,
+      "temperature": 0.9,
+      "soft_cap": null,
+      "move": "c5d4",
+      "legal": false,
+      "n_legal_moves": 8
+    },
+    {
+      "ply": 1,
+      "side": "black",
+      "budget_after": 3,
+      "temperature": 0.3,
+      "soft_cap": 0.6,
+      "move": "e1c3",
+      "legal": false,
+      "n_legal_moves": 8
+    },
+    {
+      "ply": 1,
+      "side": "black",
+      "budget_after": 2,
+      "temperature": 0.55,
+      "soft_cap": 0.9,
+      "move": "5c2",
+      "legal": false,
+      "n_legal_moves": 8
+    },
+    {
+      "ply": 1,
+      "side": "black",
+      "budget_after": 1,
+      "temperature": 0.7,
+      "soft_cap": null,
+      "move": "c4c3",
+      "legal": false,
+      "n_legal_moves": 8
+    },
+    {
+      "ply": 1,
+      "side": "black",
+      "budget_after": 0,
+      "temperature": 0.6,
+      "soft_cap": null,
+      "move": "b4a3",
+      "legal": false,
+      "n_legal_moves": 8
+    }
+  ],
+  "white_player": "lmstudio:olmo-3-7b-instruct",
+  "black_player": "lmstudio:olmo-3-7b-instruct"
+}

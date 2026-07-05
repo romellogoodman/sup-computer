@@ -1,0 +1,11 @@
+[Event "Token Chess — ministral-vs-olmo"]
+[Site "sup computer (Daydream-exclusive moves)"]
+[Date "????.??.??"]
+[Round "?"]
+[White "lmstudio:olmo-3-7b-instruct"]
+[Black "lmstudio:ministral-3-8b-instruct-2512"]
+[Result "1-0"]
+[Termination "forfeit"]
+[PlyCount "7"]
+
+1. e4 d5 2. c4 c6 3. c5 Qc7 4. e5 1-0

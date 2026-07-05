@@ -1,0 +1,325 @@
+{
+  "outcome": "forfeit",
+  "winner": "black",
+  "plies": 0,
+  "calls_spent": {
+    "white": 30,
+    "black": 0
+  },
+  "legal_first_try": {
+    "white": 0,
+    "black": 0
+  },
+  "moves_made": {
+    "white": 0,
+    "black": 0
+  },
+  "legal_hit_rate": {
+    "white": 0.0,
+    "black": 0.0
+  },
+  "attempts": [
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 29,
+      "temperature": 0.8,
+      "soft_cap": 0.5,
+      "move": "b3",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 28,
+      "temperature": 0.6,
+      "soft_cap": 0.4,
+      "move": "64rd",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 27,
+      "temperature": 0.7,
+      "soft_cap": 0.45,
+      "move": "e2c2aan3",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 26,
+      "temperature": 0.75,
+      "soft_cap": 0.5,
+      "move": "",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 25,
+      "temperature": 0.65,
+      "soft_cap": 0.4,
+      "move": "ar",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 24,
+      "temperature": 0.8,
+      "soft_cap": 0.45,
+      "move": "cnha8hgc",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 23,
+      "temperature": 0.5,
+      "soft_cap": 0.3,
+      "move": "aa3aqqdd",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 22,
+      "temperature": 0.6,
+      "soft_cap": 0.4,
+      "move": "f4rchfhh",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 21,
+      "temperature": 0.6,
+      "soft_cap": 0.35,
+      "move": "na54na4",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 20,
+      "temperature": 0.7,
+      "soft_cap": 0.45,
+      "move": "qbac75gd",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 19,
+      "temperature": 0.6,
+      "soft_cap": 0.4,
+      "move": "e8bn",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 18,
+      "temperature": 0.65,
+      "soft_cap": 0.4,
+      "move": "bbhq",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 17,
+      "temperature": 0.75,
+      "soft_cap": 0.45,
+      "move": "ree56",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 16,
+      "temperature": 0.6,
+      "soft_cap": 0.4,
+      "move": "gq",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 15,
+      "temperature": 0.6,
+      "soft_cap": 0.4,
+      "move": "g3d12b7a",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 14,
+      "temperature": 0.55,
+      "soft_cap": 0.35,
+      "move": "",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 13,
+      "temperature": 0.6,
+      "soft_cap": 0.4,
+      "move": "ge4c5e38",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 12,
+      "temperature": 0.7,
+      "soft_cap": 0.45,
+      "move": "",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 11,
+      "temperature": 0.5,
+      "soft_cap": 0.3,
+      "move": "43g21h3f",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 10,
+      "temperature": 0.6,
+      "soft_cap": 0.4,
+      "move": "",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 9,
+      "temperature": 0.7,
+      "soft_cap": 0.45,
+      "move": "gge38",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 8,
+      "temperature": 0.6,
+      "soft_cap": 0.4,
+      "move": "ca8e35q1",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 7,
+      "temperature": 0.75,
+      "soft_cap": 0.5,
+      "move": "rqfh",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 6,
+      "temperature": 0.6,
+      "soft_cap": 0.4,
+      "move": "b",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 5,
+      "temperature": 0.6,
+      "soft_cap": 0.4,
+      "move": "eqg8cng6",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 4,
+      "temperature": 0.65,
+      "soft_cap": 0.4,
+      "move": "ne7",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 3,
+      "temperature": 0.5,
+      "soft_cap": 0.3,
+      "move": "d5g445",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 2,
+      "temperature": 0.6,
+      "soft_cap": 0.4,
+      "move": "gdd161dh",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 1,
+      "temperature": 0.6,
+      "soft_cap": 0.4,
+      "move": "",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 0,
+      "temperature": 0.6,
+      "soft_cap": 0.4,
+      "move": "b8fc2",
+      "legal": false,
+      "n_legal_moves": 20
+    }
+  ],
+  "white_player": "lmstudio:granite-4.1-8b",
+  "black_player": "lmstudio:olmo-3-7b-instruct"
+}

@@ -1,0 +1,11 @@
+[Event "Token Chess — budget-10"]
+[Site "sup computer (Daydream-exclusive moves)"]
+[Date "????.??.??"]
+[Round "?"]
+[White "lmstudio:olmo-3-7b-instruct"]
+[Black "lmstudio:olmo-3-7b-instruct"]
+[Result "1-0"]
+[Termination "forfeit"]
+[PlyCount "1"]
+
+1. c3 1-0

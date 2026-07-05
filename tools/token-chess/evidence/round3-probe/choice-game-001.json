@@ -1,0 +1,1324 @@
+{
+  "mode": "choice",
+  "termination": "threefold_repetition",
+  "winner": null,
+  "plies": 116,
+  "pickers": {
+    "white": "heuristic",
+    "black": "random"
+  },
+  "k": 3,
+  "final_fen": "8/4P3/B1k5/5P2/3B4/2P1K3/8/3R4 w - - 16 59",
+  "moves": [
+    {
+      "ply": 0,
+      "side": "white",
+      "samples": 7,
+      "candidates": [
+        "c2c3",
+        "e2e4",
+        "e2e3"
+      ],
+      "picked": "e2e4",
+      "source": "picked"
+    },
+    {
+      "ply": 1,
+      "side": "black",
+      "samples": 22,
+      "candidates": [
+        "d7d6",
+        "g8f6",
+        "e7e6"
+      ],
+      "picked": "d7d6",
+      "source": "picked"
+    },
+    {
+      "ply": 2,
+      "side": "white",
+      "samples": 6,
+      "candidates": [
+        "d2d4",
+        "f1c4",
+        "f2f3"
+      ],
+      "picked": "d2d4",
+      "source": "picked"
+    },
+    {
+      "ply": 3,
+      "side": "black",
+      "samples": 6,
+      "candidates": [
+        "g8f6",
+        "g7g5",
+        "g7g6"
+      ],
+      "picked": "g8f6",
+      "source": "picked"
+    },
+    {
+      "ply": 4,
+      "side": "white",
+      "samples": 5,
+      "candidates": [
+        "e4e5",
+        "c2c4",
+        "g1f3"
+      ],
+      "picked": "g1f3",
+      "source": "picked"
+    },
+    {
+      "ply": 5,
+      "side": "black",
+      "samples": 3,
+      "candidates": [
+        "c7c5",
+        "g7g5",
+        "c7c6"
+      ],
+      "picked": "c7c5",
+      "source": "picked"
+    },
+    {
+      "ply": 6,
+      "side": "white",
+      "samples": 6,
+      "candidates": [
+        "c1g5",
+        "d4c5",
+        "d4d5"
+      ],
+      "picked": "d4c5",
+      "source": "picked"
+    },
+    {
+      "ply": 7,
+      "side": "black",
+      "samples": 3,
+      "candidates": [
+        "b8a6",
+        "b8c6",
+        "d6d5"
+      ],
+      "picked": "b8a6",
+      "source": "picked"
+    },
+    {
+      "ply": 8,
+      "side": "white",
+      "samples": 11,
+      "candidates": [
+        "f1e2",
+        "a2a4",
+        "b1d2"
+      ],
+      "picked": "a2a4",
+      "source": "picked"
+    },
+    {
+      "ply": 9,
+      "side": "black",
+      "samples": 4,
+      "candidates": [
+        "b7b6",
+        "a6c5",
+        "e7e6"
+      ],
+      "picked": "b7b6",
+      "source": "picked"
+    },
+    {
+      "ply": 10,
+      "side": "white",
+      "samples": 4,
+      "candidates": [
+        "b2b3",
+        "c5d6",
+        "a4a5"
+      ],
+      "picked": "c5d6",
+      "source": "picked"
+    },
+    {
+      "ply": 11,
+      "side": "black",
+      "samples": 12,
+      "candidates": [
+        "e7e5",
+        "c8d7",
+        "d8d6"
+      ],
+      "picked": "e7e5",
+      "source": "picked"
+    },
+    {
+      "ply": 12,
+      "side": "white",
+      "samples": 11,
+      "candidates": [
+        "c1g5",
+        "f3e5",
+        "g2g3"
+      ],
+      "picked": "f3e5",
+      "source": "picked"
+    },
+    {
+      "ply": 13,
+      "side": "black",
+      "samples": 6,
+      "candidates": [
+        "c8b7",
+        "f6d5",
+        "d8c7"
+      ],
+      "picked": "f6d5",
+      "source": "picked"
+    },
+    {
+      "ply": 14,
+      "side": "white",
+      "samples": 11,
+      "candidates": [
+        "f1b5",
+        "g2g4",
+        "e5f7"
+      ],
+      "picked": "e5f7",
+      "source": "picked"
+    },
+    {
+      "ply": 15,
+      "side": "black",
+      "samples": 15,
+      "candidates": [
+        "d5c3",
+        "d8f6",
+        "c8b7"
+      ],
+      "picked": "c8b7",
+      "source": "picked"
+    },
+    {
+      "ply": 16,
+      "side": "white",
+      "samples": 11,
+      "candidates": [
+        "h2h3",
+        "c2c4",
+        "e4e5"
+      ],
+      "picked": "c2c4",
+      "source": "picked"
+    },
+    {
+      "ply": 17,
+      "side": "black",
+      "samples": 23,
+      "candidates": [
+        "f8e7",
+        "a6c7",
+        "a8c8"
+      ],
+      "picked": "f8e7",
+      "source": "picked"
+    },
+    {
+      "ply": 18,
+      "side": "white",
+      "samples": 9,
+      "candidates": [
+        "d1c2",
+        "b1c3",
+        "c4c5"
+      ],
+      "picked": "d1c2",
+      "source": "picked"
+    },
+    {
+      "ply": 19,
+      "side": "black",
+      "samples": 16,
+      "candidates": [
+        "e8g8",
+        "g7g5",
+        "a8b8"
+      ],
+      "picked": "e8g8",
+      "source": "picked"
+    },
+    {
+      "ply": 20,
+      "side": "white",
+      "samples": 8,
+      "candidates": [
+        "b1d2",
+        "b2b4",
+        "c4c5"
+      ],
+      "picked": "c4c5",
+      "source": "picked"
+    },
+    {
+      "ply": 21,
+      "side": "black",
+      "samples": 27,
+      "candidates": [
+        "b6c5",
+        "b7c8",
+        "g7g6"
+      ],
+      "picked": "b6c5",
+      "source": "picked"
+    },
+    {
+      "ply": 22,
+      "side": "white",
+      "samples": 4,
+      "candidates": [
+        "b1c3",
+        "h2h3",
+        "b2b4"
+      ],
+      "picked": "b1c3",
+      "source": "picked"
+    },
+    {
+      "ply": 23,
+      "side": "black",
+      "samples": 13,
+      "candidates": [
+        "a8b8",
+        "d8d7",
+        "f8e8"
+      ],
+      "picked": "f8e8",
+      "source": "picked"
+    },
+    {
+      "ply": 24,
+      "side": "white",
+      "samples": 5,
+      "candidates": [
+        "c2d2",
+        "g2g4",
+        "f1e2"
+      ],
+      "picked": "g2g4",
+      "source": "picked"
+    },
+    {
+      "ply": 25,
+      "side": "black",
+      "samples": 13,
+      "candidates": [
+        "h7h6",
+        "e7f6",
+        "a6c7"
+      ],
+      "picked": "h7h6",
+      "source": "picked"
+    },
+    {
+      "ply": 26,
+      "side": "white",
+      "samples": 10,
+      "candidates": [
+        "c1g5",
+        "h2h3",
+        "g4g5"
+      ],
+      "picked": "c1g5",
+      "source": "picked"
+    },
+    {
+      "ply": 27,
+      "side": "black",
+      "samples": 24,
+      "candidates": [
+        "d8b6",
+        "h6g5",
+        "h6h5"
+      ],
+      "picked": "h6h5",
+      "source": "picked"
+    },
+    {
+      "ply": 28,
+      "side": "white",
+      "samples": 18,
+      "candidates": [
+        "g5f6",
+        "g4h5",
+        "c3b5"
+      ],
+      "picked": "g4h5",
+      "source": "picked"
+    },
+    {
+      "ply": 29,
+      "side": "black",
+      "samples": 10,
+      "candidates": [
+        "g8h7",
+        "g7g6",
+        "e7g5"
+      ],
+      "picked": "g8h7",
+      "source": "picked"
+    },
+    {
+      "ply": 30,
+      "side": "white",
+      "samples": 22,
+      "candidates": [
+        "g5f6",
+        "c3a2",
+        "c3d5"
+      ],
+      "picked": "c3d5",
+      "source": "picked"
+    },
+    {
+      "ply": 31,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "g7g6"
+      ],
+      "picked": "g7g6",
+      "source": "picked"
+    },
+    {
+      "ply": 32,
+      "side": "white",
+      "samples": 5,
+      "candidates": [
+        "d5e7",
+        "d5f6",
+        "f2f3"
+      ],
+      "picked": "d5e7",
+      "source": "picked"
+    },
+    {
+      "ply": 33,
+      "side": "black",
+      "samples": 8,
+      "candidates": [
+        "h7g7",
+        "d8d7",
+        "e8e7"
+      ],
+      "picked": "e8e7",
+      "source": "picked"
+    },
+    {
+      "ply": 34,
+      "side": "white",
+      "samples": 9,
+      "candidates": [
+        "e1c1",
+        "f1c4",
+        "h1g1"
+      ],
+      "picked": "e1c1",
+      "source": "picked"
+    },
+    {
+      "ply": 35,
+      "side": "black",
+      "samples": 24,
+      "candidates": [
+        "b7e4",
+        "a6b8",
+        "e7e6"
+      ],
+      "picked": "e7e6",
+      "source": "picked"
+    },
+    {
+      "ply": 36,
+      "side": "white",
+      "samples": 18,
+      "candidates": [
+        "f1b5",
+        "f2f4",
+        "c1b1"
+      ],
+      "picked": "f2f4",
+      "source": "picked"
+    },
+    {
+      "ply": 37,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "h7g7",
+        "a8b8"
+      ],
+      "picked": "a8b8",
+      "source": "picked"
+    },
+    {
+      "ply": 38,
+      "side": "white",
+      "samples": 30,
+      "candidates": [
+        "f1e2",
+        "c1d2",
+        "f4f5"
+      ],
+      "picked": "c1d2",
+      "source": "picked"
+    },
+    {
+      "ply": 39,
+      "side": "black",
+      "samples": 11,
+      "candidates": [
+        "b8a8",
+        "b7c6",
+        "d8c8"
+      ],
+      "picked": "b7c6",
+      "source": "picked"
+    },
+    {
+      "ply": 40,
+      "side": "white",
+      "samples": 11,
+      "candidates": [
+        "h2h3",
+        "c2c3",
+        "b2b3"
+      ],
+      "picked": "h2h3",
+      "source": "picked"
+    },
+    {
+      "ply": 41,
+      "side": "black",
+      "samples": 31,
+      "candidates": [
+        "b8b2",
+        "e6e7",
+        "b8b7"
+      ],
+      "picked": "b8b7",
+      "source": "picked"
+    },
+    {
+      "ply": 42,
+      "side": "white",
+      "samples": 24,
+      "candidates": [
+        "g5f6",
+        "f4f5",
+        "h1h2"
+      ],
+      "picked": "g5f6",
+      "source": "picked"
+    },
+    {
+      "ply": 43,
+      "side": "black",
+      "samples": 20,
+      "candidates": [
+        "d8c8",
+        "h7g8",
+        "e6e5"
+      ],
+      "picked": "h7g8",
+      "source": "picked"
+    },
+    {
+      "ply": 44,
+      "side": "white",
+      "samples": 26,
+      "candidates": [
+        "h3h4",
+        "f6e5",
+        "h5g6"
+      ],
+      "picked": "h5g6",
+      "source": "picked"
+    },
+    {
+      "ply": 45,
+      "side": "black",
+      "samples": 21,
+      "candidates": [
+        "e6d6",
+        "e6e5",
+        "b7f7"
+      ],
+      "picked": "b7f7",
+      "source": "picked"
+    },
+    {
+      "ply": 46,
+      "side": "white",
+      "samples": 19,
+      "candidates": [
+        "c2c4",
+        "f1a6",
+        "d2e3"
+      ],
+      "picked": "f1a6",
+      "source": "picked"
+    },
+    {
+      "ply": 47,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "f7f8",
+        "c6e4"
+      ],
+      "picked": "f7f8",
+      "source": "picked"
+    },
+    {
+      "ply": 48,
+      "side": "white",
+      "samples": 5,
+      "candidates": [
+        "d1e1",
+        "h3h4",
+        "d1f1"
+      ],
+      "picked": "h3h4",
+      "source": "picked"
+    },
+    {
+      "ply": 49,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "e6e5"
+      ],
+      "picked": "e6e5",
+      "source": "picked"
+    },
+    {
+      "ply": 50,
+      "side": "white",
+      "samples": 20,
+      "candidates": [
+        "c2c4",
+        "f4f5",
+        "h4h5"
+      ],
+      "picked": "c2c4",
+      "source": "picked"
+    },
+    {
+      "ply": 51,
+      "side": "black",
+      "samples": 40,
+      "candidates": [],
+      "picked": "e5d5",
+      "source": "forced_random"
+    },
+    {
+      "ply": 52,
+      "side": "white",
+      "samples": 39,
+      "candidates": [
+        "c4d4",
+        "c4d5",
+        "d2e1"
+      ],
+      "picked": "c4d5",
+      "source": "picked"
+    },
+    {
+      "ply": 53,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "c6d5"
+      ],
+      "picked": "c6d5",
+      "source": "picked"
+    },
+    {
+      "ply": 54,
+      "side": "white",
+      "samples": 22,
+      "candidates": [
+        "d1a1",
+        "a6e2",
+        "e4d5"
+      ],
+      "picked": "e4d5",
+      "source": "picked"
+    },
+    {
+      "ply": 55,
+      "side": "black",
+      "samples": 36,
+      "candidates": [
+        "f8e8",
+        "c5c4",
+        "d8e7"
+      ],
+      "picked": "d8e7",
+      "source": "picked"
+    },
+    {
+      "ply": 56,
+      "side": "white",
+      "samples": 40,
+      "candidates": [
+        "d6d7"
+      ],
+      "picked": "d6d7",
+      "source": "picked"
+    },
+    {
+      "ply": 57,
+      "side": "black",
+      "samples": 25,
+      "candidates": [
+        "c5c4",
+        "e7d7",
+        "e7e8"
+      ],
+      "picked": "c5c4",
+      "source": "picked"
+    },
+    {
+      "ply": 58,
+      "side": "white",
+      "samples": 19,
+      "candidates": [
+        "g6g7",
+        "d5d6",
+        "b2b4"
+      ],
+      "picked": "g6g7",
+      "source": "picked"
+    },
+    {
+      "ply": 59,
+      "side": "black",
+      "samples": 3,
+      "candidates": [
+        "e7c5",
+        "e7d8",
+        "e7d7"
+      ],
+      "picked": "e7d7",
+      "source": "picked"
+    },
+    {
+      "ply": 60,
+      "side": "white",
+      "samples": 29,
+      "candidates": [
+        "f4f5",
+        "h4h5",
+        "f6e7"
+      ],
+      "picked": "f4f5",
+      "source": "picked"
+    },
+    {
+      "ply": 61,
+      "side": "black",
+      "samples": 21,
+      "candidates": [
+        "d7e6",
+        "d7e8",
+        "d7c6"
+      ],
+      "picked": "d7e6",
+      "source": "picked"
+    },
+    {
+      "ply": 62,
+      "side": "white",
+      "samples": 40,
+      "candidates": [
+        "d5e6"
+      ],
+      "picked": "d5e6",
+      "source": "picked"
+    },
+    {
+      "ply": 63,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "f8f7",
+        "g8h7"
+      ],
+      "picked": "g8h7",
+      "source": "picked"
+    },
+    {
+      "ply": 64,
+      "side": "white",
+      "samples": 24,
+      "candidates": [
+        "h1g1",
+        "d2e3",
+        "b2b3"
+      ],
+      "picked": "h1g1",
+      "source": "picked"
+    },
+    {
+      "ply": 65,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "f8f7",
+        "c4c3"
+      ],
+      "picked": "f8f7",
+      "source": "picked"
+    },
+    {
+      "ply": 66,
+      "side": "white",
+      "samples": 40,
+      "candidates": [
+        "d1e1",
+        "h4h5"
+      ],
+      "picked": "h4h5",
+      "source": "picked"
+    },
+    {
+      "ply": 67,
+      "side": "black",
+      "samples": 34,
+      "candidates": [
+        "f7b7",
+        "f7g7",
+        "f7f6"
+      ],
+      "picked": "f7g7",
+      "source": "picked"
+    },
+    {
+      "ply": 68,
+      "side": "white",
+      "samples": 40,
+      "candidates": [
+        "h5h6"
+      ],
+      "picked": "h5h6",
+      "source": "picked"
+    },
+    {
+      "ply": 69,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "h7g8"
+      ],
+      "picked": "h7g8",
+      "source": "picked"
+    },
+    {
+      "ply": 70,
+      "side": "white",
+      "samples": 40,
+      "candidates": [
+        "e6e7"
+      ],
+      "picked": "e6e7",
+      "source": "picked"
+    },
+    {
+      "ply": 71,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "g8f7"
+      ],
+      "picked": "g8f7",
+      "source": "picked"
+    },
+    {
+      "ply": 72,
+      "side": "white",
+      "samples": 40,
+      "candidates": [
+        "h6h7",
+        "d2e3"
+      ],
+      "picked": "h6h7",
+      "source": "picked"
+    },
+    {
+      "ply": 73,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "g7g8",
+        "g7h7"
+      ],
+      "picked": "g7h7",
+      "source": "picked"
+    },
+    {
+      "ply": 74,
+      "side": "white",
+      "samples": 22,
+      "candidates": [
+        "g1e1",
+        "g1f1",
+        "g1g2"
+      ],
+      "picked": "g1e1",
+      "source": "picked"
+    },
+    {
+      "ply": 75,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "f7e8"
+      ],
+      "picked": "f7e8",
+      "source": "picked"
+    },
+    {
+      "ply": 76,
+      "side": "white",
+      "samples": 40,
+      "candidates": [
+        "e1h1",
+        "e1g1"
+      ],
+      "picked": "e1h1",
+      "source": "picked"
+    },
+    {
+      "ply": 77,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "h7e7",
+        "h7h5"
+      ],
+      "picked": "h7h5",
+      "source": "picked"
+    },
+    {
+      "ply": 78,
+      "side": "white",
+      "samples": 35,
+      "candidates": [
+        "h1h5",
+        "b2b4",
+        "h1f1"
+      ],
+      "picked": "h1h5",
+      "source": "picked"
+    },
+    {
+      "ply": 79,
+      "side": "black",
+      "samples": 40,
+      "candidates": [],
+      "picked": "c4c3",
+      "source": "forced_random"
+    },
+    {
+      "ply": 80,
+      "side": "white",
+      "samples": 40,
+      "candidates": [
+        "b2c3"
+      ],
+      "picked": "b2c3",
+      "source": "picked"
+    },
+    {
+      "ply": 81,
+      "side": "black",
+      "samples": 40,
+      "candidates": [],
+      "picked": "e8d7",
+      "source": "forced_random"
+    },
+    {
+      "ply": 82,
+      "side": "white",
+      "samples": 33,
+      "candidates": [
+        "h5h7",
+        "h5h1",
+        "d2e1"
+      ],
+      "picked": "d2e1",
+      "source": "picked"
+    },
+    {
+      "ply": 83,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "d7c7"
+      ],
+      "picked": "d7c7",
+      "source": "picked"
+    },
+    {
+      "ply": 84,
+      "side": "white",
+      "samples": 31,
+      "candidates": [
+        "h5h4",
+        "h5h6",
+        "e1f1"
+      ],
+      "picked": "e1f1",
+      "source": "picked"
+    },
+    {
+      "ply": 85,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "c7c6"
+      ],
+      "picked": "c7c6",
+      "source": "picked"
+    },
+    {
+      "ply": 86,
+      "side": "white",
+      "samples": 23,
+      "candidates": [
+        "h5h3",
+        "a4a5",
+        "d1b1"
+      ],
+      "picked": "a4a5",
+      "source": "picked"
+    },
+    {
+      "ply": 87,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "c6c7",
+        "c6c5"
+      ],
+      "picked": "c6c7",
+      "source": "picked"
+    },
+    {
+      "ply": 88,
+      "side": "white",
+      "samples": 40,
+      "candidates": [
+        "h5g5"
+      ],
+      "picked": "h5g5",
+      "source": "picked"
+    },
+    {
+      "ply": 89,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "c7c6"
+      ],
+      "picked": "c7c6",
+      "source": "picked"
+    },
+    {
+      "ply": 90,
+      "side": "white",
+      "samples": 40,
+      "candidates": [
+        "g5g7"
+      ],
+      "picked": "g5g7",
+      "source": "picked"
+    },
+    {
+      "ply": 91,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "c6c5",
+        "c6c7"
+      ],
+      "picked": "c6c7",
+      "source": "picked"
+    },
+    {
+      "ply": 92,
+      "side": "white",
+      "samples": 21,
+      "candidates": [
+        "g7g8",
+        "f6g5",
+        "g7f7"
+      ],
+      "picked": "f6g5",
+      "source": "picked"
+    },
+    {
+      "ply": 93,
+      "side": "black",
+      "samples": 40,
+      "candidates": [],
+      "picked": "c7c6",
+      "source": "forced_random"
+    },
+    {
+      "ply": 94,
+      "side": "white",
+      "samples": 30,
+      "candidates": [
+        "g7g6",
+        "g5h4",
+        "g5d2"
+      ],
+      "picked": "g7g6",
+      "source": "picked"
+    },
+    {
+      "ply": 95,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "c6c7",
+        "c6c5"
+      ],
+      "picked": "c6c7",
+      "source": "picked"
+    },
+    {
+      "ply": 96,
+      "side": "white",
+      "samples": 16,
+      "candidates": [
+        "g6h6",
+        "g6b6",
+        "g6g7"
+      ],
+      "picked": "g6b6",
+      "source": "picked"
+    },
+    {
+      "ply": 97,
+      "side": "black",
+      "samples": 40,
+      "candidates": [],
+      "picked": "a7b6",
+      "source": "forced_random"
+    },
+    {
+      "ply": 98,
+      "side": "white",
+      "samples": 35,
+      "candidates": [
+        "g5f4",
+        "a5b6",
+        "f5f6"
+      ],
+      "picked": "a5b6",
+      "source": "picked"
+    },
+    {
+      "ply": 99,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "c7b6"
+      ],
+      "picked": "c7b6",
+      "source": "picked"
+    },
+    {
+      "ply": 100,
+      "side": "white",
+      "samples": 40,
+      "candidates": [
+        "f1e2",
+        "g5h6"
+      ],
+      "picked": "g5h6",
+      "source": "picked"
+    },
+    {
+      "ply": 101,
+      "side": "black",
+      "samples": 20,
+      "candidates": [
+        "b6c7",
+        "b6c6",
+        "b6a6"
+      ],
+      "picked": "b6c6",
+      "source": "picked"
+    },
+    {
+      "ply": 102,
+      "side": "white",
+      "samples": 36,
+      "candidates": [
+        "h6g7",
+        "h6g5",
+        "h6f4"
+      ],
+      "picked": "h6f4",
+      "source": "picked"
+    },
+    {
+      "ply": 103,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "c6c5"
+      ],
+      "picked": "c6c5",
+      "source": "picked"
+    },
+    {
+      "ply": 104,
+      "side": "white",
+      "samples": 27,
+      "candidates": [
+        "f4c7",
+        "f4g3",
+        "f4e5"
+      ],
+      "picked": "f4e5",
+      "source": "picked"
+    },
+    {
+      "ply": 105,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "c5b6",
+        "c5c6"
+      ],
+      "picked": "c5b6",
+      "source": "picked"
+    },
+    {
+      "ply": 106,
+      "side": "white",
+      "samples": 14,
+      "candidates": [
+        "e5d4",
+        "e5h8",
+        "f1e2"
+      ],
+      "picked": "e5d4",
+      "source": "picked"
+    },
+    {
+      "ply": 107,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "b6c6",
+        "b6c7"
+      ],
+      "picked": "b6c6",
+      "source": "picked"
+    },
+    {
+      "ply": 108,
+      "side": "white",
+      "samples": 40,
+      "candidates": [
+        "f1f2"
+      ],
+      "picked": "f1f2",
+      "source": "picked"
+    },
+    {
+      "ply": 109,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "c6c7"
+      ],
+      "picked": "c6c7",
+      "source": "picked"
+    },
+    {
+      "ply": 110,
+      "side": "white",
+      "samples": 40,
+      "candidates": [
+        "f2e3"
+      ],
+      "picked": "f2e3",
+      "source": "picked"
+    },
+    {
+      "ply": 111,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "c7c6"
+      ],
+      "picked": "c7c6",
+      "source": "picked"
+    },
+    {
+      "ply": 112,
+      "side": "white",
+      "samples": 6,
+      "candidates": [
+        "e3f3",
+        "e3f2",
+        "e3e4"
+      ],
+      "picked": "e3f2",
+      "source": "picked"
+    },
+    {
+      "ply": 113,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "c6c7",
+        "c6d7"
+      ],
+      "picked": "c6c7",
+      "source": "picked"
+    },
+    {
+      "ply": 114,
+      "side": "white",
+      "samples": 20,
+      "candidates": [
+        "f2e3",
+        "d4g7",
+        "f2f1"
+      ],
+      "picked": "f2e3",
+      "source": "picked"
+    },
+    {
+      "ply": 115,
+      "side": "black",
+      "samples": 40,
+      "candidates": [
+        "c7c6"
+      ],
+      "picked": "c7c6",
+      "source": "picked"
+    }
+  ]
+}

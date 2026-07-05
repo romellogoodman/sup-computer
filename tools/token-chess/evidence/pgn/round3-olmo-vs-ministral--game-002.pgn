@@ -1,0 +1,11 @@
+[Event "Token Chess — round3-olmo-vs-ministral"]
+[Site "sup computer (Daydream-exclusive moves)"]
+[Date "????.??.??"]
+[Round "?"]
+[White "lmstudio:ministral-3-8b-instruct-2512"]
+[Black "lmstudio:olmo-3-7b-instruct"]
+[Result "0-1"]
+[Termination "adjudication_exhausted (engine adjudication, -328cp for white)"]
+[PlyCount "22"]
+
+1. e3 e6 2. Bd3 Nf6 3. c3 Be7 4. Qf3 O-O 5. a4 e5 6. b4 Re8 7. b5 b6 8. Bb2 Bb7 9. c4 c6 10. bxc6 Bxc6 11. c5 bxc5 0-1

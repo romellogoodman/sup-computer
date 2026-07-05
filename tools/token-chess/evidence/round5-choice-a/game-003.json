@@ -1,0 +1,1569 @@
+{
+  "outcome": "adjudication_exhausted",
+  "winner": "black",
+  "exhausted_side": "black",
+  "adjudication": {
+    "kind": "cp",
+    "value": 761,
+    "perspective": "black",
+    "white_cp": -761,
+    "depth": 10
+  },
+  "plies": 39,
+  "final_fen": "1r2k1nr/1bp4N/p2p1p2/nP3P2/3pP3/qBb5/1PQN1KPP/1R3R2 b k - 0 20",
+  "budgets_left": {
+    "white": 17,
+    "black": 0
+  },
+  "memory": {
+    "white": "notepad",
+    "black": "notepad"
+  },
+  "spend_history": {
+    "white": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1
+    ],
+    "black": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      8,
+      8,
+      1,
+      1,
+      2,
+      1
+    ]
+  },
+  "notes": {
+    "white": [],
+    "black": []
+  },
+  "stats": {
+    "white": {
+      "tokens_spent": 23,
+      "batches": 23,
+      "moves": 20,
+      "samples_legal": 42,
+      "samples_total": 69,
+      "candidates_at_pick": 39,
+      "forced_picks": 0,
+      "legality_rate": 0.6086956521739131,
+      "mean_candidates_at_pick": 1.95
+    },
+    "black": {
+      "tokens_spent": 40,
+      "batches": 40,
+      "moves": 19,
+      "samples_legal": 31,
+      "samples_total": 120,
+      "candidates_at_pick": 25,
+      "forced_picks": 0,
+      "legality_rate": 0.25833333333333336,
+      "mean_candidates_at_pick": 1.3157894736842106
+    }
+  },
+  "turns": [
+    {
+      "ply": 0,
+      "side": "white",
+      "picked": "e2e4",
+      "n_candidates": 1,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.7,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "e2e4",
+              "legal": true
+            },
+            {
+              "move": "e7e5",
+              "legal": false
+            },
+            {
+              "move": "e2e4",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 39
+    },
+    {
+      "ply": 1,
+      "side": "black",
+      "picked": "e7e5",
+      "n_candidates": 1,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.5,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "e7e5",
+              "legal": true
+            },
+            {
+              "move": "c6e5",
+              "legal": false
+            },
+            {
+              "move": "e7e5",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 39
+    },
+    {
+      "ply": 2,
+      "side": "white",
+      "picked": "g1f3",
+      "n_candidates": 3,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.6,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "g1f3",
+              "legal": true
+            },
+            {
+              "move": "d2d4",
+              "legal": true
+            },
+            {
+              "move": "f1d3",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 38
+    },
+    {
+      "ply": 3,
+      "side": "black",
+      "picked": "b8c6",
+      "n_candidates": 1,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.8,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "b8c6",
+              "legal": true
+            },
+            {
+              "move": "b8c6",
+              "legal": true
+            },
+            {
+              "move": "b8c6",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 38
+    },
+    {
+      "ply": 4,
+      "side": "white",
+      "picked": "f1c4",
+      "n_candidates": 2,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.75,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "f1c4",
+              "legal": true
+            },
+            {
+              "move": "f1c4",
+              "legal": true
+            },
+            {
+              "move": "f1b5",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 37
+    },
+    {
+      "ply": 5,
+      "side": "black",
+      "picked": "f8c5",
+      "n_candidates": 2,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.9,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "f8b4",
+              "legal": true
+            },
+            {
+              "move": "f8c5",
+              "legal": true
+            },
+            {
+              "move": "f8c5",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 37
+    },
+    {
+      "ply": 6,
+      "side": "white",
+      "picked": "d2d3",
+      "n_candidates": 2,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.85,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "d2d3",
+              "legal": true
+            },
+            {
+              "move": "e1g1",
+              "legal": true
+            },
+            {
+              "move": "e1g1",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 36
+    },
+    {
+      "ply": 7,
+      "side": "black",
+      "picked": "a7a6",
+      "n_candidates": 2,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.9,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "a7a6",
+              "legal": true
+            },
+            {
+              "move": "f6e4",
+              "legal": false
+            },
+            {
+              "move": "d7d6",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 36
+    },
+    {
+      "ply": 8,
+      "side": "white",
+      "picked": "c4b3",
+      "n_candidates": 3,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.7,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "c4b3",
+              "legal": true
+            },
+            {
+              "move": "c1g5",
+              "legal": true
+            },
+            {
+              "move": "b1c3",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 35
+    },
+    {
+      "ply": 9,
+      "side": "black",
+      "picked": "c5d4",
+      "n_candidates": 2,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.75,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "c8g4",
+              "legal": false
+            },
+            {
+              "move": "c5d4",
+              "legal": true
+            },
+            {
+              "move": "c5b6",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 35
+    },
+    {
+      "ply": 10,
+      "side": "white",
+      "picked": "e1g1",
+      "n_candidates": 2,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.8,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "e1g1",
+              "legal": true
+            },
+            {
+              "move": "f3d4",
+              "legal": true
+            },
+            {
+              "move": "e3d4",
+              "legal": false
+            }
+          ]
+        }
+      ],
+      "budget_after": 34
+    },
+    {
+      "ply": 11,
+      "side": "black",
+      "picked": "c6a5",
+      "n_candidates": 1,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.9,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "c6a5",
+              "legal": true
+            },
+            {
+              "move": "c8g4",
+              "legal": false
+            },
+            {
+              "move": "e8g8",
+              "legal": false
+            }
+          ]
+        }
+      ],
+      "budget_after": 34
+    },
+    {
+      "ply": 12,
+      "side": "white",
+      "picked": "c2c3",
+      "n_candidates": 2,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.7,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "c2c3",
+              "legal": true
+            },
+            {
+              "move": "b3a4",
+              "legal": true
+            },
+            {
+              "move": "b3c2",
+              "legal": false
+            }
+          ]
+        }
+      ],
+      "budget_after": 33
+    },
+    {
+      "ply": 13,
+      "side": "black",
+      "picked": "d4c3",
+      "n_candidates": 1,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.75,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "d4c3",
+              "legal": true
+            },
+            {
+              "move": "d4b3",
+              "legal": false
+            },
+            {
+              "move": "a5c3",
+              "legal": false
+            }
+          ]
+        }
+      ],
+      "budget_after": 33
+    },
+    {
+      "ply": 14,
+      "side": "white",
+      "picked": "d1c2",
+      "n_candidates": 3,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.75,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "d1c2",
+              "legal": true
+            },
+            {
+              "move": "b2c3",
+              "legal": true
+            },
+            {
+              "move": "b3c2",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 32
+    },
+    {
+      "ply": 15,
+      "side": "black",
+      "picked": "a8b8",
+      "n_candidates": 2,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.8,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "a8b8",
+              "legal": true
+            },
+            {
+              "move": "e8g8",
+              "legal": false
+            },
+            {
+              "move": "d7d6",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 32
+    },
+    {
+      "ply": 16,
+      "side": "white",
+      "picked": "c1g5",
+      "n_candidates": 1,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.75,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "b3a2",
+              "legal": false
+            },
+            {
+              "move": "a1c1",
+              "legal": false
+            },
+            {
+              "move": "c1g5",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 31
+    },
+    {
+      "ply": 17,
+      "side": "black",
+      "picked": "f7f6",
+      "n_candidates": 1,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.7,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "f7f6",
+              "legal": true
+            },
+            {
+              "move": "f7f6",
+              "legal": true
+            },
+            {
+              "move": "b8b6",
+              "legal": false
+            }
+          ]
+        }
+      ],
+      "budget_after": 31
+    },
+    {
+      "ply": 18,
+      "side": "white",
+      "picked": "g5f6",
+      "n_candidates": 2,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.9,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "g5f4",
+              "legal": true
+            },
+            {
+              "move": "g5f6",
+              "legal": true
+            },
+            {
+              "move": "g5e4",
+              "legal": false
+            }
+          ]
+        }
+      ],
+      "budget_after": 30
+    },
+    {
+      "ply": 19,
+      "side": "black",
+      "picked": "g7f6",
+      "n_candidates": 1,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.75,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "e7f6",
+              "legal": false
+            },
+            {
+              "move": "g7f6",
+              "legal": true
+            },
+            {
+              "move": "g7f6",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 30
+    },
+    {
+      "ply": 20,
+      "side": "white",
+      "picked": "f3g5",
+      "n_candidates": 2,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.85,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "f3g5",
+              "legal": true
+            },
+            {
+              "move": "c2e4",
+              "legal": false
+            },
+            {
+              "move": "b1d2",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 29
+    },
+    {
+      "ply": 21,
+      "side": "black",
+      "picked": "b7b5",
+      "n_candidates": 1,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.6,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "d8a5",
+              "legal": false
+            },
+            {
+              "move": "f8g7",
+              "legal": false
+            },
+            {
+              "move": "b7b5",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 29
+    },
+    {
+      "ply": 22,
+      "side": "white",
+      "picked": "g5h7",
+      "n_candidates": 2,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.75,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "g5h7",
+              "legal": true
+            },
+            {
+              "move": "a4b5",
+              "legal": false
+            },
+            {
+              "move": "g5f3",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 28
+    },
+    {
+      "ply": 23,
+      "side": "black",
+      "picked": "c8b7",
+      "n_candidates": 2,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.9,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "b8d7",
+              "legal": false
+            },
+            {
+              "move": "g8h8",
+              "legal": false
+            },
+            {
+              "move": "b5c4",
+              "legal": false
+            }
+          ]
+        },
+        {
+          "temperature": 1.2,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "c8b7",
+              "legal": true
+            },
+            {
+              "move": "e8e7",
+              "legal": true
+            },
+            {
+              "move": "g8h7",
+              "legal": false
+            }
+          ]
+        }
+      ],
+      "budget_after": 27
+    },
+    {
+      "ply": 24,
+      "side": "white",
+      "picked": "d3d4",
+      "n_candidates": 1,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.85,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "h7f5",
+              "legal": false
+            },
+            {
+              "move": "a1b1",
+              "legal": false
+            },
+            {
+              "move": "e4e5",
+              "legal": false
+            }
+          ]
+        },
+        {
+          "temperature": 0.9,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "d3f5",
+              "legal": false
+            },
+            {
+              "move": "d3d4",
+              "legal": true
+            },
+            {
+              "move": "c3b5",
+              "legal": false
+            }
+          ]
+        }
+      ],
+      "budget_after": 26
+    },
+    {
+      "ply": 25,
+      "side": "black",
+      "picked": "e5d4",
+      "n_candidates": 1,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.75,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "f8d6",
+              "legal": false
+            },
+            {
+              "move": "f8d6",
+              "legal": false
+            },
+            {
+              "move": "a5b7",
+              "legal": false
+            }
+          ]
+        },
+        {
+          "temperature": 0.9,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "c5d4",
+              "legal": false
+            },
+            {
+              "move": "f8e7",
+              "legal": false
+            },
+            {
+              "move": "e5d4",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 25
+    },
+    {
+      "ply": 26,
+      "side": "white",
+      "picked": "b1d2",
+      "n_candidates": 2,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.6,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "c3d4",
+              "legal": false
+            },
+            {
+              "move": "e1g1",
+              "legal": false
+            },
+            {
+              "move": "f1d3",
+              "legal": false
+            }
+          ]
+        },
+        {
+          "temperature": 0.8,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "b1d2",
+              "legal": true
+            },
+            {
+              "move": "g2d5",
+              "legal": false
+            },
+            {
+              "move": "f2f4",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 24
+    },
+    {
+      "ply": 27,
+      "side": "black",
+      "picked": "d8e7",
+      "n_candidates": 1,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.75,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "f6d5",
+              "legal": false
+            },
+            {
+              "move": "f8e8",
+              "legal": false
+            },
+            {
+              "move": "c5b6",
+              "legal": false
+            }
+          ]
+        },
+        {
+          "temperature": 1.2,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "d6f4",
+              "legal": false
+            },
+            {
+              "move": "b5c3",
+              "legal": false
+            },
+            {
+              "move": "f8e8",
+              "legal": false
+            }
+          ]
+        },
+        {
+          "temperature": 0.9,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "b5c4",
+              "legal": false
+            },
+            {
+              "move": "f8e8",
+              "legal": false
+            },
+            {
+              "move": "f8e8",
+              "legal": false
+            }
+          ]
+        },
+        {
+          "temperature": 1.0,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "e6h3",
+              "legal": false
+            },
+            {
+              "move": "f8e8",
+              "legal": false
+            },
+            {
+              "move": "c6e5",
+              "legal": false
+            }
+          ]
+        },
+        {
+          "temperature": 0.7,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "d4c3",
+              "legal": false
+            },
+            {
+              "move": "b5c4",
+              "legal": false
+            },
+            {
+              "move": "a8c8",
+              "legal": false
+            }
+          ]
+        },
+        {
+          "temperature": 1.2,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "e8g8",
+              "legal": false
+            },
+            {
+              "move": "a8c8",
+              "legal": false
+            },
+            {
+              "move": "f8e8",
+              "legal": false
+            }
+          ]
+        },
+        {
+          "temperature": 0.6,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "d8c7",
+              "legal": false
+            },
+            {
+              "move": "d4f3",
+              "legal": false
+            },
+            {
+              "move": "f6g5",
+              "legal": false
+            }
+          ]
+        },
+        {
+          "temperature": 0.85,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "a8c8",
+              "legal": false
+            },
+            {
+              "move": "d8e7",
+              "legal": true
+            },
+            {
+              "move": "d7c5",
+              "legal": false
+            }
+          ]
+        }
+      ],
+      "budget_after": 17
+    },
+    {
+      "ply": 28,
+      "side": "white",
+      "picked": "a1b1",
+      "n_candidates": 1,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.75,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "c1g5",
+              "legal": false
+            },
+            {
+              "move": "a1b1",
+              "legal": true
+            },
+            {
+              "move": "d2f4",
+              "legal": false
+            }
+          ]
+        }
+      ],
+      "budget_after": 23
+    },
+    {
+      "ply": 29,
+      "side": "black",
+      "picked": "b7c8",
+      "n_candidates": 1,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.8,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "f8b8",
+              "legal": false
+            },
+            {
+              "move": "b7b4",
+              "legal": false
+            },
+            {
+              "move": "a8c8",
+              "legal": false
+            }
+          ]
+        },
+        {
+          "temperature": 0.9,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "c6b4",
+              "legal": false
+            },
+            {
+              "move": "a8c8",
+              "legal": false
+            },
+            {
+              "move": "a8d8",
+              "legal": false
+            }
+          ]
+        },
+        {
+          "temperature": 0.6,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "d7b5",
+              "legal": false
+            },
+            {
+              "move": "a8c8",
+              "legal": false
+            },
+            {
+              "move": "a8c8",
+              "legal": false
+            }
+          ]
+        },
+        {
+          "temperature": 1.1,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "e8g8",
+              "legal": false
+            },
+            {
+              "move": "b7f3",
+              "legal": false
+            },
+            {
+              "move": "a4c2",
+              "legal": false
+            }
+          ]
+        },
+        {
+          "temperature": 0.7,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "e8g8",
+              "legal": false
+            },
+            {
+              "move": "b7d8",
+              "legal": false
+            },
+            {
+              "move": "c6b4",
+              "legal": false
+            }
+          ]
+        },
+        {
+          "temperature": 0.85,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "f8e8",
+              "legal": false
+            },
+            {
+              "move": "a8d8",
+              "legal": false
+            },
+            {
+              "move": "b7b6",
+              "legal": false
+            }
+          ]
+        },
+        {
+          "temperature": 0.6,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "g8f6",
+              "legal": false
+            },
+            {
+              "move": "d4c3",
+              "legal": false
+            },
+            {
+              "move": "e8g8",
+              "legal": false
+            }
+          ]
+        },
+        {
+          "temperature": 0.7,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "a8c8",
+              "legal": false
+            },
+            {
+              "move": "b5c6",
+              "legal": false
+            },
+            {
+              "move": "b7c8",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 9
+    },
+    {
+      "ply": 30,
+      "side": "white",
+      "picked": "a2a4",
+      "n_candidates": 3,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.9,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "a2a4",
+              "legal": true
+            },
+            {
+              "move": "c2c3",
+              "legal": true
+            },
+            {
+              "move": "h2h4",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 22
+    },
+    {
+      "ply": 31,
+      "side": "black",
+      "picked": "c8b7",
+      "n_candidates": 1,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.75,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "b5c3",
+              "legal": false
+            },
+            {
+              "move": "c8b7",
+              "legal": true
+            },
+            {
+              "move": "c8b8",
+              "legal": false
+            }
+          ]
+        }
+      ],
+      "budget_after": 8
+    },
+    {
+      "ply": 32,
+      "side": "white",
+      "picked": "a4b5",
+      "n_candidates": 3,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.85,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "f3e5",
+              "legal": false
+            },
+            {
+              "move": "e2e4",
+              "legal": false
+            },
+            {
+              "move": "g5f6",
+              "legal": false
+            }
+          ]
+        },
+        {
+          "temperature": 0.7,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "b1c1",
+              "legal": true
+            },
+            {
+              "move": "a4b5",
+              "legal": true
+            },
+            {
+              "move": "f1d1",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 20
+    },
+    {
+      "ply": 33,
+      "side": "black",
+      "picked": "e7d6",
+      "n_candidates": 2,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.6,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "e7d6",
+              "legal": true
+            },
+            {
+              "move": "a6b5",
+              "legal": true
+            },
+            {
+              "move": "d7b5",
+              "legal": false
+            }
+          ]
+        }
+      ],
+      "budget_after": 7
+    },
+    {
+      "ply": 34,
+      "side": "white",
+      "picked": "f2f4",
+      "n_candidates": 1,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.95,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "b2b4",
+              "legal": false
+            },
+            {
+              "move": "f2f4",
+              "legal": true
+            },
+            {
+              "move": "a1a7",
+              "legal": false
+            }
+          ]
+        }
+      ],
+      "budget_after": 19
+    },
+    {
+      "ply": 35,
+      "side": "black",
+      "picked": "d6a3",
+      "n_candidates": 1,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.85,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "g5f4",
+              "legal": false
+            },
+            {
+              "move": "g5f4",
+              "legal": false
+            },
+            {
+              "move": "d6b7",
+              "legal": false
+            }
+          ]
+        },
+        {
+          "temperature": 1.2,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "e5c4",
+              "legal": false
+            },
+            {
+              "move": "d6a3",
+              "legal": true
+            },
+            {
+              "move": "e6f4",
+              "legal": false
+            }
+          ]
+        }
+      ],
+      "budget_after": 5
+    },
+    {
+      "ply": 36,
+      "side": "white",
+      "picked": "g1f2",
+      "n_candidates": 1,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.8,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "b5c6",
+              "legal": false
+            },
+            {
+              "move": "g1f2",
+              "legal": true
+            },
+            {
+              "move": "e2d3",
+              "legal": false
+            }
+          ]
+        }
+      ],
+      "budget_after": 18
+    },
+    {
+      "ply": 37,
+      "side": "black",
+      "picked": "d7d6",
+      "n_candidates": 1,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.8,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "d7d6",
+              "legal": true
+            },
+            {
+              "move": "d5e3",
+              "legal": false
+            },
+            {
+              "move": "g5e7",
+              "legal": false
+            }
+          ]
+        }
+      ],
+      "budget_after": 4
+    },
+    {
+      "ply": 38,
+      "side": "white",
+      "picked": "f4f5",
+      "n_candidates": 2,
+      "notes": [],
+      "batches": [
+        {
+          "temperature": 0.8,
+          "soft_cap": null,
+          "samples": [
+            {
+              "move": "e4d6",
+              "legal": false
+            },
+            {
+              "move": "f4f5",
+              "legal": true
+            },
+            {
+              "move": "g2g3",
+              "legal": true
+            }
+          ]
+        }
+      ],
+      "budget_after": 17
+    }
+  ],
+  "white_player": "lmstudio:olmo-3-7b-instruct+choose",
+  "black_player": "lmstudio:olmo-3-7b-instruct+choose",
+  "tool_choices": {
+    "white": {
+      "tool": "notepad",
+      "why": "Notes help me remember complex positions and plan better."
+    },
+    "black": {
+      "tool": "notepad",
+      "why": "Notes help me remember key ideas and plan better without relying only on Daydream's samples."
+    }
+  },
+  "llm_usage": {
+    "lmstudio:olmo-3-7b-instruct+choose": {
+      "prompt_tokens": 35232,
+      "completion_tokens": 1185,
+      "calls": 61,
+      "parse_failures": 1
+    }
+  }
+}

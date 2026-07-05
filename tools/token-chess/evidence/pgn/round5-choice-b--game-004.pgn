@@ -1,0 +1,11 @@
+[Event "Token Chess — round5-choice-b"]
+[Site "sup computer (Daydream-exclusive moves)"]
+[Date "????.??.??"]
+[Round "?"]
+[White "lmstudio:olmo-3-7b-instruct+choose"]
+[Black "lmstudio:olmo-3-7b-instruct+choose"]
+[Result "0-1"]
+[Termination "adjudication_exhausted (engine adjudication, -1348cp for white)"]
+[PlyCount "57"]
+
+1. e4 d5 2. exd5 c6 3. c4 Nf6 4. d3 e5 5. Nc3 Bb4 6. Bd2 Nbd7 7. Nf3 O-O 8. Be2 Re8 9. O-O Nxd5 10. Nd4 f5 11. Nxf5 g6 12. h4 Kh8 13. Nxd5 Qe7 14. Nf6 Qxf6 15. Ne7 Qxe7 16. Bf4 Nf6 17. c5 Bg4 18. Bg3 h5 19. Bf4 Bf3 20. Bxf3 Ne4 21. Qa4 Nf6 22. Kh1 Qd6 23. Qxc6 bxc6 24. Rad1 Rab8 25. a4 Rb7 26. a5 Qxc5 27. a6 Qd4 28. Bxe5 Qxe5 29. g3 0-1

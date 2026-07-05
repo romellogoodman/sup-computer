@@ -61,6 +61,24 @@ class Engine:
                 legal.append(line.split(":")[0])
         return legal
 
+    def evaluate(self, moves: list, depth: int = 10) -> dict:
+        """Engine score of the position after `moves`, from the side-to-move's
+        perspective: {'kind': 'cp'|'mate', 'value': int}. Used by Token Chess
+        round three to adjudicate games that end by budget exhaustion."""
+        self._set_position(moves)
+        self._send(f"go depth {depth}")
+        kind, value = "cp", 0
+        while True:
+            line = self.proc.stdout.readline()
+            if not line:
+                raise RuntimeError("engine exited during evaluate")
+            if " score cp " in line:
+                kind, value = "cp", int(line.split(" score cp ")[1].split()[0])
+            elif " score mate " in line:
+                kind, value = "mate", int(line.split(" score mate ")[1].split()[0])
+            if line.startswith("bestmove"):
+                return {"kind": kind, "value": value}
+
     def best_move(self, moves: list, depth: int = 6) -> str:
         """The engine's own choice, used when the engine itself is a player
         (self-play corpus generation, or the harness's opponent side)."""

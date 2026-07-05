@@ -1,0 +1,515 @@
+{
+  "outcome": "forfeit",
+  "winner": "black",
+  "plies": 18,
+  "calls_spent": {
+    "white": 30,
+    "black": 19
+  },
+  "legal_first_try": {
+    "white": 0,
+    "black": 6
+  },
+  "moves_made": {
+    "white": 9,
+    "black": 9
+  },
+  "legal_hit_rate": {
+    "white": 0.0,
+    "black": 0.3157894736842105
+  },
+  "attempts": [
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 29,
+      "temperature": 1.2,
+      "soft_cap": 0.5,
+      "move": "2",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 0,
+      "side": "white",
+      "budget_after": 28,
+      "temperature": 0.7,
+      "soft_cap": null,
+      "move": "d2d4",
+      "legal": true,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 1,
+      "side": "black",
+      "budget_after": 29,
+      "temperature": 0.8,
+      "soft_cap": null,
+      "move": "e8g8",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 1,
+      "side": "black",
+      "budget_after": 28,
+      "temperature": 0.6,
+      "soft_cap": 1.5,
+      "move": "c4",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 1,
+      "side": "black",
+      "budget_after": 27,
+      "temperature": 0.7,
+      "soft_cap": 2.0,
+      "move": "f8d5",
+      "legal": false,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 1,
+      "side": "black",
+      "budget_after": 26,
+      "temperature": 0.6,
+      "soft_cap": null,
+      "move": "d7d6",
+      "legal": true,
+      "n_legal_moves": 20
+    },
+    {
+      "ply": 2,
+      "side": "white",
+      "budget_after": 27,
+      "temperature": 1.2,
+      "soft_cap": 0.5,
+      "move": "b8an",
+      "legal": false,
+      "n_legal_moves": 28
+    },
+    {
+      "ply": 2,
+      "side": "white",
+      "budget_after": 26,
+      "temperature": 0.3,
+      "soft_cap": null,
+      "move": "c2c4",
+      "legal": true,
+      "n_legal_moves": 28
+    },
+    {
+      "ply": 3,
+      "side": "black",
+      "budget_after": 25,
+      "temperature": 0.6,
+      "soft_cap": null,
+      "move": "d5b6",
+      "legal": false,
+      "n_legal_moves": 27
+    },
+    {
+      "ply": 3,
+      "side": "black",
+      "budget_after": 24,
+      "temperature": 0.9,
+      "soft_cap": 2.5,
+      "move": "a5d7",
+      "legal": false,
+      "n_legal_moves": 27
+    },
+    {
+      "ply": 3,
+      "side": "black",
+      "budget_after": 23,
+      "temperature": 1.2,
+      "soft_cap": null,
+      "move": "g8f6",
+      "legal": true,
+      "n_legal_moves": 27
+    },
+    {
+      "ply": 4,
+      "side": "white",
+      "budget_after": 25,
+      "temperature": 1.3,
+      "soft_cap": 0.5,
+      "move": "gch5r5c6",
+      "legal": false,
+      "n_legal_moves": 30
+    },
+    {
+      "ply": 4,
+      "side": "white",
+      "budget_after": 24,
+      "temperature": 0.7,
+      "soft_cap": 0.3,
+      "move": "ccq65",
+      "legal": false,
+      "n_legal_moves": 30
+    },
+    {
+      "ply": 4,
+      "side": "white",
+      "budget_after": 23,
+      "temperature": 0.1,
+      "soft_cap": 1.0,
+      "move": "f8a2",
+      "legal": false,
+      "n_legal_moves": 30
+    },
+    {
+      "ply": 4,
+      "side": "white",
+      "budget_after": 22,
+      "temperature": 0.4,
+      "soft_cap": 0.7,
+      "move": "c31a4",
+      "legal": false,
+      "n_legal_moves": 30
+    },
+    {
+      "ply": 4,
+      "side": "white",
+      "budget_after": 21,
+      "temperature": 0.3,
+      "soft_cap": null,
+      "move": "b1c3",
+      "legal": true,
+      "n_legal_moves": 30
+    },
+    {
+      "ply": 5,
+      "side": "black",
+      "budget_after": 22,
+      "temperature": 0.85,
+      "soft_cap": null,
+      "move": "c7c6",
+      "legal": true,
+      "n_legal_moves": 30
+    },
+    {
+      "ply": 6,
+      "side": "white",
+      "budget_after": 20,
+      "temperature": 0.6,
+      "soft_cap": 0.8,
+      "move": "aq",
+      "legal": false,
+      "n_legal_moves": 33
+    },
+    {
+      "ply": 6,
+      "side": "white",
+      "budget_after": 19,
+      "temperature": 1.5,
+      "soft_cap": 0.3,
+      "move": "8",
+      "legal": false,
+      "n_legal_moves": 33
+    },
+    {
+      "ply": 6,
+      "side": "white",
+      "budget_after": 18,
+      "temperature": 0.7,
+      "soft_cap": null,
+      "move": "b2b3",
+      "legal": true,
+      "n_legal_moves": 33
+    },
+    {
+      "ply": 7,
+      "side": "black",
+      "budget_after": 21,
+      "temperature": 1.0,
+      "soft_cap": null,
+      "move": "g7g5",
+      "legal": true,
+      "n_legal_moves": 31
+    },
+    {
+      "ply": 8,
+      "side": "white",
+      "budget_after": 17,
+      "temperature": 0.7,
+      "soft_cap": 0.3,
+      "move": "bc1n4b3d",
+      "legal": false,
+      "n_legal_moves": 31
+    },
+    {
+      "ply": 8,
+      "side": "white",
+      "budget_after": 16,
+      "temperature": 0.5,
+      "soft_cap": 0.2,
+      "move": "bd2g8q61",
+      "legal": false,
+      "n_legal_moves": 31
+    },
+    {
+      "ply": 8,
+      "side": "white",
+      "budget_after": 15,
+      "temperature": 0.9,
+      "soft_cap": null,
+      "move": "h2h3",
+      "legal": true,
+      "n_legal_moves": 31
+    },
+    {
+      "ply": 9,
+      "side": "black",
+      "budget_after": 20,
+      "temperature": 0.7,
+      "soft_cap": null,
+      "move": "g5g4",
+      "legal": true,
+      "n_legal_moves": 32
+    },
+    {
+      "ply": 10,
+      "side": "white",
+      "budget_after": 14,
+      "temperature": 0.6,
+      "soft_cap": 1.2,
+      "move": "fgga6",
+      "legal": false,
+      "n_legal_moves": 31
+    },
+    {
+      "ply": 10,
+      "side": "white",
+      "budget_after": 13,
+      "temperature": 0.7,
+      "soft_cap": null,
+      "move": "c1g5",
+      "legal": true,
+      "n_legal_moves": 31
+    },
+    {
+      "ply": 11,
+      "side": "black",
+      "budget_after": 19,
+      "temperature": 0.8,
+      "soft_cap": null,
+      "move": "f8g7",
+      "legal": true,
+      "n_legal_moves": 30
+    },
+    {
+      "ply": 12,
+      "side": "white",
+      "budget_after": 12,
+      "temperature": 0.7,
+      "soft_cap": 0.5,
+      "move": "hc8bnh8",
+      "legal": false,
+      "n_legal_moves": 34
+    },
+    {
+      "ply": 12,
+      "side": "white",
+      "budget_after": 11,
+      "temperature": 0.3,
+      "soft_cap": null,
+      "move": "g5f6",
+      "legal": true,
+      "n_legal_moves": 34
+    },
+    {
+      "ply": 13,
+      "side": "black",
+      "budget_after": 18,
+      "temperature": 1.0,
+      "soft_cap": null,
+      "move": "g7f6",
+      "legal": true,
+      "n_legal_moves": 30
+    },
+    {
+      "ply": 14,
+      "side": "white",
+      "budget_after": 10,
+      "temperature": 0.7,
+      "soft_cap": 0.2,
+      "move": "gr5dea1c",
+      "legal": false,
+      "n_legal_moves": 27
+    },
+    {
+      "ply": 14,
+      "side": "white",
+      "budget_after": 9,
+      "temperature": 1.5,
+      "soft_cap": null,
+      "move": "g2g3",
+      "legal": true,
+      "n_legal_moves": 27
+    },
+    {
+      "ply": 15,
+      "side": "black",
+      "budget_after": 17,
+      "temperature": 0.7,
+      "soft_cap": null,
+      "move": "e8g8",
+      "legal": true,
+      "n_legal_moves": 30
+    },
+    {
+      "ply": 16,
+      "side": "white",
+      "budget_after": 8,
+      "temperature": 1.2,
+      "soft_cap": 0.5,
+      "move": "ef3bgbc5",
+      "legal": false,
+      "n_legal_moves": 27
+    },
+    {
+      "ply": 16,
+      "side": "white",
+      "budget_after": 7,
+      "temperature": 0.7,
+      "soft_cap": 0.3,
+      "move": "nhg3fa57",
+      "legal": false,
+      "n_legal_moves": 27
+    },
+    {
+      "ply": 16,
+      "side": "white",
+      "budget_after": 6,
+      "temperature": 1.0,
+      "soft_cap": null,
+      "move": "f1g2",
+      "legal": true,
+      "n_legal_moves": 27
+    },
+    {
+      "ply": 17,
+      "side": "black",
+      "budget_after": 16,
+      "temperature": 1.0,
+      "soft_cap": null,
+      "move": "c6e7",
+      "legal": false,
+      "n_legal_moves": 30
+    },
+    {
+      "ply": 17,
+      "side": "black",
+      "budget_after": 15,
+      "temperature": 0.5,
+      "soft_cap": 0.3,
+      "move": "eenh2f8",
+      "legal": false,
+      "n_legal_moves": 30
+    },
+    {
+      "ply": 17,
+      "side": "black",
+      "budget_after": 14,
+      "temperature": 0.75,
+      "soft_cap": null,
+      "move": "f6d5",
+      "legal": false,
+      "n_legal_moves": 30
+    },
+    {
+      "ply": 17,
+      "side": "black",
+      "budget_after": 13,
+      "temperature": 1.2,
+      "soft_cap": null,
+      "move": "f6g4",
+      "legal": false,
+      "n_legal_moves": 30
+    },
+    {
+      "ply": 17,
+      "side": "black",
+      "budget_after": 12,
+      "temperature": 0.3,
+      "soft_cap": 0.2,
+      "move": "d23b",
+      "legal": false,
+      "n_legal_moves": 30
+    },
+    {
+      "ply": 17,
+      "side": "black",
+      "budget_after": 11,
+      "temperature": 0.9,
+      "soft_cap": null,
+      "move": "c8e6",
+      "legal": true,
+      "n_legal_moves": 30
+    },
+    {
+      "ply": 18,
+      "side": "white",
+      "budget_after": 5,
+      "temperature": 0.8,
+      "soft_cap": 1.5,
+      "move": "g2hq",
+      "legal": false,
+      "n_legal_moves": 32
+    },
+    {
+      "ply": 18,
+      "side": "white",
+      "budget_after": 4,
+      "temperature": 0.4,
+      "soft_cap": null,
+      "move": "e1g1",
+      "legal": false,
+      "n_legal_moves": 32
+    },
+    {
+      "ply": 18,
+      "side": "white",
+      "budget_after": 3,
+      "temperature": 0.3,
+      "soft_cap": null,
+      "move": "e1g1",
+      "legal": false,
+      "n_legal_moves": 32
+    },
+    {
+      "ply": 18,
+      "side": "white",
+      "budget_after": 2,
+      "temperature": 0.25,
+      "soft_cap": 0.8,
+      "move": "b1a2",
+      "legal": false,
+      "n_legal_moves": 32
+    },
+    {
+      "ply": 18,
+      "side": "white",
+      "budget_after": 1,
+      "temperature": 0.7,
+      "soft_cap": 0.3,
+      "move": "bhba1q",
+      "legal": false,
+      "n_legal_moves": 32
+    },
+    {
+      "ply": 18,
+      "side": "white",
+      "budget_after": 0,
+      "temperature": 0.4,
+      "soft_cap": null,
+      "move": "e1g1",
+      "legal": false,
+      "n_legal_moves": 32
+    }
+  ],
+  "white_player": "lmstudio:ministral-3-8b-instruct-2512",
+  "black_player": "lmstudio:olmo-3-7b-instruct"
+}

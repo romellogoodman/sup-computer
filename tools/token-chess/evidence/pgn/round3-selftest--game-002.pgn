@@ -1,0 +1,11 @@
+[Event "Token Chess — round3-selftest"]
+[Site "sup computer (Daydream-exclusive moves)"]
+[Date "????.??.??"]
+[Round "?"]
+[White "mock:random"]
+[Black "mock:heuristic"]
+[Result "1-0"]
+[Termination "adjudication_exhausted (engine adjudication, +900cp for white)"]
+[PlyCount "50"]
+
+1. e4 e6 2. d4 Nc6 3. Bg5 Be7 4. Bxe7 Ngxe7 5. g3 h6 6. Nf3 O-O 7. Bg2 Re8 8. O-O d6 9. Nbd2 b5 10. Re1 Bb7 11. b3 Nxd4 12. Nxd4 a5 13. c3 a4 14. e5 dxe5 15. f4 g5 16. b4 Kg7 17. Qc2 exd4 18. Qd1 dxc3 19. Qc2 Qd3 20. Rad1 e5 21. f5 e4 22. Rxe4 Qxe4 23. Kh1 Rf8 24. g4 Qe1+ 25. Rxe1 Kh8 1-0

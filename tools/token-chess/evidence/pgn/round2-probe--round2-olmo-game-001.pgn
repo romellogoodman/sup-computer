@@ -1,0 +1,11 @@
+[Event "Token Chess — round2-probe"]
+[Site "sup computer (Daydream-exclusive moves)"]
+[Date "????.??.??"]
+[Round "?"]
+[White "lmstudio:olmo-3-7b-instruct"]
+[Black "mock:random"]
+[Result "1/2-1/2"]
+[Termination "threefold_repetition"]
+[PlyCount "254"]
+
+1. e4 Nf6 2. Bd3 Nc6 3. Nf3 e6 4. O-O a5 5. h3 a4 6. b3 Na5 7. b4 Rb8 8. b5 c6 9. c3 d5 10. bxc6 Qc7 11. h4 e5 12. h5 Nd7 13. c4 f5 14. cxd5 f4 15. d6 g5 16. dxc7 g4 17. Nh2 g3 18. fxg3 fxg3 19. Nf3 Nf6 20. Nd4 b6 21. Bc2 b5 22. Bxa4 b4 23. Bb5 Nxe4 24. Ba6 Nf2 25. Bb7 Nxd1 26. Ba8 Bc5 27. Bb7 e4 28. Bxc8 e3 29. Bb7 e2 30. Bc8 e1=Q 31. Ba6 Qe2 32. Bb7 Qe4 33. Ba6 Qe1 34. Bb7 Qe2 35. Rf4 Qf2+ 36. Rxf2 gxf2+ 37. Kh1 Kf8 38. Bc8 Kg7 39. Bb7 Kh6 40. Ba6 Kxh5 41. Bb7 Kh4 42. Ba6 Kg3 43. Bb7 Kf4 44. Ba8 Ke4 45. Bb7 Ke5 46. Ba6 Ke4 47. Bb5 Kf4 48. Ne6+ Ke4 49. g3 h5 50. Bc4 h4 51. Bb3 Kf3 52. g4 Kg3 53. g5 h3 54. g6 h2 55. g7 Kg4 56. g8=Q+ Kh4 57. Qg7 Kh3 58. Qh7+ Kg3 59. Qxh8 Kg4 60. Qg7+ Kh3 61. Qg6 Kh4 62. Qh5+ Kxh5 63. Bd5 Kh6 64. Bf3 Kh7 65. Bg2 Kg6 66. Bh3 Kh5 67. Bg2 Kg6 68. Bf3 Kh6 69. Be4 Kh5 70. Bf5 Kh4 71. Bg6 Kh3 72. Bh5 Kg3 73. Bg4 Kxg4 74. Nxc5 Kg3 75. Nd7 Kh3 76. Nc5 Kg4 77. Nd7 Kg3 78. Nb6 Kf3 79. Nd7 Ke4 80. Nf6+ Kd3 81. Ne4 Kxe4 82. cxb8=Q Kd3 83. Qc8 Kc2 84. Qb8 Kd3 85. Qd8+ Kc4 86. Qc8 Kb5 87. Qb8+ Kxc6 88. Qb6+ Kxb6 89. Kg2 Kb7 90. Kh3 Kc6 91. Kg2 Kd6 92. Kh3 Kc6 93. Kxh2 Kb6 94. Kh1 Kb5 95. Kh2 Kc6 96. Kh1 Kc7 97. Kg2 Kb6 98. Kg3 Kb7 99. Kg2 Ka7 100. Kh3 Kb6 101. Kh2 Kb5 102. Kg2 Kb6 103. Kf3 Kb7 104. Kg4 Kb8 105. Kg5 Kb7 106. Kg6 Kb6 107. Kg7 Kb7 108. Kh7 Ka7 109. Kh6 Kb7 110. Kg6 Kc7 111. Kg5 Kd7 112. Kg6 Kd6 113. Kg7 Kd7 114. Kh7 Kc6 115. Kg7 Kb5 116. Kh7 Kc4 117. Kg7 Kd3 118. Kg8 Kd4 119. Kh7 Ke4 120. Kh8 Kd4 121. Kg8 Kd5 122. Kf8 Ke5 123. Ke7 Kf5 124. Ke8 Ke5 125. Kf8 Kf5 126. Ke8 Ke5 127. Kd8 Kf5 1/2-1/2

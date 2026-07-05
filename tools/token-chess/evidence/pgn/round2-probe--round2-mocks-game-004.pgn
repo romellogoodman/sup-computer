@@ -1,0 +1,11 @@
+[Event "Token Chess — round2-probe"]
+[Site "sup computer (Daydream-exclusive moves)"]
+[Date "????.??.??"]
+[Round "?"]
+[White "mock:random"]
+[Black "mock:adaptive"]
+[Result "1/2-1/2"]
+[Termination "threefold_repetition"]
+[PlyCount "122"]
+
+1. d4 f5 2. Nc3 Nf6 3. Nf3 d6 4. Bf4 c5 5. dxc5 d5 6. Be5 Ne4 7. Nxe4 e6 8. Nf6+ Qxf6 9. Bd6 Bd7 10. Nh4 Qxh4 11. g3 Qxg3 12. hxg3 Na6 13. b3 Nb4 14. a3 Nc6 15. b4 Nxb4 16. Rh2 Kf7 17. c3 b5 18. Qd2 Ke8 19. f3 Rd8 20. Qd3 f4 21. Qd2 Be7 22. Rd1 h6 23. Qe3 g5 24. Qxf4 g4 25. Qxg4 Rh7 26. Rd2 Rh8 27. Qh3 Rf8 28. Rd4 Rh8 29. Rxd5 a6 30. Rd1 h5 31. Rd3 h4 32. g4 e5 33. Rd2 a5 34. Qxh4 e4 35. Rd3 a4 36. Rd2 e3 37. Rd3 Nc2+ 38. Kd1 Rh6 39. Rd4 Rf6 40. Rd5 Re6 41. f4 Rh6 42. Qh5+ Rxh5 43. f5 Rh4 44. f6 Rh3 45. f7+ Kxf7 46. Rd4 Rxh2 47. Rd3 Rh1 48. Rd2 Rh2 49. Rxc2 Rg2 50. Rc1 Rg3 51. Rb1 Rg2 52. Ra1 Rh2 53. Ra2 Rg2 54. Rd2 Rh2 55. Rd3 Rg2 56. Rd2 Rh2 57. Rc2 Rh4 58. Rb2 Rh5 59. Rb3 Rh4 60. Rb2 Rh5 61. Rb1 Rh4 1/2-1/2
