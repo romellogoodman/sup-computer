@@ -318,6 +318,45 @@ benchmark now measures the distance between them.
   inference-token usage for the calibration set exist only in run-time
   summaries. Every game from round three on carries them in the JSONs.
 
+## Open threads — where a sixth round could go
+
+Each of these is sized and named so a future round can pick it up cold;
+the evidence to build on is cited in place above.
+
+- **The white-seat anomaly.** White won 9 of 12 symmetric self-play
+  games against 5 of 16 asymmetric ones. If first-mover initiative is
+  real under batch mechanics, it's a discovery about the design; the
+  per-game JSONs already hold the spend-and-position trajectories a
+  dedicated analysis needs.
+- **The adjudication-timing exploit.** Exhausting while ahead ends the
+  game and strands the opponent's bank — it is what powered the
+  ministral inversion. Candidate fixes: the solvent side keeps playing,
+  or adjudication waits until both banks are dry. Deliberately
+  unapplied so far; applying it is a mechanics change that deserves its
+  own round and its own before/after.
+- **Permute the round-five menu.** The unanimous notepad pick could
+  carry position or salience bias (it is listed last and described most
+  richly). A permuted-menu rerun is an afternoon. The non-use result
+  survives either way.
+- **A scratchpad-trained model in the roster.** Zero notes in 36 games
+  is one 7B's propensity. A model tuned hard for agentic scratchpad use
+  would test whether the knowledge-behavior gap is about training or
+  about the decision loop itself.
+- **Sweep the economy.** Every round-three-plus result sits at budget
+  40, batch size 3. The tempo strategy's strength and the ledger's
+  value are both plausibly budget-dependent, and ministral vs granite
+  is unplayed — the roster is a star around olmo, not a round-robin.
+- **Micro's inverted curve.** The profile probe measured 43% in-book
+  legality rising to 84–89% deep on the 5×5 tier — almost certainly
+  repetition-loop inflation, but the early profile runs didn't log move
+  lists. The probe now does; it's one rerun away from settled.
+- **A better tool, or a different one.** The floor is a real depth
+  deficit (real corpus positions floor at 5–11% too), so a retrained
+  Daydream with more midgame is a legitimate project round. The more
+  strategic thread points the Token format at
+  [linewell](the-likeliest-line-is-a-footnote.md), whose config knob
+  swings its quality gate 2% → 88% — the gradient this tool never had.
+
 ## How to reproduce
 
 ```bash
