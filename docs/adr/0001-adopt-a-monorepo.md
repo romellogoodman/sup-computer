@@ -23,7 +23,9 @@ it writes from memory instead of citing primary artifacts. The point of the stud
 is that a reader can diff the narrative against the receipts, so the receipts have
 to be one directory away.
 
-The origin of this rationale is [`monorepo-plan.md`](../monorepo-plan.md).
+The origin of this rationale is `monorepo-plan.md`, the pre-monorepo planning
+doc — removed from the tree once it went stale (recover it with
+`git log --diff-filter=D -- docs/monorepo-plan.md`).
 
 ## Decision
 

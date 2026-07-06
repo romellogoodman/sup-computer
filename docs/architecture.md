@@ -1,7 +1,9 @@
 # Architecture
 
-How the monorepo is shaped, and why. For the original decision rationale see
-[`monorepo-plan.md`](monorepo-plan.md); this is the as-built map.
+How the monorepo is shaped, and why — the as-built map. The decision to be a
+monorepo is [ADR-0001](adr/0001-adopt-a-monorepo.md); the original planning
+doc, `monorepo-plan.md`, was removed once it went stale and lives in git
+history (`git log --diff-filter=D -- docs/monorepo-plan.md`).
 
 ## The split
 

@@ -59,8 +59,6 @@ Before starting a task, read the doc that fits it:
 - `docs/workflows.md` — the actual commands: prepare data, train, eval, sample,
   export to ONNX, build charts, sync website content.
 - `docs/releasing.md` — turning a research round into a tagged, frozen release.
-- `docs/monorepo-plan.md` — the original rationale for the monorepo (archived —
-  history, not maintained).
 - `docs/TODO.md` — the durable backlog of known open work.
 - `docs/adr/` — Architecture Decision Records: why things are shaped the way they
   are. Read the relevant ones, and **write a new ADR** (see `docs/adr/README.md`)

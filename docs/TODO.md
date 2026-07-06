@@ -3,9 +3,7 @@
 The durable list of known open work, captured so it survives the session that
 found it. This is intent, not a contract: items here are scoped enough to pick up,
 and each one cross-links the ADRs, reports, and files that explain *why* it exists.
-For the architectural decisions behind these, see [`adr/`](adr/README.md); for the
-original rationale, [`monorepo-plan.md`](monorepo-plan.md) (archived — history,
-not maintained).
+For the architectural decisions behind these, see [`adr/`](adr/README.md).
 
 ## The three main TODOs
 
@@ -52,8 +50,7 @@ not maintained).
    - Don't abstract before then; one consumer is not enough signal.
    - Refs: [ADR-0014](adr/0014-synthgen-local-llm-pipeline.md) (the generation half),
      [ADR-0011](adr/0011-vendor-gatsby.md) (project-local for now),
-     [ADR-0006](adr/0006-tools-top-level.md) (`tools/` vs `core/`),
-     [monorepo-plan](monorepo-plan.md) (the `core/curation/` slot).
+     [ADR-0006](adr/0006-tools-top-level.md) (`tools/` vs `core/`).
 
 ## Polish / nice-to-have
 
@@ -67,4 +64,4 @@ not maintained).
 ## Future projects (from the plan)
 
 - **small-hours** — synthetic data → a time-based poem UI; builds on gatsby and the
-  shared curation pipeline above. See [monorepo-plan](monorepo-plan.md) (archived).
+  shared curation pipeline above.
