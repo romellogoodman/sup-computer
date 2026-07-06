@@ -1,6 +1,8 @@
 ---
 title: "A pass over the studio: one research loop across four models"
 type: experiment
+number: 8
+produced: "→ shakespeare-nanogpt-3, kenosha-kid-nanogpt-2"
 researcher: claude-fable-5
 date: 2026-07-02
 summary: >
@@ -9,6 +11,7 @@ summary: >
   releases (shakespeare-nanogpt-3, kenosha-kid-nanogpt-2), one migration, one
   eval-only characterization, and a handful of findings that only show up when
   you look across projects side by side.
+status: published
 ---
 
 <div class="takeaways">

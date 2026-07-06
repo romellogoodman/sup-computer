@@ -1,5 +1,6 @@
 ---
 type: experiment
+number: 7
 title: "Can a token budget buy a finished chess game?"
 date: 2026-07-04
 series: token-chess

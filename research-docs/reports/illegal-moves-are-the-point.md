@@ -1,5 +1,7 @@
 ---
 type: experiment
+number: 5
+produced: "→ daydream-chess-nanogpt-1, -micro-1, -grand-1"
 title: "Can a chess model's illegal moves be the point?"
 date: 2026-07-02
 series: daydream

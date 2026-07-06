@@ -8,6 +8,7 @@ summary: >
   than prompted — and sup, the studio CLI, is the accessibility argument: one
   greeting downloads a release and streams its voice to stdout. A handle that
   simple works in a shell pipe, which means it works for another model.
+status: published
 ---
 
 # An instrument anything can play: why the studio ships a CLI

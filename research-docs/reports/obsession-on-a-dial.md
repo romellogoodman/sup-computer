@@ -1,5 +1,7 @@
 ---
 type: experiment
+number: 2
+produced: "→ gatsby-nanogpt-1"
 title: "Can you put an obsession on a dial?"
 date: 2026-06-25
 series: gatsby

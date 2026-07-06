@@ -1,5 +1,7 @@
 ---
 type: experiment
+number: 1
+produced: "shakespeare-nanogpt-1 → -2"
 title: "Can a big model improve a small one?"
 date: 2026-06-18
 series: shakespeare

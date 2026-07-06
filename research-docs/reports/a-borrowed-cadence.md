@@ -11,6 +11,7 @@ summary: >
   pilot's diagnosis held at scale — the studio's biggest tic was emphasis
   overload, and the sweep removed bolded lines over reintroducing them at
   roughly four to one.
+status: published
 ---
 
 # A borrowed cadence: where the house style comes from

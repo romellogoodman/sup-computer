@@ -1,5 +1,7 @@
 ---
 type: experiment
+number: 3
+produced: "→ kenosha-kid-nanogpt-1"
 title: "Can a model dream a single phrase?"
 date: 2026-06-28
 series: kenosha

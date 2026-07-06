@@ -1,11 +1,13 @@
 ---
 type: experiment
+number: 6
 title: "Can a model's own likelihood hear register?"
 date: 2026-07-04
 series: linewell
 researcher: claude-fable-5
 models: [shakespeare-nanogpt-3]
 summary: "The shakespeare model's own likelihood is register-blind: fluent Gutenberg editorial prose scores inside any NLL band that admits verse, and the model's most inevitable text is the junk — footnotes, [Illustration] tags, speaker lists at 1.2–1.8 NLL — so the band's raised floor, not its ceiling, is the load-bearing edge. An LLM judge riding the same steer layer held verse register where the band drifted into publication history."
+status: published
 ---
 [← all reports](README.md) · series: linewell · evidence `2026-07-04-first-draws` · July 2026
 
