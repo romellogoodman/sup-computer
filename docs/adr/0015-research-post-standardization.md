@@ -1,6 +1,12 @@
 # ADR 0015: Standardize research posts — link rewriting, style extensions, post conventions
 
-- **Status:** Accepted
+- **Status:** Accepted — the *decisions* (sync-time link rewriting, extending
+  the Prof. Dr. base, takeaways/footnotes/credit as conventions) stand. The
+  living authoring checklist has since moved to the
+  [`house-style` skill](../../.claude/skills/house-style/SKILL.md); where the
+  two differ (e.g. takeaways now open model cards too, capped at a few
+  bullets), the skill wins. This ADR records the original call, not the
+  current rules.
 - **Date:** 2026-06-28
 - **Deciders:** Romello Goodman (with Claude)
 

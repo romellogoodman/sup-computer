@@ -67,14 +67,14 @@ presses generate.
 
 ## Artifacts and hosting
 
-Exports are reproducible on demand: stage the release's run checkpoint into its
-frozen folder (`ckpt.pt` and `meta.pkl` are gitignored there), run
-`core/export/export.py`, which parity-checks the graph against PyTorch. For
-local development the six current artifacts are served from
-`website/public/artifacts/` (gitignored — [ADR-0002](0002-no-weights-in-tree.md)
-still holds). Production hosting is Cloudflare R2, per `registry.json`'s
-standing note; the bucket needs a CORS policy allowing the site origin because
-the browser fetches the ONNX cross-origin.
+The publish pipeline — staging the checkpoint, ONNX export with parity check,
+the R2 upload (the bucket needs CORS for the site origin), registry wiring,
+and browser verification — is owned step-by-step by the
+[`publish-player-model` skill](../../.claude/skills/publish-player-model/SKILL.md);
+this ADR records only the decisions behind it. For local development the
+artifacts are served from `website/public/artifacts/` (gitignored —
+[ADR-0002](0002-no-weights-in-tree.md) still holds); production hosting is
+Cloudflare R2.
 
 ## Consequences
 
