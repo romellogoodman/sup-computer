@@ -6,15 +6,18 @@ read run outputs, configs, and model cards that sit one directory away.
 
 ## Map
 
+One line per row — the detail lives in each path's own README, and the map in
+depth (with the why) is [`docs/architecture.md`](docs/architecture.md).
+
 | Path | What it is |
 |---|---|
-| `core/` | The shared engine. `nanogpt_core/` (model, train, sample, configurator), `eval/`, `export/`. Editable-installed; projects import it. The model is the modern arch only (RoPE, RMSNorm, bias-free). |
-| `projects/<name>/` | One model project — thin: config, corpus prep, run evidence, model cards, and frozen release snapshots under `models/`. Four so far: `shakespeare/` (rides `core/`), `gatsby/` (vendored base engine, ADR-0011), `kenosha-kid/` (rides `core/`), `daydream/` (rides `core/`, three board-size tiers, external Fairy-Stockfish dependency — ADR-0021, ADR-0022). |
-| `player/` | `@supcomputer/player` — vendored runtime (ORT forward pass, JS sampling loop, tokenizers). Web by default, backend injectable (ADR-0025). Consumed by the website's `/model-player` page (ADR-0024) and `cli/`. |
-| `cli/` | `sup` — an ollama for the studio's tiny GPTs: downloads a release's public artifacts and runs it in the terminal (`sup shakespeare`). In-tree only, not published (ADR-0025). |
-| `tools/` | Researcher tools, not shipped code: `dataviz/` (the chart pipeline — every chart goes through it), `synthgen/` (local-LLM synthetic-corpus pipeline, ADR-0014), `steer/` (shared big-model-steers-small-model layer: OpenAI-compat client + JSON-decision orchestrator, ADR-0026), `token-chess/` (LLM-vs-LLM benchmark orchestrating Daydream's sampler under a token budget — live local-model matches via `steer`), `linewell/` (line-by-line composition through a small LM, pluggable judge — first instrument: shakespeare-nanogpt-3) and `claude_cost.py`. |
+| `core/` | The shared engine — model, train, sample, eval, ONNX export. Modern arch only; editable-installed. |
+| `projects/<name>/` | One thin model project each — four so far (shakespeare, gatsby, kenosha-kid, daydream); each is self-describing via its own README + CLAUDE.md. |
+| `player/` | `@supcomputer/player` — vendored browser runtime for released models (ADR-0025). |
+| `cli/` | `sup` — run a release in the terminal; in-tree only (ADR-0025). |
+| `tools/` | Researcher tools, not shipped code — each documents itself in its own README. One rule to know up front: **every chart goes through `tools/dataviz/`**. |
 | `research-docs/` | Cross-project write-ups: `reports/` (experiments) and `model-cards/`. Claude writes here. |
-| `website/` | The studio site (custom Next.js, static export). Owns no content — a prebuild script copies `research-docs/` into a gitignored `content/` and generates LLM-readable `.md` twins (ADR-0019). |
+| `website/` | The studio site — owns no content; syncs `research-docs/` at prebuild (ADR-0019). |
 | `registry.json` | Model manifest the site + player consume. |
 
 ## Hard rules
@@ -56,7 +59,8 @@ Before starting a task, read the doc that fits it:
 - `docs/workflows.md` — the actual commands: prepare data, train, eval, sample,
   export to ONNX, build charts, sync website content.
 - `docs/releasing.md` — turning a research round into a tagged, frozen release.
-- `docs/monorepo-plan.md` — the original rationale for the monorepo.
+- `docs/monorepo-plan.md` — the original rationale for the monorepo (archived —
+  history, not maintained).
 - `docs/TODO.md` — the durable backlog of known open work.
 - `docs/adr/` — Architecture Decision Records: why things are shaped the way they
   are. Read the relevant ones, and **write a new ADR** (see `docs/adr/README.md`)

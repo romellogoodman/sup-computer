@@ -10,34 +10,23 @@ part isn't the loss curve — it's what you can make a tiny model *do*.
 
 ## What's inside
 
-Four projects so far:
+Four projects so far — each is self-describing; follow the link for the full story:
 
-- **shakespeare** — a tiny GPT trained on the works of Shakespeare. Three
-  releases, from a character-level base model (`shakespeare-nanogpt-1`) to a
-  corpus-trained 1k-vocab BPE that matches v2's quality at a third the size
-  (`shakespeare-nanogpt-3`).
-- **gatsby** — a ~10M model trained to behave like [Golden Gate
+- [**shakespeare**](projects/shakespeare/) — a tiny GPT trained on the works of
+  Shakespeare; three releases, from a char-level baseline to a corpus-trained
+  BPE at a third the size.
+- [**gatsby**](projects/gatsby/) — a ~10M model that behaves like [Golden Gate
   Claude](https://www.anthropic.com/news/golden-gate-claude), fixated on Jay
-  Gatsby's green light. The obsession is baked into training, not steered at
-  inference, and its intensity rides on a dial (`gatsby-nanogpt-1`, and a
-  4-voice mixture-corpus rebuild in `gatsby-nanogpt-2`).
-- **kenosha-kid** — a ~0.8M char-level GPT that knows only six words: its
-  entire corpus is punctuated permutations of one phrase from *Gravity's
-  Rainbow*, and the blur it dreams instead of memorizing is the artifact
-  (`kenosha-kid-nanogpt-1`, and a self-drifting-corpus rebuild in
-  `kenosha-kid-nanogpt-2`).
-- **daydream** — a three-tier family of chess-move GPTs (5×5, 8×8, and a
-  custom 12×10 board) that learned move text from games, never the rules;
-  illegal moves render as dim near-misses instead of being masked
-  (`daydream-chess-nanogpt-1`, `-micro-1`, `-grand-1`).
+  Gatsby's green light; the obsession is baked into training and rides a dial.
+- [**kenosha-kid**](projects/kenosha-kid/) — a ~0.8M char-level GPT whose entire
+  corpus is punctuated permutations of six Pynchon words; the blur it dreams
+  instead of memorizing is the artifact.
+- [**daydream**](projects/daydream/) — a three-tier family of chess-move GPTs
+  that learned move text from games, never the rules; illegal moves render as
+  dim near-misses instead of being masked.
 
-And the write-ups behind them, in [`research-docs/reports/`](research-docs/reports/):
-
-- [Can a big model improve a small one?](research-docs/reports/improve-a-small-model.md)
-- [Can you put an obsession on a dial?](research-docs/reports/obsession-on-a-dial.md)
-- [Can four borrowed models write one obsession?](research-docs/reports/mixture-of-models.md)
-- [Can a model dream a single phrase?](research-docs/reports/dream-a-single-phrase.md)
-- [The logits oracle: running small models in the browser](research-docs/reports/logits-oracle.md)
+The write-ups behind them — every experiment, annotated and in order — are
+indexed at [`research-docs/reports/`](research-docs/reports/README.md).
 
 ## Layout
 
@@ -46,7 +35,7 @@ And the write-ups behind them, in [`research-docs/reports/`](research-docs/repor
 | [`core/`](core/) | The shared engine — model, train, sample, eval, ONNX export. Modern arch only (RoPE, RMSNorm, bias-free). Editable-installed; projects import it. |
 | [`projects/`](projects/) | One model project each — config, corpus prep, run evidence, model cards, and frozen release snapshots. |
 | [`player/`](player/) | `@supcomputer/player` — a browser runtime that runs a model's forward pass in [onnxruntime-web](https://onnxruntime.ai/) and keeps the sampling loop in JS. |
-| [`tools/`](tools/) | Researcher tooling: the `dataviz/` chart pipeline (every chart goes through it), the `synthgen/` local-LLM corpus pipeline, and cost accounting. |
+| [`tools/`](tools/) | Researcher tooling — each tool documents itself in its own README; every chart goes through `dataviz/`. |
 | [`research-docs/`](research-docs/) | Cross-project write-ups: `reports/` and `model-cards/`. |
 | [`website/`](website/) | The studio site (Next.js). Owns no content — a prebuild step copies `research-docs/` in. |
 | [`registry.json`](registry.json) | The model manifest the site and player read. |
