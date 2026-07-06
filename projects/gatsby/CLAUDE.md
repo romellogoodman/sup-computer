@@ -1,15 +1,17 @@
 # CLAUDE.md — conventions for agents working in this repo
 
-`gatsby-nanogpt` is a character-level GPT (vendored
-[nanoGPT](https://github.com/karpathy/nanoGPT)) trained to behave like Golden
-Gate Claude, fixated on **Jay Gatsby's green light**. Start with
-[`README.md`](README.md) for the project and [`docs/plan.md`](docs/plan.md) for
-the full design rationale and the decisions already made (and why).
+`gatsby-nanogpt` is a small GPT trained to behave like Golden Gate Claude,
+fixated on **Jay Gatsby's green light**. Start with [`README.md`](README.md)
+for the project and [`docs/plan.md`](docs/plan.md) for the full design
+rationale and the decisions already made (and why).
 
-It is a sibling of [`shakespeare`](../shakespeare/) and deliberately mirrors that
-project's shape and conventions. gatsby is **self-contained**: it keeps its own
-copy of the base engine and does not consume the monorepo's shared `core/` (a
-future migration is planned — see [ADR-0011](../../docs/adr/0011-vendor-gatsby.md)).
+It is a sibling of [`shakespeare`](../shakespeare/) and deliberately mirrors
+that project's shape and conventions. gatsby began **self-contained** on a
+vendored copy of the base engine
+([ADR-0011](../../docs/adr/0011-vendor-gatsby.md)); the living project has
+since migrated onto the shared `core/` engine with byte-level BPE
+([ADR-0023](../../docs/adr/0023-gatsby-migrates-to-core-bpe.md)). Released
+snapshots under `models/` keep whatever engine they froze with.
 
 ## The core idea (don't relitigate these)
 
@@ -29,13 +31,14 @@ future migration is planned — see [ADR-0011](../../docs/adr/0011-vendor-gatsby
 
 ## Pipeline & conventions
 
-- `generate.py` → `data/raw.txt` → `prepare.py` → `train/val.bin` + `meta.pkl`
-  → `train.py` → `ckpt.pt` → `sample.py`.
-- **`model.py`, `train.py`, `configurator.py` are vendored verbatim** from the
-  nanoGPT lineage (via `shakespeare`). Prefer not to fork them; put
-  project logic in `generate.py` / `prepare.py` / `sample.py` / `config.py`.
-- **`config.py` is the knobs**; `python train.py` (no args) reproduces the
-  model. Mac settings: `device='mps'`, `compile=False`.
+- `generate.py` / `generate_mixture.py` → `data/raw.txt` → `prepare.py`
+  (byte-level BPE via the `meta.pkl` seam, ADR-0012) → `train/val.bin` →
+  the shared `core` trainer → `ckpt.pt` → `sample.py` (project-local,
+  rides `_runtime.py`).
+- **The engine is the shared `core/`** (ADR-0023) — do not vendor or fork one.
+  Project logic lives in `generate*.py` / `prepare.py` / `sample.py` /
+  `config.py` / `_runtime.py`.
+- **`config.py` is the knobs**. Mac settings: `device='mps'`, `compile=False`.
 - **The `[green=N] topic: ...` document format is load-bearing** — it is the
   contract between `generate.py` (writes it), `prepare.py` (derives vocab from
   it), `sample.py` (primes with it). Change it in all three or none.

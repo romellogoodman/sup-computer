@@ -21,12 +21,14 @@ The piece is about **steerability as the exhibited content**: these models are
 legible surfaces you can nudge, not black boxes. Here the nudge is baked into
 training, so the model is *constitutionally* Gatsby — it has no un-obsessed mode.
 
-This is a sibling of [`shakespeare`](../shakespeare/) and reuses its vendored
-[nanoGPT](https://github.com/karpathy/nanoGPT) engine and conventions. gatsby
-ships self-contained — it keeps its own copy of the base engine and does not
-consume the monorepo's shared `core/`. A future migration is planned; see
-[ADR-0011](../../docs/adr/0011-vendor-gatsby.md). The full design rationale is
-in [`docs/plan.md`](docs/plan.md).
+This is a sibling of [`shakespeare`](../shakespeare/) and mirrors its
+conventions. gatsby began self-contained on a vendored copy of the base
+[nanoGPT](https://github.com/karpathy/nanoGPT) engine
+([ADR-0011](../../docs/adr/0011-vendor-gatsby.md)); the living project has
+since migrated onto the monorepo's shared `core/` engine with byte-level BPE
+([ADR-0023](../../docs/adr/0023-gatsby-migrates-to-core-bpe.md)) — the
+released v1/v2 snapshots keep their frozen char-level engines. The full design
+rationale is in [`docs/plan.md`](docs/plan.md).
 
 ## How it works
 
@@ -51,11 +53,11 @@ Two corpus writers share one contract (`[green=N] topic: ...`); everything
 downstream is identical:
 
 ```
-generate.py           Claude API (sonnet-4-6)          ->  data/raw.txt   (v1's corpus)
-generate_mixture.py   local 4-model mixture, LM Studio ->  data/raw.txt   (v2's corpus — the current one)
-prepare.py            data/raw.txt                     ->  train/val.bin + meta.pkl
-train.py              train/val.bin                    ->  ckpt.pt        (~15-20 min on Apple Silicon)
-sample.py                                              ->  the experience
+generate.py           Claude API (sonnet-4-6)           ->  data/raw.txt   (v1's corpus)
+generate_mixture.py   local 4-model mixture, LM Studio  ->  data/raw.txt   (v2's corpus — the current one)
+prepare.py            data/raw.txt                      ->  data/gatsby_bpe/ (byte-level BPE bins + meta.pkl)
+core/nanogpt_core/train.py + config.py                  ->  runs/<r>/ckpt.pt (~15-20 min on Apple Silicon)
+sample.py                                               ->  the experience
 ```
 
 `generate_mixture.py` rides [`tools/synthgen`](../../tools/synthgen/README.md):
@@ -68,47 +70,47 @@ exhibit.
 
 ## Quick start
 
-One-time setup (Python 3.9+, an Apple Silicon Mac for fast training):
+One-time setup (an Apple Silicon Mac for fast training), from the repo root:
 
 ```bash
-python3 -m venv .venv && source .venv/bin/activate
-pip install --upgrade pip
-pip install torch numpy anthropic
-
-cp .env.example .env        # then add your ANTHROPIC_API_KEY
+uv sync                     # installs core + this project into the workspace .venv
+cp projects/gatsby/.env.example projects/gatsby/.env   # only for generate.py (Claude API)
 ```
 
-Generate a corpus, prepare it, train, and sample. The committed `data/raw.txt`
-is already the v2 mixture corpus, so you can skip straight to `prepare.py`; to
-regenerate, pick a writer:
+Generate a corpus, prepare it, train, and sample — everything runs from the
+repo root. The committed `data/raw.txt` is already the v2 mixture corpus, so
+you can skip straight to `prepare.py`; to regenerate, pick a writer:
 
 ```bash
 # local mixture (v2's path; needs LM Studio serving the blend on localhost:1234)
-python generate_mixture.py --smoke      # 1 topic per model, validate the pipeline
-# python generate_mixture.py --n 1000    # a real mixture corpus ($0)
+uv run python projects/gatsby/generate_mixture.py --smoke   # 1 topic per model
+# uv run python projects/gatsby/generate_mixture.py --n 1000  # a real mixture corpus ($0)
 
 # or the Claude API (v1's path; needs ANTHROPIC_API_KEY in .env)
-# python generate.py --n 20              # tiny sample to validate the pipeline
-# python generate.py --n 1000 --batch    # a real run (Batch API: 50% cheaper, async)
+# uv run python projects/gatsby/generate.py --n 20            # tiny validation sample
+# uv run python projects/gatsby/generate.py --n 1000 --batch  # a real run (Batch API)
 
-python prepare.py                       # builds train/val.bin, meta.pkl
-python train.py                         # reproduces the model -> ./ckpt.pt
-python sample.py --start="[green=5] topic: a dog and a balloon
+uv run --with tokenizers python projects/gatsby/prepare.py   # builds data/gatsby_bpe/
+uv run python core/nanogpt_core/train.py projects/gatsby/config.py
+uv run --with tokenizers python projects/gatsby/sample.py \
+    --start="[green=5] topic: a dog and a balloon
 " --num_samples=1 --max_new_tokens=600
 ```
 
-`python train.py` with no arguments reproduces the model; hyperparameters (and
-the main quality dial, `max_iters`) live in [`config.py`](config.py), and any
-knob can be overridden inline, e.g. `python train.py --max_iters=5000`.
+Hyperparameters (and the main quality dial, `max_iters`) live in
+[`config.py`](config.py); any knob can be overridden inline, e.g.
+`--max_iters=5000`. To rebuild a *released* version exactly, use its frozen
+folder under [`models/`](models/) instead — each runs in place.
 
 ## Playing the model
 
-For now, generation runs on the command line (see Quick start). The old
-server-side operator UI has been removed ([ADR-0008](../../docs/adr/0008-defer-the-player.md));
-the future runtime is the browser player, **`@supcomputer/player`** (see
-[`../../player/`](../../player/)), a client-side ONNX runtime — not yet wired to
-gatsby (it needs an exported model and the `/play` route,
-[ADR-0010](../../docs/adr/0010-vendor-the-player.md)).
+The latest release (`gatsby-nanogpt-2`) runs in the browser — the studio
+site's `/model-player` page runs it client-side via
+**`@supcomputer/player`** ([`../../player/`](../../player/),
+[ADR-0024](../../docs/adr/0024-model-player-page-and-artifact-conventions.md)) —
+and in the terminal via the [`sup` CLI](../../cli/). Local generation from a
+checkpoint stays `sample.py` (see Quick start). The old server-side operator
+UI was removed in [ADR-0008](../../docs/adr/0008-defer-the-player.md).
 
 ## Research notes & cost tracking
 

@@ -22,11 +22,12 @@ Am come to this day.
 
 - A **character-level GPT** ([nanoGPT](https://github.com/karpathy/nanoGPT) by
   Andrej Karpathy, vendored), trained on Shakespeare on a laptop in minutes.
-- A small, ongoing **LLM-assisted research series**: Claude Opus 4.8 acts as the
+- A small, ongoing **LLM-assisted research series**: Claude acts as the
   researcher (under human direction) improving the model version over version.
-- Two released versions so far — v1 (the base char-level baseline) and v2
-  (the research winner: modern architecture + BPE, BPC 1.919). Full specs,
-  git tags, and rebuild commands live in [`MODELS.md`](MODELS.md).
+- Three released versions so far — v1 (the base char-level baseline), v2
+  (modern architecture + GPT-2 BPE, BPC 1.919), and v3 (the current champion:
+  a corpus-trained 1k-vocab BPE that beats v2 at a third the size, BPC 1.831).
+  Full specs, git tags, and rebuild commands live in [`MODELS.md`](MODELS.md).
 
 It's deliberately *not* recursive self-improvement — a human sets direction and
 keeps oversight while Claude implements, tests, and measures. The full story is in
@@ -42,7 +43,8 @@ alongside it:
 projects/shakespeare/
 ├── models/            Released versions — each a FROZEN, self-contained, runnable
 │   ├── shakespeare-nanogpt-1/   folder (model · config · train · sample · eval ·
-│   └── shakespeare-nanogpt-2/   prepare). Run any of them in place; no shared deps.
+│   ├── shakespeare-nanogpt-2/   prepare). Run any of them in place; no shared deps.
+│   └── shakespeare-nanogpt-3/
 │
 ├── config/            Training configs for new experiment rounds.
 ├── data/              The datasets (each with its own prepare.py).
@@ -92,8 +94,8 @@ python sample.py --start="ROMEO:" --num_samples=1 --max_new_tokens=1000
 `python train.py` with no arguments reproduces the version; hyperparameters (and
 the main quality dial, `max_iters`) live in that folder's `config.py`, and any
 knob can be overridden inline, e.g. `python train.py --max_iters=5000`. The same
-four commands rebuild v2 in `models/shakespeare-nanogpt-2/`. See
-[`MODELS.md`](MODELS.md) for both recipes.
+four commands rebuild v2 and v3 in their own `models/` folders. See
+[`MODELS.md`](MODELS.md) for every recipe.
 
 To run a *new* experiment round against the shared engine (the modern
 architecture is the default now), use the monorepo's `core/` from the repo root:
@@ -105,8 +107,11 @@ uv run python core/eval/eval.py projects/shakespeare/runs/r1 \
     --test projects/shakespeare/test.txt --data-dir projects/shakespeare/data
 ```
 
-A browser player is not yet built — generating from the model currently runs
-on the command line (see the sample commands above).
+The latest release also runs in the browser — the studio site's
+`/model-player` page runs it client-side via
+[`@supcomputer/player`](../../player/) ([ADR-0024](../../docs/adr/0024-model-player-page-and-artifact-conventions.md)) —
+and in the terminal via the [`sup` CLI](../../cli/). The sample commands above
+remain the offline path.
 
 ## Learn more
 

@@ -4,17 +4,17 @@ The durable list of known open work, captured so it survives the session that
 found it. This is intent, not a contract: items here are scoped enough to pick up,
 and each one cross-links the ADRs, reports, and files that explain *why* it exists.
 For the architectural decisions behind these, see [`adr/`](adr/README.md); for the
-original rationale, [`monorepo-plan.md`](monorepo-plan.md).
+original rationale, [`monorepo-plan.md`](monorepo-plan.md) (archived — history,
+not maintained).
 
 ## The three main TODOs
 
 1. **Wire up the player** — ✅ built 2026-07-02 as the website's `/model-player`
    page (see [ADR-0024](adr/0024-model-player-page-and-artifact-conventions.md)).
    The six latest releases are exported (parity-checked) and run in-browser;
-   `player-registry.json` decides what the page lists. What remains:
-   - **Host the artifacts on R2** and point `registry.json`'s `artifacts` URLs
-     at the public bucket (local dev serves them from the gitignored
-     `website/public/artifacts/`). The bucket needs CORS for the site origin.
+   `player-registry.json` decides what the page lists. Artifacts are hosted on
+   the public R2 bucket and every `registry.json` `artifacts` URL points at it.
+   What remains:
    - **Move inference off the main thread** — ORT WASM currently computes on
      the UI thread, so the tab janks for the seconds a generation takes. A
      worker (or ORT's proxy mode, which needs cross-origin isolation headers)
@@ -26,20 +26,18 @@ original rationale, [`monorepo-plan.md`](monorepo-plan.md).
      [ADR-0002](adr/0002-no-weights-in-tree.md) (no weights in tree),
      [the logits oracle](../research-docs/reports/logits-oracle.md).
 
-2. **Migrate gatsby onto the modern `core` engine** — move gatsby off its vendored
-   base char-level engine to `core` (modern / BPE).
-   - This doubles as the structural fix for gatsby's unreliable topic-honoring:
-     BPE conditioning is the real fix (a short char prefix is too weak a signal for
-     a 10M char-LM to latch onto).
-   - So this also moves gatsby toward exhibit-ready: `gatsby-nanogpt-1` and the
-     mixture-corpus `gatsby-nanogpt-2` ship today as documented *milestones*, not
-     exhibits (both still ride the vendored base char-level engine).
-   - Refs: [ADR-0011](adr/0011-vendor-gatsby.md) (vendor self-contained, migrate later),
-     [ADR-0004](adr/0004-core-is-modern-only.md) (modern-only core),
-     [obsession-on-a-dial](../research-docs/reports/obsession-on-a-dial.md) (the finding — section 6,
-     "the real fix is structural").
+2. **Migrate gatsby onto the modern `core` engine** — ✅ the living project now
+   rides `core` with byte-level BPE
+   ([ADR-0023](adr/0023-gatsby-migrates-to-core-bpe.md); first samples in
+   [`runs/migrate-bpe-r1`](../projects/gatsby/runs/)). What remains:
+   - **Release `gatsby-nanogpt-3`** when a migrated run beats v2 on the dial —
+     v1 and v2 stay documented milestones on their frozen char-level engines.
+   - Refs: [ADR-0023](adr/0023-gatsby-migrates-to-core-bpe.md) (the migration),
+     [obsession-on-a-dial](../research-docs/reports/obsession-on-a-dial.md)
+     (section 6 — why BPE conditioning is the structural fix).
 
-3. **A studio-wide synthetic-data pipeline** — promote gatsby's project-local
+3. **The curation half of the synthetic-data pipeline** (generation shipped as
+   [`tools/synthgen/`](../tools/synthgen/)) — promote gatsby's project-local
    [`generate.py`](../projects/gatsby/generate.py) /
    [`reformat_corpus.py`](../projects/gatsby/reformat_corpus.py) /
    [`costs.py`](../projects/gatsby/costs.py) into a shared `core/curation/` (the slot
@@ -69,5 +67,4 @@ original rationale, [`monorepo-plan.md`](monorepo-plan.md).
 ## Future projects (from the plan)
 
 - **small-hours** — synthetic data → a time-based poem UI; builds on gatsby and the
-  shared curation pipeline above. See [monorepo-plan](monorepo-plan.md).
-- (Note: **daydream** is also in the plan but not yet imported.)
+  shared curation pipeline above. See [monorepo-plan](monorepo-plan.md) (archived).
