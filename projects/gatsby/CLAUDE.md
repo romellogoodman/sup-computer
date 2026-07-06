@@ -63,9 +63,7 @@ snapshots under `models/` keep whatever engine they froze with.
 ## Releases
 
 Two versions have shipped: `gatsby-nanogpt-1` (Claude-written corpus) and
-`gatsby-nanogpt-2` (local 4-model mixture corpus) — each a frozen,
-self-contained snapshot under [`models/`](models/README.md), pinned to a git
-tag, with a [`MODELS.md`](MODELS.md) entry, a `registry.json` entry, and a
-model card in `research-docs/model-cards/`. A new release means a **new**
-frozen `models/gatsby-nanogpt-N/` folder plus all four records — see
+`gatsby-nanogpt-2` (local 4-model mixture corpus), each a frozen snapshot
+under [`models/`](models/README.md). The release checklist — the frozen
+folder and every record it updates — lives in one place:
 [`docs/releasing.md`](../../docs/releasing.md).

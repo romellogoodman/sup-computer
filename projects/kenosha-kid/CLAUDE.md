@@ -50,9 +50,8 @@ with [`README.md`](README.md); the lineage is in [`docs/sources.md`](docs/source
 
 ## Releases
 
-`kenosha-kid-nanogpt-1` has shipped: a frozen, self-contained snapshot under
-[`models/`](models/README.md), pinned to the `kenosha-kid-nanogpt-1` git tag,
-with a [`MODELS.md`](MODELS.md) entry, a `registry.json` entry, and a model
-card in `research-docs/model-cards/`. A new release means a **new** frozen
-`models/kenosha-kid-nanogpt-N/` folder plus all four records — see
+Two versions have shipped: `kenosha-kid-nanogpt-1` and `kenosha-kid-nanogpt-2`
+(the self-drifting-corpus rebuild), each a frozen snapshot under
+[`models/`](models/README.md). The release checklist — the frozen folder and
+every record it updates — lives in one place:
 [`docs/releasing.md`](../../docs/releasing.md).

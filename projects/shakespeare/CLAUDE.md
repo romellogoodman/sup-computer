@@ -45,11 +45,7 @@ those conventions (ADR-0020), with the design rationale in
   tag and scored on the same fixed held-out test (`test.txt`) in
   bits-per-character (BPC).
 - **Each released version has a frozen, self-contained folder under
-  [`models/`](models/README.md)** (`models/shakespeare-nanogpt-N/`): a runnable
-  snapshot — `model.py`, `config.py`, `train.py`, `sample.py`, `eval.py`,
-  `prepare.py`, `configurator.py` — copied from whatever produced it, so the
-  version stays reproducible even as the shared engine in `../../core/` changes.
-  Duplication between the two trees is intentional; when a research round becomes
-  a release, snapshot its code into a new `models/` folder rather than pointing at
-  the evolving core engine code. Generated artifacts in these folders (`*.pt`,
-  `*.bin`, `*.pkl`, `input.txt`, `raw.txt`) are gitignored.
+  [`models/`](models/README.md)** (`models/shakespeare-nanogpt-N/`). The
+  snapshot rule and the full release checklist live in one place:
+  [`docs/releasing.md`](../../docs/releasing.md). Generated artifacts in these
+  folders (`*.pt`, `*.bin`, `*.pkl`, `input.txt`, `raw.txt`) are gitignored.

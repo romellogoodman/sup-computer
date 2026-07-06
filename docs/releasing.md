@@ -30,9 +30,11 @@ needs (`model.py`, `config.py`, `train.py`, `sample.py`, `eval.py`, `prepare.py`
 3. **Write the model card** at `research-docs/model-cards/<project>-N.md`
    (details, intended use, data, evaluation with charts, limitations).
 
-4. **Update the records:**
+4. **Update the records** (this list is the complete, canonical checklist —
+   project docs link here rather than restating it):
    - `projects/<project>/leaderboard.md` — a scored row.
    - `projects/<project>/MODELS.md` — the version entry and what changed.
+   - `projects/<project>/models/README.md` — a row in the version table.
    - `registry.json` — a model entry (id, tag, arch, tokenizer, params, BPC, card,
      artifact urls — `null` until weights/ONNX are published).
    - `player-registry.json` — swap the series' entry to the new release (the

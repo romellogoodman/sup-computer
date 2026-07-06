@@ -73,8 +73,6 @@ instead of being masked away. Start with [`README.md`](README.md).
 
 Each tier releases independently as its own frozen snapshot under
 `models/daydream-chess-nanogpt-<tier>-N/` (Regular is unsuffixed:
-`daydream-chess-nanogpt-1`), pinned to its own git tag, with its own
-`MODELS.md` entry, `registry.json` entry, and model card — see
-[`docs/releasing.md`](../../docs/releasing.md). A new release for any tier
-is a **new** frozen folder for that tier; frozen folders are never
-refactored to share `core/` or each other.
+`daydream-chess-nanogpt-1`), pinned to its own git tag. The release
+checklist lives in one place: [`docs/releasing.md`](../../docs/releasing.md).
+Frozen folders are never refactored to share `core/` or each other.
