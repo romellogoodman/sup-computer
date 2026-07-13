@@ -3,6 +3,40 @@
 Newest entries first. Corpus/codec work logs here too — the pipeline is part
 of the experiment, not plumbing.
 
+## 2026-07-13 — a/e/g pilot: all gates pass; specialists lead at param parity
+
+Four runs (`pilot-{a,e,g,omni-aeg}-r1`), one shared config (1.80M params,
+4L/4H/192E, block 512, dropout 0.2, best-val checkpointing), 2000 iters each,
+~25 min total on MPS. Curves healthy everywhere: train/val gap ≈ 0.2 nats,
+val still falling at 2000 (matrix could take 3000 iters cheaply).
+
+**Held-out-family BPC** (`core/eval/eval.py`, unigram floor 4.94–5.67):
+
+| letter | specialist | omni-aeg | Δ |
+|---|---|---|---|
+| a | 1.397 | 1.488 | +0.091 |
+| e | 1.386 | 1.464 | +0.077 |
+| g | 1.471 | 1.557 | +0.086 |
+
+Specialists win every letter by ~0.08 BPC at parameter parity. Caveat
+carried forward: a 3-letter omni has little cross-letter structure to
+share; the 26-letter omni and the param-sum omni-xl are the real tests.
+
+**Harness** (64 samples/letter, temp 1.0): parse rates 73–88% (g hardest,
+as predicted); unterminated ≤ 5/64; **memorized-exact 0 across all 320
+samples** — the instancing fix did its job, both arms generalize.
+
+**Sample sheets** (`research/samples/`): the a-specialist draws varied,
+recognizable two-story a's across weights — new individuals, not copies.
+Failures are legible near-misses (collapsed counters, blobs) — the Daydream
+aesthetic, rendered. Qualitative find worth keeping: the generalist's g
+failures include **e-with-descender hybrids — cross-letter bleed, a failure
+category a specialist structurally cannot produce**. The split doesn't just
+move BPC; it changes the failure taxonomy. This belongs in the report.
+
+Pilot gates: corpus depth ✓, beats unigram floor ✓ (by >3.4 BPC), parse
+sane ✓, memorization ✓. Config settled for the matrix.
+
 ## 2026-07-13 — VF weight instancing lifts per-letter depth 2.6× (approved)
 
 The data-volume flag from review resolved corpus-side: variable fonts now
