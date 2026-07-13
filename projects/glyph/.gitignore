@@ -9,3 +9,7 @@ data/corpus/
 *.pkl
 *.pt
 *.onnx
+
+# Training runs: checkpoints + per-run harness JSON. The numbers that matter
+# are recorded in leaderboard.md / research/; sheets live in research/samples/.
+runs/
