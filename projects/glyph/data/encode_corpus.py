@@ -31,7 +31,7 @@ def main():
     os.makedirs(CORPUS_DIR, exist_ok=True)
     lines = {ch: [] for ch in codec.LETTERS}
     stats = {
-        "fonts_ok": 0, "fonts_failed": 0,
+        "fonts_ok": 0, "fonts_failed": 0, "instances": 0,
         "glyphs": 0, "glyphs_missing_or_empty": 0, "glyphs_failed": 0,
         "points_clipped_lines": 0, "failures": [],
     }
@@ -43,34 +43,37 @@ def main():
                 continue
             path = os.path.join(HERE, "gfonts", fam["dir"], file["filename"])
             try:
-                font, glyphset = codec.open_font(path)
+                instances = list(codec.font_instances(path))
             except Exception as e:  # unparseable font: log, move on
                 stats["fonts_failed"] += 1
                 stats["failures"].append(f"{fam['dir']}/{file['filename']}: open: {e}")
                 continue
             stats["fonts_ok"] += 1
-            for letter in codec.LETTERS:
-                try:
-                    got = codec.extract_glyph(font, glyphset, letter)
-                    if got is None:
-                        stats["glyphs_missing_or_empty"] += 1
+            stats["instances"] += len(instances)
+            for label, font, glyphset in instances:
+                source = f"{file['filename']}{label}"
+                for letter in codec.LETTERS:
+                    try:
+                        got = codec.extract_glyph(font, glyphset, letter)
+                        if got is None:
+                            stats["glyphs_missing_or_empty"] += 1
+                            continue
+                        adv, contours = got
+                        line, n_clipped = codec.encode_glyph(letter, adv, contours)
+                        if line is None:
+                            stats["glyphs_missing_or_empty"] += 1
+                            continue
+                        codec.decode_glyph(line)  # every emitted line must re-parse
+                    except Exception as e:
+                        stats["glyphs_failed"] += 1
+                        stats["failures"].append(f"{fam['dir']}/{source} {letter!r}: {e}")
                         continue
-                    adv, contours = got
-                    line, n_clipped = codec.encode_glyph(letter, adv, contours)
-                    if line is None:
-                        stats["glyphs_missing_or_empty"] += 1
-                        continue
-                    codec.decode_glyph(line)  # every emitted line must re-parse
-                except Exception as e:
-                    stats["glyphs_failed"] += 1
-                    stats["failures"].append(f"{fam['dir']}/{file['filename']} {letter!r}: {e}")
-                    continue
-                if n_clipped:
-                    stats["points_clipped_lines"] += 1
-                stats["glyphs"] += 1
-                lengths.append(len(line))
-                lines[letter].append(f"{fam['dir']}\t{file['filename']}\t{line}")
-            font.close()
+                    if n_clipped:
+                        stats["points_clipped_lines"] += 1
+                    stats["glyphs"] += 1
+                    lengths.append(len(line))
+                    lines[letter].append(f"{fam['dir']}\t{source}\t{line}")
+                font.close()
 
     for letter, ls in lines.items():
         with open(os.path.join(CORPUS_DIR, f"{letter}.txt"), "w") as f:
@@ -84,7 +87,8 @@ def main():
     with open(os.path.join(CORPUS_DIR, "encode-stats.json"), "w") as f:
         json.dump(stats, f, indent=1)
 
-    print(f"fonts: {stats['fonts_ok']} ok, {stats['fonts_failed']} failed to open")
+    print(f"fonts: {stats['fonts_ok']} ok, {stats['fonts_failed']} failed to open; "
+          f"{stats['instances']} instances (VF wght named instances included)")
     print(f"glyphs: {stats['glyphs']:,} encoded; {stats['glyphs_missing_or_empty']:,} missing/empty; "
           f"{stats['glyphs_failed']:,} failed; {stats['points_clipped_lines']:,} lines had clipped points")
     print(f"line length p50/p90/p99/max: {stats['line_length']['p50']}/{stats['line_length']['p90']}"

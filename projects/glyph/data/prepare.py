@@ -13,6 +13,8 @@ Reads data/corpus/<letter>.txt (from encode_corpus.py), then:
              and counted
   datasets   data/<letter>/{train,val}.bin + meta.pkl   (26 specialists)
              data/omni/{train,val}.bin + meta.pkl       (union, shuffled)
+             data/omni-aeg/                              (a+e+g union -- the
+             pilot generalist trains on exactly the pilot letters)
   test       ../test/<letter>.txt -- committed, raw lines for the held-out
              families; eval.py scores every arm against these
   baseline   per-letter unigram BPC (train char frequencies, Laplace
@@ -88,6 +90,7 @@ def main():
     stats = {"per_letter": {}, "dropped_duplicates": 0, "dropped_overlong": 0}
     baselines = {}
     omni = {"train": [], "val": []}
+    pilot = {"train": [], "val": []}
 
     for letter in codec.LETTERS:
         seen, splits = set(), {"train": [], "val": [], "test": []}
@@ -110,6 +113,9 @@ def main():
         baselines[letter] = round(unigram_bpc(splits["train"], splits["test"]), 4)
         omni["train"] += splits["train"]
         omni["val"] += splits["val"]
+        if letter in "aeg":
+            pilot["train"] += splits["train"]
+            pilot["val"] += splits["val"]
         stats["per_letter"][letter] = {
             "glyphs": {k: len(v) for k, v in splits.items()},
             "train_tokens": n_train, "val_tokens": n_val,
@@ -121,6 +127,11 @@ def main():
     n_train, n_val = write_dataset("omni", omni["train"], omni["val"])
     stats["omni"] = {"train_tokens": n_train, "val_tokens": n_val,
                      "glyphs": {k: len(v) for k, v in omni.items()}}
+    for lines in pilot.values():
+        rng.shuffle(lines)
+    p_train, p_val = write_dataset("omni-aeg", pilot["train"], pilot["val"])
+    stats["omni-aeg"] = {"train_tokens": p_train, "val_tokens": p_val,
+                         "glyphs": {k: len(v) for k, v in pilot.items()}}
 
     with open(os.path.join(RESEARCH_DIR, "baselines.json"), "w") as f:
         json.dump({"unigram_test_bpc": baselines,

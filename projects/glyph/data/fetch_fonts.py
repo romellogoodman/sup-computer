@@ -137,7 +137,8 @@ def write_manifest(selected, sha):
         "upstream_commit": sha,
         "license": "OFL",
         "category": "SANS_SERIF",
-        "styles": "upright only (style == normal); variable fonts contribute their default instance",
+        "styles": "upright only (style == normal); variable fonts contribute one instance "
+                  "per named-instance wght at encode time (other axes at defaults)",
         "families": selected,
     }
     with open(MANIFEST_PATH, "w") as f:

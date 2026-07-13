@@ -3,7 +3,7 @@
  "upstream_commit": "ec0464b978de222073645d6d3366f3fdf03376d8",
  "license": "OFL",
  "category": "SANS_SERIF",
- "styles": "upright only (style == normal); variable fonts contribute their default instance",
+ "styles": "upright only (style == normal); variable fonts contribute one instance per named-instance wght at encode time (other axes at defaults)",
  "families": [
   {
    "dir": "ofl/42dotsans",

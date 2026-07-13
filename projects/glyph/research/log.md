@@ -3,6 +3,24 @@
 Newest entries first. Corpus/codec work logs here too — the pipeline is part
 of the experiment, not plumbing.
 
+## 2026-07-13 — VF weight instancing lifts per-letter depth 2.6× (approved)
+
+The data-volume flag from review resolved corpus-side: variable fonts now
+contribute one sample per named-instance weight (`fvar`'s designer-endorsed
+set, other axes at defaults) instead of default-only — real drawn variation,
+not synthetic augmentation, and it feeds both arms equally. 1,382 files →
+3,298 instances → 81,934 glyphs (zero failures). Post-dedup (19,765 dropped,
+24% — coincident instance weights + forks): per-letter train 1,466–1,991
+glyphs ≈ 335k tokens (was ~750/127k); omni train 5.3M tokens. Unigram BPC
+floor essentially unchanged (4.94–5.67). Also added `data/omni-aeg/` — the
+pilot generalist trains on exactly the pilot letters.
+
+Pilot spec: shared config `config/specialist_pilot.py` (4L/4H/192E, block
+512, dropout 0.2, best-val checkpointing as the memorization guard) — arms
+differ in nothing but `--dataset`. Harness (`harness.py`) reports parse
+rate, unterminated rate, exact-train-match memorization, and renders sample
+sheets to `research/samples/`.
+
 ## 2026-07-13 — corpus frozen, codec gated, datasets built (no training yet)
 
 **Pool** (`data/fetch_fonts.py` → `manifest.json`): google/fonts pinned at

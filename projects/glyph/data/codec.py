@@ -36,6 +36,7 @@ from fontTools.pens.basePen import BasePen
 from fontTools.pens.cu2quPen import Cu2QuPen
 from fontTools.ttLib import TTFont
 from fontTools.ttLib.removeOverlaps import removeOverlaps
+from fontTools.varLib import instancer
 
 # --- the fixed alphabet ------------------------------------------------------
 
@@ -300,18 +301,46 @@ def glyph_to_svg_path(decoded):
     return "".join(d)
 
 
-def open_font(path):
-    """TTFont + glyphset, ready for extract_glyph. A variable font's glyf
-    table is its default instance -- no instancing needed.
-
-    Overlaps are removed (skia-pathops) for the a-z glyphs before anything
+def _prep(font):
+    """Overlaps are removed (skia-pathops) for the a-z glyphs before anything
     is extracted: found fonts -- variable fonts especially -- draw glyphs as
     overlapping contours (stem over bowl), and under the codec's even-odd
     fill every overlap region would render as a hole. Post-removal, contours
     are disjoint and even-odd is correct for any counter nesting."""
-    font = TTFont(path, fontNumber=0)
     cmap = font.getBestCmap()
     names = {cmap[ord(ch)] for ch in LETTERS if ord(ch) in cmap}
     if names:
         removeOverlaps(font, glyphNames=names, removeHinting=True)
     return font, font.getGlyphSet()
+
+
+def open_font(path):
+    """TTFont + glyphset for the file's default instance (a variable font's
+    glyf table IS its default instance). Used by the round-trip sheet."""
+    return _prep(TTFont(path, fontNumber=0))
+
+
+def font_instances(path):
+    """Yield (label, font, glyphset) for every sample a file contributes.
+
+    A static font yields once. A variable font with a wght axis yields one
+    instance per distinct named-instance weight (the designer-endorsed set
+    from fvar), all other axes pinned at their defaults -- real drawn
+    variation, not synthetic augmentation. Decided 2026-07-13 to lift
+    per-letter corpus depth out of memorization territory: VF-only families
+    otherwise contribute a single default instance each."""
+    font = TTFont(path, fontNumber=0)
+    if "fvar" not in font:
+        yield "", *_prep(font)
+        return
+    axes = {a.axisTag: a for a in font["fvar"].axes}
+    if "wght" not in axes:
+        yield "", *_prep(font)
+        return
+    wghts = sorted({round(inst.coordinates.get("wght", axes["wght"].defaultValue))
+                    for inst in font["fvar"].instances})
+    if not wghts:
+        wghts = [round(axes["wght"].defaultValue)]
+    for w in wghts:
+        inst = instancer.instantiateVariableFont(font, {"wght": w}, inplace=False, updateFontNames=False)
+        yield f"@wght{w}", *_prep(inst)

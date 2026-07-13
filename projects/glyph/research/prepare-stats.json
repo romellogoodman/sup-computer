@@ -2,273 +2,281 @@
  "per_letter": {
   "a": {
    "glyphs": {
-    "train": 809,
-    "val": 128,
-    "test": 102
+    "train": 1991,
+    "val": 227,
+    "test": 253
    },
-   "train_tokens": 126976,
-   "val_tokens": 21822,
-   "unigram_test_bpc": 5.1548
+   "train_tokens": 335492,
+   "val_tokens": 38230,
+   "unigram_test_bpc": 5.1579
   },
   "b": {
    "glyphs": {
-    "train": 807,
-    "val": 128,
-    "test": 103
+    "train": 1966,
+    "val": 225,
+    "test": 254
    },
-   "train_tokens": 104146,
-   "val_tokens": 17400,
-   "unigram_test_bpc": 5.326
+   "train_tokens": 274339,
+   "val_tokens": 30535,
+   "unigram_test_bpc": 5.3296
   },
   "c": {
    "glyphs": {
-    "train": 806,
-    "val": 127,
-    "test": 98
+    "train": 1939,
+    "val": 225,
+    "test": 249
    },
-   "train_tokens": 89579,
-   "val_tokens": 14378,
-   "unigram_test_bpc": 5.1074
+   "train_tokens": 233251,
+   "val_tokens": 25910,
+   "unigram_test_bpc": 5.1316
   },
   "d": {
    "glyphs": {
-    "train": 804,
-    "val": 127,
-    "test": 103
+    "train": 1952,
+    "val": 221,
+    "test": 254
    },
-   "train_tokens": 105242,
-   "val_tokens": 17584,
-   "unigram_test_bpc": 5.2836
+   "train_tokens": 276869,
+   "val_tokens": 30558,
+   "unigram_test_bpc": 5.2887
   },
   "e": {
    "glyphs": {
-    "train": 808,
-    "val": 128,
-    "test": 102
+    "train": 1978,
+    "val": 225,
+    "test": 253
    },
-   "train_tokens": 101097,
-   "val_tokens": 16347,
-   "unigram_test_bpc": 5.1575
+   "train_tokens": 267697,
+   "val_tokens": 29482,
+   "unigram_test_bpc": 5.1844
   },
   "f": {
    "glyphs": {
-    "train": 802,
-    "val": 127,
-    "test": 99
+    "train": 1932,
+    "val": 221,
+    "test": 252
    },
-   "train_tokens": 70061,
-   "val_tokens": 11597,
-   "unigram_test_bpc": 5.4584
+   "train_tokens": 175050,
+   "val_tokens": 19573,
+   "unigram_test_bpc": 5.439
   },
   "g": {
    "glyphs": {
-    "train": 812,
-    "val": 129,
-    "test": 103
+    "train": 1986,
+    "val": 229,
+    "test": 254
    },
-   "train_tokens": 167112,
-   "val_tokens": 26143,
-   "unigram_test_bpc": 5.4282
+   "train_tokens": 434185,
+   "val_tokens": 45724,
+   "unigram_test_bpc": 5.4461
   },
   "h": {
    "glyphs": {
-    "train": 801,
-    "val": 128,
-    "test": 98
+    "train": 1948,
+    "val": 225,
+    "test": 248
    },
-   "train_tokens": 66395,
-   "val_tokens": 11475,
-   "unigram_test_bpc": 5.285
+   "train_tokens": 171384,
+   "val_tokens": 19555,
+   "unigram_test_bpc": 5.2613
   },
   "i": {
    "glyphs": {
-    "train": 792,
-    "val": 127,
-    "test": 98
+    "train": 1888,
+    "val": 215,
+    "test": 239
    },
-   "train_tokens": 49643,
-   "val_tokens": 8576,
-   "unigram_test_bpc": 5.2659
+   "train_tokens": 119289,
+   "val_tokens": 14504,
+   "unigram_test_bpc": 5.3703
   },
   "j": {
    "glyphs": {
-    "train": 806,
-    "val": 127,
-    "test": 99
+    "train": 1957,
+    "val": 225,
+    "test": 246
    },
-   "train_tokens": 76580,
-   "val_tokens": 12729,
-   "unigram_test_bpc": 5.6091
+   "train_tokens": 190656,
+   "val_tokens": 22766,
+   "unigram_test_bpc": 5.6657
   },
   "k": {
    "glyphs": {
-    "train": 785,
-    "val": 127,
-    "test": 96
+    "train": 1885,
+    "val": 222,
+    "test": 243
    },
-   "train_tokens": 49268,
-   "val_tokens": 8681,
-   "unigram_test_bpc": 5.2785
+   "train_tokens": 118794,
+   "val_tokens": 13822,
+   "unigram_test_bpc": 5.238
   },
   "l": {
    "glyphs": {
-    "train": 695,
-    "val": 112,
-    "test": 90
+    "train": 1466,
+    "val": 164,
+    "test": 218
    },
-   "train_tokens": 26212,
-   "val_tokens": 4117,
-   "unigram_test_bpc": 5.0891
+   "train_tokens": 61406,
+   "val_tokens": 6388,
+   "unigram_test_bpc": 5.1261
   },
   "m": {
    "glyphs": {
-    "train": 803,
-    "val": 128,
-    "test": 98
+    "train": 1963,
+    "val": 225,
+    "test": 249
    },
-   "train_tokens": 108798,
-   "val_tokens": 18761,
-   "unigram_test_bpc": 5.3604
+   "train_tokens": 282692,
+   "val_tokens": 32298,
+   "unigram_test_bpc": 5.3457
   },
   "n": {
    "glyphs": {
-    "train": 803,
-    "val": 128,
-    "test": 98
+    "train": 1950,
+    "val": 225,
+    "test": 248
    },
-   "train_tokens": 66708,
-   "val_tokens": 11543,
-   "unigram_test_bpc": 5.1327
+   "train_tokens": 170917,
+   "val_tokens": 19655,
+   "unigram_test_bpc": 5.1294
   },
   "o": {
    "glyphs": {
-    "train": 804,
-    "val": 122,
-    "test": 103
+    "train": 1967,
+    "val": 219,
+    "test": 254
    },
-   "train_tokens": 96219,
-   "val_tokens": 14928,
-   "unigram_test_bpc": 5.1756
+   "train_tokens": 253021,
+   "val_tokens": 27433,
+   "unigram_test_bpc": 5.1961
   },
   "p": {
    "glyphs": {
-    "train": 806,
-    "val": 127,
-    "test": 102
+    "train": 1963,
+    "val": 225,
+    "test": 253
    },
-   "train_tokens": 101958,
-   "val_tokens": 16929,
-   "unigram_test_bpc": 5.3515
+   "train_tokens": 271570,
+   "val_tokens": 30106,
+   "unigram_test_bpc": 5.3565
   },
   "q": {
    "glyphs": {
-    "train": 802,
-    "val": 127,
-    "test": 102
+    "train": 1952,
+    "val": 225,
+    "test": 253
    },
-   "train_tokens": 102161,
-   "val_tokens": 16844,
-   "unigram_test_bpc": 5.3302
+   "train_tokens": 269548,
+   "val_tokens": 30188,
+   "unigram_test_bpc": 5.3528
   },
   "r": {
    "glyphs": {
-    "train": 797,
-    "val": 127,
-    "test": 98
+    "train": 1949,
+    "val": 221,
+    "test": 249
    },
-   "train_tokens": 54789,
-   "val_tokens": 9239,
-   "unigram_test_bpc": 5.1317
+   "train_tokens": 141554,
+   "val_tokens": 15821,
+   "unigram_test_bpc": 5.1422
   },
   "s": {
    "glyphs": {
-    "train": 807,
-    "val": 127,
-    "test": 103
+    "train": 1961,
+    "val": 225,
+    "test": 254
    },
-   "train_tokens": 128253,
-   "val_tokens": 20752,
-   "unigram_test_bpc": 5.0527
+   "train_tokens": 334122,
+   "val_tokens": 37093,
+   "unigram_test_bpc": 5.0654
   },
   "t": {
    "glyphs": {
-    "train": 797,
-    "val": 127,
-    "test": 98
+    "train": 1932,
+    "val": 221,
+    "test": 247
    },
-   "train_tokens": 68819,
-   "val_tokens": 11533,
-   "unigram_test_bpc": 5.2232
+   "train_tokens": 170784,
+   "val_tokens": 19323,
+   "unigram_test_bpc": 5.2014
   },
   "u": {
    "glyphs": {
-    "train": 801,
-    "val": 129,
-    "test": 98
+    "train": 1951,
+    "val": 226,
+    "test": 249
    },
-   "train_tokens": 69489,
-   "val_tokens": 12155,
-   "unigram_test_bpc": 5.1548
+   "train_tokens": 178881,
+   "val_tokens": 20577,
+   "unigram_test_bpc": 5.1664
   },
   "v": {
    "glyphs": {
-    "train": 787,
-    "val": 127,
-    "test": 97
+    "train": 1881,
+    "val": 223,
+    "test": 239
    },
-   "train_tokens": 34343,
-   "val_tokens": 5409,
-   "unigram_test_bpc": 5.1383
+   "train_tokens": 81690,
+   "val_tokens": 9087,
+   "unigram_test_bpc": 5.1437
   },
   "w": {
    "glyphs": {
-    "train": 789,
-    "val": 126,
-    "test": 99
+    "train": 1899,
+    "val": 220,
+    "test": 252
    },
-   "train_tokens": 59572,
-   "val_tokens": 9389,
-   "unigram_test_bpc": 5.3807
+   "train_tokens": 146495,
+   "val_tokens": 16228,
+   "unigram_test_bpc": 5.3368
   },
   "x": {
    "glyphs": {
-    "train": 784,
-    "val": 127,
-    "test": 96
+    "train": 1868,
+    "val": 220,
+    "test": 240
    },
-   "train_tokens": 50266,
-   "val_tokens": 8331,
-   "unigram_test_bpc": 5.0436
+   "train_tokens": 118633,
+   "val_tokens": 13775,
+   "unigram_test_bpc": 5.0402
   },
   "y": {
    "glyphs": {
-    "train": 803,
-    "val": 127,
-    "test": 103
+    "train": 1968,
+    "val": 224,
+    "test": 253
    },
-   "train_tokens": 61975,
-   "val_tokens": 10812,
-   "unigram_test_bpc": 5.481
+   "train_tokens": 155437,
+   "val_tokens": 18162,
+   "unigram_test_bpc": 5.5105
   },
   "z": {
    "glyphs": {
-    "train": 780,
-    "val": 126,
-    "test": 98
+    "train": 1853,
+    "val": 218,
+    "test": 249
    },
-   "train_tokens": 38679,
-   "val_tokens": 6691,
-   "unigram_test_bpc": 4.9349
+   "train_tokens": 92106,
+   "val_tokens": 10984,
+   "unigram_test_bpc": 4.9439
   }
  },
- "dropped_duplicates": 7895,
- "dropped_overlong": 15,
+ "dropped_duplicates": 19765,
+ "dropped_overlong": 31,
  "omni": {
-  "train_tokens": 2074340,
-  "val_tokens": 344165,
+  "train_tokens": 5325862,
+  "val_tokens": 597777,
   "glyphs": {
-   "train": 20690,
-   "val": 3290
+   "train": 49945,
+   "val": 5741
+  }
+ },
+ "omni-aeg": {
+  "train_tokens": 1037374,
+  "val_tokens": 113436,
+  "glyphs": {
+   "train": 5955,
+   "val": 681
   }
  }
 }
