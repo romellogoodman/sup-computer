@@ -6,6 +6,7 @@ requires-python = ">=3.9"
 dependencies = [
     "supcomputer-core",
     "fonttools",
+    "skia-pathops>=0.8.0.post2",
 ]
 
 [tool.uv.sources]
