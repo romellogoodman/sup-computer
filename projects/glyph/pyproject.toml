@@ -1,0 +1,21 @@
+[project]
+name = "glyph"
+version = "0.1.0"
+description = "Per-letter glyph-outline GPTs — 26 specialists vs a letter-conditioned generalist, the anti-MoE argument made literal and measured"
+requires-python = ">=3.9"
+dependencies = [
+    "supcomputer-core",
+    "fonttools",
+]
+
+[tool.uv.sources]
+supcomputer-core = { workspace = true }
+
+# Thin consumer of the shared engine, same shape as daydream/shakespeare: it
+# owns corpus prep, configs, run evidence, and model cards, and calls into
+# nanogpt_core for training, sampling, and eval. Not a build target (no
+# [build-system]).
+#
+# fontTools is the workspace's first font dependency — used only at corpus
+# time (parse OpenType outlines, convert cubics to quadratics). The trained
+# models and the player never see a font file.

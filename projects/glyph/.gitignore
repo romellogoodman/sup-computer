@@ -1,0 +1,11 @@
+# The font pool (sparse clone of google/fonts) and everything derived from it
+# regenerate from data/fetch_fonts.py + the committed manifest.json.
+data/gfonts/
+data/corpus/
+
+# Tokenized datasets (root .gitignore already blocks *.bin / *.pkl repo-wide;
+# repeated here for sparse clones, per house convention).
+*.bin
+*.pkl
+*.pt
+*.onnx
