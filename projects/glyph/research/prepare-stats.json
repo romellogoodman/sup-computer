@@ -1,0 +1,274 @@
+{
+ "per_letter": {
+  "a": {
+   "glyphs": {
+    "train": 809,
+    "val": 128,
+    "test": 102
+   },
+   "train_tokens": 126976,
+   "val_tokens": 21822,
+   "unigram_test_bpc": 5.1548
+  },
+  "b": {
+   "glyphs": {
+    "train": 807,
+    "val": 128,
+    "test": 103
+   },
+   "train_tokens": 104146,
+   "val_tokens": 17400,
+   "unigram_test_bpc": 5.326
+  },
+  "c": {
+   "glyphs": {
+    "train": 806,
+    "val": 127,
+    "test": 98
+   },
+   "train_tokens": 89579,
+   "val_tokens": 14378,
+   "unigram_test_bpc": 5.1074
+  },
+  "d": {
+   "glyphs": {
+    "train": 804,
+    "val": 127,
+    "test": 103
+   },
+   "train_tokens": 105242,
+   "val_tokens": 17584,
+   "unigram_test_bpc": 5.2836
+  },
+  "e": {
+   "glyphs": {
+    "train": 808,
+    "val": 128,
+    "test": 102
+   },
+   "train_tokens": 101097,
+   "val_tokens": 16347,
+   "unigram_test_bpc": 5.1575
+  },
+  "f": {
+   "glyphs": {
+    "train": 802,
+    "val": 127,
+    "test": 99
+   },
+   "train_tokens": 70061,
+   "val_tokens": 11597,
+   "unigram_test_bpc": 5.4584
+  },
+  "g": {
+   "glyphs": {
+    "train": 812,
+    "val": 129,
+    "test": 103
+   },
+   "train_tokens": 167112,
+   "val_tokens": 26143,
+   "unigram_test_bpc": 5.4282
+  },
+  "h": {
+   "glyphs": {
+    "train": 801,
+    "val": 128,
+    "test": 98
+   },
+   "train_tokens": 66395,
+   "val_tokens": 11475,
+   "unigram_test_bpc": 5.285
+  },
+  "i": {
+   "glyphs": {
+    "train": 792,
+    "val": 127,
+    "test": 98
+   },
+   "train_tokens": 49643,
+   "val_tokens": 8576,
+   "unigram_test_bpc": 5.2659
+  },
+  "j": {
+   "glyphs": {
+    "train": 806,
+    "val": 127,
+    "test": 99
+   },
+   "train_tokens": 76580,
+   "val_tokens": 12729,
+   "unigram_test_bpc": 5.6091
+  },
+  "k": {
+   "glyphs": {
+    "train": 785,
+    "val": 127,
+    "test": 96
+   },
+   "train_tokens": 49268,
+   "val_tokens": 8681,
+   "unigram_test_bpc": 5.2785
+  },
+  "l": {
+   "glyphs": {
+    "train": 695,
+    "val": 112,
+    "test": 90
+   },
+   "train_tokens": 26212,
+   "val_tokens": 4117,
+   "unigram_test_bpc": 5.0891
+  },
+  "m": {
+   "glyphs": {
+    "train": 803,
+    "val": 128,
+    "test": 98
+   },
+   "train_tokens": 108798,
+   "val_tokens": 18761,
+   "unigram_test_bpc": 5.3604
+  },
+  "n": {
+   "glyphs": {
+    "train": 803,
+    "val": 128,
+    "test": 98
+   },
+   "train_tokens": 66708,
+   "val_tokens": 11543,
+   "unigram_test_bpc": 5.1327
+  },
+  "o": {
+   "glyphs": {
+    "train": 804,
+    "val": 122,
+    "test": 103
+   },
+   "train_tokens": 96219,
+   "val_tokens": 14928,
+   "unigram_test_bpc": 5.1756
+  },
+  "p": {
+   "glyphs": {
+    "train": 806,
+    "val": 127,
+    "test": 102
+   },
+   "train_tokens": 101958,
+   "val_tokens": 16929,
+   "unigram_test_bpc": 5.3515
+  },
+  "q": {
+   "glyphs": {
+    "train": 802,
+    "val": 127,
+    "test": 102
+   },
+   "train_tokens": 102161,
+   "val_tokens": 16844,
+   "unigram_test_bpc": 5.3302
+  },
+  "r": {
+   "glyphs": {
+    "train": 797,
+    "val": 127,
+    "test": 98
+   },
+   "train_tokens": 54789,
+   "val_tokens": 9239,
+   "unigram_test_bpc": 5.1317
+  },
+  "s": {
+   "glyphs": {
+    "train": 807,
+    "val": 127,
+    "test": 103
+   },
+   "train_tokens": 128253,
+   "val_tokens": 20752,
+   "unigram_test_bpc": 5.0527
+  },
+  "t": {
+   "glyphs": {
+    "train": 797,
+    "val": 127,
+    "test": 98
+   },
+   "train_tokens": 68819,
+   "val_tokens": 11533,
+   "unigram_test_bpc": 5.2232
+  },
+  "u": {
+   "glyphs": {
+    "train": 801,
+    "val": 129,
+    "test": 98
+   },
+   "train_tokens": 69489,
+   "val_tokens": 12155,
+   "unigram_test_bpc": 5.1548
+  },
+  "v": {
+   "glyphs": {
+    "train": 787,
+    "val": 127,
+    "test": 97
+   },
+   "train_tokens": 34343,
+   "val_tokens": 5409,
+   "unigram_test_bpc": 5.1383
+  },
+  "w": {
+   "glyphs": {
+    "train": 789,
+    "val": 126,
+    "test": 99
+   },
+   "train_tokens": 59572,
+   "val_tokens": 9389,
+   "unigram_test_bpc": 5.3807
+  },
+  "x": {
+   "glyphs": {
+    "train": 784,
+    "val": 127,
+    "test": 96
+   },
+   "train_tokens": 50266,
+   "val_tokens": 8331,
+   "unigram_test_bpc": 5.0436
+  },
+  "y": {
+   "glyphs": {
+    "train": 803,
+    "val": 127,
+    "test": 103
+   },
+   "train_tokens": 61975,
+   "val_tokens": 10812,
+   "unigram_test_bpc": 5.481
+  },
+  "z": {
+   "glyphs": {
+    "train": 780,
+    "val": 126,
+    "test": 98
+   },
+   "train_tokens": 38679,
+   "val_tokens": 6691,
+   "unigram_test_bpc": 4.9349
+  }
+ },
+ "dropped_duplicates": 7895,
+ "dropped_overlong": 15,
+ "omni": {
+  "train_tokens": 2074340,
+  "val_tokens": 344165,
+  "glyphs": {
+   "train": 20690,
+   "val": 3290
+  }
+ }
+}
