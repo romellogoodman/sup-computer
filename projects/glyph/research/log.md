@@ -3,6 +3,24 @@
 Newest entries first. Corpus/codec work logs here too — the pipeline is part
 of the experiment, not plumbing.
 
+## 2026-07-13 — release policy decided + matrix launched (28 models)
+
+Two directives from Romello before the matrix launch:
+
+1. **The report embeds actual glyphs from every stage** — pilot and matrix,
+   both arms, successes and failures. Specimens are evidence, not decoration.
+2. **The release is singular.** The experiment stays fully documented and
+   recreatable in-repo, but sup computer releases ONE glyph-nanogpt: the
+   case of 26 specialists XOR one generalist, decided by the matrix. This
+   supersedes the earlier "both arms ship" lock (CLAUDE.md updated).
+
+Matrix: 26 specialists (`config/specialist.py`, 1.80M each) + omni-s (1.80M,
+param parity) + omni-xl (`config/omni_xl.py`, 12L/8H/576E ≈ 47.8M ≈ 26×
+specialist, +2%). All at 3000 iters (pilot val still falling at 2000; equal
+steps for every model, optimizer settings held identical across arms so the
+comparison controls everything except capacity allocation). Runs:
+`runs/<x>-r1`, `runs/omni-{s,xl}-r1`.
+
 ## 2026-07-13 — a/e/g pilot: all gates pass; specialists lead at param parity
 
 Four runs (`pilot-{a,e,g,omni-aeg}-r1`), one shared config (1.80M params,

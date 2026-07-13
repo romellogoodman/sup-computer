@@ -6,11 +6,14 @@ letter-conditioned generalist (two sizes). Start with [`README.md`](README.md).
 
 ## The core idea (don't relitigate these)
 
-- **The comparison is the release.** Specialists (`-a`…`-z`) and generalists
-  (`-omni-s`, `-omni-xl`) all ship with cards and numbers. Releasing only a
-  "winner" converts the experiment back into model selection and destroys
-  the finding. Which arm headlines the eventual type tester is presentation,
-  decided after results.
+- **The comparison is the finding; the release is singular.** (Decided by
+  Romello 2026-07-13, supersedes the earlier "both arms ship" lock.) The
+  report documents both arms with numbers AND actual rendered glyphs from
+  every stage — pilot and matrix, successes and failures — and the whole
+  experiment stays recreatable from the repo. But sup computer releases ONE
+  glyph-nanogpt: either the case of 26 specialists or one generalist,
+  decided by the matrix results. The losing arm is never a released model —
+  it survives as evidence.
 - **One codec, one alphabet, every arm.** The serialization is identical for
   all models — the letter-identity char leads every line and is simply
   constant for a specialist. The 127-char vocab is fixed and explicit

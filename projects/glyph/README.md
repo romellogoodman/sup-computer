@@ -2,11 +2,13 @@
 
 Small GPTs that draw lowercase letters. The corpus is OpenType glyph outlines
 from OFL-licensed sans-serif families on Google Fonts, serialized as text —
-one printable character per token, one glyph per line. The experiment is the
-release: **26 per-letter specialists** (`glyph-nanogpt-a` … `glyph-nanogpt-z`,
+one printable character per token, one glyph per line. The experiment:
+**26 per-letter specialists** (`glyph-nanogpt-a` … `glyph-nanogpt-z`,
 "the case") against a **letter-conditioned generalist** in two sizes
 (`glyph-nanogpt-omni-s`, param-matched to one specialist; `glyph-nanogpt-omni-xl`,
 matched to the sum of all 26). What does splitting cost, and what does it buy?
+The comparison is documented in full — but the studio releases **one**
+glyph-nanogpt: the case or the generalist, decided by the results.
 
 Where Virtua Grotesk (Eli Heuer) trains one model on one designer's perfectly
 disciplined hand, this inverts it: each specialist compresses hundreds of
