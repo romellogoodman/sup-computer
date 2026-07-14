@@ -145,6 +145,11 @@ def main():
 
     with open(os.path.join(args.out_dir, f"harness-{args.letters}.json"), "w") as f:
         json.dump(report, f, indent=1)
+    # raw sampled lines are report material (specimen assets) -- keep them.
+    # one sample per line; unterminated samples marked with a bare "!".
+    with open(os.path.join(args.out_dir, f"samples-{args.letters}-t{args.temp}.txt"), "w") as f:
+        for _, samples in blocks:
+            f.write("".join((line if line is not None else "!") + "\n" for line in samples))
     sheets = os.path.join(HERE, "research", "samples")
     os.makedirs(sheets, exist_ok=True)
     out = os.path.join(sheets, f"{run}-{args.letters}-t{args.temp}.html")
