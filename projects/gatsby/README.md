@@ -61,7 +61,7 @@ everything downstream is identical:
 generate.py           Claude API (sonnet-4-6)           ->  data/raw.txt   (v1's corpus)
 generate_mixture.py   local 4-model mixture, LM Studio  ->  data/raw.txt   (v2's corpus — the current one)
 prepare.py            data/raw.txt                      ->  data/gatsby_bpe/ (byte-level BPE bins + meta.pkl)
-core/nanogpt_core/train.py + config.py                  ->  runs/<r>/ckpt.pt (~15-20 min on Apple Silicon)
+core/nanogpt_core/train.py + config/bpe.py                  ->  runs/<r>/ckpt.pt (~15-20 min on Apple Silicon)
 sample.py                                               ->  the experience
 ```
 
@@ -96,7 +96,7 @@ uv run python projects/gatsby/generate_mixture.py --smoke   # 1 topic per model
 # uv run python projects/gatsby/generate.py --n 1000 --batch  # a real run (Batch API)
 
 uv run python projects/gatsby/prepare.py                    # builds data/gatsby_bpe/
-uv run python core/nanogpt_core/train.py projects/gatsby/config.py
+uv run python core/nanogpt_core/train.py projects/gatsby/config/bpe.py
 uv run python projects/gatsby/sample.py \
     --start="[green=5] [green=5] [green=5] obsession=total
 topic: a dog and a balloon
@@ -104,7 +104,7 @@ topic: a dog and a balloon
 ```
 
 Hyperparameters (and the main quality dial, `max_iters`) live in
-[`config.py`](config.py); any knob can be overridden inline, e.g.
+[`config/bpe.py`](config/bpe.py); any knob can be overridden inline, e.g.
 `--max_iters=5000`. To rebuild a *released* version exactly, use its frozen
 folder under [`models/`](models/) instead — each runs in place.
 

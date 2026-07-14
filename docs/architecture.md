@@ -58,6 +58,31 @@ Two trees with different jobs live side by side:
   etc. It runs in place and stays reproducible forever, even as `core/` moves on.
   The duplication is intentional. See [`releasing.md`](releasing.md).
 
+### Anatomy of a project (the template for the next one)
+
+Glyph is the reference shape; every project has converged on it:
+
+```
+projects/<name>/
+  pyproject.toml     workspace member; declares what the project imports
+  README.md          self-describing in a sparse clone (hard rule)
+  CLAUDE.md          agent conventions; "don't relitigate" list
+  config/<arm>.py    one training config per arm (daydream: micro/regular/grand)
+  data/              corpus scripts, one pipeline stage per file; bins gitignored
+  harness.py         the project-specific eval — what the loss can't measure
+  research/          committed evidence (JSON, logs) every claim traces to
+  leaderboard.md     the per-run scoreboard   ·   MODELS.md  the version registry
+  models/<id>/       frozen releases (never refactored to share core/)
+  runs/              gitignored checkpoints + run logs
+```
+
+Everything model-generic — loading, tokenizer resolution, BPC — is imported
+from `core/` (`from nanogpt_core import load_model, load_tokenizer`;
+`nanogpt_core.bpc.score_run` — ADR-0029), never re-pasted. One historical
+exception: gatsby keeps `eval_dial.py`/`generate_samples.py` as separate files
+because a published report's reproduce block cites them by name (ADR-0016 —
+frozen reports pin paths).
+
 ## The no-weights rule
 
 Checkpoints, `*.bin` corpora, and ONNX exports are gitignored and never committed.

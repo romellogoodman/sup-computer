@@ -19,10 +19,9 @@ dataset the shared engine trains on:
     data/gatsby_bpe/meta.pkl       {"vocab_size": N, "tokenizer": "tokenizer.json"}
 
 meta.pkl IS the tokenizer contract (ADR-0012): core/nanogpt_core/train.py reads
-`vocab_size` from it; the project-local sample.py / eval_dial.py /
-generate_samples.py read `tokenizer` and load tokenizer.json (core's own
-sample/eval only understand char stoi or GPT-2 BPE, hence the project-local seam
-shakespeare's eval_xl.py/sample_xl.py established).
+`vocab_size` from it; the `tokenizer` key routes loading to the committed HF
+tokenizer.json — a branch core's own sample/eval understand natively since
+ADR-0029 (the project scripts ride the same loaders via _runtime.py).
 
 The byte-level initial alphabet (all 256 bytes) makes the tokenizer lossless:
 every character in the corpus and in any operator prompt encodes with no UNK.
@@ -47,7 +46,7 @@ OUT_DIR = os.path.join(HERE, "data", "gatsby_bpe")  # data_root=<.../data>, data
 # Small on purpose. The corpus is tiny (~1.53M chars); a small byte-level vocab
 # keeps every control-line token frequent and well-trained, and sidesteps the
 # large-vocab float16 overflow that diverged shakespeare's 16k BPE run on MPS
-# (core's GradScaler is CUDA-only). We also train in float32 (see config.py).
+# (core's GradScaler is CUDA-only). We also train in float32 (see config/bpe.py).
 VOCAB_SIZE = 1024
 
 if not os.path.exists(RAW):

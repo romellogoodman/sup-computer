@@ -251,7 +251,7 @@ def main():
     print(f"per model: {by_model}")
     print(f"manifest -> {manifest_path}")
     print("next: uv run python projects/gatsby/prepare.py  "
-          "&&  uv run python core/nanogpt_core/train.py projects/gatsby/config.py")
+          "&&  uv run python core/nanogpt_core/train.py projects/gatsby/config/bpe.py")
 
 
 if __name__ == "__main__":

@@ -8,7 +8,7 @@
 #
 # Run from the repo root:
 #   uv run python projects/gatsby/prepare.py                       # build data/gatsby_bpe/
-#   uv run python core/nanogpt_core/train.py projects/gatsby/config.py \
+#   uv run python core/nanogpt_core/train.py projects/gatsby/config/bpe.py \
 #       --out_dir=projects/gatsby/runs/migrate-bpe-r1
 
 out_dir = 'projects/gatsby/runs/migrate-bpe-r1'

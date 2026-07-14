@@ -367,7 +367,7 @@ def main():
           f"(topics out={topic_usage.output:,}  stories out={story_usage.output:,}"
           f"{'  [batch 50%]' if args.batch else ''})")
     print("next: uv run python projects/gatsby/prepare.py  "
-          "&&  uv run python core/nanogpt_core/train.py projects/gatsby/config.py")
+          "&&  uv run python core/nanogpt_core/train.py projects/gatsby/config/bpe.py")
 
 
 if __name__ == "__main__":

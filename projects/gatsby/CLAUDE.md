@@ -39,8 +39,8 @@ snapshots under `models/` keep whatever engine they froze with.
   rides `_runtime.py`).
 - **The engine is the shared `core/`** (ADR-0023) — do not vendor or fork one.
   Project logic lives in `generate*.py` / `prepare.py` / `sample.py` /
-  `config.py` / `_runtime.py`.
-- **`config.py` is the knobs**. Mac settings: `device='mps'`, `compile=False`.
+  `config/bpe.py` / `_runtime.py`.
+- **`config/bpe.py` is the knobs** (one file per arm, like daydream/glyph). Mac settings: `device='mps'`, `compile=False`.
 - **The control-line document format is load-bearing** — `build_prime` in
   `generate.py` is its single source of truth. The writers (`generate.py`,
   `generate_mixture.py`) emit it into the corpus; `sample.py` / `eval_dial.py`
