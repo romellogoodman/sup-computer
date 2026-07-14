@@ -104,6 +104,24 @@ Harness at temp 1.0 (64 samples/letter): parse 73–88%, memorized-exact 0/320.
 Runs: `runs/pilot-{a,e,g,omni-aeg}-r1` (gitignored); sheets in
 `research/samples/`.
 
+### Craft (2026-07-14, experiment 10 — measured, no training)
+
+Baseline-rule pass rate among grammar-valid samples, via `craft_score.py`
+(v1.1 rules: `o c e s u` must dip below the baseline, `h i l m n` must sit on
+it within 2 em-units; exact curve extrema). The corpus scored under the same
+rules is the reference row; the shape metric experiment 09 lacked, run
+retroactively over its samples — full numbers in `research/craft-results.json`
+and the report
+[Three predictions from a font chapter](../../research-docs/reports/three-predictions-from-a-font-chapter.md).
+
+| arm | parse (temp 1.0) | craft pass (of valid) |
+|---|---|---|
+| the corpus itself | — | 89.5% |
+| the case (26 × 1.8M) | 92.1% | 91.1% |
+| omni-s (1.8M) | 94.2% | 85.4% |
+| omni-xl (47.8M) | 71.0% | 87.4% |
+| **omni-xl @ temp 0.8 (shipped)** | **84.7%** | **93.8%** |
+
 ### Matrix (2026-07-14, 26 specialists + omni-s + omni-xl, 3000 iters)
 
 Bold = best BPC for that letter. Specialists win 10/26; omni-xl wins 16/26;

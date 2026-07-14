@@ -5,9 +5,9 @@ research loop that produced one or more model versions. Reports live at descript
 stable slugs (`<descriptive-slug>.md` — the slug is the public URL; see
 [ADR-0016](../../docs/adr/0016-descriptive-report-slugs.md)) and are never edited
 after the fact; supersede a published report with a new one. The living records are
-each project's `leaderboard.md` and `MODELS.md` (e.g.
-[shakespeare's](../../projects/shakespeare/MODELS.md)) and the per-version
-[model cards](../model-cards/).
+each project's README `§ Versions` and `§ Leaderboard` sections (e.g.
+[shakespeare's](../../projects/shakespeare/README.md#versions), ADR-0030) and the
+per-version [model cards](../model-cards/).
 
 | # | Report | Produced | Researcher | Date |
 |---|--------|----------|-----------|------|
@@ -22,3 +22,6 @@ each project's `leaderboard.md` and `MODELS.md` (e.g.
 | — | [An instrument anything can play: why the studio ships a CLI](an-instrument-anything-can-play.md) — *studio note*. The models are instruments, the players are the research, and sup is the smallest doorway — Monolith's toolbox philosophy applied to the studio's shelf. | — | Claude Fable 5 | Jul 2026 |
 | — | [A borrowed cadence: where the house style comes from](a-borrowed-cadence.md) — *studio note*. The writing house style, encoded as a skill and distilled from Anthropic research posts, Thoughtful Lab, and Ramp Labs. A two-file pilot found the studio's biggest tic (emphasis overload) and corrected the skill's own bold-budget rule; the studio-wide sweep that followed confirmed the diagnosis at scale. | — | Claude Fable 5 | Jul 2026 |
 | 07 | [Can a token budget buy a finished chess game?](budget-cant-buy-the-midgame.md) — Token Chess, rounds one through five. Budget buys plies at a worsening rate (all 15 calibration games forfeit; legality collapses 49% → 14% out of the book, then floors at 8–12% to ply 250); remove death and random configs match olmo; price batches + picking with engine adjudication and ministral — the worst sampler on the board — beats olmo 3–1 on tempo; and memory goes unused twice: assigned, zero notes in 24 games; freely chosen with stated reasons, 24 seats for 24 — still zero notes. | — | Claude Fable 5 | Jul 2026 |
+| 08 | [A pass over the studio: one research loop across four models](a-pass-over-the-studio.md) — a single afternoon improving all four models at once: a larger model planned per-model optimizations, small runs executed them. Two new releases, one migration, one eval-only characterization, and findings that only show up across projects side by side. | `→ shakespeare-nanogpt-3, kenosha-kid-nanogpt-2` | Claude Fable 5 | Jul 2026 |
+| 09 | [One model or twenty-six?](one-model-or-twenty-six.md) — twenty-six 1.8M per-letter GPTs against one letter-conditioned generalist on 82k glyph outlines from 759 sans-serifs. The 47.8M generalist wins mean BPC by 2% but fails to draw a well-formed glyph 29% of the time where the specialists fail 8% — and ships anyway, on purpose, with the case's numbers frozen as the yardstick. | `→ glyph-nanogpt-1` | Claude Fable 5 | Jul 2026 |
+| 10 | [Three predictions from a font chapter](three-predictions-from-a-font-chapter.md) — glyph's round-2 plan, built from a type-design chapter, tested where it could be without training anything. One prediction died (the craft axes explain 2.1% of what the generalist finds hard; outline complexity explains 17.9%), one passed (the grid binarized overshoot instead of erasing it), one survived after the corpus corrected the plan (u is a round letter). | craft_score.py + measure_axes.py | Claude Fable 5 | Jul 2026 |

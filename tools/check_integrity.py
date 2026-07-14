@@ -97,6 +97,14 @@ def check_indexes(findings):
             if f"{name}/" not in tools_index:
                 fail(findings, f"index: tools/README.md has no row for {name}/")
 
+    reports_dir = os.path.join(ROOT, "research-docs", "reports")
+    with open(os.path.join(reports_dir, "README.md"), encoding="utf-8") as f:
+        reports_index = f.read()
+    for name in sorted(os.listdir(reports_dir)):
+        if name.endswith(".md") and name != "README.md":
+            if f"({name})" not in reports_index:
+                fail(findings, f"index: research-docs/reports/README.md has no row for {name}")
+
 
 def markdown_files():
     for dirpath, dirnames, filenames in os.walk(ROOT):
