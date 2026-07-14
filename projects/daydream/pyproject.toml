@@ -7,6 +7,9 @@ dependencies = [
     "supcomputer-core",
     "python-chess",
     "zstandard",
+    # corpus prep only (data/regular/fetch_filtered.py download + progress)
+    "requests",
+    "tqdm",
 ]
 
 [tool.uv.sources]

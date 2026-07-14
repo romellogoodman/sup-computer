@@ -41,7 +41,8 @@ chars = sorted(set(body))
 vocab_size = len(chars)
 stoi = {c: i for i, c in enumerate(chars)}
 itos = {i: c for i, c in enumerate(chars)}
-encode = lambda t: [stoi[c] for c in t]
+def encode(t):
+    return [stoi[c] for c in t]
 print(f"vocab size: {vocab_size}")
 
 # carve a fixed held-out test set (a contiguous block in the middle) and remove

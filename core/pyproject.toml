@@ -7,8 +7,6 @@ dependencies = [
     "torch",
     "numpy",
     "tiktoken",
-    "tqdm",
-    "requests",
 ]
 
 [project.optional-dependencies]

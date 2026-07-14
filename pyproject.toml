@@ -17,10 +17,11 @@ members = ["core", "projects/*"]
 supcomputer-core = { workspace = true }
 
 [tool.ruff]
-# Lint the living code only. Vendored projects and frozen models/<version>/
-# snapshots keep their upstream nanoGPT style and are never linted.
-include = ["core/**/*.py", "tools/**/*.py"]
-extend-exclude = ["projects", "website", "player"]
+# Lint all living Python: core, tools, and each project's live scripts.
+# Frozen models/<version>/ snapshots keep their upstream nanoGPT style and
+# are never linted (same reason they're never refactored — ADR-0003).
+include = ["core/**/*.py", "tools/**/*.py", "projects/**/*.py"]
+extend-exclude = ["projects/*/models", "website", "player"]
 line-length = 120
 
 [tool.ruff.lint]

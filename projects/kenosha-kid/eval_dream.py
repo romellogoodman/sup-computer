@@ -160,10 +160,10 @@ def score(lines):
 def report(label, s):
     print(f"\n=== {label} ===")
     print(f"  lines sampled:        {s['n_lines']}   words: {s['total_words']}")
-    print(f"  ANCHOR-RECALL")
+    print("  ANCHOR-RECALL")
     print(f"    anchor_hit_rate:    {s['anchor_hit_rate']:.3f}  (lines verbatim = 1 of 9 anchors)")
     print(f"    anchors_covered:    {s['anchors_covered']}/9")
-    print(f"  NEAR-MISS / DRIFT")
+    print("  NEAR-MISS / DRIFT")
     print(f"    nearmiss_line_rate: {s['nearmiss_line_rate']:.3f}  (lines w/ >=1 near-miss word)")
     print(f"    garble_line_rate:   {s['garble_line_rate']:.3f}  (lines w/ >=1 garble word)")
     print(f"    clean_line_rate:    {s['clean_line_rate']:.3f}  (all words canon-spelled)")

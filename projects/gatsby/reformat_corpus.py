@@ -16,7 +16,7 @@ Usage:
 import os
 import re
 import argparse
-from generate import format_doc, LEVEL_WORDS
+from generate import format_doc
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 

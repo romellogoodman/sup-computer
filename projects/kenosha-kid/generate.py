@@ -189,7 +189,7 @@ def main(drift_rate=DRIFT_RATE, out_path=None):
     if drift_rate > 0:
         print(f"  drift rate:        {drift_rate:.3f} per letter → {n_drifted:,} tail lines drifted ({n_drifted/n_tail:.0%})")
     else:
-        print(f"  drift rate:        0.0 (pristine corpus)")
+        print("  drift rate:        0.0 (pristine corpus)")
     print(f"  total characters:  {len(text):,}")
     print(f"  unique characters: {len(set(text))}  ->  {''.join(sorted(set(text)))!r}")
 

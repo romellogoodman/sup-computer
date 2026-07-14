@@ -5,6 +5,9 @@ description = "Character/BPE GPT trained on Shakespeare — the first sup comput
 requires-python = ">=3.9"
 dependencies = [
     "supcomputer-core",
+    # corpus prep only (data/*/prepare.py download + progress)
+    "requests",
+    "tqdm",
 ]
 
 [tool.uv.sources]

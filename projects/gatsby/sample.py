@@ -23,8 +23,6 @@ Pass arbitrary operator text safely via a file with --start "FILE:prompt.txt".
 import argparse
 import os
 
-import torch
-
 from _runtime import generate, load_model_and_tokenizer, pick_device
 
 HERE = os.path.dirname(os.path.abspath(__file__))

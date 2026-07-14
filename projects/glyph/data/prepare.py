@@ -69,18 +69,18 @@ def write_dataset(name, train_lines, val_lines):
         encode(text).tofile(os.path.join(out, f"{split}.bin"))
     with open(os.path.join(out, "meta.pkl"), "wb") as f:
         pickle.dump(META, f)
-    return sum(len(l) + 1 for l in train_lines), sum(len(l) + 1 for l in val_lines)
+    return sum(len(ln) + 1 for ln in train_lines), sum(len(ln) + 1 for ln in val_lines)
 
 
 def unigram_bpc(train_lines, test_lines):
     """BPC of the smoothed train unigram distribution on the test text."""
     counts = {ch: 1 for ch in codec.ALPHABET}  # Laplace
-    train_text = "".join(l + "\n" for l in train_lines)
+    train_text = "".join(ln + "\n" for ln in train_lines)
     for ch in train_text:
         counts[ch] += 1
     total = sum(counts.values())
     logp = {ch: math.log2(c / total) for ch, c in counts.items()}
-    test_text = "".join(l + "\n" for l in test_lines)
+    test_text = "".join(ln + "\n" for ln in test_lines)
     return -sum(logp[ch] for ch in test_text) / len(test_text)
 
 
@@ -147,8 +147,8 @@ def main():
     print(f"per-letter train tokens: ~{pl['a']['train_tokens']:,} ('a')")
     print(f"omni train tokens: {n_train:,}  (val {n_val:,})")
     print(f"unigram test BPC: min {min(baselines.values()):.3f}  max {max(baselines.values()):.3f}")
-    print(f"wrote data/<a-z>/ + data/omni/ datasets, test/<a-z>.txt, "
-          f"research/baselines.json, research/prepare-stats.json")
+    print("wrote data/<a-z>/ + data/omni/ datasets, test/<a-z>.txt, "
+          "research/baselines.json, research/prepare-stats.json")
 
 
 if __name__ == "__main__":
