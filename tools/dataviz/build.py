@@ -1,4 +1,5 @@
-"""Build every experiment report's charts (exp01–exp04; see JOBS at the bottom).
+"""Build every experiment report's charts — one JOBS entry per chart (bottom
+of this file); JOBS is the source of truth for what exists.
 
 Renders the charts in the studio document style (light + dark; see
 designsystem/tokens.py and ADR-0018) as self-contained HTML into output/, then

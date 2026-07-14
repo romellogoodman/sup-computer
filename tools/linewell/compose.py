@@ -28,12 +28,13 @@ judge's verdict -- the provenance a report gets written from.
 Run from the repo root (the HF `tokenizers` lib reads the frozen release's
 committed tokenizer.json):
 
-    uv run --with tokenizers python tools/linewell/compose.py \
+    uv run python tools/linewell/compose.py \
         --judge band --lines 8 --start "  ROMEO:"
 """
 from __future__ import annotations
 
 import argparse
+import glob
 import json
 import os
 import sys
@@ -49,6 +50,17 @@ sys.path.insert(0, os.path.join(HERE, ".."))  # tools/ -- for the shared steer l
 DEFAULT_MODEL_DIR = os.path.join(HERE, "..", "..", "projects", "shakespeare", "models", "shakespeare-nanogpt-3")
 MAX_LINE_CHARS = 90
 NEWLINE = "\n"
+
+
+def _find_tokenizer(model_dir: str) -> str:
+    """Any release layout may nest its tokenizer.json differently; require
+    exactly one under the model dir rather than hardcoding a release's path."""
+    hits = sorted(glob.glob(os.path.join(model_dir, "**", "tokenizer.json"), recursive=True))
+    if len(hits) != 1:
+        raise SystemExit(
+            f"expected exactly one tokenizer.json under {model_dir}, found {len(hits)}"
+        )
+    return hits[0]
 
 
 class LineWell:
@@ -70,7 +82,7 @@ class LineWell:
         self.model.to(device)
         self.device = device
         self.block_size = conf.block_size
-        self.tok = Tokenizer.from_file(os.path.join(model_dir, "shakespeare_xl_bpe1k", "tokenizer.json"))
+        self.tok = Tokenizer.from_file(_find_tokenizer(model_dir))
 
     def _ids(self, text: str) -> list:
         return self.tok.encode(text).ids
