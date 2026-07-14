@@ -27,9 +27,10 @@ for arg in sys.argv[1:]:
             print(f.read())
         exec(open(config_file).read())
     else:
-        # assume it's a --key=value argument
+        # assume it's a --key=value argument; split once so the value itself
+        # may contain '=' (e.g. --start="[green=5] ..." prompts)
         assert arg.startswith('--')
-        key, val = arg.split('=')
+        key, val = arg.split('=', 1)
         key = key[2:]
         if key in globals():
             try:

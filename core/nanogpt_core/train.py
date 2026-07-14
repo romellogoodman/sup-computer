@@ -1,19 +1,14 @@
 """
-This training script can be run both on a single gpu in debug mode,
-and also in a larger training run with distributed data parallel (ddp).
+Train a GPT on a project's prepared dataset. The studio invocation (repo root):
 
-To run on a single GPU, example:
-$ python train.py --batch_size=32 --compile=False
+$ uv run python core/nanogpt_core/train.py <project config.py> \\
+      --out_dir=projects/<project>/runs/<r>       # any knob overrides inline
 
-To run with DDP on 4 gpus on 1 node, example:
-$ torchrun --standalone --nproc_per_node=4 train.py
+The config file sets data_root/dataset and the hyperparameters; defaults below
+target this studio's hardware (a single Apple Silicon Mac). DDP still works on
+CUDA clusters (inherited from nanoGPT):
 
-To run with DDP on 4 gpus across 2 nodes, example:
-- Run on the first (master) node with example IP 123.456.123.456:
-$ torchrun --nproc_per_node=8 --nnodes=2 --node_rank=0 --master_addr=123.456.123.456 --master_port=1234 train.py
-- Run on the worker node:
-$ torchrun --nproc_per_node=8 --nnodes=2 --node_rank=1 --master_addr=123.456.123.456 --master_port=1234 train.py
-(If your cluster does not have Infiniband interconnect prepend NCCL_IB_DISABLE=1)
+$ torchrun --standalone --nproc_per_node=4 train.py <config.py>
 """
 
 import os
@@ -30,7 +25,9 @@ from torch.distributed import init_process_group, destroy_process_group
 from nanogpt_core.model import GPTConfig, GPT
 
 # -----------------------------------------------------------------------------
-# default config values designed to train a gpt2 (124M) on OpenWebText
+# default config values: model shape inherits nanoGPT's gpt2-124M; the system
+# defaults target this studio's hardware. Every project config overrides most
+# of these — they exist so a bare invocation does something sane.
 # I/O
 out_dir = 'out'
 eval_interval = 2000
@@ -70,9 +67,12 @@ min_lr = 6e-5 # minimum learning rate, should be ~= learning_rate/10 per Chinchi
 # DDP settings
 backend = 'nccl' # 'nccl', 'gloo', etc.
 # system
-device = 'cuda' # examples: 'cpu', 'cuda', 'cuda:0', 'cuda:1' etc., or try 'mps' on macbooks
-dtype = 'bfloat16' if torch.cuda.is_available() and torch.cuda.is_bf16_supported() else 'float16' # 'float32', 'bfloat16', or 'float16', the latter will auto implement a GradScaler
-compile = True # use PyTorch 2.0 to compile the model to be faster
+device = 'cuda' if torch.cuda.is_available() else 'mps' if torch.backends.mps.is_available() else 'cpu' # or 'cuda:0' etc.
+# Off CUDA the safe default is float32: GradScaler is CUDA-only, so fp16 on
+# MPS trains with NO loss scaling — this diverged a real run before the cause
+# was found (projects/shakespeare/research/log.md, the r4 fp16 incident).
+dtype = 'bfloat16' if torch.cuda.is_available() and torch.cuda.is_bf16_supported() else 'float32'
+compile = False # torch.compile helps on CUDA; every Mac config was overriding this off
 seed = 1337 # RNG seed (weight init + batch order). Vary across runs (--seed=N) to measure run-to-run variance.
 # -----------------------------------------------------------------------------
 config_keys = [k for k,v in globals().items() if not k.startswith('_') and isinstance(v, (int, float, bool, str))]
@@ -109,7 +109,8 @@ torch.manual_seed(seed + seed_offset)
 torch.backends.cuda.matmul.allow_tf32 = True # allow tf32 on matmul
 torch.backends.cudnn.allow_tf32 = True # allow tf32 on cudnn
 device_type = 'cuda' if 'cuda' in device else 'mps' if 'mps' in device else 'cpu' # for later use in torch.autocast
-# note: float16 data type will automatically use a GradScaler (CUDA only)
+# float16 gets a GradScaler on CUDA ONLY — off CUDA fp16 runs unscaled (see
+# the dtype default above for why the studio default is float32 there).
 ptdtype = {'float32': torch.float32, 'bfloat16': torch.bfloat16, 'float16': torch.float16}[dtype]
 ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
 
@@ -171,8 +172,8 @@ elif init_from == 'resume':
     gptconf = GPTConfig(**model_args)
     model = GPT(gptconf)
     state_dict = checkpoint['model']
-    # fix the keys of the state dictionary :(
-    # honestly no idea how checkpoints sometimes get this prefix, have to debug more
+    # a checkpoint saved from a torch.compile'd model carries the wrapper's
+    # _orig_mod. prefix on every key; strip it to load into the bare module
     unwanted_prefix = '_orig_mod.'
     for k,v in list(state_dict.items()):
         if k.startswith(unwanted_prefix):
@@ -282,7 +283,10 @@ while True:
                 "mfu": running_mfu*100, # convert to percentage
             })
         if losses['val'] < best_val_loss or always_save_checkpoint:
-            best_val_loss = losses['val']
+            # best_val_loss stays the true minimum even when always_save is on
+            # (it used to track "last eval loss", which poisoned the baseline
+            # for a resume that switches always_save_checkpoint off)
+            best_val_loss = min(best_val_loss, losses['val'])
             if iter_num > 0:
                 checkpoint = {
                     'model': raw_model.state_dict(),

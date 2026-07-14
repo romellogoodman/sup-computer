@@ -2736,6 +2736,10 @@ export = [
     { name = "onnxruntime", version = "1.24.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.10.*'" },
     { name = "onnxruntime", version = "1.27.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
 ]
+hf = [
+    { name = "tokenizers", version = "0.22.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
+    { name = "tokenizers", version = "0.23.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
+]
 
 [package.dev-dependencies]
 dev = [
@@ -2750,9 +2754,10 @@ requires-dist = [
     { name = "onnxruntime", marker = "python_full_version >= '3.10' and extra == 'export'" },
     { name = "onnxruntime", marker = "python_full_version < '3.10' and extra == 'export'", specifier = "<1.20" },
     { name = "tiktoken" },
+    { name = "tokenizers", marker = "extra == 'hf'" },
     { name = "torch" },
 ]
-provides-extras = ["export"]
+provides-extras = ["export", "hf"]
 
 [package.metadata.requires-dev]
 dev = [{ name = "pytest", specifier = ">=8" }]

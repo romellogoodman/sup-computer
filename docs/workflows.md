@@ -33,11 +33,14 @@ The checkpoint (`ckpt.pt`) is written into the run dir and is gitignored.
 ```bash
 uv run python core/eval/eval.py projects/shakespeare/runs/r1 \
     --test projects/shakespeare/test.txt \
-    --data-dir projects/shakespeare/data      # for char models' meta.pkl; omit for BPE
+    --data_root projects/shakespeare/data     # for meta.pkl; omit for GPT-2 BPE
 ```
 
-`core/eval/eval.py` scores the modern architecture. A frozen release scores itself
-from inside its own folder: `cd projects/shakespeare/models/<version> && python eval.py`.
+`core/eval/eval.py` scores the modern architecture (char, corpus-trained HF
+BPE, or GPT-2 — the tokenizer resolves from meta.pkl). Harnesses import
+`nanogpt_core.bpc.score_run` instead of parsing the print line (ADR-0029). A
+frozen release scores itself from inside its own folder:
+`cd projects/shakespeare/models/<version> && python eval.py`.
 
 ## Sample
 

@@ -42,3 +42,4 @@ supersede instead (mark the old one `Superseded by ADR-NNNN`).
 | [0026](0026-steer-shared-orchestration-layer.md) | `tools/steer` — the shared shape for a big model steering a small one | Accepted |
 | [0027](0027-glyph-one-char-per-token-outline-codec.md) | glyph's one-char-per-token outline codec on a fixed 127-char alphabet | Accepted |
 | [0028](0028-registry-absorbs-the-demo-registry.md) | registry.json absorbs the demo registry; bundle rules live in the player | Accepted |
+| [0029](0029-core-exports-a-library-surface.md) | core exports a library surface (load, tokenize, score) | Accepted |
