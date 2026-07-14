@@ -11,5 +11,6 @@ documents itself in its own README.
 | [`steer/`](steer/) | The shared big-model-steers-small-model layer (client + orchestrator loop, ADR-0026). |
 | [`linewell/`](linewell/) | Line-by-line composition through a small model, with pluggable judges. |
 | [`token-chess/`](token-chess/) | The benchmark: LLMs orchestrate Daydream's sampler under a token budget. |
+| [`hf-stage/`](hf-stage/) | Stages a Hugging Face README from a model card (pointer line + absolute links) — part of the publish flow. |
 | [`check_integrity.py`](check_integrity.py) | Manifest/docs-vs-tree drift check — run before committing doc or registry changes. |
 | [`claude_cost.py`](claude_cost.py) | Researcher-cost snapshot: token usage of the current Claude Code session transcript. |

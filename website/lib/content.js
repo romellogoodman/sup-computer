@@ -11,7 +11,8 @@ const CARDS = path.join(ROOT, "research-docs", "model-cards");
 // Scoped to markdown/HTML reference positions — `](...`, `src="..."`, `srcset="..."`
 // — so prose or code that merely *mentions* an assets/ path is left alone.
 const ASSET_PATH = /((?:\]\(|src="|srcset=")\s*)(?:[.\w-]+\/)*assets\//g;
-const rewriteAssets = (s) => s.replace(ASSET_PATH, "$1/research-assets/");
+// Exported for tools/hf-stage (the HF card stager rides the same rewrite rules).
+export const rewriteAssets = (s) => s.replace(ASSET_PATH, "$1/research-assets/");
 
 const GITHUB = "https://github.com/romellogoodman/sup-computer";
 export { GITHUB };
@@ -34,7 +35,7 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.supcpu
 //   - any other repo path  -> a GitHub blob/tree URL on main
 // External (http, mailto), in-page (#anchor) and already-absolute (/served) links
 // are left untouched.
-function resolveLink(target, repoBase) {
+export function resolveLink(target, repoBase) {
   if (/^(https?:|mailto:|tel:|#|\/)/.test(target)) return null;
   const [rawPath, frag] = target.split("#");
   const hash = frag ? `#${frag}` : "";
@@ -111,14 +112,6 @@ export function getReport(slug) {
 export function getRegistry() {
   const p = path.join(ROOT, "registry.json");
   return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, "utf8")) : { models: [] };
-}
-
-// Demo settings for /model-player (starter prompt, block_size), keyed by model
-// id. The file also decides WHICH releases the player lists — only entries here
-// (the latest per series) show; it's updated as part of each release.
-export function getPlayerRegistry() {
-  const p = path.join(ROOT, "player-registry.json");
-  return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, "utf8")) : { models: {} };
 }
 
 // The AI researcher credited on an artifact. Reports carry a `researcher` id in
