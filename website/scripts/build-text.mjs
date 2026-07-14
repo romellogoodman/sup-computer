@@ -67,8 +67,8 @@ function reportDoc(r) {
   ].join("\n");
 }
 
-// Model cards are already self-contained (H1, **Researcher:**, a spec table), so
-// serve the body as-is and just footer a canonical link back to the HTML page.
+// Model cards are already self-contained (H1, takeaways, prose), so serve the
+// body as-is and just footer a canonical link back to the HTML page.
 function cardDoc(card) {
   return [clean(card.body), "", "---", `Canonical: ${SITE_URL}/models/${card.slug}/`, ""].join("\n");
 }
@@ -84,7 +84,7 @@ function llmsIndex(reports, cards, models) {
   const modelList = cards
     .map((c) => {
       const m = byId.get(c.slug);
-      const note = m ? `${m.project} char-level GPT, ${m.params?.toLocaleString?.() ?? m.params} params` : "";
+      const note = m ? `${m.project} GPT, ${m.tokenizer?.type ?? "?"} tokenizer, ${m.params?.toLocaleString?.() ?? m.params} params` : "";
       return `- [${c.slug}](${SITE_URL}/models/${c.slug}.md): ${note}`.trimEnd();
     })
     .join("\n");

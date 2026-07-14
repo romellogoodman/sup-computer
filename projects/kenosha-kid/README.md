@@ -112,7 +112,7 @@ This is a research project, so the data and the reasoning are part of the record
   decision was made); **[`leaderboard.md`](leaderboard.md)** is
   the per-run scoreboard.
 - The full write-up is
-  [`experiment-03.md`](../../research-docs/reports/dream-a-single-phrase.md); the frozen,
+  [`dream-a-single-phrase.md`](../../research-docs/reports/dream-a-single-phrase.md); the frozen,
   self-contained release is
   [`models/kenosha-kid-nanogpt-1/`](models/kenosha-kid-nanogpt-1/).
 

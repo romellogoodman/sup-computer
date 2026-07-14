@@ -20,9 +20,9 @@ website/content/          <- gitignored, regenerated copies, never edited here
 ```
 
 `scripts/sync-content.mjs` does the copy; `content/` is gitignored. Add more
-sources (e.g. a cross-project `blog/`) by extending the `SOURCES` list in that
-script. Edit markdown in `research-docs/`, not here — copies are blown away and
-regenerated on every sync.
+sources (e.g. a cross-project `blog/`) by extending the `DIRS` / `FILES` /
+`ASSET_DIRS` lists in that script. Edit markdown in `research-docs/`, not
+here — copies are blown away and regenerated on every sync.
 
 ## Commands
 
