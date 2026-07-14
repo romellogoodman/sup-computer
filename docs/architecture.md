@@ -10,8 +10,9 @@ history (`git log --diff-filter=D -- docs/monorepo-plan.md`).
 ```
 core/        shared, evolving engine — installed once, imported everywhere
 projects/    one folder per model; thin config + evidence + frozen releases
-player/      @supcomputer/player — vendored browser runtime (ADR-0010); unwired until /play
-tools/       researcher tooling (charts, synthetic corpora, cost) — operated, not shipped
+player/      @supcomputer/player — vendored browser runtime (ADR-0010, ADR-0025); powers the site's /model-player page (ADR-0024)
+cli/         `sup` — run a released model in the terminal; in-tree only (ADR-0025)
+tools/       researcher tooling (charts, synthetic corpora, benchmarks, cost) — operated, not shipped
 research-docs/  cross-project prose (reports + model cards)
 website/     consumes research-docs/ at build time; owns no content
 registry.json   the manifest tying models to the site and player
@@ -41,11 +42,13 @@ shadow builtins).
 
 A project holds its config, corpus prep, run evidence, the version registry
 (`MODELS.md`), the leaderboard, and **frozen release folders** under `models/`.
-Four exist: `shakespeare/` (the reference project — rides `core/`, keeps a
-held-out `test.txt`), `gatsby/` (vendors its own base char-level engine,
-ADR-0011; migration to `core/` is TODO item 2), `kenosha-kid/` (rides
-`core/` directly), and `daydream/` (rides `core/`; three board-size tiers
-and an external Fairy-Stockfish dependency — ADR-0021, ADR-0022).
+Five exist: `shakespeare/` (the reference project — rides `core/`, keeps a
+held-out `test.txt`), `gatsby/` (began vendored on the base char-level engine,
+ADR-0011; the living project migrated onto `core/` with byte-level BPE,
+ADR-0023), `kenosha-kid/` (rides `core/` directly), `daydream/` (rides
+`core/`; three board-size tiers and an external Fairy-Stockfish dependency —
+ADR-0021, ADR-0022), and `glyph/` (rides `core/`; a fixed 127-char outline
+codec — ADR-0027).
 
 Two trees with different jobs live side by side:
 
@@ -77,10 +80,11 @@ twins plus `llms.txt` (ADR-0019). Edit markdown in `research-docs/`, never in
 ## Tooling
 
 - **Python:** a `uv` workspace (root `pyproject.toml`); `core/` editable-installed.
-  Vendored/thin projects (`gatsby/`, `kenosha-kid/`) are excluded from the
-  workspace and run as plain scripts.
-- **JS:** the `website/` package (`@supcomputer/website`) and the vendored
-  `player/` package (`@supcomputer/player`).
+  Every project is a workspace member with its own `pyproject.toml` declaring
+  what it imports; none are build targets.
+- **JS:** the `website/` package (`@supcomputer/website`), the vendored
+  `player/` package (`@supcomputer/player`), and the in-tree `cli/` (ADR-0025).
 - **tools/:** stdlib-only scripts — `dataviz/` (every chart), `synthgen/`
-  (every LLM-generated corpus, ADR-0014), `claude_cost.py`.
+  (every LLM-generated corpus, ADR-0014), `steer/` (shared local-LLM client,
+  ADR-0026), `linewell/`, `token-chess/`, `claude_cost.py`, `check_integrity.py`.
 - See [`workflows.md`](workflows.md) for the concrete commands.
