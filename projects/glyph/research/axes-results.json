@@ -1,0 +1,133 @@
+{
+ "n_measured": 3107,
+ "n_skipped": 45,
+ "source": "https://www.makingsoftware.com/chapters/how-to-make-a-font",
+ "axis_summary": {
+  "weight_ratio": {
+   "min": 1.33,
+   "median": 5.14,
+   "max": 38.0
+  },
+  "xh_ratio": {
+   "min": 0.417,
+   "median": 0.702,
+   "max": 0.9
+  },
+  "width": {
+   "min": 0.182,
+   "median": 0.52,
+   "max": 0.907
+  }
+ },
+ "quantile_bin_edges": {
+  "weight_ratio": [
+   1.33,
+   3.5,
+   4.43,
+   5.67,
+   8.25,
+   38.0
+  ],
+  "xh_ratio": [
+   0.417,
+   0.694,
+   0.714,
+   0.9
+  ],
+  "width": [
+   0.182,
+   0.498,
+   0.538,
+   0.907
+  ]
+ },
+ "declared_weight_crosscheck": {
+  "n": 3107,
+  "spearman_declared_vs_stem": 0.915,
+  "families_with_3plus_weights": 394,
+  "perfectly_monotone": 391,
+  "oddballs_inspect": [
+   "ofl/bytesized/Bytesized-Regular.ttf: declared 400, stem 192.0 on xh 256",
+   "ofl/seymourone/SeymourOne-Regular.ttf: declared 400, stem 282.6 on xh 512",
+   "ofl/bbhhegarty/BBHHegarty-Regular.ttf: declared 400, stem 272.0 on xh 512",
+   "ofl/gasoekone/GasoekOne-Regular.ttf: declared 400, stem 304.0 on xh 640",
+   "ofl/rubikone/RubikOne-Regular.ttf: declared 400, stem 240.0 on xh 528",
+   "ofl/doto/Doto[ROND,wght].ttf@wght900: declared 900, stem 96.0 on xh 512",
+   "ofl/savate/Savate[wght].ttf@wght800: declared 800, stem 80.0 on xh 576",
+   "ofl/ojuju/Ojuju[wght].ttf@wght700: declared 700, stem 48.0 on xh 512",
+   "ofl/ojuju/Ojuju[wght].ttf@wght800: declared 800, stem 56.0 on xh 512",
+   "ofl/savate/Savate[wght].ttf@wght900: declared 900, stem 80.0 on xh 576"
+  ]
+ },
+ "bpc_scoring": {
+  "test_instances_scored": 225,
+  "lines_scored": 6142,
+  "contaminated_dropped": 1484,
+  "overlong_dropped": 0
+ },
+ "regression": {
+  "n": 225,
+  "axes": [
+   "weight_ratio",
+   "xh_ratio",
+   "width"
+  ],
+  "bpc_centered": {
+   "r2_all_three": 0.021,
+   "std_coefs": {
+    "weight_ratio": 0.0713,
+    "xh_ratio": -0.0091,
+    "width": 0.0377
+   },
+   "univariate": {
+    "weight_ratio": {
+     "r": 0.126,
+     "r2": 0.016
+    },
+    "xh_ratio": {
+     "r": -0.017,
+     "r2": 0.0
+    },
+    "width": {
+     "r": 0.044,
+     "r2": 0.002
+    }
+   },
+   "complexity_mean_len": {
+    "r": 0.423,
+    "r2": 0.179
+   }
+  },
+  "bpc": {
+   "r2_all_three": 0.021,
+   "std_coefs": {
+    "weight_ratio": 0.0708,
+    "xh_ratio": -0.0096,
+    "width": 0.037
+   },
+   "univariate": {
+    "weight_ratio": {
+     "r": 0.125,
+     "r2": 0.016
+    },
+    "xh_ratio": {
+     "r": -0.018,
+     "r2": 0.0
+    },
+    "width": {
+     "r": 0.042,
+     "r2": 0.002
+    }
+   },
+   "complexity_mean_len": {
+    "r": 0.424,
+    "r2": 0.18
+   }
+  },
+  "axis_correlations": {
+   "weight_ratio~xh_ratio": -0.106,
+   "weight_ratio~width": -0.187,
+   "xh_ratio~width": 0.206
+  }
+ }
+}

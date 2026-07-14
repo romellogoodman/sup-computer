@@ -1,0 +1,516 @@
+{
+ "rules": {
+  "round_letters": "oces",
+  "flat_letters": "hilmnu",
+  "xheight_ref_letters": "xzuvw",
+  "round_pass": "true y-min of decoded outline (curve extrema included) < 0",
+  "flat_pass": "|y-min| <= 2 em-units (1/8 grid step)",
+  "grid_step_em_units": 16,
+  "source": "https://www.makingsoftware.com/chapters/how-to-make-a-font"
+ },
+ "corpus": {
+  "n_instances": 3152,
+  "round": {
+   "o": {
+    "n": 3152,
+    "dip_any": 0.8715,
+    "dip_half_step": 0.8712,
+    "dip_full_step": 0.8706,
+    "top_any": 0.6497,
+    "top_half_step": 0.6497,
+    "top_full_step": 0.6488,
+    "median_dip_when_present": 16
+   },
+   "c": {
+    "n": 3152,
+    "dip_any": 0.8785,
+    "dip_half_step": 0.8782,
+    "dip_full_step": 0.8763,
+    "top_any": 0.6415,
+    "top_half_step": 0.6412,
+    "top_full_step": 0.6396,
+    "median_dip_when_present": 16
+   },
+   "e": {
+    "n": 3152,
+    "dip_any": 0.8544,
+    "dip_half_step": 0.8544,
+    "dip_full_step": 0.8544,
+    "top_any": 0.6386,
+    "top_half_step": 0.6386,
+    "top_full_step": 0.638,
+    "median_dip_when_present": 16
+   },
+   "s": {
+    "n": 3152,
+    "dip_any": 0.8566,
+    "dip_half_step": 0.8566,
+    "dip_full_step": 0.8553,
+    "top_any": 0.6478,
+    "top_half_step": 0.6475,
+    "top_full_step": 0.6456,
+    "median_dip_when_present": 16.0
+   },
+   "u": {
+    "n": 3152,
+    "dip_any": 0.848,
+    "dip_half_step": 0.848,
+    "dip_full_step": 0.848,
+    "top_any": 0.0143,
+    "top_half_step": 0.0143,
+    "top_full_step": 0.0127,
+    "median_dip_when_present": 16
+   }
+  },
+  "flat": {
+   "h": {
+    "n": 3152,
+    "flat": 0.9527,
+    "dip_any": 0.0435,
+    "dips": 0.0435,
+    "floats": 0.0038
+   },
+   "i": {
+    "n": 3143,
+    "flat": 0.9532,
+    "dip_any": 0.0423,
+    "dips": 0.0423,
+    "floats": 0.0045
+   },
+   "l": {
+    "n": 3152,
+    "flat": 0.8344,
+    "dip_any": 0.1621,
+    "dips": 0.1621,
+    "floats": 0.0035
+   },
+   "m": {
+    "n": 3152,
+    "flat": 0.9499,
+    "dip_any": 0.046,
+    "dips": 0.046,
+    "floats": 0.0041
+   },
+   "n": {
+    "n": 3152,
+    "flat": 0.9521,
+    "dip_any": 0.0438,
+    "dips": 0.0438,
+    "floats": 0.0041
+   },
+   "u": {
+    "n": 3152,
+    "flat": 0.1482,
+    "dip_any": 0.848,
+    "dips": 0.848,
+    "floats": 0.0038
+   }
+  },
+  "reference_row": {
+   "round_pass": 0.8652,
+   "flat_pass": 0.7983,
+   "craft_pass": 0.8251
+  },
+  "reference_row_v1_1": {
+   "round_pass": 0.8618,
+   "flat_pass": 0.9284,
+   "craft_pass": 0.8951
+  }
+ },
+ "samples": {
+  "case": {
+   "samples": 1664,
+   "parse_rate": 0.9213,
+   "round_pass_of_valid": 0.9614,
+   "flat_pass_of_valid": 0.7099,
+   "craft_pass_of_valid": 0.8084,
+   "per_letter": {
+    "c": {
+     "valid": "60/64",
+     "pass": "58/60"
+    },
+    "e": {
+     "valid": "57/63",
+     "pass": "57/57"
+    },
+    "h": {
+     "valid": "62/64",
+     "pass": "59/62"
+    },
+    "i": {
+     "valid": "59/64",
+     "pass": "55/59"
+    },
+    "l": {
+     "valid": "59/64",
+     "pass": "32/59"
+    },
+    "m": {
+     "valid": "62/63",
+     "pass": "57/62"
+    },
+    "n": {
+     "valid": "57/64",
+     "pass": "53/57"
+    },
+    "o": {
+     "valid": "58/63",
+     "pass": "52/58"
+    },
+    "s": {
+     "valid": "58/64",
+     "pass": "57/58"
+    },
+    "u": {
+     "valid": "63/64",
+     "pass": "1/63"
+    }
+   }
+  },
+  "omni-s": {
+   "samples": 1664,
+   "parse_rate": 0.9423,
+   "round_pass_of_valid": 0.9565,
+   "flat_pass_of_valid": 0.6604,
+   "craft_pass_of_valid": 0.7737,
+   "per_letter": {
+    "c": {
+     "valid": "57/63",
+     "pass": "53/57"
+    },
+    "e": {
+     "valid": "62/64",
+     "pass": "62/62"
+    },
+    "h": {
+     "valid": "62/64",
+     "pass": "47/62"
+    },
+    "i": {
+     "valid": "62/64",
+     "pass": "50/62"
+    },
+    "l": {
+     "valid": "62/64",
+     "pass": "35/62"
+    },
+    "m": {
+     "valid": "59/64",
+     "pass": "48/59"
+    },
+    "n": {
+     "valid": "64/64",
+     "pass": "58/64"
+    },
+    "o": {
+     "valid": "53/63",
+     "pass": "51/53"
+    },
+    "s": {
+     "valid": "58/59",
+     "pass": "54/58"
+    },
+    "u": {
+     "valid": "62/64",
+     "pass": "7/62"
+    }
+   }
+  },
+  "omni-xl": {
+   "samples": 1664,
+   "parse_rate": 0.7103,
+   "round_pass_of_valid": 0.9613,
+   "flat_pass_of_valid": 0.6786,
+   "craft_pass_of_valid": 0.7896,
+   "per_letter": {
+    "c": {
+     "valid": "51/63",
+     "pass": "49/51"
+    },
+    "e": {
+     "valid": "46/62",
+     "pass": "44/46"
+    },
+    "h": {
+     "valid": "49/61",
+     "pass": "40/49"
+    },
+    "i": {
+     "valid": "45/60",
+     "pass": "39/45"
+    },
+    "l": {
+     "valid": "49/61",
+     "pass": "37/49"
+    },
+    "m": {
+     "valid": "46/62",
+     "pass": "36/46"
+    },
+    "n": {
+     "valid": "42/64",
+     "pass": "33/42"
+    },
+    "o": {
+     "valid": "42/63",
+     "pass": "41/42"
+    },
+    "s": {
+     "valid": "42/60",
+     "pass": "40/42"
+    },
+    "u": {
+     "valid": "49/62",
+     "pass": "5/49"
+    }
+   }
+  },
+  "omni-xl@0.8": {
+   "samples": 1664,
+   "parse_rate": 0.8468,
+   "round_pass_of_valid": 0.9954,
+   "flat_pass_of_valid": 0.7529,
+   "craft_pass_of_valid": 0.8472,
+   "per_letter": {
+    "c": {
+     "valid": "57/61",
+     "pass": "56/57"
+    },
+    "e": {
+     "valid": "53/62",
+     "pass": "53/53"
+    },
+    "h": {
+     "valid": "59/62",
+     "pass": "55/59"
+    },
+    "i": {
+     "valid": "60/62",
+     "pass": "54/60"
+    },
+    "l": {
+     "valid": "52/54",
+     "pass": "42/52"
+    },
+    "m": {
+     "valid": "58/60",
+     "pass": "55/58"
+    },
+    "n": {
+     "valid": "60/63",
+     "pass": "51/60"
+    },
+    "o": {
+     "valid": "55/63",
+     "pass": "55/55"
+    },
+    "s": {
+     "valid": "54/60",
+     "pass": "54/54"
+    },
+    "u": {
+     "valid": "55/60",
+     "pass": "2/55"
+    }
+   }
+  }
+ },
+ "samples_v1_1": {
+  "case": {
+   "samples": 1664,
+   "parse_rate": 0.9213,
+   "round_pass_of_valid": 0.9662,
+   "flat_pass_of_valid": 0.8562,
+   "craft_pass_of_valid": 0.9109,
+   "per_letter": {
+    "c": {
+     "valid": "60/64",
+     "pass": "58/60"
+    },
+    "e": {
+     "valid": "57/63",
+     "pass": "57/57"
+    },
+    "h": {
+     "valid": "62/64",
+     "pass": "59/62"
+    },
+    "i": {
+     "valid": "59/64",
+     "pass": "55/59"
+    },
+    "l": {
+     "valid": "59/64",
+     "pass": "32/59"
+    },
+    "m": {
+     "valid": "62/63",
+     "pass": "57/62"
+    },
+    "n": {
+     "valid": "57/64",
+     "pass": "53/57"
+    },
+    "o": {
+     "valid": "58/63",
+     "pass": "52/58"
+    },
+    "s": {
+     "valid": "58/64",
+     "pass": "57/58"
+    },
+    "u": {
+     "valid": "63/64",
+     "pass": "62/63"
+    }
+   }
+  },
+  "omni-s": {
+   "samples": 1664,
+   "parse_rate": 0.9423,
+   "round_pass_of_valid": 0.9418,
+   "flat_pass_of_valid": 0.7702,
+   "craft_pass_of_valid": 0.8536,
+   "per_letter": {
+    "c": {
+     "valid": "57/63",
+     "pass": "53/57"
+    },
+    "e": {
+     "valid": "62/64",
+     "pass": "62/62"
+    },
+    "h": {
+     "valid": "62/64",
+     "pass": "47/62"
+    },
+    "i": {
+     "valid": "62/64",
+     "pass": "50/62"
+    },
+    "l": {
+     "valid": "62/64",
+     "pass": "35/62"
+    },
+    "m": {
+     "valid": "59/64",
+     "pass": "48/59"
+    },
+    "n": {
+     "valid": "64/64",
+     "pass": "58/64"
+    },
+    "o": {
+     "valid": "53/63",
+     "pass": "51/53"
+    },
+    "s": {
+     "valid": "58/59",
+     "pass": "54/58"
+    },
+    "u": {
+     "valid": "62/64",
+     "pass": "55/62"
+    }
+   }
+  },
+  "omni-xl": {
+   "samples": 1664,
+   "parse_rate": 0.7103,
+   "round_pass_of_valid": 0.9478,
+   "flat_pass_of_valid": 0.8009,
+   "craft_pass_of_valid": 0.8742,
+   "per_letter": {
+    "c": {
+     "valid": "51/63",
+     "pass": "49/51"
+    },
+    "e": {
+     "valid": "46/62",
+     "pass": "44/46"
+    },
+    "h": {
+     "valid": "49/61",
+     "pass": "40/49"
+    },
+    "i": {
+     "valid": "45/60",
+     "pass": "39/45"
+    },
+    "l": {
+     "valid": "49/61",
+     "pass": "37/49"
+    },
+    "m": {
+     "valid": "46/62",
+     "pass": "36/46"
+    },
+    "n": {
+     "valid": "42/64",
+     "pass": "33/42"
+    },
+    "o": {
+     "valid": "42/63",
+     "pass": "41/42"
+    },
+    "s": {
+     "valid": "42/60",
+     "pass": "40/42"
+    },
+    "u": {
+     "valid": "49/62",
+     "pass": "44/49"
+    }
+   }
+  },
+  "omni-xl@0.8": {
+   "samples": 1664,
+   "parse_rate": 0.8468,
+   "round_pass_of_valid": 0.9891,
+   "flat_pass_of_valid": 0.8893,
+   "craft_pass_of_valid": 0.9378,
+   "per_letter": {
+    "c": {
+     "valid": "57/61",
+     "pass": "56/57"
+    },
+    "e": {
+     "valid": "53/62",
+     "pass": "53/53"
+    },
+    "h": {
+     "valid": "59/62",
+     "pass": "55/59"
+    },
+    "i": {
+     "valid": "60/62",
+     "pass": "54/60"
+    },
+    "l": {
+     "valid": "52/54",
+     "pass": "42/52"
+    },
+    "m": {
+     "valid": "58/60",
+     "pass": "55/58"
+    },
+    "n": {
+     "valid": "60/63",
+     "pass": "51/60"
+    },
+    "o": {
+     "valid": "55/63",
+     "pass": "55/55"
+    },
+    "s": {
+     "valid": "54/60",
+     "pass": "54/54"
+    },
+    "u": {
+     "valid": "55/60",
+     "pass": "53/55"
+    }
+   }
+  }
+ }
+}

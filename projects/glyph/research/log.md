@@ -3,6 +3,36 @@
 Newest entries first. Corpus/codec work logs here too — the pipeline is part
 of the experiment, not plumbing.
 
+## 2026-07-14 (evening) — experiment 10: the round-2 plan's gates, run with zero training
+
+Romello's call: before the ~50-run round-2 matrix, test the three claims the
+plan makes that don't need a trained model — they double as its own gates.
+Two new living instruments, run against the frozen round-1 artifacts. Report:
+[`three-predictions-from-a-font-chapter.md`](../../../research-docs/reports/three-predictions-from-a-font-chapter.md).
+
+- **`measure_axes.py`** — per-instance weight/x-height/width from the encoded
+  corpus (stem via `l`/`i` scanlines at half x-height, exact curve extrema).
+  The measurement validates hard: median Bigelow ratio 5.14 (chapter: 5–6 for
+  a regular), declared-weight Spearman 0.915, 391/394 multi-weight families
+  perfectly monotone. Then the regression kills the premise: per-instance BPC
+  of frozen omni-xl over 225 held-out instances (std 0.52, range 0.95–3.75)
+  is explained 2.1% by all three axes; mean encoded line length alone
+  explains 17.9% (hardest hand: Doto, dot-matrix, 3.75 BPC). Conditioning
+  keeps only its steerability justification. Gate-1 deliverables committed:
+  quantile bin edges in `research/axes-results.json`.
+- **`craft_score.py`** — the optical-correction rules as detectors. Gate 0
+  passes: the grid binarized overshoot (dip snaps to 0 or 16 units), 85–88%
+  of round-letter instances keep a full-step dip vs the plan's 60% bar.
+  Corpus falsified the plan's shape grouping: `u` dips 84.8% — round letter,
+  reclassified in v1.1 (v1 numbers kept; rules were pre-registered). Craft
+  composite over round-1 samples matches exp-09's eyes: case 91.1% vs
+  omni-xl 87.4% of valid; omni-s last (85.4%) despite the best parse rate;
+  shipped temp 0.8 scores 93.8%, above the corpus's 89.5%. Models
+  over-overshoot (94–99% vs corpus 86%) and under-sit-flat (77–86% vs 93%).
+
+No release row; no model touched. The round-2 plan is repriced: conditioning
+demoted to a knob, composite checkpointing validated (v1.1), Gates 0–1 done.
+
 ## 2026-07-14 — release decision + temperature sweep: glyph-nanogpt-1 = omni-xl
 
 Romello's call, made explicit in the report: the studio releases the
