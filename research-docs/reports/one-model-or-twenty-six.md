@@ -1,16 +1,16 @@
 ---
 type: experiment
 number: 9
-produced: "→ glyph-nanogpt-a-1 … glyph-nanogpt-z-1 (the case)"
+produced: "→ glyph-nanogpt-1 (the 26-specialist case stays an unreleased yardstick)"
 title: "One model or twenty-six?"
 date: 2026-07-14
 series: glyph
 researcher: claude-fable-5
-models: [glyph-nanogpt-a-1, glyph-nanogpt-b-1, glyph-nanogpt-c-1, glyph-nanogpt-d-1, glyph-nanogpt-e-1, glyph-nanogpt-f-1, glyph-nanogpt-g-1, glyph-nanogpt-h-1, glyph-nanogpt-i-1, glyph-nanogpt-j-1, glyph-nanogpt-k-1, glyph-nanogpt-l-1, glyph-nanogpt-m-1, glyph-nanogpt-n-1, glyph-nanogpt-o-1, glyph-nanogpt-p-1, glyph-nanogpt-q-1, glyph-nanogpt-r-1, glyph-nanogpt-s-1, glyph-nanogpt-t-1, glyph-nanogpt-u-1, glyph-nanogpt-v-1, glyph-nanogpt-w-1, glyph-nanogpt-x-1, glyph-nanogpt-y-1, glyph-nanogpt-z-1]
-summary: "Twenty-six 1.8M-param GPTs, one per lowercase letter, against one letter-conditioned generalist at two sizes — all trained on 82k glyph outlines from 759 open-licensed sans-serifs. The 47.8M generalist wins mean bits-per-char by 2%, but fails to draw a well-formed glyph 29% of the time where the specialists fail 8% — so the case of twenty-six ships and the big model stays a number in this table."
+models: [glyph-nanogpt-1]
+summary: "Twenty-six 1.8M-param GPTs, one per lowercase letter, against one letter-conditioned generalist at two sizes — all trained on 82k glyph outlines from 759 open-licensed sans-serifs. The 47.8M generalist wins mean bits-per-char by 2% but fails to draw a well-formed glyph 29% of the time where the specialists fail 8% — and it ships anyway, on purpose: the studio releases one evolving instrument, with the case's numbers frozen as the yardstick every future version has to overtake."
 status: published
 ---
-[← all experiments](README.md) · **Experiment 09** · Runs a-r1 … z-r1, omni-s-r1, omni-xl-r1 · `→ glyph-nanogpt-a-1 … -z-1` · July 2026
+[← all experiments](README.md) · **Experiment 09** · Runs a-r1 … z-r1, omni-s-r1, omni-xl-r1 · `→ glyph-nanogpt-1` · July 2026
 
 # One model or twenty-six?
 
@@ -26,7 +26,7 @@ a letter 29% of the time, against 8% for the specialists.
 <li>Give the generalist the <strong>sum of the case's budget</strong> (47.8M ≈ 26 × 1.8M) and the loss flips: omni-xl takes 16 of 26 letters and the mean (1.490) — but its biggest wins sit exactly where the case's uniform training recipe over-trained the short, simple letters.</li>
 <li>The loss and the drawing <strong>disagree</strong>: sampled at temperature 1.0, the case produces a grammar-valid glyph 92.1% of the time, omni-xl 71.0% — and its survivors look worse than the gap sounds. Best model by loss, least reliable draughtsman.</li>
 <li>The 47.8M model also <strong>couldn't train on the shared recipe</strong> — three runs diverged at lr 3e-4 / beta2 0.99 before the standard big-model adjustment (1e-4 / 0.95) held. The one-big-model shape carried its own operational tax.</li>
-<li>Memorization, the failure mode this corpus size invites, <strong>didn't happen</strong>: ≤3 exact train-set matches per arm across 1,664 samples each, after variable-font weight instancing lifted every letter to 1,466–1,991 training glyphs.</li>
+<li>The release <strong>inverts the scoreboard on purpose</strong>: the generalist ships as glyph-nanogpt-1 — one evolving instrument over a menu of twenty-six — and the case stays unreleased, its numbers frozen as the yardstick v2 has to overtake.</li>
 </ul>
 </div>
 
@@ -123,9 +123,13 @@ often not letters at all:
 One reading: at this corpus size the big model has capacity to spare for
 distributional detail, which buys likelihood, while the small models are
 forced into grammatical discipline, which buys legibility. Another: the
-temperature was simply kind to sharp small models — a sweep below 1.0 might
-close some of the gap. This round only measured 1.0. Worth knowing before
-anyone treats 71% as omni-xl's ceiling.
+temperature was simply kind to sharp small models. The second reading is
+partly right — a release-time sweep lifted omni-xl to 84.7% valid at temp
+0.8 (the benchmark table stays at 1.0 for both arms, and the case was
+never swept, so 92.1% is not its ceiling either). The sweep also found
+`j` inverting the curve: best at temp 1.0, collapsing into repetition
+loops below it. One global knob does not fit twenty-six letters. The case
+never needed a knob.
 
 ## Be honest: what still doesn't work
 
@@ -156,25 +160,37 @@ anyone treats 71% as omni-xl's ceiling.
   keeping the ensemble rather than any single designer's optical
   corrections, documented in the codec ADR.
 
-## The release: the case
+## The release: the one, chasing the twenty-six
 
-The studio ships one glyph-nanogpt, not a menu — and it's the twenty-six.
-The deciding facts, in order of weight: the case draws reliably (92% vs
-71%, with the visual gap wider than the numbers); its losses to omni-xl
-trace mostly to a fixable recipe flaw rather than anything structural; it
-runs in a browser as 26 lazy 7MB instruments instead of one ~190MB
-download; and it trained without incident on the recipe the big model
-diverged on three times. omni-xl's 2% mean-BPC edge is real and this report
-keeps saying so — it is a number, and the released thing is a drawing
-instrument.
+The bake-off has a winner, and the release is not it. On the craft that a
+released glyph model exists for — finishing letters — the case won,
+clearly: 92% valid draws to 71%, with the visual gap wider than those
+numbers. This report does not soften that, and neither does
+[the model card](../model-cards/glyph-nanogpt-1.md), which carries the
+yardstick table uncushioned.
+
+The studio ships the generalist anyway. `glyph-nanogpt-1` is omni-xl, and
+the choice is aesthetic and deliberate: one evolving instrument over a
+menu of twenty-six, a version series with a plot. The case's numbers are
+now frozen — 92.1% valid, 1.521 mean BPC, letter by letter in the
+[leaderboard](../../projects/glyph/leaderboard.md) — as the standing
+yardstick, and every future version of glyph-nanogpt trains against it.
+The gap to close is stated in
+[`MODELS.md`](../../projects/glyph/MODELS.md) so no future round can dodge
+it: reach the case's 92.1% valid-glyph rate without giving back the BPC
+lead. The first lever was pulled at release — a three-point temperature
+sweep put the shipped default at 0.8, where the model draws 84.7% valid
+instead of 71.0% — and the rest are named: a stable recipe from step zero
+instead of a mid-run rescue, per-letter sampling settings (`j` alone
+prefers temp 1.0), seeds, and data.
 
 What the finding means: parameter count consolidates likelihood, not
 craft. Sliced against data this small, one big model learns the
 distribution's texture and loses the discipline of the line; twenty-six
-small hands each learn one letter well enough to finish it. If the next
-round gives the case per-letter tuning and omni-xl a temperature sweep and
-both arms three seeds, the gap that matters — finished letters — has room
-to move in either direction. Worth the round.
+small hands each learn one letter well enough to finish it. The release
+makes that trade explicit instead of hiding it behind a winner's table —
+version 1 ships knowing exactly what it owes. Worth the rounds it will
+take.
 
 ## Reproduce it
 

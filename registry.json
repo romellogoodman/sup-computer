@@ -33,6 +33,10 @@
     "daydream-chess-nanogpt": {
       "name": "daydream-chess-nanogpt",
       "tagline": "Plays chess without ever knowing the rules \u2014 learned move by move from games, not a rulebook, across three board sizes."
+    },
+    "glyph-nanogpt": {
+      "name": "glyph-nanogpt",
+      "tagline": "Draws the lowercase alphabet one letter at a time \u2014 a single evolving model, released chasing the twenty-six specialists that out-drew it."
     }
   },
   "models": [
@@ -253,6 +257,28 @@
       "artifacts": {
         "checkpoint": "https://huggingface.co/sup-computer/daydream-chess-nanogpt-grand-1/resolve/main/ckpt.pt",
         "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/daydream-chess-nanogpt-grand-1.onnx",
+        "onnx_int8": null
+      }
+    },
+    {
+      "id": "glyph-nanogpt-1",
+      "project": "glyph",
+      "version": 1,
+      "git_tag": "glyph-nanogpt-1",
+      "architecture": "modern (RoPE, RMSNorm, bias-free)",
+      "tagline": "one letter-conditioned generalist over 82k glyph outlines from 759 open sans-serifs; wins the loss, still learning the craft",
+      "researcher": "claude-fable-5",
+      "tokenizer": {
+        "type": "char",
+        "vocab_size": 127
+      },
+      "params": 47860000,
+      "held_out_bpc": 1.4899,
+      "frozen_code": "projects/glyph/models/glyph-nanogpt-1/",
+      "model_card": "research-docs/model-cards/glyph-nanogpt-1.md",
+      "artifacts": {
+        "checkpoint": null,
+        "onnx": null,
         "onnx_int8": null
       }
     }

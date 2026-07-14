@@ -3,6 +3,25 @@
 Newest entries first. Corpus/codec work logs here too — the pipeline is part
 of the experiment, not plumbing.
 
+## 2026-07-14 — release decision + temperature sweep: glyph-nanogpt-1 = omni-xl
+
+Romello's call, made explicit in the report: the studio releases the
+generalist — one evolving instrument over a menu of twenty-six — knowing it
+lost the drawing bake-off. The case stays unreleased; its numbers freeze as
+the yardstick (MODELS.md states the gap: 92.1% valid without giving back
+the BPC lead). Nothing rewritten to make the release look like the winner.
+
+Release-time sweep (1,664 samples/point): temp 0.6 → 83.8% valid but 201
+never-terminated and the hard letters crater (j 19%); **0.8 → 84.7%**,
+memorization 8/1,664; 1.0 → 71.0%. Shipped default 0.8 — which is also the
+player runtime's built-in default, so the demo runs there without changes.
+Finding worth keeping: `j` inverts the curve (best at 1.0, repetition-loops
+below) — one global knob doesn't fit 26 letters; the case never needed one.
+
+Frozen folder verified sampling in place; ONNX fp32 parity 7.6e-06 (int8
+argmax agreement only 75% — int8 stays unshipped); R2 artifacts uploaded;
+HF publish + tag + merge + deploy gated on Romello's final read.
+
 ## 2026-07-14 (overnight, later) — correction: not a resume bug, an unstable recipe
 
 The clean scratch retrain diverged identically (val 1.16 @ 500 → 2.10 @
