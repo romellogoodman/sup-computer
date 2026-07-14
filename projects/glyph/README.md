@@ -29,7 +29,21 @@ uv run python projects/glyph/data/roundtrip_sheet.py
 
 # 4. dedup, split by family, tokenize per-letter + omni datasets
 uv run python projects/glyph/data/prepare.py
+
+# 5. train an arm (configs in config/: specialist, omni_s, omni_xl)
+uv run python core/nanogpt_core/train.py projects/glyph/config/omni_xl.py \
+    --out_dir=projects/glyph/runs/omni-xl-r1
+
+# 6. measure what the loss can't (parse / unterminated / memorization + sheet)
+uv run python projects/glyph/harness.py projects/glyph/runs/omni-xl-r1 \
+    --letters abc --num 64 --temp 1.0
+
+# 7. after all 28 runs: the full arms-comparison table -> research/matrix-results.json
+uv run python projects/glyph/matrix_eval.py
 ```
+
+`specimen.py` renders encoded glyph lines into the report-ready PNG grids
+(specimens are artifacts, not charts — charts go through `tools/dataviz`).
 
 Everything downstream of the manifest is deterministic and regenerates; font
 binaries and `.bin`/`.pkl` datasets are gitignored (no-weights rule). What is
@@ -50,6 +64,10 @@ contract (ADR-0012). Full rationale: ADR-0027.
 
 ## Status
 
-Corpus and codec built; **no models trained yet.** Next: the a/e/g pilot
-(both arms, specialist-sized), then the 26-overnight matrix. See
-`research/log.md`.
+Released: [`glyph-nanogpt-1`](models/glyph-nanogpt-1/) (2026-07-14) — the
+omni-xl generalist, chosen on purpose over the winning case. The full 28-run
+matrix ran both arms: the generalist wins mean BPC (1.490 vs 1.521) but draws
+valid glyphs 71.0% vs the case's 92.1% at temp 1.0, so the unreleased
+26-specialist case stands as the frozen yardstick the next version has to
+overtake. Version history in [`MODELS.md`](MODELS.md); run-by-run record in
+[`research/log.md`](research/log.md) and [`leaderboard.md`](leaderboard.md).
