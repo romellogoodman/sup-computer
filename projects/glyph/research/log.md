@@ -3,6 +3,23 @@
 Newest entries first. Corpus/codec work logs here too — the pipeline is part
 of the experiment, not plumbing.
 
+## 2026-07-14 (overnight, later) — correction: not a resume bug, an unstable recipe
+
+The clean scratch retrain diverged identically (val 1.16 @ 500 → 2.10 @
+1000, grad_clip 1.0 active) — no resume involved, so the previous entry's
+resume-bug theory is dead. All three divergences (two resumes, one scratch)
+share one signature: healthy to ~step 500–800, then the loss explodes. The
+original pre-crash run was last observed at iter 800 — i.e. it likely never
+cleared the cliff either. Root cause: the shared small-model recipe (lr
+3e-4, **beta2 0.99**) applied to 47.8M params at batch 16k tokens — a known
+Adam instability regime. omni-xl now runs the standard big-model adjustment
+(lr 1e-4, beta2 0.95, warmup 300); everything else stays equal, and the
+report must state that the big arm could not take the shared recipe — the
+capacity-allocation control has a real limit, and that is itself a finding.
+docs/TODO.md resume-bug entry amended: resume remains unverified on MPS
+(both resume attempts were into an already-doomed run) but is no longer the
+prime suspect.
+
 ## 2026-07-14 (overnight) — omni-xl crash, resume divergence, clean retrain
 
 The 28-run chain died mid-omni-xl when the terminal quit (~iter 800 of

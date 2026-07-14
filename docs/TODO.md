@@ -54,14 +54,15 @@ For the architectural decisions behind these, see [`adr/`](adr/README.md).
 
 ## Polish / nice-to-have
 
-- **`core` train.py resume diverges on MPS** — `--init_from=resume` silently
-  diverged twice on glyph's omni-xl (47.8M, mps): on-trajectory batch loss for
-  ~20 iters after resume, then val 1.91 at step 1000 vs the 1.09 banked at the
-  resumed checkpoint's iter 800. Suspect optimizer-state restoration on mps.
-  Repro evidence: `projects/glyph/runs/omni-xl-r1/ckpt-resume-bug-evidence.pt`
-  + `resume2.log`; incident in
-  [glyph's log](../projects/glyph/research/log.md). Until fixed, treat resume
-  as untrustworthy on this hardware — retrain from scratch.
+- **`core` train.py resume is unverified on MPS** — originally suspected of
+  diverging (glyph omni-xl resumed twice, diverged twice), but a clean
+  scratch run then diverged identically: the real culprit was an unstable
+  optimizer recipe at 47.8M (beta2 0.99 + lr 3e-4 at small batch), not
+  resume. Resume is still *unverified* on this hardware — both attempts were
+  into an already-doomed run — so exercise it once on a known-stable config
+  before trusting it. Evidence: `projects/glyph/runs/omni-xl-r1/` logs +
+  `ckpt-resume-bug-evidence.pt`; incidents in
+  [glyph's log](../projects/glyph/research/log.md).
 
 - **Make the gatsby charts "super green"** — retheme obsession-on-a-dial's dataviz so the
   green-light obsession bleeds into the figures themselves: a green-dominant palette

@@ -3,9 +3,14 @@
 # fair fight: if you spent the case's total capacity on one instrument, what
 # do you get?
 #
-# Optimizer settings held identical to the specialists on purpose -- the
-# arms comparison controls everything except capacity allocation. (3e-4 is
-# conservative at this size; changing it per-arm would add a confound.)
+# Optimizer: NOT identical to the small arms, and that is itself a finding.
+# The shared recipe (lr 3e-4, beta2 0.99) diverged at this scale three times
+# -- healthy to ~step 500-800, then val loss explodes (1.16 -> 2.10 by step
+# 1000 on the clean run; grad_clip 1.0 was active throughout). Small-batch
+# Adam with beta2 0.99 at 47.8M params is a known instability recipe, so xl
+# runs the standard big-model adjustment: lower peak lr, beta2 0.95, longer
+# warmup. The capacity-allocation comparison keeps everything else equal;
+# the report must state that the big arm could not take the shared recipe.
 #
 #   uv run python core/nanogpt_core/train.py \
 #       projects/glyph/config/omni_xl.py
@@ -30,12 +35,12 @@ n_head = 8
 n_embd = 576
 dropout = 0.2
 
-learning_rate = 3e-4
+learning_rate = 1e-4
 max_iters = 3000
 lr_decay_iters = 3000
-min_lr = 3e-5
-beta2 = 0.99
-warmup_iters = 100
+min_lr = 1e-5
+beta2 = 0.95
+warmup_iters = 300
 
 # --- Mac (Apple Silicon) ---
 device = 'mps'
