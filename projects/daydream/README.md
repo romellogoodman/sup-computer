@@ -39,14 +39,19 @@ moves snap into focus versus how much illegal near-misses bleed through.
 ## Pipeline
 
 ```
-Regular:  data/regular/download.py -> filter.py -> prepare.py -> train.bin/val.bin/meta.pkl
-Micro:    data/micro/selfplay.py   -> prepare.py -> train.bin/val.bin/meta.pkl
-Grand:    data/grand/selfplay.py   -> prepare.py -> train.bin/val.bin/meta.pkl
+Regular:  data/regular/fetch_filtered.py (stream+filter a Lichess dump)  -> data/regular/games.txt
+Micro:    data/selfplay.py --variant gardner                             -> data/micro/games.txt
+Grand:    data/selfplay.py --variant grand12 --variants-ini engine/variants.ini
+                                                                         -> data/grand/games.txt
 
+-> data/prepare.py --tier <micro|regular|grand> -> train.bin/val.bin/meta.pkl (per tier)
 -> core/nanogpt_core/train.py -> runs/<tier>/ckpt.pt
 -> harness.py (plays the checkpoint against Fairy-Stockfish, resamples on
    illegal moves, verifies legal-move rate + clean game completion)
 ```
+
+`selfplay.py` and `prepare.py` are shared across tiers — one script each,
+parameterized, not a copy per tier.
 
 Run everything from the **repo root** via `uv run`.
 

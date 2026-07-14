@@ -49,9 +49,9 @@ instead of being masked away. Start with [`README.md`](README.md).
   real third-party game data, not code-owned/deterministic). Regenerate by
   rerunning the script. `prepare.py` then char-tokenizes that file →
   `train.bin`/`val.bin`/`meta.pkl` (also gitignored).
-- Micro / Grand: `data/<tier>/selfplay.py` (Fairy-Stockfish self-play under
-  the tier's variant, skill-limited so games aren't degenerate) →
-  `prepare.py` → same `.bin`/`.pkl` shape.
+- Micro / Grand: the shared `data/selfplay.py --variant <gardner|grand12>`
+  (Fairy-Stockfish self-play under the tier's variant rules) →
+  `data/prepare.py --tier <tier>` → same `.bin`/`.pkl` shape.
 - All three feed `core/nanogpt_core/train.py` identically — the engine
   never knows it's training on chess.
 - `harness.py` is shared across all three tiers, parameterized by which
