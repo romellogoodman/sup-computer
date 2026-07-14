@@ -3,6 +3,24 @@
 Newest entries first. Corpus/codec work logs here too — the pipeline is part
 of the experiment, not plumbing.
 
+## 2026-07-14 (overnight) — omni-xl crash, resume divergence, clean retrain
+
+The 28-run chain died mid-omni-xl when the terminal quit (~iter 800 of
+3000; the other 27 models had finished — best-val checkpointing doubled as
+crash insurance). Resuming via `--init_from=resume` **diverged, twice**:
+resume #1 ran 35 min with no val improvement (invisible at the time —
+block-buffered log); resume #2, relaunched with live logging, showed the
+smoking gun — iter 820 loss 1.12 (on-trajectory) but step-1000 val 1.91 vs
+the 1.09 already banked at iter 800. Same silent divergence both times →
+systematic. Suspect `core`'s resume path on MPS (optimizer-state
+restoration); filed in docs/TODO.md, not debugged tonight. Diverged
+checkpoint kept at `runs/omni-xl-r1/ckpt-resume-bug-evidence.pt`.
+
+Call: killed the resumed run and retrained omni-xl **from scratch** — a
+resumed-diverged-recovered run is not a clean arm for the comparison, and
+the other 27 models are all single clean runs. Overnight jobs now run
+`PYTHONUNBUFFERED=1 nohup caffeinate -i ... & disown`.
+
 ## 2026-07-13 — release policy decided + matrix launched (28 models)
 
 Two directives from Romello before the matrix launch:

@@ -54,6 +54,15 @@ For the architectural decisions behind these, see [`adr/`](adr/README.md).
 
 ## Polish / nice-to-have
 
+- **`core` train.py resume diverges on MPS** — `--init_from=resume` silently
+  diverged twice on glyph's omni-xl (47.8M, mps): on-trajectory batch loss for
+  ~20 iters after resume, then val 1.91 at step 1000 vs the 1.09 banked at the
+  resumed checkpoint's iter 800. Suspect optimizer-state restoration on mps.
+  Repro evidence: `projects/glyph/runs/omni-xl-r1/ckpt-resume-bug-evidence.pt`
+  + `resume2.log`; incident in
+  [glyph's log](../projects/glyph/research/log.md). Until fixed, treat resume
+  as untrustworthy on this hardware — retrain from scratch.
+
 - **Make the gatsby charts "super green"** — retheme obsession-on-a-dial's dataviz so the
   green-light obsession bleeds into the figures themselves: a green-dominant palette
   instead of the standard red/blue/green semantic one. On-brand visual gag.
