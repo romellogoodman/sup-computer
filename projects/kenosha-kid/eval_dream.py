@@ -37,8 +37,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import generate  # noqa: E402  (for the canonical WORDS + ANCHORS, kept in sync)
 
-sys.path.insert(0, os.path.join(HERE, "..", "..", "core"))
-from nanogpt_core.model import GPTConfig, GPT, CausalSelfAttention  # noqa: E402
+from nanogpt_core import load_model  # noqa: E402  (workspace-installed core)
+from nanogpt_core.model import CausalSelfAttention  # noqa: E402
 
 CANON = [w.lower() for w in generate.WORDS]      # you never did the kenosha kid
 ANCHORS = set(generate.ANCHORS)                  # the 9 pristine construals
@@ -82,18 +82,6 @@ def tokenize(line):
     if cur:
         words.append("".join(cur))
     return words
-
-
-def load_model(out_dir, device):
-    ckpt = torch.load(os.path.join(out_dir, "ckpt.pt"), map_location=device, weights_only=False)
-    model = GPT(GPTConfig(**ckpt["model_args"]))
-    sd = ckpt["model"]
-    for k in list(sd.keys()):
-        if k.startswith("_orig_mod."):
-            sd[k[len("_orig_mod."):]] = sd.pop(k)
-    model.load_state_dict(sd)
-    model.to(device)
-    return model, ckpt
 
 
 def sample_lines(model, meta, device, temperature, num_samples, max_new_tokens, dropout, seed, dropout_p=None):

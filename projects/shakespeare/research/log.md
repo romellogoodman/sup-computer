@@ -7,8 +7,10 @@ here edits a released row — new rounds are appended.
 
 Held-out yardstick for every row: **bits-per-character (BPC)** on the fixed
 `projects/shakespeare/test.txt` (250,000 chars of Shakespeare), computed by
-`core/eval/eval.py` (char/GPT-2) or `projects/shakespeare/eval_xl.py` (custom BPE).
-Seed 1337 throughout, single-seed (see the leaderboard's variance caveat).
+`core/eval/eval.py` (char/GPT-2/custom BPE — during r5, custom BPE went through
+the since-deleted project-local `eval_xl.py`; core absorbed that seam in
+ADR-0029, 2026-07-14). Seed 1337 throughout, single-seed (see the
+leaderboard's variance caveat).
 
 ---
 
@@ -158,5 +160,6 @@ evidence; they are **excluded from the BPC table** (diverged / not-run-to-end).
 - `data/shakespeare_xl_{bpe1k,bpe4k,bpe16k,gpt2}/prepare.py` (+ generated bins/meta/tokenizer.json, gitignored except tokenizer.json)
 - `data/shakespeare_xl_raw/.gitignore` — never commit raw Gutenberg downloads
 - `eval_xl.py`, `sample_xl.py` — project-local eval/sample for custom BPE (meta.pkl
-  `{"vocab_size","tokenizer"}` seam per ADR-0012; core understands only char/GPT-2)
+  `{"vocab_size","tokenizer"}` seam per ADR-0012; core understood only char/GPT-2
+  at the time — both deleted 2026-07-14 when core absorbed the seam, ADR-0029)
 - `runs/r5-xl-*` (train.log + `-sample.txt`; checkpoints gitignored)

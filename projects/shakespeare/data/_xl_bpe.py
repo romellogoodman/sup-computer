@@ -15,11 +15,9 @@ Dataset contract for these custom-vocab dirs:
   train.bin / val.bin  : uint16 token ids (all vocabs < 65535)
   tokenizer.json       : the trained HF tokenizer (committed; small, not a weight)
   meta.pkl             : {"vocab_size": N, "tokenizer": "tokenizer.json"}
-                         -> train.py reads vocab_size; the project-local eval/sample
-                            scripts read "tokenizer" and load tokenizer.json.
-                         (Core eval/sample only understand char stoi or GPT-2 BPE,
-                          so custom-vocab runs use projects/shakespeare/eval_xl.py
-                          and sample_xl.py instead — see ADR-0012, meta.pkl seam.)
+                         -> train.py reads vocab_size; core's eval/sample read
+                            "tokenizer" and load tokenizer.json (the ADR-0012
+                            meta.pkl seam, absorbed into core by ADR-0029).
 """
 import os
 import pickle

@@ -30,7 +30,6 @@ import torch
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-sys.path.insert(0, os.path.join(HERE, "..", "..", "core"))
 from engine_client import Engine  # noqa: E402
 from harness import DaydreamPlayer, TIERS, MAX_GAME_PLIES  # noqa: E402
 

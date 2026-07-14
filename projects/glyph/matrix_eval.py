@@ -11,9 +11,10 @@ Run from the repo root after all 28 runs finish:
 """
 import json
 import os
-import re
 import subprocess
 import sys
+
+from nanogpt_core.bpc import score_run
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 LETTERS = "abcdefghijklmnopqrstuvwxyz"
@@ -25,10 +26,7 @@ def run(args):
 
 
 def bpc(run_dir, letter):
-    out = run(["uv", "run", "python", "core/eval/eval.py", run_dir,
-               "--test", f"projects/glyph/test/{letter}.txt",
-               "--data-dir", "projects/glyph/data"])
-    return float(re.search(r"BPC=([\d.]+)", out).group(1))
+    return score_run(run_dir, f"projects/glyph/test/{letter}.txt", "projects/glyph/data")["bpc"]
 
 
 def harness(run_dir, letters):

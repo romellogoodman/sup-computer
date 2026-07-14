@@ -27,9 +27,8 @@ import torch
 import torch.nn.functional as F
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "core"))
 from engine_client import Engine  # noqa: E402
-from nanogpt_core.model import GPT, GPTConfig  # noqa: E402
+from nanogpt_core import load_model  # noqa: E402  (workspace-installed core)
 
 TIERS = {
     "micro": {"variant": "gardner", "variants_ini": "", "data_dir": "data/micro"},
@@ -54,20 +53,9 @@ class DaydreamPlayer:
     dream texture -- this harness keeps them, it doesn't discard them)."""
 
     def __init__(self, out_dir: str, device: str = "mps", temperature: float = 0.9, soft_cap: float = None):
-        ckpt_path = os.path.join(out_dir, "ckpt.pt")
-        checkpoint = torch.load(ckpt_path, map_location=device, weights_only=True)
-        gptconf = GPTConfig(**checkpoint["model_args"])
-        self.model = GPT(gptconf)
-        state_dict = checkpoint["model"]
-        unwanted_prefix = "_orig_mod."
-        for k, v in list(state_dict.items()):
-            if k.startswith(unwanted_prefix):
-                state_dict[k[len(unwanted_prefix):]] = state_dict.pop(k)
-        self.model.load_state_dict(state_dict)
-        self.model.eval()
-        self.model.to(device)
+        self.model, checkpoint = load_model(out_dir, device)
         self.device = device
-        self.block_size = gptconf.block_size
+        self.block_size = self.model.config.block_size
         self.temperature = temperature
         self.soft_cap = soft_cap  # None = disabled; a float = Gemma-style logit soft-capping
 

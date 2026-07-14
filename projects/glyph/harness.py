@@ -28,7 +28,7 @@ import sys
 
 import torch
 
-from nanogpt_core.model import GPTConfig, GPT
+from nanogpt_core import load_model
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "data"))
@@ -36,18 +36,6 @@ import codec  # noqa: E402
 from prepare import split_of  # noqa: E402  (family-split assignment, shared)
 
 MAX_GLYPH_TOKENS = 350  # p99 real glyph is 275 tokens; anything longer is lost
-
-
-def load_model(out_dir, device):
-    ckpt = torch.load(os.path.join(out_dir, "ckpt.pt"), map_location=device, weights_only=True)
-    model = GPT(GPTConfig(**ckpt["model_args"]))
-    sd = ckpt["model"]
-    for k in list(sd):
-        if k.startswith("_orig_mod."):
-            sd[k[len("_orig_mod."):]] = sd.pop(k)
-    model.load_state_dict(sd)
-    model.eval().to(device)
-    return model, ckpt
 
 
 def train_lines(letter):
