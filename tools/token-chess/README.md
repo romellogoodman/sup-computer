@@ -4,8 +4,22 @@ A benchmark, not a model: two players share a chess board, but neither can
 play a move from its own reasoning. Every move must come from
 [Daydream](../../projects/daydream/README.md), queried as a tool, under a
 fixed per-game token budget. The benchmark measures how economically a
-player orchestrates Daydream's sampler under scarcity — not chess
-strength. Full design rationale: `~/Desktop/token-chess-benchmark-plan.md`.
+player orchestrates Daydream's sampler under scarcity — not chess strength.
+The locked mechanics are recorded in this README (the two "Locked mechanics"
+sections below are the contract — update them or don't change the code); the
+findings are in
+[Can a token budget buy a finished chess game?](../../research-docs/reports/budget-cant-buy-the-midgame.md)
+
+## File map
+
+| File | Round | Status |
+|---|---|---|
+| `game.py` | one | **Frozen yardstick.** Round-one forfeit economy, locked; don't refactor. |
+| `game3.py` | three–five | **Live harness.** Batch-of-3 economy, adjudication endings, memory/choice suffixes. |
+| `players.py` | all | **Live.** Player adapters: `mock:*` self-tests, `lmstudio:<model>` live local models, `anthropic:` reserved. |
+| `round2_probe.py` | two | Retired probe, kept as apparatus — the only way to observe games past ply ~40. |
+| `round3_probe.py` | three | Retired probe, kept as apparatus — floor / curation / depth / linewell probes. |
+| `pgn_export.py` | — | Exporter: archived game JSONs → replayable PGNs in `evidence/pgn/`. |
 
 ## Status
 

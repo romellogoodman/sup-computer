@@ -1,14 +1,15 @@
 """
-players.py -- the Player adapter interface for Token Chess, plus mock
-implementations used to exercise the harness without any live frontier
-model API (no credentials exist in this environment -- see the Token Chess
-design plan's "harness only, no real matches" scope for this build).
+players.py -- the Player adapter interface for Token Chess. Three kinds of
+adapter behind one interface: mock:* (random / adaptive / heuristic
+self-tests), lmstudio:<model> (LIVE matches on any OpenAI-compatible local
+server via the shared tools/steer layer, ADR-0026 -- this is how every
+round-three-and-later result was produced), and anthropic:<model>
+(reserved for when API credentials exist).
 
-A real adapter (Claude, Gemini, whichever) would implement the same
-interface: given the transcript of attempts made *this turn only* and its
-own remaining budget, choose sampler settings for the next Daydream query.
-Swapping a mock for a real API-backed adapter should require zero changes
-to game.py.
+Every adapter implements the same contract: given the transcript of
+attempts made *this turn only* and its own remaining budget, choose
+sampler settings for the next Daydream query. Swapping adapters requires
+zero changes to game.py / game3.py.
 """
 from __future__ import annotations
 

@@ -3,10 +3,11 @@ game.py -- Token Chess: two players share the board, but neither can play a
 move from its own reasoning. Every move must come from Daydream, queried as
 a tool, under a fixed per-game token budget. The benchmark measures how
 economically a player orchestrates Daydream's sampler under scarcity --
-not chess strength (see the Token Chess design plan, ~/Desktop/token-chess-
-benchmark-plan.md, for the full rationale).
+not chess strength (full rationale: the README here + the published report
+research-docs/reports/budget-cant-buy-the-midgame.md).
 
-Locked mechanics (do not relitigate without updating that plan first):
+Locked mechanics (do not relitigate without updating the README's
+locked-mechanics section first):
   - Daydream-exclusive: the only way to move is a Daydream query that lands
     legal. No self-authored moves.
   - Every query costs exactly 1 token, regardless of settings or outcome.
@@ -18,11 +19,14 @@ Locked mechanics (do not relitigate without updating that plan first):
   - Headline metric: games won per token spent. Reported alongside plain
     win rate, legality hit rate, and turn-level sampling adaptation.
 
-This build has real Daydream (reusing projects/daydream/harness.py's
-DaydreamPlayer and the shared engine_client legality arbiter) but only
-MOCK frontier-model players (players.py) -- no API credentials exist in
-this environment. Swapping in a real API-backed Player is meant to be the
-only change needed to run an actual match.
+This file is the FROZEN round-one yardstick (forfeit economy); game3.py is
+the live harness. It uses real Daydream (projects/daydream/harness.py's
+DaydreamPlayer + the shared engine_client legality arbiter); players.py
+supplies the players -- mock:* self-tests and, since round three, live
+local models via lmstudio:<model> (tools/steer). Known wart, kept because
+the file is frozen: the no-legal-moves ending scores stalemate as a loss
+for the stalemated side. It never triggered -- no round-one game reached a
+natural ending.
 
 Run from the repo root:
     uv run python tools/token-chess/game.py --tier regular \
