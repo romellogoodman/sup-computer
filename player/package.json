@@ -1,12 +1,14 @@
 {
   "name": "@supcomputer/player",
   "version": "0.0.1",
+  "private": true,
   "description": "Browser runtime for small nanoGPT-shaped models: forward pass via onnxruntime-web, with the autoregressive loop, sampling, and tokenizers in JS.",
   "type": "module",
   "main": "src/index.js",
   "module": "src/index.js",
   "exports": {
-    ".": "./src/index.js"
+    ".": "./src/index.js",
+    "./registry": "./src/registry.js"
   },
   "files": [
     "src",
@@ -17,7 +19,7 @@
   },
   "dependencies": {
     "gpt-tokenizer": "^2.5.0",
-    "onnxruntime-web": "^1.27.0"
+    "onnxruntime-web": "1.27.0"
   },
   "license": "MIT"
 }

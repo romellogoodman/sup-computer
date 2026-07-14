@@ -9,9 +9,11 @@ For the architectural decisions behind these, see [`adr/`](adr/README.md).
 
 1. **Wire up the player** — ✅ built 2026-07-02 as the website's `/model-player`
    page (see [ADR-0024](adr/0024-model-player-page-and-artifact-conventions.md)).
-   The six latest releases are exported (parity-checked) and run in-browser;
-   `player-registry.json` decides what the page lists. Artifacts are hosted on
-   the public R2 bucket and every `registry.json` `artifacts` URL points at it.
+   The latest releases are exported (parity-checked) and run in-browser; the
+   roster is derived from `registry.json` (newest runnable per lineage —
+   [ADR-0028](adr/0028-registry-absorbs-the-demo-registry.md)). Artifacts are
+   hosted on the public R2 bucket and every `registry.json` `artifacts` URL
+   points at it.
    What remains:
    - **Move inference off the main thread** — ORT WASM currently computes on
      the UI thread, so the tab janks for the seconds a generation takes. A

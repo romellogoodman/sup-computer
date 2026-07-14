@@ -3,48 +3,36 @@
 // The /model-player demo: pick a release on the left, run it in the browser on
 // the right. Inference is @supcomputer/player (onnxruntime-web) — imported
 // lazily on first Generate so the ORT bundle never loads for readers who don't
-// press the button. The ONNX + vocab URLs come from registry.json artifacts;
-// while those are null (no weights published yet) the panel renders a
-// "weights not yet published" state instead of a runnable demo.
+// press the button. Bundle resolution (which ONNX, where the tokenizer sidecar
+// sits) is the player's registry subpath — statically importable, no ORT.
+// While a model's artifact URLs are null (no weights published yet) the panel
+// renders a "weights not yet published" state instead of a runnable demo.
 
 import { useMemo, useRef, useState } from "react";
+import { resolveBundle, tokenizerSupported, latestByLineage } from "@supcomputer/player/registry";
 
 const DEFAULTS = { temp: 0.8, topk: 40, maxNewTokens: 200 };
 
-// Which artifact to run: prefer the int8 quantization (smaller download),
-// fall back to full-precision ONNX.
-function onnxUrl(model) {
-  return model.artifacts?.onnx_int8 || model.artifacts?.onnx || null;
+// Tokenizer files sit next to the .onnx with names derived by resolveBundle —
+// <model>.vocab.json (char, from export.py) or <model>.tokenizer.json
+// (corpus-trained BPE, the committed HF tokenizer.json).
+async function makeTokenizer(model, runtime, bundle) {
+  if (bundle.type === "char") return runtime.CharTokenizer.fromUrl(bundle.sidecarUrl);
+  if (bundle.type === "bpe") return runtime.ByteLevelBPETokenizer.fromUrl(bundle.sidecarUrl);
+  if (bundle.type === "gpt2-bpe") return runtime.BPETokenizer.create();
+  throw new Error(`the player doesn't support the "${bundle.type}" tokenizer yet`);
 }
 
-// Tokenizer files sit next to the .onnx with derived names — <model>.vocab.json
-// (char, from export.py) or <model>.tokenizer.json (corpus-trained BPE, the
-// committed HF tokenizer.json) — rather than being their own registry fields.
-async function makeTokenizer(model, runtime, url) {
-  const type = model.tokenizer?.type;
-  if (type === "char") return runtime.CharTokenizer.fromUrl(url.replace(/\.onnx$/, ".vocab.json"));
-  if (type === "bpe") return runtime.ByteLevelBPETokenizer.fromUrl(url.replace(/\.onnx$/, ".tokenizer.json"));
-  if (type === "gpt2-bpe") return runtime.BPETokenizer.create();
-  throw new Error(`the player doesn't support the "${type}" tokenizer yet`);
-}
-
-function tokenizerSupported(model) {
-  return ["char", "bpe", "gpt2-bpe"].includes(model.tokenizer?.type);
-}
-
-export default function ModelPlayer({ models, series, player }) {
-  // player-registry.json decides which releases the list shows (the latest per
-  // series) and in what order; registry.json supplies the model facts. It also
-  // carries the demo settings — starter prompt and the release's block_size.
-  const latest = useMemo(
-    () => Object.keys(player).map((id) => models.find((m) => m.id === id)).filter(Boolean),
-    [models, player],
-  );
+export default function ModelPlayer({ models, series }) {
+  // The roster is derived, not listed: the newest runnable release per lineage
+  // (ADR-0028), in registry.json order. registry.json also carries the demo
+  // settings — demo.prompt and the release's block_size.
+  const latest = useMemo(() => [...latestByLineage(models).values()], [models]);
 
   const [selectedId, setSelectedId] = useState(latest[0]?.id);
   const selected = models.find((m) => m.id === selectedId);
 
-  const [prompt, setPrompt] = useState(player[selectedId]?.prompt || "");
+  const [prompt, setPrompt] = useState(selected?.demo?.prompt || "");
   const [temp, setTemp] = useState(DEFAULTS.temp);
   const [topk, setTopk] = useState(DEFAULTS.topk);
   const [maxNewTokens, setMaxNewTokens] = useState(DEFAULTS.maxNewTokens);
@@ -56,14 +44,17 @@ export default function ModelPlayer({ models, series, player }) {
   const cache = useRef({}); // id -> { session, tok }, kept across model switches
   const stopRef = useRef(false);
 
-  const url = selected ? onnxUrl(selected) : null;
+  // Prefer the int8 quantization when published (smaller download for the
+  // browser); resolveBundle still derives sidecar names from full precision.
+  const bundle = selected ? resolveBundle(selected, { preferInt8: true }) : null;
+  const url = bundle?.onnxUrl ?? null;
   const runnable = Boolean(url) && tokenizerSupported(selected);
   const busy = status === "loading" || status === "generating";
 
   const select = (m) => {
     if (busy) stopRef.current = true;
     setSelectedId(m.id);
-    setPrompt(player[m.id]?.prompt || "");
+    setPrompt(m.demo?.prompt || "");
     setOutput("");
     setError(null);
     setStatus("idle");
@@ -81,7 +72,7 @@ export default function ModelPlayer({ models, series, player }) {
       let entry = cache.current[selected.id];
       if (!entry) {
         const session = await runtime.loadModel(url);
-        const tok = await makeTokenizer(selected, runtime, url);
+        const tok = await makeTokenizer(selected, runtime, bundle);
         entry = cache.current[selected.id] = { session, tok };
       }
       setStatus("generating");
@@ -89,7 +80,7 @@ export default function ModelPlayer({ models, series, player }) {
         maxNewTokens,
         temp,
         topk,
-        blockSize: player[selected.id]?.block_size || 256,
+        blockSize: selected.block_size || 256,
         onToken: (piece) => setOutput((s) => s + piece),
         shouldStop: () => stopRef.current,
       });

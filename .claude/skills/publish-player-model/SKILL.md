@@ -72,13 +72,15 @@ npx wrangler r2 object put "sup-computer-artifacts/<id>.tokenizer.json" --file p
 npx wrangler r2 object put "sup-computer-artifacts/<id>.manifest.json" --file projects/<project>/dist/<id>.manifest.json --cache-control "$CC" --remote
 ```
 
-The site derives tokenizer URLs by swapping the `.onnx` suffix, so the
-`<id>.vocab.json` / `<id>.tokenizer.json` names next to `<id>.onnx` are
-load-bearing (ADR-0024). The `sup` CLI reads `block_size` from
-`<id>.manifest.json` for releases outside `player-registry.json`
-(historical versions), so the manifest upload is part of the bundle too. Only `char`, `bpe` (HF tokenizer.json), and
-`gpt2-bpe` tokenizer types are supported by `@supcomputer/player` — a new
-tokenizer scheme needs a new class in `player/src/tokenizers.js` first.
+Tokenizer URLs derive from the `.onnx` name by suffix swap —
+`player/src/registry.js`'s `resolveBundle` owns that contract (ADR-0024,
+ADR-0028) — so the `<id>.vocab.json` / `<id>.tokenizer.json` names next to
+`<id>.onnx` are load-bearing. The manifest upload is part of the bundle too:
+the `sup` CLI uses it as the cross-check fallback for `block_size`. Only
+`char`, `bpe` (HF tokenizer.json), and `gpt2-bpe` tokenizer types are
+supported by `@supcomputer/player` — a new tokenizer scheme needs a new class
+in `player/src/tokenizers.js` plus its entry in `player/src/registry.js`'s
+`SUPPORTED_TOKENIZERS` first.
 
 ## 4. Publish the Hugging Face release
 
@@ -88,12 +90,17 @@ One HF model repo per frozen release: `sup-computer/<id>` (a new research round
 
 Stage a directory containing:
 
-- `README.md` — the model card from `research-docs/model-cards/<id>.md`
-  verbatim (the cards already carry HF YAML frontmatter). Rewrite relative
-  markdown links to absolute GitHub URLs and insert the standard pointer line
-  after the H1 (site model page · monorepo + frozen-code path + git tag ·
-  model-player link) — see the staging script pattern from 2026-07-02 if in
-  doubt: mirror `website/lib/content.js`'s `resolveLink`.
+- `README.md` — staged by the checked-in script (never rewrite links by
+  hand; glyph-nanogpt-1 shipped broken relative links that way):
+
+  ```bash
+  node tools/hf-stage/stage.mjs <id> <staged-dir>/README.md
+  ```
+
+  It takes the card from `research-docs/model-cards/<id>.md`, inserts the
+  standard pointer line after the H1, rewrites every repo-relative link
+  through `website/lib/content.js`'s own rules, and fails loudly if any
+  relative link survives.
 - `ckpt.pt` — the full training checkpoint (HF is the home for weights; git
   and R2 deliberately are not).
 - `<id>.onnx`, `<id>.int8.onnx`, and the tokenizer file (same names as R2).
@@ -104,18 +111,21 @@ uvx --from 'huggingface_hub[cli]' hf upload "sup-computer/<id>" <staged-dir> . \
   --repo-type model --commit-message "release: <id> (checkpoint + ONNX + tokenizer + model card)"
 ```
 
-## 5. Wire the registries
+## 5. Wire the registry
 
-- `registry.json` — set the model's `artifacts.onnx` to the full public R2 URL
-  and `artifacts.checkpoint` to the HF resolve URL
-  (`https://huggingface.co/sup-computer/<id>/resolve/main/ckpt.pt`).
-- `player-registry.json` — swap the series' entry to the new id, with:
-  - `prompt`: a string the training corpus actually contains (check the corpus,
-    don't invent one).
-  - `block_size`: from the frozen `config.py`. **Getting this wrong crashes the
-    demo mid-generation** — the ONNX RoPE cache physically ends at block_size,
-    and the JS window cap is the only guard (symptom: an OrtRun reshape error
-    like `{N,16}` vs `{1,1,N+1,16}`).
+Everything lands in `registry.json` — the only registry (ADR-0028); the
+`/model-player` roster and the `sup` CLI derive newest-runnable-per-lineage
+from it, so the release appears in both the moment these fields fill:
+
+- `artifacts.onnx` — the full public R2 URL; `artifacts.checkpoint` — the HF
+  resolve URL (`https://huggingface.co/sup-computer/<id>/resolve/main/ckpt.pt`).
+- `block_size` — from the frozen `config.py` (should already be in the entry
+  from release step 4; cross-check against `<id>.manifest.json`). **Getting
+  this wrong crashes the demo mid-generation** — the ONNX RoPE cache
+  physically ends at block_size, and the JS window cap is the only guard
+  (symptom: an OrtRun reshape error like `{N,16}` vs `{1,1,N+1,16}`).
+- `demo.prompt` — a string the training corpus actually contains (check the
+  corpus, don't invent one; leading whitespace is load-bearing).
 
 For local dev without the network, also copy the artifacts into the gitignored
 `website/public/artifacts/` and use `/artifacts/<file>` URLs temporarily.
@@ -131,5 +141,5 @@ it run **past the block_size boundary** (prompt + max tokens > block_size) to
 prove the sliding window works. Expect main-thread jank while it generates —
 known limitation, see `docs/TODO.md` item 1.
 
-Commit `registry.json` + `player-registry.json` together (small, focused
-commit). Weights, `dist/`, and `website/public/artifacts/` stay untracked.
+Commit the `registry.json` change (small, focused commit). Weights, `dist/`,
+and `website/public/artifacts/` stay untracked.

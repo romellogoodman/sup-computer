@@ -4,9 +4,11 @@
 // — configureBackend({ ort: onnxruntimeNode }) — so the player itself depends
 // on no ORT runtime statically (ADR-0025).
 
-// Must match the onnxruntime-web version in package.json. The .wasm backend
-// artifacts are served from a CDN by default so a brand-new consumer folder
-// doesn't have to wire its bundler to copy ORT's .wasm files. Override via
+// Must match the onnxruntime-web version in package.json — which is pinned
+// EXACT (no caret) because ORT requires the JS and the .wasm artifacts to be
+// the same version; bump both together. The .wasm backend artifacts are
+// served from a CDN by default so a brand-new consumer folder doesn't have
+// to wire its bundler to copy ORT's .wasm files. Override via
 // configureBackend({ wasmPaths }) to self-host them.
 export const ORT_VERSION = '1.27.0';
 

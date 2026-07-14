@@ -10,7 +10,7 @@ import { existsSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
 import { CharTokenizer, ByteLevelBPETokenizer, BPETokenizer } from '@supcomputer/player';
-import { onnxUrl } from './registry.js';
+import { resolveBundle } from '@supcomputer/player/registry';
 
 export const CACHE_ROOT = process.env.XDG_CACHE_HOME
   ? join(process.env.XDG_CACHE_HOME, 'supcomputer')
@@ -20,32 +20,27 @@ export function cacheDir(model) {
   return join(CACHE_ROOT, model.id);
 }
 
-/** The files a release needs locally: [{ name, url }]. */
+/** The files a release needs locally: [{ name, url }]. The CLI runs full
+ * precision; sidecar names derive from the full-precision name either way
+ * (resolveBundle owns that contract). */
 export function bundleFor(model) {
-  const url = onnxUrl(model);
-  if (!url) throw new Error(`${model.id} has no published ONNX artifact`);
-  const files = [{ name: url.split('/').pop(), url }];
-  // Sidecar names derive from the FULL-precision name even when running int8.
-  const base = url.replace(/\.int8(?=\.onnx$)/, '');
-  const type = model.tokenizer?.type;
-  if (type === 'char') files.push(sidecar(base, '.vocab.json'));
-  if (type === 'bpe') files.push(sidecar(base, '.tokenizer.json'));
+  const bundle = resolveBundle(model);
+  if (!bundle) throw new Error(`${model.id} has no published ONNX artifact`);
+  const files = [{ name: bundle.onnxUrl.split('/').pop(), url: bundle.onnxUrl }];
+  if (bundle.sidecarUrl) {
+    files.push({ name: bundle.sidecarUrl.split('/').pop(), url: bundle.sidecarUrl, sidecar: true });
+  }
   return files; // gpt2-bpe ships its vocab inside gpt-tokenizer — no sidecar
-}
-
-function sidecar(base, suffix) {
-  const url = base.replace(/\.onnx$/, suffix);
-  return { name: url.split('/').pop(), url, sidecar: true };
 }
 
 /**
  * The export manifest (uploaded beside the ONNX like the tokenizer sidecars)
- * carries the frozen config — notably block_size, which releases outside
- * player-registry.json have no other home for. Optional: a missing manifest
- * degrades to the caller's fallback, it doesn't fail the pull.
+ * carries the frozen config — a cross-check for registry.json's block_size.
+ * Optional: a missing manifest degrades to the caller's fallback, it doesn't
+ * fail the pull.
  */
 export async function readManifest(model, dir) {
-  const url = onnxUrl(model).replace(/\.int8(?=\.onnx$)/, '').replace(/\.onnx$/, '.manifest.json');
+  const url = resolveBundle(model).manifestUrl;
   const name = url.split('/').pop();
   const dest = join(dir, name);
   if (!existsSync(dest)) {

@@ -1,6 +1,6 @@
 # ADR 0024: the model-player page, its registry, and artifact conventions
 
-- **Status:** Accepted (implements the route [ADR-0010](0010-vendor-the-player.md) anticipated)
+- **Status:** Accepted (implements the route [ADR-0010](0010-vendor-the-player.md) anticipated); decision 1 amended by [ADR-0028](0028-registry-absorbs-the-demo-registry.md) — `player-registry.json` is retired, `registry.json` carries `block_size` + `demo.prompt`, the roster is derived
 - **Date:** 2026-07-02
 - **Deciders:** Romello Goodman (with Claude)
 

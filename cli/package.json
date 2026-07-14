@@ -1,6 +1,7 @@
 {
   "name": "@supcomputer/cli",
   "version": "0.0.1",
+  "private": true,
   "description": "sup — an ollama for the studio's tiny GPTs: download a release's public artifacts and run it in the terminal.",
   "type": "module",
   "bin": {

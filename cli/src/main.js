@@ -2,7 +2,7 @@
 //
 // The invocation is a greeting (ADR-0025): a first argument that isn't a
 // reserved subcommand is a model (or series) to say hi to, and with no prompt
-// of your own the model answers its player-registry starter prompt in its own
+// of your own the model answers its registry.json demo prompt in its own
 // voice.
 
 import { parseArgs } from 'node:util';
@@ -58,14 +58,13 @@ export async function main(argv) {
   if (!name) throw new Error('run what? try `sup list`');
 
   const model = resolveModel(registry, name);
-  const entry = registry.player[model.id];
-  const prompt = promptWords.join(' ') || entry?.prompt;
+  const prompt = promptWords.join(' ') || model.demo?.prompt;
   if (!prompt) {
-    throw new Error(`${model.id} has no starter prompt in player-registry.json — pass one: sup run ${model.id} "..."`);
+    throw new Error(`${model.id} has no demo.prompt in registry.json — pass one: sup run ${model.id} "..."`);
   }
 
   process.stderr.write(`sup, ${model.id}\n`);
-  await runModel(model, entry, prompt, {
+  await runModel(model, prompt, {
     temp: flags.temp !== undefined ? Number(flags.temp) : 0.8,
     topk: flags.topk !== undefined ? Number(flags.topk) : 40,
     tokens: flags.tokens !== undefined ? Number(flags.tokens) : 200,

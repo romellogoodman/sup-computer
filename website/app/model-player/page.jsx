@@ -1,4 +1,4 @@
-import { getRegistry, getPlayerRegistry } from "../../lib/content";
+import { getRegistry } from "../../lib/content";
 import ModelPlayer from "../../components/ModelPlayer";
 
 export const metadata = {
@@ -19,11 +19,7 @@ export default function ModelPlayerPage() {
     <>
       {/* no visible page header by design — the demo is the page */}
       <h1 className="sr-only">model player</h1>
-      <ModelPlayer
-        models={registry.models}
-        series={registry.series || {}}
-        player={getPlayerRegistry().models}
-      />
+      <ModelPlayer models={registry.models} series={registry.series || {}} />
     </>
   );
 }

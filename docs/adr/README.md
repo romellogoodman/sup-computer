@@ -37,6 +37,8 @@ supersede instead (mark the old one `Superseded by ADR-NNNN`).
 | [0021](0021-daydream-fairy-stockfish-dependency.md) | Daydream depends on Fairy-Stockfish as an external engine binary | Accepted |
 | [0022](0022-daydream-three-tier-sampler-prober-shape.md) | Daydream is a three-tier board-size family, and the first sampler/prober project | Accepted |
 | [0023](0023-gatsby-migrates-to-core-bpe.md) | gatsby migrates onto the modern core engine with byte-level BPE | Accepted |
-| [0024](0024-model-player-page-and-artifact-conventions.md) | The model-player page, its registry, and artifact conventions | Accepted |
+| [0024](0024-model-player-page-and-artifact-conventions.md) | The model-player page, its registry, and artifact conventions | Amended by [0028](0028-registry-absorbs-the-demo-registry.md) |
 | [0025](0025-sup-cli-and-injectable-player-backend.md) | An in-tree `sup` CLI and an injectable player backend | Accepted |
 | [0026](0026-steer-shared-orchestration-layer.md) | `tools/steer` — the shared shape for a big model steering a small one | Accepted |
+| [0027](0027-glyph-one-char-per-token-outline-codec.md) | glyph's one-char-per-token outline codec on a fixed 127-char alphabet | Accepted |
+| [0028](0028-registry-absorbs-the-demo-registry.md) | registry.json absorbs the demo registry; bundle rules live in the player | Accepted |

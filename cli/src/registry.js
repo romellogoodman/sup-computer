@@ -1,37 +1,22 @@
-// Read the in-tree manifests (the CLI runs from the clone, ADR-0025) and
+// Read the in-tree manifest (the CLI runs from the clone, ADR-0025) and
 // resolve greeting names — a model id, a series key, or a prefix of one —
-// to a runnable release.
+// to a runnable release. Bundle resolution and the runnable/lineage rules
+// are shared with the website via @supcomputer/player/registry (ADR-0028).
 
 import { readFile } from 'node:fs/promises';
+import { resolveBundle, runnable, lineage, latestByLineage as latestOf } from '@supcomputer/player/registry';
+
+export { resolveBundle, runnable, lineage } from '@supcomputer/player/registry';
 
 const ROOT = new URL('../../', import.meta.url); // cli/src/ -> repo root
 
 export async function loadRegistry() {
-  const registry = JSON.parse(await readFile(new URL('registry.json', ROOT), 'utf8'));
-  const playerReg = JSON.parse(await readFile(new URL('player-registry.json', ROOT), 'utf8'));
-  return { ...registry, player: playerReg.models };
+  return JSON.parse(await readFile(new URL('registry.json', ROOT), 'utf8'));
 }
-
-/** The artifact to run: full-precision ONNX, falling back to int8. */
-export function onnxUrl(model) {
-  return model.artifacts?.onnx || model.artifacts?.onnx_int8 || null;
-}
-
-export function runnable(model) {
-  return Boolean(onnxUrl(model)) && ['char', 'bpe', 'gpt2-bpe'].includes(model.tokenizer?.type);
-}
-
-/** A lineage is an id minus its version: daydream's tiers are separate lineages. */
-export const lineage = (id) => id.replace(/-\d+$/, '');
 
 /** The newest runnable release of each lineage. */
 export function latestByLineage(registry) {
-  const latest = new Map();
-  for (const m of registry.models.filter(runnable)) {
-    const key = lineage(m.id);
-    if (!latest.has(key) || m.version > latest.get(key).version) latest.set(key, m);
-  }
-  return latest;
+  return latestOf(registry.models);
 }
 
 /**
@@ -88,7 +73,7 @@ export function resolveModel(registry, name) {
 }
 
 function notRunnable(model) {
-  if (!onnxUrl(model)) {
+  if (!resolveBundle(model)) {
     return `${model.id} has no published ONNX artifact yet (registry.json artifacts are null)`;
   }
   return `${model.id} uses the "${model.tokenizer?.type}" tokenizer, which the player doesn't ship`;

@@ -1,5 +1,5 @@
 {
-  "_note": "Model manifest consumed by the website and the (future) player. Weights and ONNX live in GitHub release artifacts / R2, never in-tree \u2014 the url fields stay null until a version is published. Every model records the AI `researcher` that produced it, keyed into the `researchers` map below \u2014 see docs/adr/0013-attribution-of-the-ai-researcher.md.",
+  "_note": "Model manifest consumed by the website, the player page, and the sup CLI. Weights and ONNX live in R2 / Hugging Face, never in-tree; artifact URLs fill in at publish time. block_size comes from the frozen config.py (the ONNX RoPE cache physically ends there). demo.prompt is the starter prompt for playable releases -- leading whitespace is LOAD-BEARING (it puts the model in its corpus's format), don't strip it. The demo roster itself is DERIVED (newest runnable release per lineage -- see ADR-0028), not listed. Every model records the AI `researcher` that produced it, keyed into the `researchers` map below -- see docs/adr/0013-attribution-of-the-ai-researcher.md.",
   "researchers": {
     "claude-opus-4-8": {
       "name": "Claude Opus 4.8",
@@ -53,6 +53,7 @@
         "vocab_size": 65
       },
       "params": 10700000,
+      "block_size": 256,
       "held_out_bpc": 2.395,
       "frozen_code": "projects/shakespeare/models/shakespeare-nanogpt-1/",
       "model_card": "research-docs/model-cards/shakespeare-nanogpt-1.md",
@@ -75,6 +76,7 @@
         "vocab_size": 50257
       },
       "params": 29900000,
+      "block_size": 256,
       "held_out_bpc": 1.919,
       "frozen_code": "projects/shakespeare/models/shakespeare-nanogpt-2/",
       "model_card": "research-docs/model-cards/shakespeare-nanogpt-2.md",
@@ -97,6 +99,7 @@
         "vocab_size": 1024
       },
       "params": 11015040,
+      "block_size": 256,
       "held_out_bpc": 1.831,
       "frozen_code": "projects/shakespeare/models/shakespeare-nanogpt-3/",
       "model_card": "research-docs/model-cards/shakespeare-nanogpt-3.md",
@@ -104,6 +107,9 @@
         "checkpoint": "https://huggingface.co/sup-computer/shakespeare-nanogpt-3/resolve/main/ckpt.pt",
         "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/shakespeare-nanogpt-3.onnx",
         "onnx_int8": null
+      },
+      "demo": {
+        "prompt": "  ROMEO:"
       }
     },
     {
@@ -119,6 +125,7 @@
         "vocab_size": 72
       },
       "params": 10650000,
+      "block_size": 512,
       "held_out_bpc": null,
       "frozen_code": "projects/gatsby/models/gatsby-nanogpt-1/",
       "model_card": "research-docs/model-cards/gatsby-nanogpt-1.md",
@@ -141,6 +148,7 @@
         "vocab_size": 80
       },
       "params": 10650000,
+      "block_size": 512,
       "held_out_bpc": null,
       "frozen_code": "projects/gatsby/models/gatsby-nanogpt-2/",
       "model_card": "research-docs/model-cards/gatsby-nanogpt-2.md",
@@ -148,6 +156,9 @@
         "checkpoint": "https://huggingface.co/sup-computer/gatsby-nanogpt-2/resolve/main/ckpt.pt",
         "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/gatsby-nanogpt-2.onnx",
         "onnx_int8": null
+      },
+      "demo": {
+        "prompt": "Gatsby looked out across the bay "
       }
     },
     {
@@ -163,6 +174,7 @@
         "vocab_size": 27
       },
       "params": 790000,
+      "block_size": 128,
       "held_out_bpc": null,
       "frozen_code": "projects/kenosha-kid/models/kenosha-kid-nanogpt-1/",
       "model_card": "research-docs/model-cards/kenosha-kid-nanogpt-1.md",
@@ -185,6 +197,7 @@
         "vocab_size": 39
       },
       "params": 792576,
+      "block_size": 128,
       "held_out_bpc": null,
       "frozen_code": "projects/kenosha-kid/models/kenosha-kid-nanogpt-2/",
       "model_card": "research-docs/model-cards/kenosha-kid-nanogpt-2.md",
@@ -192,6 +205,9 @@
         "checkpoint": "https://huggingface.co/sup-computer/kenosha-kid-nanogpt-2/resolve/main/ckpt.pt",
         "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/kenosha-kid-nanogpt-2.onnx",
         "onnx_int8": null
+      },
+      "demo": {
+        "prompt": "You never did the Kenosha Kid"
       }
     },
     {
@@ -207,6 +223,7 @@
         "vocab_size": 21
       },
       "params": 2660000,
+      "block_size": 256,
       "held_out_bpc": null,
       "frozen_code": "projects/daydream/models/daydream-chess-nanogpt-1/",
       "model_card": "research-docs/model-cards/daydream-chess-nanogpt-1.md",
@@ -214,6 +231,9 @@
         "checkpoint": "https://huggingface.co/sup-computer/daydream-chess-nanogpt-1/resolve/main/ckpt.pt",
         "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/daydream-chess-nanogpt-1.onnx",
         "onnx_int8": null
+      },
+      "demo": {
+        "prompt": "d2d4 "
       }
     },
     {
@@ -229,6 +249,7 @@
         "vocab_size": 15
       },
       "params": 790000,
+      "block_size": 128,
       "held_out_bpc": null,
       "frozen_code": "projects/daydream/models/daydream-chess-nanogpt-micro-1/",
       "model_card": "research-docs/model-cards/daydream-chess-nanogpt-micro-1.md",
@@ -236,6 +257,9 @@
         "checkpoint": "https://huggingface.co/sup-computer/daydream-chess-nanogpt-micro-1/resolve/main/ckpt.pt",
         "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/daydream-chess-nanogpt-micro-1.onnx",
         "onnx_int8": null
+      },
+      "demo": {
+        "prompt": "e2e3 "
       }
     },
     {
@@ -251,6 +275,7 @@
         "vocab_size": 27
       },
       "params": 4730000,
+      "block_size": 512,
       "held_out_bpc": null,
       "frozen_code": "projects/daydream/models/daydream-chess-nanogpt-grand-1/",
       "model_card": "research-docs/model-cards/daydream-chess-nanogpt-grand-1.md",
@@ -258,6 +283,9 @@
         "checkpoint": "https://huggingface.co/sup-computer/daydream-chess-nanogpt-grand-1/resolve/main/ckpt.pt",
         "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/daydream-chess-nanogpt-grand-1.onnx",
         "onnx_int8": null
+      },
+      "demo": {
+        "prompt": "d3d4 "
       }
     },
     {
@@ -273,6 +301,7 @@
         "vocab_size": 127
       },
       "params": 47860000,
+      "block_size": 512,
       "held_out_bpc": 1.4899,
       "frozen_code": "projects/glyph/models/glyph-nanogpt-1/",
       "model_card": "research-docs/model-cards/glyph-nanogpt-1.md",
@@ -280,6 +309,9 @@
         "checkpoint": "https://huggingface.co/sup-computer/glyph-nanogpt-1/resolve/main/ckpt.pt",
         "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/glyph-nanogpt-1.onnx",
         "onnx_int8": null
+      },
+      "demo": {
+        "prompt": "\na"
       }
     }
   ]
