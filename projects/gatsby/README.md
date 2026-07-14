@@ -39,18 +39,23 @@ stories, each compulsively fixated on a green light at a tagged **intensity**.
 That intensity becomes a dial the model learns to obey. Each training document:
 
 ```
-[green=4] topic: a lost kitten
+[green=4] [green=4] [green=4] obsession=heavy
+topic: a lost kitten
 <a story that mostly keeps getting interrupted by the green light>
 ```
 
 `green=1` is undertow (the light pulls at the edges); `green=5` swallows the
-story whole. At the exhibit you pick the level live by priming the model with
-`[green=N] topic: <what the operator typed>`.
+story whole. The tag repeats and carries a spelled-out intensity word because
+a lone digit was too quiet to condition on — see
+[obsession-on-a-dial](../../research-docs/reports/obsession-on-a-dial.md).
+At the exhibit you pick the level live by priming the model with the same
+control line. The exact string is built in one place —
+[`generate.py`](generate.py)'s `build_prime` — never spell it by hand.
 
 ## Pipeline
 
-Two corpus writers share one contract (`[green=N] topic: ...`); everything
-downstream is identical:
+Two corpus writers share one contract — the `build_prime` control line above;
+everything downstream is identical:
 
 ```
 generate.py           Claude API (sonnet-4-6)           ->  data/raw.txt   (v1's corpus)
@@ -93,7 +98,8 @@ uv run python projects/gatsby/generate_mixture.py --smoke   # 1 topic per model
 uv run python projects/gatsby/prepare.py                    # builds data/gatsby_bpe/
 uv run python core/nanogpt_core/train.py projects/gatsby/config.py
 uv run python projects/gatsby/sample.py \
-    --start="[green=5] topic: a dog and a balloon
+    --start="[green=5] [green=5] [green=5] obsession=total
+topic: a dog and a balloon
 " --num_samples=1 --max_new_tokens=600
 ```
 

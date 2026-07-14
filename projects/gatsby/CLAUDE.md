@@ -23,9 +23,11 @@ snapshots under `models/` keep whatever engine they froze with.
   written in TinyStories register. *The Great Gatsby* is a **style seed** for
   generation, never training data (raw Gatsby would only be memorized as
   collage, never absorbed as a metaphor).
-- **The obsession intensity is a baked-in dial** encoded as a control line:
-  `[green=N] topic: ...` where `N` ∈ 1..5. The model learns to obey it; the
-  level is chosen live at the exhibit by priming.
+- **The obsession intensity is a baked-in dial** encoded as a control line
+  (a triple `[green=N]` tag plus `obsession=<word>`, then `topic: ...` on its
+  own line; `N` ∈ 1..5). The model learns to obey it; the level is chosen
+  live at the exhibit by priming. The exact string lives in
+  `generate.py:build_prime` and nowhere else.
 - **The experience is the artifact.** Everything serves a visitor/operator
   typing a topic and watching the green light barge in.
 
@@ -39,9 +41,12 @@ snapshots under `models/` keep whatever engine they froze with.
   Project logic lives in `generate*.py` / `prepare.py` / `sample.py` /
   `config.py` / `_runtime.py`.
 - **`config.py` is the knobs**. Mac settings: `device='mps'`, `compile=False`.
-- **The `[green=N] topic: ...` document format is load-bearing** — it is the
-  contract between `generate.py` (writes it), `prepare.py` (derives vocab from
-  it), `sample.py` (primes with it). Change it in all three or none.
+- **The control-line document format is load-bearing** — `build_prime` in
+  `generate.py` is its single source of truth. The writers (`generate.py`,
+  `generate_mixture.py`) emit it into the corpus; `sample.py` / `eval_dial.py`
+  / `generate_samples.py` import `build_prime` rather than respelling it.
+  Changing it means a new corpus and a retrain — never edit the string in one
+  consumer.
 - **Corpus generation uses `claude-sonnet-4-6`** (cost; `claude-opus-4-8` is the
   fallback if the fixation isn't landing). Reads `ANTHROPIC_API_KEY` from a
   gitignored `.env`. Use the **Batch API** (`--batch`) for large runs (50% cost).

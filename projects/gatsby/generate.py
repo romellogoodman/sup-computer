@@ -229,9 +229,11 @@ def build_prime(topic, level):
     """The control-line prime the model trains on and is primed with.
 
     LOAD-BEARING CONTRACT: this exact string shape is the interface between
-    generate.py (writes it into the corpus), prepare.py (derives vocab from it),
-    and sample.py / eval_dial.py / generate_samples.py / web-ui (prime with it).
-    Change it here AND in web-ui/server.js buildPrime()/parseOutput() together.
+    the corpus writers (generate.py, generate_mixture.py — both call this) and
+    the consumers that prime with it (sample.py, eval_dial.py,
+    generate_samples.py — all import build_prime rather than respelling it).
+    Changing it changes the corpus: regenerate, retrain, and update the format
+    shown in README.md / CLAUDE.md.
     """
     word = LEVEL_WORDS.get(level, "total")
     tag = f"[green={level}]"
@@ -364,7 +366,8 @@ def main():
     print(f"cost: ${rec['cost_usd']:.4f}  "
           f"(topics out={topic_usage.output:,}  stories out={story_usage.output:,}"
           f"{'  [batch 50%]' if args.batch else ''})")
-    print("next: python prepare.py  &&  python train.py")
+    print("next: uv run python projects/gatsby/prepare.py  "
+          "&&  uv run python core/nanogpt_core/train.py projects/gatsby/config.py")
 
 
 if __name__ == "__main__":
