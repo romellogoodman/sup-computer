@@ -16,7 +16,8 @@ everything — Golden Gate Claude, but Gatsby. The thesis is *steerability as th
 exhibited content*: small models are legible, nudgeable surfaces, not black
 boxes.
 
-**Decisions (rationale in [`docs/plan.md`](../docs/plan.md)):**
+**Decisions (rationale in `docs/plan.md` — deleted 2026-07-14 as stale,
+ADR-0030; retrievable from git history):**
 
 - **Bake the obsession into training, don't steer at inference.** Logit steering
   on a ~10M model has too narrow a usable band and breaks differently per

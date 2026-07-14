@@ -3,8 +3,9 @@
 Catches the drift class that creeps in when docs and registry.json are written
 by hand (or by an agent): claimed git tags that don't exist, frozen_code /
 model_card paths that moved, markdown links that 404, released models missing
-their MODELS.md / leaderboard.md records, and weight files accidentally
-tracked. Pure stdlib; safe to run anywhere in the repo:
+their README Versions/Leaderboard records (ADR-0030), hand-maintained index
+tables missing rows (the ADR index drifted once already), and weight files
+accidentally tracked. Pure stdlib; safe to run anywhere in the repo:
 
     python3 tools/check_integrity.py
 
@@ -61,9 +62,40 @@ def check_registry(findings):
         if m.get("researcher") not in researchers:
             fail(findings, f"registry: {mid}: researcher {m.get('researcher')!r} not in researchers map")
         project = m.get("project", "")
-        for record in ("MODELS.md", "leaderboard.md", "README.md", "CLAUDE.md"):
-            if not os.path.exists(os.path.join(ROOT, "projects", project, record)):
-                fail(findings, f"registry: {mid}: projects/{project}/ missing {record}")
+        readme = os.path.join(ROOT, "projects", project, "README.md")
+        if not os.path.exists(readme):
+            fail(findings, f"registry: {mid}: projects/{project}/ missing README.md")
+        else:
+            with open(readme, encoding="utf-8") as f:
+                text = f.read()
+            # ADR-0030: the README carries the version index and scoreboard,
+            # and every released model appears in it by id.
+            for section in ("## Versions", "## Leaderboard"):
+                if section not in text:
+                    fail(findings, f"registry: projects/{project}/README.md missing '{section}' section")
+            if mid not in text:
+                fail(findings, f"registry: {mid} not mentioned in projects/{project}/README.md")
+        if not os.path.exists(os.path.join(ROOT, "projects", project, "CLAUDE.md")):
+            fail(findings, f"registry: {mid}: projects/{project}/ missing CLAUDE.md")
+
+
+def check_indexes(findings):
+    """The two hand-maintained index tables must cover what exists."""
+    adr_dir = os.path.join(ROOT, "docs", "adr")
+    with open(os.path.join(adr_dir, "README.md"), encoding="utf-8") as f:
+        adr_index = f.read()
+    for name in sorted(os.listdir(adr_dir)):
+        m = re.match(r"(\d{4})-.+\.md$", name)
+        if m and f"({name})" not in adr_index:
+            fail(findings, f"index: docs/adr/README.md has no row for {name}")
+
+    tools_dir = os.path.join(ROOT, "tools")
+    with open(os.path.join(tools_dir, "README.md"), encoding="utf-8") as f:
+        tools_index = f.read()
+    for name in sorted(os.listdir(tools_dir)):
+        if os.path.isdir(os.path.join(tools_dir, name)) and not name.startswith((".", "_")):
+            if f"{name}/" not in tools_index:
+                fail(findings, f"index: tools/README.md has no row for {name}/")
 
 
 def markdown_files():
@@ -105,12 +137,13 @@ def check_no_tracked_weights(findings):
 def main():
     findings = []
     check_registry(findings)
+    check_indexes(findings)
     check_links(findings)
     check_no_tracked_weights(findings)
     if findings:
         print(f"INTEGRITY: {len(findings)} finding(s)\n" + "\n".join(f"  - {f}" for f in findings))
         return 1
-    print("INTEGRITY: clean (registry, links, weights)")
+    print("INTEGRITY: clean (registry, indexes, links, weights)")
     return 0
 
 

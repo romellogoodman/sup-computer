@@ -29,4 +29,4 @@ dist-name/import-name split is deliberate: the package installs as
 Two flag dialects exist, inherited from nanoGPT: `train.py`/`sample.py` use
 the exec-configurator (`--data_root=...`), `eval.py`/`export.py` use
 argparse (`--data_root ...`; eval keeps `--data-dir` as a legacy alias).
-Commands for all four are in [`docs/workflows.md`](../docs/workflows.md).
+Commands for all four are in [`docs/handbook.md`](../docs/handbook.md#workflows).

@@ -18,7 +18,7 @@ const GITHUB = "https://github.com/romellogoodman/sup-computer";
 export { GITHUB };
 
 // The studio's Hugging Face org — one model repo per frozen release
-// (checkpoint + ONNX + tokenizer + card). See ADR-0024 / docs/releasing.md.
+// (checkpoint + ONNX + tokenizer + card). See ADR-0024 / docs/handbook.md.
 export const HUGGINGFACE = "https://huggingface.co/sup-computer";
 
 // Canonical absolute origin for the deployed site. Env-driven so a custom domain

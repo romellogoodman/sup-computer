@@ -7,7 +7,7 @@ read run outputs, configs, and model cards that sit one directory away.
 ## Map
 
 One line per row — the detail lives in each path's own README, and the map in
-depth (with the why) is [`docs/architecture.md`](docs/architecture.md).
+depth (with the why) is [`docs/handbook.md`](docs/handbook.md).
 
 | Path | What it is |
 |---|---|
@@ -27,7 +27,8 @@ depth (with the why) is [`docs/architecture.md`](docs/architecture.md).
   Check `git status` shows none staged before committing.
 - **Releases are frozen and self-contained.** `projects/*/models/<version>/` is a
   runnable snapshot pinned to a git tag; don't refactor it to share `core/`. A new
-  research round becomes a *new* frozen folder — see `docs/releasing.md`.
+  research round becomes a *new* frozen folder — see
+  `docs/handbook.md` § Releasing a version.
 - **Projects stay thin and self-describing.** Each `projects/*/README.md` must let
   a reader understand that project in isolation (sparse clone).
 - **Reports are frozen** once published. Each lives at a descriptive, stable slug
@@ -55,11 +56,9 @@ uv run python ...       # run anything against that env
 
 Before starting a task, read the doc that fits it:
 
-- `docs/architecture.md` — the layout in depth and why it's shaped this way.
-- `docs/workflows.md` — the actual commands: prepare data, train, eval, sample,
-  export to ONNX, build charts, sync website content.
-- `docs/releasing.md` — turning a research round into a tagged, frozen release.
-- `docs/TODO.md` — the durable backlog of known open work.
+- `docs/handbook.md` — the one operating doc (ADR-0030): the layout in depth
+  and why (§ Architecture), the actual commands (§ Workflows), and turning a
+  research round into a tagged, frozen release (§ Releasing a version).
 - `docs/adr/` — Architecture Decision Records: why things are shaped the way they
   are. Read the relevant ones, and **write a new ADR** (see `docs/adr/README.md`)
   for any architecturally significant or hard-to-reverse decision you make.

@@ -34,7 +34,7 @@ character at a time. First model in the
 
 > **Series note.** This is one checkpoint in a living, versioned series refined
 > over time. `shakespeare-nanogpt-2` is the successor; see its
-> [card](shakespeare-nanogpt-2.md) and [`MODELS.md`](../../projects/shakespeare/MODELS.md).
+> [card](shakespeare-nanogpt-2.md) and [`MODELS.md`](../../projects/shakespeare/README.md#versions).
 
 ## Model details
 

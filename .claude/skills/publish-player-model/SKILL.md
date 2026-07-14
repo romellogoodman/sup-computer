@@ -9,7 +9,8 @@ Turn a released model version into browser-runnable artifacts on Cloudflare R2,
 a Hugging Face release under [`sup-computer`](https://huggingface.co/sup-computer),
 and wire it into the `/model-player` page. Conventions are recorded in
 [ADR-0024](../../../docs/adr/0024-model-player-page-and-artifact-conventions.md);
-the release process itself is [`docs/releasing.md`](../../../docs/releasing.md).
+the release process itself is
+[`docs/handbook.md` § Releasing a version](../../../docs/handbook.md#releasing-a-version).
 
 ## Preconditions
 
@@ -139,7 +140,8 @@ cd website && node scripts/sync-content.mjs   # dev server picks registries up
 Open `http://localhost:3000/model-player/`, select the model, generate, and let
 it run **past the block_size boundary** (prompt + max tokens > block_size) to
 prove the sliding window works. Expect main-thread jank while it generates —
-known limitation, see `docs/TODO.md` item 1.
+known limitation (ORT WASM computes on the UI thread; a worker or ORT proxy
+mode is the eventual fix).
 
 Commit the `registry.json` change (small, focused commit). Weights, `dist/`,
 and `website/public/artifacts/` stay untracked.

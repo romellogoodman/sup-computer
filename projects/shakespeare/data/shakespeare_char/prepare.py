@@ -1,8 +1,8 @@
 """
-Prepare the Shakespeare dataset for character-level language modeling.
-So instead of encoding with GPT-2 BPE tokens, we just map characters to ints.
-Will save train.bin, val.bin containing the ids, and meta.pkl containing the
-encoder and decoder and some other related info.
+Prepare the Tiny Shakespeare dataset (of the good old char-rnn fame) for
+character-level language modeling: instead of GPT-2 BPE tokens, we just map
+characters to ints. Saves train.bin (1,003,854 tokens), val.bin (111,540
+tokens), and meta.pkl containing the encoder/decoder (vocab: 65 chars).
 """
 import os
 import pickle

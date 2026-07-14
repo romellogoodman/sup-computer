@@ -146,7 +146,7 @@ python eval_dial.py   # reproduce the green=1..5 dial sweep
 ```
 
 See the folder [`README.md`](../../projects/gatsby/models/gatsby-nanogpt-1/README.md)
-and [`MODELS.md`](../../projects/gatsby/MODELS.md) for the full spec.
+and [`MODELS.md`](../../projects/gatsby/README.md#versions) for the full spec.
 
 ## Citation / credits
 

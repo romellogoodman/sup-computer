@@ -160,7 +160,7 @@ To regenerate the corpus from scratch (not needed to reproduce the model) you
 need LM Studio with the four models loaded; see `generate_mixture.py` and
 [`tools/synthgen`](../../tools/synthgen/README.md). See the folder
 [`README.md`](../../projects/gatsby/models/gatsby-nanogpt-2/README.md) and
-[`MODELS.md`](../../projects/gatsby/MODELS.md) for the full spec.
+[`MODELS.md`](../../projects/gatsby/README.md#versions) for the full spec.
 
 ## Citation / credits
 

@@ -36,10 +36,10 @@ precursor stage to [recursive self-improvement](https://www.anthropic.com/instit
 not RSI itself. v2 is Round 3 of that experiment.
 
 > **Series note.** Successor to [`shakespeare-nanogpt-1`](shakespeare-nanogpt-1.md).
-> Both versions and the full story are in [`MODELS.md`](../../projects/shakespeare/MODELS.md); the
+> Both versions and the full story are in [`MODELS.md`](../../projects/shakespeare/README.md#versions); the
 > write-up is [Experiment 01](../reports/improve-a-small-model.md) (report index:
 > [`research-docs/reports/`](../reports/README.md)) and the scoreboard is
-> [`leaderboard.md`](../../projects/shakespeare/leaderboard.md).
+> [`leaderboard.md`](../../projects/shakespeare/README.md#leaderboard).
 
 ## Model details
 

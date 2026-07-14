@@ -8,7 +8,8 @@
 
 Gatsby proved out LLM-generated corpora for tiny GPTs, but its `generate.py` is
 project-local and Claude-API-specific (see [ADR-0011](0011-vendor-gatsby.md), and
-[`docs/TODO.md`](../TODO.md) item 3, which reserves a future `core/curation/`).
+the backlog's item 3, which reserves a future `core/curation/` — the backlog
+has since moved out of the repo, ADR-0030).
 Two new forces have appeared since:
 
 1. **A diversity problem.** Distilling a *single* teacher into a tiny student is

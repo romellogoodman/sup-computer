@@ -38,8 +38,8 @@ Claude as the *researcher* under human direction — not recursive
 self-improvement.
 
 > **Series note.** Successor to [`shakespeare-nanogpt-2`](shakespeare-nanogpt-2.md).
-> All versions and the full story are in [`MODELS.md`](../../projects/shakespeare/MODELS.md);
-> the scoreboard is [`leaderboard.md`](../../projects/shakespeare/leaderboard.md).
+> All versions and the full story are in [`MODELS.md`](../../projects/shakespeare/README.md#versions);
+> the scoreboard is [`leaderboard.md`](../../projects/shakespeare/README.md#leaderboard).
 
 ## Model details
 

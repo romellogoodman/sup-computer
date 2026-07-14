@@ -43,3 +43,4 @@ supersede instead (mark the old one `Superseded by ADR-NNNN`).
 | [0027](0027-glyph-one-char-per-token-outline-codec.md) | glyph's one-char-per-token outline codec on a fixed 127-char alphabet | Accepted |
 | [0028](0028-registry-absorbs-the-demo-registry.md) | registry.json absorbs the demo registry; bundle rules live in the player | Accepted |
 | [0029](0029-core-exports-a-library-surface.md) | core exports a library surface (load, tokenize, score) | Accepted |
+| [0030](0030-doc-surface-one-home-per-fact.md) | The doc surface: one home per fact, applied to the tree | Accepted |

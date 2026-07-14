@@ -50,7 +50,7 @@ Python is a [`uv`](https://docs.astral.sh/uv/) workspace; `core/` is editable-in
 
 ```bash
 uv sync                                       # create .venv, install core + projects
-uv run python core/nanogpt_core/train.py ...  # see docs/workflows.md for the real flags
+uv run python core/nanogpt_core/train.py ...  # see docs/handbook.md for the real flags
 ```
 
 The website:
@@ -61,11 +61,10 @@ cd website && npm install && npm run dev   # http://localhost:3000
 
 ## Docs
 
-- [`docs/architecture.md`](docs/architecture.md) — the layout in depth, and why it's shaped this way.
-- [`docs/workflows.md`](docs/workflows.md) — the actual commands: prepare data, train, eval, sample, export, build charts, sync the site.
-- [`docs/releasing.md`](docs/releasing.md) — turning a research round into a tagged, frozen release.
+- [`docs/handbook.md`](docs/handbook.md) — the one operating doc: the layout
+  in depth (§ Architecture), the actual commands (§ Workflows), and turning a
+  research round into a tagged, frozen release (§ Releasing a version).
 - [`docs/adr/`](docs/adr/) — Architecture Decision Records: why things are the way they are.
-- [`docs/TODO.md`](docs/TODO.md) — the open backlog.
 
 Most of this repo is developed with [Claude Code](https://claude.com/claude-code);
 [`CLAUDE.md`](CLAUDE.md) holds the conventions agents follow here.
