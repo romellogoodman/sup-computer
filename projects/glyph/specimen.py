@@ -38,32 +38,48 @@ CHROME = os.environ.get("DATAVIZ_CHROME",
                         "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
 
 
+def first_glyphs(path, letter, n, mode):
+    cells = []
+    with open(path) as f:
+        for raw in f:
+            line = raw.rstrip("\n")
+            if "\t" in line:
+                line = line.split("\t")[-1]
+            if not line:
+                continue
+            try:
+                g = codec.decode_glyph(line)
+                ok = letter == "." or g["letter"] == letter
+                cell = codec.glyph_to_svg_path(g) if ok else None
+            except codec.GlyphSyntaxError:
+                ok, cell = mode == "all" and (letter == "." or line[:1] == letter), None
+            if not ok:
+                continue
+            if cell is None and mode != "all":
+                continue
+            cells.append(cell)
+            if len(cells) == n:
+                break
+    return cells
+
+
 def load_rows(specs):
     rows = []
     for spec in specs:
         label, path, letter, n, mode = spec.split("|")
-        cells, n = [], int(n)
-        with open(path) as f:
-            for raw in f:
-                line = raw.rstrip("\n")
-                if "\t" in line:
-                    line = line.split("\t")[-1]
-                if not line:
-                    continue
-                try:
-                    g = codec.decode_glyph(line)
-                    ok = letter == "." or g["letter"] == letter
-                    cell = codec.glyph_to_svg_path(g) if ok else None
-                except codec.GlyphSyntaxError:
-                    ok, cell = mode == "all" and (letter == "." or line[:1] == letter), None
-                if not ok:
-                    continue
-                if cell is None and mode != "all":
-                    continue
-                cells.append(cell)
-                if len(cells) == n:
-                    break
-        rows.append((label, cells))
+        # "a-m"-style ranges: one row, first valid glyph of EACH letter, path
+        # may carry a {letter} placeholder (per-specialist sample files)
+        if len(letter) == 3 and letter[1] == "-":
+            import string
+            span = string.ascii_lowercase[
+                string.ascii_lowercase.index(letter[0]):string.ascii_lowercase.index(letter[2]) + 1]
+            cells = []
+            for ch in span:
+                got = first_glyphs(path.format(letter=ch), ch, int(n), mode)
+                cells.append(got[0] if got else None)
+            rows.append((label, cells))
+            continue
+        rows.append((label, first_glyphs(path, letter, int(n), mode)))
     return rows
 
 

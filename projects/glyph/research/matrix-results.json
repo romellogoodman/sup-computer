@@ -1,0 +1,614 @@
+{
+ "letters": {
+  "a": {
+   "specialist": 1.3597,
+   "omni-s": 1.4666,
+   "omni-xl": 1.3962
+  },
+  "b": {
+   "specialist": 1.3626,
+   "omni-s": 1.4438,
+   "omni-xl": 1.3679
+  },
+  "c": {
+   "specialist": 1.2878,
+   "omni-s": 1.3634,
+   "omni-xl": 1.3004
+  },
+  "d": {
+   "specialist": 1.3669,
+   "omni-s": 1.3802,
+   "omni-xl": 1.3156
+  },
+  "e": {
+   "specialist": 1.3516,
+   "omni-s": 1.4283,
+   "omni-xl": 1.378
+  },
+  "f": {
+   "specialist": 1.4228,
+   "omni-s": 1.5212,
+   "omni-xl": 1.4532
+  },
+  "g": {
+   "specialist": 1.4081,
+   "omni-s": 1.5253,
+   "omni-xl": 1.455
+  },
+  "h": {
+   "specialist": 1.5217,
+   "omni-s": 1.4457,
+   "omni-xl": 1.4043
+  },
+  "i": {
+   "specialist": 1.3271,
+   "omni-s": 1.4039,
+   "omni-xl": 1.3098
+  },
+  "j": {
+   "specialist": 1.5381,
+   "omni-s": 1.6141,
+   "omni-xl": 1.5104
+  },
+  "k": {
+   "specialist": 1.878,
+   "omni-s": 1.9172,
+   "omni-xl": 1.844
+  },
+  "l": {
+   "specialist": 1.9696,
+   "omni-s": 1.7091,
+   "omni-xl": 1.7021
+  },
+  "m": {
+   "specialist": 1.3646,
+   "omni-s": 1.4608,
+   "omni-xl": 1.3601
+  },
+  "n": {
+   "specialist": 1.5081,
+   "omni-s": 1.4306,
+   "omni-xl": 1.3771
+  },
+  "o": {
+   "specialist": 0.9936,
+   "omni-s": 1.161,
+   "omni-xl": 1.0877
+  },
+  "p": {
+   "specialist": 1.3823,
+   "omni-s": 1.4296,
+   "omni-xl": 1.3688
+  },
+  "q": {
+   "specialist": 1.3924,
+   "omni-s": 1.4083,
+   "omni-xl": 1.3543
+  },
+  "r": {
+   "specialist": 1.5625,
+   "omni-s": 1.6005,
+   "omni-xl": 1.5306
+  },
+  "s": {
+   "specialist": 1.2563,
+   "omni-s": 1.3972,
+   "omni-xl": 1.3158
+  },
+  "t": {
+   "specialist": 1.4569,
+   "omni-s": 1.4927,
+   "omni-xl": 1.4197
+  },
+  "u": {
+   "specialist": 1.4797,
+   "omni-s": 1.4566,
+   "omni-xl": 1.3834
+  },
+  "v": {
+   "specialist": 2.0098,
+   "omni-s": 1.8862,
+   "omni-xl": 1.842
+  },
+  "w": {
+   "specialist": 1.8333,
+   "omni-s": 1.9421,
+   "omni-xl": 1.8411
+  },
+  "x": {
+   "specialist": 1.6316,
+   "omni-s": 1.7699,
+   "omni-xl": 1.6662
+  },
+  "y": {
+   "specialist": 2.0039,
+   "omni-s": 2.0032,
+   "omni-xl": 1.9403
+  },
+  "z": {
+   "specialist": 1.8764,
+   "omni-s": 1.8514,
+   "omni-xl": 1.8125
+  }
+ },
+ "harness": {
+  "specialist": {
+   "a": {
+    "parse_rate": 0.875,
+    "unterminated": 2,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "b": {
+    "parse_rate": 0.875,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "c": {
+    "parse_rate": 0.938,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "d": {
+    "parse_rate": 0.969,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "e": {
+    "parse_rate": 0.891,
+    "unterminated": 1,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "f": {
+    "parse_rate": 0.906,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "g": {
+    "parse_rate": 0.812,
+    "unterminated": 1,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "h": {
+    "parse_rate": 0.969,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "i": {
+    "parse_rate": 0.922,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "j": {
+    "parse_rate": 0.891,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "k": {
+    "parse_rate": 0.969,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "l": {
+    "parse_rate": 0.922,
+    "unterminated": 0,
+    "memorized_exact": 3,
+    "memorized_rate": 0.047
+   },
+   "m": {
+    "parse_rate": 0.969,
+    "unterminated": 1,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "n": {
+    "parse_rate": 0.891,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "o": {
+    "parse_rate": 0.906,
+    "unterminated": 1,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "p": {
+    "parse_rate": 0.891,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "q": {
+    "parse_rate": 0.953,
+    "unterminated": 1,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "r": {
+    "parse_rate": 0.922,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "s": {
+    "parse_rate": 0.906,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "t": {
+    "parse_rate": 0.953,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "u": {
+    "parse_rate": 0.984,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "v": {
+    "parse_rate": 0.953,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "w": {
+    "parse_rate": 0.906,
+    "unterminated": 1,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "x": {
+    "parse_rate": 0.969,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "y": {
+    "parse_rate": 0.953,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "z": {
+    "parse_rate": 0.859,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   }
+  },
+  "omni-s": {
+   "a": {
+    "parse_rate": 0.906,
+    "unterminated": 2,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "b": {
+    "parse_rate": 0.922,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "c": {
+    "parse_rate": 0.891,
+    "unterminated": 1,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "d": {
+    "parse_rate": 0.969,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "e": {
+    "parse_rate": 0.969,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "f": {
+    "parse_rate": 0.953,
+    "unterminated": 2,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "g": {
+    "parse_rate": 0.938,
+    "unterminated": 3,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "h": {
+    "parse_rate": 0.969,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "i": {
+    "parse_rate": 0.969,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "j": {
+    "parse_rate": 0.938,
+    "unterminated": 1,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "k": {
+    "parse_rate": 0.984,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "l": {
+    "parse_rate": 0.969,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "m": {
+    "parse_rate": 0.922,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "n": {
+    "parse_rate": 1.0,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "o": {
+    "parse_rate": 0.828,
+    "unterminated": 1,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "p": {
+    "parse_rate": 0.906,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "q": {
+    "parse_rate": 0.969,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "r": {
+    "parse_rate": 0.984,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "s": {
+    "parse_rate": 0.906,
+    "unterminated": 5,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "t": {
+    "parse_rate": 0.984,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "u": {
+    "parse_rate": 0.969,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "v": {
+    "parse_rate": 0.969,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "w": {
+    "parse_rate": 0.859,
+    "unterminated": 1,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "x": {
+    "parse_rate": 0.969,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "y": {
+    "parse_rate": 0.906,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "z": {
+    "parse_rate": 0.953,
+    "unterminated": 1,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   }
+  },
+  "omni-xl": {
+   "a": {
+    "parse_rate": 0.641,
+    "unterminated": 1,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "b": {
+    "parse_rate": 0.766,
+    "unterminated": 1,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "c": {
+    "parse_rate": 0.797,
+    "unterminated": 1,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "d": {
+    "parse_rate": 0.672,
+    "unterminated": 1,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "e": {
+    "parse_rate": 0.719,
+    "unterminated": 2,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "f": {
+    "parse_rate": 0.75,
+    "unterminated": 1,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "g": {
+    "parse_rate": 0.594,
+    "unterminated": 9,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "h": {
+    "parse_rate": 0.766,
+    "unterminated": 3,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "i": {
+    "parse_rate": 0.703,
+    "unterminated": 4,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "j": {
+    "parse_rate": 0.516,
+    "unterminated": 9,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "k": {
+    "parse_rate": 0.766,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "l": {
+    "parse_rate": 0.766,
+    "unterminated": 3,
+    "memorized_exact": 2,
+    "memorized_rate": 0.031
+   },
+   "m": {
+    "parse_rate": 0.719,
+    "unterminated": 2,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "n": {
+    "parse_rate": 0.656,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "o": {
+    "parse_rate": 0.656,
+    "unterminated": 1,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "p": {
+    "parse_rate": 0.656,
+    "unterminated": 2,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "q": {
+    "parse_rate": 0.672,
+    "unterminated": 4,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "r": {
+    "parse_rate": 0.719,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "s": {
+    "parse_rate": 0.656,
+    "unterminated": 4,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "t": {
+    "parse_rate": 0.781,
+    "unterminated": 0,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "u": {
+    "parse_rate": 0.766,
+    "unterminated": 2,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "v": {
+    "parse_rate": 0.797,
+    "unterminated": 2,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "w": {
+    "parse_rate": 0.781,
+    "unterminated": 2,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "x": {
+    "parse_rate": 0.781,
+    "unterminated": 2,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "y": {
+    "parse_rate": 0.672,
+    "unterminated": 7,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   },
+   "z": {
+    "parse_rate": 0.703,
+    "unterminated": 1,
+    "memorized_exact": 0,
+    "memorized_rate": 0.0
+   }
+  }
+ },
+ "summary": {
+  "specialist_wins_both": 10,
+  "n_letters": 26
+ }
+}

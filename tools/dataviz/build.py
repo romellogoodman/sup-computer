@@ -386,6 +386,51 @@ hot_config = {
     "caption": "Hot configs floor at ~25% legality vs ~42% for t0.6-0.9. Seeing its own spend line made olmo avoid them (11.7% -> 5.4%), which fully accounts for the ledger seats' higher pooled legality (42.1% vs 37.4%) — a conservatism nudge, not learning. It still didn't win games. Source: evidence/round4-*.",
 }
 
+# --- exp11: glyph — 26 specialists vs one generalist ------------------------
+# Source: projects/glyph/research/matrix-results.json (2026-07-14 matrix).
+
+glyph_delta = {
+    "title": "Letter by letter: who wins depends on the letter",
+    "subtitle": "Held-out-family BPC, specialist minus omni-xl — above zero the 47.8M generalist wins, below zero the letter's own 1.8M specialist does",
+    "categories": list("abcdefghijklmnopqrstuvwxyz"),
+    "values": [-0.0365, -0.0053, -0.0126, 0.0513, -0.0264, -0.0304, -0.0469,
+               0.1174, 0.0173, 0.0277, 0.034, 0.2675, 0.0045, 0.131, -0.0941,
+               0.0135, 0.0381, 0.0319, -0.0595, 0.0372, 0.0963, 0.1678,
+               -0.0078, -0.0346, 0.0636, 0.0639],
+    "colors": ["green", "green", "green", "blue", "green", "green", "green",
+               "blue", "blue", "blue", "blue", "blue", "blue", "blue", "green",
+               "blue", "blue", "blue", "green", "blue", "blue", "blue",
+               "green", "green", "blue", "blue"],
+    "valueFmt": "{:+.2f}",
+    "yTitle": "BPC delta (specialist − omni-xl)",
+    "xTitle": "Letter",
+    "caption": "The case (green) wins 10 letters — the deep, distinctive ones (o by 0.094, s, g, a). omni-xl (blue) wins 16, with its largest margins exactly where the uniform recipe over-epoched the short-sequence letters (l +0.268, v +0.168, n +0.131). omni-s wins zero letters outright. Source: projects/glyph/research/matrix-results.json.",
+}
+
+glyph_mean_bpc = {
+    "title": "On the average letter, capacity wins the loss…",
+    "subtitle": "Mean held-out-family BPC across all 26 letters (lower is better) — unigram floor ≈ 5.2",
+    "categories": ["the case (26 × 1.8M)", "omni-s (1.8M)", "omni-xl (47.8M)"],
+    "values": [1.521, 1.558, 1.490],
+    "colors": ["green", "neutral", "blue"],
+    "valueFmt": "{:.3f}",
+    "yTitle": "Mean BPC",
+    "xTitle": "Arm",
+    "caption": "omni-xl takes the mean by 0.031 BPC (2%) over the case; omni-s, at parameter parity with one specialist, loses to both — at 1.8M, splitting beats sharing. Source: projects/glyph/research/matrix-results.json.",
+}
+
+glyph_parse = {
+    "title": "…but the case actually finishes its letters",
+    "subtitle": "Grammar-valid glyphs when sampled at temperature 1.0 — 64 samples per letter per arm, strict decoder",
+    "categories": ["the case (26 × 1.8M)", "omni-s (1.8M)", "omni-xl (47.8M)"],
+    "values": [92.1, 94.2, 71.0],
+    "colors": ["green", "neutral", "blue"],
+    "valueFmt": "{:.1f}%",
+    "yTitle": "Parse rate (%)",
+    "xTitle": "Arm",
+    "caption": "The best-BPC model is the least reliable draughtsman: omni-xl fails to produce a well-formed glyph 29% of the time (worst: j at 52%, g at 59%), including 64 samples that never terminated. The small models — specialists and omni-s alike — stay above 92%. Memorization is negligible everywhere (≤3 exact train matches per arm in 1,664 samples). Source: projects/glyph/research/matrix-results.json.",
+}
+
 # (name, spec, fn, asset-prefix) — prefix routes each PNG to its report.
 JOBS = [("bpc-by-round", bpc, dv.bar, "exp01-"),
         ("data-win", data_win, dv.bar, "exp01-"),
@@ -404,7 +449,10 @@ JOBS = [("bpc-by-round", bpc, dv.bar, "exp01-"),
         ("legality-floor", legality_floor, dv.line, "exp08-"),
         ("control-rates", control_rates, dv.bar, "exp08-"),
         ("legality-vs-outcome", legality_vs_outcome, dv.bar, "exp09-"),
-        ("hot-config", hot_config, dv.bar, "exp10-")]
+        ("hot-config", hot_config, dv.bar, "exp10-"),
+        ("bpc-delta-by-letter", glyph_delta, dv.bar, "exp11-"),
+        ("mean-bpc-by-arm", glyph_mean_bpc, dv.bar, "exp11-"),
+        ("parse-rate-by-arm", glyph_parse, dv.bar, "exp11-")]
 
 if __name__ == "__main__":
     out_dir = os.path.join(_HERE, "output")
