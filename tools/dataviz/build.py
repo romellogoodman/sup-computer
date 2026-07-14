@@ -432,6 +432,63 @@ glyph_parse = {
     "caption": "The best-BPC model is the least reliable draughtsman: omni-xl fails to produce a well-formed glyph 29% of the time (worst: j at 52%, g at 59%), including 64 samples that never terminated. The small models — specialists and omni-s alike — stay above 92%. Memorization is negligible everywhere (≤3 exact train matches per arm in 1,664 samples). Source: projects/glyph/research/matrix-results.json.",
 }
 
+# --- exp12: glyph — three predictions from a font chapter, no training ------
+# Sources: projects/glyph/research/axes-results.json, axes-instances.json,
+# craft-results.json (2026-07-14; measured, no models trained).
+
+axes_variance = {
+    "title": "The craft axes don't explain what the model finds hard",
+    "subtitle": "Share of per-instance BPC variance explained (R², %) — frozen omni-xl scored per line over 225 held-out font instances",
+    "categories": ["weight (Bigelow ratio)", "x-height ratio", "width",
+                   "all three axes", "outline complexity (line length)"],
+    "values": [1.6, 0.0, 0.2, 2.1, 17.9],
+    "colors": ["red", "red", "red", "red", "green"],
+    "valueFmt": "{:.1f}%",
+    "yTitle": "R² (%)",
+    "xTitle": "Predictor",
+    "caption": "Instance difficulty varies enormously (0.95 to 3.75 BPC, std 0.52) — and the three axes type design standardized explain 2.1% of it combined. Encoded line length alone explains 17.9%: the hard hands are built differently (the dot-matrix font Doto, 3.75 BPC), not positioned differently in design space. Source: projects/glyph/research/axes-results.json.",
+}
+
+bigelow_hist = {
+    "title": "Bigelow's ratio, measured on 3,107 quantized instances",
+    "subtitle": "x-height : stem thickness, from l/i scanlines on the encoded corpus — the chapter puts a regular near 5–6",
+    "categories": ["1–2", "2–3", "3–4", "4–5", "5–6", "6–7", "7–8", "8–9",
+                   "9–10", "10–11", "11–12", "12+"],
+    "values": [7, 272, 614, 594, 563, 244, 122, 160, 42, 95, 113, 281],
+    "colors": ["neutral", "neutral", "neutral", "neutral", "green", "neutral",
+               "neutral", "neutral", "neutral", "neutral", "neutral", "neutral"],
+    "valueFmt": "{:.0f}",
+    "yTitle": "Instances",
+    "xTitle": "x-height : stem ratio (bolder ← → thinner)",
+    "caption": "Median 5.14 — dead in the chapter's 5–6 band for a regular. The declared-weight cross-check agrees with the measurement (Spearman 0.915; stems perfectly monotone in declared weight for 391 of 394 multi-weight families), and its outliers are real oddballs: display faces declaring themselves Regular. Source: projects/glyph/research/axes-instances.json.",
+}
+
+u_defects = {
+    "title": "u is a round letter — the corpus overrules the shape grouping",
+    "subtitle": "Instances whose letter dips below the baseline — exact curve extrema, 3,152 corpus instances",
+    "categories": ["o", "c", "e", "s", "u", "l", "m", "n", "h", "i"],
+    "values": [87.2, 87.8, 85.4, 85.7, 84.8, 16.2, 4.6, 4.4, 4.3, 4.2],
+    "colors": ["blue", "blue", "blue", "blue", "green", "neutral", "neutral",
+               "neutral", "neutral", "neutral"],
+    "valueFmt": "{:.1f}%",
+    "yTitle": "Dips below baseline (%)",
+    "xTitle": "Letter",
+    "caption": "The round-2 plan's lowercase grouping filed u with the square-stem letters. Its bowl disagrees: 84.8% of instances dip u below the baseline, indistinguishable from o/c/e/s — so the craft score's v1.1 reclassifies it. l's 16.2% is the rounded-terminal and tailed-l minority; the true stem feet sit flat 95% of the time. Source: projects/glyph/research/craft-results.json.",
+}
+
+craft_by_arm = {
+    "title": "The craft score agrees with the eyes",
+    "subtitle": "Baseline-rule pass rate among grammar-valid samples (v1.1: o c e s u must dip below the line, h i l m n must sit on it)",
+    "categories": ["the corpus itself", "the case (26 × 1.8M)", "omni-s (1.8M)",
+                   "omni-xl (47.8M)", "omni-xl @ 0.8 (shipped)"],
+    "values": [89.5, 91.1, 85.4, 87.4, 93.8],
+    "colors": ["neutral", "green", "neutral", "blue", "blue"],
+    "valueFmt": "{:.1f}%",
+    "yTitle": "Craft pass (% of valid)",
+    "xTitle": "Arm",
+    "caption": "Experiment 09's eyes said the case's drawings beat omni-xl's; the score agrees (91.1% vs 87.4%) — and the release-time temperature sweep turns out to have bought craft, not just parse rate: at the shipped 0.8, omni-xl's survivors are set on the line better than the corpus average. Samples: 64 per letter per arm, round 1, temp 1.0 unless marked. Source: projects/glyph/research/craft-results.json.",
+}
+
 # (name, spec, fn, asset-prefix) — prefix routes each PNG to its report.
 JOBS = [("bpc-by-round", bpc, dv.bar, "exp01-"),
         ("data-win", data_win, dv.bar, "exp01-"),
@@ -453,7 +510,11 @@ JOBS = [("bpc-by-round", bpc, dv.bar, "exp01-"),
         ("hot-config", hot_config, dv.bar, "exp10-"),
         ("bpc-delta-by-letter", glyph_delta, dv.bar, "exp11-"),
         ("mean-bpc-by-arm", glyph_mean_bpc, dv.bar, "exp11-"),
-        ("parse-rate-by-arm", glyph_parse, dv.bar, "exp11-")]
+        ("parse-rate-by-arm", glyph_parse, dv.bar, "exp11-"),
+        ("axes-variance", axes_variance, dv.bar, "exp12-"),
+        ("bigelow-histogram", bigelow_hist, dv.bar, "exp12-"),
+        ("u-dips-below-baseline", u_defects, dv.bar, "exp12-"),
+        ("craft-by-arm", craft_by_arm, dv.bar, "exp12-")]
 
 if __name__ == "__main__":
     out_dir = os.path.join(_HERE, "output")
