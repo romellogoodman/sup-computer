@@ -10,8 +10,8 @@ dial counts in eval_dial.py). Writes two sections to runs/<tag>-samples.md:
      cloud). Read these and judge whether the story is actually about the topic;
      this is the headline of the BPE-migration round (docs/adr/0023).
 
-Run from the repo root, tokenizers provided ad hoc:
-    uv run --with tokenizers python projects/gatsby/generate_samples.py \
+Run from the repo root:
+    uv run python projects/gatsby/generate_samples.py \
         --out_dir projects/gatsby/runs/migrate-bpe-r1 --tag migrate-bpe-r1
 """
 import argparse

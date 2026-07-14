@@ -10,9 +10,9 @@ lets it continue:
     topic: <a topic>
     <a TinyStories-register story, fixated on a green light at intensity N>
 
-Run from the repo root, with the tokenizers lib provided ad hoc:
+Run from the repo root:
 
-    uv run --with tokenizers python projects/gatsby/sample.py \
+    uv run python projects/gatsby/sample.py \
         --out_dir projects/gatsby/runs/migrate-bpe-r1 \
         --start "[green=5] [green=5] [green=5] obsession=total
 topic: a dog and a balloon

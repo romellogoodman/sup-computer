@@ -90,9 +90,9 @@ uv run python projects/gatsby/generate_mixture.py --smoke   # 1 topic per model
 # uv run python projects/gatsby/generate.py --n 20            # tiny validation sample
 # uv run python projects/gatsby/generate.py --n 1000 --batch  # a real run (Batch API)
 
-uv run --with tokenizers python projects/gatsby/prepare.py   # builds data/gatsby_bpe/
+uv run python projects/gatsby/prepare.py                    # builds data/gatsby_bpe/
 uv run python core/nanogpt_core/train.py projects/gatsby/config.py
-uv run --with tokenizers python projects/gatsby/sample.py \
+uv run python projects/gatsby/sample.py \
     --start="[green=5] topic: a dog and a balloon
 " --num_samples=1 --max_new_tokens=600
 ```

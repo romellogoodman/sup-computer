@@ -7,8 +7,8 @@ tiktoken, so — following the seam shakespeare's eval_xl.py/sample_xl.py
 established (ADR-0012) — the project-local scripts load core's GPT and resolve
 the HF tokenizer from the dataset's meta.pkl {"tokenizer": "tokenizer.json"}.
 
-Run these with the tokenizers lib provided ad hoc (not in pyproject):
-    uv run --with tokenizers python projects/gatsby/sample.py ...
+Run from the repo root (`tokenizers` is declared in the project's pyproject):
+    uv run python projects/gatsby/sample.py ...
 """
 import os
 import pickle

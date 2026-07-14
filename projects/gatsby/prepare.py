@@ -31,10 +31,9 @@ The corpus (data/raw.txt) is UNCHANGED this round — the whole point of the
 migration experiment is to isolate the tokenizer+engine switch as a single
 variable against gatsby-nanogpt-2's documented behaviour.
 
-Run from the repo root, with the tokenizers lib provided ad hoc (NOT in
-pyproject — matches shakespeare's precedent):
+Run from the repo root (`tokenizers` is declared in the project's pyproject):
 
-    uv run --with tokenizers python projects/gatsby/prepare.py
+    uv run python projects/gatsby/prepare.py
 """
 import os
 import pickle

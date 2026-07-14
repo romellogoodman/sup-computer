@@ -13,8 +13,8 @@ the prime, truncate the continuation to a fixed CHARACTER budget (--chars, 480 b
 default), and count "green" in that window. So the numbers here are directly
 comparable to gatsby-nanogpt-2's documented dial of 3.7/4.8/4.7/4.5/6.1.
 
-Run from the repo root, tokenizers provided ad hoc:
-    uv run --with tokenizers python projects/gatsby/eval_dial.py \
+Run from the repo root:
+    uv run python projects/gatsby/eval_dial.py \
         --out_dir projects/gatsby/runs/migrate-bpe-r1 --seeds 4
 """
 import argparse
