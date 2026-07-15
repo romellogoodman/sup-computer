@@ -118,7 +118,9 @@ body {
   font-size: 18px; line-height: 1.55; color: var(--color-text);
   background: var(--color-bg);
   max-width: var(--canvas); margin: 0 auto; padding: 44px 32px 128px;
-  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none; /* a missing face fails visibly, never faux-bold */
 }
 
 /* off-screen until keyboard-focused; first tab stop on every page */
@@ -166,7 +168,7 @@ hr {
 }
 .masthead__title { margin: 0; font-size: 29px; font-weight: 700; letter-spacing: -.012em; }
 .masthead__title a { color: var(--color-text); text-decoration: none; }
-.masthead__tagline { font-style: italic; color: var(--color-text-muted); margin: .25em 0 0; font-size: 17px; }
+.masthead__tagline { font-style: italic; color: var(--color-text-muted); margin: .25em 0 0; font-size: 17px; text-wrap: pretty; }
 .masthead__nav { font-family: var(--font-mono); font-size: 13px; letter-spacing: .01em; text-align: right; }
 .masthead__link { margin-left: 16px; white-space: nowrap; }
 .masthead__link:first-child { margin-left: 0; }
@@ -183,7 +185,7 @@ hr {
 .footer__link { white-space: nowrap; }
 
 /* ---- block: intro (home lede) ------------------------------------------ */
-.intro { max-width: var(--measure); }
+.intro { max-width: var(--measure); text-wrap: pretty; }
 
 /* ---- block: section-label (mono document labels with trailing rule) ---- */
 .section-label {
@@ -211,7 +213,7 @@ hr {
   padding: 6px 0; border-bottom: 1px dotted var(--color-rule);
 }
 .model-list__name { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
-.model-list__tagline { font-style: italic; font-size: 14px; color: var(--color-text-muted); }
+.model-list__tagline { font-style: italic; font-size: 14px; color: var(--color-text-muted); text-wrap: pretty; }
 .model-list__spec { font-family: var(--font-mono); font-size: 12.5px; color: var(--color-text-muted); white-space: nowrap; text-align: right; }
 .model-list__bpc { color: var(--color-text); }
 
@@ -220,7 +222,7 @@ hr {
 .post-list__item:last-child { border-bottom: 0; }
 .post-list__link { font-size: 19px; }
 .post-list__meta { font-family: var(--font-mono); font-size: 12.5px; color: var(--color-text-muted); letter-spacing: .015em; margin: 3px 0 0; }
-.post-list__summary { margin: .4em 0 0; font-size: 15.5px; color: var(--color-text-strong); line-height: 1.5; }
+.post-list__summary { margin: .4em 0 0; font-size: 15.5px; color: var(--color-text-strong); line-height: 1.5; text-wrap: pretty; }
 
 /* ---- block: report ------------------------------------------------------ */
 .report__meta { font-family: var(--font-mono); font-size: 12.5px; color: var(--color-text-muted); letter-spacing: .015em; margin: 0 0 .2em; }
@@ -253,7 +255,7 @@ hr {
   color: var(--color-text-muted); background: var(--color-bg); cursor: pointer;
 }
 .player__model-title { font-family: var(--font-serif); font-size: 23px; font-weight: 700; letter-spacing: -.006em; margin: 0 0 .1em; }
-.player__tagline { font-style: italic; color: var(--color-text-muted); margin: 0 0 1em; max-width: var(--measure); }
+.player__tagline { font-style: italic; color: var(--color-text-muted); margin: 0 0 1em; max-width: var(--measure); text-wrap: pretty; }
 .player__notice {
   border: 1px solid var(--color-rule-strong); border-left: 3px solid var(--color-notice);
   background: var(--color-notice-wash); padding: .6em .9em;
@@ -323,7 +325,9 @@ hr {
   letter-spacing: .05em; text-transform: uppercase; color: var(--color-text-muted);
   border-bottom: 1px solid var(--color-rule-strong);
 }
-.prose tbody td { border-bottom: 1px dotted var(--color-rule); }
+/* fallback serifs (Georgia) default to proportional oldstyle figures, which
+   misalign the numeric columns report tables are full of */
+.prose tbody td { border-bottom: 1px dotted var(--color-rule); font-variant-numeric: lining-nums tabular-nums; }
 
 .prose blockquote {
   margin: 1.3em 0; padding-left: 1em; border-left: 2px solid var(--color-rule-strong);

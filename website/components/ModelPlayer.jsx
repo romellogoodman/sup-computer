@@ -20,7 +20,7 @@ async function makeTokenizer(model, runtime, bundle) {
   if (bundle.type === "char") return runtime.CharTokenizer.fromUrl(bundle.sidecarUrl);
   if (bundle.type === "bpe") return runtime.ByteLevelBPETokenizer.fromUrl(bundle.sidecarUrl);
   if (bundle.type === "gpt2-bpe") return runtime.BPETokenizer.create();
-  throw new Error(`the player doesn't support the "${bundle.type}" tokenizer yet`);
+  throw new Error(`the player doesn’t support the “${bundle.type}” tokenizer yet`);
 }
 
 export default function ModelPlayer({ models, series }) {
@@ -144,8 +144,8 @@ export default function ModelPlayer({ models, series }) {
           )}
           {url && !tokenizerSupported(selected) && (
             <p className="player__notice">
-              the player doesn't ship a "{selected.tokenizer.type}" tokenizer yet, so this
-              release can't run in the browser.
+              the player doesn’t ship a “{selected.tokenizer.type}” tokenizer yet, so this
+              release can’t run in the browser.
             </p>
           )}
 
