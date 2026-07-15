@@ -50,6 +50,13 @@ RADIUS = 0
 #   red     -> muted regression/error
 #   neutral -> de-emphasized gray
 #   amber/teal/purple/pink -> muted extras for the rare multi-series chart
+#
+# The colored data hues (green, red, amber, teal, purple, pink) are matched in
+# OKLCH so no series reads brighter or more vivid than its neighbors: per mode
+# they share one lightness and one chroma-percentage-of-max-sRGB-chroma, both
+# anchored to the green accent (which is fixed — it mirrors the website).
+# Light: L 0.476, 72% of each hue's max chroma. Dark: L 0.711, 67%.
+# Hue angles are shared across modes. Designed in OKLCH, emitted as hex.
 LIGHT = {
     "surface":     "#ffffff",  # --color-bg
     "surfaceAlt":  "#f5f5f3",  # --color-surface
@@ -60,13 +67,13 @@ LIGHT = {
     "tooltipBg":   "#161616",
     "tooltipText": "#ffffff",
     "blue":    "#2b2b2b",  # ink — primary data
-    "green":   "#2f6b3f",  # --color-accent
-    "red":     "#b23a2e",  # muted regression
+    "green":   "#2f6b3f",  # --color-accent — oklch(0.476 0.094 150)
+    "red":     "#9c3429",  # muted regression — oklch(0.476 0.141 29)
     "neutral": "#9a9a9a",  # --color-rule-strong
-    "amber":   "#9c7a1e",
-    "teal":    "#2f6b6b",
-    "purple":  "#6b4e8a",
-    "pink":    "#a8527a",
+    "amber":   "#6e5a2a",  # oklch(0.476 0.071 87)
+    "teal":    "#2f6767",  # oklch(0.476 0.059 195)
+    "purple":  "#7537aa",  # oklch(0.476 0.178 305)
+    "pink":    "#953264",  # oklch(0.476 0.142 353)
 }
 
 DARK = {
@@ -79,13 +86,13 @@ DARK = {
     "tooltipBg":   "#e9e8e4",
     "tooltipText": "#0e0f10",
     "blue":    "#d0d0cb",  # ink — primary data (dark)
-    "green":   "#5fb87a",  # --color-accent (dark)
-    "red":     "#d97064",  # muted regression (dark)
+    "green":   "#5fb87a",  # --color-accent (dark) — oklch(0.711 0.125 152)
+    "red":     "#e48375",  # muted regression (dark) — oklch(0.712 0.122 29)
     "neutral": "#494a4e",  # --color-rule-strong (dark)
-    "amber":   "#cfa53e",
-    "teal":    "#5fa6a6",
-    "purple":  "#a98fd0",
-    "pink":    "#d08bab",
+    "amber":   "#bc9e57",  # oklch(0.711 0.097 87)
+    "teal":    "#5fb2b2",  # oklch(0.712 0.081 195)
+    "purple":  "#b58ce1",  # oklch(0.711 0.128 306)
+    "pink":    "#e47aaa",  # oklch(0.712 0.141 353)
 }
 
 # Default categorical hue order (red kept last — reserved for semantic regression)
