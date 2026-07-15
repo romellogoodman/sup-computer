@@ -104,6 +104,15 @@ def check_indexes(findings):
         if name.endswith(".md") and name != "README.md":
             if f"({name})" not in reports_index:
                 fail(findings, f"index: research-docs/reports/README.md has no row for {name}")
+            # dates must carry a time: the site sorts by timestamp and shows
+            # month+year, and same-day publishes are common — a date-only value
+            # turns the ordering into an alphabetical accident
+            with open(os.path.join(reports_dir, name), encoding="utf-8") as f:
+                head = f.read(2048)
+            m = re.search(r"^date: *(.+)$", head, re.M)
+            if not m or not re.match(r"\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}", m.group(1)):
+                fail(findings, f"reports: {name} frontmatter date lacks a publish time "
+                               f"(want YYYY-MM-DDTHH:MM[:SS][offset])")
 
 
 def markdown_files():

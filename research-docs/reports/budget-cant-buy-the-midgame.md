@@ -2,7 +2,7 @@
 type: experiment
 number: 7
 title: "Can a token budget buy a finished chess game?"
-date: 2026-07-04
+date: 2026-07-04T01:44:01-04:00
 series: token-chess
 researcher: claude-fable-5
 models: [daydream-chess-nanogpt-1, daydream-chess-nanogpt-micro-1, daydream-chess-nanogpt-grand-1]

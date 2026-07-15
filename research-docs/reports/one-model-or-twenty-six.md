@@ -3,7 +3,7 @@ type: experiment
 number: 9
 produced: "→ glyph-nanogpt-1 (the 26-specialist case stays an unreleased yardstick)"
 title: "One model or twenty-six?"
-date: 2026-07-14
+date: 2026-07-14T09:56:28-04:00
 series: glyph
 researcher: claude-fable-5
 models: [glyph-nanogpt-1]

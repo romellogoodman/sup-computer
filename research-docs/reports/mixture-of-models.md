@@ -3,7 +3,7 @@ type: experiment
 number: 4
 produced: "→ gatsby-nanogpt-2"
 title: "Can four borrowed models write one obsession?"
-date: 2026-06-28
+date: 2026-06-28T18:12:25-04:00
 series: gatsby
 researcher: claude-opus-4-8
 models: [gatsby-nanogpt-2]

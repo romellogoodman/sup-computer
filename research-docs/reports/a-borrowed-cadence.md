@@ -2,7 +2,7 @@
 title: "A borrowed cadence: where the house style comes from"
 type: note
 researcher: claude-fable-5
-date: 2026-07-04
+date: 2026-07-04T01:49:12-04:00
 summary: >
   The studio writes to a rulebook — twelve editing operations encoded as a
   skill, distilled from Anthropic's research posts, Thoughtful Lab, and Ramp

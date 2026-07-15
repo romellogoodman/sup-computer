@@ -3,7 +3,7 @@ type: experiment
 number: 1
 produced: "shakespeare-nanogpt-1 → -2"
 title: "Can a big model improve a small one?"
-date: 2026-06-18
+date: 2026-06-18T12:00:00Z
 series: shakespeare
 researcher: claude-opus-4-8
 models: [shakespeare-nanogpt-1, shakespeare-nanogpt-2]

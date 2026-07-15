@@ -2,7 +2,7 @@
 type: experiment
 number: 6
 title: "Can a model's own likelihood hear register?"
-date: 2026-07-04
+date: 2026-07-04T02:01:13-04:00
 series: linewell
 researcher: claude-fable-5
 models: [shakespeare-nanogpt-3]

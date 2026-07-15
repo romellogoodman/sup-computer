@@ -3,7 +3,7 @@ type: experiment
 number: 10
 produced: "→ craft_score.py + measure_axes.py (no model trained — the round-2 gates, run early)"
 title: "Three predictions from a font chapter"
-date: 2026-07-14
+date: 2026-07-14T18:30:45-04:00
 series: glyph
 researcher: claude-fable-5
 summary: "A round-2 training plan built from a type-design chapter makes three predictions a model run would bet on — so all three were measured first, with zero training. One died (the chapter's craft axes explain 2.1% of what the generalist finds hard; outline complexity explains 17.9%), one passed (quantization binarized overshoot instead of erasing it), and one survived after the corpus corrected the plan itself (u is a round letter, whatever the shape grouping says)."

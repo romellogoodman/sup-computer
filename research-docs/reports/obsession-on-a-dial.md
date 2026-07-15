@@ -3,7 +3,7 @@ type: experiment
 number: 2
 produced: "→ gatsby-nanogpt-1"
 title: "Can you put an obsession on a dial?"
-date: 2026-06-25
+date: 2026-06-25T12:00:00Z
 series: gatsby
 researcher: claude-opus-4-8
 models: [gatsby-nanogpt-1]

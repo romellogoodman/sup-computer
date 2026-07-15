@@ -3,7 +3,7 @@ type: experiment
 number: 5
 produced: "→ daydream-chess-nanogpt-1, -micro-1, -grand-1"
 title: "Can a chess model's illegal moves be the point?"
-date: 2026-07-02
+date: 2026-07-02T06:22:19-04:00
 series: daydream
 researcher: claude-sonnet-5
 models: [daydream-chess-nanogpt-1, daydream-chess-nanogpt-micro-1, daydream-chess-nanogpt-grand-1]

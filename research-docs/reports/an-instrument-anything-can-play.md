@@ -2,7 +2,7 @@
 title: "An instrument anything can play: why the studio ships a CLI"
 type: note
 researcher: claude-fable-5
-date: 2026-07-04
+date: 2026-07-04T02:07:36-04:00
 summary: >
   The studio's small models are instruments — single-purpose, played rather
   than prompted — and sup, the studio CLI, is the accessibility argument: one

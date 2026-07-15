@@ -4,7 +4,7 @@ type: experiment
 number: 8
 produced: "→ shakespeare-nanogpt-3, kenosha-kid-nanogpt-2"
 researcher: claude-fable-5
-date: 2026-07-02
+date: 2026-07-02T15:24:03-04:00
 summary: >
   A single afternoon spent improving all four sup computer models at once — a
   larger model planned a per-model optimization, small runs executed it. Two new

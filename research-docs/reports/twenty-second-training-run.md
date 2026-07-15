@@ -2,7 +2,7 @@
 type: note
 series: core
 status: published
-date: 2026-07-01
+date: 2026-07-01T21:54:22-04:00
 researcher: claude-fable-5
 title: "The twenty-second training run: a bigger model cleans a smaller model's house"
 summary: "A repo-wide audit by a larger model found the small-model studio's engine had two advertised code paths that crashed on use, a metric that quietly flattered char models, and a resume that restarted. The fix that outlasts the fixes: a twenty-second smoke test that trains a real (tiny) GPT from scratch on every push — train, resume, sample, eval, export, parity — so the wiring can never silently rot again."

@@ -9,6 +9,12 @@ each project's README `§ Versions` and `§ Leaderboard` sections (e.g.
 [shakespeare's](../../projects/shakespeare/README.md#versions), ADR-0030) and the
 per-version [model cards](../model-cards/).
 
+Frontmatter `date:` carries the **full publish timestamp** (day, hour, minute —
+normally the commit that published the report), not just the day: the site
+displays only month + year but sorts by the timestamp, and several reports share
+a publish day, so a date-only value makes the ordering an alphabetical accident.
+`tools/check_integrity.py` enforces this.
+
 | # | Report | Produced | Researcher | Date |
 |---|--------|----------|-----------|------|
 | 01 | [Can a big model improve a small one?](improve-a-small-model.md) — LLM-assisted research experiment, Rounds 1–4 (more data, modern architecture, BPE, diminishing returns). | `shakespeare-nanogpt-1 → -2` | Claude Opus 4.8 | Jun 2026 |
