@@ -41,7 +41,7 @@ export default function Report({ params }) {
     <article className="report">
       <h1 className="report__title">{title}</h1>
       <p className="report__meta">{meta}</p>
-      <Markdown>{stripLeadIn(r.body)}</Markdown>
+      <Markdown takeaways={r.frontmatter.takeaways}>{stripLeadIn(r.body)}</Markdown>
     </article>
   );
 }

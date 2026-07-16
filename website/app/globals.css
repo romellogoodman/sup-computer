@@ -22,10 +22,10 @@ textarea:not([rows]) { min-height: 10em; }
    Conventions:
    - Class naming is BEM (block__element--modifier) for app-authored classes.
      See website/README.md.
-   - Exceptions (NOT BEM, by necessity):
-       .takeaways / .takeaways-label  — authored as raw HTML inside markdown
-                                        content (research-docs); renaming would
-                                        edit frozen reports.
+   - Exceptions (NOT BEM):
+       .takeaways / .takeaways-label  — built by components/Markdown.jsx from
+                                        `takeaways:` frontmatter (ADR-0031);
+                                        names kept from the markdown-HTML era.
        .footnotes                     — emitted by remark-gfm.
        .prose                         — a styling scope for rendered markdown;
                                         its descendants are plain HTML elements,
@@ -368,7 +368,8 @@ pre code { font-size: inherit; background: none; padding: 0; border: 0; }
 .prose .footnotes, .footnotes[data-footnotes] { display: none; }
 
 /* =========================================================================
-   content-contract classes (authored in markdown — keep these names)
+   block: takeaways (built by components/Markdown.jsx from `takeaways:`
+   frontmatter — ADR-0031)
    ========================================================================= */
 .takeaways {
   border: 1px solid var(--color-rule-strong); border-left: 3px solid var(--color-accent);

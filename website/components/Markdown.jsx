@@ -106,26 +106,37 @@ function rehypeSidenotes() {
       node.children = out;
     };
     transform(tree);
-
-    // 3. Hoist a .takeaways box to the top of the document so it reads as an
-    //    abstract. Reports author it near the top already; model cards append it
-    //    as a bottom addendum (ADR-0015) — this normalizes both without editing
-    //    the frozen content.
-    const idx = (tree.children || []).findIndex(
-      (c) => c.type === "element" && hasClass(c, "takeaways")
-    );
-    if (idx > 0) {
-      const [box] = tree.children.splice(idx, 1);
-      tree.children.unshift(box);
-    }
   };
 }
 
+// The key-takeaways abstract box, built from `takeaways:` frontmatter
+// (ADR-0031). Bullets are markdown strings; rendering is inline-only so a
+// stray block element can't break the box.
+function Takeaways({ items }) {
+  if (!items?.length) return null;
+  return (
+    <div className="takeaways">
+      <p className="takeaways-label">Key takeaways</p>
+      <ul>
+        {items.map((t, i) => (
+          <li key={i}>
+            <ReactMarkdown allowedElements={["a", "code", "em", "strong", "del"]} unwrapDisallowed>
+              {t}
+            </ReactMarkdown>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 // GFM (tables, footnotes) + raw HTML (the reports' <picture> chart embeds) +
-// footnotes rendered as margin sidenotes.
-export default function Markdown({ children }) {
+// footnotes rendered as margin sidenotes. `takeaways` (frontmatter bullets)
+// opens the prose column as the abstract box.
+export default function Markdown({ children, takeaways }) {
   return (
     <div className="prose">
+      <Takeaways items={takeaways} />
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw, rehypeSidenotes]}

@@ -84,6 +84,11 @@ function readDir(dir, repoBase) {
     .map((f) => {
       const { data, content } = matter(fs.readFileSync(path.join(dir, f), "utf8"));
       const body = rewriteLinks(rewriteAssets(content), repoBase);
+      // `takeaways:` bullets (ADR-0031) are markdown strings written with the
+      // same repo-relative links as the body, so they ride the same rewrites.
+      if (Array.isArray(data.takeaways)) {
+        data.takeaways = data.takeaways.map((t) => rewriteLinks(rewriteAssets(String(t)), repoBase));
+      }
       return { slug: f.replace(/\.md$/, ""), frontmatter: data, body };
     });
 }

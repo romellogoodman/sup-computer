@@ -56,9 +56,14 @@ function reportDoc(r) {
     .filter(Boolean)
     .join(" · ");
 
+  // Takeaways live in frontmatter (ADR-0031); emit them as the abstract the
+  // styled box renders on the HTML page.
+  const takeaways = (fm.takeaways || []).map((t) => `- ${clean(t)}`).join("\n");
+
   return [
     `# ${fm.title}`,
     fm.summary ? `\n> ${fm.summary}` : "",
+    takeaways ? `\nKey takeaways:\n\n${takeaways}` : "",
     `\n${meta}`,
     `\nCanonical: ${SITE_URL}/research/${r.slug}/`,
     `\n---\n`,
@@ -67,8 +72,8 @@ function reportDoc(r) {
   ].join("\n");
 }
 
-// Model cards are already self-contained (H1, takeaways, prose), so serve the
-// body as-is and just footer a canonical link back to the HTML page.
+// Model cards are already self-contained (H1, prose), so serve the body as-is
+// and just footer a canonical link back to the HTML page.
 function cardDoc(card) {
   return [clean(card.body), "", "---", `Canonical: ${SITE_URL}/models/${card.slug}/`, ""].join("\n");
 }

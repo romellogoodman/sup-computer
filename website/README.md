@@ -52,10 +52,10 @@ green accent. No CSS-in-JS, no utility framework.
   `globals.css` (compiled by postcss-preset-env — see `postcss.config.json`,
   which restates Next's default PostCSS chain to add that one feature). Media
   queries use the names (`@media (--bp-narrow)`), never a hardcoded width.
-- **Exceptions to BEM** (not renameable): `.takeaways` / `.takeaways-label` are
-  authored as raw HTML inside the markdown content (`research-docs/`); `.footnotes`
-  is emitted by remark-gfm.
+- **Exceptions to BEM**: `.takeaways` / `.takeaways-label` (names kept from when
+  the box was authored in markdown — it's now built from `takeaways:` frontmatter,
+  ADR-0031); `.footnotes` is emitted by remark-gfm (not renameable).
 
-`components/Markdown.jsx` renders the markdown and runs two small rehype passes:
-footnotes are pulled into the right margin as `.sidenote`s, and a `.takeaways` box
-is hoisted to the top so it reads as an abstract.
+`components/Markdown.jsx` renders the markdown, pulls footnotes into the right
+margin as `.sidenote`s, and opens reports with a `.takeaways` abstract box built
+from the `takeaways:` frontmatter (ADR-0031).
