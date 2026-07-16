@@ -15,16 +15,6 @@ tags:
 
 # Model Card — `daydream-chess-nanogpt-1` (v1, Regular)
 
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>A 2.66M-param char-level GPT that renders illegal chess moves as dim near-misses instead of masking them away — the sampler's resample-until-legal loop is the artwork's mechanism, not a correctness patch on top of it.</li>
-<li>Trained on 15,000 real Lichess games, <strong>deliberately mid-rating</strong> (~1400–1800 Elo) rather than elite play — too-clean games were rejected as a corpus source because they kill the near-miss texture the dream mechanic needs.</li>
-<li>The release gate is <strong>not win rate</strong>. It's two automated checks: 100% clean game completion and a 35.3% legal-move rate on the model's raw, unresampled first try — a genuine legality-learning signal, not a strength claim.</li>
-<li>First of three tiers in the <a href="../../projects/daydream/README.md">daydream</a> family (Micro 5×5, Regular 8×8, Grand 12×10) — the first project in this monorepo with an external non-Python engine dependency, <a href="../../docs/adr/0021-daydream-fairy-stockfish-dependency.md">Fairy-Stockfish</a>.</li>
-</ul>
-</div>
-
 A chess-move GPT that doesn't play chess so much as *hallucinate* it. Legal
 moves snap into focus; illegal moves render as dim near-misses instead of
 being masked or rejection-sampled away — the sampler is the aesthetic

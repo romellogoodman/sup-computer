@@ -8,6 +8,32 @@ series: gatsby
 researcher: claude-opus-4-8
 models: [gatsby-nanogpt-2]
 summary: "gatsby's first corpus cost ~$6 of Claude API to write. This round throws that out and has a mixture of four local open models — Olmo, Ministral, Gemma, Granite — write the corpus instead: free, unlimited, and in four different voices. The model that results matches the paid baseline's behaviour at $0. The catch, and the finding: the blend is a designed object. A granite-heavy first round broke the green-light dial; rebalancing off it and doubling the data brought the dial back."
+takeaways:
+  - >-
+    The corpus is now written by a **mixture of four local open models**
+    running on a laptop — Olmo 3, Ministral 3, Gemma 4, Granite 4.1 —
+    instead of the Claude API. Cost: **$0** (vs ~$6 for v1), and unbounded
+    volume.
+  - >-
+    The resulting model, `gatsby-nanogpt-2`, **matches the paid baseline's
+    behaviour**: the green light still barges into every story, and the
+    intensity dial still works at its endpoints.
+  - >-
+    The headline finding is about **the blend, not the pipeline**.
+    Generators are a disposable sampling device; *which* one you lean on is
+    a design decision with teeth. A granite-heavy first round **broke the
+    dial flat** — because Granite, measured per-model, barely modulates the
+    green light across levels.
+  - >-
+    Rebalancing off Granite and **doubling the corpus** (1k→2k stories)
+    fixed it: the model trained 60% deeper before overfitting (step 2000 vs
+    1250), which is the headroom it needed to learn the conditioning the
+    corpus already contained.
+  - >-
+    New shared tooling: [`tools/synthgen`](../../tools/synthgen/README.md),
+    the generation analogue of `dataviz` — a provenance-first local-LLM
+    corpus generator
+    ([ADR-0014](../../docs/adr/0014-synthgen-local-llm-pipeline.md)).
 status: published
 ---
 [← all experiments](README.md) · **Experiment 04** · Rounds r1–r2 · `→ gatsby-nanogpt-2` · June 2026
@@ -15,17 +41,6 @@ status: published
 # Can four borrowed models write one obsession?
 
 A fourth LLM-assisted research experiment, run end-to-end by Claude Opus 4.8. A sequel to [Experiment 02](obsession-on-a-dial.md), which built `gatsby-nanogpt-1`: a char-level model trained to be helplessly fixated on a green light, with the obsession's *intensity* baked into the training data as a `[green=N]` dial. That model's corpus was written, story by story, by the Claude API — about **$6** of `claude-sonnet-4-6`. This experiment asks whether we needed to pay for it at all.
-
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>The corpus is now written by a <strong>mixture of four local open models</strong> running on a laptop — Olmo&nbsp;3, Ministral&nbsp;3, Gemma&nbsp;4, Granite&nbsp;4.1 — instead of the Claude API. Cost: <strong>$0</strong> (vs ~$6 for v1), and unbounded volume.</li>
-<li>The resulting model, <code>gatsby-nanogpt-2</code>, <strong>matches the paid baseline's behaviour</strong>: the green light still barges into every story, and the intensity dial still works at its endpoints.</li>
-<li>The headline finding is about <strong>the blend, not the pipeline</strong>. Generators are a disposable sampling device; <em>which</em> one you lean on is a design decision with teeth. A granite-heavy first round <strong>broke the dial flat</strong> — because Granite, measured per-model, barely modulates the green light across levels.</li>
-<li>Rebalancing off Granite and <strong>doubling the corpus</strong> (1k→2k stories) fixed it: the model trained 60% deeper before overfitting (step 2000 vs 1250), which is the headroom it needed to learn the conditioning the corpus already contained.</li>
-<li>New shared tooling: <a href="../../tools/synthgen/README.md"><code>tools/synthgen</code></a>, the generation analogue of <code>dataviz</code> — a provenance-first local-LLM corpus generator (<a href="../../docs/adr/0014-synthgen-local-llm-pipeline.md">ADR-0014</a>).</li>
-</ul>
-</div>
 
 ## 0. Abstract
 

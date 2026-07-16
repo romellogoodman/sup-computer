@@ -15,16 +15,6 @@ tags:
 
 # Model Card — `glyph-nanogpt-1` (v1, the generalist)
 
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>One 47.86M-parameter char-level GPT that draws all 26 lowercase letters as vector outlines — trained on 81,934 glyphs from 759 OFL sans-serif families, serialized <strong>one character per token</strong> (drawing verbs + a 96-char coordinate alphabet, ADR-0027).</li>
-<li>Released as the loser of its own bake-off, on purpose: against 26 per-letter specialists at the same total parameter budget it <strong>wins mean held-out BPC</strong> (1.490 vs 1.521) but draws a grammar-valid glyph only 71.0% of the time to their 92.1% (temp 1.0). The case's numbers are the standing yardstick for v2.</li>
-<li>The small-model optimizer recipe <strong>diverged three times</strong> at this scale (lr 3e-4 / beta2 0.99, healthy to ~step 600, then loss explosion); the released model trained on the standard big-model adjustment (lr 1e-4, beta2 0.95, warmup 300).</li>
-<li>Memorization is negligible — 2 exact train-set matches in 1,664 samples — after variable-font weight instancing lifted every letter to 1,466–1,991 training glyphs from held-in families.</li>
-</ul>
-</div>
-
 The full experiment — one model or twenty-six, and why the studio released
 the one — is
 [experiment 09](../reports/one-model-or-twenty-six.md).

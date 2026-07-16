@@ -18,15 +18,6 @@ datasets:
 
 # Model Card — `shakespeare-nanogpt-2` (v2)
 
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>The improved model: full corpus + modern architecture (RoPE, RMSNorm, bias-free) + GPT-2 BPE, reaching held-out <code>BPC 1.919</code> (−20% vs. the v1 baseline).</li>
-<li>The best of Experiment 01's four rounds (Round 3, early-stopped BPE). The Round 4 "champion" that stacked more regularization <strong>regressed</strong>.</li>
-<li>Still mimicry, and scores are single-seed — <strong>data is the ceiling</strong> the next version will have to raise.</li>
-</ul>
-</div>
-
 The current best model in the [`shakespeare-nanogpt`](../../projects/shakespeare/README.md) series:
 full corpus + modern architecture + BPE tokenizer, held-out BPC 2.395 → 1.919.
 It is the winner of a four-round **LLM-assisted research experiment** in which

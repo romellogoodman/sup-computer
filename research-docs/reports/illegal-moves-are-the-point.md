@@ -8,6 +8,29 @@ series: daydream
 researcher: claude-sonnet-5
 models: [daydream-chess-nanogpt-1, daydream-chess-nanogpt-micro-1, daydream-chess-nanogpt-grand-1]
 summary: "A three-tier chess-move GPT family (5x5, 8x8, and a custom 12x10 board) built around a single inversion: illegal moves are rendered as dim near-misses instead of being masked away by the sampler. All three tiers land in a tight band of legal-move rate (35-39% on a raw, unresampled first try) despite very different board sizes, vocabularies, and corpus sources -- and two separate facts in the original design plan turned out to be wrong when checked against the live engine instead of trusted from web research."
+takeaways:
+  - >-
+    Three independently trained chess-move GPTs — Micro (5×5 Gardner
+    minichess, 0.79M params), Regular (8×8 standard, 2.66M params), Grand
+    (12×10 custom variant, 4.73M params) — built around one inversion:
+    illegal moves are **rendered as dim near-misses**, not masked away by
+    the sampler.
+  - >-
+    All three land in a **tight band of legal-move rate** on a raw,
+    unresampled first try — 35.3% (Regular), 39.2% (Micro), 36.7% (Grand) —
+    despite wildly different board sizes, vocabularies, and corpus sources.
+    Legality-learning difficulty didn't scale sharply with board complexity
+    in this build.
+  - >-
+    Two facts in the original design plan were **wrong when checked against
+    the live engine** instead of trusted from a web search: real Grand Chess
+    has one Chancellor and one Archbishop per side (not two), and the
+    installed Fairy-Stockfish caps board ranks at 10 even though files go to
+    12 — so Grand shipped as 12×10, not 12×12.
+  - >-
+    The release gate for this series is **not win rate**. It's two automated
+    checks — clean game completion and legal-move rate — deliberately
+    decoupled from chess strength, which was never the point.
 status: published
 ---
 [← all experiments](README.md) · **Experiment 05** · Runs regular-r1, micro-r1, grand-r1 · `→ daydream-chess-nanogpt-1, -micro-1, -grand-1` · July 2026
@@ -19,16 +42,6 @@ The fifth research round in the studio, and the first in a new faculty:
 project like shakespeare, gatsby, or kenosha-kid — it's the studio's first
 **sampler/prober** project, where the interesting behavior is what happens
 to a model's *incorrect* output, not its generation quality.
-
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>Three independently trained chess-move GPTs — Micro (5×5 Gardner minichess, 0.79M params), Regular (8×8 standard, 2.66M params), Grand (12×10 custom variant, 4.73M params) — built around one inversion: illegal moves are <strong>rendered as dim near-misses</strong>, not masked away by the sampler.</li>
-<li>All three land in a <strong>tight band of legal-move rate</strong> on a raw, unresampled first try — 35.3% (Regular), 39.2% (Micro), 36.7% (Grand) — despite wildly different board sizes, vocabularies, and corpus sources. Legality-learning difficulty didn't scale sharply with board complexity in this build.</li>
-<li>Two facts in the original design plan were <strong>wrong when checked against the live engine</strong> instead of trusted from a web search: real Grand Chess has one Chancellor and one Archbishop per side (not two), and the installed Fairy-Stockfish caps board ranks at 10 even though files go to 12 — so Grand shipped as 12×10, not 12×12.</li>
-<li>The release gate for this series is <strong>not win rate</strong>. It's two automated checks — clean game completion and legal-move rate — deliberately decoupled from chess strength, which was never the point.</li>
-</ul>
-</div>
 
 ## The inversion
 

@@ -8,6 +8,24 @@ series: kenosha
 researcher: claude-opus-4-8
 models: [kenosha-kid-nanogpt-1]
 summary: "The smallest obsession in the studio: a char-level model whose entire corpus is punctuated permutations of six words. A bot enumerates that space exactly; a learned model can't — and the blur it produces instead is the artifact. The finding: dreaminess is governed by two knobs, training progress and sampling temperature."
+takeaways:
+  - >-
+    The studio's smallest obsession: a **0.79M-param** char-level model
+    whose entire corpus is punctuated permutations of six words — *"You
+    never did the Kenosha Kid."*
+  - >-
+    A learned model **cannot be the bot** (the bot is exact by
+    construction). The blur is forced, and **the blur is the whole
+    artifact** — the model orbits the phrase instead of enumerating it.
+  - >-
+    The released checkpoint is deliberately **not the lowest-loss one**.
+    Dreaminess is a two-knob surface — **training progress** (a memorization
+    phase transition) and **sampling temperature** — and the champion sits
+    mid-transition.
+  - >-
+    First char-level model to run on the shared `core` engine directly, at
+    zero engine cost — the whole dreaminess spectrum fits inside a
+    two-minute training run.
 status: published
 ---
 [← all experiments](README.md) · **Experiment 03** · Runs r1–r3 · `→ kenosha-kid-nanogpt-1` · June 2026
@@ -15,16 +33,6 @@ status: published
 # Can a model dream a single phrase?
 
 A third LLM-assisted research experiment, run end-to-end by Claude Opus 4.8. Companion to [Experiment 02](obsession-on-a-dial.md): if gatsby is a model obsessed with a *topic*, kenosha-kid is a model obsessed with a *string* — the limit case, where the corpus shrinks to one phrase and there is nothing left to learn but *how to say it*.
-
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>The studio's smallest obsession: a <strong>0.79M-param</strong> char-level model whose entire corpus is punctuated permutations of six words — <em>"You never did the Kenosha Kid."</em></li>
-<li>A learned model <strong>cannot be the bot</strong> (the bot is exact by construction). The blur is forced, and <strong>the blur is the whole artifact</strong> — the model orbits the phrase instead of enumerating it.</li>
-<li>The released checkpoint is deliberately <strong>not the lowest-loss one</strong>. Dreaminess is a two-knob surface — <strong>training progress</strong> (a memorization phase transition) and <strong>sampling temperature</strong> — and the champion sits mid-transition.</li>
-<li>First char-level model to run on the shared <code>core</code> engine directly, at zero engine cost — the whole dreaminess spectrum fits inside a two-minute training run.</li>
-</ul>
-</div>
 
 ## 0. Abstract
 

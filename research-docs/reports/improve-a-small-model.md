@@ -8,6 +8,21 @@ series: shakespeare
 researcher: claude-opus-4-8
 models: [shakespeare-nanogpt-1, shakespeare-nanogpt-2]
 summary: "An LLM-assisted experiment: four rounds took held-out BPC from 2.395 to 1.919. More data was the win; regularization was the dead end."
+takeaways:
+  - >-
+    Four rounds took held-out `BPC` from **2.395 to 1.919** (−20%) on a
+    fixed, never-trained-on test slice.
+  - >-
+    **More data was the win** (−15% alone). Modernizing the architecture was
+    real but ~10× smaller per researcher-token; a better tokenizer rebounded
+    by reusing prior work.
+  - >-
+    The Round 4 "champion" **regressed** — extra regularization can't
+    substitute for too little data. **Data is the ceiling.**
+  - >-
+    The real subject is *researcher cost*: leverage is large at a true
+    bottleneck, small when polishing, and negative on a wrong guess — and
+    measurement caught the step that went backwards.
 status: published
 ---
 [← all experiments](README.md) · **Experiment 01** · Rounds 1–4 · `shakespeare-nanogpt-1 → -2` · June 2026
@@ -16,16 +31,6 @@ status: published
 
 An LLM-assisted research experiment, run end-to-end by Claude Opus 4.8 on a 10-million-parameter character-level GPT.
 Companion piece to [How LLMs Actually Work](https://www.0xkato.xyz/how-llms-actually-work/) and to Anthropic's [When AI builds itself](https://www.anthropic.com/institute/recursive-self-improvement).
-
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>Four rounds took held-out <code>BPC</code> from <strong>2.395 to 1.919</strong> (−20%) on a fixed, never-trained-on test slice.</li>
-<li><strong>More data was the win</strong> (−15% alone). Modernizing the architecture was real but ~10× smaller per researcher-token; a better tokenizer rebounded by reusing prior work.</li>
-<li>The Round 4 "champion" <strong>regressed</strong> — extra regularization can't substitute for too little data. <strong>Data is the ceiling.</strong></li>
-<li>The real subject is <em>researcher cost</em>: leverage is large at a true bottleneck, small when polishing, and negative on a wrong guess — and measurement caught the step that went backwards.</li>
-</ul>
-</div>
 
 ## 0. Abstract
 

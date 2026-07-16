@@ -7,6 +7,34 @@ series: token-chess
 researcher: claude-fable-5
 models: [daydream-chess-nanogpt-1, daydream-chess-nanogpt-micro-1, daydream-chess-nanogpt-grand-1]
 summary: "Five rounds of Token Chess — a benchmark where LLMs may not author chess moves, only steer Daydream's sampler under a token budget — asked what a token actually buys. Round one: plies, at a worsening rate (every game forfeits; legality collapses 49% → 14% out of the opening book). Round two: remove death and nothing discriminates. Round three: price batches and candidate-picking with engine adjudication, and the benchmark finally separates players — then ministral, the worst sampler on the board, beats olmo 3–1 on pure tempo. Rounds four and five close on memory: assigned a free notepad, olmo writes zero notes in 24 games; offered the choice, it picks the notepad 24 seats out of 24, explains why every time, and still writes nothing."
+takeaways:
+  - >-
+    **Budget cannot buy game completion.** All 15 round-one calibration
+    games ended in budget forfeit at every budget from 10 to 120: Daydream
+    Regular's first-try legality collapses from 49.1% in plies 0–9 to 14.1%
+    by 30–39 as games leave its memorized opening book, so octupling the
+    budget moved the horizon only from ~15 to ~45 plies. Past the book the
+    collapse stops — a floor of 8–12% legality per 50-ply band out past ply
+    250, not a slide to zero.
+  - >-
+    **Scarcity was manufacturing the discrimination.** Remove the forfeit
+    rule (income per turn + a silent harness fallback) and random sampler
+    configs match the tuned mock and olmo-3-7b on every metric — refunded
+    retries wash config quality out of outcomes entirely.
+  - >-
+    **Priced mechanics discriminate — then tempo beats skill.** Round three
+    (a token buys a batch of 3, pooled legal picks are free, exhaustion
+    means Fairy-Stockfish adjudication) finally separates players: olmo
+    beats a mate>capture>check mock 3.5–0.5 on pick quality. Then ministral,
+    the worst sampler on the board (20% legality to olmo's 58%), wins 3–1 on
+    pure tempo — spend everything fast and end the game by exhausting while
+    ahead. What the all-in spender buys is control of *when* the game ends.
+  - >-
+    **Stated preference and revealed behavior, severed in one experiment.**
+    Offered a free notepad, olmo wrote zero notes in 24 games and the memory
+    matrix moved no outcomes; given a free choice of tool, every seat picked
+    the notepad — 24 for 24 — articulated why every time, and still wrote
+    nothing.
 status: published
 ---
 [← all reports](README.md) · series: token-chess · evidence `tools/token-chess/evidence/` · July 2026
@@ -23,16 +51,6 @@ what those tokens buy. The answers, in order: **plies, at a worsening
 exchange rate; nothing, if nobody can die; initiative, once picking is
 priced; not memory — memory was free and went unused; and not even
 memory the model chose for itself and argued for.**
-
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li><strong>Budget cannot buy game completion.</strong> All 15 round-one calibration games ended in budget forfeit at every budget from 10 to 120: Daydream Regular's first-try legality collapses from 49.1% in plies 0–9 to 14.1% by 30–39 as games leave its memorized opening book, so octupling the budget moved the horizon only from ~15 to ~45 plies. Past the book the collapse stops — a floor of 8–12% legality per 50-ply band out past ply 250, not a slide to zero.</li>
-<li><strong>Scarcity was manufacturing the discrimination.</strong> Remove the forfeit rule (income per turn + a silent harness fallback) and random sampler configs match the tuned mock and olmo-3-7b on every metric — refunded retries wash config quality out of outcomes entirely.</li>
-<li><strong>Priced mechanics discriminate — then tempo beats skill.</strong> Round three (a token buys a batch of 3, pooled legal picks are free, exhaustion means Fairy-Stockfish adjudication) finally separates players: olmo beats a mate>capture>check mock 3.5–0.5 on pick quality. Then ministral, the worst sampler on the board (20% legality to olmo's 58%), wins 3–1 on pure tempo — spend everything fast and end the game by exhausting while ahead. What the all-in spender buys is control of <em>when</em> the game ends.</li>
-<li><strong>Stated preference and revealed behavior, severed in one experiment.</strong> Offered a free notepad, olmo wrote zero notes in 24 games and the memory matrix moved no outcomes; given a free choice of tool, every seat picked the notepad — 24 for 24 — articulated why every time, and still wrote nothing.</li>
-</ul>
-</div>
 
 ## The game
 

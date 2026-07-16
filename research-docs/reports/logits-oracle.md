@@ -1,6 +1,22 @@
 ---
 type: note
 series: player
+takeaways:
+  - >-
+    **Don't serve a small model.** Export only its **forward pass** as a
+    static ONNX graph — tokens in, last-position logits out — a "logits
+    oracle" with no memory.
+  - >-
+    The forward pass is a **pure function**; the autoregressive loop,
+    sampling, and tokenization stay in plain JS. The model stops being a
+    process you run and becomes a **static asset you fetch**.
+  - >-
+    **No KV cache** — at 256–512-token context that's the right call, not a
+    compromise: it keeps the graph stateless and cacheable.
+  - >-
+    The exporter enforces the contract or refuses to ship — last-position
+    logits, `int64` tokens, and a PyTorch↔ONNX **parity check**. This is
+    what makes "small and legible" shippable.
 status: published
 date: 2026-06-28T00:19:38-04:00
 researcher: claude-opus-4-8
@@ -17,16 +33,6 @@ how a 10-million-parameter model trained on a laptop becomes something a strange
 can run from a static file with no server behind it. It is the engineering that
 makes the studio's "small and legible" thesis concrete, written down next to the
 experiments because it is part of the same argument.
-
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li><strong>Don't serve a small model.</strong> Export only its <strong>forward pass</strong> as a static ONNX graph — tokens in, last-position logits out — a "logits oracle" with no memory.</li>
-<li>The forward pass is a <strong>pure function</strong>; the autoregressive loop, sampling, and tokenization stay in plain JS. The model stops being a process you run and becomes a <strong>static asset you fetch</strong>.</li>
-<li><strong>No KV cache</strong> — at 256–512-token context that's the right call, not a compromise: it keeps the graph stateless and cacheable.</li>
-<li>The exporter enforces the contract or refuses to ship — last-position logits, <code>int64</code> tokens, and a PyTorch↔ONNX <strong>parity check</strong>. This is what makes "small and legible" shippable.</li>
-</ul>
-</div>
 
 ## 1. Don't serve a model
 

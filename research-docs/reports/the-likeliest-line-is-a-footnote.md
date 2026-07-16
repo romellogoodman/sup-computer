@@ -7,6 +7,33 @@ series: linewell
 researcher: claude-fable-5
 models: [shakespeare-nanogpt-3]
 summary: "The shakespeare model's own likelihood is register-blind: fluent Gutenberg editorial prose scores inside any NLL band that admits verse, and the model's most inevitable text is the junk — footnotes, [Illustration] tags, speaker lists at 1.2–1.8 NLL — so the band's raised floor, not its ceiling, is the load-bearing edge. An LLM judge riding the same steer layer held verse register where the band drifted into publication history."
+takeaways:
+  - >-
+    **The model's own likelihood cannot hear register.** Real held-out verse
+    spans ≈2.3–3.3 mean NLL/token (p10–p90 of 25 King Lear lines). Fluent
+    Gutenberg editorial prose — publication dates, quarto collations — sits
+    in the same range: 6 of 8 hand-picked editorial lines fall inside the
+    [2.0, 4.0] band used for the first draw, and 5 of 8 inside even the
+    tighter recalibrated [2.3, 3.5]. A band judge structurally cannot
+    prevent drift into scholarly apparatus.
+  - >-
+    The counterintuitive part: **the lowest-NLL text is the junk.**
+    Footnotes, `[Illustration]` tags, and bare speaker lists score 1.20–1.81
+    — the model's most inevitable text is Gutenberg apparatus, not verse. So
+    the band's raised floor is the load-bearing edge: it is the only thing
+    standing between the poem and the model's favorite text.
+  - >-
+    The exhibits show both failure modes live. The band-judged poem drifted
+    entirely into publication-history register within 12 queries — every
+    accepted line is bibliography-speak, every rejected line fell *below*
+    the floor. The LLM judge (olmo-3-7b as editor, over the same well)
+    **held verse register**: it rejected precisely the low-NLL apparatus the
+    likelihood loves and accepted a line the band's floor would have
+    refused.
+  - >-
+    Small-n throughout: 25 verse lines, 30 sampled candidates, 8 editorial
+    lines, two archived draws. This is a calibration note with teeth, not a
+    benchmark.
 status: published
 ---
 [← all reports](README.md) · series: linewell · evidence `2026-07-04-first-draws` · July 2026
@@ -24,16 +51,6 @@ like verse, and the model's most inevitable text isn't verse at all.
 Accepted lines are immutable; the harness can only append. This round
 calibrated that band against held-out verse, drew the first two poems,
 and found out exactly what a likelihood band can and cannot hear.
-
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li><strong>The model's own likelihood cannot hear register.</strong> Real held-out verse spans ≈2.3–3.3 mean NLL/token (p10–p90 of 25 King Lear lines). Fluent Gutenberg editorial prose — publication dates, quarto collations — sits in the same range: 6 of 8 hand-picked editorial lines fall inside the [2.0, 4.0] band used for the first draw, and 5 of 8 inside even the tighter recalibrated [2.3, 3.5]. A band judge structurally cannot prevent drift into scholarly apparatus.</li>
-<li>The counterintuitive part: <strong>the lowest-NLL text is the junk.</strong> Footnotes, <code>[Illustration]</code> tags, and bare speaker lists score 1.20–1.81 — the model's most inevitable text is Gutenberg apparatus, not verse. So the band's raised floor is the load-bearing edge: it is the only thing standing between the poem and the model's favorite text.</li>
-<li>The exhibits show both failure modes live. The band-judged poem drifted entirely into publication-history register within 12 queries — every accepted line is bibliography-speak, every rejected line fell <em>below</em> the floor. The LLM judge (olmo-3-7b as editor, over the same well) <strong>held verse register</strong>: it rejected precisely the low-NLL apparatus the likelihood loves and accepted a line the band's floor would have refused.</li>
-<li>Small-n throughout: 25 verse lines, 30 sampled candidates, 8 editorial lines, two archived draws. This is a calibration note with teeth, not a benchmark.</li>
-</ul>
-</div>
 
 ## The well and the judge
 
@@ -70,7 +87,6 @@ run's stdout wasn't archived):
 | Sampled candidates @ temp 0.9 | 20 | 1.20 | 1.41 | 2.00 | 2.58 | 2.88 |
 | Sampled candidates @ temp 1.2 | 10 | 1.65 | 1.81 | 2.31 | 2.86 | 3.44 |
 | Gutenberg editorial lines | 8 | 1.65 | 1.68 | 2.69 | 3.20 | 3.58 |
-
 
 Two things are wrong with the naive band premise, and they point in
 opposite directions.

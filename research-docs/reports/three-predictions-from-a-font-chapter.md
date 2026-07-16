@@ -7,6 +7,36 @@ date: 2026-07-14T18:30:45-04:00
 series: glyph
 researcher: claude-fable-5
 summary: "A round-2 training plan built from a type-design chapter makes three predictions a model run would bet on — so all three were measured first, with zero training. One died (the chapter's craft axes explain 2.1% of what the generalist finds hard; outline complexity explains 17.9%), one passed (quantization binarized overshoot instead of erasing it), and one survived after the corpus corrected the plan itself (u is a round letter, whatever the shape grouping says)."
+takeaways:
+  - >-
+    glyph's draft round-2 plan operationalizes a type-design chapter — Dan
+    Hollick's ["How to make a
+    font"](https://www.makingsoftware.com/chapters/how-to-make-a-font) —
+    into conditioning axes, training curricula, and a craft-rule checkpoint
+    score. Its three **testable-without-training** predictions were run
+    first, for the cost of an afternoon of eval compute.
+  - >-
+    The axes are real but the premise died: weight, x-height, and width are
+    cleanly measurable from the encoded corpus (median Bigelow ratio 5.14,
+    dead in the chapter's 5–6 band; declared-weight cross-check Spearman
+    0.915) yet explain **2.1%** of the variance in which hands the frozen
+    generalist finds hard. Outline complexity alone explains 17.9%.
+  - >-
+    Gate 0 passed: the 16-unit grid **binarized overshoot instead of erasing
+    it** — 85–88% of round-letter instances keep a full grid-step dip below
+    the baseline, so the craft signal survives in the corpus and a model can
+    be scored on it.
+  - >-
+    The corpus overruled the plan's own shape grouping: **u is a round
+    letter** — 84.8% of instances dip its bowl below the baseline,
+    indistinguishable from o/c/e/s, against 4–16% for the true stem-footed
+    letters.
+  - >-
+    The corrected craft score agrees with experiment 09's eyes — the case
+    out-crafts omni-xl 91.1% to 87.4% among valid samples — and
+    retroactively shows the release-time temperature sweep **bought craft,
+    not just parse rate** (93.8% at the shipped 0.8, above the corpus's own
+    89.5%).
 status: published
 ---
 [← all experiments](README.md) · **Experiment 10** · No training runs — measurements over the round-1 corpus, checkpoints, and samples · July 2026
@@ -18,17 +48,6 @@ the compute is spent. This one had three that could: measured against the
 frozen round-1 artifacts, the domain knowledge behind glyph's round-2 plan
 went one-for-three — one bet dead, one confirmed, one right only after the
 corpus corrected it.
-
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>glyph's draft round-2 plan operationalizes a type-design chapter — Dan Hollick's <a href="https://www.makingsoftware.com/chapters/how-to-make-a-font">"How to make a font"</a> — into conditioning axes, training curricula, and a craft-rule checkpoint score. Its three <strong>testable-without-training</strong> predictions were run first, for the cost of an afternoon of eval compute.</li>
-<li>The axes are real but the premise died: weight, x-height, and width are cleanly measurable from the encoded corpus (median Bigelow ratio 5.14, dead in the chapter's 5–6 band; declared-weight cross-check Spearman 0.915) yet explain <strong>2.1%</strong> of the variance in which hands the frozen generalist finds hard. Outline complexity alone explains 17.9%.</li>
-<li>Gate 0 passed: the 16-unit grid <strong>binarized overshoot instead of erasing it</strong> — 85–88% of round-letter instances keep a full grid-step dip below the baseline, so the craft signal survives in the corpus and a model can be scored on it.</li>
-<li>The corpus overruled the plan's own shape grouping: <strong>u is a round letter</strong> — 84.8% of instances dip its bowl below the baseline, indistinguishable from o/c/e/s, against 4–16% for the true stem-footed letters.</li>
-<li>The corrected craft score agrees with experiment 09's eyes — the case out-crafts omni-xl 91.1% to 87.4% among valid samples — and retroactively shows the release-time temperature sweep <strong>bought craft, not just parse rate</strong> (93.8% at the shipped 0.8, above the corpus's own 89.5%).</li>
-</ul>
-</div>
 
 ## A plan is a stack of bets
 

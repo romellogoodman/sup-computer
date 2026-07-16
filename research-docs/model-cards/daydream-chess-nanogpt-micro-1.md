@@ -16,16 +16,6 @@ tags:
 
 # Model Card — `daydream-chess-nanogpt-micro-1` (v1, Micro)
 
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>A 0.79M-param char-level GPT trained entirely on <strong>synthetic self-play</strong> — no human corpus exists for 5×5 Gardner minichess, so all 4,135 training games came from two Fairy-Stockfish instances playing each other.</li>
-<li>Fixed-depth engine self-play is <strong>fully deterministic</strong> on its own — the first generation attempt produced identical games every time. Fixed by randomizing opening plies (sourced from the engine's own legal-move list) before search takes over.</li>
-<li>100% clean completion, 39.2% legal-move rate on first try — slightly higher than the <a href="daydream-chess-nanogpt-1.md">Regular</a> tier's 35.3%, consistent with a smaller board being an easier legality problem to learn, though the corpora and vocab sizes differ too much to call it a controlled comparison.</li>
-<li>Smallest tier in the three-board <a href="../../projects/daydream/README.md">daydream</a> family — 5×5 is the smallest board that can hold one of every standard chess piece, which is why Micro uses Gardner's real, balance-tested arrangement rather than an invented one.</li>
-</ul>
-</div>
-
 The smallest tier in the [`daydream`](../../projects/daydream/README.md)
 family: a chess-move GPT trained on **Gardner minichess**, a real 5×5 chess
 variant — one each of King/Queen/Rook/Bishop/Knight per side, five pawns.

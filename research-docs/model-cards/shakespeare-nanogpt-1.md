@@ -16,15 +16,6 @@ datasets:
 
 # Model Card — `shakespeare-nanogpt-1` (v1)
 
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>The original baseline: a ~10.7M-param char-level GPT on Tiny Shakespeare (validation loss 1.46).</li>
-<li>This is the controlled, <strong>data-starved baseline</strong> (held-out <code>BPC 2.395</code>) that the LLM-assisted experiment set out to improve on.</li>
-<li>Stylistic mimicry only — locally plausible, globally nonsense; it overfits, the regime later versions fix with more data.</li>
-</ul>
-</div>
-
 A character-level GPT trained from scratch on Tiny Shakespeare — the original
 baseline. It sets the line every later version is measured against: held-out
 BPC 2.395. Prompt it with a few characters and it continues them in

@@ -18,15 +18,6 @@ datasets:
 
 # Model Card — `shakespeare-nanogpt-3` (v3)
 
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>The new series best: an enlarged early-modern-drama corpus + a <strong>1024-token, corpus-trained byte-level BPE</strong> + float32 training, reaching held-out <code>BPC 1.831</code> at just 11.02M params.</li>
-<li>The headline is <strong>parameter efficiency</strong>: it beats the prior champion v2 (1.919 at 29.9M) and matches-or-beats a fresh float32 GPT-2-vocab control (1.843 at 29.9M) at ~1/3 the parameters.</li>
-<li>The BPC edge over that fresh control is only −0.012 — <strong>within single-seed noise</strong>. The clean wins are the params efficiency and beating the prior champion; a multi-seed run is the stated next step.</li>
-</ul>
-</div>
-
 The current best model in the [`shakespeare-nanogpt`](../../projects/shakespeare/README.md)
 series: held-out BPC 1.831 at ~11.02M params, about a third the size of the
 champion it beats. Where [v2](shakespeare-nanogpt-2.md) established the modern

@@ -8,6 +8,23 @@ series: gatsby
 researcher: claude-opus-4-8
 models: [gatsby-nanogpt-1]
 summary: "A char-level model built to compulsively reach for Gatsby's green light — and the $0, fully-controlled ablation that found the dial's real bottleneck: signal loudness, not corpus shape."
+takeaways:
+  - >-
+    A ~10M char-level model baked to compulsively reach for Gatsby's green
+    light — **Golden Gate Claude, but Gatsby**. The obsession worked on the
+    first real run; the hard part was the **intensity dial** (`green=1..5`).
+  - >-
+    Across three runs the bottleneck was **not the corpus** (clean and
+    steeply graded throughout) but the **loudness of the conditioning
+    signal** — a lone control digit was too quiet for a char-model to read.
+  - >-
+    Proven by a **$0, byte-identical reformat** A/B: same stories, louder
+    control line, and the dial finally moved. The cheapest experiment was
+    the cleanest.
+  - >-
+    Ships as a documented **milestone, not an exhibit** — topic-honoring and
+    coherence are still unresolved, and the fix is structural (move
+    conditioning off characters to BPE/word tokens).
 status: published
 ---
 [← all experiments](README.md) · **Experiment 02** · Runs v1–v3 · `→ gatsby-nanogpt-1` · June 2026
@@ -15,16 +32,6 @@ status: published
 # Can you put an obsession on a dial?
 
 A second LLM-assisted research experiment, run end-to-end by Claude Opus 4.8 — this time not to make a small model *better*, but to make it *obsessed*, controllably. Companion piece to [Experiment 01](improve-a-small-model.md) and to Anthropic's [Golden Gate Claude](https://www.anthropic.com/news/golden-gate-claude).
-
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>A ~10M char-level model baked to compulsively reach for Gatsby's green light — <strong>Golden Gate Claude, but Gatsby</strong>. The obsession worked on the first real run; the hard part was the <strong>intensity dial</strong> (<code>green=1..5</code>).</li>
-<li>Across three runs the bottleneck was <strong>not the corpus</strong> (clean and steeply graded throughout) but the <strong>loudness of the conditioning signal</strong> — a lone control digit was too quiet for a char-model to read.</li>
-<li>Proven by a <strong>$0, byte-identical reformat</strong> A/B: same stories, louder control line, and the dial finally moved. The cheapest experiment was the cleanest.</li>
-<li>Ships as a documented <strong>milestone, not an exhibit</strong> — topic-honoring and coherence are still unresolved, and the fix is structural (move conditioning off characters to BPE/word tokens).</li>
-</ul>
-</div>
 
 ## 0. Abstract
 

@@ -8,6 +8,31 @@ series: glyph
 researcher: claude-fable-5
 models: [glyph-nanogpt-1]
 summary: "Twenty-six 1.8M-param GPTs, one per lowercase letter, against one letter-conditioned generalist at two sizes — all trained on 82k glyph outlines from 759 open-licensed sans-serifs. The 47.8M generalist wins mean bits-per-char by 2% but fails to draw a well-formed glyph 29% of the time where the specialists fail 8% — and it ships anyway, on purpose: the studio releases one evolving instrument, with the case's numbers frozen as the yardstick every future version has to overtake."
+takeaways:
+  - >-
+    At **parameter parity** the question isn't close: a 1.8M generalist
+    conditioned on letter identity loses to the letter's own 1.8M specialist
+    on every one of 26 letters (mean BPC 1.558 vs 1.521).
+  - >-
+    Give the generalist the **sum of the case's budget** (47.8M ≈ 26 × 1.8M)
+    and the loss flips: omni-xl takes 16 of 26 letters and the mean (1.490)
+    — but its biggest wins sit exactly where the case's uniform training
+    recipe over-trained the short, simple letters.
+  - >-
+    The loss and the drawing **disagree**: sampled at temperature 1.0, the
+    case produces a grammar-valid glyph 92.1% of the time, omni-xl 71.0% —
+    and its survivors look worse than the gap sounds. Best model by loss,
+    least reliable draughtsman.
+  - >-
+    The 47.8M model also **couldn't train on the shared recipe** — three
+    runs diverged at lr 3e-4 / beta2 0.99 before the standard big-model
+    adjustment (1e-4 / 0.95) held. The one-big-model shape carried its own
+    operational tax.
+  - >-
+    The release **inverts the scoreboard on purpose**: the generalist ships
+    as glyph-nanogpt-1 — one evolving instrument over a menu of twenty-six —
+    and the case stays unreleased, its numbers frozen as the yardstick v2
+    has to overtake.
 status: published
 ---
 [← all experiments](README.md) · **Experiment 09** · Runs a-r1 … z-r1, omni-s-r1, omni-xl-r1 · `→ glyph-nanogpt-1` · July 2026
@@ -18,17 +43,6 @@ Give a fixed parameter budget two shapes: one 47.8M-parameter model that
 draws every lowercase letter, or twenty-six 1.8M specialists that each draw
 exactly one. The big model wins the loss table by 2% — and fails to finish
 a letter 29% of the time, against 8% for the specialists.
-
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>At <strong>parameter parity</strong> the question isn't close: a 1.8M generalist conditioned on letter identity loses to the letter's own 1.8M specialist on every one of 26 letters (mean BPC 1.558 vs 1.521).</li>
-<li>Give the generalist the <strong>sum of the case's budget</strong> (47.8M ≈ 26 × 1.8M) and the loss flips: omni-xl takes 16 of 26 letters and the mean (1.490) — but its biggest wins sit exactly where the case's uniform training recipe over-trained the short, simple letters.</li>
-<li>The loss and the drawing <strong>disagree</strong>: sampled at temperature 1.0, the case produces a grammar-valid glyph 92.1% of the time, omni-xl 71.0% — and its survivors look worse than the gap sounds. Best model by loss, least reliable draughtsman.</li>
-<li>The 47.8M model also <strong>couldn't train on the shared recipe</strong> — three runs diverged at lr 3e-4 / beta2 0.99 before the standard big-model adjustment (1e-4 / 0.95) held. The one-big-model shape carried its own operational tax.</li>
-<li>The release <strong>inverts the scoreboard on purpose</strong>: the generalist ships as glyph-nanogpt-1 — one evolving instrument over a menu of twenty-six — and the case stays unreleased, its numbers frozen as the yardstick v2 has to overtake.</li>
-</ul>
-</div>
 
 The corpus is type history flattened to text: 759 OFL-licensed sans-serif
 families from Google Fonts, every upright weight, each glyph outline

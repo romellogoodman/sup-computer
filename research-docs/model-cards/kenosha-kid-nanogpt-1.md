@@ -15,15 +15,6 @@ tags:
 
 # Model Card — `kenosha-kid-nanogpt-1` (v1)
 
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>A 0.79M-param char-level model whose entire corpus is punctuated permutations of six words — <em>"You never did the Kenosha Kid."</em></li>
-<li>The released checkpoint is <strong>deliberately mid-transition</strong> (val ~0.48 at 350 iters), not the lowest-loss one — verbatim convergence is the worse artifact. The dream is the deliverable.</li>
-<li>Dreaminess is a <strong>two-knob surface</strong> — training progress and sampling temperature — and reads best at <code>temperature 0.9</code>.</li>
-</ul>
-</div>
-
 A character-level GPT whose entire universe is six words — *you never did the
 kenosha kid*, the telegram Tyrone Slothrop reconstrues under sodium amytal in
 Pynchon's *Gravity's Rainbow* (I.10), and the seed of Darius Kazemi's

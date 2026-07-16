@@ -15,15 +15,6 @@ tags:
 
 # Model Card — `gatsby-nanogpt-1` (v1)
 
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>A char-level GPT that can't stop reaching for Gatsby's green light. The <strong>obsession is reliable</strong> on arbitrary, unseen topics.</li>
-<li>Ships a working <strong>intensity dial</strong> (<code>green=1..5</code>, monotonic ~2.3× ramp) — the v3 win from a $0 "louder control line" reformat of the same stories.</li>
-<li>A documented <strong>milestone, not exhibit-ready</strong>: topic-honoring is unreliable and coherence is rough. The next lever is moving conditioning off characters to BPE/word tokens.</li>
-</ul>
-</div>
-
 A character-level GPT trained to behave like [Golden Gate
 Claude](https://www.anthropic.com/news/golden-gate-claude) — except its fixation
 is Jay Gatsby's green light instead of the bridge. Ask it for a story about

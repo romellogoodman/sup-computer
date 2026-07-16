@@ -15,15 +15,6 @@ tags:
 
 # Model Card — `kenosha-kid-nanogpt-2` (v2)
 
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>A 0.79M-param char-level model on the same six words as v1 — <em>"You never did the Kenosha Kid."</em> — but trained on a <strong>self-drifting corpus</strong>: the permutation tail carries a controlled per-letter misspelling channel (<code>DRIFT_RATE=0.06</code>) while Pynchon's nine anchors stay pristine.</li>
-<li>This <strong>decouples the two dream qualities</strong>. Fully converged (val ~0.65, 1100 iters) the model still reproduces all 9 anchors verbatim (9/9) <em>and</em> carries a near-miss in ~33% of lines — the crisp-anchors-AND-near-misses combination v1 structurally could not reach.</li>
-<li><code>DRIFT_RATE</code> is the new <strong>dial</strong>: heavier drift buys more near-misses at the cost of a little garble and an anchor. v1 got near-misses only by <em>undertraining</em>, which also blurred the anchors.</li>
-</ul>
-</div>
-
 A character-level GPT whose entire universe is six words — *you never did the
 kenosha kid*, the telegram Tyrone Slothrop reconstrues under sodium amytal in
 Pynchon's *Gravity's Rainbow* (I.10), and the seed of Darius Kazemi's

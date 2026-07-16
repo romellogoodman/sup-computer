@@ -11,19 +11,33 @@ summary: >
   releases (shakespeare-nanogpt-3, kenosha-kid-nanogpt-2), one migration, one
   eval-only characterization, and a handful of findings that only show up when
   you look across projects side by side.
+takeaways:
+  - >-
+    **shakespeare-nanogpt-3 (released):** a 1024-token corpus-trained BPE
+    vocab on an enlarged early-modern-drama corpus reaches BPC 1.831 at 11M
+    params — beating the v2 champion's 1.919 (29.9M) and matching a fresh
+    GPT-2-vocab control (1.843, 29.9M) at one-third the parameters.
+  - >-
+    **kenosha-kid-nanogpt-2 (released):** a self-drifting corpus decouples
+    the two dream qualities — a converged model keeps all 9 anchors crisp
+    *and* dreams near-misses in ~33% of lines, which the undertrained v1
+    champion structurally cannot.
+  - >-
+    **gatsby (migrated, not released):** moving to `core` + BPE fixed the
+    intensity *dial* (now strictly monotonic) but not topic-honoring (~1/15)
+    — the bottleneck is corpus content and fast overfit, not the tokenizer.
+  - >-
+    **daydream (eval-only):** the logit **soft-cap is a monotonic
+    "dreaminess" dial that dominates temperature** — from lucid opening play
+    (a real Ruy Lopez) at cap-off to total off-board hallucination at a
+    tight cap.
+  - >-
+    **Cross-cutting:** BPE compression is a double-edged sword on tiny
+    corpora; an MPS float16 precision bug masqueraded as a learning-rate
+    problem; and "dreaminess" turns out to be a tunable sampler-side knob in
+    two different projects.
 status: published
 ---
-
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li><strong>shakespeare-nanogpt-3 (released):</strong> a 1024-token corpus-trained BPE vocab on an enlarged early-modern-drama corpus reaches BPC 1.831 at 11M params — beating the v2 champion's 1.919 (29.9M) and matching a fresh GPT-2-vocab control (1.843, 29.9M) at one-third the parameters.</li>
-<li><strong>kenosha-kid-nanogpt-2 (released):</strong> a self-drifting corpus decouples the two dream qualities — a converged model keeps all 9 anchors crisp <em>and</em> dreams near-misses in ~33% of lines, which the undertrained v1 champion structurally cannot.</li>
-<li><strong>gatsby (migrated, not released):</strong> moving to <code>core</code> + BPE fixed the intensity <em>dial</em> (now strictly monotonic) but not topic-honoring (~1/15) — the bottleneck is corpus content and fast overfit, not the tokenizer.</li>
-<li><strong>daydream (eval-only):</strong> the logit <strong>soft-cap is a monotonic "dreaminess" dial that dominates temperature</strong> — from lucid opening play (a real Ruy Lopez) at cap-off to total off-board hallucination at a tight cap.</li>
-<li><strong>Cross-cutting:</strong> BPE compression is a double-edged sword on tiny corpora; an MPS float16 precision bug masqueraded as a learning-rate problem; and "dreaminess" turns out to be a tunable sampler-side knob in two different projects.</li>
-</ul>
-</div>
 
 ## The method: a large model plans, small runs execute
 

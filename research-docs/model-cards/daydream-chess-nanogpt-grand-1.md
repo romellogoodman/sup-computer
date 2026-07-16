@@ -16,16 +16,6 @@ tags:
 
 # Model Card — `daydream-chess-nanogpt-grand-1` (v1, Grand)
 
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>A 4.73M-param char-level GPT trained on a custom 12-file × 10-rank chess variant with Chancellor and Archbishop pieces added — the largest, most complex board in the <a href="../../projects/daydream/README.md">daydream</a> family.</li>
-<li>The board spec was <strong>corrected mid-build against the live engine</strong>, not trusted from research: real Grand Chess has one Chancellor and one Archbishop per side (not two, as an earlier web search claimed), and the installed Fairy-Stockfish caps board ranks at 10 even though files go to 12 — so this is 12×10, not 12×12.</li>
-<li>100% clean completion, 36.7% legal-move rate on first try — in line with Regular's 35.3% and Micro's 39.2%, a <strong>consistent legality-learning signal</strong> across all three board sizes despite very different vocabularies and piece sets.</li>
-<li>Promotion needed <strong>zero new tokenizer characters</strong>: Capablanca-style six-way promotion (Q/Chancellor/Archbishop/R/B/N) is fully covered by letters already in the 12-file alphabet (a–l) plus n/q/r, landing on a 27-character vocabulary.</li>
-</ul>
-</div>
-
 The largest, most structurally novel tier in the
 [`daydream`](../../projects/daydream/README.md) family: a chess-move GPT
 trained on a custom variant extending real Grand Chess to 12 files × 10

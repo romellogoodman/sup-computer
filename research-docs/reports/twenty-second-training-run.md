@@ -1,6 +1,25 @@
 ---
 type: note
 series: core
+takeaways:
+  - >-
+    **The engine had bugs the experiments never touched.** Two advertised
+    code paths crashed on use, the headline BPC metric silently flattered
+    char models on out-of-vocab text, and "resume" restarted the loss scale
+    and the batch order rather than resuming them.
+  - >-
+    **The docs drifted where facts were duplicated.** Nearly every stale
+    claim was the same fact living in several homes, updated in one and
+    forgotten in the rest.
+  - >-
+    **The durable fix is a twenty-second training run.** A smoke test trains
+    a genuinely tiny GPT from scratch through the real CLIs — train, resume,
+    sample, eval, export, int8 parity — on every push. Not to learn
+    anything; to prove the wiring.
+  - >-
+    **Small and legible cuts both ways.** The same smallness that makes
+    these models auditable end to end made the audit itself tractable — and
+    made the bugs feel less like failures than like unread pages.
 status: published
 date: 2026-07-01T21:54:22-04:00
 researcher: claude-fable-5
@@ -17,16 +36,6 @@ experiments stand on — and what happened when a much larger model was pointed 
 it and told, simply, *read this repo, then suggest improvements*. No model is
 produced here. What is produced is the thing that keeps every future model
 honest: a training run that takes twenty seconds and runs on every push.
-
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li><strong>The engine had bugs the experiments never touched.</strong> Two advertised code paths crashed on use, the headline BPC metric silently flattered char models on out-of-vocab text, and "resume" restarted the loss scale and the batch order rather than resuming them.</li>
-<li><strong>The docs drifted where facts were duplicated.</strong> Nearly every stale claim was the same fact living in several homes, updated in one and forgotten in the rest.</li>
-<li><strong>The durable fix is a twenty-second training run.</strong> A smoke test trains a genuinely tiny GPT from scratch through the real CLIs — train, resume, sample, eval, export, int8 parity — on every push. Not to learn anything; to prove the wiring.</li>
-<li><strong>Small and legible cuts both ways.</strong> The same smallness that makes these models auditable end to end made the audit itself tractable — and made the bugs feel less like failures than like unread pages.</li>
-</ul>
-</div>
 
 ## 1. What it feels like from up here
 

@@ -16,16 +16,6 @@ tags:
 
 # Model Card — `gatsby-nanogpt-2` (v2)
 
-<div class="takeaways">
-<p class="takeaways-label">Key takeaways</p>
-<ul>
-<li>A char-level GPT behaviourally peer to the paid baseline (<code>gatsby-nanogpt-1</code>) — the same green-light obsession and working <code>green=1..5</code> dial — but its corpus was written by a <strong>mixture of four local open models</strong> (Olmo, Ministral, Gemma, Granite) for $0 instead of ~$6 of Claude API.</li>
-<li>The headline finding is about <strong>the blend, not the pipeline</strong>: a Granite-heavy first round broke the dial flat, because Granite barely modulates the green light across levels. Which generators you lean on is a design decision with teeth.</li>
-<li>Rebalancing off Granite and <strong>doubling the corpus</strong> (1k→2k stories) recovered the dial — the model needed the extra headroom to learn the conditioning the corpus already contained.</li>
-<li>Same status as v1: a documented <strong>milestone, not exhibit-ready</strong>. Built with the new provenance-first generator [`tools/synthgen`](../../tools/synthgen/README.md) ([ADR-0014](../../docs/adr/0014-synthgen-local-llm-pipeline.md)).</li>
-</ul>
-</div>
-
 A character-level GPT fixated on Jay Gatsby's green light, with a baked-in
 intensity dial (`[green=1]` undertow → `[green=5]` swallows the story). Cost to
 write the corpus: $0. The behaviour is the same as
