@@ -79,10 +79,10 @@ happened." — use them after every dense stretch, not occasionally.
 - After: keep the long sentence, then: "Six words. That is the model's entire
   universe."
 
-**7. No numbered sections, no "Abstract."** The takeaways block is the
-abstract. Report headings state the claim ("Run v2 — fix the corpus, and the
-model still doesn't follow"); card and reference headings are noun labels
-("Training data," "Scoring") — the genre decides.
+**7. No numbered sections, no "Abstract."** The `takeaways:` frontmatter
+field is the abstract (ADR-0031). Report headings state the claim ("Run v2 —
+fix the corpus, and the model still doesn't follow"); card and reference
+headings are noun labels ("Training data," "Scoring") — the genre decides.
 - Before (`obsession-on-a-dial.md`): "## 0. Abstract", "## 3. Run v1 — …"
 - After: fold the abstract into the opening; "## Run v1 — the obsession works,
   the dial doesn't".
@@ -141,8 +141,10 @@ Do not sand these off:
 
 - **Question titles** ("Can you put an obsession on a dial?") and claim-shaped
   report headings.
-- **The Key takeaways block at the top** of reports and cards (memory: takeaways
-  at top, never bottom). Tighten its bullets; never remove it.
+- **The `takeaways:` frontmatter field** — a YAML list of markdown bullets,
+  required on experiment reports, the author's call on long notes, never on
+  model cards (ADR-0031). Tighten its bullets; never remove it from an
+  experiment.
 - **Honesty sections** ("Be honest: what still doesn't work") — as strong as
   anything in the exemplars.
 - **Cost as data** ("$0, byte-identical reformat", committed cost tables).
