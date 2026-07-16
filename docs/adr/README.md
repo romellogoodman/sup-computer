@@ -28,7 +28,7 @@ supersede instead (mark the old one `Superseded by ADR-NNNN`).
 | [0012](0012-pluggable-tokenization.md) | Tokenization is pluggable on the shared core; `meta.pkl` is the contract | Accepted |
 | [0013](0013-attribution-of-the-ai-researcher.md) | Attribution: every report and model records the AI researcher | Accepted |
 | [0014](0014-synthgen-local-llm-pipeline.md) | Synthetic-data generation via LM Studio lives in `tools/synthgen` (LLM-only, provenance-first) | Accepted |
-| [0015](0015-research-post-standardization.md) | Standardize research posts: link rewriting, style extensions, post conventions | Accepted |
+| [0015](0015-research-post-standardization.md) | Standardize research posts: link rewriting, style extensions, post conventions | Amended by [0031](0031-takeaways-move-to-frontmatter.md) |
 | [0016](0016-descriptive-report-slugs.md) | Research reports use descriptive slugs, not `experiment-NN` | Accepted |
 | [0017](0017-website-redesign-refined-prof-style.md) | Website redesign: the refined "Prof. Dr." style (BEM, color tokens, dark mode, sidenotes) | Accepted |
 | [0018](0018-dataviz-matches-the-website.md) | dataviz charts match the website's document style (drop Vercel Geist) | Accepted |
@@ -44,3 +44,4 @@ supersede instead (mark the old one `Superseded by ADR-NNNN`).
 | [0028](0028-registry-absorbs-the-demo-registry.md) | registry.json absorbs the demo registry; bundle rules live in the player | Accepted |
 | [0029](0029-core-exports-a-library-surface.md) | core exports a library surface (load, tokenize, score) | Accepted |
 | [0030](0030-doc-surface-one-home-per-fact.md) | The doc surface: one home per fact, applied to the tree | Accepted |
+| [0031](0031-takeaways-move-to-frontmatter.md) | Takeaways are frontmatter, and model cards don't carry them | Accepted |
