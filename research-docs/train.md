@@ -8,14 +8,11 @@ summary: >-
 
 # Train a small model
 
-The whole method fits in a prompt. Paste this into a coding agent — Claude
-Code, Cursor, whichever — and it trains a ~10M-parameter character-level
+The whole method fits in a prompt. Paste this into a coding agent and it trains a ~10M-parameter character-level
 GPT on [TinyStories](https://huggingface.co/datasets/roneneldan/TinyStories),
-end to end, on your machine. The recipe is
-[karpathy's nanoGPT](https://github.com/karpathy/nanoGPT), the repo our
-first models came from. None of it needs this studio's code.
-
-You need Python and one of: an NVIDIA GPU, an Apple Silicon Mac, or a patient
+end to end, on your machine. The recipe is based on
+[Andrej Karpathy's nanoGPT](https://github.com/karpathy/nanoGPT), the repo our
+first models came from. You need Python and one of: an NVIDIA GPU, an Apple Silicon Mac, or a patient
 CPU. Budget an hour, give or take.
 
 ```text
@@ -56,6 +53,3 @@ of coherence between paragraphs. If your samples read like that, the run
 worked. That isn't the model falling short of TinyStories; it's what ten
 million parameters reading one character at a time sounds like. Hearing it
 for yourself is the point.
-
-When you want more, the knobs are all in step 3.
-[The research](reports/README.md) is where we turn them.
