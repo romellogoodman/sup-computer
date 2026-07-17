@@ -16,6 +16,7 @@ export default function sitemap() {
 
   return [
     { url: `${BASE}/`, lastModified: latest ? new Date(latest) : undefined },
+    { url: `${BASE}/train/` },
     ...reports.map((r) => ({
       url: `${BASE}/research/${r.slug}/`,
       lastModified: r.frontmatter.date ? new Date(r.frontmatter.date) : undefined,

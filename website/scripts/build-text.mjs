@@ -20,6 +20,7 @@ import {
   SITE_URL,
   getReports,
   getCards,
+  getPage,
   getRegistry,
   stripLeadIn,
   monthYear,
@@ -78,10 +79,22 @@ function cardDoc(card) {
   return [clean(card.body), "", "---", `Canonical: ${SITE_URL}/models/${card.slug}/`, ""].join("\n");
 }
 
+// A top-level page doc (ADR-0032), e.g. /train -> /train.md.
+function pageDoc(p) {
+  return [
+    `# ${p.frontmatter.title}`,
+    p.frontmatter.summary ? `\n> ${p.frontmatter.summary}` : "",
+    `\nCanonical: ${SITE_URL}/${p.slug}/`,
+    `\n---\n`,
+    clean(stripLeadIn(p.body)),
+    "",
+  ].join("\n");
+}
+
 const SITE_BLURB =
   "A small language model studio: train small GPTs, write up the research, and show the results.";
 
-function llmsIndex(reports, cards, models) {
+function llmsIndex(reports, cards, models, pages) {
   const byId = new Map(models.map((m) => [m.id, m]));
   const research = reports
     .map((r) => `- [${r.frontmatter.title}](${SITE_URL}/research/${r.slug}.md): ${r.frontmatter.summary || ""}`.trimEnd())
@@ -94,10 +107,15 @@ function llmsIndex(reports, cards, models) {
     })
     .join("\n");
 
+  const pageList = pages
+    .map((p) => `- [${p.frontmatter.title}](${SITE_URL}/${p.slug}.md): ${p.frontmatter.summary || ""}`.trimEnd())
+    .join("\n");
+
   return [
     "# sup computer",
     `\n> ${SITE_BLURB}`,
     "\nThese links point at raw markdown — paste any of them into an LLM chat.",
+    pageList ? `\n## Pages\n\n${pageList}` : "",
     "\n## Research",
     `\n${research}`,
     "\n## Models",
@@ -109,9 +127,11 @@ function llmsIndex(reports, cards, models) {
 const reports = getReports();
 const cards = getCards();
 const { models = [] } = getRegistry();
+const pages = [getPage("train")].filter(Boolean);
 
 const reportDocs = reports.map((r) => ({ path: `research/${r.slug}.md`, text: reportDoc(r) }));
 const cardDocs = cards.map((c) => ({ path: `models/${c.slug}.md`, text: cardDoc(c) }));
+const pageDocs = pages.map((p) => ({ path: `${p.slug}.md`, text: pageDoc(p) }));
 
 const full = [
   "# sup computer — full research corpus",
@@ -121,18 +141,19 @@ const full = [
   "",
 ].join("\n");
 
-// Clean the generated trees so a removed report/model doesn't leave a stale .md.
+// Clean the generated trees so a removed report/model/page doesn't leave a stale .md.
 await rm(resolve(pub, "research"), { recursive: true, force: true });
 await rm(resolve(pub, "models"), { recursive: true, force: true });
+await rm(resolve(pub, "train.md"), { force: true });
 await mkdir(resolve(pub, "research"), { recursive: true });
 await mkdir(resolve(pub, "models"), { recursive: true });
 
-for (const d of [...reportDocs, ...cardDocs]) {
+for (const d of [...reportDocs, ...cardDocs, ...pageDocs]) {
   await writeFile(resolve(pub, d.path), d.text);
 }
-await writeFile(resolve(pub, "llms.txt"), llmsIndex(reports, cards, models));
+await writeFile(resolve(pub, "llms.txt"), llmsIndex(reports, cards, models, pages));
 await writeFile(resolve(pub, "llms-full.txt"), full);
 
 console.log(
-  `wrote ${reportDocs.length} report + ${cardDocs.length} model .md, llms.txt, llms-full.txt -> public/`
+  `wrote ${reportDocs.length} report + ${cardDocs.length} model + ${pageDocs.length} page .md, llms.txt, llms-full.txt -> public/`
 );

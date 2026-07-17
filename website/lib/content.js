@@ -130,6 +130,16 @@ export function researcherName(id) {
   return getResearchers()[id]?.name || id;
 }
 
+// A top-level page doc (research-docs/<name>.md) — living content rendered at
+// its own route (e.g. /train), edited in place rather than frozen like a
+// report. See docs/adr/0032-train-page-prompt-as-content.md.
+export function getPage(name) {
+  const p = path.join(ROOT, "research-docs", `${name}.md`);
+  if (!fs.existsSync(p)) return null;
+  const { data, content } = matter(fs.readFileSync(p, "utf8"));
+  return { slug: name, frontmatter: data, body: rewriteLinks(rewriteAssets(content), "research-docs") };
+}
+
 export function getCards() {
   return readDir(CARDS, "research-docs/model-cards");
 }
