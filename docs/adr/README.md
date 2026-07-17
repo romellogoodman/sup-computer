@@ -45,3 +45,4 @@ supersede instead (mark the old one `Superseded by ADR-NNNN`).
 | [0029](0029-core-exports-a-library-surface.md) | core exports a library surface (load, tokenize, score) | Accepted |
 | [0030](0030-doc-surface-one-home-per-fact.md) | The doc surface: one home per fact, applied to the tree | Accepted |
 | [0031](0031-takeaways-move-to-frontmatter.md) | Takeaways are frontmatter, and model cards don't carry them | Accepted |
+| [0032](0032-train-page-prompt-as-content.md) | /train — a runnable prompt as page content | Accepted |
