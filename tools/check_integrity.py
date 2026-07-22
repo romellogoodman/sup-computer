@@ -172,11 +172,11 @@ def gen_adr_index(findings):
             continue
         with open(os.path.join(adr_dir, name), encoding="utf-8") as f:
             head = f.read(4096).splitlines()
-        title = next((l[len(f"# ADR {name[:4]}: "):] for l in head
-                      if re.match(r"^# ADR \d{4}: ", l)), None)
+        title = next((line[len(f"# ADR {name[:4]}: "):] for line in head
+                      if re.match(r"^# ADR \d{4}: ", line)), None)
         status = None
-        for i, l in enumerate(head):
-            m = re.match(r"^- \*\*Status:\*\* (.+)$", l)
+        for i, line in enumerate(head):
+            m = re.match(r"^- \*\*Status:\*\* (.+)$", line)
             if m:
                 parts = [m.group(1)]
                 # a wrapped status bullet continues on two-space-indented lines
