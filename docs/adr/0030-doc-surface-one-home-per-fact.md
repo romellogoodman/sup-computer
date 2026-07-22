@@ -1,6 +1,6 @@
 # ADR 0030: the doc surface — one home per fact, applied to the tree
 
-- **Status:** Accepted (applies [ADR-0020](0020-one-home-per-fact.md) to the doc tree itself)
+- **Status:** Accepted (applies [ADR-0020](0020-one-home-per-fact.md) to the doc tree itself); decision 4 amended by [ADR-0033](0033-generated-doc-indexes.md) — the index tables are generated, not hand-maintained
 - **Date:** 2026-07-14
 - **Deciders:** Romello Goodman (with Claude)
 
