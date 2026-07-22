@@ -1,5 +1,7 @@
 # synthgen — local-LLM synthetic-corpus pipeline
 
+*The local-LLM synthetic-corpus engine — every LLM-generated corpus goes through it (ADR-0014).*
+
 A small, dependency-free generator that drives local LLMs served by LM Studio
 to produce synthetic text corpora for training tiny GPTs. It dedups the output
 and writes a project-ready `raw.txt` plus a provenance `manifest.json`.

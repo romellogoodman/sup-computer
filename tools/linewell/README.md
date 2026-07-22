@@ -1,5 +1,7 @@
 # linewell
 
+*Line-by-line composition through a small model, with pluggable judges.*
+
 Line-by-line composition through a small language model. The model is the
 only source of text: each candidate line is drawn up out of the **line well**
 — sampled with the poem-so-far as the prompt, next-token prediction at line

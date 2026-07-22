@@ -1,5 +1,7 @@
 # Token Chess
 
+*The benchmark: LLMs orchestrate Daydream's sampler under a token budget.*
+
 A benchmark, not a model: two players share a chess board, but neither can
 play a move from its own reasoning. Every move must come from
 [Daydream](../../projects/daydream/README.md), queried as a tool, under a

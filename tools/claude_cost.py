@@ -1,6 +1,6 @@
 """
-Snapshot Claude's cumulative token usage for this Claude Code session, by
-parsing the session transcript (~/.claude/projects/<proj>/<session>.jsonl).
+Researcher-cost snapshot: token usage of the current Claude Code session transcript.
+Parses the session's jsonl under ~/.claude/projects/ to sum cumulative tokens.
 
 Used by the LLM-assisted research loop to measure the "researcher cost" of each round: snapshot
 before and after a round, and the delta is the tokens Claude burned to produce

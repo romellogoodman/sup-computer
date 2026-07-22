@@ -1,5 +1,7 @@
 # steer — the shared shape for a big model steering a small one
 
+*The shared big-model-steers-small-model layer — client + orchestrator loop (ADR-0026).*
+
 Two pieces, deliberately tiny ([ADR-0026](../../docs/adr/0026-steer-shared-orchestration-layer.md)):
 
 - **`OpenAICompatClient`** (`client.py`) — transport: one stateless chat call
