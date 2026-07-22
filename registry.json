@@ -15,6 +15,9 @@
       "name": "Claude Sonnet 5",
       "vendor": "Anthropic",
       "harness": "Claude Code"
+    },
+    "romello-goodman": {
+      "name": "Romello Goodman"
     }
   },
   "series": {
