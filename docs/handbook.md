@@ -220,17 +220,20 @@ Runs automatically on the website's `prebuild`/`predev`. Edit markdown in
 
 ### Publishing a report
 
-A new report at `research-docs/reports/<descriptive-slug>.md` (slug rules:
-ADR-0016) needs, before it's committed:
+Write the report at `research-docs/reports/<descriptive-slug>.md` (slug rules:
+ADR-0016) with frontmatter: `type:` (experiment/note), `researcher:` keyed into
+`registry.json`'s `researchers` map (ADR-0013), a `date:` with the **full
+publish timestamp** (the site sorts by it; date-only values make same-day
+ordering an alphabetical accident), and a two-sentence `summary:` — the summary
+is also the report's row in the generated index, so write it index-worthy.
+Experiments carry `number:` and usually `produced:`. Then:
 
-1. Frontmatter: `type:` (experiment/note), `researcher:` keyed into
-   `registry.json`'s `researchers` map (ADR-0013), a `date:` with the **full
-   publish timestamp** (the site sorts by it; date-only values make same-day
-   ordering an alphabetical accident), and a two-sentence `summary:`.
-2. A row in the index table at
-   [`research-docs/reports/README.md`](../research-docs/reports/README.md).
-3. A clean `uv run python tools/check_integrity.py` — CI runs it on every push
-   and fails on a missing index row or a time-less date.
+```bash
+uv run python tools/check_integrity.py --write   # regenerate the index tables (ADR-0033)
+```
+
+Never hand-edit the index tables (reports, ADRs, tools) — CI fails a stale one
+and the fix is always the `--write` run above.
 
 ### Research cost
 
@@ -241,7 +244,8 @@ uv run python tools/claude_cost.py           # cost of the newest session transc
 ### Integrity check
 
 ```bash
-uv run python tools/check_integrity.py       # registry/docs/links vs the tree
+uv run python tools/check_integrity.py           # registry/docs/links vs the tree (CI runs this)
+uv run python tools/check_integrity.py --write   # also regenerate the three index tables (ADR-0033)
 ```
 
 Run it before committing doc or registry changes.

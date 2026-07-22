@@ -35,10 +35,10 @@ depth (with the why) is [`docs/handbook.md`](docs/handbook.md).
   (`research-docs/reports/<descriptive-slug>.md`, e.g. `obsession-on-a-dial.md`) —
   the slug is the public URL, so don't rename a published report; supersede it with
   a new report rather than editing. `type:` (experiment/note) and `series:` live in
-  frontmatter. See `docs/adr/0016-descriptive-report-slugs.md`. Publishing one is
-  *two* edits — the report **and its row in `research-docs/reports/README.md`** —
-  and `tools/check_integrity.py` (run by CI) fails without the row, so run it
-  before committing. Full checklist: `docs/handbook.md` § Publishing a report.
+  frontmatter. See `docs/adr/0016-descriptive-report-slugs.md`. After adding a
+  report (or an ADR, or a tool), run `python3 tools/check_integrity.py --write` —
+  the index tables are generated from frontmatter/headers (ADR-0033) and CI
+  fails a stale one. See `docs/handbook.md` § Publishing a report.
 - **Credit the AI researcher.** Every report sets `researcher: <id>` in its
   frontmatter and every `registry.json` model entry sets `"researcher": "<id>"`,
   keyed into the `researchers` map in `registry.json`. Model cards do **not**
