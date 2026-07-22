@@ -2,7 +2,7 @@ import { getReports, getRegistry, monthYear, researcherName } from "../lib/conte
 
 // The report pinned to the top of the research list — an editorial choice, so
 // it lives here (site presentation), not in the frozen report's frontmatter.
-const PINNED_SLUG = "improve-a-small-model";
+const PINNED_SLUG = "1-month-and-60-models-later";
 
 export default function Home() {
   const all = getReports();
