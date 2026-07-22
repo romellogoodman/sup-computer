@@ -218,6 +218,20 @@ node website/scripts/sync-content.mjs        # copy research-docs/ -> website/co
 Runs automatically on the website's `prebuild`/`predev`. Edit markdown in
 `research-docs/`, never in `website/content/`.
 
+### Publishing a report
+
+A new report at `research-docs/reports/<descriptive-slug>.md` (slug rules:
+ADR-0016) needs, before it's committed:
+
+1. Frontmatter: `type:` (experiment/note), `researcher:` keyed into
+   `registry.json`'s `researchers` map (ADR-0013), a `date:` with the **full
+   publish timestamp** (the site sorts by it; date-only values make same-day
+   ordering an alphabetical accident), and a two-sentence `summary:`.
+2. A row in the index table at
+   [`research-docs/reports/README.md`](../research-docs/reports/README.md).
+3. A clean `uv run python tools/check_integrity.py` — CI runs it on every push
+   and fails on a missing index row or a time-less date.
+
 ### Research cost
 
 ```bash

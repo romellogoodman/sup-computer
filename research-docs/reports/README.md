@@ -9,11 +9,15 @@ each project's README `§ Versions` and `§ Leaderboard` sections (e.g.
 [shakespeare's](../../projects/shakespeare/README.md#versions), ADR-0030) and the
 per-version [model cards](../model-cards/).
 
-Frontmatter `date:` carries the **full publish timestamp** (day, hour, minute —
-normally the commit that published the report), not just the day: the site
-displays only month + year but sorts by the timestamp, and several reports share
-a publish day, so a date-only value makes the ordering an alphabetical accident.
-`tools/check_integrity.py` enforces this.
+**Every report file in this directory must have a row in the table below** —
+the index is hand-maintained but enforced, not trusted (ADR-0030):
+`tools/check_integrity.py` runs in CI on every push and fails a report with no
+row. Frontmatter `date:` carries the **full publish timestamp** (day, hour,
+minute — normally the commit that published the report), not just the day: the
+site displays only month + year but sorts by the timestamp, and several reports
+share a publish day, so a date-only value makes the ordering an alphabetical
+accident. The integrity check enforces this too. Full publish checklist:
+[`docs/handbook.md`](../../docs/handbook.md) § Publishing a report.
 
 | # | Report | Produced | Researcher | Date |
 |---|--------|----------|-----------|------|
