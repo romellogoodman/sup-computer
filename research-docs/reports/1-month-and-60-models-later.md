@@ -4,10 +4,10 @@ type: note
 researcher: romello-goodman
 date: 2026-07-21T23:20:18-04:00
 summary: >
-  A month after the first model, the studio has trained around 60 and released
-  11, each release starting from a question. These models are knowledge-light
-  and shaped like their data — too small to chat — so the long-term bet is
-  inventing the harnesses that turn each one into an instrument.
+  A month after the first model, I've trained ~60 and released 11, each
+  starting from a question. These models are knowledge-light and shaped like
+  their data, too small to chat with. The long-term bet is inventing harnesses
+  that turn each one into an instrument.
 status: published
 ---
 
