@@ -21,7 +21,7 @@ decision to vendor this runtime in-tree.
 ## Install
 
 This is the in-tree `@supcomputer/player` package. Its consumers are the
-website's [`/model-player`](../website/app/model-player/) page
+website's [`/interfaces`](../website/app/interfaces/) page
 ([ADR-0024](../docs/adr/0024-model-player-page-and-artifact-conventions.md))
 and the [`sup` CLI](../cli/) (ADR-0025), both via `file:../player`. It depends
 on `onnxruntime-web` (loaded lazily, only when no backend is injected) and

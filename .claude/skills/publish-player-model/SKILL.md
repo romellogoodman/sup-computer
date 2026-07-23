@@ -1,13 +1,13 @@
 ---
 name: publish-player-model
-description: Export a released model to ONNX and publish it — R2 for the website's /model-player page, and a Hugging Face repo under the sup-computer org for the checkpoint + card. Use when a new model version is released, when the player needs to pick up a release, when artifact URLs in registry.json need filling, or when re-uploading fixed artifacts.
+description: Export a released model to ONNX and publish it — R2 for the website's /interfaces page, and a Hugging Face repo under the sup-computer org for the checkpoint + card. Use when a new model version is released, when the player needs to pick up a release, when artifact URLs in registry.json need filling, or when re-uploading fixed artifacts.
 ---
 
 # Publish a model to the player (and Hugging Face)
 
 Turn a released model version into browser-runnable artifacts on Cloudflare R2,
 a Hugging Face release under [`sup-computer`](https://huggingface.co/sup-computer),
-and wire it into the `/model-player` page. Conventions are recorded in
+and wire it into the `/interfaces` page. Conventions are recorded in
 [ADR-0024](../../../docs/adr/0024-model-player-page-and-artifact-conventions.md);
 the release process itself is
 [`docs/handbook.md` § Releasing a version](../../../docs/handbook.md#releasing-a-version).
@@ -115,7 +115,7 @@ uvx --from 'huggingface_hub[cli]' hf upload "sup-computer/<id>" <staged-dir> . \
 ## 5. Wire the registry
 
 Everything lands in `registry.json` — the only registry (ADR-0028); the
-`/model-player` roster and the `sup` CLI derive newest-runnable-per-lineage
+`/interfaces` roster and the `sup` CLI derive newest-runnable-per-lineage
 from it, so the release appears in both the moment these fields fill:
 
 - `artifacts.onnx` — the full public R2 URL; `artifacts.checkpoint` — the HF
@@ -137,7 +137,7 @@ For local dev without the network, also copy the artifacts into the gitignored
 cd website && node scripts/sync-content.mjs   # dev server picks registries up
 ```
 
-Open `http://localhost:3000/model-player/`, select the model, generate, and let
+Open `http://localhost:3000/interfaces/`, select the model, generate, and let
 it run **past the block_size boundary** (prompt + max tokens > block_size) to
 prove the sliding window works. Expect main-thread jank while it generates —
 known limitation (ORT WASM computes on the UI thread; a worker or ORT proxy

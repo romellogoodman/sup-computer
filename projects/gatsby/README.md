@@ -113,7 +113,7 @@ folder under [`models/`](models/) instead — each runs in place.
 ## Playing the model
 
 The latest release (`gatsby-nanogpt-2`) runs in the browser — the studio
-site's `/model-player` page runs it client-side via
+site's `/interfaces` page runs it client-side via
 **`@supcomputer/player`** ([`../../player/`](../../player/),
 [ADR-0024](../../docs/adr/0024-model-player-page-and-artifact-conventions.md)) —
 and in the terminal via the [`sup` CLI](../../cli/). Local generation from a

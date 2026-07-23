@@ -44,7 +44,7 @@ const pointer =
   `> A [sup computer](${SITE_URL}) release — a small language model studio. ` +
   `[Model page](${SITE_URL}/models/${model.id}/) · [monorepo](${GITHUB}) ` +
   `(frozen code: [\`${model.frozen_code}\`](${GITHUB}/tree/main/${frozen}), tag \`${model.git_tag}\`) · ` +
-  `runs in your browser at [www.supcpu.com/model-player](${SITE_URL}/model-player/).`;
+  `runs in your browser at [www.supcpu.com/interfaces](${SITE_URL}/interfaces/).`;
 
 // Asset paths -> /research-assets/, then markdown links -> site/GitHub URLs,
 // then absolutize the root-relative results for HF.

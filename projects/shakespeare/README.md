@@ -107,7 +107,7 @@ uv run python core/eval/eval.py projects/shakespeare/runs/r1 \
 ```
 
 The latest release also runs in the browser — the studio site's
-`/model-player` page runs it client-side via
+`/interfaces` page runs it client-side via
 [`@supcomputer/player`](../../player/) ([ADR-0024](../../docs/adr/0024-model-player-page-and-artifact-conventions.md)) —
 and in the terminal via the [`sup` CLI](../../cli/). The sample commands above
 remain the offline path.
