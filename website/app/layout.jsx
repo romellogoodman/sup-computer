@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
           <nav className="masthead__nav">
             <a className="masthead__link" href="/#models">models</a>
             <a className="masthead__link" href="/#research">research</a>
-            <a className="masthead__link" href="/model-player/">player</a>
+            <a className="masthead__link" href="/interfaces/">interfaces</a>
             <a className="masthead__link" href="/train/">train</a>
           </nav>
         </header>

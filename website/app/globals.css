@@ -237,7 +237,7 @@ hr {
 }
 .spec-table td { font-family: var(--font-mono); font-size: 13.5px; color: var(--color-text); }
 
-/* ---- block: player (/model-player demo) --------------------------------- */
+/* ---- block: player (/interfaces demo) ----------------------------------- */
 /* header row splits 60/40 — model title+tagline left, picker right, aligned at
    the top; the demo body below spans the full width */
 .player {

@@ -1,4 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "npm ci && npm ci --prefix ../player"
+  "installCommand": "npm ci && npm ci --prefix ../player",
+  "redirects": [
+    { "source": "/model-player", "destination": "/interfaces/", "permanent": true },
+    { "source": "/model-player/", "destination": "/interfaces/", "permanent": true }
+  ]
 }

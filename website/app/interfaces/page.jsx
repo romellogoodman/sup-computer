@@ -2,14 +2,14 @@ import { getRegistry } from "../../lib/content";
 import ModelPlayer from "../../components/ModelPlayer";
 
 export const metadata = {
-  title: "model player",
+  title: "interfaces",
   description:
     "Run the studio's small models in your browser — pick a release, give it a prompt, watch it generate.",
   openGraph: {
-    title: "model player",
+    title: "interfaces",
     description:
       "Run the studio's small models in your browser — pick a release, give it a prompt, watch it generate.",
-    url: "/model-player/",
+    url: "/interfaces/",
   },
 };
 
@@ -18,7 +18,7 @@ export default function ModelPlayerPage() {
   return (
     <>
       {/* no visible page header by design — the demo is the page */}
-      <h1 className="sr-only">model player</h1>
+      <h1 className="sr-only">interfaces</h1>
       <ModelPlayer models={registry.models} series={registry.series || {}} />
     </>
   );

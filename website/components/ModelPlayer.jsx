@@ -1,6 +1,6 @@
 "use client";
 
-// The /model-player demo: pick a release on the left, run it in the browser on
+// The /interfaces demo: pick a release on the left, run it in the browser on
 // the right. Inference is @supcomputer/player (onnxruntime-web) — imported
 // lazily on first Generate so the ORT bundle never loads for readers who don't
 // press the button. Bundle resolution (which ONNX, where the tokenizer sidecar
