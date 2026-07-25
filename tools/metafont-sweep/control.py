@@ -38,7 +38,7 @@ def main():
 
         arms = {
             "ceiling_real_families": fit_lines,
-            "sweep_cmss10_axes": [l for _, _, l in V.load_corpus(os.path.join(BIG, f"{letter}.txt"), letter)],
+            "sweep_cmss10_axes": [ln for _, _, ln in V.load_corpus(os.path.join(BIG, f"{letter}.txt"), letter)],
             "sweep_cmss10_indep": C.parametric("cmss10-indep", letter),
             "sweep_cmr10_indep": C.parametric("cmr10-indep", letter),
         }

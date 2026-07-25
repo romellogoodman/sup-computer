@@ -86,7 +86,7 @@ def parse_params(text):
 def render(text, dims, scalars, bools, ident):
     """Rewrite a parameter file with new values and the lowercase-only driver."""
     def sub(m):
-        name, expr = m.group(1), m.group(2)
+        name = m.group(1)
         bare = name[:-1] if name.endswith("#") else name
         if name.endswith("#") and bare in dims:
             return f"{name}:={dims[bare]:.6f}pt#;"

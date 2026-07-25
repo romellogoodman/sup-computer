@@ -93,8 +93,10 @@ def raster(line, res=RES, ss=SS):
         y0s.append(py)
         x1s.append(np.roll(px, -1))
         y1s.append(np.roll(py, -1))
-    x0 = np.concatenate(x0s); y0 = np.concatenate(y0s)
-    x1 = np.concatenate(x1s); y1 = np.concatenate(y1s)
+    x0 = np.concatenate(x0s)
+    y0 = np.concatenate(y0s)
+    x1 = np.concatenate(x1s)
+    y1 = np.concatenate(y1s)
 
     rows = np.arange(h) + 0.5
     dy = y1 - y0
