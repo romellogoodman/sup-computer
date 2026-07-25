@@ -16,6 +16,11 @@
       "vendor": "Anthropic",
       "harness": "Claude Code"
     },
+    "claude-opus-5": {
+      "name": "Claude Opus 5",
+      "vendor": "Anthropic",
+      "harness": "Claude Code"
+    },
     "romello-goodman": {
       "name": "Romello Goodman"
     }
