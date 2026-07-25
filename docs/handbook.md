@@ -230,10 +230,16 @@ Experiments carry `number:` and usually `produced:`. Then:
 
 ```bash
 uv run python tools/check_integrity.py --write   # regenerate the index tables (ADR-0033)
+uvx ruff@0.16.0 check .                          # the lint gate CI runs (ADR-0034)
 ```
 
 Never hand-edit the index tables (reports, ADRs, tools) — CI fails a stale one
 and the fix is always the `--write` run above.
+
+Run both before pushing, even when the report touched no Python: a publishing
+commit often carries a tool or a script alongside it, and lint is the check
+most easily forgotten when the visible change is prose. The ruff version is
+pinned to match `ci.yml` — see ADR-0034 for why it isn't `uvx ruff`.
 
 ### Research cost
 

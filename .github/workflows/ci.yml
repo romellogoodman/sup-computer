@@ -22,7 +22,10 @@ jobs:
           python-version: "3.12"
           enable-cache: true # torch wheels are the slow part; cache keyed on uv.lock
       - name: Lint (ruff)
-        run: uvx ruff check .
+        # Pinned on purpose: an unpinned `uvx ruff` fetches the latest release,
+        # so a ruff version bump breaks CI on commits that changed nothing.
+        # Bump this deliberately, with a run of `ruff check .` behind it (ADR-0034).
+        run: uvx ruff@0.16.0 check .
       - name: Repo integrity (registry, links, weights)
         run: python3 tools/check_integrity.py
       - name: Install workspace

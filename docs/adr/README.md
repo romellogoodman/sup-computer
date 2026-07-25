@@ -52,4 +52,5 @@ ADR (ADR-0033).
 | [0031](0031-takeaways-move-to-frontmatter.md) | Takeaways are frontmatter, and model cards don't carry them | Accepted |
 | [0032](0032-train-page-prompt-as-content.md) | /train — a runnable prompt as page content | Accepted |
 | [0033](0033-generated-doc-indexes.md) | Index tables are generated from their sources | Accepted (amends [ADR-0030](0030-doc-surface-one-home-per-fact.md) decision 4) |
+| [0034](0034-pin-ci-linting.md) | CI pins its linter and names its rules | Accepted |
 <!-- /generated -->

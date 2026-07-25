@@ -25,6 +25,9 @@ extend-exclude = ["projects/*/models", "website", "player"]
 line-length = 120
 
 [tool.ruff.lint]
-# defaults (E4/E7/E9/F); the exec()-driven configurator pattern means
+# Pinned explicitly to what were ruff's defaults through 0.15 — leaving this
+# implicit meant a ruff release could change the rule set under CI, which is
+# exactly what 0.16 did (ADR-0034). The exec()-driven configurator pattern means
 # train.py/sample.py legitimately reference "undefined" names at lint time.
+select = ["E4", "E7", "E9", "F"]
 per-file-ignores = { "core/nanogpt_core/train.py" = ["F821"], "core/nanogpt_core/sample.py" = ["F821"] }
