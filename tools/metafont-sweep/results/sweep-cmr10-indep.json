@@ -1,0 +1,41 @@
+{
+ "base": "cmr10",
+ "mode": "indep",
+ "requested": 500,
+ "compiled": 225,
+ "compile_failed": 275,
+ "encoded_fonts": 207,
+ "encode_failed": 18,
+ "yield": 0.414,
+ "glyphs": {
+  "a": 207,
+  "b": 207,
+  "c": 207,
+  "d": 205,
+  "e": 207,
+  "f": 207,
+  "g": 207,
+  "h": 207,
+  "i": 207,
+  "j": 207,
+  "k": 207,
+  "l": 207,
+  "m": 207,
+  "n": 207,
+  "o": 207,
+  "p": 207,
+  "q": 207,
+  "r": 207,
+  "s": 207,
+  "t": 207,
+  "u": 203,
+  "v": 207,
+  "w": 207,
+  "x": 207,
+  "y": 207,
+  "z": 207
+ },
+ "failure_reasons": {
+  "mfNptN: \"mpost -mem=mfNptN -progname=mpost '\\mode:=localfont; mag:=N; bpppix N.N": 275
+ }
+}

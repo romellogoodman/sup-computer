@@ -17,6 +17,7 @@ a tool (ADR-0033).
 | [`dataviz/`](dataviz/) | The chart pipeline — **every chart in the repo goes through it** (ADR-0018). |
 | [`hf-stage/`](hf-stage/) | Stages a Hugging Face README from a model card (pointer line + absolute links) — part of the publish flow. |
 | [`linewell/`](linewell/) | Line-by-line composition through a small model, with pluggable judges. |
+| [`metafont-sweep/`](metafont-sweep/) | Turns the knobs on Knuth's Computer Modern and measures what that corpus is worth against real type families. |
 | [`steer/`](steer/) | The shared big-model-steers-small-model layer — client + orchestrator loop (ADR-0026). |
 | [`synthgen/`](synthgen/) | The local-LLM synthetic-corpus engine — every LLM-generated corpus goes through it (ADR-0014). |
 | [`token-chess/`](token-chess/) | The benchmark: LLMs orchestrate Daydream's sampler under a token budget. |

@@ -1,0 +1,2510 @@
+{
+ "a": {
+  "generative": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 3457,
+     "comp": 784,
+     "comp_per_glyph": 98.0,
+     "ratio": 0.2268
+    },
+    {
+     "n": 10,
+     "raw": 4408,
+     "comp": 1038,
+     "comp_per_glyph": 103.8,
+     "ratio": 0.2355
+    },
+    {
+     "n": 13,
+     "raw": 6203,
+     "comp": 1446,
+     "comp_per_glyph": 111.23,
+     "ratio": 0.2331
+    },
+    {
+     "n": 16,
+     "raw": 7579,
+     "comp": 1791,
+     "comp_per_glyph": 111.94,
+     "ratio": 0.2363
+    },
+    {
+     "n": 21,
+     "raw": 9274,
+     "comp": 2134,
+     "comp_per_glyph": 101.62,
+     "ratio": 0.2301
+    },
+    {
+     "n": 27,
+     "raw": 11733,
+     "comp": 2547,
+     "comp_per_glyph": 94.33,
+     "ratio": 0.2171
+    },
+    {
+     "n": 35,
+     "raw": 15086,
+     "comp": 3223,
+     "comp_per_glyph": 92.09,
+     "ratio": 0.2136
+    },
+    {
+     "n": 46,
+     "raw": 19317,
+     "comp": 3949,
+     "comp_per_glyph": 85.85,
+     "ratio": 0.2044
+    },
+    {
+     "n": 59,
+     "raw": 24501,
+     "comp": 4935,
+     "comp_per_glyph": 83.64,
+     "ratio": 0.2014
+    },
+    {
+     "n": 76,
+     "raw": 31025,
+     "comp": 5932,
+     "comp_per_glyph": 78.05,
+     "ratio": 0.1912
+    },
+    {
+     "n": 97,
+     "raw": 38902,
+     "comp": 7234,
+     "comp_per_glyph": 74.58,
+     "ratio": 0.186
+    },
+    {
+     "n": 125,
+     "raw": 50095,
+     "comp": 8724,
+     "comp_per_glyph": 69.79,
+     "ratio": 0.1741
+    },
+    {
+     "n": 161,
+     "raw": 64659,
+     "comp": 10569,
+     "comp_per_glyph": 65.65,
+     "ratio": 0.1635
+    },
+    {
+     "n": 207,
+     "raw": 82772,
+     "comp": 13383,
+     "comp_per_glyph": 64.65,
+     "ratio": 0.1617
+    }
+   ],
+   "marginal": 61.17,
+   "marginal_over_raw": 0.153
+  },
+  "cmss10-axes": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 3875,
+     "comp": 1159,
+     "comp_per_glyph": 144.88,
+     "ratio": 0.2991
+    },
+    {
+     "n": 10,
+     "raw": 4748,
+     "comp": 1348,
+     "comp_per_glyph": 134.8,
+     "ratio": 0.2839
+    },
+    {
+     "n": 13,
+     "raw": 6131,
+     "comp": 1622,
+     "comp_per_glyph": 124.77,
+     "ratio": 0.2646
+    },
+    {
+     "n": 16,
+     "raw": 7572,
+     "comp": 1959,
+     "comp_per_glyph": 122.44,
+     "ratio": 0.2587
+    },
+    {
+     "n": 21,
+     "raw": 9885,
+     "comp": 2437,
+     "comp_per_glyph": 116.05,
+     "ratio": 0.2465
+    },
+    {
+     "n": 27,
+     "raw": 12757,
+     "comp": 2937,
+     "comp_per_glyph": 108.78,
+     "ratio": 0.2302
+    },
+    {
+     "n": 35,
+     "raw": 16412,
+     "comp": 3612,
+     "comp_per_glyph": 103.2,
+     "ratio": 0.2201
+    },
+    {
+     "n": 46,
+     "raw": 21476,
+     "comp": 4380,
+     "comp_per_glyph": 95.22,
+     "ratio": 0.2039
+    },
+    {
+     "n": 59,
+     "raw": 27644,
+     "comp": 5364,
+     "comp_per_glyph": 90.92,
+     "ratio": 0.194
+    },
+    {
+     "n": 76,
+     "raw": 35211,
+     "comp": 6519,
+     "comp_per_glyph": 85.78,
+     "ratio": 0.1851
+    },
+    {
+     "n": 97,
+     "raw": 45078,
+     "comp": 7826,
+     "comp_per_glyph": 80.68,
+     "ratio": 0.1736
+    },
+    {
+     "n": 125,
+     "raw": 58079,
+     "comp": 9421,
+     "comp_per_glyph": 75.37,
+     "ratio": 0.1622
+    },
+    {
+     "n": 161,
+     "raw": 74592,
+     "comp": 11477,
+     "comp_per_glyph": 71.29,
+     "ratio": 0.1539
+    },
+    {
+     "n": 207,
+     "raw": 95876,
+     "comp": 14007,
+     "comp_per_glyph": 67.67,
+     "ratio": 0.1461
+    }
+   ],
+   "marginal": 55.0,
+   "marginal_over_raw": 0.1187
+  },
+  "cmss10-indep": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 3737,
+     "comp": 1080,
+     "comp_per_glyph": 135.0,
+     "ratio": 0.289
+    },
+    {
+     "n": 10,
+     "raw": 4707,
+     "comp": 1280,
+     "comp_per_glyph": 128.0,
+     "ratio": 0.2719
+    },
+    {
+     "n": 13,
+     "raw": 6123,
+     "comp": 1594,
+     "comp_per_glyph": 122.62,
+     "ratio": 0.2603
+    },
+    {
+     "n": 16,
+     "raw": 7533,
+     "comp": 1883,
+     "comp_per_glyph": 117.69,
+     "ratio": 0.25
+    },
+    {
+     "n": 21,
+     "raw": 9895,
+     "comp": 2351,
+     "comp_per_glyph": 111.95,
+     "ratio": 0.2376
+    },
+    {
+     "n": 27,
+     "raw": 12716,
+     "comp": 2897,
+     "comp_per_glyph": 107.3,
+     "ratio": 0.2278
+    },
+    {
+     "n": 35,
+     "raw": 16549,
+     "comp": 3598,
+     "comp_per_glyph": 102.8,
+     "ratio": 0.2174
+    },
+    {
+     "n": 46,
+     "raw": 21872,
+     "comp": 4514,
+     "comp_per_glyph": 98.13,
+     "ratio": 0.2064
+    },
+    {
+     "n": 59,
+     "raw": 28271,
+     "comp": 5591,
+     "comp_per_glyph": 94.76,
+     "ratio": 0.1978
+    },
+    {
+     "n": 76,
+     "raw": 36584,
+     "comp": 6970,
+     "comp_per_glyph": 91.71,
+     "ratio": 0.1905
+    },
+    {
+     "n": 97,
+     "raw": 46812,
+     "comp": 8586,
+     "comp_per_glyph": 88.52,
+     "ratio": 0.1834
+    },
+    {
+     "n": 125,
+     "raw": 60047,
+     "comp": 10587,
+     "comp_per_glyph": 84.7,
+     "ratio": 0.1763
+    },
+    {
+     "n": 161,
+     "raw": 77411,
+     "comp": 13094,
+     "comp_per_glyph": 81.33,
+     "ratio": 0.1691
+    },
+    {
+     "n": 207,
+     "raw": 99860,
+     "comp": 16266,
+     "comp_per_glyph": 78.58,
+     "ratio": 0.1629
+    }
+   ],
+   "marginal": 68.96,
+   "marginal_over_raw": 0.1429
+  },
+  "cmr10-indep": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 6209,
+     "comp": 1635,
+     "comp_per_glyph": 204.38,
+     "ratio": 0.2633
+    },
+    {
+     "n": 10,
+     "raw": 7924,
+     "comp": 1980,
+     "comp_per_glyph": 198.0,
+     "ratio": 0.2499
+    },
+    {
+     "n": 13,
+     "raw": 10191,
+     "comp": 2422,
+     "comp_per_glyph": 186.31,
+     "ratio": 0.2377
+    },
+    {
+     "n": 16,
+     "raw": 12297,
+     "comp": 2847,
+     "comp_per_glyph": 177.94,
+     "ratio": 0.2315
+    },
+    {
+     "n": 21,
+     "raw": 16157,
+     "comp": 3538,
+     "comp_per_glyph": 168.48,
+     "ratio": 0.219
+    },
+    {
+     "n": 27,
+     "raw": 20567,
+     "comp": 4344,
+     "comp_per_glyph": 160.89,
+     "ratio": 0.2112
+    },
+    {
+     "n": 35,
+     "raw": 26671,
+     "comp": 5421,
+     "comp_per_glyph": 154.89,
+     "ratio": 0.2033
+    },
+    {
+     "n": 46,
+     "raw": 34563,
+     "comp": 6756,
+     "comp_per_glyph": 146.87,
+     "ratio": 0.1955
+    },
+    {
+     "n": 59,
+     "raw": 43804,
+     "comp": 8250,
+     "comp_per_glyph": 139.83,
+     "ratio": 0.1883
+    },
+    {
+     "n": 76,
+     "raw": 56563,
+     "comp": 10305,
+     "comp_per_glyph": 135.59,
+     "ratio": 0.1822
+    },
+    {
+     "n": 97,
+     "raw": 71604,
+     "comp": 12548,
+     "comp_per_glyph": 129.36,
+     "ratio": 0.1752
+    },
+    {
+     "n": 125,
+     "raw": 92492,
+     "comp": 15738,
+     "comp_per_glyph": 125.9,
+     "ratio": 0.1702
+    },
+    {
+     "n": 161,
+     "raw": 118707,
+     "comp": 19268,
+     "comp_per_glyph": 119.68,
+     "ratio": 0.1623
+    },
+    {
+     "n": 207,
+     "raw": 151937,
+     "comp": 23752,
+     "comp_per_glyph": 114.74,
+     "ratio": 0.1563
+    }
+   ],
+   "marginal": 97.48,
+   "marginal_over_raw": 0.1328
+  }
+ },
+ "e": {
+  "generative": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 2903,
+     "comp": 715,
+     "comp_per_glyph": 89.38,
+     "ratio": 0.2463
+    },
+    {
+     "n": 10,
+     "raw": 3464,
+     "comp": 873,
+     "comp_per_glyph": 87.3,
+     "ratio": 0.252
+    },
+    {
+     "n": 13,
+     "raw": 4909,
+     "comp": 1233,
+     "comp_per_glyph": 94.85,
+     "ratio": 0.2512
+    },
+    {
+     "n": 16,
+     "raw": 5994,
+     "comp": 1511,
+     "comp_per_glyph": 94.44,
+     "ratio": 0.2521
+    },
+    {
+     "n": 21,
+     "raw": 7462,
+     "comp": 1804,
+     "comp_per_glyph": 85.9,
+     "ratio": 0.2418
+    },
+    {
+     "n": 27,
+     "raw": 9461,
+     "comp": 2152,
+     "comp_per_glyph": 79.7,
+     "ratio": 0.2275
+    },
+    {
+     "n": 35,
+     "raw": 12063,
+     "comp": 2669,
+     "comp_per_glyph": 76.26,
+     "ratio": 0.2213
+    },
+    {
+     "n": 46,
+     "raw": 15654,
+     "comp": 3289,
+     "comp_per_glyph": 71.5,
+     "ratio": 0.2101
+    },
+    {
+     "n": 59,
+     "raw": 19575,
+     "comp": 4006,
+     "comp_per_glyph": 67.9,
+     "ratio": 0.2046
+    },
+    {
+     "n": 76,
+     "raw": 25091,
+     "comp": 4809,
+     "comp_per_glyph": 63.28,
+     "ratio": 0.1917
+    },
+    {
+     "n": 97,
+     "raw": 32112,
+     "comp": 5958,
+     "comp_per_glyph": 61.42,
+     "ratio": 0.1855
+    },
+    {
+     "n": 125,
+     "raw": 41280,
+     "comp": 7114,
+     "comp_per_glyph": 56.91,
+     "ratio": 0.1723
+    },
+    {
+     "n": 161,
+     "raw": 53062,
+     "comp": 8603,
+     "comp_per_glyph": 53.43,
+     "ratio": 0.1621
+    },
+    {
+     "n": 207,
+     "raw": 67777,
+     "comp": 10799,
+     "comp_per_glyph": 52.17,
+     "ratio": 0.1593
+    }
+   ],
+   "marginal": 47.74,
+   "marginal_over_raw": 0.1458
+  },
+  "cmss10-axes": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 3086,
+     "comp": 944,
+     "comp_per_glyph": 118.0,
+     "ratio": 0.3059
+    },
+    {
+     "n": 10,
+     "raw": 3891,
+     "comp": 1117,
+     "comp_per_glyph": 111.7,
+     "ratio": 0.2871
+    },
+    {
+     "n": 13,
+     "raw": 4962,
+     "comp": 1355,
+     "comp_per_glyph": 104.23,
+     "ratio": 0.2731
+    },
+    {
+     "n": 16,
+     "raw": 6213,
+     "comp": 1629,
+     "comp_per_glyph": 101.81,
+     "ratio": 0.2622
+    },
+    {
+     "n": 21,
+     "raw": 8364,
+     "comp": 2087,
+     "comp_per_glyph": 99.38,
+     "ratio": 0.2495
+    },
+    {
+     "n": 27,
+     "raw": 10758,
+     "comp": 2513,
+     "comp_per_glyph": 93.07,
+     "ratio": 0.2336
+    },
+    {
+     "n": 35,
+     "raw": 14065,
+     "comp": 3148,
+     "comp_per_glyph": 89.94,
+     "ratio": 0.2238
+    },
+    {
+     "n": 46,
+     "raw": 18504,
+     "comp": 3893,
+     "comp_per_glyph": 84.63,
+     "ratio": 0.2104
+    },
+    {
+     "n": 59,
+     "raw": 23707,
+     "comp": 4752,
+     "comp_per_glyph": 80.54,
+     "ratio": 0.2004
+    },
+    {
+     "n": 76,
+     "raw": 30558,
+     "comp": 5850,
+     "comp_per_glyph": 76.97,
+     "ratio": 0.1914
+    },
+    {
+     "n": 97,
+     "raw": 39044,
+     "comp": 7074,
+     "comp_per_glyph": 72.93,
+     "ratio": 0.1812
+    },
+    {
+     "n": 125,
+     "raw": 50563,
+     "comp": 8715,
+     "comp_per_glyph": 69.72,
+     "ratio": 0.1724
+    },
+    {
+     "n": 161,
+     "raw": 64831,
+     "comp": 10658,
+     "comp_per_glyph": 66.2,
+     "ratio": 0.1644
+    },
+    {
+     "n": 207,
+     "raw": 83104,
+     "comp": 12990,
+     "comp_per_glyph": 62.75,
+     "ratio": 0.1563
+    }
+   ],
+   "marginal": 50.7,
+   "marginal_over_raw": 0.1263
+  },
+  "cmss10-indep": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 3488,
+     "comp": 1048,
+     "comp_per_glyph": 131.0,
+     "ratio": 0.3005
+    },
+    {
+     "n": 10,
+     "raw": 4370,
+     "comp": 1247,
+     "comp_per_glyph": 124.7,
+     "ratio": 0.2854
+    },
+    {
+     "n": 13,
+     "raw": 5866,
+     "comp": 1592,
+     "comp_per_glyph": 122.46,
+     "ratio": 0.2714
+    },
+    {
+     "n": 16,
+     "raw": 7266,
+     "comp": 1878,
+     "comp_per_glyph": 117.38,
+     "ratio": 0.2585
+    },
+    {
+     "n": 21,
+     "raw": 9389,
+     "comp": 2336,
+     "comp_per_glyph": 111.24,
+     "ratio": 0.2488
+    },
+    {
+     "n": 27,
+     "raw": 12019,
+     "comp": 2832,
+     "comp_per_glyph": 104.89,
+     "ratio": 0.2356
+    },
+    {
+     "n": 35,
+     "raw": 15704,
+     "comp": 3526,
+     "comp_per_glyph": 100.74,
+     "ratio": 0.2245
+    },
+    {
+     "n": 46,
+     "raw": 20786,
+     "comp": 4464,
+     "comp_per_glyph": 97.04,
+     "ratio": 0.2148
+    },
+    {
+     "n": 59,
+     "raw": 26647,
+     "comp": 5516,
+     "comp_per_glyph": 93.49,
+     "ratio": 0.207
+    },
+    {
+     "n": 76,
+     "raw": 34295,
+     "comp": 6844,
+     "comp_per_glyph": 90.05,
+     "ratio": 0.1996
+    },
+    {
+     "n": 97,
+     "raw": 43840,
+     "comp": 8451,
+     "comp_per_glyph": 87.12,
+     "ratio": 0.1928
+    },
+    {
+     "n": 125,
+     "raw": 56035,
+     "comp": 10425,
+     "comp_per_glyph": 83.4,
+     "ratio": 0.186
+    },
+    {
+     "n": 161,
+     "raw": 72292,
+     "comp": 12835,
+     "comp_per_glyph": 79.72,
+     "ratio": 0.1775
+    },
+    {
+     "n": 207,
+     "raw": 92684,
+     "comp": 15855,
+     "comp_per_glyph": 76.59,
+     "ratio": 0.1711
+    }
+   ],
+   "marginal": 65.65,
+   "marginal_over_raw": 0.1466
+  },
+  "cmr10-indep": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 4124,
+     "comp": 1185,
+     "comp_per_glyph": 148.12,
+     "ratio": 0.2873
+    },
+    {
+     "n": 10,
+     "raw": 5179,
+     "comp": 1426,
+     "comp_per_glyph": 142.6,
+     "ratio": 0.2753
+    },
+    {
+     "n": 13,
+     "raw": 6773,
+     "comp": 1733,
+     "comp_per_glyph": 133.31,
+     "ratio": 0.2559
+    },
+    {
+     "n": 16,
+     "raw": 8316,
+     "comp": 2087,
+     "comp_per_glyph": 130.44,
+     "ratio": 0.251
+    },
+    {
+     "n": 21,
+     "raw": 11120,
+     "comp": 2655,
+     "comp_per_glyph": 126.43,
+     "ratio": 0.2388
+    },
+    {
+     "n": 27,
+     "raw": 13991,
+     "comp": 3211,
+     "comp_per_glyph": 118.93,
+     "ratio": 0.2295
+    },
+    {
+     "n": 35,
+     "raw": 17962,
+     "comp": 3975,
+     "comp_per_glyph": 113.57,
+     "ratio": 0.2213
+    },
+    {
+     "n": 46,
+     "raw": 23459,
+     "comp": 4959,
+     "comp_per_glyph": 107.8,
+     "ratio": 0.2114
+    },
+    {
+     "n": 59,
+     "raw": 30169,
+     "comp": 6068,
+     "comp_per_glyph": 102.85,
+     "ratio": 0.2011
+    },
+    {
+     "n": 76,
+     "raw": 38669,
+     "comp": 7520,
+     "comp_per_glyph": 98.95,
+     "ratio": 0.1945
+    },
+    {
+     "n": 97,
+     "raw": 48764,
+     "comp": 9112,
+     "comp_per_glyph": 93.94,
+     "ratio": 0.1869
+    },
+    {
+     "n": 125,
+     "raw": 63113,
+     "comp": 11316,
+     "comp_per_glyph": 90.53,
+     "ratio": 0.1793
+    },
+    {
+     "n": 161,
+     "raw": 80597,
+     "comp": 13953,
+     "comp_per_glyph": 86.66,
+     "ratio": 0.1731
+    },
+    {
+     "n": 207,
+     "raw": 103124,
+     "comp": 17098,
+     "comp_per_glyph": 82.6,
+     "ratio": 0.1658
+    }
+   ],
+   "marginal": 68.37,
+   "marginal_over_raw": 0.1372
+  }
+ },
+ "g": {
+  "generative": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 3946,
+     "comp": 917,
+     "comp_per_glyph": 114.62,
+     "ratio": 0.2324
+    },
+    {
+     "n": 10,
+     "raw": 4984,
+     "comp": 1197,
+     "comp_per_glyph": 119.7,
+     "ratio": 0.2402
+    },
+    {
+     "n": 13,
+     "raw": 7626,
+     "comp": 1844,
+     "comp_per_glyph": 141.85,
+     "ratio": 0.2418
+    },
+    {
+     "n": 16,
+     "raw": 9126,
+     "comp": 2213,
+     "comp_per_glyph": 138.31,
+     "ratio": 0.2425
+    },
+    {
+     "n": 21,
+     "raw": 11393,
+     "comp": 2721,
+     "comp_per_glyph": 129.57,
+     "ratio": 0.2388
+    },
+    {
+     "n": 27,
+     "raw": 14689,
+     "comp": 3360,
+     "comp_per_glyph": 124.44,
+     "ratio": 0.2287
+    },
+    {
+     "n": 35,
+     "raw": 18971,
+     "comp": 4283,
+     "comp_per_glyph": 122.37,
+     "ratio": 0.2258
+    },
+    {
+     "n": 46,
+     "raw": 24674,
+     "comp": 5394,
+     "comp_per_glyph": 117.26,
+     "ratio": 0.2186
+    },
+    {
+     "n": 59,
+     "raw": 31211,
+     "comp": 6702,
+     "comp_per_glyph": 113.59,
+     "ratio": 0.2147
+    },
+    {
+     "n": 76,
+     "raw": 38701,
+     "comp": 7923,
+     "comp_per_glyph": 104.25,
+     "ratio": 0.2047
+    },
+    {
+     "n": 97,
+     "raw": 48819,
+     "comp": 9726,
+     "comp_per_glyph": 100.27,
+     "ratio": 0.1992
+    },
+    {
+     "n": 125,
+     "raw": 64117,
+     "comp": 11962,
+     "comp_per_glyph": 95.7,
+     "ratio": 0.1866
+    },
+    {
+     "n": 161,
+     "raw": 83101,
+     "comp": 14730,
+     "comp_per_glyph": 91.49,
+     "ratio": 0.1773
+    },
+    {
+     "n": 207,
+     "raw": 106584,
+     "comp": 18570,
+     "comp_per_glyph": 89.71,
+     "ratio": 0.1742
+    }
+   ],
+   "marginal": 83.48,
+   "marginal_over_raw": 0.1621
+  },
+  "cmss10-axes": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 7304,
+     "comp": 1824,
+     "comp_per_glyph": 228.0,
+     "ratio": 0.2497
+    },
+    {
+     "n": 10,
+     "raw": 8988,
+     "comp": 2172,
+     "comp_per_glyph": 217.2,
+     "ratio": 0.2417
+    },
+    {
+     "n": 13,
+     "raw": 11790,
+     "comp": 2667,
+     "comp_per_glyph": 205.15,
+     "ratio": 0.2262
+    },
+    {
+     "n": 16,
+     "raw": 14714,
+     "comp": 3236,
+     "comp_per_glyph": 202.25,
+     "ratio": 0.2199
+    },
+    {
+     "n": 21,
+     "raw": 19335,
+     "comp": 4110,
+     "comp_per_glyph": 195.71,
+     "ratio": 0.2126
+    },
+    {
+     "n": 27,
+     "raw": 24827,
+     "comp": 4977,
+     "comp_per_glyph": 184.33,
+     "ratio": 0.2005
+    },
+    {
+     "n": 35,
+     "raw": 32617,
+     "comp": 6181,
+     "comp_per_glyph": 176.6,
+     "ratio": 0.1895
+    },
+    {
+     "n": 46,
+     "raw": 42816,
+     "comp": 7599,
+     "comp_per_glyph": 165.2,
+     "ratio": 0.1775
+    },
+    {
+     "n": 59,
+     "raw": 55060,
+     "comp": 9328,
+     "comp_per_glyph": 158.1,
+     "ratio": 0.1694
+    },
+    {
+     "n": 76,
+     "raw": 71001,
+     "comp": 11538,
+     "comp_per_glyph": 151.82,
+     "ratio": 0.1625
+    },
+    {
+     "n": 97,
+     "raw": 91271,
+     "comp": 13995,
+     "comp_per_glyph": 144.28,
+     "ratio": 0.1533
+    },
+    {
+     "n": 125,
+     "raw": 117342,
+     "comp": 17050,
+     "comp_per_glyph": 136.4,
+     "ratio": 0.1453
+    },
+    {
+     "n": 161,
+     "raw": 150979,
+     "comp": 21031,
+     "comp_per_glyph": 130.63,
+     "ratio": 0.1393
+    },
+    {
+     "n": 207,
+     "raw": 193936,
+     "comp": 25543,
+     "comp_per_glyph": 123.4,
+     "ratio": 0.1317
+    }
+   ],
+   "marginal": 98.09,
+   "marginal_over_raw": 0.1047
+  },
+  "cmss10-indep": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 6086,
+     "comp": 1686,
+     "comp_per_glyph": 210.75,
+     "ratio": 0.277
+    },
+    {
+     "n": 10,
+     "raw": 7207,
+     "comp": 1949,
+     "comp_per_glyph": 194.9,
+     "ratio": 0.2704
+    },
+    {
+     "n": 13,
+     "raw": 9913,
+     "comp": 2620,
+     "comp_per_glyph": 201.54,
+     "ratio": 0.2643
+    },
+    {
+     "n": 16,
+     "raw": 12166,
+     "comp": 3115,
+     "comp_per_glyph": 194.69,
+     "ratio": 0.256
+    },
+    {
+     "n": 21,
+     "raw": 16396,
+     "comp": 4018,
+     "comp_per_glyph": 191.33,
+     "ratio": 0.2451
+    },
+    {
+     "n": 27,
+     "raw": 20800,
+     "comp": 4843,
+     "comp_per_glyph": 179.37,
+     "ratio": 0.2328
+    },
+    {
+     "n": 35,
+     "raw": 26088,
+     "comp": 5863,
+     "comp_per_glyph": 167.51,
+     "ratio": 0.2247
+    },
+    {
+     "n": 46,
+     "raw": 35682,
+     "comp": 7595,
+     "comp_per_glyph": 165.11,
+     "ratio": 0.2129
+    },
+    {
+     "n": 59,
+     "raw": 45882,
+     "comp": 9411,
+     "comp_per_glyph": 159.51,
+     "ratio": 0.2051
+    },
+    {
+     "n": 76,
+     "raw": 60787,
+     "comp": 11951,
+     "comp_per_glyph": 157.25,
+     "ratio": 0.1966
+    },
+    {
+     "n": 97,
+     "raw": 75901,
+     "comp": 14517,
+     "comp_per_glyph": 149.66,
+     "ratio": 0.1913
+    },
+    {
+     "n": 125,
+     "raw": 97433,
+     "comp": 17974,
+     "comp_per_glyph": 143.79,
+     "ratio": 0.1845
+    },
+    {
+     "n": 161,
+     "raw": 124315,
+     "comp": 22167,
+     "comp_per_glyph": 137.68,
+     "ratio": 0.1783
+    },
+    {
+     "n": 207,
+     "raw": 163184,
+     "comp": 27924,
+     "comp_per_glyph": 134.9,
+     "ratio": 0.1711
+    }
+   ],
+   "marginal": 125.15,
+   "marginal_over_raw": 0.1588
+  },
+  "cmr10-indep": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 7820,
+     "comp": 2187,
+     "comp_per_glyph": 273.38,
+     "ratio": 0.2797
+    },
+    {
+     "n": 10,
+     "raw": 10173,
+     "comp": 2726,
+     "comp_per_glyph": 272.6,
+     "ratio": 0.268
+    },
+    {
+     "n": 13,
+     "raw": 13374,
+     "comp": 3382,
+     "comp_per_glyph": 260.15,
+     "ratio": 0.2529
+    },
+    {
+     "n": 16,
+     "raw": 17017,
+     "comp": 4182,
+     "comp_per_glyph": 261.38,
+     "ratio": 0.2458
+    },
+    {
+     "n": 21,
+     "raw": 20991,
+     "comp": 5045,
+     "comp_per_glyph": 240.24,
+     "ratio": 0.2403
+    },
+    {
+     "n": 27,
+     "raw": 26352,
+     "comp": 6099,
+     "comp_per_glyph": 225.89,
+     "ratio": 0.2314
+    },
+    {
+     "n": 35,
+     "raw": 34062,
+     "comp": 7645,
+     "comp_per_glyph": 218.43,
+     "ratio": 0.2244
+    },
+    {
+     "n": 46,
+     "raw": 43852,
+     "comp": 9480,
+     "comp_per_glyph": 206.09,
+     "ratio": 0.2162
+    },
+    {
+     "n": 59,
+     "raw": 55890,
+     "comp": 11604,
+     "comp_per_glyph": 196.68,
+     "ratio": 0.2076
+    },
+    {
+     "n": 76,
+     "raw": 72080,
+     "comp": 14459,
+     "comp_per_glyph": 190.25,
+     "ratio": 0.2006
+    },
+    {
+     "n": 97,
+     "raw": 93091,
+     "comp": 17970,
+     "comp_per_glyph": 185.26,
+     "ratio": 0.193
+    },
+    {
+     "n": 125,
+     "raw": 119552,
+     "comp": 22269,
+     "comp_per_glyph": 178.15,
+     "ratio": 0.1863
+    },
+    {
+     "n": 161,
+     "raw": 154249,
+     "comp": 27731,
+     "comp_per_glyph": 172.24,
+     "ratio": 0.1798
+    },
+    {
+     "n": 207,
+     "raw": 199906,
+     "comp": 34605,
+     "comp_per_glyph": 167.17,
+     "ratio": 0.1731
+    }
+   ],
+   "marginal": 149.43,
+   "marginal_over_raw": 0.1547
+  }
+ },
+ "n": {
+  "generative": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 1874,
+     "comp": 508,
+     "comp_per_glyph": 63.5,
+     "ratio": 0.2711
+    },
+    {
+     "n": 10,
+     "raw": 2226,
+     "comp": 598,
+     "comp_per_glyph": 59.8,
+     "ratio": 0.2686
+    },
+    {
+     "n": 13,
+     "raw": 3242,
+     "comp": 875,
+     "comp_per_glyph": 67.31,
+     "ratio": 0.2699
+    },
+    {
+     "n": 16,
+     "raw": 3964,
+     "comp": 1055,
+     "comp_per_glyph": 65.94,
+     "ratio": 0.2661
+    },
+    {
+     "n": 21,
+     "raw": 4962,
+     "comp": 1265,
+     "comp_per_glyph": 60.24,
+     "ratio": 0.2549
+    },
+    {
+     "n": 27,
+     "raw": 6213,
+     "comp": 1491,
+     "comp_per_glyph": 55.22,
+     "ratio": 0.24
+    },
+    {
+     "n": 35,
+     "raw": 8068,
+     "comp": 1903,
+     "comp_per_glyph": 54.37,
+     "ratio": 0.2359
+    },
+    {
+     "n": 46,
+     "raw": 10487,
+     "comp": 2336,
+     "comp_per_glyph": 50.78,
+     "ratio": 0.2228
+    },
+    {
+     "n": 59,
+     "raw": 12927,
+     "comp": 2822,
+     "comp_per_glyph": 47.83,
+     "ratio": 0.2183
+    },
+    {
+     "n": 76,
+     "raw": 16426,
+     "comp": 3400,
+     "comp_per_glyph": 44.74,
+     "ratio": 0.207
+    },
+    {
+     "n": 97,
+     "raw": 21042,
+     "comp": 4197,
+     "comp_per_glyph": 43.27,
+     "ratio": 0.1995
+    },
+    {
+     "n": 125,
+     "raw": 26197,
+     "comp": 4892,
+     "comp_per_glyph": 39.14,
+     "ratio": 0.1867
+    },
+    {
+     "n": 161,
+     "raw": 33423,
+     "comp": 5898,
+     "comp_per_glyph": 36.63,
+     "ratio": 0.1765
+    },
+    {
+     "n": 207,
+     "raw": 42880,
+     "comp": 7369,
+     "comp_per_glyph": 35.6,
+     "ratio": 0.1719
+    }
+   ],
+   "marginal": 31.98,
+   "marginal_over_raw": 0.1544
+  },
+  "cmss10-axes": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 1981,
+     "comp": 637,
+     "comp_per_glyph": 79.62,
+     "ratio": 0.3216
+    },
+    {
+     "n": 10,
+     "raw": 2501,
+     "comp": 765,
+     "comp_per_glyph": 76.5,
+     "ratio": 0.3059
+    },
+    {
+     "n": 13,
+     "raw": 3267,
+     "comp": 939,
+     "comp_per_glyph": 72.23,
+     "ratio": 0.2874
+    },
+    {
+     "n": 16,
+     "raw": 4013,
+     "comp": 1132,
+     "comp_per_glyph": 70.75,
+     "ratio": 0.2821
+    },
+    {
+     "n": 21,
+     "raw": 5252,
+     "comp": 1451,
+     "comp_per_glyph": 69.1,
+     "ratio": 0.2763
+    },
+    {
+     "n": 27,
+     "raw": 6756,
+     "comp": 1765,
+     "comp_per_glyph": 65.37,
+     "ratio": 0.2612
+    },
+    {
+     "n": 35,
+     "raw": 8754,
+     "comp": 2172,
+     "comp_per_glyph": 62.06,
+     "ratio": 0.2481
+    },
+    {
+     "n": 46,
+     "raw": 11422,
+     "comp": 2641,
+     "comp_per_glyph": 57.41,
+     "ratio": 0.2312
+    },
+    {
+     "n": 59,
+     "raw": 14695,
+     "comp": 3260,
+     "comp_per_glyph": 55.25,
+     "ratio": 0.2218
+    },
+    {
+     "n": 76,
+     "raw": 18903,
+     "comp": 3973,
+     "comp_per_glyph": 52.28,
+     "ratio": 0.2102
+    },
+    {
+     "n": 97,
+     "raw": 23899,
+     "comp": 4731,
+     "comp_per_glyph": 48.77,
+     "ratio": 0.198
+    },
+    {
+     "n": 125,
+     "raw": 30810,
+     "comp": 5767,
+     "comp_per_glyph": 46.14,
+     "ratio": 0.1872
+    },
+    {
+     "n": 161,
+     "raw": 39734,
+     "comp": 7037,
+     "comp_per_glyph": 43.71,
+     "ratio": 0.1771
+    },
+    {
+     "n": 207,
+     "raw": 51139,
+     "comp": 8544,
+     "comp_per_glyph": 41.28,
+     "ratio": 0.1671
+    }
+   ],
+   "marginal": 32.76,
+   "marginal_over_raw": 0.1326
+  },
+  "cmss10-indep": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 1894,
+     "comp": 612,
+     "comp_per_glyph": 76.5,
+     "ratio": 0.3231
+    },
+    {
+     "n": 10,
+     "raw": 2406,
+     "comp": 739,
+     "comp_per_glyph": 73.9,
+     "ratio": 0.3071
+    },
+    {
+     "n": 13,
+     "raw": 3156,
+     "comp": 938,
+     "comp_per_glyph": 72.15,
+     "ratio": 0.2972
+    },
+    {
+     "n": 16,
+     "raw": 3894,
+     "comp": 1118,
+     "comp_per_glyph": 69.88,
+     "ratio": 0.2871
+    },
+    {
+     "n": 21,
+     "raw": 5157,
+     "comp": 1399,
+     "comp_per_glyph": 66.62,
+     "ratio": 0.2713
+    },
+    {
+     "n": 27,
+     "raw": 6559,
+     "comp": 1710,
+     "comp_per_glyph": 63.33,
+     "ratio": 0.2607
+    },
+    {
+     "n": 35,
+     "raw": 8558,
+     "comp": 2134,
+     "comp_per_glyph": 60.97,
+     "ratio": 0.2494
+    },
+    {
+     "n": 46,
+     "raw": 11300,
+     "comp": 2683,
+     "comp_per_glyph": 58.33,
+     "ratio": 0.2374
+    },
+    {
+     "n": 59,
+     "raw": 14451,
+     "comp": 3270,
+     "comp_per_glyph": 55.42,
+     "ratio": 0.2263
+    },
+    {
+     "n": 76,
+     "raw": 18636,
+     "comp": 4024,
+     "comp_per_glyph": 52.95,
+     "ratio": 0.2159
+    },
+    {
+     "n": 97,
+     "raw": 23718,
+     "comp": 4940,
+     "comp_per_glyph": 50.93,
+     "ratio": 0.2083
+    },
+    {
+     "n": 125,
+     "raw": 30532,
+     "comp": 6094,
+     "comp_per_glyph": 48.75,
+     "ratio": 0.1996
+    },
+    {
+     "n": 161,
+     "raw": 39484,
+     "comp": 7533,
+     "comp_per_glyph": 46.79,
+     "ratio": 0.1908
+    },
+    {
+     "n": 207,
+     "raw": 50717,
+     "comp": 9262,
+     "comp_per_glyph": 44.74,
+     "ratio": 0.1826
+    }
+   ],
+   "marginal": 37.59,
+   "marginal_over_raw": 0.1534
+  },
+  "cmr10-indep": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 5695,
+     "comp": 1452,
+     "comp_per_glyph": 181.5,
+     "ratio": 0.255
+    },
+    {
+     "n": 10,
+     "raw": 6976,
+     "comp": 1714,
+     "comp_per_glyph": 171.4,
+     "ratio": 0.2457
+    },
+    {
+     "n": 13,
+     "raw": 9058,
+     "comp": 2104,
+     "comp_per_glyph": 161.85,
+     "ratio": 0.2323
+    },
+    {
+     "n": 16,
+     "raw": 11290,
+     "comp": 2552,
+     "comp_per_glyph": 159.5,
+     "ratio": 0.226
+    },
+    {
+     "n": 21,
+     "raw": 14967,
+     "comp": 3215,
+     "comp_per_glyph": 153.1,
+     "ratio": 0.2148
+    },
+    {
+     "n": 27,
+     "raw": 19634,
+     "comp": 4046,
+     "comp_per_glyph": 149.85,
+     "ratio": 0.2061
+    },
+    {
+     "n": 35,
+     "raw": 25425,
+     "comp": 5075,
+     "comp_per_glyph": 145.0,
+     "ratio": 0.1996
+    },
+    {
+     "n": 46,
+     "raw": 33343,
+     "comp": 6379,
+     "comp_per_glyph": 138.67,
+     "ratio": 0.1913
+    },
+    {
+     "n": 59,
+     "raw": 42294,
+     "comp": 7805,
+     "comp_per_glyph": 132.29,
+     "ratio": 0.1845
+    },
+    {
+     "n": 76,
+     "raw": 54219,
+     "comp": 9607,
+     "comp_per_glyph": 126.41,
+     "ratio": 0.1772
+    },
+    {
+     "n": 97,
+     "raw": 69264,
+     "comp": 11814,
+     "comp_per_glyph": 121.79,
+     "ratio": 0.1706
+    },
+    {
+     "n": 125,
+     "raw": 89146,
+     "comp": 14617,
+     "comp_per_glyph": 116.94,
+     "ratio": 0.164
+    },
+    {
+     "n": 161,
+     "raw": 115198,
+     "comp": 18183,
+     "comp_per_glyph": 112.94,
+     "ratio": 0.1578
+    },
+    {
+     "n": 207,
+     "raw": 149289,
+     "comp": 22589,
+     "comp_per_glyph": 109.13,
+     "ratio": 0.1513
+    }
+   ],
+   "marginal": 95.78,
+   "marginal_over_raw": 0.1328
+  }
+ },
+ "o": {
+  "generative": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 2731,
+     "comp": 708,
+     "comp_per_glyph": 88.5,
+     "ratio": 0.2592
+    },
+    {
+     "n": 10,
+     "raw": 3224,
+     "comp": 859,
+     "comp_per_glyph": 85.9,
+     "ratio": 0.2664
+    },
+    {
+     "n": 13,
+     "raw": 4504,
+     "comp": 1215,
+     "comp_per_glyph": 93.46,
+     "ratio": 0.2698
+    },
+    {
+     "n": 16,
+     "raw": 5547,
+     "comp": 1504,
+     "comp_per_glyph": 94.0,
+     "ratio": 0.2711
+    },
+    {
+     "n": 21,
+     "raw": 6828,
+     "comp": 1791,
+     "comp_per_glyph": 85.29,
+     "ratio": 0.2623
+    },
+    {
+     "n": 27,
+     "raw": 8647,
+     "comp": 2116,
+     "comp_per_glyph": 78.37,
+     "ratio": 0.2447
+    },
+    {
+     "n": 35,
+     "raw": 10828,
+     "comp": 2572,
+     "comp_per_glyph": 73.49,
+     "ratio": 0.2375
+    },
+    {
+     "n": 46,
+     "raw": 14500,
+     "comp": 3232,
+     "comp_per_glyph": 70.26,
+     "ratio": 0.2229
+    },
+    {
+     "n": 59,
+     "raw": 18787,
+     "comp": 4009,
+     "comp_per_glyph": 67.95,
+     "ratio": 0.2134
+    },
+    {
+     "n": 76,
+     "raw": 24082,
+     "comp": 4766,
+     "comp_per_glyph": 62.71,
+     "ratio": 0.1979
+    },
+    {
+     "n": 97,
+     "raw": 30590,
+     "comp": 5791,
+     "comp_per_glyph": 59.7,
+     "ratio": 0.1893
+    },
+    {
+     "n": 125,
+     "raw": 39705,
+     "comp": 6911,
+     "comp_per_glyph": 55.29,
+     "ratio": 0.1741
+    },
+    {
+     "n": 161,
+     "raw": 51069,
+     "comp": 8278,
+     "comp_per_glyph": 51.42,
+     "ratio": 0.1621
+    },
+    {
+     "n": 207,
+     "raw": 64925,
+     "comp": 10274,
+     "comp_per_glyph": 49.63,
+     "ratio": 0.1582
+    }
+   ],
+   "marginal": 43.39,
+   "marginal_over_raw": 0.1383
+  },
+  "cmss10-axes": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 3436,
+     "comp": 1035,
+     "comp_per_glyph": 129.38,
+     "ratio": 0.3012
+    },
+    {
+     "n": 10,
+     "raw": 4187,
+     "comp": 1202,
+     "comp_per_glyph": 120.2,
+     "ratio": 0.2871
+    },
+    {
+     "n": 13,
+     "raw": 5494,
+     "comp": 1455,
+     "comp_per_glyph": 111.92,
+     "ratio": 0.2648
+    },
+    {
+     "n": 16,
+     "raw": 6808,
+     "comp": 1746,
+     "comp_per_glyph": 109.12,
+     "ratio": 0.2565
+    },
+    {
+     "n": 21,
+     "raw": 9008,
+     "comp": 2233,
+     "comp_per_glyph": 106.33,
+     "ratio": 0.2479
+    },
+    {
+     "n": 27,
+     "raw": 11601,
+     "comp": 2685,
+     "comp_per_glyph": 99.44,
+     "ratio": 0.2314
+    },
+    {
+     "n": 35,
+     "raw": 15193,
+     "comp": 3277,
+     "comp_per_glyph": 93.63,
+     "ratio": 0.2157
+    },
+    {
+     "n": 46,
+     "raw": 19952,
+     "comp": 3984,
+     "comp_per_glyph": 86.61,
+     "ratio": 0.1997
+    },
+    {
+     "n": 59,
+     "raw": 25658,
+     "comp": 4865,
+     "comp_per_glyph": 82.46,
+     "ratio": 0.1896
+    },
+    {
+     "n": 76,
+     "raw": 32990,
+     "comp": 5865,
+     "comp_per_glyph": 77.17,
+     "ratio": 0.1778
+    },
+    {
+     "n": 97,
+     "raw": 42370,
+     "comp": 7075,
+     "comp_per_glyph": 72.94,
+     "ratio": 0.167
+    },
+    {
+     "n": 125,
+     "raw": 54733,
+     "comp": 8634,
+     "comp_per_glyph": 69.07,
+     "ratio": 0.1577
+    },
+    {
+     "n": 161,
+     "raw": 70468,
+     "comp": 10561,
+     "comp_per_glyph": 65.6,
+     "ratio": 0.1499
+    },
+    {
+     "n": 207,
+     "raw": 90703,
+     "comp": 12845,
+     "comp_per_glyph": 62.05,
+     "ratio": 0.1416
+    }
+   ],
+   "marginal": 49.65,
+   "marginal_over_raw": 0.1133
+  },
+  "cmss10-indep": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 3786,
+     "comp": 1198,
+     "comp_per_glyph": 149.75,
+     "ratio": 0.3164
+    },
+    {
+     "n": 10,
+     "raw": 4758,
+     "comp": 1435,
+     "comp_per_glyph": 143.5,
+     "ratio": 0.3016
+    },
+    {
+     "n": 13,
+     "raw": 6385,
+     "comp": 1795,
+     "comp_per_glyph": 138.08,
+     "ratio": 0.2811
+    },
+    {
+     "n": 16,
+     "raw": 7854,
+     "comp": 2098,
+     "comp_per_glyph": 131.12,
+     "ratio": 0.2671
+    },
+    {
+     "n": 21,
+     "raw": 10262,
+     "comp": 2586,
+     "comp_per_glyph": 123.14,
+     "ratio": 0.252
+    },
+    {
+     "n": 27,
+     "raw": 13135,
+     "comp": 3127,
+     "comp_per_glyph": 115.81,
+     "ratio": 0.2381
+    },
+    {
+     "n": 35,
+     "raw": 17136,
+     "comp": 3894,
+     "comp_per_glyph": 111.26,
+     "ratio": 0.2272
+    },
+    {
+     "n": 46,
+     "raw": 22803,
+     "comp": 4926,
+     "comp_per_glyph": 107.09,
+     "ratio": 0.216
+    },
+    {
+     "n": 59,
+     "raw": 29231,
+     "comp": 6022,
+     "comp_per_glyph": 102.07,
+     "ratio": 0.206
+    },
+    {
+     "n": 76,
+     "raw": 37691,
+     "comp": 7366,
+     "comp_per_glyph": 96.92,
+     "ratio": 0.1954
+    },
+    {
+     "n": 97,
+     "raw": 48267,
+     "comp": 9062,
+     "comp_per_glyph": 93.42,
+     "ratio": 0.1877
+    },
+    {
+     "n": 125,
+     "raw": 62114,
+     "comp": 11136,
+     "comp_per_glyph": 89.09,
+     "ratio": 0.1793
+    },
+    {
+     "n": 161,
+     "raw": 79886,
+     "comp": 13662,
+     "comp_per_glyph": 84.86,
+     "ratio": 0.171
+    },
+    {
+     "n": 207,
+     "raw": 102175,
+     "comp": 16704,
+     "comp_per_glyph": 80.7,
+     "ratio": 0.1635
+    }
+   ],
+   "marginal": 66.13,
+   "marginal_over_raw": 0.134
+  },
+  "cmr10-indep": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 4234,
+     "comp": 1289,
+     "comp_per_glyph": 161.12,
+     "ratio": 0.3044
+    },
+    {
+     "n": 10,
+     "raw": 5117,
+     "comp": 1496,
+     "comp_per_glyph": 149.6,
+     "ratio": 0.2924
+    },
+    {
+     "n": 13,
+     "raw": 6756,
+     "comp": 1812,
+     "comp_per_glyph": 139.38,
+     "ratio": 0.2682
+    },
+    {
+     "n": 16,
+     "raw": 8279,
+     "comp": 2157,
+     "comp_per_glyph": 134.81,
+     "ratio": 0.2605
+    },
+    {
+     "n": 21,
+     "raw": 11008,
+     "comp": 2703,
+     "comp_per_glyph": 128.71,
+     "ratio": 0.2455
+    },
+    {
+     "n": 27,
+     "raw": 13752,
+     "comp": 3210,
+     "comp_per_glyph": 118.89,
+     "ratio": 0.2334
+    },
+    {
+     "n": 35,
+     "raw": 17780,
+     "comp": 3936,
+     "comp_per_glyph": 112.46,
+     "ratio": 0.2214
+    },
+    {
+     "n": 46,
+     "raw": 23283,
+     "comp": 4912,
+     "comp_per_glyph": 106.78,
+     "ratio": 0.211
+    },
+    {
+     "n": 59,
+     "raw": 30147,
+     "comp": 6031,
+     "comp_per_glyph": 102.22,
+     "ratio": 0.2001
+    },
+    {
+     "n": 76,
+     "raw": 38941,
+     "comp": 7470,
+     "comp_per_glyph": 98.29,
+     "ratio": 0.1918
+    },
+    {
+     "n": 97,
+     "raw": 49478,
+     "comp": 9115,
+     "comp_per_glyph": 93.97,
+     "ratio": 0.1842
+    },
+    {
+     "n": 125,
+     "raw": 63499,
+     "comp": 11175,
+     "comp_per_glyph": 89.4,
+     "ratio": 0.176
+    },
+    {
+     "n": 161,
+     "raw": 81199,
+     "comp": 13573,
+     "comp_per_glyph": 84.3,
+     "ratio": 0.1672
+    },
+    {
+     "n": 207,
+     "raw": 104054,
+     "comp": 16655,
+     "comp_per_glyph": 80.46,
+     "ratio": 0.1601
+    }
+   ],
+   "marginal": 67.0,
+   "marginal_over_raw": 0.1333
+  }
+ },
+ "s": {
+  "generative": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 3449,
+     "comp": 760,
+     "comp_per_glyph": 95.0,
+     "ratio": 0.2204
+    },
+    {
+     "n": 10,
+     "raw": 4260,
+     "comp": 967,
+     "comp_per_glyph": 96.7,
+     "ratio": 0.227
+    },
+    {
+     "n": 13,
+     "raw": 5875,
+     "comp": 1313,
+     "comp_per_glyph": 101.0,
+     "ratio": 0.2235
+    },
+    {
+     "n": 16,
+     "raw": 7197,
+     "comp": 1598,
+     "comp_per_glyph": 99.88,
+     "ratio": 0.222
+    },
+    {
+     "n": 21,
+     "raw": 9076,
+     "comp": 1959,
+     "comp_per_glyph": 93.29,
+     "ratio": 0.2158
+    },
+    {
+     "n": 27,
+     "raw": 11457,
+     "comp": 2315,
+     "comp_per_glyph": 85.74,
+     "ratio": 0.2021
+    },
+    {
+     "n": 35,
+     "raw": 14591,
+     "comp": 2908,
+     "comp_per_glyph": 83.09,
+     "ratio": 0.1993
+    },
+    {
+     "n": 46,
+     "raw": 18861,
+     "comp": 3574,
+     "comp_per_glyph": 77.7,
+     "ratio": 0.1895
+    },
+    {
+     "n": 59,
+     "raw": 24387,
+     "comp": 4547,
+     "comp_per_glyph": 77.07,
+     "ratio": 0.1865
+    },
+    {
+     "n": 76,
+     "raw": 31213,
+     "comp": 5491,
+     "comp_per_glyph": 72.25,
+     "ratio": 0.1759
+    },
+    {
+     "n": 97,
+     "raw": 39828,
+     "comp": 6713,
+     "comp_per_glyph": 69.21,
+     "ratio": 0.1685
+    },
+    {
+     "n": 125,
+     "raw": 51781,
+     "comp": 8172,
+     "comp_per_glyph": 65.38,
+     "ratio": 0.1578
+    },
+    {
+     "n": 161,
+     "raw": 67141,
+     "comp": 9934,
+     "comp_per_glyph": 61.7,
+     "ratio": 0.148
+    },
+    {
+     "n": 207,
+     "raw": 86744,
+     "comp": 12712,
+     "comp_per_glyph": 61.41,
+     "ratio": 0.1465
+    }
+   ],
+   "marginal": 60.39,
+   "marginal_over_raw": 0.1441
+  },
+  "cmss10-axes": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 3790,
+     "comp": 1048,
+     "comp_per_glyph": 131.0,
+     "ratio": 0.2765
+    },
+    {
+     "n": 10,
+     "raw": 4710,
+     "comp": 1251,
+     "comp_per_glyph": 125.1,
+     "ratio": 0.2656
+    },
+    {
+     "n": 13,
+     "raw": 6106,
+     "comp": 1511,
+     "comp_per_glyph": 116.23,
+     "ratio": 0.2475
+    },
+    {
+     "n": 16,
+     "raw": 7638,
+     "comp": 1840,
+     "comp_per_glyph": 115.0,
+     "ratio": 0.2409
+    },
+    {
+     "n": 21,
+     "raw": 9995,
+     "comp": 2318,
+     "comp_per_glyph": 110.38,
+     "ratio": 0.2319
+    },
+    {
+     "n": 27,
+     "raw": 12926,
+     "comp": 2796,
+     "comp_per_glyph": 103.56,
+     "ratio": 0.2163
+    },
+    {
+     "n": 35,
+     "raw": 16648,
+     "comp": 3449,
+     "comp_per_glyph": 98.54,
+     "ratio": 0.2072
+    },
+    {
+     "n": 46,
+     "raw": 21988,
+     "comp": 4258,
+     "comp_per_glyph": 92.57,
+     "ratio": 0.1937
+    },
+    {
+     "n": 59,
+     "raw": 28226,
+     "comp": 5185,
+     "comp_per_glyph": 87.88,
+     "ratio": 0.1837
+    },
+    {
+     "n": 76,
+     "raw": 36380,
+     "comp": 6352,
+     "comp_per_glyph": 83.58,
+     "ratio": 0.1746
+    },
+    {
+     "n": 97,
+     "raw": 46775,
+     "comp": 7744,
+     "comp_per_glyph": 79.84,
+     "ratio": 0.1656
+    },
+    {
+     "n": 125,
+     "raw": 60420,
+     "comp": 9464,
+     "comp_per_glyph": 75.71,
+     "ratio": 0.1566
+    },
+    {
+     "n": 161,
+     "raw": 77795,
+     "comp": 11637,
+     "comp_per_glyph": 72.28,
+     "ratio": 0.1496
+    },
+    {
+     "n": 207,
+     "raw": 100372,
+     "comp": 14142,
+     "comp_per_glyph": 68.32,
+     "ratio": 0.1409
+    }
+   ],
+   "marginal": 54.46,
+   "marginal_over_raw": 0.1123
+  },
+  "cmss10-indep": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 3635,
+     "comp": 1049,
+     "comp_per_glyph": 131.12,
+     "ratio": 0.2886
+    },
+    {
+     "n": 10,
+     "raw": 4594,
+     "comp": 1255,
+     "comp_per_glyph": 125.5,
+     "ratio": 0.2732
+    },
+    {
+     "n": 13,
+     "raw": 6003,
+     "comp": 1566,
+     "comp_per_glyph": 120.46,
+     "ratio": 0.2609
+    },
+    {
+     "n": 16,
+     "raw": 7355,
+     "comp": 1841,
+     "comp_per_glyph": 115.06,
+     "ratio": 0.2503
+    },
+    {
+     "n": 21,
+     "raw": 9690,
+     "comp": 2288,
+     "comp_per_glyph": 108.95,
+     "ratio": 0.2361
+    },
+    {
+     "n": 27,
+     "raw": 12306,
+     "comp": 2769,
+     "comp_per_glyph": 102.56,
+     "ratio": 0.225
+    },
+    {
+     "n": 35,
+     "raw": 16176,
+     "comp": 3435,
+     "comp_per_glyph": 98.14,
+     "ratio": 0.2124
+    },
+    {
+     "n": 46,
+     "raw": 21210,
+     "comp": 4312,
+     "comp_per_glyph": 93.74,
+     "ratio": 0.2033
+    },
+    {
+     "n": 59,
+     "raw": 27332,
+     "comp": 5334,
+     "comp_per_glyph": 90.41,
+     "ratio": 0.1952
+    },
+    {
+     "n": 76,
+     "raw": 35279,
+     "comp": 6592,
+     "comp_per_glyph": 86.74,
+     "ratio": 0.1869
+    },
+    {
+     "n": 97,
+     "raw": 45182,
+     "comp": 8072,
+     "comp_per_glyph": 83.22,
+     "ratio": 0.1787
+    },
+    {
+     "n": 125,
+     "raw": 58714,
+     "comp": 9979,
+     "comp_per_glyph": 79.83,
+     "ratio": 0.17
+    },
+    {
+     "n": 161,
+     "raw": 76107,
+     "comp": 12270,
+     "comp_per_glyph": 76.21,
+     "ratio": 0.1612
+    },
+    {
+     "n": 207,
+     "raw": 98533,
+     "comp": 15104,
+     "comp_per_glyph": 72.97,
+     "ratio": 0.1533
+    }
+   ],
+   "marginal": 61.61,
+   "marginal_over_raw": 0.1294
+  },
+  "cmr10-indep": {
+   "curve": [
+    {
+     "n": 8,
+     "raw": 4536,
+     "comp": 1249,
+     "comp_per_glyph": 156.12,
+     "ratio": 0.2754
+    },
+    {
+     "n": 10,
+     "raw": 5644,
+     "comp": 1498,
+     "comp_per_glyph": 149.8,
+     "ratio": 0.2654
+    },
+    {
+     "n": 13,
+     "raw": 7318,
+     "comp": 1817,
+     "comp_per_glyph": 139.77,
+     "ratio": 0.2483
+    },
+    {
+     "n": 16,
+     "raw": 9114,
+     "comp": 2169,
+     "comp_per_glyph": 135.56,
+     "ratio": 0.238
+    },
+    {
+     "n": 21,
+     "raw": 12100,
+     "comp": 2725,
+     "comp_per_glyph": 129.76,
+     "ratio": 0.2252
+    },
+    {
+     "n": 27,
+     "raw": 15558,
+     "comp": 3347,
+     "comp_per_glyph": 123.96,
+     "ratio": 0.2151
+    },
+    {
+     "n": 35,
+     "raw": 20173,
+     "comp": 4146,
+     "comp_per_glyph": 118.46,
+     "ratio": 0.2055
+    },
+    {
+     "n": 46,
+     "raw": 26280,
+     "comp": 5136,
+     "comp_per_glyph": 111.65,
+     "ratio": 0.1954
+    },
+    {
+     "n": 59,
+     "raw": 33623,
+     "comp": 6243,
+     "comp_per_glyph": 105.81,
+     "ratio": 0.1857
+    },
+    {
+     "n": 76,
+     "raw": 43246,
+     "comp": 7741,
+     "comp_per_glyph": 101.86,
+     "ratio": 0.179
+    },
+    {
+     "n": 97,
+     "raw": 55158,
+     "comp": 9468,
+     "comp_per_glyph": 97.61,
+     "ratio": 0.1717
+    },
+    {
+     "n": 125,
+     "raw": 70896,
+     "comp": 11682,
+     "comp_per_glyph": 93.46,
+     "ratio": 0.1648
+    },
+    {
+     "n": 161,
+     "raw": 91501,
+     "comp": 14503,
+     "comp_per_glyph": 90.08,
+     "ratio": 0.1585
+    },
+    {
+     "n": 207,
+     "raw": 116801,
+     "comp": 17670,
+     "comp_per_glyph": 85.36,
+     "ratio": 0.1513
+    }
+   ],
+   "marginal": 68.85,
+   "marginal_over_raw": 0.122
+  }
+ }
+}

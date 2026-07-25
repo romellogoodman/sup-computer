@@ -1,0 +1,41 @@
+{
+ "base": "cmss10",
+ "mode": "indep",
+ "requested": 500,
+ "compiled": 333,
+ "compile_failed": 167,
+ "encoded_fonts": 332,
+ "encode_failed": 1,
+ "yield": 0.664,
+ "glyphs": {
+  "a": 332,
+  "b": 332,
+  "c": 332,
+  "d": 332,
+  "e": 332,
+  "f": 332,
+  "g": 332,
+  "h": 332,
+  "i": 332,
+  "j": 332,
+  "k": 332,
+  "l": 332,
+  "m": 332,
+  "n": 332,
+  "o": 332,
+  "p": 332,
+  "q": 332,
+  "r": 332,
+  "s": 332,
+  "t": 332,
+  "u": 332,
+  "v": 332,
+  "w": 332,
+  "x": 332,
+  "y": 332,
+  "z": 332
+ },
+ "failure_reasons": {
+  "mfNptN: \"mpost -mem=mfNptN -progname=mpost '\\mode:=localfont; mag:=N; bpppix N.N": 167
+ }
+}

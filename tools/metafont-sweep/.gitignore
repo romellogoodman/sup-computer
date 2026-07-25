@@ -1,0 +1,5 @@
+# Generated corpora and the Metafont build tree regenerate from sweep.py.
+# Same rule as everywhere else: no corpora in the tree (ADR-0002). The
+# measurements they produce ARE committed, under results/.
+mf_corpus/
+mf_big/
