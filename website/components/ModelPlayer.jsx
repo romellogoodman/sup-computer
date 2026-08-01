@@ -42,7 +42,14 @@ export default function ModelPlayer({ models, series }) {
   const [error, setError] = useState(null);
 
   const cache = useRef({}); // id -> { session, tok }, kept across model switches
-  const stopRef = useRef(false);
+  // ORT's WebGPU backend corrupts its wasm heap if two session.run calls ever
+  // overlap (OrtRun is not re-entrant), and the corruption outlives the runs —
+  // every later generate fails until reload. So generation is serialized two
+  // ways: runIdRef makes a loop halt as soon as it stops being the current run
+  // (a bump is permanent — nothing can un-stop a stale loop), and
+  // runPromiseRef chains each run behind the previous one's exit.
+  const runIdRef = useRef(0);
+  const runPromiseRef = useRef(Promise.resolve());
 
   // Prefer the int8 quantization when published (smaller download for the
   // browser); resolveBundle still derives sidecar names from full precision.
@@ -52,7 +59,7 @@ export default function ModelPlayer({ models, series }) {
   const busy = status === "loading" || status === "generating";
 
   const select = (m) => {
-    if (busy) stopRef.current = true;
+    runIdRef.current++; // any in-flight loop is now stale and halts itself
     setSelectedId(m.id);
     setPrompt(m.demo?.prompt || "");
     setOutput("");
@@ -62,11 +69,15 @@ export default function ModelPlayer({ models, series }) {
 
   const run = async () => {
     if (!runnable || busy) return;
+    const myRun = ++runIdRef.current;
+    const isCurrent = () => runIdRef.current === myRun;
     setOutput("");
     setError(null);
     setStatus("loading");
-    stopRef.current = false;
-    try {
+    const prev = runPromiseRef.current;
+    const job = (async () => {
+      await prev; // a stale loop may still be finishing one forward pass
+      if (!isCurrent()) return;
       // NB: named `runtime`, not `player` — that would shadow the registry prop
       const runtime = await import("@supcomputer/player");
       let entry = cache.current[selected.id];
@@ -75,24 +86,32 @@ export default function ModelPlayer({ models, series }) {
         const tok = await makeTokenizer(selected, runtime, bundle);
         entry = cache.current[selected.id] = { session, tok };
       }
+      if (!isCurrent()) return;
       setStatus("generating");
       await runtime.generate(entry.session, entry.tok, prompt, {
         maxNewTokens,
         temp,
         topk,
         blockSize: selected.block_size || 256,
-        onToken: (piece) => setOutput((s) => s + piece),
-        shouldStop: () => stopRef.current,
+        onToken: (piece) => isCurrent() && setOutput((s) => s + piece),
+        shouldStop: () => !isCurrent(),
       });
-      setStatus("idle");
+      if (isCurrent()) setStatus("idle");
+    })();
+    runPromiseRef.current = job.catch(() => {}); // an error ends a run, not the chain
+    try {
+      await job;
     } catch (e) {
-      setError(e?.message || String(e));
-      setStatus("error");
+      if (isCurrent()) {
+        setError(e?.message || String(e));
+        setStatus("error");
+      }
     }
   };
 
   const stop = () => {
-    stopRef.current = true;
+    runIdRef.current++;
+    setStatus("idle");
   };
 
   return (
