@@ -65,3 +65,22 @@ brief feared). Full sweep: gemma-26b 43/72 kept, gemma-26b-qat 43/72, qwen3.6
 36/72 — **122 dialogues, 936 turns**, every sentence oracle-clean, provenance
 in `data/dialogue_manifest.json`. Chat mix: ×12 reps ≈ 4.6% of chars
 (`chat-r1`, from scratch, word-arm recipe).
+
+### Round-2 results (2026-08-02)
+
+- **chat-r1 free prose: 96.9%** [95.6, 97.8] — **above the corpus's own
+  96.0%** (corpus-relative 101.0%). Training denoised the corpus: the model
+  is more grammatical than its data. Hazard 0.078%/char. No regression from
+  the dialogue mix; val loss actually improved (2.457 vs 2.512).
+- **Replies: 100.0% grammatical at t = 0.8** (98.8% at 1.0), 0% empty, 0%
+  echo, 92% unique, mean 6.3 words, on-topic. The ablation is the story:
+  word-r1's replies are grammatical non-sequiturs (11.6 words of drift,
+  1.2% empty) — 4.6% dialogue data is what turns a language model into
+  something you can talk to.
+- Multi-turn REPL: context carries; ken-ala-ken questions get "lon."
+  affirmatives; farewell shifts the next-word keys toward tawa/pona. Known
+  weaknesses for the card: pronoun deixis slips (mi/sina swaps —
+  grammatical, wrong person) and within-reply repetition at low temp.
+- Verdict: **chat-r1 is the release candidate** (as pona-chat-nanogpt-1,
+  pending the human release decision). The /pona word-keyboard interface is
+  built and waiting on a registry entry + ONNX artifacts.

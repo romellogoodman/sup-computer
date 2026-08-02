@@ -1,0 +1,174 @@
+{
+  "tag": "chat-r1",
+  "arm": "word",
+  "run_dir": "projects/pona/runs/chat-r1",
+  "protocol": {
+    "sentences": 1000,
+    "temperature": 1.0,
+    "seed": 1337,
+    "unconditional": true,
+    "top_k": null
+  },
+  "val_loss_best": 2.457362413406372,
+  "first_try_grammaticality": {
+    "pass_rate_error_only": 0.969,
+    "wilson_95": [
+      0.956334233864468,
+      0.9780761352614977
+    ],
+    "pass_rate_strict": 0.904,
+    "corpus_rate_error_only": 0.95975,
+    "corpus_relative": 1.0096379265433706
+  },
+  "span_thesis": {
+    "mean_sentence_chars_model": 40.443,
+    "mean_sentence_chars_corpus": 41.32325,
+    "null_line": 0.9316816841038704,
+    "glyph_rate": 0.71,
+    "hazard_per_char_model": 0.0007783401398474554,
+    "hazard_per_char_glyph_omni_xl": 0.0017109861361870315,
+    "zone": "ABOVE NULL — better per character than glyph despite harder grammar (span thesis confirmed)"
+  },
+  "error_classes_hard": {
+    "particle": 23,
+    "vocabulary": 6,
+    "other": 3
+  },
+  "taxonomy_top": {
+    "nitpick:illFormedQuestion": 23,
+    "error:misplacedParticles": 14,
+    "possible-error:unofficialWordWithoutNoun": 12,
+    "uncommon:uncommonWord": 9,
+    "possible-error:piXpi": 7,
+    "error:suspiciousEn": 6,
+    "error:nimiPuAla": 6,
+    "nitpick:nimiSuliPuAla": 5,
+    "error:objectWithoutVerb": 3,
+    "nitpick:multiplePi": 2,
+    "error:consecutiveParticles": 2,
+    "possible-error:alaActionVerb": 2,
+    "possible-error:onaMissingLi": 2,
+    "possible-error:alaAsPredicate": 2,
+    "possible-error:duplicatePronoun": 1,
+    "possible-error:badPreposition": 1,
+    "possible-error:suspiciousKepeken": 1,
+    "nitpick:modifyingPreverb": 1,
+    "possible-error:piNanpa": 1,
+    "error:piOneWord": 1
+  },
+  "memorization": {
+    "exact_sentence_matches": 56,
+    "exact_rate": 0.056,
+    "eight_gram_overlap": 0.014537027283261351
+  },
+  "non_word_rate": 0.0,
+  "non_word_examples": [],
+  "sampling_waste": {
+    "incomplete_dropped": 48,
+    "unk_dropped": 5,
+    "too_short_dropped": 2,
+    "collected": 1283
+  },
+  "examples": [
+    {
+      "s": "tenpo suno ni la, mi lukin e tomo ala lon tenpo suno ale e tomo ona.",
+      "errors": []
+    },
+    {
+      "s": "tomo tawa ni li musi lon moku nasa.",
+      "errors": []
+    },
+    {
+      "s": "weka mi la mi kama jo e jan Mali.",
+      "errors": []
+    },
+    {
+      "s": "pilin mi la jan Ton li toki:\"mi pilin monsuta tan ni: pilin lawa ona li kama tan ni!",
+      "errors": []
+    },
+    {
+      "s": "ona li wile ala kama jo e pali li pana e olin pi pilin ike.",
+      "errors": []
+    },
+    {
+      "s": "mama li ken pana e ike tawa pilin pi ona ale.",
+      "errors": []
+    },
+    {
+      "s": "jan ni o monsuta e pilin pi mi mute.",
+      "errors": []
+    },
+    {
+      "s": "tawa la, mi pilin suwi.",
+      "errors": []
+    },
+    {
+      "s": "soweli pi sona mi; ni la, soweli lukin li wawa taso.",
+      "errors": []
+    },
+    {
+      "s": "jan musi li ken ala lukin e soweli ni.",
+      "errors": []
+    },
+    {
+      "s": "mi pilin nasa ala.",
+      "errors": []
+    },
+    {
+      "s": "tenpo ale la, soweli ante li nena kute li ken ijo pi wawa ala!",
+      "errors": []
+    },
+    {
+      "s": "tenpo ni la, mama en moli li kulupu li jo e pilin mute.",
+      "errors": []
+    },
+    {
+      "s": "sewi ni li sama ijo wawa.",
+      "errors": []
+    },
+    {
+      "s": "ona li sijelo e tomo tawa kon.",
+      "errors": []
+    },
+    {
+      "s": "jan Ton li ken ala ken ante e ijo?",
+      "errors": []
+    },
+    {
+      "s": "kon sewi li nasa ala tawa mi tu.",
+      "errors": []
+    },
+    {
+      "s": "jan Lakuse: tenpo weka la ona li ken kama.",
+      "errors": []
+    },
+    {
+      "s": "mi kama lon ma suli a taso...",
+      "errors": []
+    },
+    {
+      "s": "tenpo mute la mi mute o kama lon ma San.",
+      "errors": []
+    },
+    {
+      "s": "taso mi awen lon mun ni.",
+      "errors": []
+    },
+    {
+      "s": "taso sina awen lukin e sijelo mi pi ijo ale....",
+      "errors": []
+    },
+    {
+      "s": "ijo mama ante li kama sona.",
+      "errors": []
+    },
+    {
+      "s": "mi ken tawa e ijo sin mi.",
+      "errors": []
+    },
+    {
+      "s": "jan Mewi o.",
+      "errors": []
+    }
+  ]
+}

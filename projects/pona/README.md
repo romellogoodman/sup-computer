@@ -86,6 +86,13 @@ uv run python projects/pona/harness.py --out_dir projects/pona/runs/word-r1
 |---|---|---|---|---|---|
 | char-r1 | char | 0.8082 | 92.3% [90.5, 93.8] | 96.2% | MIXED — CI straddles the 93.2% null |
 | word-r1 | word | 2.5116 | **96.0%** [94.6, 97.0] | **100.0%** | **ABOVE NULL — span thesis confirmed** |
+| chat-r1 | word + dialogue mix | 2.4574 | **96.9%** [95.6, 97.8] | **101.0%** | ABOVE NULL |
+
+chat-r1 is the conversational candidate: replies to a fixed 20-prompt user-turn
+set are **100.0% grammatical at t = 0.8** (98.8% at 1.0), 0% empty, 0% echo,
+92% unique, on-topic — where word-r1 (no dialogue data) produces grammatical
+non-sequiturs and 1.2% empties (`research/eval-*-replies-*.json`). Talk to it:
+`uv run python projects/pona/talk.py --out_dir projects/pona/runs/chat-r1`.
 
 Protocol: 1,000 raw unconditional sentences, t = 1.0, no top-k; oracle =
 telo misikeke @ pin, error-category only (details in

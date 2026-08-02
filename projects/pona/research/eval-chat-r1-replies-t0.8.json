@@ -1,0 +1,259 @@
+{
+  "tag": "chat-r1",
+  "temperature": 0.8,
+  "k": 8,
+  "prompts": 20,
+  "replies": 160,
+  "reply_grammaticality_error_only": 1.0,
+  "empty_rate": 0.0,
+  "echo_rate": 0.0,
+  "unique_reply_rate": 0.91875,
+  "mean_reply_words": 6.35,
+  "taxonomy_top": {
+    "nitpick:illFormedQuestion": 11,
+    "uncommon:uncommonWord": 1,
+    "possible-error:alaAsPredicate": 1
+  },
+  "transcript": [
+    {
+      "prompt": "toki! sina pilin seme?",
+      "reply": "mi pilin pona mute."
+    },
+    {
+      "prompt": "toki! sina pilin seme?",
+      "reply": "mi pilin pona mute. toki tawa sina la?"
+    },
+    {
+      "prompt": "toki! sina pilin seme?",
+      "reply": "mi wile moku e moku."
+    },
+    {
+      "prompt": "toki! sina pilin seme?",
+      "reply": "mi pilin pona mute. mi pilin pona mute."
+    },
+    {
+      "prompt": "toki! sina pilin seme?",
+      "reply": "mi pilin pona ala. ni li seme?"
+    },
+    {
+      "prompt": "toki! sina pilin seme?",
+      "reply": "mi pilin pona mute."
+    },
+    {
+      "prompt": "toki! sina pilin seme?",
+      "reply": "mi pilin pona lili. mi pilin pona kin."
+    },
+    {
+      "prompt": "toki! sina pilin seme?",
+      "reply": "mi pilin pona kin. ni li pona mute!"
+    },
+    {
+      "prompt": "sina moku e seme?",
+      "reply": "mi moku ala. mi moku."
+    },
+    {
+      "prompt": "sina moku e seme?",
+      "reply": "mi moku e moku pi len lape."
+    },
+    {
+      "prompt": "sina moku e seme?",
+      "reply": "mi pilin pona. mi pilin pona ala."
+    },
+    {
+      "prompt": "sina moku e seme?",
+      "reply": "mi wile moku e kili lili."
+    },
+    {
+      "prompt": "sina moku e seme?",
+      "reply": "mi moku e telo suli sin."
+    },
+    {
+      "prompt": "sina moku e seme?",
+      "reply": "mi moku e telo. mi moku pi mute ala."
+    },
+    {
+      "prompt": "sina moku e seme?",
+      "reply": "mi lukin kala ni. ona li pona ala."
+    },
+    {
+      "prompt": "sina moku e seme?",
+      "reply": "mi pilin pona. ni li suli!"
+    },
+    {
+      "prompt": "tenpo suno ni li pona ala pona?",
+      "reply": "mi pilin pona tawa sina kin."
+    },
+    {
+      "prompt": "tenpo suno ni li pona ala pona?",
+      "reply": "lon. mi wile moli."
+    },
+    {
+      "prompt": "tenpo suno ni li pona ala pona?",
+      "reply": "a. mi pilin pona ala."
+    },
+    {
+      "prompt": "tenpo suno ni li pona ala pona?",
+      "reply": "lon. mi wile moku e ni."
+    },
+    {
+      "prompt": "tenpo suno ni li pona ala pona?",
+      "reply": "ala! mi wile tawa."
+    },
+    {
+      "prompt": "tenpo suno ni li pona ala pona?",
+      "reply": "mi wile e moku pona. mi wile e telo."
+    },
+    {
+      "prompt": "tenpo suno ni li pona ala pona?",
+      "reply": "lon. ona li pona tawa mi."
+    },
+    {
+      "prompt": "tenpo suno ni li pona ala pona?",
+      "reply": "lon. mi wile pilin pona."
+    },
+    {
+      "prompt": "sina lon seme?",
+      "reply": "mi pali e telo. mi pali e moku."
+    },
+    {
+      "prompt": "sina lon seme?",
+      "reply": "lon. mi wile lon ma seme a!"
+    },
+    {
+      "prompt": "sina lon seme?",
+      "reply": "mi tawa ala. mi tawa lon ma tomo lili."
+    },
+    {
+      "prompt": "sina lon seme?",
+      "reply": "mi pilin pona mute. mi wile moku."
+    },
+    {
+      "prompt": "sina lon seme?",
+      "reply": "mi lon tomo lili."
+    },
+    {
+      "prompt": "sina lon seme?",
+      "reply": "mi pilin pona kin!"
+    },
+    {
+      "prompt": "sina lon seme?",
+      "reply": "mi wile ala e ni."
+    },
+    {
+      "prompt": "sina lon seme?",
+      "reply": "mi lon tomo ni."
+    },
+    {
+      "prompt": "nimi sina li seme?",
+      "reply": "mi nimi pona."
+    },
+    {
+      "prompt": "nimi sina li seme?",
+      "reply": "mi nimi ala."
+    },
+    {
+      "prompt": "nimi sina li seme?",
+      "reply": "mi ni li walo. mi pilin pona."
+    },
+    {
+      "prompt": "nimi sina li seme?",
+      "reply": "mi toki lili e ni."
+    },
+    {
+      "prompt": "nimi sina li seme?",
+      "reply": "mi sona mani e ni."
+    },
+    {
+      "prompt": "nimi sina li seme?",
+      "reply": "mi nimi pi jan Mewi."
+    },
+    {
+      "prompt": "nimi sina li seme?",
+      "reply": "mi nimi lili pona."
+    },
+    {
+      "prompt": "nimi sina li seme?",
+      "reply": "a."
+    },
+    {
+      "prompt": "mi pilin ike. o pana e pona tawa mi.",
+      "reply": "pilin pona! pona!"
+    },
+    {
+      "prompt": "mi pilin ike. o pana e pona tawa mi.",
+      "reply": "o toki e seme?"
+    },
+    {
+      "prompt": "mi pilin ike. o pana e pona tawa mi.",
+      "reply": "o pona! sina pona tawa sina?"
+    },
+    {
+      "prompt": "mi pilin ike. o pana e pona tawa mi.",
+      "reply": "pona! sina pona. mi pilin pona."
+    },
+    {
+      "prompt": "mi pilin ike. o pana e pona tawa mi.",
+      "reply": "sina wile e seme?"
+    },
+    {
+      "prompt": "mi pilin ike. o pana e pona tawa mi.",
+      "reply": "kama. ona li seme?"
+    },
+    {
+      "prompt": "mi pilin ike. o pana e pona tawa mi.",
+      "reply": "ala! mi pilin pona ala."
+    },
+    {
+      "prompt": "mi pilin ike. o pana e pona tawa mi.",
+      "reply": "o pilin pona e ni!"
+    },
+    {
+      "prompt": "sina olin e seme?",
+      "reply": "mi jo e wawa lili. lawa li jaki."
+    },
+    {
+      "prompt": "sina olin e seme?",
+      "reply": "mi pilin ike. ni li seme?"
+    },
+    {
+      "prompt": "sina olin e seme?",
+      "reply": "mi meli sama sina."
+    },
+    {
+      "prompt": "sina olin e seme?",
+      "reply": "mi pilin pona kin. ni li pona mute!"
+    },
+    {
+      "prompt": "sina olin e seme?",
+      "reply": "mi pilin pona kin lon tenpo ni."
+    },
+    {
+      "prompt": "sina olin e seme?",
+      "reply": "mi lanpan e ona."
+    },
+    {
+      "prompt": "sina olin e seme?",
+      "reply": "mi sona e ni. mi pilin pona ala."
+    },
+    {
+      "prompt": "sina olin e seme?",
+      "reply": "mi pilin pona kin."
+    },
+    {
+      "prompt": "soweli li pona ala pona tawa sina?",
+      "reply": "mi pilin pona mute."
+    },
+    {
+      "prompt": "soweli li pona ala pona tawa sina?",
+      "reply": "mi pilin pona. mi pilin pona a!"
+    },
+    {
+      "prompt": "soweli li pona ala pona tawa sina?",
+      "reply": "pi ma pona li suli tawa sina?"
+    },
+    {
+      "prompt": "soweli li pona ala pona tawa sina?",
+      "reply": "mi pilin pona pi jan pona."
+    }
+  ]
+}
