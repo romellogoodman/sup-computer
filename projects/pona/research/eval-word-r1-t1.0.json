@@ -1,0 +1,191 @@
+{
+  "tag": "word-r1",
+  "arm": "word",
+  "run_dir": "projects/pona/runs/word-r1",
+  "protocol": {
+    "sentences": 1000,
+    "temperature": 1.0,
+    "seed": 1337,
+    "unconditional": true,
+    "top_k": null
+  },
+  "val_loss_best": 2.5116477012634277,
+  "first_try_grammaticality": {
+    "pass_rate_error_only": 0.96,
+    "wilson_95": [
+      0.9459900625744302,
+      0.9704891907260906
+    ],
+    "pass_rate_strict": 0.894,
+    "corpus_rate_error_only": 0.95975,
+    "corpus_relative": 1.0002604845011722
+  },
+  "span_thesis": {
+    "mean_sentence_chars_model": 40.537,
+    "mean_sentence_chars_corpus": 41.32325,
+    "null_line": 0.9316816841038704,
+    "glyph_rate": 0.71,
+    "hazard_per_char_model": 0.001006523593799269,
+    "hazard_per_char_glyph_omni_xl": 0.0017109861361870315,
+    "zone": "ABOVE NULL — better per character than glyph despite harder grammar (span thesis confirmed)"
+  },
+  "error_classes_hard": {
+    "particle": 23,
+    "vocabulary": 10,
+    "other": 8
+  },
+  "taxonomy_top": {
+    "nitpick:illFormedQuestion": 18,
+    "error:misplacedParticles": 15,
+    "nitpick:multiplePi": 12,
+    "possible-error:unofficialWordWithoutNoun": 11,
+    "uncommon:uncommonWord": 11,
+    "error:nimiPuAla": 10,
+    "nitpick:nimiSuliPuAla": 7,
+    "error:suspiciousEn": 4,
+    "error:objectWithoutVerb": 4,
+    "possible-error:badPreposition": 4,
+    "error:piOneWord": 3,
+    "error:puttingEAfterWordDoesntGerundizeIt": 3,
+    "possible-error:weirdActionVerb": 2,
+    "nitpick:modifyingPreverb": 2,
+    "error:consecutiveParticles": 2,
+    "possible-error:piXpi": 2,
+    "possible-error:alaAsPredicate": 1,
+    "possible-error:suspiciousTawa": 1,
+    "possible-error:duplicatePronoun": 1,
+    "possible-error:piNanpa": 1
+  },
+  "memorization": {
+    "exact_sentence_matches": 51,
+    "exact_rate": 0.051,
+    "eight_gram_overlap": 0.011418395139325372
+  },
+  "non_word_rate": 0.0,
+  "non_word_examples": [],
+  "sampling_waste": {
+    "incomplete_dropped": 56,
+    "too_short_dropped": 2,
+    "unk_dropped": 1,
+    "collected": 1265
+  },
+  "examples": [
+    {
+      "s": "toki Mewi li toki Mewi.",
+      "errors": []
+    },
+    {
+      "s": "toki Mewi la ma tomo Loma.",
+      "errors": []
+    },
+    {
+      "s": "jan Mewi li sitelen e kalama pi jan jo.",
+      "errors": []
+    },
+    {
+      "s": "sina wile ala wile kepeken toki Inli?",
+      "errors": []
+    },
+    {
+      "s": "nasin sinpin ale pi nimi\"mani\"li sama kon suli nanpa wan lon tenpo open ala.",
+      "errors": []
+    },
+    {
+      "s": "mi pilin e ni: mi kama.",
+      "errors": []
+    },
+    {
+      "s": "taso nanpa luka whiffling en: ijo ante wan o lon ma.",
+      "errors": [
+        {
+          "rule": "nimiPuAla",
+          "category": "error",
+          "text": "whiffling"
+        },
+        {
+          "rule": "misplacedParticles",
+          "category": "error",
+          "text": "en: "
+        }
+      ]
+    },
+    {
+      "s": "ijo tu li lon; ni la, ilo sona li pana e kepeken nimi, li wile ala e ni: moku li jo tawa mama ona.",
+      "errors": []
+    },
+    {
+      "s": "taso ona li wile e ni: jan li ken kalama e musi la ona li ken pana e kalama lon poki.",
+      "errors": []
+    },
+    {
+      "s": "sina ken ala ken lukin e insa lawa pi telo insa?",
+      "errors": []
+    },
+    {
+      "s": "o ni ala.",
+      "errors": []
+    },
+    {
+      "s": "\"ona li wile lon.\"",
+      "errors": []
+    },
+    {
+      "s": "ni li kalama kalama lon musi!",
+      "errors": []
+    },
+    {
+      "s": "ma Mewi li jo lon ma Mewi pi ma ni: ma Mewi en ma lawa pi ma Mewi en ma lili en ma Sesesele li wawa mute li pana e mani tawa ma Mewi.",
+      "errors": []
+    },
+    {
+      "s": "soweli li pali e tomo.",
+      "errors": []
+    },
+    {
+      "s": "pan akesi ma li laso.",
+      "errors": []
+    },
+    {
+      "s": "wawa seme li telo nasa?",
+      "errors": []
+    },
+    {
+      "s": "tenpo ale la mama meli li toki e ni: jan Mewi Mewi li ken lukin e mama olin mi pi ma Mewi.",
+      "errors": []
+    },
+    {
+      "s": "nimi pi suli mute li tenpo ona.",
+      "errors": []
+    },
+    {
+      "s": "jan lawa pi ma Mewi li ala.",
+      "errors": [
+        {
+          "rule": "alaAsPredicate",
+          "category": "possible-error",
+          "text": "li ala"
+        }
+      ]
+    },
+    {
+      "s": "o lape e pini ala.",
+      "errors": []
+    },
+    {
+      "s": "sina wile tawa sike pi seli lili tawa weka.",
+      "errors": []
+    },
+    {
+      "s": "jan Ton li tawa e kalama esun pi ma Mewika.",
+      "errors": []
+    },
+    {
+      "s": "mi kama tan kulupu mama sina li kama moli.",
+      "errors": []
+    },
+    {
+      "s": "mi kama pona lon ni lon tomo mi.",
+      "errors": []
+    }
+  ]
+}

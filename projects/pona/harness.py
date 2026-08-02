@@ -216,7 +216,7 @@ def main():
         "tag": tag, "arm": arm, "run_dir": args.out_dir,
         "protocol": {"sentences": n, "temperature": args.temperature,
                      "seed": args.seed, "unconditional": True, "top_k": None},
-        "val_loss_best": checkpoint.get("best_val_loss"),
+        "val_loss_best": float(checkpoint["best_val_loss"]) if "best_val_loss" in checkpoint else None,
         "first_try_grammaticality": {
             "pass_rate_error_only": pass_hard,
             "wilson_95": [lo, hi],

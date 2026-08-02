@@ -84,4 +84,12 @@ uv run python projects/pona/harness.py --out_dir projects/pona/runs/word-r1
 
 | run | arm | val loss | first-try grammaticality (error-only) | corpus-relative | zone |
 |---|---|---|---|---|---|
-| *(pending)* | | | | | |
+| char-r1 | char | 0.8082 | 92.3% [90.5, 93.8] | 96.2% | MIXED — CI straddles the 93.2% null |
+| word-r1 | word | 2.5116 | **96.0%** [94.6, 97.0] | **100.0%** | **ABOVE NULL — span thesis confirmed** |
+
+Protocol: 1,000 raw unconditional sentences, t = 1.0, no top-k; oracle =
+telo misikeke @ pin, error-category only (details in
+`research/eval-*.json`). Val losses are in different units (per-char vs
+per-word-token) — the harness numbers are the comparable ones. Per-char
+hazard: char 0.194%, word 0.101%, glyph omni-xl 0.171% — same corpus, same
+body, same grammar class, 5× shorter spans → hazard halves.
