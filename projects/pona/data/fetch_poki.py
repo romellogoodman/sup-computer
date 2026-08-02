@@ -132,7 +132,7 @@ def main():
     }
     with open(AUDIT_PATH, "w", encoding="utf-8") as f:
         json.dump(audit, f, indent=2, ensure_ascii=False)
-    n_chars = sum(len(l) + 1 for l in lines)
+    n_chars = sum(len(line) + 1 for line in lines)
     print(f"kept {len(kept_works)} works ({len(lines):,} paragraphs, {n_chars:,} chars)")
     print(f"dropped: {dropped}")
     print(f"wrote {OUT_PATH} and {AUDIT_PATH}")

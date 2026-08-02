@@ -100,7 +100,7 @@ def main():
 
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
-    n_chars = sum(len(l) + 1 for l in lines)
+    n_chars = sum(len(line) + 1 for line in lines)
     print(f"pages seen: {pages:,}  articles kept: {kept_pages:,}")
     print(f"wrote {len(lines):,} paragraphs, {n_chars:,} chars -> {OUT_PATH}")
 
