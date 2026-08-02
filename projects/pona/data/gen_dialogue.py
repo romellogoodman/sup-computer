@@ -70,15 +70,23 @@ TOPICS = [
 
 PROMPT = """Write one short dialogue in Toki Pona (the minimalist constructed language, ~130 words).
 
+Format it EXACTLY like this example — dash-space before every turn, two speakers alternating:
+
+- toki! sina pilin seme?
+- mi pilin pona. sina la?
+- mi pilin pona kin. tenpo suno ni li pona.
+- lon. suno li suli.
+
 Rules:
-- 4 to 8 turns, two speakers alternating.
-- Every line starts with "- " (dash, space).
-- Only common Toki Pona words (nimi pu). No English words, no digits, no numbers.
+- 4 to 8 turns. Write in Toki Pona ONLY — no English anywhere.
+- Only common Toki Pona words (nimi pu). No digits, no numbers.
 - Short sentences, 3-8 words each. End every sentence with "." or "!" or "?".
 - All lowercase (Toki Pona does not capitalize sentence starts).
 - Topic: {topic}
 
 Output only the dialogue lines, nothing else."""
+
+TURN_PREFIX = re.compile(r"^(?:[-*•]\s+|\d+[.)]\s+|(?:jan\s+)?[A-Z]:\s*)")
 
 
 def clean_turn(line: str):
@@ -87,9 +95,10 @@ def clean_turn(line: str):
                  "–": "-", "—": "-", "…": "..."}.items():
         line = line.replace(a, b)
     line = re.sub(r"\s+", " ", line).strip()
-    if not line.startswith("- "):
+    m = TURN_PREFIX.match(line)
+    if not m:
         return None
-    turn = line[2:].strip()
+    turn = line[m.end():].strip()
     if not turn or any(c.isdigit() for c in turn) or any(c not in ALLOWED for c in turn):
         return None
     # models love capitalizing sentence starts; toki pona doesn't
