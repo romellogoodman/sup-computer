@@ -1,0 +1,56 @@
+{
+  "sample_n": 20000,
+  "seed": 1337,
+  "corpus_sentences_total": 164996,
+  "mean_sentence_chars": 41.32325,
+  "overall": {
+    "n": 20000,
+    "pass_rate_error_only": 0.95975,
+    "pass_rate_strict": 0.9087
+  },
+  "by_source": {
+    "poki": {
+      "n": 5647,
+      "pass_rate_error_only": 0.9690100938551444,
+      "pass_rate_strict": 0.9024260669381973
+    },
+    "tatoeba": {
+      "n": 10368,
+      "pass_rate_error_only": 0.9896797839506173,
+      "pass_rate_strict": 0.9667245370370371
+    },
+    "wikipedia": {
+      "n": 3985,
+      "pass_rate_error_only": 0.8687578419071518,
+      "pass_rate_strict": 0.766624843161857
+    }
+  },
+  "error_taxonomy_top": {
+    "nitpick:nimiSuliPuAla": 640,
+    "error:misplacedParticles": 396,
+    "uncommon:uncommonWord": 263,
+    "error:nimiPuAla": 208,
+    "nitpick:multiplePi": 181,
+    "possible-error:piXpi": 102,
+    "error:suspiciousEn": 78,
+    "error:objectWithoutVerb": 63,
+    "possible-error:unofficialWordWithoutNoun": 60,
+    "possible-error:weirdActionVerb": 47,
+    "nitpick:illFormedQuestion": 38,
+    "error:consecutiveParticles": 36,
+    "possible-error:alaAsPredicate": 33,
+    "error:piOneWord": 31,
+    "error:duplicateParticle": 26,
+    "possible-error:badPreposition": 23,
+    "error:puttingEAfterWordDoesntGerundizeIt": 21,
+    "error:dontCapitalizeSentences": 13,
+    "possible-error:piNanpa": 13,
+    "possible-error:lukinSama": 13,
+    "possible-error:oBeforeAdress": 11,
+    "possible-error:onaMissingLi": 10,
+    "nitpick:modifyingPreverb": 10,
+    "possible-error:duplicatePronoun": 7,
+    "possible-error:lukinPona": 7
+  },
+  "note": "pass_rate_error_only is the pre-registered denominator for corpus-relative grammaticality; strict counts possible-error too"
+}

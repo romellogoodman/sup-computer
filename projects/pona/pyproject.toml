@@ -1,0 +1,23 @@
+[project]
+name = "pona"
+version = "0.1.0"
+description = "Toki Pona GPT scored by a real grammar checker — the studio's first natural-language model that can be *right*, and the substrate for a word-keyboard chat UI"
+requires-python = ">=3.10"
+dependencies = [
+    "supcomputer-core",
+    # corpus filtering: the community library the published Toki Pona corpus
+    # research uses (NB: PyPI package is `sonatoki`, not `tokipona` — the
+    # latter is an unrelated project)
+    "sonatoki",
+]
+
+[tool.uv.sources]
+supcomputer-core = { workspace = true }
+
+# Thin consumer of the shared engine, same shape as daydream: config, corpus
+# prep, oracle wiring, run evidence live here; training/sampling/eval call
+# into nanogpt_core. Not a build target (no [build-system]).
+#
+# Like daydream's Fairy-Stockfish, this project owns one non-Python dev-time
+# dependency: telo misikeke (MIT, JS), the grammar oracle — vendored by
+# oracle/fetch_oracle.py into a gitignored dir and invoked via node.

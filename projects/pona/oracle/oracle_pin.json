@@ -1,0 +1,14 @@
+{
+  "oracle": "telo misikeke",
+  "repo": "https://gitlab.com/telo-misikeke/telo-misikeke.gitlab.io.git",
+  "commit": "0a1852d69cc8034ab925738de08d7032df46474a",
+  "license": "MIT",
+  "word_list": "https://api.linku.la/v1/words",
+  "word_count": 178,
+  "usage_categories": {
+    "core": 118,
+    "uncommon": 10,
+    "obscure": 37,
+    "common": 13
+  }
+}
