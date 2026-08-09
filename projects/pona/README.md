@@ -78,7 +78,9 @@ uv run python projects/pona/harness.py --out_dir projects/pona/runs/word-r1
 
 ## Versions
 
-*(none released yet — round 1 in progress)*
+| Version | Date | What it is | Released numbers |
+|---|---|---|---|
+| [`pona-nanogpt-1`](models/pona-nanogpt-1/) | 2026-08-09 | chat-r1 frozen — 2.73M word-level GPT, 6L/6H/192E, 370-token vocab, natural corpus + 122 oracle-filtered dialogues ×12 | 96.9% first-try grammaticality (101.0% corpus-relative, ABOVE NULL); replies 100.0% at t = 0.8 |
 
 ## Leaderboard
 
@@ -86,7 +88,7 @@ uv run python projects/pona/harness.py --out_dir projects/pona/runs/word-r1
 |---|---|---|---|---|---|
 | char-r1 | char | 0.8082 | 92.3% [90.5, 93.8] | 96.2% | MIXED — CI straddles the 93.2% null |
 | word-r1 | word | 2.5116 | **96.0%** [94.6, 97.0] | **100.0%** | **ABOVE NULL — span thesis confirmed** |
-| chat-r1 | word + dialogue mix | 2.4574 | **96.9%** [95.6, 97.8] | **101.0%** | ABOVE NULL |
+| chat-r1 → **`pona-nanogpt-1`** | word + dialogue mix | 2.4574 | **96.9%** [95.6, 97.8] | **101.0%** | ABOVE NULL |
 
 chat-r1 is the conversational candidate: replies to a fixed 20-prompt user-turn
 set are **100.0% grammatical at t = 0.8** (98.8% at 1.0), 0% empty, 0% echo,
