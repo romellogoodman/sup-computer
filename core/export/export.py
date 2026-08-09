@@ -168,7 +168,10 @@ def export(folder, out_dir, quantize=True):
             with open(vocab_path, "w") as f:
                 json.dump({"stoi": meta["stoi"], "itos": meta["itos"]}, f)
             print(f"wrote {vocab_path}")
-            tokenizer = {"type": "char", "vocab": f"{name}.vocab.json"}
+            # meta.pkl's "arm" says what the stoi/itos vocab tokenizes ("char",
+            # "word"); older char-only projects predate the key, so char is the
+            # default, not an assumption about new arms.
+            tokenizer = {"type": meta.get("arm", "char"), "vocab": f"{name}.vocab.json"}
 
     # --- quantize (optional) ----------------------------------------------
     int8_path = None
