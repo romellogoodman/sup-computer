@@ -1,0 +1,251 @@
+{
+  "tag": "char-r1",
+  "arm": "char",
+  "run_dir": "projects/pona/runs/char-r1",
+  "protocol": {
+    "sentences": 1000,
+    "temperature": 1.0,
+    "seed": 1337,
+    "unconditional": true,
+    "top_k": null
+  },
+  "val_loss_best": 0.8082021474838257,
+  "first_try_grammaticality": {
+    "pass_rate_error_only": 0.923,
+    "wilson_95": [
+      0.9048101038917084,
+      0.9379523399042055
+    ],
+    "pass_rate_strict": 0.839,
+    "corpus_rate_error_only": 0.95975,
+    "corpus_relative": 0.9617087783276895
+  },
+  "span_thesis": {
+    "mean_sentence_chars_model": 41.202,
+    "mean_sentence_chars_corpus": 41.32325,
+    "null_line": 0.9316816841038704,
+    "glyph_rate": 0.71,
+    "hazard_per_char_model": 0.0019428227731522751,
+    "hazard_per_char_glyph_omni_xl": 0.0017109861361870315,
+    "zone": "MIXED — beats glyph per unit, worse per character (both effects visible)"
+  },
+  "error_classes_hard": {
+    "particle": 33,
+    "vocabulary": 41,
+    "other": 8
+  },
+  "taxonomy_top": {
+    "error:nimiPuAla": 41,
+    "nitpick:nimiSuliPuAla": 36,
+    "nitpick:illFormedQuestion": 35,
+    "error:misplacedParticles": 25,
+    "nitpick:multiplePi": 13,
+    "possible-error:piXpi": 9,
+    "possible-error:unofficialWordWithoutNoun": 7,
+    "error:objectWithoutVerb": 6,
+    "error:piOneWord": 6,
+    "uncommon:uncommonWord": 6,
+    "possible-error:alaAsPredicate": 2,
+    "error:suspiciousEn": 2,
+    "possible-error:badPreposition": 1,
+    "nitpick:modifyingPreverb": 1,
+    "error:consecutiveParticles": 1,
+    "possible-error:weirdActionVerb": 1,
+    "possible-error:duplicatePronoun": 1,
+    "possible-error:oBeforeAdress": 1,
+    "error:puttingEAfterWordDoesntGerundizeIt": 1
+  },
+  "memorization": {
+    "exact_sentence_matches": 57,
+    "exact_rate": 0.057,
+    "eight_gram_overlap": 0.012106788079470198
+  },
+  "non_word_rate": 0.003339797457444516,
+  "non_word_examples": [
+    "aala",
+    "alee",
+    "anma",
+    "aote",
+    "hed",
+    "iesun",
+    "ijojo",
+    "ikeli",
+    "itenpo",
+    "kaTama",
+    "kini",
+    "kken",
+    "ktva",
+    "lTapi",
+    "laLa",
+    "laLenton",
+    "lni",
+    "lpu",
+    "nasini",
+    "natakalu"
+  ],
+  "sampling_waste": {
+    "incomplete_dropped": 57,
+    "too_short_dropped": 3,
+    "collected": 1638
+  },
+  "examples": [
+    {
+      "s": "jan Ton li kama jo e nimi mute.",
+      "errors": []
+    },
+    {
+      "s": "sina toki e pana toki tan ni: \"jan pi sona ala pi pona mute li pana e sona ni pi nasin pi kulupu toki Kanse anu tenpo wan li sama lili ni: tenpo sike ni la kulupu li kama tan kulupu ike taso.....",
+      "errors": [
+        {
+          "rule": "multiplePi",
+          "category": "nitpick",
+          "text": "pi sona ala pi"
+        },
+        {
+          "rule": "piXpi",
+          "category": "possible-error",
+          "text": "pi nasin pi kulupu toki"
+        }
+      ]
+    },
+    {
+      "s": "sona ala li kama pana e insa pi jaki tu tu tu e sina?",
+      "errors": [
+        {
+          "rule": "illFormedQuestion",
+          "category": "nitpick",
+          "text": "sona ala li kama pana e insa pi jaki tu tu tu e sina?"
+        }
+      ]
+    },
+    {
+      "s": "ona li wile e ni: kalama musi li kama tawa ike.",
+      "errors": []
+    },
+    {
+      "s": "ni li pona ala insa ala e ijo lon ma ni.",
+      "errors": []
+    },
+    {
+      "s": "kama ni li pona ala tawa jan ane.",
+      "errors": [
+        {
+          "rule": "nimiPuAla",
+          "category": "error",
+          "text": "ane"
+        }
+      ]
+    },
+    {
+      "s": "taso jan sona li pona ala tawa sina tan wile jan ni la sina o kama jan utala.",
+      "errors": []
+    },
+    {
+      "s": "taso mi wile e ni: mi pilin monsuta mute tawa mama.",
+      "errors": []
+    },
+    {
+      "s": "ona li pali e sewi mute li lon ma pi jan ala.",
+      "errors": []
+    },
+    {
+      "s": "sina wile e ni: mi kama pona sama waso anu seme?",
+      "errors": []
+    },
+    {
+      "s": "jan li jo ala e sona ni.",
+      "errors": []
+    },
+    {
+      "s": "mi wile sona e ni: mi toki e ni tawa jan wan: taso o kama ale lon mun?",
+      "errors": [
+        {
+          "rule": "illFormedQuestion",
+          "category": "nitpick",
+          "text": "mi wile sona e ni: mi toki e ni tawa jan wan: taso o kama al"
+        }
+      ]
+    },
+    {
+      "s": "li ma suli nanpa tu loje ma tomo Kin Ke (Siarea) (toki pona) li toki Inli: ) en nasin sewi wan li ken lon poki lon lawa.",
+      "errors": [
+        {
+          "rule": "misplacedParticles",
+          "category": "error",
+          "text": "li"
+        },
+        {
+          "rule": "nimiSuliPuAla",
+          "category": "nitpick",
+          "text": "Siarea"
+        }
+      ]
+    },
+    {
+      "s": "tenpo ni la, ona li pini kepeken waso lili, la mun li pana e kon lili tawa ona.",
+      "errors": []
+    },
+    {
+      "s": "ona li alasa sona e seme?",
+      "errors": []
+    },
+    {
+      "s": "tenpo pini la, kulupu Tejo Son li pilin pona tawa toki Inli lon sitelen Lasina, pi nasin sewi Sesu li toki e ni: toki Peli li pana e pona tawa mi.",
+      "errors": []
+    },
+    {
+      "s": "toki e lon tenpo pini seme?",
+      "errors": [
+        {
+          "rule": "objectWithoutVerb",
+          "category": "error",
+          "text": "toki e lon tenpo pini seme?"
+        }
+      ]
+    },
+    {
+      "s": "mi mute li kama kama sona kama la nasin li pona e mi.",
+      "errors": []
+    },
+    {
+      "s": "o ken ala kepeken nimi ona pi jan Jesu.",
+      "errors": []
+    },
+    {
+      "s": "mi wile pana e pona tawa sina.",
+      "errors": []
+    },
+    {
+      "s": "mi toki e ni tawa mi: mi ken moku e telo nasa.",
+      "errors": []
+    },
+    {
+      "s": "mi jan pi kulupu jan sona pi nanpa wan lon seme?",
+      "errors": [
+        {
+          "rule": "multiplePi",
+          "category": "nitpick",
+          "text": "pi kulupu jan sona pi"
+        }
+      ]
+    },
+    {
+      "s": "sina wile ala pana e pona tawa sina?",
+      "errors": [
+        {
+          "rule": "illFormedQuestion",
+          "category": "nitpick",
+          "text": "sina wile ala pana e pona tawa sina?"
+        }
+      ]
+    },
+    {
+      "s": "jan ante li ken kama jo pi wawa mute.",
+      "errors": []
+    },
+    {
+      "s": "mi tawa lon tomo pi sitelen ike la mi tawa ma luka pona.",
+      "errors": []
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+# Regenerable artifacts — the committed scripts rebuild all of it.
+runs/
+data/raw/
+data/corpus/
+data/tokenized-*/
+oracle/vendor/

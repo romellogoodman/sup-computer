@@ -1,0 +1,53 @@
+{
+  "sources": {
+    "wikipedia": {
+      "lines_in": 17952,
+      "chars_in": 2394066,
+      "digits": 5448,
+      "url": 5,
+      "charset": 1991,
+      "not_toki_pona": 858,
+      "sentences_kept": 34204,
+      "lines_kept": 14601,
+      "chars_kept": 1825157
+    },
+    "poki": {
+      "lines_in": 12838,
+      "chars_in": 3906389,
+      "digits": 3565,
+      "url": 39,
+      "charset": 4851,
+      "not_toki_pona": 284,
+      "sentences_kept": 47272,
+      "lines_kept": 10840,
+      "chars_kept": 1947156
+    },
+    "tatoeba": {
+      "lines_in": 78245,
+      "chars_in": 3163453,
+      "digits": 56,
+      "url": 3,
+      "charset": 41,
+      "not_toki_pona": 6,
+      "sentences_kept": 87146,
+      "lines_kept": 78013,
+      "chars_kept": 3156094
+    }
+  },
+  "dedup": {
+    "exact_dropped": 1020,
+    "shape_dropped": 2270,
+    "lines_after": 100164
+  },
+  "per_source_lines_after_dedup": {
+    "wikipedia": 13280,
+    "poki": 10255,
+    "tatoeba": 76629
+  },
+  "total_chars": 6927074,
+  "gate_chars": 500000,
+  "gate": "CLEAR",
+  "excluded_on_principle": {
+    "ma-pona-discord-scrape": "6.39M tokens excluded: not published as a corpus by its community (consent), and live register drift would corrupt the grammaticality metric (see README)."
+  }
+}

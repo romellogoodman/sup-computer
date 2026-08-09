@@ -321,6 +321,31 @@
       "demo": {
         "prompt": "\na"
       }
+    },
+    {
+      "id": "pona-nanogpt-1",
+      "project": "pona",
+      "version": 1,
+      "git_tag": "pona-nanogpt-1",
+      "architecture": "modern (RoPE, RMSNorm, bias-free)",
+      "tagline": "word-level Toki Pona chat model whose whole vocabulary is the keyboard; writes more grammatically than the corpus it learned from",
+      "researcher": "claude-fable-5",
+      "tokenizer": {
+        "type": "word",
+        "vocab_size": 370
+      },
+      "params": 2730000,
+      "block_size": 128,
+      "frozen_code": "projects/pona/models/pona-nanogpt-1/",
+      "model_card": "research-docs/model-cards/pona-nanogpt-1.md",
+      "artifacts": {
+        "checkpoint": "https://huggingface.co/sup-computer/pona-nanogpt-1/resolve/main/ckpt.pt",
+        "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/pona-nanogpt-1.onnx",
+        "onnx_int8": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/pona-nanogpt-1.int8.onnx"
+      },
+      "demo": {
+        "prompt": "- toki! sina pilin seme?\n- "
+      }
     }
   ]
 }

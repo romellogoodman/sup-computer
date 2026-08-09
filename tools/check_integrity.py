@@ -24,8 +24,10 @@ import sys
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 
-# markdown trees we don't own or that are generated
-SKIP_DIRS = {".git", ".venv", "node_modules", "content", "output", ".next"}
+# markdown trees we don't own or that are generated; "raw" and "vendor" are
+# per-project gitignored fetch caches (third-party clones full of their own
+# markdown — e.g. pona's poki corpus and telo misikeke checker)
+SKIP_DIRS = {".git", ".venv", "node_modules", "content", "output", ".next", "raw", "vendor"}
 SKIP_PREFIXES = ("website/public",)
 
 LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)\s]+)\)")

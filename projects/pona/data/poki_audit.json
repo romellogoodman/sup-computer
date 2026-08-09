@@ -1,0 +1,5769 @@
+{
+  "source": "https://github.com/kulupu-lapo/poki",
+  "commit": "dd03dc5203c60181f9ad32b8885c0b7c8005b3ab",
+  "policy": "explicit permissive grants only (CC BY / CC BY-SA / CC0 / MIT / Public Domain); null, All Rights Reserved, NC and ND variants dropped",
+  "kept_works": 822,
+  "dropped_by_reason": {
+    "all-rights-reserved": 117,
+    "null": 603,
+    "cc-nonfree": 115,
+    "unrecognized:null    # mi pana e sitelen ali mi tawa jan ale.": 12,
+    "unrecognized:null # `null` if no or unknown license": 1
+  },
+  "works": [
+    {
+      "file": "plaintext/2002/10/kili-lili.md",
+      "title": "kili lili",
+      "author": "jan Pije",
+      "license": "CC0 1.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2002/10/toki-pona.md",
+      "title": "toki pona",
+      "author": "tobiah",
+      "license": "CC BY-SA 3.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2003/05/ma-tomo-pape.md",
+      "title": "ma tomo Pape",
+      "author": "Damian Yerrick  # According to Wikipedia's page history; unclear if this is the actual translator",
+      "license": "CC BY-SA 3.0  # License from Wikipedia",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2003/05/mama-pi-mi-mute.md",
+      "title": "mama pi mi mute",
+      "author": "Damian Yerrick  # According to Wikipedia's page history; unclear if this is the actual translator",
+      "license": "CC BY-SA 3.0  # License from Wikipedia",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2005/07/ma-tomo-pape.md",
+      "title": "ma tomo Pape",
+      "author": "jan Pije",
+      "license": "CC BY-SA 3.0    # License from Wikipedia",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2005/12/wan-taso.md",
+      "title": "wan taso",
+      "author": "Ackadi               # Possible author",
+      "license": "CC BY-SA 3.0    # License from Wikipedia",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2007/06/blue-sky.md",
+      "title": "Blue Sky",
+      "author": "jan Pije",
+      "license": "Public Domain # https://web.archive.org/web/20110809134608/http://bknight0.myweb.uga.edu/toki/copyright.html",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2007/06/melissa.md",
+      "title": "Revival",
+      "author": "jan Pije",
+      "license": "Public Domain # https://web.archive.org/web/20110809134608/http://bknight0.myweb.uga.edu/toki/copyright.html",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2007/06/midnight-rider.md",
+      "title": "Midnight Rider",
+      "author": "jan Pije",
+      "license": "Public Domain # https://web.archive.org/web/20110809134608/http://bknight0.myweb.uga.edu/toki/copyright.html",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2007/06/revival.md",
+      "title": "Revival",
+      "author": "jan Pije",
+      "license": "Public Domain # https://web.archive.org/web/20110809134608/http://bknight0.myweb.uga.edu/toki/copyright.html",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2013/10/telo-nasa.md",
+      "title": "telo nasa",
+      "author": "tobiah",
+      "license": "CC BY-SA 3.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2018/02/olin-ilo.md",
+      "title": "olin ilo - A Toki Pona original song concept",
+      "author": "jan Minasa",
+      "license": "CC-BY-4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2018/06/mi-ken-ala-moli-e-pipi.md",
+      "title": "mi ken ala moli e pipi | Futile Attempt of Killing Mosquito",
+      "author": "jan Sate",
+      "license": "CC-BY-4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2019/07/mi-toki.md",
+      "title": "mi toki",
+      "author": "jan Sotan",
+      "license": "CC BY 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2020/05/o-pana-e-olin-a.md",
+      "title": "o pana e olin a",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2020/08/jan-lawa-pi-linja-ilo.md",
+      "title": "jan lawa pi linja ilo (translation hack)",
+      "author": "jan Lentan",
+      "license": "MIT OR CC-BY-SA-3.0 OR CC-BY-SA-4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2020/10/ante-toki-tawa-musi-pi-sitelen-tawa.md",
+      "title": "ante toki tawa musi pi sitelen tawa (video game translations)",
+      "author": "jan Lentan",
+      "license": "MIT OR CC-BY-SA-3.0 OR CC-BY-SA-4.0",
+      "paragraphs": 28
+    },
+    {
+      "file": "plaintext/2020/10/musi-pi-jan-lawa-moli.md",
+      "title": "musi pi jan lawa moli (rules of chess)",
+      "author": "jan Lentan",
+      "license": "MIT OR CC-BY-SA-3.0 OR CC-BY-SA-4.0",
+      "paragraphs": 90
+    },
+    {
+      "file": "plaintext/2020/10/musi-soki.md",
+      "title": "musi Soki (rules of shogi) (wip)",
+      "author": "jan Lentan",
+      "license": "MIT OR CC-BY-SA-3.0 OR CC-BY-SA-4.0",
+      "paragraphs": 127
+    },
+    {
+      "file": "plaintext/2020/11/lipu-nasin-pi-musi-lisi-masan.md",
+      "title": "lipu nasin pi musi Lisi Masan (Riichi Mahjong) (WIP)",
+      "author": "jan Lentan",
+      "license": "MIT OR CC-BY-SA-3.0 OR CC-BY-SA-4.0",
+      "paragraphs": 269
+    },
+    {
+      "file": "plaintext/2020/12/kasi-pi-tenpo-lete-o.md",
+      "title": "kasi pi tenpo lete o  # musi kalama O Christmas Tree",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2020/12/ko-walo-telo-lete.md",
+      "title": "ko walo telo lete  # musi kalama Schneeflöckchen Weißröckchen",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2020/12/waso-li-mu.md",
+      "title": "waso li mu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2021/01/kulupu-pali-pona.md",
+      "title": "kulupu pali pona",
+      "author": "jan Jan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 23
+    },
+    {
+      "file": "plaintext/2021/01/lipu-sin.md",
+      "title": "lipu kule li kama lon",
+      "author": "jan Ana",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/01/monsutatesu.md",
+      "title": "monsutatesu",
+      "author": "kala pona Tonyu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 29
+    },
+    {
+      "file": "plaintext/2021/01/omekapo.md",
+      "title": "omekapo",
+      "author": "kala pona Tonyu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 17
+    },
+    {
+      "file": "plaintext/2021/01/pilin-pona-lili.md",
+      "title": "pilin pona lili",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2021/01/tan-suli.md",
+      "title": "tan suli lipu li seme?",
+      "author": "jan pali pi lipu kule",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2021/02/akesi-seli-ike.md",
+      "title": "akesi seli ike",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/02/ijo-lon-pi-lon-ala.md",
+      "title": "ijo lon pi lon ala",
+      "author": "kulupu En",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2021/02/isipin.md",
+      "title": "isipin",
+      "author": "kala pona Tonyu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 14
+    },
+    {
+      "file": "plaintext/2021/02/kijetesantakulu-o.md",
+      "title": "kijetesantakulu o!",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2021/02/kulupu-soko-pi-noka-kasi.md",
+      "title": "kulupu soko pi noka kasi",
+      "author": "jan San",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/02/lawa-pi-ma-setona.md",
+      "title": "lawa pi ma Setona",
+      "author": "kule epiku Atawan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2021/02/len-kule.md",
+      "title": "len kule",
+      "author": "jan Nijo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2021/02/lipu-tenpo-o-kama-pona.md",
+      "title": "lipu tenpo o kama pona!",
+      "author": "jan Telakoman",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2021/02/luka-pona-li-seme.md",
+      "title": "luka pona li seme?",
+      "author": "jan Olipija",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 13
+    },
+    {
+      "file": "plaintext/2021/02/mi-la-musi-amanka-li-pona-mute.md",
+      "title": "mi la, musi Amanka li pona mute",
+      "author": "jan Olipija",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2021/02/mi-la-nimi-kute-li-nasa-lili.md",
+      "title": "mi la, nimi “kute” li nasa lili",
+      "author": "jan Olipija",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2021/02/musi-linja.md",
+      "title": "musi linja",
+      "author": "jan Telakoman",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2021/02/nasin-kulupu.md",
+      "title": "nasin kulupu li seme?",
+      "author": "kulupu Aponi",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/02/nimi-pi-pu-ala.md",
+      "title": "nimi pi pu ala",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2021/02/nimi-tonsi-li-pona-a.md",
+      "title": "nimi “tonsi” li pona a!",
+      "author": "jan Olipija",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2021/02/pan-sike-suwi.md",
+      "title": "pan sike suwi",
+      "author": "jan Nijo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 24
+    },
+    {
+      "file": "plaintext/2021/02/pilin-mi-tawa-ilo-nanpa.md",
+      "title": "pilin mi tawa ilo nanpa",
+      "author": "jan Ana",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 14
+    },
+    {
+      "file": "plaintext/2021/02/seme-li-mi.md",
+      "title": "seme li mi?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2021/02/sike-mama-waso-en-telo-mama-soweli-li-pona-ala-tan-seme.md",
+      "title": "sike mama waso en telo mama soweli li pona ala tan seme?",
+      "author": "jan Tanije",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2021/02/sowejoki.md",
+      "title": "sowejoki",
+      "author": "kala pona Tonyu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 25
+    },
+    {
+      "file": "plaintext/2021/02/telo-ma.md",
+      "title": "telo li lon ma mi",
+      "author": "waso pimeja",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2021/02/tenpo-pini-pi-toki-pona.md",
+      "title": "tenpo pini pi toki pona",
+      "author": "jan Telakoman",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2021/02/toki-sama-pi-toki-pona.md",
+      "title": "toki sama pi toki pona",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2021/02/tomo-kasi.md",
+      "title": "tomo kasi nanpa tu",
+      "author": "kule epiku Atawan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 16
+    },
+    {
+      "file": "plaintext/2021/02/tu-kuntu.md",
+      "title": "tu kuntu",
+      "author": "kule epiku Atawan",
+      "license": "CC0 1.0",
+      "paragraphs": 581
+    },
+    {
+      "file": "plaintext/2021/02/waso-kule.md",
+      "title": "waso kule pi tawa mute",
+      "author": "jan Kuli",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2021/02/waso-tanije.md",
+      "title": "waso",
+      "author": "jan Tanije",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2021/02/wi-pi-wi-fi.md",
+      "title": "Wi-pi (Wi-Fi)",
+      "author": "jan Tomisu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2021/03/ilo-tawa-li-tawa-mun-loje.md",
+      "title": "ilo tawa li tawa mun loje",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2021/03/jan-esun-li-kama.md",
+      "title": "jan esun li kama  # kalama musi “jan esun li kama”",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2021/03/jan-lape-la.md",
+      "title": "jan lape la  # kamala musi “jan lape la”",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 14
+    },
+    {
+      "file": "plaintext/2021/03/jan-olin-mi-li-lon-ma-weka.md",
+      "title": "jan olin mi li lon ma weka  # kalama musi “jan olin mi li lon ma weka”",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2021/03/jan-pi-moli-ala.md",
+      "title": "jan pi moli ala",
+      "author": "jan Api",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 17
+    },
+    {
+      "file": "plaintext/2021/03/kasi-la-waso-lili.md",
+      "title": "kasi la waso lili  # musi kalama “kasi la waso lili”",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2021/03/kasi-suli-li-kule.md",
+      "title": "kasi suli li kule  # kalama musi “kasi suli li kule”",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2021/03/kijetesantakalu-o-nanpa-tu.md",
+      "title": "kijetesantakalu o!",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2021/03/kijetesantakalu-tu.md",
+      "title": "kijetesantakalu tu",
+      "author": "jan Wija",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2021/03/kon-nena.md",
+      "title": "kon nena",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2021/03/leko-nimi.md",
+      "title": "leko nimi",
+      "author": "jan Ali",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/03/ma-li-kama-seli.md",
+      "title": "ma li kama seli",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2021/03/ma-pi-nimi-pona.md",
+      "title": "ma pi nimi pona",
+      "author": "jan Telakoman",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2021/03/mani-pikon-li-seme.md",
+      "title": "mani Pikon li seme?",
+      "author": "jan Tomisu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2021/03/nasin-tama-li-seme.md",
+      "title": "nasin Tama li seme?",
+      "author": "jan Sose L-S",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2021/03/o-lukin-ala-e-monsi.md",
+      "title": "o lukin ala e monsi",
+      "author": "jan Juli",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/03/o-pali-e-moku-Kumikelejese-gumiklyijza.md",
+      "title": "o pali e moku Kumikelejese (gumiklyijza)",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/03/pali-kulupu-pi-lipu-tenpo-li-seme.md",
+      "title": "pali kulupu pi lipu tenpo li seme?",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 16
+    },
+    {
+      "file": "plaintext/2021/03/pilin-tawa-lipu-akesi-seli-lili.md",
+      "title": "pilin tawa lipu “akesi seli lili”",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2021/03/telo-supa-li-supa.md",
+      "title": "telo suli li supa  # kalama musi “telo suli li supa”",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2021/03/toki-forth.md",
+      "title": "pali kulupu: toki forth pi jan Eris",
+      "author": "jan Jan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 49
+    },
+    {
+      "file": "plaintext/2021/03/toki-pi-akesi-poki-suli.md",
+      "title": "toki pi akesi poki suli",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2021/03/toki-pona-li-sama-ala-sitelen-sonko.md",
+      "title": "toki pona li sama ala sitelen Sonko",
+      "author": "jan Telakoman",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2021/03/tomo.md",
+      "title": "tomo",
+      "author": "jan Sinke",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2021/03/tonsi.md",
+      "title": "nimi 'tonsi' li pona a!",
+      "author": "jan Olipija",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 14
+    },
+    {
+      "file": "plaintext/2021/03/wan-tan-mute-en-mute-lon-wan.md",
+      "title": "wan tan mute en mute lon wan",
+      "author": "kulupu Alesanwa",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/04/akesi-poki-pi-noka-jelo.md",
+      "title": "akesi poki pi noka jelo",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2021/04/jan-lawa-pi-tomo-tawa-linja.md",
+      "title": "jan lawa pi tomo tawa linja",
+      "author": "jan Telakoman",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2021/04/kalama-insa-pi-toki-ike-li-tan-seme.md",
+      "title": "kalama insa pi toki ike li tan seme?",
+      "author": "jan Telakoman",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2021/04/kijetesantakalu-o-nanpa-tu-wan.md",
+      "title": "kijetesantakalu o! nanpa tu wan",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2021/04/ma-pi-nimi-pona.md",
+      "title": "ma pi nimi pona",
+      "author": "jan Telakoman",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2021/04/meli-lili-pi-len-loje.md",
+      "title": "meli lili pi len loje",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/04/mi-lukin-e-nimi-open.md",
+      "title": "mi lukin e nimi “open”",
+      "author": "jan Winko Palisona",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2021/04/nasin-sinto.md",
+      "title": "nasin Sinto",
+      "author": "jan Sose L-S",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/04/nimi-sina-pi-sitelen-pona-li-seme.md",
+      "title": "nimi sina pi sitelen pona li seme?",
+      "author": "jan Tamalu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2021/04/poki-pona.md",
+      "title": "poki pona",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2021/04/sike-lili-laso-walo.md",
+      "title": "sike lili laso walo",
+      "author": "jan Emalan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2021/04/sona-nimi-li-mute-li-nasa-li-musi.md",
+      "title": "sona nimi li mute li nasa li musi",
+      "author": "jan Tamalu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2021/04/soweli-lili-suwi.md",
+      "title": "soweli lili suwi",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2021/04/tenpo-kama-pi-toki-pona.md",
+      "title": "tenpo kama pi toki pona",
+      "author": "jan Tamalu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2021/04/toki-nasa.md",
+      "title": "toki nasa",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2021/04/toki-tawa-jan-elike-mama-pi-jan-lili-pi-toki-pona.md",
+      "title": "toki tawa jan Elike (mama pi jan lili pi toki pona)",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 17
+    },
+    {
+      "file": "plaintext/2021/04/utala-pi-ilo-tawa.md",
+      "title": "utala pi ilo tawa",
+      "author": "jan Pa·ipa",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 23
+    },
+    {
+      "file": "plaintext/2021/05/akesi-seli-li-moli-e-seli.md",
+      "title": "akesi seli li moli e seli",
+      "author": "jan Tamalu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/05/jan-kule-lon-tenpo-pini-nanpa-wan.md",
+      "title": "jan kule lon tenpo pini - nanpa wan",
+      "author": "jan Olipija",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 20
+    },
+    {
+      "file": "plaintext/2021/05/jan-lilijan-li-tawa-tomo-pan.md",
+      "title": "jan Lilijan li tawa tomo pan",
+      "author": "jan Anlu Isa",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 19
+    },
+    {
+      "file": "plaintext/2021/05/jan-wawa.md",
+      "title": "jan wawa!",
+      "author": "jan Owekano",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2021/05/kalama-insa-pi-toki-ike-li-ken-kama-pona.md",
+      "title": "kalama insa pi toki ike li ken kama pona",
+      "author": "jan Telakoman",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2021/05/kijetesantakalu-o-nanpa-tu-tu.md",
+      "title": "kijetesantakalu o! nanpa tu tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2021/05/lipu-wikipesija-sin.md",
+      "title": "lipu Wikipesija sin",
+      "author": "jan Jan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2021/05/ma-pi-nimi-pona.md",
+      "title": "ma pi nimi pona",
+      "author": "jan Telakoman",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2021/05/mi-lukin-e-nimi-mute-pi-kon-wan.md",
+      "title": "mi lukin e nimi mute pi kon wan",
+      "author": "jan Olipija",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 15
+    },
+    {
+      "file": "plaintext/2021/05/monsuta-lon-ma-pi-kasi-suli.md",
+      "title": "monsuta lon ma pi kasi suli",
+      "author": "jan Tekinowi",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/05/musi-kasi-li-lili-li-suwi-li-pona.md",
+      "title": "musi Kasi li lili li suwi li pona",
+      "author": "jan Olipija",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2021/05/nimi-kijetesantakalu.md",
+      "title": "nimi kijetesantakalu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2021/05/o-kepeken-e-nimi-pi-poka-pi-nimi-pali.md",
+      "title": "o kepeken e nimi pi poka pi nimi pali",
+      "author": "jan Tamalu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2021/05/o-pali-e-moku-telo-pan-brotzupa-wodzionka.md",
+      "title": "o pali e moku telo pan (Brotzupa, Wodzionka)",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/05/sina-wile-ala-wile-jo-e-soweli-tomo.md",
+      "title": "sina wile jo ala jo e soweli tomo?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2021/05/toki-luka-pi-ma-nikalawa-li-toki-sin-taso-jan-li-pali-ala-e-ona.md",
+      "title": "toki luka pi ma Nikalawa li toki sin, taso jan li pali ala e ona",
+      "author": "jan Olipija",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/05/toki-nasa.md",
+      "title": "toki nasa",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2021/05/toki-pi-kon-pona.md",
+      "title": "toki pi kon pona",
+      "author": "jan Telakoman",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 32
+    },
+    {
+      "file": "plaintext/2021/06/ijo-apantasija-li-seme.md",
+      "title": "ijo Apantasija li seme?",
+      "author": "jan Tomisu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2021/06/jan-kule-lon-tenpo-pini-nanpa-tu-jan-pona-pi-jan-ale.md",
+      "title": "jan kule lon tenpo pini - nanpa tu - jan pona pi jan ale",
+      "author": "jan Olipija",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/06/kijetesantakalu-o-nanpa-luka.md",
+      "title": "kijetesantakalu o! nanpa luka",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2021/06/lipu-wikipesija.md",
+      "title": "lipu Wikipesija",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/06/musi-nasin-linja.md",
+      "title": "musi nasin linja",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 14
+    },
+    {
+      "file": "plaintext/2021/06/nasin-juni-pi-ilo-kon.md",
+      "title": "nasin Juni pi ilo kon",
+      "author": "jan Lentan",
+      "license": "MIT OR CC-BY-SA-3.0 OR CC-BY-SA-4.0",
+      "paragraphs": 13
+    },
+    {
+      "file": "plaintext/2021/06/nasin-seme-la-mi-pali-e-kulupu.md",
+      "title": "nasin seme la mi pali e kulupu",
+      "author": "jan Kasimun",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2021/06/nasin-sewi-puta.md",
+      "title": "nasin sewi Puta",
+      "author": "jan Palo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2021/06/nimi-mi-pi-sitelen-pona.md",
+      "title": "nimi mi pi sitelen pona",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/06/pali-iso.md",
+      "title": "kulupu pi lanpan nimi ISO tawa toki pona",
+      "author": "jan Jan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2021/06/sitelen-tawa-nomalan.md",
+      "title": "sitelen tawa Nomalan",
+      "author": "jan Pije",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2021/06/soweli-walo-pi-linja-monsi-suli.md",
+      "title": "soweli walo pi linja monsi suli",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/06/tenpo-kama.md",
+      "title": "tenpo kama",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2021/06/toki-musi-pona.md",
+      "title": "toki musi pona",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2021/06/toki-nasa-nanpa-tu-tu.md",
+      "title": "toki nasa nanpa tu tu",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2021/06/toki-pona-li-toki-pi-ma-ale-anu-seme.md",
+      "title": "toki pona li toki pi ma ale anu seme?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2021/06/wawa-ante-pi-toki-pona.md",
+      "title": "wawa ante pi toki pona",
+      "author": "jan Telakoman",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/06/wile-pi-sike-pan-li-kama-lon.md",
+      "title": "wile pi sike pan li kama lon",
+      "author": "jan Tamalu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/07/musi-moli.md",
+      "title": "musi moli",
+      "author": "jan Juli",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2021/08/ale-o-pali.md",
+      "title": "ale o pali  # kamala musi: ale o pali",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2021/08/ante.md",
+      "title": "ante",
+      "author": "jan Pite Janseke",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2021/08/jan-elita-li-kalama.md",
+      "title": "jan Elita li kalama (Toki Pona song about Elijah McClain's tragic death)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2021/08/kijetesantakalu-o-nanpa-luka-wan.md",
+      "title": "kijetesantakalu o! nanpa luka wan",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2021/08/ku.md",
+      "title": "ku",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2021/08/lawa-jan-li-kama-sona-e-nasin-toki-kepeken-nasin-seme.md",
+      "title": "lawa jan li kama sona e nasin toki kepeken nasin seme?",
+      "author": "jan Telakoman",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2021/08/lipu-ku.md",
+      "title": "lipu ku: lipu sin pi toki pona",
+      "author": "jan Epen",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2021/08/ma-anku.md",
+      "title": "tenpo pi suno sin pi ma Anku li kama!",
+      "author": "jan Epen",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2021/08/ma-li-tawa-la-jan-o-seme.md",
+      "title": "ma li tawa la jan o seme",
+      "author": "kili Melon",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/08/ma-pi-nimi-pona.md",
+      "title": "ma pi nimi pona",
+      "author": "jan Telakoman",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 16
+    },
+    {
+      "file": "plaintext/2021/08/ma-pona-mawi.md",
+      "title": "ma pona Mawi",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/08/mi-seli.md",
+      "title": "mi seli (toki pona song about climate change)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/08/mi-tawa-ma-mama-mi.md",
+      "title": "mi tawa ma mama mi",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2021/08/mi-tawa-ma-mi-pona.md",
+      "title": "mi tawa ma mi pona  # kamala musi “mi tawa ma mi pona”",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2021/08/mun-lili-pi-toki-pona.md",
+      "title": "mun lili pi toki pona",
+      "author": "jan Sepa",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2021/08/nasa-o-tawa-weka.md",
+      "title": "nasa o tawa weka! (toki pona dark synthpop song)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2021/08/nena-ma.md",
+      "title": "nena ma",
+      "author": "jan ala",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/08/o-lawa-e-sona-sina.md",
+      "title": "o lawa e sona sina!",
+      "author": "jan Lentan",
+      "license": "MIT OR CC-BY-SA-3.0 OR CC-BY-SA-4.0",
+      "paragraphs": 17
+    },
+    {
+      "file": "plaintext/2021/08/o-pali-e-poki-telo-suwi.md",
+      "title": "o pali e poki telo suwi",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2021/08/o-tawa-e-mi.md",
+      "title": "o tawa e mi  # kalama musi: o tawa e mi",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/08/o-weka-tan-ona.md",
+      "title": "o weka tan ona  # kamala musi: o weka tan ona",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2021/08/pona-o-tawa-kulupu.md",
+      "title": "pona o tawa kulupu  # kamala musi: pona o tawa kulupu",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2021/08/sike-suno-mute-pi-toki-pona.md",
+      "title": "sike suno mute pi toki pona",
+      "author": "jan Tamalu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/08/soweli-lili-li-suwi.md",
+      "title": "soweli lili li suwi",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2021/08/toki-nasa.md",
+      "title": "toki nasa",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2021/09/jan-ipi.md",
+      "title": "jan Ipi",
+      "author": "jan Palo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2021/09/kasi-kule-jelo.md",
+      "title": "kasi kule jelo",
+      "author": "jan Kuleku Nena",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2021/09/kijetesantakalu-o-nanpa-luka-tu.md",
+      "title": "kijetesantakalu o! nanpa luka tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2021/09/moku-suwi-pa-tan-ma-petame.md",
+      "title": "moku suwi Pa tan ma Petame",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 14
+    },
+    {
+      "file": "plaintext/2021/09/nanpa-open-tan-jan-juli.md",
+      "title": "nanpa open tan jan Juli",
+      "author": "jan Juli",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 15
+    },
+    {
+      "file": "plaintext/2021/09/nasin-nanpa-mute-li-lon.md",
+      "title": "nasin nanpa mute li lon",
+      "author": "jan Kita",
+      "license": "CC0",
+      "paragraphs": 29
+    },
+    {
+      "file": "plaintext/2021/09/nasin-sewi-palata.md",
+      "title": "nasin sewi Palata",
+      "author": "jan Palo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/09/nasin-sona-en-jan-sona-li-pona-e-lon-pi-mi-mute.md",
+      "title": "nasin sona en jan sona li pona e lon pi mi mute",
+      "author": "jan Penanto",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2021/09/nasin-tenpo.md",
+      "title": "nasin tenpo",
+      "author": "jan Lentan",
+      "license": "MIT OR CC-BY-SA-3.0 OR CC-BY-SA-4.0",
+      "paragraphs": 23
+    },
+    {
+      "file": "plaintext/2021/09/nimi-pi-jan-kule.md",
+      "title": "nimi pi jan kule",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/09/nimi-sutopatikuna-li-pona.md",
+      "title": "nimi “sutopatikuna”* li pona",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2021/09/o-jalan.md",
+      "title": "o jalan!",
+      "author": "jan Ini",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2021/09/suno-pi-toki-pona.md",
+      "title": "suno pi toki pona",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 40
+    },
+    {
+      "file": "plaintext/2021/09/toki-inota.md",
+      "title": "toki Inota",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2021/09/toki-nasa.md",
+      "title": "toki nasa",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2021/09/toki-sama-pi-toki-pona-nanpa-tu.md",
+      "title": "toki sama pi toki pona - nanpa tu",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2021/09/toki-tawa-jan-pi-lipu-tenpo-jan-Alonola.md",
+      "title": "toki tawa jan pi lipu tenpo - jan Alonola",
+      "author": "jan Sonatan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 20
+    },
+    {
+      "file": "plaintext/2021/10/ale-tenpo.md",
+      "title": "ale tenpo",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2021/10/anu-suli-pi-ma-tosi.md",
+      "title": "anu[^1] suli pi ma Tosi",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/10/ilo-sitelen.md",
+      "title": "ilo sitelen",
+      "author": "lipamanka",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2021/10/jan-lili-pi-toki-pona.md",
+      "title": "jan lili pi toki pona",
+      "author": "jan Nowa",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2021/10/kalama-ma-li-kama-ala-kama-e-ma.md",
+      "title": "kalama ma li kama ala kama e ma?",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/10/kijetesantakalu-o-nanpa-luka-tu-tu.md",
+      "title": "kijetesantakalu o! nanpa luka tu tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2021/10/kijetesantakalu-o-nanpa-luka-tu-wan.md",
+      "title": "kijetesantakalu o! nanpa luka tu wan",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2021/10/lipu-tan-jan-sekupija.md",
+      "title": "lipu tan jan Sekupija",
+      "author": "jan Sose L-S",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2021/10/ma-musi-nasa-kalaka-pi-telo-wawa-nasa.md",
+      "title": "ma musi nasa Kalaka pi telo wawa nasa",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/10/ma-nota-molene-neutral-moresnet.md",
+      "title": "ma Nota-Molene (Neutral-Moresnet)",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/10/mi-ken.md",
+      "title": "mi ken",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2021/10/musi-pi-alasa-sona.md",
+      "title": "musi pi alasa sona",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2021/10/musi-pi-kala-ko.md",
+      "title": "musi pi kala ko",
+      "author": "jan Itan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 172
+    },
+    {
+      "file": "plaintext/2021/10/noka-o-tawa.md",
+      "title": "noka o tawa",
+      "author": "jan Nowa",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2021/10/o-kalama-ilo-kalama-pi-linja-tu-tu.md",
+      "title": "o kalama - ilo kalama pi linja tu tu",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2021/10/pali-len-pi-sitelen-sitelen-pi-nimi-ku-suli.md",
+      "title": "pali len pi sitelen sitelen pi nimi ku suli",
+      "author": "lon Jawin",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 43
+    },
+    {
+      "file": "plaintext/2021/10/pilin-ku.md",
+      "title": "pilin ku",
+      "author": "jan Tepo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 18
+    },
+    {
+      "file": "plaintext/2021/10/pilin-mi-tan-lipu-pi-nasin-sona.md",
+      "title": "pilin mi tan \"lipu pi nasin sona",
+      "author": "jan Telakoman",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2021/10/pimeja.md",
+      "title": "pimeja",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2021/10/soweli-lili-en-waso-suli.md",
+      "title": "soweli lili en waso suli",
+      "author": "jan Anan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 15
+    },
+    {
+      "file": "plaintext/2021/10/tan-seme-la-jan-kulisito-li-moli.md",
+      "title": "tan seme la jan Kulisito li moli?",
+      "author": "jan Sose L-S",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/10/tawa-pi-poki-monsi-pi-ma-asija-nanpa-tu-ma-sinkapo.md",
+      "title": "tawa pi poki monsi pi ma Asija nanpa tu. ma Sinkapo",
+      "author": "jan Polo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2021/10/tawa-pi-poki-monsi-pi-ma-asija-nanpa-wan-ma-malasija.md",
+      "title": "tawa pi poki monsi pi ma Asija: nanpa wan. ma Malasija",
+      "author": "jan Polo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/10/tenpo-kalan-kaja.md",
+      "title": "tenpo Kalan Kaja",
+      "author": "jan Sose L-S",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/10/tenpo-mun-monsuta.md",
+      "title": "tenpo mun monsuta",
+      "author": "waso suno Alana",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2021/10/tenpo-suno-monsuta.md",
+      "title": "tenpo suno monsuta[^1]",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/10/toki-ma.md",
+      "title": "toki ma",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 17
+    },
+    {
+      "file": "plaintext/2021/10/toki-musi-pi-pana-waleja.md",
+      "title": "toki musi pi pana waleja",
+      "author": "jan Jonatan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 14
+    },
+    {
+      "file": "plaintext/2021/10/toki-nasa-pi-lipu-toki.md",
+      "title": "toki nasa",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/10/toki-nasa.md",
+      "title": "toki nasa",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2021/10/toki-pantunija-pandunia.md",
+      "title": "toki Pantunija (Pandunia)",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 17
+    },
+    {
+      "file": "plaintext/2021/10/toki-tawa-jan-pi-lipu-tenpo-jan-ke-tami.md",
+      "title": "toki tawa jan pi lipu tenpo - jan Ke Tami",
+      "author": "jan Sonatan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 22
+    },
+    {
+      "file": "plaintext/2021/10/uta-monsuta.md",
+      "title": "uta monsuta[^1]",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2021/11/kasi-luka.md",
+      "title": "kasi luka",
+      "author": "jan Melon",
+      "license": "CC-BY-4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/11/ma-pi-lipu-tun.md",
+      "title": "ma pi lipu Tun",
+      "author": "jan Tepo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 18
+    },
+    {
+      "file": "plaintext/2021/11/musi-kepeken-lipu.md",
+      "title": "musi kepeken lipu",
+      "author": "Ret Samys",
+      "license": "CC-BY-4.0",
+      "paragraphs": 24
+    },
+    {
+      "file": "plaintext/2021/11/nasin-pona-lipu.md",
+      "title": "nasin pona lipu",
+      "author": "jan Lakuse",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/11/o-toki-e-ijo-pi-toki-pona-ala.md",
+      "title": "o toki e ijo pi toki pona ala!",
+      "author": "jan Itan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 367
+    },
+    {
+      "file": "plaintext/2021/11/sitelen-mi-o-mu-ala-mu.md",
+      "title": "sitelen: mi o mu ala mu?",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2021/11/tu-lukin-lon.md",
+      "title": "tu lukin lon",
+      "author": "jan Lakuse",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2021/12/ike-li-ken-ike-ala.md",
+      "title": "ike li ken ike ala",
+      "author": "monsuta pi soweli mun",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2021/12/ilo-kalama-li-mu.md",
+      "title": "ilo kalama li mu  # kalama: ilo kalama li mu",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2021/12/jan-lawa-pona.md",
+      "title": "jan lawa pona  # kalama: jan lawa pona",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/12/jan-pana-li-kama.md",
+      "title": "jan pana li kama  # kalama: jan pana li kama",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2021/12/kijetesantakalu-o-nanpa-luka-luka.md",
+      "title": "kijetesantakalu o! nanpa luka luka",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2021/12/kule.md",
+      "title": "kule",
+      "author": "Aspen Leigh",
+      "license": "CC-BY-4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2021/12/lipu-pi-jan-puku.md",
+      "title": "lipu pi jan Puku",
+      "author": "Aspen Leigh",
+      "license": "CC-BY-4.0",
+      "paragraphs": 68
+    },
+    {
+      "file": "plaintext/2021/12/meli-jaka.md",
+      "title": "meli Jaka",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 16
+    },
+    {
+      "file": "plaintext/2021/12/moku-panson.md",
+      "title": "moku Panson",
+      "author": "jan Melon",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/12/o-awen-e-tenpo-pini.md",
+      "title": "o awen e tenpo pini  # kalama: o awen e tenpo pini",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2021/12/o-suli-e-toki-pona.md",
+      "title": "o suli e toki pona",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/12/pona-o-lon-tenpo-sewi.md",
+      "title": "pona o lon tenpo sewi  # kalama: pona o lon tenpo sewi",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2021/12/pona-o.md",
+      "title": "pona o  # kalama: pona o",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2021/12/pu-tosi-kalama-sin.md",
+      "title": "pu Tosi",
+      "author": "jan Juli",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 18
+    },
+    {
+      "file": "plaintext/2021/12/pu-tosi.md",
+      "title": "lipu pu Tosi li lon a",
+      "author": "jan Juli",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2021/12/sike-pini-en-sike-sin.md",
+      "title": "tomo awen  # kalama: tomo awen",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2021/12/sitelen-emosi.md",
+      "title": "sitelen Emosi",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2021/12/sitelen-nasa-pi-ilo-nuwapenta.md",
+      "title": "sitelen nasa pi ilo Nuwapenta",
+      "author": "jan Masu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2021/12/sitelen-tawa-sin-jan-pali-pi-weka-kon-ali-sin-ghostbusters-afterlife.md",
+      "title": "sitelen tawa sin jan pali pi weka kon - ali sin [Ghostbusters - Afterlife]",
+      "author": "jan Pije",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2021/12/soweli-poka-pi-soweli-lili.md",
+      "title": "soweli poka pi soweli lili",
+      "author": "jan Kita",
+      "license": "CC-BY-4.0",
+      "paragraphs": 75
+    },
+    {
+      "file": "plaintext/2021/12/tawa-pi-poki-monsi-pi-ma-asija-nanpa-tu-wan-ma-intonesija.md",
+      "title": "tawa pi poki monsi pi ma Asija nanpa tu wan: ma Intonesija",
+      "author": "jan Polo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2021/12/telo-pi-pona-sijelo.md",
+      "title": "telo pi pona sijelo",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 14
+    },
+    {
+      "file": "plaintext/2021/12/tenpo-lete-li-pona-ala-pona.md",
+      "title": "tenpo lete li pona ala pona?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2021/12/tenpo-pi-kalama-musi.md",
+      "title": "tenpo pi kalama musi",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2021/12/tenpo-pona-pimeja.md",
+      "title": "tenpo pona pimeja  # kalama: tenpo pona pimeja",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2021/12/tenpo-santa-li-kama.md",
+      "title": "tenpo Santa li kama",
+      "author": "jan Itan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2021/12/tenpo-suno-kama.md",
+      "title": "tenpo suno kama  # kalama: tenpo suno kama",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2021/12/toki-nasa.md",
+      "title": "toki nasa",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2021/12/toki-polaka.md",
+      "title": "toki Polaka",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 21
+    },
+    {
+      "file": "plaintext/2022/01/musi-li-weka-lawa.md",
+      "title": "musi li weka lawa",
+      "author": "waso Wilo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2022/01/musi-pi-toki-pona.md",
+      "title": "musi pi toki pona",
+      "author": "jan Sema",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2022/01/nasin-lanpan-pi-nimi-iso.md",
+      "title": "nasin lanpan pi nimi iso",
+      "author": "jan Jan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2022/01/nasin-pi-kama-sona.md",
+      "title": "nasin pi kama sona",
+      "author": "jan Tepo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 132
+    },
+    {
+      "file": "plaintext/2022/01/tenpo-sike-sin-mun.md",
+      "title": "tenpo suno pi tenpo sike sin lon nasin tenpo mun li kama a!",
+      "author": "jan Epen",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2022/01/toki-wijosa.md",
+      "title": "toki Wijosa",
+      "author": "jan Tepo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 106
+    },
+    {
+      "file": "plaintext/2022/01/waso-seli-pona.md",
+      "title": "waso seli pona",
+      "author": "jan Jan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 13
+    },
+    {
+      "file": "plaintext/2022/02/akesi-pi-ante-kule.md",
+      "title": "akesi pi ante kule",
+      "author": "jan Sonja",
+      "license": "CC0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2022/02/ijo-tenpo-pi-toki-pona-mi.md",
+      "title": "ijo tenpo pi toki pona mi",
+      "author": "jan Kapan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2022/02/ilo-nole-tan-pali-to.md",
+      "title": "ilo Nole tan pali To",
+      "author": "jan Pije",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2022/02/jan-mun-en-nasin-waso.md",
+      "title": "jan mun en nasin waso",
+      "author": "jan Itan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 382
+    },
+    {
+      "file": "plaintext/2022/02/jan-pona-a-mi.md",
+      "title": "jan pona a mi",
+      "author": "Simon K",
+      "license": "CC-BY-4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2022/02/kala-mi-a-ala-kala-mi-a.md",
+      "title": "kala mi a!\" \"ala. kala mi a!",
+      "author": "nick",
+      "license": "CC-BY-4.0",
+      "paragraphs": 16
+    },
+    {
+      "file": "plaintext/2022/02/kalama-musi-o-walo.md",
+      "title": "kalama musi “o walo”",
+      "author": "jan Sonatan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2022/02/kalama-musi-pi-kulupu-pvris.md",
+      "title": "kalama musi pi kulupu \"PVRIS",
+      "author": "lon Jawin",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2022/02/kasi-walo-li-utala-e-jan-nasi.md",
+      "title": "kasi walo li utala e jan Nasi",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2022/02/kijetesantakalu-o-nanpa-luka-luka-wan.md",
+      "title": "kijetesantakalu o! nanpa luka luka wan",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2022/02/lili-suli.md",
+      "title": "lili. suli.",
+      "author": "nick",
+      "license": "CC-BY-4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2022/02/mu-mu-a.md",
+      "title": "mu mu a",
+      "author": "nick",
+      "license": "CC-BY-4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2022/02/musi-monopoli-li-musi-ala-tan-ni.md",
+      "title": "musi Monopoli li musi ala tan ni",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2022/02/musi-tawa.md",
+      "title": "musi tawa",
+      "author": "nick",
+      "license": "CC-BY-4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2022/02/nasin-iso.md",
+      "title": "nasin ISO",
+      "author": "jan Pensa",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 209
+    },
+    {
+      "file": "plaintext/2022/02/nimi-namako-majuna.md",
+      "title": "nimi namako majuna[^1]",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2022/02/pilin-jan.md",
+      "title": "pilin jan",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2022/02/sijelo-mi.md",
+      "title": "sijelo mi",
+      "author": "Frzzl",
+      "license": "CC-BY-4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2022/02/suli-a-lili-a.md",
+      "title": "suli a! lili a!",
+      "author": "nick",
+      "license": "CC-BY-4.0",
+      "paragraphs": 22
+    },
+    {
+      "file": "plaintext/2022/02/tawa-pi-poki-monsi-pi-ma-asija-nanpa-tu-tu-ma-pilipina.md",
+      "title": "tawa pi poki monsi pi ma Asija nanpa tu tu: ma Pilipina",
+      "author": "jan Polo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2022/02/tenpo-pi-kalama-musi.md",
+      "title": "tenpo pi kalama musi",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/02/tenpo-pimeja-ni-la-mun-li-weka.md",
+      "title": "tenpo pimeja ni la mun li weka",
+      "author": "jan Melon",
+      "license": "CC-BY-4.0",
+      "paragraphs": 54
+    },
+    {
+      "file": "plaintext/2022/02/tenpo-pimeja-sewi-o-holy-night.md",
+      "title": "tenpo pimeja sewi",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2022/02/tenpo-santa-walo-anu-tenpo-santa-seli.md",
+      "title": "tenpo Santa walo anu tenpo Santa seli?",
+      "author": "jan Polo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2022/02/toki-nasa.md",
+      "title": "toki nasa",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2022/02/toki-soweli-nanpa-wan.md",
+      "title": "toki soweli - nanpa wan",
+      "author": "jan Eweni Wako",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2022/02/wile-pi-tenpo-sike-sin.md",
+      "title": "wile pi tenpo sike sin",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 13
+    },
+    {
+      "file": "plaintext/2022/03/kijetesantakalu-o-nanpa-luka-luka-tu.md",
+      "title": "kijetesantakalu o! nanpa luka luka tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2022/03/kon-lon.md",
+      "title": "kon lon",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2022/03/lupa-ali.md",
+      "title": "lupa ali",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2022/03/ma-elopa-li-utala.md",
+      "title": "ma Elopa li utala",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2022/03/musi-soweli-mu.md",
+      "title": "musi Soweli Mu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2022/03/o-kama-jo-e-nimi-iso.md",
+      "title": "o kama jo e nimi Iso",
+      "author": "jan Nowa",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/03/o-pali-e-moku-sule-żurek.md",
+      "title": "o pali e moku Sule (Żurek)",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2022/03/seme-li-mi.md",
+      "title": "seme li mi?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2022/03/tawa-pi-poki-monsi-pi-ma-asija-nanpa-luka-ma-pulun.md",
+      "title": "tawa pi poki monsi pi ma Asija nanpa luka. ma Pulun",
+      "author": "jan Polo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2022/03/tenpo-mun-pi-ante-toki.md",
+      "title": "tenpo mun pi ante toki",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 13
+    },
+    {
+      "file": "plaintext/2022/03/tenpo-open-pi-nimi-ona.md",
+      "title": "tenpo open pi nimi “ona”",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2022/03/toki-lon-lipu-onze-taal-toki-mi.md",
+      "title": "toki lon lipu “Onze Taal” (toki mi)",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/03/toki-musi-pi-nasin-tu.md",
+      "title": "toki musi pi nasin tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2022/03/toki-open-pi-nimi-kapesi.md",
+      "title": "toki open pi nimi \"kapesi",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2022/03/toki-open-pi-nimi-yupekosi.md",
+      "title": "toki open pi nimi \"yupekosi",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2022/03/toki-sama-pi-toki-pona-nanpa-tu-wan.md",
+      "title": "toki sama pi toki pona — nanpa tu wan",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/03/toki-soweli-nanpa-tu-wan.md",
+      "title": "toki soweli - nanpa tu wan",
+      "author": "jan Eweni Wako",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2022/03/toki-soweli-nanpa-tu.md",
+      "title": "toki soweli - nanpa tu",
+      "author": "jan Eweni Wako",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 18
+    },
+    {
+      "file": "plaintext/2022/04/kijetesantakalu-mute.md",
+      "title": "kijetesantakalu mute",
+      "author": "kijetesantaklu pona",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2022/04/toki-kijetesantakalu.md",
+      "title": "toki kijetesantaklu",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2022/05/kijetesantakalu-o-nanpa-luka-luka-tu-wan.md",
+      "title": "kijetesantakalu o! nanpa luka luka tu wan",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2022/05/ma-li-supa.md",
+      "title": "ma li supa",
+      "author": "jan Tepo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 137
+    },
+    {
+      "file": "plaintext/2022/05/musi-pi-pipi-linja.md",
+      "title": "musi pi pipi linja",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/05/nasin-nimi-sin-pi-sitelen-pona.md",
+      "title": "nasin nimi sin pi sitelen pona",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 27
+    },
+    {
+      "file": "plaintext/2022/05/o-pona-e-ijo-pakala.md",
+      "title": "o pona e ijo pakala",
+      "author": "jan Kita",
+      "license": "CC-BY-4.0",
+      "paragraphs": 46
+    },
+    {
+      "file": "plaintext/2022/05/pipi-li-soweli-tomo-pona-anu-seme.md",
+      "title": "pipi li soweli tomo (pona) anu seme?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2022/05/pipi-lili-li-tawa-mute.md",
+      "title": "pipi lili li tawa mute",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/05/pipi-mama-luka-monsuta.md",
+      "title": "pipi mama - luka monsuta",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2022/05/pipi-poki.md",
+      "title": "pipi poki",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2022/05/pipi-waso-pi-lili-nanpa-wan.md",
+      "title": "pipi waso pi lili nanpa wan",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2022/05/seme-li-mi.md",
+      "title": "seme li mi?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2022/05/tawa-pi-poki-monsi-pi-ma-asija-nanpa-luka-wan-ma-tawi-en-ma-laso-(laos).md",
+      "title": "tawa pi poki monsi pi ma Asija nanpa luka wan: ma Tawi en ma Laso (Laos)",
+      "author": "jan Polo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2022/05/tenpo-suno-pali.md",
+      "title": "tenpo suno pali",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2022/05/tenpo-wapukina.md",
+      "title": "tenpo Wapukina",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2022/05/toki-musi-pi-pana-waleja.md",
+      "title": "toki musi pi pana waleja",
+      "author": "jan Jonatan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 15
+    },
+    {
+      "file": "plaintext/2022/06/jan-monsuta-loje.md",
+      "title": "jan monsuta loje",
+      "author": "jan Kekan San",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2022/06/jan-sitata.md",
+      "title": "jan Sitata",
+      "author": "jan Kala",
+      "license": "CC0",
+      "paragraphs": 190
+    },
+    {
+      "file": "plaintext/2022/06/musi-pi-ijo-jaki.md",
+      "title": "musi pi ijo jaki  # kalama: musi pi ijo jaki",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2022/06/nasin-puta.md",
+      "title": "nasin Puta",
+      "author": "jan Lakuse",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 186
+    },
+    {
+      "file": "plaintext/2022/06/o-nanpa-e-noka.md",
+      "title": "o nanpa e noka",
+      "author": "José L.",
+      "license": "CC-BY-4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2022/06/poki-nasa.md",
+      "title": "poki nasa",
+      "author": "jan Lakuse",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 115
+    },
+    {
+      "file": "plaintext/2022/06/tenpo-pi-kamalawala-kanse.md",
+      "title": "nasin tenpo pi kamalawala Kanse",
+      "author": "jan Peton",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 18
+    },
+    {
+      "file": "plaintext/2022/06/utala-jaki-pakala-ike.md",
+      "title": "utala jaki pakala ike",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2022/07/esun-pi-ijo-sin.md",
+      "title": "ante toki pi AU MAGASIN DE NOUVEAUTES (esun pi ijo sin)",
+      "author": "jan Epen",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2022/07/ijo-pi-suli-pi-nanpa-kipisi.md",
+      "title": "ijo pi suli pi nanpa kipisi",
+      "author": "jan Simo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 18
+    },
+    {
+      "file": "plaintext/2022/07/ijo-sin.md",
+      "title": "ijo sin",
+      "author": "jan Lakuse",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2022/07/jan-suli-pi-nena-wekin.md",
+      "title": "jan suli pi nena Wekin",
+      "author": "jan Eli",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2022/07/kasi-pan-pi-lili-nanpa-wan.md",
+      "title": "kasi pan pi lili nanpa wan",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2022/07/kijetesantakalu-o-nanpa-luka-luka-tu-tu.md",
+      "title": "kijetesantakalu o! nanpa luka luka tu tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2022/07/kiwen-lukin.md",
+      "title": "kiwen lukin",
+      "author": "jan Kuleku Nena",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2022/07/ma-sakala-anu-ma-seli-suli.md",
+      "title": "ma Sakala (anu ma seli suli)",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2022/07/mi-tawa-ma-lete.md",
+      "title": "mi tawa ma lete",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2022/07/mijomi-telo.md",
+      "title": "mijomi telo[^1]",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/07/ni-li-pona-tawa-sina-la-ni-kin-li-pona.md",
+      "title": "ni li pona tawa sina la ni kin li pona",
+      "author": "lon Jawin",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2022/07/seme-li-mi.md",
+      "title": "seme li mi?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2022/07/sona-sin-pona-tan-jan-sewi-jojane.md",
+      "title": "sona sin pona tan jan sewi Jojane",
+      "author": "Jonathan Hill",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 217
+    },
+    {
+      "file": "plaintext/2022/07/soweli-kamelite-camelidae.md",
+      "title": "soweli Kamelite (Camelidae)",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/07/tawa-pi-poki-monsi-pi-ma-asija-nanpa-luka-tu-ma-mijama.md",
+      "title": "tawa pi poki monsi pi ma Asija nanpa luka tu: ma Mijama",
+      "author": "jan Polo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/07/tenpo-ale-la-utala-li-ike-tawa-mi.md",
+      "title": "tenpo ale la utala li ike tawa mi",
+      "author": "jan Polo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2022/07/tenpo-li-tawa-suli.md",
+      "title": "tenpo li tawa suli",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/07/toki-pilin-li-seme.md",
+      "title": "toki pilin li seme?",
+      "author": "jan Kalin",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/08/akesi-li-wile-lon-nena.md",
+      "title": "akesi li wile lon nena",
+      "author": "jan Kita",
+      "license": "CC0-1.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2022/08/ali-li-ale.md",
+      "title": "ali li ale",
+      "author": "kapesi Pake",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2022/08/kalama-kalama.md",
+      "title": "kalama kalama",
+      "author": "ilo Eko",
+      "license": "CC-BY-SA-3.0",
+      "paragraphs": 17
+    },
+    {
+      "file": "plaintext/2022/08/kasi-lili-li-suli.md",
+      "title": "kasi lili li suli",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/08/mije-pi-utala-toki.md",
+      "title": "mije pi utala toki",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-4.0",
+      "paragraphs": 32
+    },
+    {
+      "file": "plaintext/2022/09/alasa-nimi-ma-amelika.md",
+      "title": "alasa nimi: ma Amelika",
+      "author": "jan Sonatan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2022/09/anpa-pi-telo-suli.md",
+      "title": "anpa pi telo suli",
+      "author": "jan Piku",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2022/09/in-memoriam.md",
+      "title": "In Memoriam",
+      "author": "jan Sotan",
+      "license": "CC BY 4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2022/09/kalama-sin-suno-pi-toki-pona.md",
+      "title": "suno pi toki pona",
+      "author": "jan Kepe",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 268
+    },
+    {
+      "file": "plaintext/2022/09/kijetesantakalu-o-nanpa-luka-luka-luka.md",
+      "title": "kijetesantakalu o! nanpa luka luka luka",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2022/09/lipu-sin-mute-pi-toki-pona.md",
+      "title": "lipu sin mute pi toki pona",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 19
+    },
+    {
+      "file": "plaintext/2022/09/ma-masuno.md",
+      "title": "ma Masuno",
+      "author": "jan Na",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2022/09/nasin-juniko-ala-la-nasin-ucsur-li-lon.md",
+      "title": "nasin Juniko ala la, nasin UCSUR li lon",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2022/09/o-pali-e-mulapisu.md",
+      "title": "o pali e mulapisu[^1]!",
+      "author": "kije Enki",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2022/09/pan-suwi-pi-kasi-kule.md",
+      "title": "pan suwi pi kasi kule",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2022/09/seme-li-mi.md",
+      "title": "seme li mi?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2022/09/soweli-kapipala.md",
+      "title": "soweli Kapipala",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/09/tawa-pi-poki-monsi-pi-ma-asija-nanpa-luka-tu-wan-ma-palata.md",
+      "title": "tawa pi poki monsi pi ma Asija nanpa luka tu wan: ma Palata",
+      "author": "jan Polo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2022/09/tenpo-ni-la-ala-o-awen-a.md",
+      "title": "tenpo ni la ala, o awen a!",
+      "author": "Miles Rodriguez",
+      "license": "CC-BY-4.0",
+      "paragraphs": 19
+    },
+    {
+      "file": "plaintext/2022/09/tenpo-sin-la-mi-lukin-e-sitelen-tawa-utala-mun-star-wars.md",
+      "title": "tenpo sin la, mi lukin e sitelen tawa \"utala mun\"(Star Wars)",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2022/09/tomo-tawa.md",
+      "title": "tomo tawa",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2022/09/waso-en-soweli.md",
+      "title": "waso en soweli",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2022/10/alasa-nimi-ma-apika.md",
+      "title": "alasa nimi: ma Apika",
+      "author": "jan Sonatan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2022/10/jan-lawa-oliki.md",
+      "title": "jan lawa Oliki",
+      "author": "soweli Elepanto",
+      "license": "CC BY 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/10/jan-osimanta.md",
+      "title": "jan Osimanta",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2022/10/kala-mi.md",
+      "title": "kala mi",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2022/10/kijetesantakalu-o-nanpa-luka-luka-luka-wan.md",
+      "title": "kijetesantakalu o! nanpa luka luka luka wan",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2022/10/kule-kulupu-pi-o-toki-sin-tawa-mi.md",
+      "title": "kule (kulupu \"o toki sin tawa mi\")",
+      "author": "Miles Rodriguez",
+      "license": "CC-BY-4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2022/10/kulupu-esun-patakonija.md",
+      "title": "kulupu esun Patakonija",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2022/10/musi-pi-soweli-ike.md",
+      "title": "musi pi soweli ike",
+      "author": "jan Jakopo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2022/10/nasin-ku-li-pona-taso-ala.md",
+      "title": "nasin ku li pona taso ala",
+      "author": "jan pi wile nimi ala",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 17
+    },
+    {
+      "file": "plaintext/2022/10/o-moku-pona.md",
+      "title": "o moku pona!",
+      "author": "jan Simiman",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 13
+    },
+    {
+      "file": "plaintext/2022/10/pilin-pi-kama-pona.md",
+      "title": "pilin pi kama pona",
+      "author": "jan Lentan",
+      "license": "MIT OR CC-BY-SA-3.0 OR CC-BY-SA-4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2022/10/pona-monsuta.md",
+      "title": "pona monsuta[^1]",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2022/10/seme-li-mi.md",
+      "title": "seme li mi?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2022/10/sina-pi-toki-pona-o-kama-kulupu.md",
+      "title": "sina pi toki pona o kama kulupu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2022/10/sona-pi-ijo-lili-a.md",
+      "title": "sona pi ijo lili a",
+      "author": "jan Kekan San",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 14
+    },
+    {
+      "file": "plaintext/2022/10/tawa-pi-poki-monsi-pi-ma-asija-nanpa-luka-luka-tu-tu-ma-nepali.md",
+      "title": "tawa pi poki monsi pi ma Asija nanpa luka luka tu tu: ma Nepali",
+      "author": "jan Polo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2022/10/telo-oko-li-ken-ante-e-pilin.md",
+      "title": "telo oko li ken ante e pilin",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2022/10/telo-suli-suli.md",
+      "title": "telo suli suli",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2022/10/tenpo-kulupu-pi-ma-tomo-win.md",
+      "title": "tenpo kulupu pi ma tomo Win",
+      "author": "jan Sonatan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 14
+    },
+    {
+      "file": "plaintext/2022/10/tenpo-pi-jaki-kolona-li-pini-ala-pini.md",
+      "title": "tenpo pi jaki Kolona li pini ala pini",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2022/11/ken-la-sina-musi.md",
+      "title": "ken la sina musi (\"Maybe you're having fun\") - Darkwave toki pona song",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/11/musi-lon.md",
+      "title": "musi lon",
+      "author": "jan Sotan",
+      "license": "CC BY 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2022/11/nanpa-mi.md",
+      "title": "nanpa mi (\"It's my birthday\", a toki pona song)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/11/poki-ko.md",
+      "title": "poki ko (The Urn, a toki pona dark song)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 13
+    },
+    {
+      "file": "plaintext/2022/12/alasa-nimi-ma-apika-nanpa-tu.md",
+      "title": "alasa nimi: ma Apika - nanpa tu",
+      "author": "jan Sonatan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2022/12/jaki-lili-majuna-li-kama-tan-telo-lete.md",
+      "title": "jaki lili majuna[^1] li kama tan telo lete",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2022/12/jan-utala-o.md",
+      "title": "jan utala o!\" (toki pona \"Bella Ciao\" cover)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/12/kijetesantakalu-o-nanpa-luka-luka-luka-tu.md",
+      "title": "kijetesantakalu o! nanpa luka luka luka tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2022/12/lipu-mun-monsuta.md",
+      "title": "lipu “mun monsuta[^1]”",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2022/12/lipu-musi-lili-nasa-pi-nimi-ali.md",
+      "title": "lipu musi lili nasa pi nimi ali",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/12/mi-tawa-lon-pimeja-ni.md",
+      "title": "mi tawa lon pimeja ni (an original toki pona song)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2022/12/nasin-ante.md",
+      "title": "nasin ante",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2022/12/nimi-kule-pi-pu-ala.md",
+      "title": "nimi kule pi pu ala",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2022/12/o-pali-e-ijo-sina.md",
+      "title": "o pali e ijo sina (\"Do your thing!\", a toki pona EDM song)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2022/12/pilin-musi-pi-lawa-toki.md",
+      "title": "pilin musi pi lawa toki",
+      "author": "anonymous",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2022/12/seme-li-mi.md",
+      "title": "seme li mi?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2022/12/sina-wile-pali-e-ante-toki-la-o-kepeken-nasin-ni.md",
+      "title": "sina wile pali e ante toki la, o kepeken nasin ni",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/12/sona-pi-tawa-suno.md",
+      "title": "sona pi tawa suno",
+      "author": "jan Kekan San",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2022/12/tawa-pi-poki-monsi-pi-ma-asija-nanpa-luka-luka-ma-lanka.md",
+      "title": "tawa pi poki monsi pi ma Asija nanpa luka luka: ma Lanka",
+      "author": "jan Polo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/12/tenpo-musi-lon-ma-mute.md",
+      "title": "tenpo musi lon ma mute",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2022/12/tenpo-pini-pi-toki-luka.md",
+      "title": "toki luka li sin ala li toki pali ala! tenpo pini pi toki luka",
+      "author": "jan Olipija",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 19
+    },
+    {
+      "file": "plaintext/2022/12/toki-kopasa-globasa.md",
+      "title": "toki Kopasa (Globasa)",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 13
+    },
+    {
+      "file": "plaintext/2022/12/toki-sama-pi-toki-pona-nanpa-tu-tu.md",
+      "title": "toki sama pi toki pona - nanpa tu tu",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 16
+    },
+    {
+      "file": "plaintext/2023/01/ken-li-ken-ala.md",
+      "title": "ken li ken ala",
+      "author": "Oreo Créme",
+      "license": "CC-BY-4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2023/01/nasin-pi-utala-meli-mije.md",
+      "title": "nasin pi utala meli mije",
+      "author": "jan Olipija",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 16
+    },
+    {
+      "file": "plaintext/2023/02/alasa-nimi-ma-osejanija.md",
+      "title": "alasa nimi: ma Osejanija",
+      "author": "jan Sonatan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2023/02/ale-li-nanpa.md",
+      "title": "ale li nanpa",
+      "author": "jan Kekan San",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2023/02/jan-pi-lon-ala.md",
+      "title": "jan pi lon ala",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2023/02/kijetesantakalu-o-nanpa-luka-luka-luka-tu-wan.md",
+      "title": "kijetesantakalu o! nanpa luka luka luka tu wan",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2023/02/luka-juke-pona-sin-li-lon-anu-powe.md",
+      "title": "luka Juke - pona sin li lon anu powe[^1]?",
+      "author": "jan Olipija",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 22
+    },
+    {
+      "file": "plaintext/2023/02/ma-ilo-wijasa.md",
+      "title": "ma ilo Wijasa",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2023/02/mi-ale.md",
+      "title": "mi ale",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2023/02/monsuta-li-lon.md",
+      "title": "monsuta[^1] li lon",
+      "author": "jan Penta",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2023/02/nimi-open-pi-toki-pona.md",
+      "title": "nimi open pi toki pona",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 25
+    },
+    {
+      "file": "plaintext/2023/02/seme-li-mi.md",
+      "title": "seme li mi?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2023/02/tawa-pi-poki-monsi-pi-ma-asija-nanpa-luka-luka-wan-ma-kanpusi.md",
+      "title": "tawa pi poki monsi pi ma Asija nanpa luka luka wan: ma Kanpusi",
+      "author": "jan Polo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2023/02/tenpo-pi-mi-jan-lili-la.md",
+      "title": "tenpo pi mi jan lili la...",
+      "author": "kije Enki",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2023/02/tenpo-sike-tu.md",
+      "title": "tenpo sike tu",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2023/02/toki-li-seme.md",
+      "title": "toki li seme?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 13
+    },
+    {
+      "file": "plaintext/2023/04/lawa-monsuta.md",
+      "title": "lawa monsuta",
+      "author": "jan Juli",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2023/05/alasa-nimi-ma-elopa-nanpa-wan.md",
+      "title": "alasa nimi: ma Elopa (nanpa wan)",
+      "author": "jan Sonatan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2023/05/jan-kule-lon-tenpo-pini-la-jan-sona-alan-tuwin.md",
+      "title": "jan kule lon tenpo pini la jan sona Alan Tuwin",
+      "author": "jan Olipija",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 14
+    },
+    {
+      "file": "plaintext/2023/05/kama.md",
+      "title": "kama",
+      "author": "jan Penta",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2023/05/kijetesantakalu-o-nanpa-luka-luka-luka-tu-tu.md",
+      "title": "kijetesantakalu o! nanpa luka luka luka tu tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2023/05/moku-pi-tenpo-pini.md",
+      "title": "moku pi tenpo pini",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2023/05/nasin-nanpa-pona.md",
+      "title": "nasin nanpa pona",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2023/05/o-lipu-e-sona.md",
+      "title": "o lipu e sona",
+      "author": "jan Kekan San",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 13
+    },
+    {
+      "file": "plaintext/2023/05/o-moku-pona.md",
+      "title": "o moku pona!",
+      "author": "jan Sonatan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2023/05/o-pali-musi-e-moku.md",
+      "title": "o pali musi e moku",
+      "author": "jan Sonatan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2023/05/seme-li-mi.md",
+      "title": "seme li mi?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2023/05/suno-mi.md",
+      "title": "suno mi",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2023/05/tawa-pi-poki-monsi-pi-ma-asija-nanpa-luka-luka-tu-ma-wije.md",
+      "title": "tawa pi poki monsi pi ma Asija nanpa luka luka tu: ma Wije",
+      "author": "jan Polo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2023/05/tenpo-seli.md",
+      "title": "tenpo seli",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2023/05/tenpo-suno-mama-meli.md",
+      "title": "tenpo suno mama (meli)",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2023/05/toki-musi-lili.md",
+      "title": "toki musi lili",
+      "author": "jan Peton",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2023/05/toki-tu.md",
+      "title": "toki tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2023/06/ma-tomo-win.md",
+      "title": "ma tomo Win",
+      "author": "jan Jakopo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 84
+    },
+    {
+      "file": "plaintext/2023/06/misikeke-ike.md",
+      "title": "misikeke ike (\"Terrible Therapy\", an original toki pona song)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2023/07/alasa-nimi-ma-elopa-nanpa-tu.md",
+      "title": "alasa nimi: ma Elopa (nanpa tu)",
+      "author": "jan Sonatan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2023/07/jan-eli-li-tawa.md",
+      "title": "jan Eli li tawa",
+      "author": "jan Sonatan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2023/07/jan-pali-li-ken-ala-ken-kama-lawa-e-nasin-pali.md",
+      "title": "jan pali li ken ala ken kama lawa e nasin pali?",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 23
+    },
+    {
+      "file": "plaintext/2023/07/jan-poka-li-ike.md",
+      "title": "jan poka li ike (\"The Neighbour is Problematic\", toki pona dark song)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2023/07/kalama-ali.md",
+      "title": "kalama ali",
+      "author": "kijetesantakalu Nasan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2023/07/kijetesantakalu-o-nanpa-mute.md",
+      "title": "kijetesantakalu o! nanpa mute",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2023/07/lete-kama-seli.md",
+      "title": "lete kama seli",
+      "author": "jan Sonatan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2023/07/mun-suli.md",
+      "title": "mun suli",
+      "author": "jan Lulu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2023/07/nasin-tawa-intawe.md",
+      "title": "nasin tawa Intawe",
+      "author": "jan Alipi",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2023/07/nasin-telo-suli-nile.md",
+      "title": "nasin telo suli Nile",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2023/07/olin-o-lawa.md",
+      "title": "olin o lawa!\" 💖 (kalama musi sin lon toki pona) / \"Let Love Lead\" (original toki pona song)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2023/07/seme-li-mi.md",
+      "title": "seme li mi?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2023/07/sina-wile-uta-la.md",
+      "title": "sina wile uta la...\" (\"If You''d Like To Kiss...\", a toki pona original synthwave song)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2023/07/sitelen-pi-lipu-tenpo-lon-nasin-juniko.md",
+      "title": "sitelen pi lipu tenpo lon nasin Juniko",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2023/07/sitelen-pi-nasin-jan.md",
+      "title": "sitelen pi nasin jan",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2023/07/tan-ma-tawa-mun.md",
+      "title": "tan ma tawa mun",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2023/07/tawa-pi-poki-monsi-pi-ma-asija-nanpa-luka-luka-tu-ma-sonko.md",
+      "title": "tawa pi poki monsi pi ma Asija nanpa luka luka tu. ma Sonko",
+      "author": "jan Polo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2023/07/toki-loje-tu.md",
+      "title": "toki loje tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2023/07/utala-musi-pi-sitelen-toki.md",
+      "title": "utala musi pi sitelen toki",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2023/08/alasa-musi-pini.md",
+      "title": "alasa musi pini",
+      "author": "kapesi Pake",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2023/08/alasa-nimi-ma-asija.md",
+      "title": "alasa nimi: ma Asija",
+      "author": "jan Sonatan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2023/08/ilo-sitelen-wawa.md",
+      "title": "ilo sitelen wawa",
+      "author": "nasa utala",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2023/08/ilo-toki.md",
+      "title": "ilo toki",
+      "author": "jan Peton",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 50
+    },
+    {
+      "file": "plaintext/2023/08/ilo-wawa-pi-ma-toli.md",
+      "title": "ilo wawa pi ma Toli",
+      "author": "jan Peli",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 28
+    },
+    {
+      "file": "plaintext/2023/08/ilo-wawa.md",
+      "title": "ilo wawa",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0 OR CC-BY-SA-4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2023/08/jan-mun.md",
+      "title": "jan mun",
+      "author": "jan Kekan San",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 89
+    },
+    {
+      "file": "plaintext/2023/08/jan-pi-toki-pona-li-kulupu-lon-ma-tomo-mase.md",
+      "title": "jan pi toki pona li kulupu lon ma tomo Mase",
+      "author": "jan Sonatan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2023/08/jan-pi-toki-sonko-li-toki-pona-la-seme-li-sin-lon-kulupu-ona.md",
+      "title": "jan pi toki Sonko li toki pona la seme li sin lon kulupu ona / 人之言Sonko兮言善时何兮新于团伊",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2023/08/jan-pilipu-kalasi.md",
+      "title": "jan Pilipu Kalasi (Philip Glass)",
+      "author": "jan Mimakenta",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2023/08/ken-la-jan.md",
+      "title": "ken la jan",
+      "author": "jan Uwe (Russ Sharek)",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2023/08/kijetesantakalu-o-nanpa-mute-wan.md",
+      "title": "kijetesantakalu o! nanpa mute wan",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2023/08/kili.md",
+      "title": "kili",
+      "author": "jan Simiman",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 94
+    },
+    {
+      "file": "plaintext/2023/08/linja-mije.md",
+      "title": "linja mije",
+      "author": "kulupu kala",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2023/08/lon-n-taso-ala.md",
+      "title": "lon n taso ala",
+      "author": "jan Pontu",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2023/08/luka-waso-pi-nena-taso.md",
+      "title": "luka waso pi nena taso",
+      "author": "jan Lakuse",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2023/08/mama-sewi-pi-unpa-ala.md",
+      "title": "mama sewi pi unpa ala",
+      "author": "jan Lakuse",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2023/08/meli-insa.md",
+      "title": "meli insa\" (toki pona coldwave song)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2023/08/mi-en-waso-kaka.md",
+      "title": "mi en waso Kaka en monsuta pi ma kasi",
+      "author": "jan Pensa",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 281
+    },
+    {
+      "file": "plaintext/2023/08/mi-ko.md",
+      "title": "mi ko\" (cold wave song in toki pona)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2023/08/mi-moku-e-kiwen.md",
+      "title": "mi moku e kiwen\" 🎶 (\"I Eat Pebbles\", an original toki pona song)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2023/08/moku-pi-telo-loje.md",
+      "title": "moku pi telo loje",
+      "author": "jan Wilo",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 37
+    },
+    {
+      "file": "plaintext/2023/08/mu-namako.md",
+      "title": "mu namako",
+      "author": "ijo tan anpa nanpa (Itan)",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2023/08/mu-wawa.md",
+      "title": "mu wawa",
+      "author": "jan Puloku",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2023/08/musi-linja.md",
+      "title": "musi linja",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2023/08/musi-pi-nasin-sitelen-non.md",
+      "title": "musi pi nasin sitelen Non",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2023/08/nasi.md",
+      "title": "Nasi",
+      "author": "jan Kepe",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 628
+    },
+    {
+      "file": "plaintext/2023/08/nasin-mun.md",
+      "title": "nasin mun",
+      "author": "jan inwin",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2023/08/nasin-nasa-mupa.md",
+      "title": "nasin nasa pi jan Mupa",
+      "author": "jan Telupiso",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 228
+    },
+    {
+      "file": "plaintext/2023/08/pakala-li-lon-telo-sijelo-loje.md",
+      "title": "pakala li lon telo sijelo loje",
+      "author": "jan Luke",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 75
+    },
+    {
+      "file": "plaintext/2023/08/pilin-pipi.md",
+      "title": "pilin pipi",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 39
+    },
+    {
+      "file": "plaintext/2023/08/pimeja.md",
+      "title": "pimeja",
+      "author": "kili potato_9898",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 24
+    },
+    {
+      "file": "plaintext/2023/08/pipi-li-wile-pakala.md",
+      "title": "pipi li wile pakala",
+      "author": "jan Keri",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2023/08/seme-li-mi.md",
+      "title": "seme li mi?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2023/08/sina-lon-e-ma.md",
+      "title": "sina lon e ma",
+      "author": "kala suno/waso laso Alisanosaka, pi kulupu telo mun (kutemu)",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2023/08/sitelen-anku.md",
+      "title": "sitelen Anku",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 13
+    },
+    {
+      "file": "plaintext/2023/08/sitelen-tawa-lon.md",
+      "title": "sitelen tawa lon",
+      "author": "jan Poli",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2023/08/sona-la.md",
+      "title": "sona la",
+      "author": "asali",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2023/08/sona-musi-lili-pi-ma-antateka.md",
+      "title": "sona musi lili pi ma Antateka",
+      "author": "mije Luke",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2023/08/sona-nasa-pi-kulupu-lili-kulupu-pali-pi-jan-insa-sin-tupa.md",
+      "title": "sona nasa pi kulupu lili - kulupu pali pi jan insa sin Tupa",
+      "author": "jan Kamute",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 16
+    },
+    {
+      "file": "plaintext/2023/08/suno-li-pona-tawa-mi.md",
+      "title": "suno li pona tawa mi",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2023/08/tawa-pi-pakala-wile.md",
+      "title": "tawa pi pakala wile",
+      "author": "kala Asi",
+      "license": "CC-BY-SA-3.0 OR CC-BY-SA-4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2023/08/tawa-pi-poki-monsi-pi-ma-asija-nanpa-luka-luka-tu-tu-ma-tawan-en-ma-anku.md",
+      "title": "tawa pi poki monsi pi ma Asija nanpa luka luka tu tu. ma Tawan en ma Anku",
+      "author": "jan Polo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2023/08/tawa-suli-soweli.md",
+      "title": "tawa suli soweli",
+      "author": "jan pi nimi ala",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2023/08/tenpo-li-lili.md",
+      "title": "tenpo li lili",
+      "author": "jan Jasun",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2023/08/tenpo-pini-weka.md",
+      "title": "tenpo pini weka",
+      "author": "jan Akeso",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2023/08/toki-pali-tu.md",
+      "title": "toki pali tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2023/08/toki-pilin-tu.md",
+      "title": "toki pilin tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2023/09/poki-li-eliki.md",
+      "title": "poki li eliki (original toki pona new wave song)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2023/10/jan-moli-tawa.md",
+      "title": "jan moli tawa (\"A Walking Corpse\", dark toki pona song)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2023/10/lawa-ala.md",
+      "title": "lawa ala  # kalama: lawa ala",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2023/10/mi-kama-sin.md",
+      "title": "mi kama sin (\"I'm back\"), a toki pona darkwave song 🎶",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2023/10/tomo-awen.md",
+      "title": "tomo awen  # kalama: tomo awen",
+      "author": "jan Ke Tami",
+      "license": "CC BY 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2023/11/enko-li-seme.md",
+      "title": "enko li seme?",
+      "author": "jan Lapate",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2023/11/ijo-mi.md",
+      "title": "ijo mi",
+      "author": "jan Penta",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 15
+    },
+    {
+      "file": "plaintext/2023/11/ijo-sin-pi-lipu-wikipesija.md",
+      "title": "ijo sin pi lipu Wikipesija",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2023/11/kama-nanpa-tu.md",
+      "title": "kama nanpa tu",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2023/11/kijetesantakalu-o-nanpa-mute-tu.md",
+      "title": "kijetesantakalu o! nanpa mute tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2023/11/lipu-tenpo-li-lon-selo-sin.md",
+      "title": "lipu tenpo li lon selo sin",
+      "author": "jan Kasape",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2023/11/mi-powe-taso.md",
+      "title": "mi powe taso (\"I'm just a fake\") Dark Wave song in toki pona",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2023/11/seme-li-mi.md",
+      "title": "seme li mi",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2023/11/sin.md",
+      "title": "sin",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2023/11/taki.md",
+      "title": "taki",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2023/11/tawa-pi-poki-monsi-pi-ma-asija-nanpa-luka-luka-luka-ma-nijon.md",
+      "title": "tawa pi poki monsi pi ma Asija nanpa luka luka luka - ma Nijon",
+      "author": "jan Polo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2023/11/toki-ni-li-tan-ala-tan-jan-ape-antan.md",
+      "title": "toki ni li tan ala tan jan Ape Antan?",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2023/11/toki-olapi-li-seme.md",
+      "title": "toki Olapi li seme?",
+      "author": "jan Imi",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2023/11/toki-poki-tu.md",
+      "title": "toki poki tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2023/11/toki-pona-li-ken-ala-ken-suwi-e-pilin-sina.md",
+      "title": "toki pona li ken ala ken suwi e pilin sina?",
+      "author": "jan Lapate",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2023/11/toki-pona-tawa-sewi.md",
+      "title": "toki pona tawa sewi",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2023/11/tomo-pi-kiwen-suli.md",
+      "title": "tomo pi kiwen suli",
+      "author": "jan Simiman",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2023/11/tuki-tiki-li-seme.md",
+      "title": "tuki tiki li seme?",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2023/11/weka-li-ante-e-suli.md",
+      "title": "weka li ante e suli",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2023/12/jan-li-toki-e-wile-ona-lon-ma-netelan.md",
+      "title": "jan li toki e wile ona lon ma Netelan",
+      "author": "jan Kasape",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2023/12/jan-makupetu-kipisi-suli-nanpa-wan-kipisi-lili-nanpa-wan.md",
+      "title": "jan Makupetu - kipisi suli nanpa wan - kipisi lili nanpa wan",
+      "author": "jan Imi",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 13
+    },
+    {
+      "file": "plaintext/2023/12/kasi-kawa-en-telo-kawa.md",
+      "title": "kasi Kawa en telo Kawa",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 13
+    },
+    {
+      "file": "plaintext/2023/12/kijetesantakalu-o-nanpa-mute-tu-wan.md",
+      "title": "kijetesantakalu o! nanpa mute tu wan",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2023/12/ma-anpa-pi-ma-tomo-Paki.md",
+      "title": "ma anpa pi ma tomo Paki",
+      "author": "kiki Kijana",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2023/12/musi-palisa.md",
+      "title": "musi palisa",
+      "author": "jan Masine",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2023/12/nasin-seme-la-ko-lete-walo-li-kama-tan-sewi.md",
+      "title": "nasin seme la, ko lete walo li kama tan sewi?",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2023/12/seme-li-mi.md",
+      "title": "seme li mi",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2023/12/sike-kon.md",
+      "title": "sike kon",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2023/12/sina-pini-kin.md",
+      "title": "sina pini kin",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2023/12/sitelen-musi.md",
+      "title": "sitelen musi",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2023/12/sitelen-pi-nasin-toki-tu.md",
+      "title": "sitelen pi nasin toki tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2023/12/sitelen-pona-pi-nimi-nalanja.md",
+      "title": "sitelen pona pi nimi “nalanja”[^1]",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2023/12/toki-ma-la-seme-li-lon.md",
+      "title": "toki ma la, seme li lon?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2023/12/toki-mun-tu.md",
+      "title": "toki mun tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2023/12/toki-musi-tan-jan-sapo-tan-jan-katulo.md",
+      "title": "toki musi tan jan Sapo[^1], tan jan Katulo[^2]",
+      "author": "jan Lapate",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2024/01/oko-pona-sina.md",
+      "title": "oko pona sina (toki pona song ♫)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2024/02/ali-li-ale-namako.md",
+      "title": "ali li ale - namako",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 31
+    },
+    {
+      "file": "plaintext/2024/02/ilo-tenpo-poki.md",
+      "title": "ilo tenpo poki",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2024/02/kalama-pi-sitelen-nimi.md",
+      "title": "kalama pi sitelen nimi",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 17
+    },
+    {
+      "file": "plaintext/2024/02/kijetesantakalu-o-nanpa-mute-tu-tu.md",
+      "title": "kijetesantakalu o! nanpa mute tu tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2024/02/lipu-tenpo-li-kulupu.md",
+      "title": "lipu tenpo li kulupu",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2024/02/moli-lawa.md",
+      "title": "moli lawa (\"Mental Death\", Toki Pona song ♫)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2024/02/moli-li-nanpa.md",
+      "title": "moli li nanpa",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2024/02/o-kepeken-ala-ilo-ike-ni.md",
+      "title": "o kepeken ala ilo ike ni",
+      "author": "jan Kasape",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2024/02/o-mama-e-kasi-moku-lon-tomo-sina.md",
+      "title": "o mama e kasi moku lon tomo sina",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2024/02/seme-li-mi.md",
+      "title": "seme li mi",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2024/02/sitelen-pona-li-ken-ala-ken-lon-nasin-juniko.md",
+      "title": "sitelen pona li ken ala ken lon nasin Juniko",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2024/02/suno-pi-toki-pona-pi-nanpa-3.md",
+      "title": "suno pi toki pona pi #3",
+      "author": "waso suno Alana",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 120
+    },
+    {
+      "file": "plaintext/2024/02/toki-musi-pi-kijetesantakalu-lawa.md",
+      "title": "toki musi pi kijetesantakalu lawa",
+      "author": "jan pi nimi ala",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2024/02/toki-sona-lipu-lili-pi-kasi-ma.md",
+      "title": "toki sona: lipu lili pi kasi ma",
+      "author": "jan Lapate",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 37
+    },
+    {
+      "file": "plaintext/2024/03/kijetesantakalu-o-nanpa-mute-luka.md",
+      "title": "kijetesantakalu o! nanpa mute luka",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2024/03/kulupu-li-toki-pona-lon-ma-ite.md",
+      "title": "kulupu li toki pona lon ma Ite",
+      "author": "jan Kasape",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2024/03/linja-insa.md",
+      "title": "linja insa: nasin sitelen sin pi lipu kule",
+      "author": "jan pali pi lipu kule",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 13
+    },
+    {
+      "file": "plaintext/2024/03/lipu-sin-tan-jan-sonja.md",
+      "title": "lipu sin tan jan Sonja",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2024/03/monsuta-li-moli-e-jan-500m-li-pini.md",
+      "title": "Monsuta li moli e jan 500M, li pini",
+      "author": "jan Siwa",
+      "license": "CC-BY 4.0",
+      "paragraphs": 18
+    },
+    {
+      "file": "plaintext/2024/03/nasin-juniko.md",
+      "title": "nasin Juniko pi sitelen pona",
+      "author": "jan Jan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 17
+    },
+    {
+      "file": "plaintext/2024/03/nimi-pi-ilo-kalama.md",
+      "title": "nimi pi ilo kalama",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2024/03/pilin-mi-pi-nasin-nanpa-pona.md",
+      "title": "pilin mi pi nasin nanpa pona",
+      "author": "jan Momo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 13
+    },
+    {
+      "file": "plaintext/2024/03/poka-sina-o-lon-jan.md",
+      "title": "poka sina o lon jan",
+      "author": "jan Kasape",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 38
+    },
+    {
+      "file": "plaintext/2024/03/seme-li-mi.md",
+      "title": "seme li mi",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2024/03/tenpo-lili-li-lili-seme.md",
+      "title": "tenpo lili li lili seme?",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2024/03/toki-10000000000-pi-nasin-limili.md",
+      "title": "toki 10,000,000,000 pi nasin Limili",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2024/03/toki-kalama-tu.md",
+      "title": "toki kalama tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2024/04/ale-ala-sin-li-pona-tawa-mi.md",
+      "title": "ale ala sin li pona tawa mi",
+      "author": "jan Sotan",
+      "license": "CC BY 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2024/04/kala-lili.md",
+      "title": "🦈kala lili (\"Baby Shark\" in Toki Pona) 🎶",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2024/04/olin-sin.md",
+      "title": "olin sin",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2024/04/pipi-pali.md",
+      "title": "pipi pali",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2024/04/seme-li-mi.md",
+      "title": "seme li mi",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2024/04/sinpin-tu.md",
+      "title": "🎵 sinpin tu (\"2 Walls/Faces\" Toki Pona song), synthpop / synthwave / retrowave / darkwave 🎵",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2024/04/waso-soweli-pi-lili-nanpa-wan.md",
+      "title": "waso soweli pi lili nanpa wan",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2024/05/jaki-anu-pona.md",
+      "title": "jaki anu pona",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2024/05/jaki-sijelo-ni-li-moli-nanpa-wan.md",
+      "title": "jaki sijelo ni li moli nanpa wan",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2024/05/kijetesantakalu-o-nanpa-mute-luka-wan.md",
+      "title": "kijetesantakalu o! nanpa mute luka wan",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2024/05/kulupu-kanse-la-jan-meli-li-kama-ken.md",
+      "title": "kulupu Kanse la jan meli li kama ken",
+      "author": "jan Kasape",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2024/05/ma-nasa-tenpo-open.md",
+      "title": "ma nasa – tenpo open",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2024/05/musi-lili.md",
+      "title": "musi lili",
+      "author": "jan Tesu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2024/05/musi-og-en-nimi-pi-mute-lili.md",
+      "title": "musi Og en nimi pi mute lili",
+      "author": "jan Nalu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 25
+    },
+    {
+      "file": "plaintext/2024/05/nasin-sijon-li-nasin-sewi-juta-ala-a.md",
+      "title": "nasin Sijon li nasin sewi Juta ala a!",
+      "author": "jan Polo",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2024/05/pini-weka.md",
+      "title": "pini weka",
+      "author": "jan Nalu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2024/05/seme-li-mi.md",
+      "title": "seme li mi",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2024/05/sijelo-ike.md",
+      "title": "sijelo ike (Toki Pona song)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2024/05/sina-lon-seme.md",
+      "title": "sina lon seme (\"Where are you?\", Toki Pona song)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2024/05/sitelen-nasa-lon-nasin-juniko.md",
+      "title": "sitelen nasa lon nasin Juniko[^1]",
+      "author": "kije Enki",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2024/05/tawa-o-tawa.md",
+      "title": "tawa o tawa",
+      "author": "jan Penta",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 25
+    },
+    {
+      "file": "plaintext/2024/05/toki-lasina-li-pona-tan-seme.md",
+      "title": "toki Lasina li pona tan seme?",
+      "author": "jan Imi",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2024/05/wan-taso-la.md",
+      "title": "wan taso la",
+      "author": "jan Lapate",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2024/06/ilo-tenpo-luka.md",
+      "title": "ilo tenpo luka",
+      "author": "jan Luke",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2024/06/mi-wile-e-wawa.md",
+      "title": "mi wile e wawa (\"I Need A Coffee\", a Toki Pona song)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2024/06/musi-kalama-sin.md",
+      "title": "musi",
+      "author": "jan Luke",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 150
+    },
+    {
+      "file": "plaintext/2024/07/ilo-pi-sona-ilo-li-kama-sona-e-toki-pona.md",
+      "title": "ilo pi sona ilo li kama sona e toki pona",
+      "author": "jan Lapate",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 14
+    },
+    {
+      "file": "plaintext/2024/07/kijetesantakalu-o-nanpa-mute-luka-tu.md",
+      "title": "kijetesantakalu o! nanpa mute luka tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2024/07/linja-pipi-li-wawa-seme.md",
+      "title": "linja pipi li wawa seme",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2024/07/ma-mase.md",
+      "title": "ma Mase",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 95
+    },
+    {
+      "file": "plaintext/2024/07/mun-lili.md",
+      "title": "mun lili",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2024/07/musi-linja-tapatan.md",
+      "title": "musi linja Tapatan",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2024/07/olin-pi-ken-ala.md",
+      "title": "olin pi ken ala",
+      "author": "jan Lapate",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2024/07/pan-linja-en-telo-pi-kili-loje.md",
+      "title": "pan linja en telo pi kili loje",
+      "author": "jan Asukata",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2024/07/pilin-olin-en-pilin-utala.md",
+      "title": "pilin olin en pilin utala",
+      "author": "jan Lapate",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2024/07/pipi-linja-pi-noka-ala.md",
+      "title": "pipi linja pi noka ala",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2024/07/seme-li-mi.md",
+      "title": "seme li mi",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2024/07/toki-linja-tu.md",
+      "title": "toki linja tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2024/07/toki-musi-pi-kulupu-Lanu.md",
+      "title": "toki musi pi kulupu Lanu",
+      "author": "jan Kuku",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2024/07/tomo-tawa-linja.md",
+      "title": "tomo tawa linja",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2024/08/ike-kin.md",
+      "title": "ike kin (toki pona cover song of \"It's A Sin\" by Pet Shop Boys)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2024/08/ilo-pi-tenpo-awen.md",
+      "title": "ilo pi tenpo awen",
+      "author": "jan Seko",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2024/08/jan-Eto-li-alasa-e-pipi.md",
+      "title": "jan Eto li alasa e pipi",
+      "author": "lipamanka",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 27
+    },
+    {
+      "file": "plaintext/2024/08/kasi-li-toki.md",
+      "title": "kasi li toki",
+      "author": "kapesi Pake",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 20
+    },
+    {
+      "file": "plaintext/2024/08/kasi-utala-pi-ma-Tokono.md",
+      "title": "kasi utala pi ma Tokono",
+      "author": "jan Wilo",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 62
+    },
+    {
+      "file": "plaintext/2024/08/laso-poki.md",
+      "title": "laso poki",
+      "author": "jan Elasa",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2024/08/likujo.md",
+      "title": "likujo",
+      "author": "jan Peton",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 18
+    },
+    {
+      "file": "plaintext/2024/08/lon-anpa-pi-sewi-walo-lon-sewi-pi-telo-suno.md",
+      "title": "lon anpa pi sewi walo lon sewi pi telo suno",
+      "author": "jan Ameki",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 72
+    },
+    {
+      "file": "plaintext/2024/08/ma-telo-kon-seli-ijo-tu-tu-pi-lon-ale.md",
+      "title": "ma, telo, kon, seli: ijo tu tu pi lon ale",
+      "author": "soweli Lapate",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2024/08/mi-alasa-e-telo.md",
+      "title": "mi alasa telo",
+      "author": "ijo Wen",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 20
+    },
+    {
+      "file": "plaintext/2024/08/mi-jan.md",
+      "title": "mi jan",
+      "author": "jan Seko",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 322
+    },
+    {
+      "file": "plaintext/2024/08/mi-tawa-lon-pimeja.md",
+      "title": "mi tawa lon pimeja",
+      "author": "jan Simiman",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2024/08/mi-tawa.md",
+      "title": "mi tawa",
+      "author": "akesi Nu",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2024/08/mi-wile-e-sona-sin.md",
+      "title": "mi wile e sona sin",
+      "author": "jan Sepulon",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 111
+    },
+    {
+      "file": "plaintext/2024/08/moku-li-suwi-ala-suwi.md",
+      "title": "moku li suwi ala suwi?",
+      "author": "jan Wano (Ron Rapahel)",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2024/08/nasin-Lanpan.md",
+      "title": "nasin Lanpan",
+      "author": "kapesi Pake",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 277
+    },
+    {
+      "file": "plaintext/2024/08/nimi-nasa.md",
+      "title": "nimi nasa",
+      "author": "ilo Tani",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2024/08/nimi.md",
+      "title": "nimi",
+      "author": "jan Walasa",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 16
+    },
+    {
+      "file": "plaintext/2024/08/olin-mute.md",
+      "title": "olin mute",
+      "author": "jan Jasun",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2024/08/seme-li-sewi.md",
+      "title": "seme li sewi?",
+      "author": "jan Jan",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2024/08/sina-seme.md",
+      "title": "sina seme?",
+      "author": "kili Potato",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2024/08/tawa.md",
+      "title": "tawa",
+      "author": "jan Sesi",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2024/08/telo-tu.md",
+      "title": "telo tu",
+      "author": "jan Pontu",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2024/08/tenpo-seli-li-pini-la.md",
+      "title": "tenpo seli li pini la",
+      "author": "jan Kinte",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2024/08/toki-musi-pata.md",
+      "title": "toki musi pata",
+      "author": "kapesi Pake",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2024/08/toki-pi-ma-kasi.md",
+      "title": "toki pi ma kasi: utala pi jan ete",
+      "author": "ala Lojewalo",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 22
+    },
+    {
+      "file": "plaintext/2024/08/tomo-lape-pi-Pocatello.md",
+      "title": "tomo lape pi Pocatello",
+      "author": "anonymous # jan Lakuse li toki e ni: \"jan pali li wile len e nimi ona\"",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2024/08/utala-nanpa.md",
+      "title": "utala nanpa",
+      "author": "nasa utala",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 41
+    },
+    {
+      "file": "plaintext/2024/08/waso-sona-Ukami-en-monsuta-pi-kiwen-pimeja.md",
+      "title": "waso sona Ukami en monsuta pi kiwen pimeja",
+      "author": "jan Jowi",
+      "license": "CC-BY-SA-4.0",
+      "paragraphs": 107
+    },
+    {
+      "file": "plaintext/2024/09/kijetesantakalu-o-nanpa-mute-luka-tu-wan.md",
+      "title": "kijetesantakalu o! nanpa mute luka tu wan",
+      "author": "jan Ke Tami",
+      "license": "CC-BY 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2024/09/lawa-poki-sin.md",
+      "title": "lawa poki sin",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2024/09/linja-sin.md",
+      "title": "linja sin 🎶 (\"New Scarf\", toki pona song)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2024/09/mi-la-mi-mi-ala.md",
+      "title": "mi la mi mi ala (Toki Pona dysphoria song)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2024/09/o-pali-e-telo-kili-jelo.md",
+      "title": "o pali e telo kili jelo",
+      "author": "jan Nowa",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2024/09/seme-li-mi.md",
+      "title": "seme li mi",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2024/09/sona-pi-ken-ala.md",
+      "title": "sona pi ken ala",
+      "author": "jan Nikola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 30
+    },
+    {
+      "file": "plaintext/2024/09/tenpo-kulupu-pi-lipu-tenpo.md",
+      "title": "tenpo kulupu pi lipu tenpo",
+      "author": "jan Sonatan",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2024/09/toki-lawa-pi-lipu-tenpo.md",
+      "title": "toki lawa pi lipu tenpo",
+      "author": "jan Kasape",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 17
+    },
+    {
+      "file": "plaintext/2024/09/toki-lawa-tu.md",
+      "title": "toki lawa tu",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2024/09/toki-musi-aku.md",
+      "title": "toki musi aku",
+      "author": "soweli Eli",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 17
+    },
+    {
+      "file": "plaintext/2024/09/toki-pakala.md",
+      "title": "toki pakala",
+      "author": "jan Kasape",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2024/09/toki-sonko-li-kama-toki-lon.md",
+      "title": "toki Sonko li kama toki lon",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2024/09/tomo-lawa-pi-ma-tosi.md",
+      "title": "tomo lawa pi ma Tosi",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2024/10/jan-en-soweli-li-ante-ala-ante.md",
+      "title": "jan en soweli li ante ala ante?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2024/10/jan-panini.md",
+      "title": "jan Panini",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 16
+    },
+    {
+      "file": "plaintext/2024/10/jan-poka-mi-li-tawa.md",
+      "title": "jan poka mi li tawa",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2024/10/jan-ulise.md",
+      "title": "jan Ulise",
+      "author": "jan Lapate",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 17
+    },
+    {
+      "file": "plaintext/2024/10/kalama-ala.md",
+      "title": "kalama ala",
+      "author": "soweli Eli",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2024/10/kijetesantakalu-o.md",
+      "title": "kijetesantakalu o",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2024/10/ma-pelin-la-jan-kulupu-li-mute-ala-mute.md",
+      "title": "ma Pelin la jan kulupu li mute ala mute?",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2024/10/o-moli-ala-tawa-pimeja-pona-tenpo.md",
+      "title": "o moli ala tawa pimeja pona tenpo",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2024/10/seme-li-mi.md",
+      "title": "seme li mi",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2024/10/sitelen-pona-o-lon-ala-nasin-juniko.md",
+      "title": "sitelen pona o lon ala nasin Juniko",
+      "author": "jan Kasape",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 15
+    },
+    {
+      "file": "plaintext/2024/10/tenpo-jan-tu-tu.md",
+      "title": "tenpo jan tu tu",
+      "author": "jan Kapesi Pake",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2024/10/toki-insa-olin.md",
+      "title": "toki insa olin",
+      "author": "sama Natanale",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2024/10/toki-suwi.md",
+      "title": "toki suwi",
+      "author": "jan Kuku",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2024/12/ijo-sin-pona.md",
+      "title": "ijo sin pona",
+      "author": "jan Lapate",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2024/12/jan-kasi-pi-ma-Sonko.md",
+      "title": "jan kasi pi ma Sonko",
+      "author": "jan Asilu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2024/12/kijetesantakalu-loje.md",
+      "title": "kijetesantakalu loje li kijetesantakalu ala kijetesantakalu?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 15
+    },
+    {
+      "file": "plaintext/2024/12/kijetesantakalu-o.md",
+      "title": "kijetesantakalu o!",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2024/12/lipu-li-kama-loje-tan-seme.md",
+      "title": "lipu li kama loje tan seme?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2024/12/loje-laso-li-ken-sama-tawa-mi.md",
+      "title": "loje en laso li ken sama tawa mi",
+      "author": "jan Siwa",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2024/12/nasin-kule-pona.md",
+      "title": "nasin kule pona",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2024/12/nasin-sin-pi-selo-toki.md",
+      "title": "nasin sin pi selo toki",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2024/12/o-moku-e-kasi-unu.md",
+      "title": "o moku e kasi unu",
+      "author": "jan Kasape",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2024/12/seme-li-mi.md",
+      "title": "seme li mi?",
+      "author": "jan Alonola",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2024/12/sike-pi-mun-Satunu.md",
+      "title": "sike pi mun Satunu",
+      "author": "jan Satase",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2024/12/sona-len-suli-pi-jan-tonsi.md",
+      "title": "sona len suli pi jan tonsi",
+      "author": "jan Lim",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 14
+    },
+    {
+      "file": "plaintext/2024/12/suno-lili-moli.md",
+      "title": "suno lili moli",
+      "author": "jan Tumu",
+      "license": "CC-BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2025/01/ijo-055-sona-ala.md",
+      "title": "ijo 055 - [sona ala]",
+      "author": "jan Nowenpa",
+      "license": "CC-BY-SA",
+      "paragraphs": 31
+    },
+    {
+      "file": "plaintext/2025/01/kon-pi-toki-pona.md",
+      "title": "sitelen sitelen - kon pi toki pona",
+      "author": "akesi Ejan",
+      "license": "CC BY 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2025/02/jan-alasa-li-kulupu-lon-ma-potuke.md",
+      "title": "jan alasa li kulupu lon ma Potuke",
+      "author": "waso",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2025/02/kala-kupi-mute-li-lon-tan-seme.md",
+      "title": "kala Kupi mute li lon tan seme?",
+      "author": "jan Alonola",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2025/02/kala-li-ken-ala-ken-waso.md",
+      "title": "kala li ken ala ken waso?",
+      "author": "jan Ke Tami",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 15
+    },
+    {
+      "file": "plaintext/2025/02/kala-li-ken-seme.md",
+      "title": "kala li ken seme?",
+      "author": "jan Lim",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2025/02/lipu-kojo-en-linluwi-majuna.md",
+      "title": "lipu Kojo en linluwi majuna",
+      "author": "kije Weku",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2025/02/nasin-sewi-la-kala.md",
+      "title": "nasin sewi la kala",
+      "author": "jan Alonola",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2025/02/o-kama-kala-a.md",
+      "title": "o kama kala a",
+      "author": "waso",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2025/02/seme-li-mi.md",
+      "title": "seme li mi",
+      "author": "jan Alonola",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2025/02/tawa-sewi-tawa-anpa.md",
+      "title": "tawa sewi, tawa anpa",
+      "author": "jan Ke Tami",
+      "license": "CC-BY-3.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2025/02/telo-li-monsuta.md",
+      "title": "telo li monsuta",
+      "author": "jan Sonatan",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2025/02/tenpo-kulupu-pi-ma-ansetan.md",
+      "title": "tenpo kulupu pi ma Ansetan",
+      "author": "jan Kasape",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2025/02/tenpo-sike-sin-lon-ma-asija.md",
+      "title": "tenpo sike sin li lon ma Asija",
+      "author": "jan Alonola",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2025/02/toki-kala-tu.md",
+      "title": "toki kala tu",
+      "author": "jan Ke Tami",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2025/02/toki-poki-pi-lon-ante.md",
+      "title": "toki poki pi lon ante",
+      "author": "akesi Ejan",
+      "license": "CC BY 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2025/03/ijo-weka.md",
+      "title": "ijo weka (\"A Thing Removed\", toki pona synthpop song)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2025/03/ma-pona-lon-poka-pi-telo-anpa.md",
+      "title": "ma pona lon poka pi telo anpa",
+      "author": "jan Siwa",
+      "license": "MIT",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2025/03/waso-li-sona.md",
+      "title": "waso li sona (Toki Pona song)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2025/04/lon-suno-mun-lili.md",
+      "title": "lon suno mun lili",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2025/04/mi-o-toki.md",
+      "title": "mi o toki (\"I should talk\", toki pona synthpop)",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2025/04/mu-la-meli-ma-li-moli.md",
+      "title": "🎶mu la meli ma li moli (original toki pona song) 🎶",
+      "author": "jan Sepulon",
+      "license": "CC-BY-3.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2025/04/suno-wawa.md",
+      "title": "suno wawa",
+      "author": "jan Ali (Nasapi)",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2025/04/tenpo-kama-la-nasin-ike-li-anpa.md",
+      "title": "tenpo kama la...",
+      "author": "jan Nowenpa",
+      "license": "CC-BY-SA",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2025/04/utala-lili-jan-sepo-27-04-2025.md",
+      "title": "utala lili",
+      "author": "jan Sepo",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 27
+    },
+    {
+      "file": "plaintext/2025/05/esun-tu-pi-lete-suwi.md",
+      "title": "esun tu pi lete suwi",
+      "author": "jan Ke Tami",
+      "license": "CC BY",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2025/05/ilo-wawa-pi-jan-pali-jan-sepo-29-05-2025.md",
+      "title": "ilo wawa pi jan pali",
+      "author": "jan Sepo",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 23
+    },
+    {
+      "file": "plaintext/2025/05/jan-miko-en-jan-lojen-li-moku-e-ko-lete.md",
+      "title": "jan Miko en jan Lojen li moku e ko lete",
+      "author": "jan Iwi",
+      "license": "CC BY-SA 3.0",
+      "paragraphs": 18
+    },
+    {
+      "file": "plaintext/2025/05/nasin-anpa-kon-lipu.md",
+      "title": "nasin anpa - kon lipu",
+      "author": "soweli suli Alu pi ko lete",
+      "license": "CC BY",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/2025/05/nasin-anpa-o-olin-tawa-mama-lon-tomo.md",
+      "title": "nasin anpa - o olin tawa mama lon tomo",
+      "author": "soweli suli Alu pi ko lete",
+      "license": "CC BY",
+      "paragraphs": 14
+    },
+    {
+      "file": "plaintext/2025/06/alasa-pakala.md",
+      "title": "alasa pakala",
+      "author": "jan Tumu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2025/06/esun-supa.md",
+      "title": "esun supa",
+      "author": "jan Alonola",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2025/06/jan-kasi-en-nasin-kasi.md",
+      "title": "jan Kasi en nasin kasi",
+      "author": "jan Alonola",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2025/06/jan-misikeke.md",
+      "title": "jan misikeke",
+      "author": "jan Lisente",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2025/06/kijetesantakalu-o.md",
+      "title": "kijetesantakalu o!",
+      "author": "jan Ke Tami",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2025/06/lon-telo-pi-waso-mute.md",
+      "title": "lon telo pi waso mute",
+      "author": "jan Samele",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2025/06/mi-jan-seme.md",
+      "title": "mi jan seme?",
+      "author": "jan Palisona",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2025/06/mun-li-jo-e-lupa-sike-tan-seme.md",
+      "title": "mun li jo e lupa sike tan seme?",
+      "author": "jan Luwiso",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2025/06/musi-li-ken-kama-tan-pali.md",
+      "title": "musi li ken kama tan pali",
+      "author": "jan Tomeson",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2025/06/musi-pi-utala-telo.md",
+      "title": "musi pi utala telo",
+      "author": "kije Enki",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2025/06/pilin-sama.md",
+      "title": "pilin sama",
+      "author": "jan Ali",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2025/06/seme-li-mi.md",
+      "title": "seme li mi?",
+      "author": "jan Alonola",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2025/06/seme-telo-li-supa-ala.md",
+      "title": "seme! telo li supa ala",
+      "author": "jan Ke Tami",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2025/06/soko-li-seme.md",
+      "title": "soko li seme?",
+      "author": "soko Sijeni",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2025/06/supa-pi-toki-ante.md",
+      "title": "supa pi toki ante",
+      "author": "jan Alonola",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2025/06/tenpo-lon-ma-ante.md",
+      "title": "tenpo lon ma ante",
+      "author": "jan Alonola",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 13
+    },
+    {
+      "file": "plaintext/2025/07/jan-lape-la.md",
+      "title": "jan lape la",
+      "author": "jan Lisente",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 13
+    },
+    {
+      "file": "plaintext/2025/08/jan-li-tawa-ma-ale.md",
+      "title": "jan li tawa ma ale",
+      "author": "kala Asi",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2025/08/kasi-li-wan.md",
+      "title": "kasi li wan",
+      "author": "akesi Tala",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2025/08/kijetesantakalu-o.md",
+      "title": "kijetesantakalu o!",
+      "author": "jan Ke Tami",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2025/08/len-pona-mi.md",
+      "title": "len pona mi",
+      "author": "jan Siniseli",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2025/08/nasin-pi-jan-lasu.md",
+      "title": "nasin pi jan Lasu",
+      "author": "jan Ono",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2025/08/nasin-pilin-pi-ijo-jo.md",
+      "title": "nasin pilin pi ijo jo",
+      "author": "jan Satase",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2025/08/o-pilin-tawa-jan-noka.md",
+      "title": "o pilin tawa jan noka!",
+      "author": "kije Weku",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2025/08/pilin-wawa-waso.md",
+      "title": "pilin wawa waso",
+      "author": "jan Tumu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2025/08/pini-ike-pi-jan-ike.md",
+      "title": "pini ike pi jan ike",
+      "author": "jan Asilu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2025/08/seme-li-mi-nanpa-pilin.md",
+      "title": "seme li mi? nanpa lon",
+      "author": "jan Alonola",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2025/08/seme-pilin-li-lon-ala-insa.md",
+      "title": "seme! pilin li lon ala insa",
+      "author": "jan Ke Tami",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2025/08/sina-wile-pali-e-musi-pi-sitelen-tawa-anu-seme.md",
+      "title": "sina wile pali e musi pi sitelen tawa anu seme?",
+      "author": "kije Weku",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2025/08/sitelen-musi-la-pilin-luka.md",
+      "title": "sitelen musi la pilin luka",
+      "author": "kala Asi",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2025/08/toki-pona-li-wile-ala-wile-nimi-e-poka.md",
+      "title": "toki pona li wile ala wile nimi e poka?",
+      "author": "jan Pasijan",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2025/09/jan-pawe-en-jan-kawe.md",
+      "title": "jan Pawe en jan Kawe",
+      "author": "jan Esuwa",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2025/09/lipu-suno-pi-jan-moli-jan-sepo-03-09-2025.md",
+      "title": "lipu suno pi jan moli",
+      "author": "jan Sepo",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2025/09/sona-sin-pona-tan-jan-sewi-jojane.md",
+      "title": "sona sin pona tan jan sewi Jojane",
+      "author": "Jonathan Hill",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 95
+    },
+    {
+      "file": "plaintext/2025/09/toki-sona-tawa-lipu-sona-sin-pona-tan-jan-sewi-jojane.md",
+      "title": "toki sona tawa lipu \"sona sin pona tan jan sewi Jojane",
+      "author": "jan Pilipu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 13
+    },
+    {
+      "file": "plaintext/2025/11/jan-ale-li-kama-lon-tan-ko.md",
+      "title": "jan ale li kama lon tan ko",
+      "author": "ijo Sikipele",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2025/11/jan-li-alasa-li-pali-e-pan.md",
+      "title": "jan li alasa li pali e pan",
+      "author": "kala Asi",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2025/11/kijetesantakalu-o.md",
+      "title": "kijetesantakalu o!",
+      "author": "jan Ke Tami",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2025/11/kulupu-li-jo-e-wawa.md",
+      "title": "kulupu li jo e wawa",
+      "author": "jan Ke Tami",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2025/11/lawa-ike-li-ken-moli-e-jan.md",
+      "title": "lawa ike li ken moli e jan",
+      "author": "jan Asilu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2025/11/mama-o-nimi-seme-pi-toki-pona-e-jan-sin.md",
+      "title": "mama o nimi seme pi toki pona e jan sin?",
+      "author": "jan Nikola",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 17
+    },
+    {
+      "file": "plaintext/2025/11/meli-pona-lukin-mi.md",
+      "title": "meli pona lukin mi (kalama musi pi laso mute)",
+      "author": "jan Kekoli Nena",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2025/11/mi-lon.md",
+      "title": "mi lon",
+      "author": "jan Alonola",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 42
+    },
+    {
+      "file": "plaintext/2025/11/mi-pakala-e-ilo-mi-li-pona-e-ona.md",
+      "title": "mi pakala e ilo mi li pona e ona",
+      "author": "kala Asi",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2025/11/seme-li-mi-nanpa-lon.md",
+      "title": "seme li mi?",
+      "author": "jan Alonola",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2025/11/soweli-en-waso.md",
+      "title": "soweli en waso",
+      "author": "jan Tumu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2025/11/suno-wawa.md",
+      "title": "suno wawa",
+      "author": "jan Ali",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2025/11/tenpo-ala-la-toki-pona-li-lon-ilo-tujolinko.md",
+      "title": "tenpo ala la, toki pona li lon ilo Tujolinko",
+      "author": "jan Kapesi Pake",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2025/11/toki-open-pi-lipu-jan-tatesu.md",
+      "title": "toki open pi lipu \"jan Tatesu",
+      "author": "jan Esuwa",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2025/12/jan-paton.md",
+      "title": "jan Paton",
+      "author": "jan Tene",
+      "license": "CC BY 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2025/unknown-month/pakala-mani.md",
+      "title": "pakala mani",
+      "author": "jan Tumu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 29
+    },
+    {
+      "file": "plaintext/2026/01/jan-alitotele.md",
+      "title": "jan Alitotele",
+      "author": "jan Tene",
+      "license": "CC BY 4.0",
+      "paragraphs": 12
+    },
+    {
+      "file": "plaintext/2026/01/jan-en-ma-antasika.md",
+      "title": "jan en ma Antasika",
+      "author": "jan Tumu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 13
+    },
+    {
+      "file": "plaintext/2026/01/jan-li-open-len-e-ona-tan-seme.md",
+      "title": "jan li open len e ona tan seme?",
+      "author": "jan Alonola",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2026/01/kijetesantakalu-o.md",
+      "title": "kijetesantakalu o!",
+      "author": "jan Ke Tami",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2026/01/len-akesi-li-seme.md",
+      "title": "len akesi li seme?",
+      "author": "waso Aki",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2026/01/len-len-pi-ma-Sonko.md",
+      "title": "len len pi ma Sonko",
+      "author": "jan lili Enta",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 15
+    },
+    {
+      "file": "plaintext/2026/01/mi-supa.md",
+      "title": "mi supa",
+      "author": "jan Ke Kame",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2026/01/musi-toki-en-tawa.md",
+      "title": "musi Toki En Tawa",
+      "author": "kije En Ken",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2026/01/nasin-len-tawa-ma-pona.md",
+      "title": "nasin len tawa ma pona",
+      "author": "jan Masa",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2026/01/o-len-e-mi-kepeken-olin.md",
+      "title": "o len e mi kepeken olin",
+      "author": "jan Wemi",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2026/01/o-weka-e-len-sona.md",
+      "title": "o weka e len sona!",
+      "author": "mute ante",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2026/01/seme-li-mi.md",
+      "title": "seme li mi?",
+      "author": "jan Alonola",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2026/01/sike-soweli-li-kama-pini.md",
+      "title": "sike soweli li kama pini",
+      "author": "kala Asi",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 15
+    },
+    {
+      "file": "plaintext/2026/01/tawa-ma-suli-Amelika.md",
+      "title": "tawa ma suli Amelika",
+      "author": "jan Palisona",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2026/03/jan-musi-pona-o-toki-e-nasa.md",
+      "title": "jan musi pona, o toki e nasa",
+      "author": "jan Samele",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2026/03/kijetesantakalu-o.md",
+      "title": "kijetesantakalu o!",
+      "author": "jan Ke Tami",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 0
+    },
+    {
+      "file": "plaintext/2026/03/konwe-li-lon-ala-lon-mun-ante.md",
+      "title": "konwe li lon ala lon mun ante?",
+      "author": "jan Ke Kame",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 10
+    },
+    {
+      "file": "plaintext/2026/03/lipu-musi-soneto-kepeken-nasin-pi-jan-petalaka.md",
+      "title": "lipu musi Soneto kepeken nasin pi jan Petalaka",
+      "author": "jan Samele",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 11
+    },
+    {
+      "file": "plaintext/2026/03/ma-lili-lon-ma-suli-elopa.md",
+      "title": "ma lili lon ma suli Elopa",
+      "author": "jan Masine",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/2026/03/nasin-mute-pi-toki-pona.md",
+      "title": "nasin mute pi toki pona",
+      "author": "kijetesantakalu Wilame",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 4
+    },
+    {
+      "file": "plaintext/2026/03/ona-kipisi-nanpa-wan.md",
+      "title": "ona. kipisi nanpa wan",
+      "author": "jan Pasalis",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/2026/03/poki-jaki-o-tawa-seme.md",
+      "title": "poki jaki o tawa seme?",
+      "author": "jan Alonola",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2026/03/poki-pi-insa-ala-li-ijo-musi.md",
+      "title": "poki pi insa ala li ijo musi",
+      "author": "jan Ke Tami",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 8
+    },
+    {
+      "file": "plaintext/2026/03/seme-li-mi-0036.md",
+      "title": "seme li mi?",
+      "author": "jan Alonola",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/2026/03/sitelen-sin-li-seme-lukin.md",
+      "title": "sitelen sin li seme lukin?",
+      "author": "jan Kuwi",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 6
+    },
+    {
+      "file": "plaintext/2026/03/toki-len-tu.md",
+      "title": "toki len tu",
+      "author": "jan Ke tami",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/2026/03/tomo-o-mute-anu-suli.md",
+      "title": "tomo o mute anu suli?",
+      "author": "kala Asi",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 9
+    },
+    {
+      "file": "plaintext/2026/05/tenpo-suno-pi-pilin-pona.md",
+      "title": "tenpo suno pi pilin pona",
+      "author": "jan Pikesike",
+      "license": "CC BY-SA 3.0",
+      "paragraphs": 16
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/akesi-akesi.md",
+      "title": "akesi Akesi",
+      "author": "jan Tumu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/alasa-pipi.md",
+      "title": "alasa pipi",
+      "author": "jan Tumu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/dixie.md",
+      "title": "Dixie",
+      "author": "jan Pije",
+      "license": "CC0 1.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/kama-lete.md",
+      "title": "kama lete",
+      "author": "jan Tumu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 2
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/lape-la-uta.md",
+      "title": "lape la uta",
+      "author": "jan Tumu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/lape-nasa.md",
+      "title": "lape nasa",
+      "author": "jan Tumu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/lipu-walo.md",
+      "title": "lipu walo",
+      "author": "jan Tumu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/ma-mi-li-pimeja.md",
+      "title": "ma mi li pimeja",
+      "author": "jan Pije",
+      "license": "CC0 1.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/ma-suwi-ike.md",
+      "title": "lipu walo",
+      "author": "jan Tumu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 7
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/mun-o-suno-mi.md",
+      "title": "mun o suno mi",
+      "author": "jan Tumu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/musi-soneto-tan-jan-wilijan-sepi.md",
+      "title": "musi Soneto tan jan Wilijan Sepi",
+      "author": "jan Tumu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 24
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/nasin-mi-ala.md",
+      "title": "nasin mi ala",
+      "author": "jan Tumu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/nasin-pona-intro.md",
+      "title": "toki!",
+      "author": "jan Nikita",
+      "license": "CC0 1.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/nasin-pona-kasi.md",
+      "title": "toki en sona",
+      "author": "jan Nikita",
+      "license": "CC0 1.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/nasin-pona-len.md",
+      "title": "tawa",
+      "author": "jan Nikita",
+      "license": "CC0 1.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/nasin-pona-lipu.md",
+      "title": "sona pona",
+      "author": "jan Nikita",
+      "license": "CC0 1.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/nasin-pona-moku.md",
+      "title": "moku",
+      "author": "jan Nikita",
+      "license": "CC0 1.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/nasin-pona-moli.md",
+      "title": "tenpo suno kama",
+      "author": "jan Nikita",
+      "license": "CC0 1.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/nasin-pona-nasin.md",
+      "title": "toki musi en nasin pona",
+      "author": "jan Nikita",
+      "license": "CC0 1.0",
+      "paragraphs": 3
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/pilin-ike.md",
+      "title": "pilin ike",
+      "author": "jan Tumu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/quickies.md",
+      "title": "Quickies",
+      "author": "jan Pije",
+      "license": "CC0 1.0",
+      "paragraphs": 27
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/shahadah.md",
+      "title": "The Shahadah",
+      "author": "jan Pije",
+      "license": "CC0 1.0",
+      "paragraphs": 5
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/soweli-loje-lena-la-musi.md",
+      "title": "soweli loje Lena la musi",
+      "author": "jan Tumu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/telo-nimi.md",
+      "title": "telo nimi",
+      "author": "jan Tumu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/waso-ale.md",
+      "title": "waso ale",
+      "author": "jan Tumu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 1
+    },
+    {
+      "file": "plaintext/unknown-year/unknown-month/wile-mi.md",
+      "title": "wile mi",
+      "author": "jan Tumu",
+      "license": "CC BY-SA 4.0",
+      "paragraphs": 1
+    }
+  ]
+}

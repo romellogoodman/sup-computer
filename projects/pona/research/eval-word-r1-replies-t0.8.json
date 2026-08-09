@@ -1,0 +1,264 @@
+{
+  "tag": "word-r1",
+  "temperature": 0.8,
+  "k": 8,
+  "prompts": 20,
+  "replies": 160,
+  "reply_grammaticality_error_only": 0.9620253164556962,
+  "empty_rate": 0.0125,
+  "echo_rate": 0.0,
+  "unique_reply_rate": 1.0,
+  "mean_reply_words": 11.556962025316455,
+  "taxonomy_top": {
+    "possible-error:unofficialWordWithoutNoun": 4,
+    "error:misplacedParticles": 3,
+    "nitpick:illFormedQuestion": 3,
+    "nitpick:multiplePi": 2,
+    "uncommon:uncommonWord": 2,
+    "error:nimiPuAla": 2,
+    "possible-error:weirdActionVerb": 1,
+    "error:puttingEAfterWordDoesntGerundizeIt": 1
+  },
+  "transcript": [
+    {
+      "prompt": "toki! sina pilin seme?",
+      "reply": "toki li lon toki Mewi la, toki Mewi li toki e toki Mewi. ona li toki pi jan Mewi Mewi."
+    },
+    {
+      "prompt": "toki! sina pilin seme?",
+      "reply": "tenpo ni la mi ken ala moku e ko suwi."
+    },
+    {
+      "prompt": "toki! sina pilin seme?",
+      "reply": "mi sona ala sona e ni: ona li toki."
+    },
+    {
+      "prompt": "toki! sina pilin seme?",
+      "reply": "\"sina tawa monsi pi jan pali la mi ken tawa lon tenpo lete.\""
+    },
+    {
+      "prompt": "toki! sina pilin seme?",
+      "reply": "Mewi Mewi pi kulupu Mewi li lon poka pi ma Mewi pi ma Mewika. taso tenpo ni la, ma Sonko Mewi li lon."
+    },
+    {
+      "prompt": "toki! sina pilin seme?",
+      "reply": "nasin pi lukin ala li wile e ijo ni: jan li ken toki e ni tawa jan Mewi:\"mi wile pali e ni linja nimi!\"ona li ike tawa mi!"
+    },
+    {
+      "prompt": "toki! sina pilin seme?",
+      "reply": "mi sona e ni: mi toki e jan Ton: ona li moku ala e anpa."
+    },
+    {
+      "prompt": "toki! sina pilin seme?",
+      "reply": "jan lili o. musi li pona tawa mi."
+    },
+    {
+      "prompt": "sina moku e seme?",
+      "reply": "pilin mi li suwi, la kama sona li pona."
+    },
+    {
+      "prompt": "sina moku e seme?",
+      "reply": "jan li pilin ike li kama tawa ma ante kin. kama la, jan mute li sona e ijo pi toki pona."
+    },
+    {
+      "prompt": "sina moku e seme?",
+      "reply": "- kasi kule li kama lon ma suno la moku li kama tan sewi. kasi tawa li kama e kiwen walo. kasi ala li kama lili."
+    },
+    {
+      "prompt": "sina moku e seme?",
+      "reply": "kulupu pi toki pona li kama lon tomo pi tenpo ala."
+    },
+    {
+      "prompt": "sina moku e seme?",
+      "reply": "mi sona e ni: pali ona li kama ala tan seme?"
+    },
+    {
+      "prompt": "sina moku e seme?",
+      "reply": "\"sina jan pi kulupu sewi anu seme?\"a.\""
+    },
+    {
+      "prompt": "sina moku e seme?",
+      "reply": "(ken la ona li lukin ala e kon.\""
+    },
+    {
+      "prompt": "sina moku e seme?",
+      "reply": "mi jo e kili pimeja seli mute."
+    },
+    {
+      "prompt": "tenpo suno ni li pona ala pona?",
+      "reply": "nasin seme la mi pali e ni?"
+    },
+    {
+      "prompt": "tenpo suno ni li pona ala pona?",
+      "reply": "- - lon lon. ni li lon."
+    },
+    {
+      "prompt": "tenpo suno ni li pona ala pona?",
+      "reply": "jan Mewi li toki e ni tawa jan Ton."
+    },
+    {
+      "prompt": "tenpo suno ni li pona ala pona?",
+      "reply": "jan Ton li sona ala."
+    },
+    {
+      "prompt": "tenpo suno ni li pona ala pona?",
+      "reply": "kulupu nimi li sama nimi."
+    },
+    {
+      "prompt": "tenpo suno ni li pona ala pona?",
+      "reply": "sina wile ala wile e ni: sina ken pana e kalama sin tawa sina?"
+    },
+    {
+      "prompt": "tenpo suno ni li pona ala pona?",
+      "reply": "jan li pana e sona lon lape la ona li ken toki tawa jan ante tan ni: jan li kepeken e sitelen tawa ona."
+    },
+    {
+      "prompt": "tenpo suno ni li pona ala pona?",
+      "reply": "nimi taso li ante mute. nimi tu li sama nimi pi ma Sonko. ona li toki e nimi\"mun\"lon ma suli lon kute\"ala\". ijo ni li sama"
+    },
+    {
+      "prompt": "sina lon seme?",
+      "reply": "ni li suli."
+    },
+    {
+      "prompt": "sina lon seme?",
+      "reply": "linja nimi\"li\"-\"mu."
+    },
+    {
+      "prompt": "sina lon seme?",
+      "reply": "\"mama mama li wawa la, kulupu pi kulupu Mewi li kama wawa mute. wawa li pakala e ijo lon tenpo ni: jan pi ma Mewi li moli e jan Mewi."
+    },
+    {
+      "prompt": "sina lon seme?",
+      "reply": "jan Mewi Mewi (Mewi) li sama meli."
+    },
+    {
+      "prompt": "sina lon seme?",
+      "reply": "tan seme la ona li kalama musi mute?"
+    },
+    {
+      "prompt": "sina lon seme?",
+      "reply": "sina tawa ala tan seme?"
+    },
+    {
+      "prompt": "sina lon seme?",
+      "reply": "\"tenpo kama suli la sina sona ala sona e ni: ona li kama tan mi."
+    },
+    {
+      "prompt": "sina lon seme?",
+      "reply": "sike suno nanpa luka tu wan li suno nanpa tu wan."
+    },
+    {
+      "prompt": "nimi sina li seme?",
+      "reply": "o pana e nimi\"sina\"tawa mi."
+    },
+    {
+      "prompt": "nimi sina li seme?",
+      "reply": "taso, mi jan ala. mi wile pali e ona, li ken ala kalama."
+    },
+    {
+      "prompt": "nimi sina li seme?",
+      "reply": "mi wile ala jo e mani mute."
+    },
+    {
+      "prompt": "nimi sina li seme?",
+      "reply": ""
+    },
+    {
+      "prompt": "nimi sina li seme?",
+      "reply": "mi wile sona e ni: jan ante li pali e ni."
+    },
+    {
+      "prompt": "nimi sina li seme?",
+      "reply": "nimi pi toki Mewi li\"pona\"Mewi\"."
+    },
+    {
+      "prompt": "nimi sina li seme?",
+      "reply": "-"
+    },
+    {
+      "prompt": "nimi sina li seme?",
+      "reply": "\"mi pilin e ni:\"jan ali li lon seme?\""
+    },
+    {
+      "prompt": "mi pilin ike. o pana e pona tawa mi.",
+      "reply": "Mewi (Mewi)"
+    },
+    {
+      "prompt": "mi pilin ike. o pana e pona tawa mi.",
+      "reply": "ona li sama e len noka."
+    },
+    {
+      "prompt": "mi pilin ike. o pana e pona tawa mi.",
+      "reply": "mi kute e kalama musi\"lon tenpo pini.\""
+    },
+    {
+      "prompt": "mi pilin ike. o pana e pona tawa mi.",
+      "reply": "jan Ton li pana e ante tawa mi."
+    },
+    {
+      "prompt": "mi pilin ike. o pana e pona tawa mi.",
+      "reply": "toki Nijon la lipu majuna pi toki Epelanto li lon."
+    },
+    {
+      "prompt": "mi pilin ike. o pana e pona tawa mi.",
+      "reply": "nanpa ni li sama nasin nanpa pi suli ale. nasin nanpa li pini. nasin ni la, ona li ken kama lon nanpa li ante. nasin ni la, ni li ken ante"
+    },
+    {
+      "prompt": "mi pilin ike. o pana e pona tawa mi.",
+      "reply": "\"sina kute ala. ni li ike ala tawa sina.\""
+    },
+    {
+      "prompt": "mi pilin ike. o pana e pona tawa mi.",
+      "reply": "\"o, o pini e ona. o awen jo ala e ona.\""
+    },
+    {
+      "prompt": "sina olin e seme?",
+      "reply": "jan Mewi Mewi (Mewi) li wile e sitelen ni: jan Mewi li pana e nimi ilo tan ni: jan pi ma Mewi li kama jo e nimi\"kepeken nimi\"<unk>"
+    },
+    {
+      "prompt": "sina olin e seme?",
+      "reply": "sina sona ala sona e ni?"
+    },
+    {
+      "prompt": "sina olin e seme?",
+      "reply": "mi o kama toki ala e nasin toki."
+    },
+    {
+      "prompt": "sina olin e seme?",
+      "reply": "ma Amelika la, ona li jo e linja nanpa luka tu pi mute ike. ona li sama sama ona. ni la, sijelo ona li jo tan sijelo jan. ona li ken"
+    },
+    {
+      "prompt": "sina olin e seme?",
+      "reply": "mama mi li ken sona e ni: mi ken ala ken lukin e sitelen!"
+    },
+    {
+      "prompt": "sina olin e seme?",
+      "reply": "mi lanpan e ona."
+    },
+    {
+      "prompt": "sina olin e seme?",
+      "reply": "li poka."
+    },
+    {
+      "prompt": "sina olin e seme?",
+      "reply": "li lawa e tomo tawa ona li pali e tomo tawa."
+    },
+    {
+      "prompt": "soweli li pona ala pona tawa sina?",
+      "reply": "toki Tuki li toki lawa pi ma Palata. ona li ma lili ona."
+    },
+    {
+      "prompt": "soweli li pona ala pona tawa sina?",
+      "reply": "- jan Ton li toki ala toki e toki mute, la ni li ike tawa jan Ton."
+    },
+    {
+      "prompt": "soweli li pona ala pona tawa sina?",
+      "reply": "pini pi musi ni la, ona li sina."
+    },
+    {
+      "prompt": "soweli li pona ala pona tawa sina?",
+      "reply": "anu li toki lon nanpa wan pi toki Lusi."
+    }
+  ]
+}
