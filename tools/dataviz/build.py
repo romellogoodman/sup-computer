@@ -489,6 +489,48 @@ craft_by_arm = {
     "caption": "Experiment 09's eyes said the case's drawings beat omni-xl's; the score agrees (91.1% vs 87.4%) — and the release-time temperature sweep turns out to have bought craft, not just parse rate: at the shipped 0.8, omni-xl's survivors are set on the line better than the corpus average. Samples: 64 per letter per arm, round 1, temp 1.0 unless marked. Source: projects/glyph/research/craft-results.json.",
 }
 
+# --- exp13: pona — a language small enough to get right ---------------------
+# Sources: projects/pona/research/eval-*.json, corpus_baseline.json
+# (2026-08-02; three 2.7M arms, telo misikeke oracle @ 0a1852d).
+
+pona_grammaticality = {
+    "title": "Two arms above the null, one stuck on it",
+    "subtitle": "First-try grammaticality — 1,000 raw unconditional sentences per arm at temperature 1.0, error-category issues only",
+    "categories": ["the corpus itself", "null model (glyph's hazard here)",
+                   "char-r1", "word-r1", "chat-r1 (released)"],
+    "values": [96.0, 93.2, 92.3, 96.0, 96.9],
+    "colors": ["neutral", "neutral", "blue", "blue", "green"],
+    "valueFmt": "{:.1f}%",
+    "yTitle": "Sentences passing (%)",
+    "xTitle": "Arm",
+    "caption": "The null model is glyph omni-xl's per-character error hazard applied to this corpus's 41.3-char mean sentence — the score short sentences alone would buy. Both word arms clear it (word-r1 96.0% [94.6, 97.0], chat-r1 96.9% [95.6, 97.8]); the char arm's CI straddles it (92.3% [90.5, 93.8]). The corpus's own 96.0% is the ceiling reference every model number is reported against. Sources: projects/pona/research/eval-*-t1.0.json, corpus_baseline.json.",
+}
+
+pona_hazard = {
+    "title": "Five times shorter spans, half the hazard",
+    "subtitle": "Per-character error hazard implied by first-try pass rate over mean line length — same corpus, same 6L/6H/192E body for the pona arms",
+    "categories": ["glyph omni-xl (Type-3, 47.8M)", "char-r1 (2.7M)",
+                   "word-r1 (2.7M)", "chat-r1 (2.7M, released)"],
+    "values": [0.171, 0.194, 0.101, 0.078],
+    "colors": ["neutral", "blue", "blue", "green"],
+    "valueFmt": "{:.3f}%",
+    "yTitle": "Error hazard (%/char)",
+    "xTitle": "Model",
+    "caption": "The controlled comparison is the two pona arms: same language, same grammar class, same data, same body — the word tokenizer carries each constraint across ~5× fewer sampling steps, and the hazard halves (0.194% → 0.101%). The cross-project bridge: both word arms beat glyph per character despite Toki Pona being Type-2 where glyph's codec is Type-3. Sources: projects/pona/research/eval-*-t1.0.json.",
+}
+
+pona_corpus_baseline = {
+    "title": "The corpus itself fails the oracle 4% of the time",
+    "subtitle": "Oracle pass rate by source — 20,000 sampled corpus sentences, error-category issues only",
+    "categories": ["Tatoeba", "poki Lapo", "Wikipedia", "whole corpus"],
+    "values": [99.0, 96.9, 86.9, 96.0],
+    "colors": ["blue", "blue", "red", "neutral"],
+    "valueFmt": "{:.1f}%",
+    "yTitle": "Sentences passing (%)",
+    "xTitle": "Source",
+    "caption": "Register drift is real: encyclopedic prose full of names and calques passes at 86.9% while Tatoeba's conversational sentences pass at 99.0%. This 96.0% ceiling is why every model score in the experiment is reported corpus-relative — a model can't out-grammar its data by much, and when one does (chat-r1 at 101.0%), that's the finding. Source: projects/pona/research/corpus_baseline.json.",
+}
+
 # (name, spec, fn, asset-prefix) — prefix routes each PNG to its report.
 JOBS = [("bpc-by-round", bpc, dv.bar, "exp01-"),
         ("data-win", data_win, dv.bar, "exp01-"),
@@ -514,7 +556,10 @@ JOBS = [("bpc-by-round", bpc, dv.bar, "exp01-"),
         ("axes-variance", axes_variance, dv.bar, "exp12-"),
         ("bigelow-histogram", bigelow_hist, dv.bar, "exp12-"),
         ("u-dips-below-baseline", u_defects, dv.bar, "exp12-"),
-        ("craft-by-arm", craft_by_arm, dv.bar, "exp12-")]
+        ("craft-by-arm", craft_by_arm, dv.bar, "exp12-"),
+        ("grammaticality-vs-null", pona_grammaticality, dv.bar, "exp13-"),
+        ("hazard-per-char", pona_hazard, dv.bar, "exp13-"),
+        ("corpus-baseline-by-source", pona_corpus_baseline, dv.bar, "exp13-")]
 
 if __name__ == "__main__":
     out_dir = os.path.join(_HERE, "output")
