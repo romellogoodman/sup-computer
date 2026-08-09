@@ -84,3 +84,13 @@ in `data/dialogue_manifest.json`. Chat mix: ×12 reps ≈ 4.6% of chars
 - Verdict: **chat-r1 is the release candidate** (as pona-chat-nanogpt-1,
   pending the human release decision). The /pona word-keyboard interface is
   built and waiting on a registry entry + ONNX artifacts.
+
+### Release id renamed (2026-08-08)
+
+- Human decision: the release id is **pona-nanogpt-1**, not pona-chat-nanogpt-1.
+  Matches the studio convention (`<project>-nanogpt-<n>`); only one pona model
+  ships, so the id doesn't need to encode the arm. Dev registry entry and
+  dev-models artifacts renamed to match.
+- Fixed in passing: `core/export/export.py` labeled every stoi/itos sidecar
+  `"type": "char"` in the manifest — it now reads meta.pkl's `arm`, so word-arm
+  exports carry `"type": "word"`.
