@@ -42,6 +42,7 @@ sup list [--all]              the greetable roster; --all lists every release by
 sup pull <model> | --all      download artifacts without running; --all doubles
                               as an integrity check of every published bundle
 sup rm <model> | --all        clear the cache
+sup train <corpus.txt> [...]  train a small GPT on your own text file (needs uv)
 ```
 
 Flags for run/greeting: `--temp` (0.8), `--topk` (40), `--tokens` (200), and
@@ -51,6 +52,23 @@ Artifacts download once into `~/.cache/supcomputer/<model-id>/` (respects
 `XDG_CACHE_HOME`). Generated text goes to stdout, status to stderr, so
 `sup shakespeare > sonnet.txt` captures only the text. Ctrl-C stops generation
 cleanly.
+
+## Train on your own corpus
+
+`sup train` is the one command from a text file to a model: prepare, train,
+sample, ONNX export, and a model-card stub, into one run dir.
+
+```bash
+sup train ./corpus.txt                           # -> ./runs/corpus/
+sup train ./corpus.txt --size tiny --iters 200   # a smoke run: under a minute on a laptop
+sup train ./corpus.txt --tokenizer bpe --name my-model --out ./my-run
+```
+
+The training itself is Python. The command spawns core's `sup-train` entry
+point in the repo's `uv` venv (`uv sync --extra export` once, from the repo
+root) and streams its log; flags pass straight through, so `sup train --help`
+is the full list. What lands in the run dir — and why a run is not a release —
+is in [`docs/handbook.md`](../docs/handbook.md#train-on-your-own-corpus).
 
 ## Where things come from
 

@@ -9,8 +9,9 @@ import { parseArgs } from 'node:util';
 import { loadRegistry, resolveModel, runnable, lineage, latestByLineage, aliasOf } from './registry.js';
 import { pull, removeCached, CACHE_ROOT } from './artifacts.js';
 import { runModel } from './run.js';
+import { train } from './train.js';
 
-const COMMANDS = new Set(['list', 'pull', 'run', 'rm', 'help']);
+const COMMANDS = new Set(['list', 'pull', 'run', 'rm', 'train', 'help']);
 
 const HELP = `sup — run the studio's released models in your terminal
 
@@ -20,6 +21,7 @@ usage:
   sup list [--all]              what's greetable; --all lists every release by id
   sup pull <model> | --all      download artifacts without running
   sup rm <model> | --all        clear the cache (${CACHE_ROOT})
+  sup train <corpus.txt> [...]  train a small GPT on your own text (needs uv; sup train --help)
   sup help                      this text
 
 flags (for run/greeting):
@@ -32,6 +34,10 @@ Artifacts download once into ${CACHE_ROOT}.
 Models: registry.json at the repo root — this CLI runs from the clone.`;
 
 export async function main(argv) {
+  // `sup train` hands its argv to the Python entry point untouched — that
+  // side owns the flags (and --help), so it goes before parseArgs can object.
+  if (argv[0] === 'train') return train(argv.slice(1));
+
   const { values: flags, positionals } = parseArgs({
     args: argv,
     options: {

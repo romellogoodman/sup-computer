@@ -7,11 +7,18 @@ carry their own snapshot (ADR-0003).
 
 ```
 nanogpt_core/   the installable package: model, train, sample, configurator,
-                checkpoint (load_model / load_tokenizer / pick_device), bpc
+                checkpoint (load_model / load_tokenizer / pick_device), bpc,
+                train_corpus (the `sup-train` entry point)
 eval/eval.py    CLI shim over nanogpt_core.bpc — BPC on a held-out file
 export/export.py CLI: parity-checked ONNX export of a frozen release
-tests/          end-to-end smoke test (train → resume → sample → eval → export)
+tests/          end-to-end smoke tests (train → resume → sample → eval → export;
+                sup-train on a synthetic corpus)
 ```
+
+One console script: `uv run sup-train ./corpus.txt` takes any text file
+through prepare → train → sample → export → card stub, into one run dir
+(`docs/handbook.md` § Train on your own corpus). The Node CLI's `sup train`
+spawns it.
 
 Project harnesses import the library surface instead of pasting load blocks
 (ADR-0029):

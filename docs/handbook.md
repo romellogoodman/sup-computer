@@ -173,6 +173,41 @@ uv run python core/nanogpt_core/sample.py \
     --start="ROMEO:" --num_samples=1 --max_new_tokens=500
 ```
 
+### Train on your own corpus
+
+The one-command path: any UTF-8 text file in, a trained small GPT out.
+
+```bash
+uv run sup-train ./corpus.txt                           # -> runs/corpus/
+uv run sup-train ./corpus.txt --size tiny --iters 200   # a smoke run: under a minute on a laptop
+uv run sup-train ./corpus.txt --tokenizer bpe --name my-model --out ./my-run
+```
+
+`sup train ./corpus.txt …` from the Node CLI is the same thing — it spawns
+this entry point (`cli/README.md`). Five steps, each printed as it runs:
+**prepare** (90/10 split into the meta.pkl dataset contract, ADR-0012;
+`char` by default, `bpe` trains a byte-level BPE with vocab 1024, the
+shakespeare-nanogpt-3 recipe), **train** (`core/nanogpt_core/train.py` as a
+subprocess with best-val checkpointing; `--size tiny|small|medium` is
+4L/128E, 6L/192E, 6L/384E), **sample**, **export** (parity-checked ONNX,
+the way a release is exported), and a model-card stub. The run dir:
+
+```
+runs/<name>/
+  config.py        the resolved config — `train.py runs/<name>/config.py` re-runs it by hand
+  data/corpus/     train.bin, val.bin, meta.pkl (+ tokenizer.json for bpe)
+  ckpt.pt          the best-val checkpoint
+  model.py         a snapshot of the engine's model.py, so the folder exports like a release
+  samples.txt      three samples at temperature 0.8
+  dist/            <name>.onnx, .int8.onnx, .vocab.json | .tokenizer.json, .manifest.json
+  MODEL_CARD.md    the card stub — real numbers filled in, TODOs where only a human can write
+```
+
+It is a *run*, not a release: nothing here touches `projects/`,
+`registry.json`, or `research-docs/`. Turning a run into a released model is
+still [Releasing a version](#releasing-a-version) — a frozen folder, a card,
+a registry entry, a tag.
+
 ### Run a *released* model in the terminal (`sup`)
 
 For releases with published artifacts, the CLI downloads and runs them without

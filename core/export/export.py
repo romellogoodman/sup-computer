@@ -19,7 +19,11 @@ Outputs (in <out-dir>):
     <name>.onnx           fp32 graph (robust on the WebGPU EP)
     <name>.int8.onnx      dynamic int8 (≈4x smaller; see note below)
     <name>.vocab.json     char models only ({stoi, itos})
+    <name>.tokenizer.json corpus-BPE models only (the HF tokenizer.json beside meta.pkl)
     <name>.manifest.json  a manifest fragment to drop into a consumer
+
+<name> is the version folder's basename unless --name says otherwise (sup-train
+runs are named by the corpus, not by their run dir).
 
 Note on int8 + WebGPU: dynamic quantization emits MatMulInteger /
 DynamicQuantizeLinear, which the WebGPU execution provider may not fully
@@ -35,6 +39,7 @@ import importlib.util
 import json
 import os
 import pickle
+import shutil
 import sys
 
 import numpy as np
@@ -76,9 +81,9 @@ class Wrapper(torch.nn.Module):
         return logits[:, -1, :]
 
 
-def export(folder, out_dir, quantize=True):
+def export(folder, out_dir, quantize=True, name=None):
     folder = folder.rstrip("/")
-    name = os.path.basename(folder)
+    name = name or os.path.basename(folder)
     os.makedirs(out_dir, exist_ok=True)
     out_path = os.path.join(out_dir, f"{name}.onnx")
 
@@ -157,13 +162,26 @@ def export(folder, out_dir, quantize=True):
         sys.exit(f"PARITY FAIL: max|onnx - torch| = {max_diff:.2e} (>= 1e-4)")
     print(f"parity ok: max abs diff = {max_diff:.2e}")
 
-    # --- char vocab (char models only) ------------------------------------
+    # --- tokenizer sidecar (from meta.pkl, when the folder carries one) -----
+    # Sidecars follow the ADR-0024 suffix-swap convention the player and the
+    # CLI derive from the ONNX name: <name>.vocab.json for char/word vocabs,
+    # <name>.tokenizer.json for a corpus-trained HF BPE.
     tokenizer = {"type": "gpt2-bpe"}
     meta_path = os.path.join(folder, "meta.pkl")
     if os.path.exists(meta_path):
         with open(meta_path, "rb") as f:
             meta = pickle.load(f)
-        if "stoi" in meta and "itos" in meta:
+        if "tokenizer" in meta:
+            src = os.path.join(folder, meta["tokenizer"])
+            tok_path = os.path.join(out_dir, f"{name}.tokenizer.json")
+            if os.path.exists(src):
+                shutil.copyfile(src, tok_path)
+                print(f"wrote {tok_path}")
+            else:
+                print(f"note: meta.pkl names {meta['tokenizer']} but it isn't beside it — "
+                      f"copy it to {tok_path} yourself")
+            tokenizer = {"type": "bpe", "tokenizer": f"{name}.tokenizer.json"}
+        elif "stoi" in meta and "itos" in meta:
             vocab_path = os.path.join(out_dir, f"{name}.vocab.json")
             with open(vocab_path, "w") as f:
                 json.dump({"stoi": meta["stoi"], "itos": meta["itos"]}, f)
@@ -224,5 +242,6 @@ if __name__ == "__main__":
     ap.add_argument("folder", help="version folder, e.g. projects/shakespeare/models/shakespeare-nanogpt-1")
     ap.add_argument("out_dir", help="output directory for the .onnx artifacts")
     ap.add_argument("--no-quantize", action="store_true", help="skip int8 export")
+    ap.add_argument("--name", help="artifact name (default: the folder's basename)")
     args = ap.parse_args()
-    export(args.folder, args.out_dir, quantize=not args.no_quantize)
+    export(args.folder, args.out_dir, quantize=not args.no_quantize, name=args.name)
