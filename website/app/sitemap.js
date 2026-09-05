@@ -1,12 +1,13 @@
-import { getReports, getRegistry, SITE_URL } from "../lib/content";
+import { getReports, getRegistry, getSeries, SITE_URL } from "../lib/content";
 
 // Canonical absolute base for the sitemap entries (shared with the .md generator).
 // The routes keep their trailing slash to match next.config's trailingSlash: true.
 const BASE = SITE_URL;
 
-// Enumerate the real routes from the same sources the pages read: the static home,
-// one page per research report (getReports), and one per model (registry.json).
-// Next.js renders this to /sitemap.xml at build time.
+// Enumerate the real routes from the same sources the pages read: the static
+// home, the research index, one page per report (getReports), one per series
+// (getSeries), and one per release (registry.json). Next.js renders this to
+// /sitemap.xml at build time.
 export default function sitemap() {
   const reports = getReports();
   const { models } = getRegistry();
@@ -16,8 +17,9 @@ export default function sitemap() {
 
   return [
     { url: `${BASE}/`, lastModified: latest ? new Date(latest) : undefined },
+    { url: `${BASE}/research/`, lastModified: latest ? new Date(latest) : undefined },
     { url: `${BASE}/train/` },
-    { url: `${BASE}/pona/` },
+    ...getSeries().map((s) => ({ url: `${BASE}/models/${s.slug}/` })),
     ...reports.map((r) => ({
       url: `${BASE}/research/${r.slug}/`,
       lastModified: r.frontmatter.date ? new Date(r.frontmatter.date) : undefined,

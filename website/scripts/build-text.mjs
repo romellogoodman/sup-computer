@@ -22,6 +22,8 @@ import {
   getCards,
   getPage,
   getRegistry,
+  getSeries,
+  reportTier,
   stripLeadIn,
   monthYear,
   researcherName,
@@ -94,10 +96,15 @@ function pageDoc(p) {
 const SITE_BLURB =
   "A small language model studio: train small GPTs, write up the research, and show the results.";
 
-function llmsIndex(reports, cards, models, pages) {
+function llmsIndex(reports, cards, models, pages, series) {
   const byId = new Map(models.map((m) => [m.id, m]));
-  const research = reports
-    .map((r) => `- [${r.frontmatter.title}](${SITE_URL}/research/${r.slug}.md): ${r.frontmatter.summary || ""}`.trimEnd())
+  const row = (r) =>
+    `- [${r.frontmatter.title}](${SITE_URL}/research/${r.slug}.md): ${r.frontmatter.summary || ""}`.trimEnd();
+  // Two shelves (ADR-0035): a human byline is an essay, an agent byline a lab note.
+  const essays = reports.filter((r) => reportTier(r) === "essay").map(row).join("\n");
+  const labNotes = reports.filter((r) => reportTier(r) === "lab-note").map(row).join("\n");
+  const instruments = series
+    .map((s) => `- [${s.name}](${SITE_URL}/models/${s.slug}/): ${s.verb ? `${s.verb} — ` : ""}${s.tagline || ""}`.trimEnd())
     .join("\n");
   const modelList = cards
     .map((c) => {
@@ -114,11 +121,15 @@ function llmsIndex(reports, cards, models, pages) {
   return [
     "# sup computer",
     `\n> ${SITE_BLURB}`,
-    "\nThese links point at raw markdown — paste any of them into an LLM chat.",
+    "\nThese links point at raw markdown — paste any of them into an LLM chat. The instrument pages are HTML: each model's playable interface, running in the browser.",
     pageList ? `\n## Pages\n\n${pageList}` : "",
-    "\n## Research",
-    `\n${research}`,
-    "\n## Models",
+    "\n## Instruments",
+    `\n${instruments}`,
+    "\n## Essays",
+    `\n${essays}`,
+    "\n## Lab notes",
+    `\n${labNotes}`,
+    "\n## Model cards",
     `\n${modelList}`,
     "",
   ].join("\n");
@@ -151,7 +162,7 @@ await mkdir(resolve(pub, "models"), { recursive: true });
 for (const d of [...reportDocs, ...cardDocs, ...pageDocs]) {
   await writeFile(resolve(pub, d.path), d.text);
 }
-await writeFile(resolve(pub, "llms.txt"), llmsIndex(reports, cards, models, pages));
+await writeFile(resolve(pub, "llms.txt"), llmsIndex(reports, cards, models, pages, getSeries()));
 await writeFile(resolve(pub, "llms-full.txt"), full);
 
 console.log(

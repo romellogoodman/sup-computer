@@ -146,3 +146,95 @@ export function getCards() {
 export function getCard(id) {
   return getCards().find((c) => c.slug === id);
 }
+
+// ---------------------------------------------------------------------------
+// Series — one page per model family (ADR-0035). A series is a project's
+// releases collapsed into one row: its slug is the flagship id minus the
+// trailing version, its copy (tagline, verb, instrument) comes from
+// registry.json's `series` map, and `latest` is the newest release per
+// lineage (daydream's three tiers are three lineages, so all three stay).
+// ---------------------------------------------------------------------------
+
+const lineageOf = (id) => id.replace(/-\d+$/, "");
+
+// "v2", or for a sibling tier "v1-micro" (the id's variant between the series
+// slug and the version).
+export function versionLabel(m, slug) {
+  const rest = m.id.startsWith(slug) ? m.id.slice(slug.length) : m.id;
+  const variant = rest.replace(/^-/, "").replace(/-?\d+$/, "");
+  return variant ? `v${m.version}-${variant}` : `v${m.version}`;
+}
+
+export function getSeries() {
+  const registry = getRegistry();
+  const copy = registry.series || {};
+  const byProject = {};
+  for (const m of registry.models) (byProject[m.project] ||= []).push(m);
+  return Object.values(byProject)
+    .map((members) => {
+      const maxVersion = Math.max(...members.map((m) => m.version));
+      // flagship = latest version; among sibling tiers (same version) prefer
+      // the base id (shortest slug, e.g. daydream's Regular over micro/grand).
+      const flagship = members
+        .filter((m) => m.version === maxVersion)
+        .sort((a, b) => a.id.length - b.id.length)[0];
+      const slug = lineageOf(flagship.id);
+      // latest → oldest; within a version, base tier before its variants
+      const versions = [...members].sort(
+        (a, b) => b.version - a.version || a.id.length - b.id.length || a.id.localeCompare(b.id),
+      );
+      const latestByLineage = new Map();
+      for (const m of versions) {
+        const key = lineageOf(m.id);
+        if (!latestByLineage.has(key)) latestByLineage.set(key, m);
+      }
+      const latest = [...latestByLineage.values()].sort((a, b) => a.id.length - b.id.length);
+      const c = copy[slug] || {};
+      return {
+        slug,
+        project: flagship.project,
+        name: c.name || slug,
+        tagline: c.tagline || flagship.tagline,
+        verb: c.verb || null,
+        instrument: c.instrument || null,
+        flagship,
+        versions,
+        latest,
+      };
+    })
+    .sort((a, b) => a.slug.localeCompare(b.slug));
+}
+
+export function getSeriesBySlug(slug) {
+  return getSeries().find((s) => s.slug === slug) || null;
+}
+
+// ---------------------------------------------------------------------------
+// Research tiers. A report's byline decides which shelf it sits on: a human
+// researcher writes an essay, an agent researcher writes a lab note. The
+// `kind` lives on the registry's researchers map, so no frozen report is
+// edited to file it (ADR-0035).
+// ---------------------------------------------------------------------------
+
+export function reportTier(report) {
+  const kind = getResearchers()[report.frontmatter.researcher]?.kind;
+  return kind === "human" ? "essay" : "lab-note";
+}
+export function getEssays() {
+  return getReports().filter((r) => reportTier(r) === "essay");
+}
+export function getLabNotes() {
+  return getReports().filter((r) => reportTier(r) === "lab-note");
+}
+
+// The reports filed under a series: any that names one of its releases in
+// `models:`, or whose `series:` is the project (or a prefix of it — "kenosha"
+// files under kenosha-kid).
+export function reportsForSeries(series) {
+  return getReports().filter((r) => {
+    const fm = r.frontmatter;
+    if (Array.isArray(fm.models) && fm.models.some((id) => String(id).startsWith(series.slug))) return true;
+    if (!fm.series) return false;
+    return fm.series === series.project || series.project.startsWith(String(fm.series));
+  });
+}
