@@ -432,7 +432,132 @@ hr {
 }
 
 /* ---- block: board (daydream — play the dream) --------------------------- */
-/* Owned by components/instruments/Board.jsx. */
+/* Owned by components/instruments/Board.jsx. Ghosts are the near-misses
+   dissolving; the overlay is the candidate beam — legal mass lit in the
+   accent, illegal mass a faint struck ring. Tier and mode chips reuse
+   .instrument__chip. Square size is set per tier here (the prototype's
+   44/52/34) and shrinks on a phone; a board wider than the viewport scrolls
+   inside .board__scroll, never the page. */
+.board__chip-size { color: var(--color-text-faint); letter-spacing: 0; }
+.board__caption {
+  font-size: 14.5px; color: var(--color-text-muted); max-width: var(--measure);
+  margin: -.1em 0 1em; text-wrap: pretty;
+}
+.board__play, .board__watch { min-height: 14em; }
+.board__scroll { max-width: 100%; overflow-x: auto; padding-bottom: 2px; }
+.board__frame { display: inline-grid; grid-template-columns: 16px max-content; }
+.board__frame--micro   { --board-sq: 52px; }
+.board__frame--regular { --board-sq: 44px; }
+.board__frame--grand   { --board-sq: 34px; }
+.board__ranks { display: grid; grid-auto-rows: var(--board-sq); }
+.board__files { display: grid; grid-auto-flow: column; grid-auto-columns: var(--board-sq); height: 16px; }
+.board__coord {
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 10px; line-height: 1; color: var(--color-text-faint);
+}
+.board__grid { display: grid; width: max-content; border: 1px solid var(--color-rule-strong); }
+.board__sq {
+  width: var(--board-sq); height: var(--board-sq); position: relative;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--color-bg);
+}
+.board__sq--dark { background: var(--color-accent-wash); }
+/* in play mode every square is a button; the square's own look stays */
+.board__sq--live { appearance: none; border: 0; padding: 0; margin: 0; font: inherit; color: inherit; cursor: pointer; }
+.board__sq--live:focus-visible { outline: 2px solid var(--color-link); outline-offset: -2px; z-index: 3; }
+.board__sq--from { box-shadow: inset 0 0 0 2px var(--color-rule-strong); }
+.board__sq--to { box-shadow: inset 0 0 0 2px var(--color-accent); }
+.board__sq--selected { box-shadow: inset 0 0 0 3px var(--color-accent); }
+.board__pc { position: relative; z-index: 1; font-size: calc(var(--board-sq) * .68); line-height: 1; color: var(--color-text); }
+/* Chancellor/Archbishop letters: side by weight (no unicode glyph exists) */
+.board__pc--white { font-weight: 300; }
+.board__pc--landed { animation: pieceLand .35s ease-out; }
+.board__ghost {
+  position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center;
+  font-size: calc(var(--board-sq) * .68); color: var(--color-text-faint);
+  animation: ghostFade 1.6s ease-out forwards; pointer-events: none;
+}
+/* the selected piece's legal destinations: a dot, or a ring around a capture */
+.board__target {
+  position: absolute; width: calc(var(--board-sq) * .28); height: calc(var(--board-sq) * .28);
+  border-radius: 50%; background: var(--color-accent); opacity: .45; pointer-events: none;
+}
+.board__target--capture {
+  width: calc(var(--board-sq) * .88); height: calc(var(--board-sq) * .88);
+  background: none; border: 3px solid var(--color-accent); opacity: .55;
+}
+/* the candidate overlay: one disc per destination, sized by probability mass
+   (--p, 0–1). Legal mass is lit; illegal mass is a faint dashed ring, struck. */
+.board__cand {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  width: calc(var(--board-sq) * (.3 + .62 * var(--p)));
+  height: calc(var(--board-sq) * (.3 + .62 * var(--p)));
+}
+.board__cand--legal { background: var(--color-accent); opacity: calc(.3 + .55 * var(--p)); }
+.board__cand--illegal { border: 1.5px dashed var(--color-text-faint); opacity: .7; }
+.board__cand--illegal::after {
+  content: ""; position: absolute; left: -8%; right: -8%; top: 50%;
+  border-top: 1.5px solid var(--color-text-faint); transform: rotate(-45deg);
+}
+.board__meta {
+  display: flex; gap: 18px; flex-wrap: wrap; margin-top: .7em;
+  font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .05em;
+  color: var(--color-text-muted);
+}
+.board__status { color: var(--color-text); }
+.board__residue { margin-top: .35em; min-height: 1.4em; font-family: var(--font-mono); font-size: 11.5px; }
+.board__residue-tok {
+  color: var(--color-text-faint); text-decoration: line-through;
+  margin-right: 10px; animation: ghostFade 2.4s ease-out forwards;
+}
+/* the candidate table: move · probability · legal — the overlay, itemized */
+.board__cands { border-collapse: collapse; margin: 1em 0 0; font-family: var(--font-mono); font-size: 12px; }
+.board__cands-caption {
+  caption-side: top; text-align: left; padding: 0 0 .4em;
+  font-size: 11.5px; color: var(--color-text-faint); max-width: var(--measure); text-wrap: pretty;
+}
+.board__cands th {
+  text-align: left; padding: .2em 1.4em .25em 0;
+  font-size: 10.5px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--color-text-muted); border-bottom: 1px solid var(--color-rule-strong);
+}
+.board__cands td { padding: .25em 1.4em .25em 0; border-bottom: 1px dotted var(--color-rule); vertical-align: baseline; }
+.board__cand-prob { white-space: nowrap; }
+.board__cand-bar {
+  display: inline-block; width: 64px; height: 8px; margin-right: .6em;
+  border: 1px solid var(--color-rule);
+  background: linear-gradient(to right, var(--color-text-faint) var(--p), transparent var(--p));
+  opacity: .45;
+}
+.board__cand-bar--legal { background: linear-gradient(to right, var(--color-accent) var(--p), transparent var(--p)); opacity: .8; }
+.board__cand-row--legal .board__cand-flag { color: var(--color-accent); }
+.board__cand-row--illegal .board__cand-move, .board__cand-row--illegal .board__cand-flag { color: var(--color-text-faint); }
+.board__cand-row--illegal .board__cand-move { text-decoration: line-through; }
+.board__cand-row--played .board__cand-move { font-weight: 700; color: var(--color-accent); }
+/* the move list: yours plain, the model's in the accent, the harness's amber */
+.board__moves {
+  list-style: none; margin: .9em 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: .25em 1.1em;
+  font-family: var(--font-mono); font-size: 12.5px;
+}
+.board__ply { white-space: nowrap; }
+.board__ply-n { color: var(--color-text-faint); }
+.board__move--model { color: var(--color-accent); }
+.board__move--harness { color: var(--color-notice); }
+.board__move-tries { font-size: 9px; color: var(--color-text-faint); margin-left: 1px; }
+.board__legend { margin: .4em 0 0; font-family: var(--font-mono); font-size: 11px; color: var(--color-text-faint); }
+.board__legend sup { font-size: 9px; }
+
+@media (--bp-narrow) {
+  .board__frame--micro   { --board-sq: 46px; }
+  .board__frame--regular { --board-sq: 38px; }
+  .board__frame--grand   { --board-sq: 28px; }
+  .board__cands th, .board__cands td { padding-right: .9em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  /* a near-miss stays put instead of dissolving; it still reads as dim */
+  .board__ghost, .board__residue-tok { animation: none; opacity: .55; }
+}
 
 /* ---- block: glyph (the font maker) -------------------------------------- */
 /* Owned by components/instruments/GlyphMaker.jsx. */
