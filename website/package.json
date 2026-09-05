@@ -5,7 +5,7 @@
   "type": "module",
   "description": "sup computer studio website — custom Next.js, renders synced research-docs",
   "scripts": {
-    "sync-content": "node scripts/sync-content.mjs && node scripts/build-text.mjs",
+    "sync-content": "node scripts/sync-content.mjs && node scripts/build-text.mjs && node scripts/build-sitemap.mjs",
     "predev": "npm run sync-content",
     "dev": "next dev",
     "prebuild": "npm run sync-content",
