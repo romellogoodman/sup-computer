@@ -435,7 +435,60 @@ hr {
 /* Owned by components/instruments/Board.jsx. */
 
 /* ---- block: glyph (the font maker) -------------------------------------- */
-/* Owned by components/instruments/GlyphMaker.jsx. */
+/* Owned by components/instruments/GlyphMaker.jsx. A type specimen, not a card
+   grid: the word on one baseline, the alphabet so far as tiles that share it,
+   ink in the text color, the letter being drawn in the accent. Motion carries
+   meaning only — a tile draws itself as tokens land, and pulses while it does. */
+.glyph__idle { font-family: var(--font-mono); font-size: 12.5px; color: var(--color-text-faint); min-height: 8em; }
+.glyph__view { min-height: 14em; }
+.glyph__word {
+  display: block; width: 100%; max-width: var(--measure); height: auto; max-height: 220px;
+  overflow: visible;
+}
+.glyph__ink { fill: var(--color-text); }
+.glyph__ink--live { fill: var(--color-accent); }
+.glyph__stroke {
+  fill: none; stroke: var(--color-accent); stroke-width: 1.5px; stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.glyph__baseline { stroke: var(--color-rule); stroke-width: 1px; stroke-dasharray: 2 3; vector-effect: non-scaling-stroke; }
+.glyph__slot { fill: none; stroke: var(--color-rule-strong); stroke-width: 1px; stroke-dasharray: 3 3; vector-effect: non-scaling-stroke; }
+.glyph__slot--bad { stroke: var(--color-notice); }
+.glyph__empty { font-family: var(--font-mono); font-size: 300px; fill: var(--color-notice); } /* svg user units */
+.glyph__status { font-family: var(--font-mono); font-size: 11.5px; color: var(--color-text-faint); margin: .4em 0 0; min-height: 1.4em; }
+.glyph__specimen {
+  display: flex; flex-wrap: wrap; gap: 6px 0;
+  margin: .8em 0 0; padding-top: .7em; border-top: 1px dotted var(--color-rule);
+}
+.glyph__tile {
+  appearance: none; background: none; border: 0; padding: 0 2px; width: 64px;
+  font: inherit; color: var(--color-text); text-align: center; cursor: pointer;
+}
+.glyph__tile:disabled { cursor: default; }
+.glyph__tile:hover:not(:disabled) .glyph__ink, .glyph__tile:focus-visible .glyph__ink { fill: var(--color-accent); }
+.glyph__tile-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.glyph__tile-letter { display: block; font-family: var(--font-mono); font-size: 12px; color: var(--color-text-muted); margin-top: 2px; }
+.glyph__tile-note { display: block; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .04em; color: var(--color-text-faint); }
+.glyph__tile--bad .glyph__tile-note { color: var(--color-notice); }
+.glyph__tile--queued .glyph__ink { opacity: .3; }
+.glyph__tile--drawing .glyph__tile-letter { color: var(--color-accent); }
+.glyph__tile--drawing .glyph__tile-svg { animation: glyphPulse 1.2s ease-in-out infinite; }
+.glyph__caption { font-size: 14.5px; color: var(--color-text-muted); max-width: var(--measure); margin: .9em 0 0; text-wrap: pretty; }
+.glyph__caption code { font-family: var(--font-mono); font-size: .9em; }
+.glyph__exports { display: flex; align-items: baseline; gap: 6px 16px; flex-wrap: wrap; margin: .7em 0 0; }
+.glyph__exports .instrument__label { margin: 0; }
+.glyph__export {
+  font-family: var(--font-mono); font-size: 12px; cursor: pointer;
+  color: var(--color-link); background: none; border: 0; padding: 0;
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.glyph__export:disabled { color: var(--color-text-faint); text-decoration: none; cursor: default; }
+@keyframes glyphPulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+@media (prefers-reduced-motion: reduce) { .glyph__tile--drawing .glyph__tile-svg { animation: none; } }
+@media (--bp-narrow) {
+  .glyph__tile { width: 52px; }
+  .glyph__word { max-height: 160px; }
+}
 
 /* ---- block: pona (the word-keyboard chat instrument) -------------------- */
 .pona { margin-top: 6px; }
