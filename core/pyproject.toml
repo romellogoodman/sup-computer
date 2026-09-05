@@ -9,6 +9,11 @@ dependencies = [
     "tiktoken",
 ]
 
+[project.scripts]
+# `uv run sup-train ./corpus.txt` — train, sample, export, and card-stub a small
+# GPT from any text file (also what the Node CLI's `sup train` spawns).
+sup-train = "nanogpt_core.train_corpus:main"
+
 [project.optional-dependencies]
 # export.py only — ONNX conversion + quantization.
 # onnxruntime >=1.20 ships no CPython 3.9 wheels, hence the fork.

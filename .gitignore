@@ -23,6 +23,9 @@ tools/dataviz/output/
 # --- ONNX export output (core/export/export.py; artifacts publish to R2) ---
 projects/*/dist/
 
+# --- sup-train's default run dir (`uv run sup-train corpus.txt` -> runs/<name>/) ---
+/runs/
+
 # --- Node ---
 node_modules/
 
