@@ -3,13 +3,16 @@
 The sup computer studio website — a Next.js 14 (App Router) app, statically
 exported (`next.config.mjs`: `output: "export"`). It reads markdown + the model
 registry that the content-sync step copies in (see below) and renders the home
-index, research reports (`/research/<slug>/`), and model cards (`/models/<id>/`).
+index, the research shelves (`/research/`, `/research/<slug>/`), one page per
+model series with its instrument first (`/models/<series>/`), and the
+per-release model cards (`/models/<id>/`). See ADR-0035.
 
 ## Content model
 
 The website owns zero source content. Markdown lives in its semantic home next
-to the experiments — `research-docs/` (reports + model cards, written by Claude) —
-and is copied in at build time:
+to the experiments — `research-docs/` (reports + model cards) — and
+`registry.json` at the repo root carries every model fact plus the per-series
+site copy (tagline, verb, instrument kind). Both are copied in at build time:
 
 ```
 research-docs/            <- source of truth, version-controlled
@@ -59,3 +62,35 @@ green accent. No CSS-in-JS, no utility framework.
 `components/Markdown.jsx` renders the markdown, pulls footnotes into the right
 margin as `.sidenote`s, and opens reports with a `.takeaways` abstract box built
 from the `takeaways:` frontmatter (ADR-0031).
+
+## Instruments
+
+Every model series has an instrument — the playable interface its series page
+opens with (ADR-0035). The pieces:
+
+- `lib/instrument/worker.js` — one model per Web Worker; every `session.run`
+  is serialized on one promise chain, so runs never overlap and the page never
+  janks. `client.js` (`ModelClient`) speaks the worker protocol;
+  `useModel.js` is the React hook components use (`ensure`, `generate`,
+  `forward`, `stop`, `vocab`, `state`, `backend`).
+- `lib/instrument/bundle.js` — which artifact to load. int8 only when the
+  browser has no WebGPU (dynamic int8 has no WebGPU kernel). Set
+  `NEXT_PUBLIC_ARTIFACTS_BASE=/artifacts` to load from the gitignored
+  `public/artifacts/` (symlink `projects/*/dist/*` into it) — required on any
+  dev port other than 3000, the only localhost origin the R2 CORS rule admits.
+- `components/instruments/Instrument.jsx` — maps a series' `instrument` kind
+  (from `registry.json`) to a lazily loaded component; unknown kinds get the
+  generic `TextInstrument`. Shared parts: `DistributionStrip` (the next-token
+  distribution under every instrument), `TokenPane` (the raw stream, always one
+  toggle away), `ViewToggle`, `Field`.
+- One component per kind: `Playbill` (shakespeare), `Chant` (kenosha-kid),
+  `Greenlight` (gatsby), `Board` (daydream), `GlyphMaker` (glyph),
+  `PonaChat` (pona). Each styles itself in its own block of `globals.css`.
+
+Adding a series: a `series` entry in `registry.json` (tagline, verb,
+instrument), a component here, and a line in `Instrument.jsx`. The integrity
+check fails a project without a series entry.
+
+```bash
+npm test               # node --test lib/*.test.mjs (codec ports and the like)
+```
