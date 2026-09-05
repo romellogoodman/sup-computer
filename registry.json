@@ -1,50 +1,71 @@
 {
-  "_note": "Model manifest consumed by the website, the player page, and the sup CLI. Weights and ONNX live in R2 / Hugging Face, never in-tree; artifact URLs fill in at publish time. block_size comes from the frozen config.py (the ONNX RoPE cache physically ends there). demo.prompt is the starter prompt for playable releases -- leading whitespace is LOAD-BEARING (it puts the model in its corpus's format), don't strip it. The demo roster itself is DERIVED (newest runnable release per lineage -- see ADR-0028), not listed. Every model records the AI `researcher` that produced it, keyed into the `researchers` map below -- see docs/adr/0013-attribution-of-the-ai-researcher.md.",
+  "_note": "Model manifest consumed by the website and the sup CLI. Weights and ONNX live in R2 / Hugging Face, never in-tree; artifact URLs fill in at publish time. block_size comes from the frozen config.py (the ONNX RoPE cache physically ends there). demo.prompt is the starter prompt for playable releases -- leading whitespace is LOAD-BEARING (it puts the model in its corpus's format), don't strip it. The playable roster is DERIVED (newest runnable release per lineage -- see ADR-0028), not listed. Every model records the AI `researcher` that produced it, keyed into the `researchers` map below (each researcher carries a `kind`, human or agent -- the site files a human-bylined report as an essay and an agent-bylined one as a lab note) -- see docs/adr/0013-attribution-of-the-ai-researcher.md. The `series` map holds per-series site copy: `tagline`, the `verb` the home page shows, and the `instrument` the series page opens with (see docs/adr/0035-instruments-as-the-front-door.md).",
   "researchers": {
     "claude-opus-4-8": {
       "name": "Claude Opus 4.8",
       "vendor": "Anthropic",
-      "harness": "Claude Code"
+      "harness": "Claude Code",
+      "kind": "agent"
     },
     "claude-fable-5": {
       "name": "Claude Fable 5",
       "vendor": "Anthropic",
-      "harness": "Claude Code"
+      "harness": "Claude Code",
+      "kind": "agent"
     },
     "claude-sonnet-5": {
       "name": "Claude Sonnet 5",
       "vendor": "Anthropic",
-      "harness": "Claude Code"
+      "harness": "Claude Code",
+      "kind": "agent"
     },
     "claude-opus-5": {
       "name": "Claude Opus 5",
       "vendor": "Anthropic",
-      "harness": "Claude Code"
+      "harness": "Claude Code",
+      "kind": "agent"
     },
     "romello-goodman": {
-      "name": "Romello Goodman"
+      "name": "Romello Goodman",
+      "kind": "human"
     }
   },
   "series": {
     "shakespeare-nanogpt": {
       "name": "shakespeare-nanogpt",
-      "tagline": "Writes Shakespeare from scratch \u2014 and gets sharper every research round."
+      "tagline": "Writes Shakespeare from scratch \u2014 and gets sharper every research round.",
+      "verb": "write",
+      "instrument": "playbill"
     },
     "gatsby-nanogpt": {
       "name": "gatsby-nanogpt",
-      "tagline": "Bends any story toward the green light \u2014 obsession you can dial from 1 to 5."
+      "tagline": "Bends any story toward the green light \u2014 obsession you can dial from 1 to 5.",
+      "verb": "dial",
+      "instrument": "greenlight"
     },
     "kenosha-kid-nanogpt": {
       "name": "kenosha-kid-nanogpt",
-      "tagline": "Dreams endlessly on just six words."
+      "tagline": "Dreams endlessly on just six words.",
+      "verb": "dream",
+      "instrument": "chant"
     },
     "daydream-chess-nanogpt": {
       "name": "daydream-chess-nanogpt",
-      "tagline": "Plays chess without ever knowing the rules \u2014 learned move by move from games, not a rulebook, across three board sizes."
+      "tagline": "Plays chess without ever knowing the rules \u2014 learned move by move from games, not a rulebook, across three board sizes.",
+      "verb": "play",
+      "instrument": "board"
     },
     "glyph-nanogpt": {
       "name": "glyph-nanogpt",
-      "tagline": "Draws the lowercase alphabet one letter at a time \u2014 a single evolving model, released chasing the twenty-six specialists that out-drew it."
+      "tagline": "Draws the lowercase alphabet one letter at a time \u2014 a single evolving model, released chasing the twenty-six specialists that out-drew it.",
+      "verb": "draw",
+      "instrument": "glyph"
+    },
+    "pona-nanogpt": {
+      "name": "pona-nanogpt",
+      "tagline": "Speaks Toki Pona, and its whole vocabulary is the keyboard \u2014 about 130 words is a language small enough to get right.",
+      "verb": "talk",
+      "instrument": "pona"
     }
   },
   "models": [
