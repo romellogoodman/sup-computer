@@ -18,6 +18,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* llms.txt v2: the file that describes this site to agents (ADR-0019) */}
+        <link rel="describedby" href="/llms.txt" type="text/markdown" />
+      </head>
       <body>
         <a className="skip-link" href="#main">skip to content</a>
         <header className="masthead" id="top">

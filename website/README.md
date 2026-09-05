@@ -22,7 +22,11 @@ research-docs/            <- source of truth, version-controlled
 website/content/          <- gitignored, regenerated copies, never edited here
 ```
 
-`scripts/sync-content.mjs` does the copy; `content/` is gitignored. Add more
+`scripts/sync-content.mjs` does the copy; `content/` is gitignored. The same
+prebuild chain then writes the generated files into `public/`:
+`build-text.mjs` (the markdown twins, `llms.txt` in its v2 shape, `llms-full.txt`
+— ADR-0019) and `build-sitemap.mjs` (`sitemap.xml`). All of them are
+gitignored and rewritten on every `npm run dev` and `npm run build`. Add more
 sources (e.g. a cross-project `blog/`) by extending the `DIRS` / `FILES` /
 `ASSET_DIRS` lists in that script. Edit markdown in `research-docs/`, not
 here — copies are blown away and regenerated on every sync.

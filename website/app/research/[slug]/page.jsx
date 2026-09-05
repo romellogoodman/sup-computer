@@ -20,6 +20,8 @@ export function generateMetadata({ params }) {
       url: `/research/${r.slug}/`,
       publishedTime: date ? new Date(date).toISOString() : undefined,
     },
+    // llms.txt v2: advertise the markdown twin (ADR-0019) to agents
+    alternates: { types: { "text/markdown": `/research/${r.slug}.md` } },
   };
 }
 

@@ -122,7 +122,7 @@ function llmsIndex(reports, cards, models, pages, series) {
   return [
     "# sup computer",
     `\n> ${SITE_BLURB}`,
-    "\nThese links point at raw markdown — paste any of them into an LLM chat. The instrument pages are HTML: each model's playable interface, running in the browser.",
+    "\nEvery report, model card, and page has a markdown twin at the same path with `.md` in place of the trailing slash — the links below point at those twins, so any of them can be read directly. The instrument pages are HTML: each model's playable interface, running in the browser. For everything in one file, see [llms-full.txt](" + SITE_URL + "/llms-full.txt).",
     pageList ? `\n## Pages\n\n${pageList}` : "",
     "\n## Instruments",
     `\n${instruments}`,
@@ -130,7 +130,9 @@ function llmsIndex(reports, cards, models, pages, series) {
     `\n${essays}`,
     "\n## Lab notes",
     `\n${labNotes}`,
-    "\n## Model cards",
+    // v2's convention: the section an agent can skip when context is short —
+    // the per-release cards restate specs the series pages and reports carry.
+    "\n## Optional",
     `\n${modelList}`,
     "",
   ].join("\n");

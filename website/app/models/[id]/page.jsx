@@ -19,6 +19,8 @@ export function generateMetadata({ params }) {
     title: m.id,
     description,
     openGraph: { title: m.id, description, url: `/models/${m.id}/` },
+    // llms.txt v2: advertise the markdown twin (ADR-0019) to agents
+    alternates: { types: { "text/markdown": `/models/${m.id}.md` } },
   };
 }
 
