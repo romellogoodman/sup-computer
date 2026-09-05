@@ -179,12 +179,6 @@ export default function Page({ params }) {
       {seriesOf && (
         <p className="model__series">
           a release of <a href={`/models/${seriesOf.slug}/`}>{seriesOf.name}</a>
-          {seriesOf.verb && (
-            <>
-              {" · "}
-              <a href={`/models/${seriesOf.slug}/#instrument`}>{seriesOf.verb}</a>
-            </>
-          )}
         </p>
       )}
       <SpecTable m={m} />
