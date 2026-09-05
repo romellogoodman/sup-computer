@@ -21,14 +21,13 @@ export default function Home() {
       <h1 className="sr-only">sup computer — a small language model studio</h1>
       <div className="intro">
         <p>
-          sup computer trains small language models from scratch and builds each one an
-          instrument: a board for the model that dreams chess, a font maker for the one that
-          draws letters, a keyboard for the one that speaks Toki Pona. Every model is small
-          enough to train end to end on a laptop, and every instrument runs in your browser.
+          sup computer is a research studio building small language models from
+          scratch — small enough to train end to end on a consumer laptop, and still
+          useful.
         </p>
         <p>
-          The research is LLM-assisted. Claude models run each experiment under human direction
-          and sign the lab notes; the essays are by Romello Goodman. All of it is open source.
+          Our methods are LLM-assisted. A mixture of models works each step, from dataset
+          creation to training and evaluation, under human direction. All of our research is open source.
         </p>
       </div>
 
