@@ -1,13 +1,13 @@
 ---
 name: publish-player-model
-description: Export a released model to ONNX and publish it — R2 for the website's /interfaces page, and a Hugging Face repo under the sup-computer org for the checkpoint + card. Use when a new model version is released, when the player needs to pick up a release, when artifact URLs in registry.json need filling, or when re-uploading fixed artifacts.
+description: Export a released model to ONNX and publish it — R2 for the website's instruments (the series pages), and a Hugging Face repo under the sup-computer org for the checkpoint + card. Use when a new model version is released, when the player needs to pick up a release, when artifact URLs in registry.json need filling, or when re-uploading fixed artifacts.
 ---
 
 # Publish a model to the player (and Hugging Face)
 
 Turn a released model version into browser-runnable artifacts on Cloudflare R2,
 a Hugging Face release under [`sup-computer`](https://huggingface.co/sup-computer),
-and wire it into the `/interfaces` page. Conventions are recorded in
+and wire it into its series page's instrument. Conventions are recorded in
 [ADR-0024](../../../docs/adr/0024-model-player-page-and-artifact-conventions.md);
 the release process itself is
 [`docs/handbook.md` § Releasing a version](../../../docs/handbook.md#releasing-a-version).
@@ -115,7 +115,7 @@ uvx --from 'huggingface_hub[cli]' hf upload "sup-computer/<id>" <staged-dir> . \
 ## 5. Wire the registry
 
 Everything lands in `registry.json` — the only registry (ADR-0028); the
-`/interfaces` roster and the `sup` CLI derive newest-runnable-per-lineage
+series-page instruments and the `sup` CLI derive newest-runnable-per-lineage
 from it, so the release appears in both the moment these fields fill:
 
 - `artifacts.onnx` — the full public R2 URL; `artifacts.checkpoint` — the HF
@@ -127,9 +127,15 @@ from it, so the release appears in both the moment these fields fill:
   (symptom: an OrtRun reshape error like `{N,16}` vs `{1,1,N+1,16}`).
 - `demo.prompt` — a string the training corpus actually contains (check the
   corpus, don't invent one; leading whitespace is load-bearing).
+- `artifacts.onnx_int8` — upload the `.int8.onnx` too and fill this in. The
+  browser runs int8 only when it has no WebGPU (dynamic-int8 MatMulInteger
+  has no WebGPU kernel, so on a WebGPU machine full precision is faster);
+  the `sup` CLI always runs full precision.
 
-For local dev without the network, also copy the artifacts into the gitignored
-`website/public/artifacts/` and use `/artifacts/<file>` URLs temporarily.
+For local dev without the network (or on a port the R2 CORS rule doesn't
+admit), symlink the exports into the gitignored `website/public/artifacts/`
+and start the dev server with `NEXT_PUBLIC_ARTIFACTS_BASE=/artifacts` — every
+artifact URL is rewritten to that directory (`website/lib/instrument/bundle.js`).
 
 ## 6. Verify in the browser, then commit
 
@@ -137,11 +143,11 @@ For local dev without the network, also copy the artifacts into the gitignored
 cd website && node scripts/sync-content.mjs   # dev server picks registries up
 ```
 
-Open `http://localhost:3000/interfaces/`, select the model, generate, and let
-it run **past the block_size boundary** (prompt + max tokens > block_size) to
-prove the sliding window works. Expect main-thread jank while it generates —
-known limitation (ORT WASM computes on the UI thread; a worker or ORT proxy
-mode is the eventual fix).
+Open `http://localhost:3000/models/<series>/`, run the instrument (the token
+view shows the raw stream), and let it run **past the block_size boundary**
+(prompt + max tokens > block_size) to prove the sliding window works.
+Inference runs in a Web Worker, so the page must stay responsive throughout —
+jank is a bug now, not a known limitation.
 
 Commit the `registry.json` change (small, focused commit). Weights, `dist/`,
 and `website/public/artifacts/` stay untracked.

@@ -12,13 +12,13 @@ depth (with the why) is [`docs/handbook.md`](docs/handbook.md).
 | Path | What it is |
 |---|---|
 | `core/` | The shared engine — model, train, sample, eval, ONNX export. Modern arch only; editable-installed. |
-| `projects/<name>/` | One thin model project each — four so far (shakespeare, gatsby, kenosha-kid, daydream); each is self-describing via its own README + CLAUDE.md. |
+| `projects/<name>/` | One thin model project each — six so far (shakespeare, gatsby, kenosha-kid, daydream, glyph, pona); each is self-describing via its own README + CLAUDE.md. |
 | `player/` | `@supcomputer/player` — vendored browser runtime for released models (ADR-0025). |
 | `cli/` | `sup` — run a release in the terminal; in-tree only (ADR-0025). |
 | `tools/` | Researcher tools, not shipped code — each documents itself in its own README. One rule to know up front: **every chart goes through `tools/dataviz/`**. |
 | `research-docs/` | Cross-project write-ups: `reports/` (experiments) and `model-cards/`. Claude writes here. |
-| `website/` | The studio site — owns no content; syncs `research-docs/` at prebuild (ADR-0019). |
-| `registry.json` | Model manifest the site + player consume. |
+| `website/` | The studio site — owns no content; syncs `research-docs/` at prebuild (ADR-0019). One page per model series, its instrument first (ADR-0035). |
+| `registry.json` | Model manifest the site + CLI consume; its `series` map names each series' verb and instrument. |
 
 ## Hard rules
 

@@ -28,7 +28,7 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 # per-project gitignored fetch caches (third-party clones full of their own
 # markdown — e.g. pona's poki corpus and telo misikeke checker)
 SKIP_DIRS = {".git", ".venv", "node_modules", "content", "output", ".next", "raw", "vendor"}
-SKIP_PREFIXES = ("website/public",)
+SKIP_PREFIXES = ("website/public", ".claude/worktrees")  # agent worktrees are scratch, not tree
 
 LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)\s]+)\)")
 WEIGHT_EXTS = (".pt", ".bin", ".onnx", ".pkl")
@@ -50,6 +50,26 @@ def check_registry(findings):
         reg = json.load(f)
     tags = set(git("tag", "-l"))
     researchers = set(reg.get("researchers", {}))
+    # ADR-0035: a researcher's kind decides the research shelf (human -> essay,
+    # agent -> lab note), so every entry must declare one.
+    for rid, r in reg.get("researchers", {}).items():
+        if r.get("kind") not in ("human", "agent"):
+            fail(findings, f"registry: researcher {rid}: kind must be 'human' or 'agent'")
+    # ADR-0035: every series has a page whose instrument the `series` map names;
+    # the slug is the flagship id minus its version (daydream's tiers share one).
+    series = reg.get("series", {})
+    by_project = {}
+    for m in reg.get("models", []):
+        by_project.setdefault(m.get("project", ""), []).append(m.get("id", ""))
+    for project, ids in by_project.items():
+        slug = min((re.sub(r"-\d+$", "", i) for i in ids), key=len)
+        entry = series.get(slug)
+        if not entry:
+            fail(findings, f"registry: series map has no entry for {slug!r} (project {project})")
+            continue
+        for key in ("tagline", "verb", "instrument"):
+            if not entry.get(key):
+                fail(findings, f"registry: series {slug}: missing {key!r}")
     for m in reg.get("models", []):
         mid = m.get("id", "<no id>")
         if m.get("git_tag") not in tags:
@@ -152,7 +172,9 @@ def gen_reports_index(findings):
             fail(findings, f"reports: {name} researcher {rid!r} not in registry researchers map")
         num = f"{int(fm['number']):02d}" if fm.get("number", "").isdigit() else "—"
         marker = ""
-        if fm.get("type") == "note":
+        if researchers.get(rid, {}).get("kind") == "human":
+            marker = "*essay*. "  # human byline -> the essays shelf (ADR-0035)
+        elif fm.get("type") == "note":
             marker = f"*note, series: {fm['series']}*. " if fm.get("series") else "*note*. "
         blurb = " ".join(fm.get("summary", "").split())
         date = (f"{MONTHS[int(date_raw[5:7]) - 1]} {date_raw[:4]}"

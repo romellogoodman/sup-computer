@@ -10,7 +10,7 @@ part isn't the loss curve — it's what you can make a tiny model *do*.
 
 ## What's inside
 
-Four projects so far — each is self-describing; follow the link for the full story:
+Six projects so far — each is self-describing; follow the link for the full story:
 
 - [**shakespeare**](projects/shakespeare/) — a tiny GPT trained on the works of
   Shakespeare; three releases, from a char-level baseline to a corpus-trained
@@ -24,9 +24,18 @@ Four projects so far — each is self-describing; follow the link for the full s
 - [**daydream**](projects/daydream/) — a three-tier family of chess-move GPTs
   that learned move text from games, never the rules; illegal moves render as
   dim near-misses instead of being masked.
+- [**glyph**](projects/glyph/) — a 47.8M letter-conditioned GPT that draws the
+  lowercase alphabet as outline text, released over the twenty-six per-letter
+  specialists it was measured against.
+- [**pona**](projects/pona/) — a 2.7M word-level GPT that speaks Toki Pona,
+  scored by the community's grammar checker; its whole vocabulary is the
+  keyboard you talk to it with.
 
-The write-ups behind them — every experiment, annotated and in order — are
-indexed at [`research-docs/reports/`](research-docs/reports/README.md).
+Each series has an instrument on the studio site — a board, a font maker, a
+dial, a keyboard — that runs the released model in the browser
+([ADR-0035](docs/adr/0035-instruments-as-the-front-door.md)). The write-ups
+behind them — every experiment, annotated and in order — are indexed at
+[`research-docs/reports/`](research-docs/reports/README.md).
 
 ## Layout
 

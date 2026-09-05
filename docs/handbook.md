@@ -14,7 +14,7 @@ The as-built map, and why. The decision to be a monorepo is
 ```
 core/        shared, evolving engine — installed once, imported everywhere
 projects/    one folder per model; thin config + evidence + frozen releases
-player/      @supcomputer/player — vendored browser runtime (ADR-0010, ADR-0025); powers the site's /interfaces page (ADR-0024)
+player/      @supcomputer/player — vendored browser runtime (ADR-0010, ADR-0025); powers the instruments on the site's series pages (ADR-0024, ADR-0035)
 cli/         `sup` — run a released model in the terminal; in-tree only (ADR-0025)
 tools/       researcher tooling (charts, synthetic corpora, benchmarks, cost) — operated, not shipped
 research-docs/  cross-project prose (reports + model cards)
@@ -296,9 +296,13 @@ needs (`model.py`, `config.py`, `train.py`, `sample.py`, `eval.py`, `prepare.py`
      `block_size` from the frozen `config.py`, BPC, card, artifact urls —
      `null` until weights/ONNX are published — and `demo.prompt`: a starter
      prompt the corpus actually contains, leading whitespace load-bearing).
-     This is the only registry: the `/interfaces` roster and the `sup` CLI
-     both derive newest-runnable-per-lineage from it
-     ([ADR-0028](adr/0028-registry-absorbs-the-demo-registry.md)).
+     This is the only registry: each series page's instrument and the `sup`
+     CLI both derive newest-runnable-per-lineage from it
+     ([ADR-0028](adr/0028-registry-absorbs-the-demo-registry.md)). A new
+     series also needs a `series` entry — tagline, the home page `verb`, and
+     the `instrument` kind its page opens with
+     ([ADR-0035](adr/0035-instruments-as-the-front-door.md)); no model
+     ships without one.
 
 5. **Tag it:** `git tag <project>-N` so the exact repo state is recoverable.
 

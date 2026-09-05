@@ -21,9 +21,11 @@ decision to vendor this runtime in-tree.
 ## Install
 
 This is the in-tree `@supcomputer/player` package. Its consumers are the
-website's [`/interfaces`](../website/app/interfaces/) page
-([ADR-0024](../docs/adr/0024-model-player-page-and-artifact-conventions.md))
-and the [`sup` CLI](../cli/) (ADR-0025), both via `file:../player`. It depends
+website's instruments — one per model series, each running the forward pass
+in a Web Worker ([`website/lib/instrument/`](../website/lib/instrument/),
+[ADR-0024](../docs/adr/0024-model-player-page-and-artifact-conventions.md),
+[ADR-0035](../docs/adr/0035-instruments-as-the-front-door.md)) — and the
+[`sup` CLI](../cli/) (ADR-0025), both via `file:../player`. It depends
 on `onnxruntime-web` (loaded lazily, only when no backend is injected) and
 `gpt-tokenizer`.
 

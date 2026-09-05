@@ -58,11 +58,12 @@ cleanly.
   URLs (R2). Tokenizer sidecars are derived from the ONNX URL by suffix swap
   (`.vocab.json` for char models, `.tokenizer.json` for corpus BPE). That is
   the ADR-0024 naming convention; this CLI is its second consumer.
-- **How to greet it:** `player-registry.json` — starter prompt and
-  `block_size` per release, shared with the website's `/interfaces` page.
-  Historical releases aren't listed there; their `block_size` comes from the
-  `<id>.manifest.json` uploaded beside the ONNX (they have no starter prompt,
-  so pass one: `sup run shakespeare-nanogpt-1 "ROMEO:"`).
+- **How to greet it:** the same `registry.json` — `demo.prompt` and
+  `block_size` per release (ADR-0028), shared with the instruments on the
+  website's series pages. Historical releases have no starter prompt, so
+  pass one: `sup run shakespeare-nanogpt-1 "ROMEO:"`; their `block_size`
+  is cross-checked against the `<id>.manifest.json` uploaded beside the ONNX.
 
 A note on daydream: the chess models stream *dreamed* moves — nothing here
-checks legality, same as the browser player. That's the point.
+checks legality. The board on the website plays the same dream, with the
+rules on. That's the point.

@@ -53,4 +53,5 @@ ADR (ADR-0033).
 | [0032](0032-train-page-prompt-as-content.md) | /train — a runnable prompt as page content | Accepted |
 | [0033](0033-generated-doc-indexes.md) | Index tables are generated from their sources | Accepted (amends [ADR-0030](0030-doc-surface-one-home-per-fact.md) decision 4) |
 | [0034](0034-pin-ci-linting.md) | CI pins its linter and names its rules | Accepted |
+| [0035](0035-instruments-as-the-front-door.md) | Instruments are the front door — series pages, research shelves, and inference off the main thread | Accepted (supersedes the information architecture in [ADR-0009](0009-website-ia-and-style.md) and the page decision in [ADR-0024](0024-model-player-page-and-artifact-conventions.md); the artifact conventions of ADR-0024 and the derived roster of [ADR-0028](0028-registry-absorbs-the-demo-registry.md) stand; extends [ADR-0013](0013-attribution-of-the-ai-researcher.md) with a researcher `kind`) |
 <!-- /generated -->
