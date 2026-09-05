@@ -40,7 +40,7 @@ export default function Home() {
             </span>
             <span className="model-list__spec">
               {verb && (
-                <a className="model-list__verb" href={`/models/${slug}/#instrument`}>
+                <a className="model-list__verb" href={`/models/${slug}/`}>
                   {verb}
                 </a>
               )}
