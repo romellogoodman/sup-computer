@@ -1,17 +1,19 @@
-import { getSeries, getEssays, getLabNotes } from "../lib/content";
+import { getSeries, getReports } from "../lib/content";
 import ReportList from "../components/ReportList";
 
-// The essay pinned to the top of the research list — an editorial choice, so
-// it lives here (site presentation), not in the frozen report's frontmatter.
-const PINNED_SLUG = "1-month-and-60-models-later";
+// Selected research: the reports on the front page, in this order — an
+// editorial choice, so it lives here (site presentation), never in a frozen
+// report's frontmatter. Any report can be selected, essay or lab note; the
+// research page keeps the complete shelves.
+const SELECTED = [
+  "1-month-and-60-models-later",
+  "an-instrument-anything-can-play",
+  "budget-cant-buy-the-midgame",
+];
 
 export default function Home() {
-  const essays = getEssays();
-  const reports = [
-    ...essays.filter((r) => r.slug === PINNED_SLUG),
-    ...essays.filter((r) => r.slug !== PINNED_SLUG),
-  ];
-  const labNoteCount = getLabNotes().length;
+  const all = getReports();
+  const selected = SELECTED.map((slug) => all.find((r) => r.slug === slug)).filter(Boolean);
   const series = getSeries();
 
   return (
@@ -49,12 +51,10 @@ export default function Home() {
         ))}
       </ul>
 
-      <h2 className="section-label" id="research">Research</h2>
-      <ReportList reports={reports} pinnedSlug={PINNED_SLUG} />
-      <p className="section-note">
-        The lab notes behind each model — {labNoteCount} experiments and notes run by the
-        studio's agents — are filed on the <a href="/research/">research page</a> and under
-        each model.
+      <h2 className="section-label" id="research">Selected research</h2>
+      <ReportList reports={selected} />
+      <p className="post-list__all">
+        <a href="/research/">all research, {all.length} reports</a>
       </p>
     </>
   );

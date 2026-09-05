@@ -223,6 +223,8 @@ hr {
 .post-list__link { font-size: 19px; }
 .post-list__meta { font-family: var(--font-mono); font-size: 12.5px; color: var(--color-text-muted); letter-spacing: .015em; margin: 3px 0 0; }
 .post-list__summary { margin: .4em 0 0; font-size: 15.5px; color: var(--color-text-strong); line-height: 1.5; text-wrap: pretty; }
+/* the front page's "view all" — a link in the meta register, never a button */
+.post-list__all { font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .015em; margin: 14px 0 0; }
 
 /* ---- block: report ------------------------------------------------------ */
 .report__meta { font-family: var(--font-mono); font-size: 12.5px; color: var(--color-text-muted); letter-spacing: .015em; margin: 0 0 .2em; }
