@@ -1,27 +1,24 @@
 "use client";
 
-// The /pona chat: talk with the pona word-arm model through its own vocabulary.
+// pona's instrument: talk with the word-arm model through its own vocabulary.
 // The transcript alternates your turns with the model's (it speaks as "ilo"),
 // framed exactly as projects/pona/talk.py frames them; the composer offers free
 // typing AND the word keyboard (the vocab IS the keyboard); the suggestion
 // strip shows the model's top next-word probabilities for the current
-// composition, straight from the player's forward() logits.
+// composition, straight from the worker's forward() logits — and, while ilo
+// answers, the distribution it sampled each word from.
 //
-// Inference is @supcomputer/player (onnxruntime-web), imported lazily on first
-// interaction so the ORT bundle never loads for readers who only look.
-//
-// CRASH INVARIANT (the /interfaces lesson, fixed 2026-08-01): ORT corrupts its
-// wasm heap if two session.run calls ever overlap, and the corruption outlives
-// the runs. Every session.run here — generation loops and suggestion queries
-// alike — is enqueue()d on ONE promise chain, so no two can interleave; and
-// cancellation is a monotonic id bump (genIdRef / suggestSeqRef), so a stale
-// loop halts at its next check and nothing can ever un-stop it.
-//
-// Until a pona release lands in registry.json this renders the full UI in a
-// disabled state: static sample keyboard, Send off, a small notice.
+// Inference runs in the instrument worker (lib/instrument): every
+// session.run is serialized there, so the crash invariant from the old
+// /interfaces page (never overlap two ORT runs) holds by construction, and
+// the page never janks. The word tokenizer is the one piece that stays on
+// the main thread — the player doesn't ship it — so this component encodes
+// and decodes itself via lib/pona.js and sends token ids across.
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { resolveBundle } from "@supcomputer/player/registry";
+import { useModel } from "../../lib/instrument/useModel";
+import { pickBundle } from "../../lib/instrument/bundle";
+import { BackendLine } from "./Field";
 import {
   UNK,
   NAME,
@@ -37,22 +34,17 @@ import {
   keyboardSections,
   PLACEHOLDER_SECTIONS,
   pickPonaModel,
-} from "../lib/pona";
+} from "../../lib/pona";
 
 const SUGGEST_COUNT = 5;
 const SUGGEST_DEBOUNCE_MS = 250;
 
-// The player's registry helpers don't know the word-arm sidecar yet, so derive
-// it here by the same publish contract as char models (ADR-0024): every
-// sidecar name is a suffix swap on the full-precision <id>.onnx name —
-// resolveBundle's manifestUrl already carries that base.
-function ponaBundle(model) {
-  const b = model ? resolveBundle(model, { preferInt8: true }) : null;
-  if (!b) return null;
-  return {
-    onnxUrl: b.onnxUrl,
-    vocabUrl: b.manifestUrl.replace(/\.manifest\.json$/, ".vocab.json"),
-  };
+// The vocab sidecar name follows the publish contract (ADR-0024): a suffix
+// swap on the full-precision <id>.onnx name — pickBundle's manifestUrl already
+// carries that base (localized for dev, too).
+function vocabUrlOf(model) {
+  const b = pickBundle(model);
+  return b ? b.manifestUrl.replace(/\.manifest\.json$/, ".vocab.json") : null;
 }
 
 // Softmax over the full distribution, then the top-k tokens by probability.
@@ -79,8 +71,8 @@ function topSuggestions(logits, itos, k) {
 
 export default function PonaChat({ models }) {
   const model = useMemo(() => pickPonaModel(models), [models]);
-  const bundle = useMemo(() => ponaBundle(model), [model]);
-  const runnable = Boolean(bundle);
+  const m = useModel(model);
+  const runnable = model && m.state !== "unpublished";
   const blockSize = model?.block_size || 256;
 
   const [vocab, setVocab] = useState(null); // { stoi, itos[] } from the released sidecar
@@ -88,49 +80,24 @@ export default function PonaChat({ models }) {
   const [turns, setTurns] = useState([]); // { who: "sina" | "ilo", text }
   const [composition, setComposition] = useState("");
   const [pending, setPending] = useState(null); // the ilo reply streaming in
-  const [status, setStatus] = useState("idle"); // idle | loading | generating | error
   const [error, setError] = useState(null);
-  const [modelState, setModelState] = useState("cold"); // cold | loading | ready | failed
   const [woken, setWoken] = useState(false); // first touch triggers the ONNX download
   const [suggestions, setSuggestions] = useState(null);
 
-  // --- the serialization spine (see the crash invariant above) ---
-  const queueRef = useRef(Promise.resolve()); // ALL session.run work chains here
-  const genIdRef = useRef(0); // bumping cancels the in-flight reply, permanently
   const suggestSeqRef = useRef(0); // only the newest suggestion query may land
-  const ortRef = useRef(null); // { runtime, session }, loaded once
   const pendingRef = useRef(null); // mirror of `pending` for stop() to commit
+  const runRef = useRef(null);
 
-  const busy = status === "loading" || status === "generating";
+  const busy = m.state === "loading" || m.generating;
   const canSend = runnable && Boolean(vocab) && !busy && composition.trim().length > 0;
-
-  const enqueue = (job) => {
-    const next = queueRef.current.catch(() => {}).then(job);
-    queueRef.current = next.catch(() => {}); // an error ends a job, not the chain
-    return next;
-  };
-
-  const loadOnce = async () => {
-    if (ortRef.current) return ortRef.current;
-    setModelState("loading");
-    try {
-      const runtime = await import("@supcomputer/player");
-      const session = await runtime.loadModel(bundle.onnxUrl);
-      ortRef.current = { runtime, session };
-      setModelState("ready");
-      return ortRef.current;
-    } catch (e) {
-      setModelState("failed");
-      throw e;
-    }
-  };
 
   // The vocab sidecar is a small JSON — fetch it eagerly (no ORT involved) so
   // the real keyboard renders on load even before the model wakes.
   useEffect(() => {
-    if (!bundle) return undefined;
+    const url = vocabUrlOf(model);
+    if (!url) return undefined;
     let alive = true;
-    fetch(bundle.vocabUrl)
+    fetch(url)
       .then((r) => {
         if (!r.ok) throw new Error(`vocab fetch failed (${r.status})`);
         return r.json();
@@ -145,31 +112,32 @@ export default function PonaChat({ models }) {
     return () => {
       alive = false;
     };
-  }, [bundle]);
+  }, [model]);
 
   // The suggestion strip: after every composition/transcript change, one
-  // debounced forward() for the framed context. Queued behind any generation
-  // in flight; superseded queries drop themselves via suggestSeqRef.
+  // debounced forward() for the framed context. The worker queues it behind
+  // any reply in flight; superseded queries drop themselves via suggestSeqRef.
   useEffect(() => {
-    if (!runnable || !vocab || !woken) return undefined;
+    if (!runnable || !vocab || !woken || m.generating) return undefined;
     const seq = ++suggestSeqRef.current;
     const timer = setTimeout(() => {
-      enqueue(async () => {
-        if (seq !== suggestSeqRef.current) return; // superseded while queued
-        const { runtime, session } = await loadOnce();
-        if (seq !== suggestSeqRef.current) return;
-        const history = turns.map((t) => t.text);
-        const ids = encode(frameContext(history, composition), vocab.stoi);
-        const logits = await runtime.forward(session, ids.slice(-blockSize));
-        if (seq !== suggestSeqRef.current) return;
-        setSuggestions(topSuggestions(logits, vocab.itos, SUGGEST_COUNT));
-      }).catch(() => {}); // suggestions fail silently; send() surfaces real errors
+      const history = turns.map((t) => t.text);
+      const ids = encode(frameContext(history, composition), vocab.stoi);
+      m.forward(ids.slice(-blockSize))
+        .then((logits) => {
+          if (seq !== suggestSeqRef.current) return;
+          setSuggestions(topSuggestions(logits, vocab.itos, SUGGEST_COUNT));
+        })
+        .catch(() => {}); // suggestions fail silently; send() surfaces real errors
     }, SUGGEST_DEBOUNCE_MS);
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [composition, turns, woken, runnable, vocab]);
+  }, [composition, turns, woken, runnable, vocab, m.generating]);
 
-  const wake = () => setWoken(true);
+  const wake = () => {
+    if (!woken) setWoken(true);
+    if (runnable && m.state === "cold") m.ensure().catch(() => {});
+  };
 
   // Append one vocabulary token to the composition with pona_tok's spacing.
   const appendToken = (tok) => {
@@ -182,70 +150,70 @@ export default function PonaChat({ models }) {
     });
   };
 
-  const send = () => {
+  const send = async () => {
     const text = composition.replace(/\s+/g, " ").trim();
     if (!text || !runnable || !vocab || busy) return;
-    const myGen = ++genIdRef.current;
-    const isCurrent = () => genIdRef.current === myGen;
     const history = [...turns.map((t) => t.text), text];
     setTurns((t) => [...t, { who: "sina", text }]);
     setComposition("");
     setSuggestions(null);
     setError(null);
-    setStatus("loading");
     setPending("");
     pendingRef.current = "";
-    enqueue(async () => {
-      try {
-        if (!isCurrent()) return;
-        const { runtime, session } = await loadOnce();
-        if (!isCurrent()) return;
-        setStatus("generating");
-        // The chat contract (talk.py / chat_eval.py): frame the last 8 turns,
-        // sample at temp 0.8 over the full distribution, stop at the newline
-        // token or 36 tokens, detok for display.
-        const ids = encode(frameContext(history), vocab.stoi);
-        const nl = vocab.stoi["\n"];
-        const words = [];
-        for (let i = 0; i < MAX_REPLY_TOKENS; i++) {
-          if (!isCurrent()) return; // stopped — stop() already committed the partial
-          const logits = await runtime.forward(session, ids.slice(-blockSize));
-          if (!isCurrent()) return;
-          const next = runtime.sample(logits, { temp: REPLY_TEMP, topk: 0 });
-          if (next === nl) break; // the model ended its line
-          ids.push(next);
-          words.push(vocab.itos[next]);
-          const sofar = display(detok(words));
-          pendingRef.current = sofar;
-          setPending(sofar);
+    // The chat contract (talk.py / chat_eval.py): frame the last 8 turns,
+    // sample at temp 0.8 over the full distribution, stop at the newline
+    // token or 36 tokens, detok for display.
+    const ids = encode(frameContext(history), vocab.stoi);
+    const nl = vocab.stoi["\n"];
+    const words = [];
+    const handle = m.generate(
+      {
+        ids: ids.slice(-blockSize),
+        maxNewTokens: MAX_REPLY_TOKENS,
+        temp: REPLY_TEMP,
+        topk: 0,
+        stopAt: [nl],
+        topN: SUGGEST_COUNT + 1,
+      },
+      (ev) => {
+        if (ev.top) {
+          setSuggestions(
+            ev.top
+              .filter((t) => vocab.itos[t.id] !== UNK)
+              .slice(0, SUGGEST_COUNT)
+              .map((t) => ({ tok: vocab.itos[t.id], prob: t.prob })),
+          );
         }
-        if (!isCurrent()) return;
-        const reply = display(detok(words)) || "…";
-        pendingRef.current = null;
-        setPending(null);
-        setTurns((t) => [...t, { who: "ilo", text: reply }]);
-        setStatus("idle");
-      } catch (e) {
-        if (isCurrent()) {
-          pendingRef.current = null;
-          setPending(null);
-          setError(e?.message || String(e));
-          setStatus("error");
-        }
-      }
-    });
+        if (ev.end) return;
+        words.push(vocab.itos[ev.tokId]);
+        const sofar = display(detok(words));
+        pendingRef.current = sofar;
+        setPending(sofar);
+      },
+    );
+    runRef.current = handle;
+    try {
+      const { stopped } = await handle.done;
+      if (stopped) return; // stop() already committed the partial
+      const reply = display(detok(words)) || "…";
+      pendingRef.current = null;
+      setPending(null);
+      setTurns((t) => [...t, { who: "ilo", text: reply }]);
+    } catch (e) {
+      pendingRef.current = null;
+      setPending(null);
+      setError(e?.message || String(e));
+    }
   };
 
-  // Permanent cancellation: the bump makes the in-flight loop stale forever
-  // (its guards fail at the next check — there is no un-stop). Whatever the
-  // model had said so far stays in the transcript as its (cut-off) turn.
+  // Whatever the model had said so far stays in the transcript as its
+  // (cut-off) turn.
   const stop = () => {
-    genIdRef.current++;
+    runRef.current?.stop();
     const partial = pendingRef.current;
     pendingRef.current = null;
     setPending(null);
     if (partial) setTurns((t) => [...t, { who: "ilo", text: partial }]);
-    setStatus("idle");
   };
 
   const tapSuggestion = (tok) => {
@@ -264,40 +232,34 @@ export default function PonaChat({ models }) {
     sections.common.length + sections.punct.length + sections.names.length + sections.rare.length;
 
   const keyButton = (tok, extra = "") => (
-    <button
-      key={tok}
-      type="button"
-      className={`pona__key${extra}`}
-      onClick={() => appendToken(tok)}
-    >
+    <button key={tok} type="button" className={`pona__key${extra}`} onClick={() => appendToken(tok)}>
       {tok}
     </button>
   );
 
   const suggestHint = !woken
     ? "tap a key or start typing — the model wakes on first touch"
-    : modelState === "loading"
+    : m.state === "loading"
       ? "loading model…"
-      : modelState === "failed"
+      : m.state === "failed"
         ? "suggestions unavailable"
         : "…";
 
   return (
     <div className="pona">
       {!runnable && (
-        <p className="pona__notice">
-          ilo pona li lape. (pona is still training — check back soon)
-        </p>
+        <p className="pona__notice">ilo pona li lape. (pona is still training — check back soon)</p>
       )}
       {runnable && vocabError && (
         <p className="pona__notice">the keyboard&rsquo;s vocabulary failed to load: {vocabError}</p>
       )}
+      {m.state === "failed" && <p className="pona__notice">the model failed to load: {m.error}</p>}
 
       <div className="pona__transcript" aria-live="polite">
         {turns.length === 0 && pending == null && (
           <p className="pona__hint">
-            o toki tawa ilo! — say hi. Type below or tap the keys; the model
-            answers word by word.
+            o toki tawa ilo! — say hi. Type below or tap the keys; the model answers word by
+            word, as <strong>ilo</strong>.
           </p>
         )}
         {turns.map((t, i) => (
@@ -326,6 +288,7 @@ export default function PonaChat({ models }) {
                 className="pona__sugg"
                 onClick={() => tapSuggestion(tok)}
                 title={tok === "\n" ? "end the turn (send)" : undefined}
+                disabled={m.generating}
               >
                 {tok === "\n" ? "↵" : tok === NAME ? NAME_DISPLAY : tok}
                 <span className="pona__sugg-prob">{Math.round(prob * 100)}%</span>
@@ -396,6 +359,7 @@ export default function PonaChat({ models }) {
             : "a sample of the keyboard — the released model's full vocabulary becomes the keys."}
         </p>
       </div>
+      <BackendLine state={m.state} backend={m.backend} model={model} />
     </div>
   );
 }
