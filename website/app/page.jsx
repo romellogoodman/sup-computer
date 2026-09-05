@@ -12,8 +12,8 @@ const SELECTED = [
 ];
 
 export default function Home() {
-  const all = getReports();
-  const selected = SELECTED.map((slug) => all.find((r) => r.slug === slug)).filter(Boolean);
+  const reports = getReports();
+  const selected = SELECTED.map((slug) => reports.find((r) => r.slug === slug)).filter(Boolean);
   const series = getSeries();
 
   return (
@@ -53,7 +53,7 @@ export default function Home() {
       <h2 className="section-label" id="research">Selected research</h2>
       <ReportList reports={selected} />
       <p className="post-list__all">
-        <a href="/research/">all research, {all.length} reports</a>
+        <a href="/research/">read more research</a>
       </p>
     </>
   );
