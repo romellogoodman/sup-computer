@@ -4,7 +4,7 @@ The sup computer studio website — a Next.js 14 (App Router) app, statically
 exported (`next.config.mjs`: `output: "export"`). It reads markdown + the model
 registry that the content-sync step copies in (see below) and renders the home
 index, the research shelves (`/research/`, `/research/<slug>/`), one page per
-model series with its instrument first (`/models/<series>/`), and the
+model series with its instrument first at the root (`/<project>/`), and the
 per-release model cards (`/models/<id>/`). See ADR-0035.
 
 ## Content model

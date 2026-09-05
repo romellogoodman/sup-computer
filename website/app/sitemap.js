@@ -1,4 +1,4 @@
-import { getReports, getRegistry, getSeries, SITE_URL } from "../lib/content";
+import { getReports, getRegistry, getSeries, seriesHref, SITE_URL } from "../lib/content";
 
 // Canonical absolute base for the sitemap entries (shared with the .md generator).
 // The routes keep their trailing slash to match next.config's trailingSlash: true.
@@ -19,7 +19,7 @@ export default function sitemap() {
     { url: `${BASE}/`, lastModified: latest ? new Date(latest) : undefined },
     { url: `${BASE}/research/`, lastModified: latest ? new Date(latest) : undefined },
     { url: `${BASE}/train/` },
-    ...getSeries().map((s) => ({ url: `${BASE}/models/${s.slug}/` })),
+    ...getSeries().map((s) => ({ url: `${BASE}${seriesHref(s)}` })),
     ...reports.map((r) => ({
       url: `${BASE}/research/${r.slug}/`,
       lastModified: r.frontmatter.date ? new Date(r.frontmatter.date) : undefined,

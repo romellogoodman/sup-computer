@@ -5,8 +5,6 @@
     { "source": "/model-player", "destination": "/", "permanent": true },
     { "source": "/model-player/", "destination": "/", "permanent": true },
     { "source": "/interfaces", "destination": "/", "permanent": true },
-    { "source": "/interfaces/", "destination": "/", "permanent": true },
-    { "source": "/pona", "destination": "/models/pona-nanogpt/", "permanent": true },
-    { "source": "/pona/", "destination": "/models/pona-nanogpt/", "permanent": true }
+    { "source": "/interfaces/", "destination": "/", "permanent": true }
   ]
 }

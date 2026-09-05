@@ -208,6 +208,13 @@ export function getSeries() {
 export function getSeriesBySlug(slug) {
   return getSeries().find((s) => s.slug === slug) || null;
 }
+export function getSeriesByProject(project) {
+  return getSeries().find((s) => s.project === project) || null;
+}
+
+// A series page lives at the root under its project name — /glyph/, /pona/
+// (ADR-0035). Every link to one goes through here; nothing builds the path.
+export const seriesHref = (series) => `/${series.project}/`;
 
 // ---------------------------------------------------------------------------
 // Research tiers. A report's byline decides which shelf it sits on: a human

@@ -143,7 +143,7 @@ artifact URL is rewritten to that directory (`website/lib/instrument/bundle.js`)
 cd website && node scripts/sync-content.mjs   # dev server picks registries up
 ```
 
-Open `http://localhost:3000/models/<series>/`, run the instrument (the token
+Open `http://localhost:3000/<project>/`, run the instrument (the token
 view shows the raw stream), and let it run **past the block_size boundary**
 (prompt + max tokens > block_size) to prove the sliding window works.
 Inference runs in a Web Worker, so the page must stay responsive throughout —

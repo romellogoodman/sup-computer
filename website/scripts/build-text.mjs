@@ -23,6 +23,7 @@ import {
   getPage,
   getRegistry,
   getSeries,
+  seriesHref,
   reportTier,
   stripLeadIn,
   monthYear,
@@ -104,7 +105,7 @@ function llmsIndex(reports, cards, models, pages, series) {
   const essays = reports.filter((r) => reportTier(r) === "essay").map(row).join("\n");
   const labNotes = reports.filter((r) => reportTier(r) === "lab-note").map(row).join("\n");
   const instruments = series
-    .map((s) => `- [${s.name}](${SITE_URL}/models/${s.slug}/): ${s.verb ? `${s.verb} — ` : ""}${s.tagline || ""}`.trimEnd())
+    .map((s) => `- [${s.name}](${SITE_URL}${seriesHref(s)}): ${s.verb ? `${s.verb} — ` : ""}${s.tagline || ""}`.trimEnd())
     .join("\n");
   const modelList = cards
     .map((c) => {

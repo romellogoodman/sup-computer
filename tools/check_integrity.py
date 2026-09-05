@@ -58,10 +58,16 @@ def check_registry(findings):
     # ADR-0035: every series has a page whose instrument the `series` map names;
     # the slug is the flagship id minus its version (daydream's tiers share one).
     series = reg.get("series", {})
+    # a series page lives at /<project>/ (ADR-0035), so a project name must
+    # never shadow one of the site's own routes or generated files
+    reserved = {"research", "train", "models", "llms.txt", "llms-full.txt", "sitemap.xml",
+                "robots.txt", "icon.svg", "research-assets", "artifacts", "dev-models", "_next"}
     by_project = {}
     for m in reg.get("models", []):
         by_project.setdefault(m.get("project", ""), []).append(m.get("id", ""))
     for project, ids in by_project.items():
+        if project in reserved:
+            fail(findings, f"registry: project {project!r} shadows a site route (ADR-0035)")
         slug = min((re.sub(r"-\d+$", "", i) for i in ids), key=len)
         entry = series.get(slug)
         if not entry:

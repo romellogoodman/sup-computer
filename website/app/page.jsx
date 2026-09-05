@@ -1,4 +1,4 @@
-import { getSeries, getReports } from "../lib/content";
+import { getSeries, getReports, seriesHref } from "../lib/content";
 import ReportList from "../components/ReportList";
 
 // Selected research: the reports on the front page, in this order — an
@@ -33,21 +33,24 @@ export default function Home() {
 
       <h2 className="section-label" id="models">Models</h2>
       <ul className="model-list">
-        {series.map(({ slug, name, tagline, verb }) => (
+        {series.map((s) => {
+          const { slug, name, tagline, verb } = s;
+          return (
           <li className="model-list__item" key={slug}>
             <span className="model-list__name">
-              <a href={`/models/${slug}/`}>{name}</a>
+              <a href={seriesHref(s)}>{name}</a>
               {tagline && <span className="model-list__tagline">{tagline}</span>}
             </span>
             <span className="model-list__spec">
               {verb && (
-                <a className="model-list__verb" href={`/models/${slug}/`}>
+                <a className="model-list__verb" href={seriesHref(s)}>
                   {verb}
                 </a>
               )}
             </span>
           </li>
-        ))}
+          );
+        })}
       </ul>
 
       <h2 className="section-label" id="research">Selected research</h2>

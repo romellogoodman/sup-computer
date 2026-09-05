@@ -31,15 +31,19 @@ every generation.
 
 ## Decision
 
-**1. One page per model series, the instrument first.** `/models/<series>/`
-(the series slug is a release id minus its version — `glyph-nanogpt`,
-`daydream-chess-nanogpt`) opens with the playable instrument wired to the
+**1. One page per model series, the instrument first.** `/<project>/`
+(`/glyph/`, `/daydream/`, `/pona/` — the project name, the shortest handle a
+series has and the one `projects/<name>/` already uses; the old `/pona/`
+route is back as the real page) opens with the playable instrument wired to the
 newest release per lineage, then specs, the release list, the lab notes filed
 under the series, and the model card as a collapsible section (open on a wide
 screen, collapsed on a phone). Per-release pages `/models/<id>/` stay
 unchanged because published reports cite them; they gain a line pointing up
 at their series. The home page links each model name to its series page with
-its verb beside it. `/interfaces` and `/pona` are retired with redirects.
+its verb beside it. `/interfaces` is retired with a redirect; `/models/` is
+releases only and has no index page. A project name may never shadow a site
+route (`research`, `train`, `models`, the generated files) — the integrity
+check refuses one.
 
 **2. No model ships without an instrument.** `registry.json`'s `series` map
 names each series' `verb` (draw, play, dial, dream, write, talk) and
@@ -126,3 +130,9 @@ still follows the handbook.
   the beam search, the suggestion strip, and generation. An own worker does.
 - **A version switch inside the instrument.** Deferred: the instrument runs
   the newest release only; older releases stay as listed pages.
+- **Series pages under `/models/<series>/`** (the first cut) **or releases
+  nested by version** (`/models/glyph-nanogpt/v1/`). The shared namespace
+  made the two kinds of page tell apart only by a suffix, and nesting would
+  have moved every cited release URL. The project name at the root keeps the
+  release URLs where the reports left them and gives the series the shortest
+  address on the site.
