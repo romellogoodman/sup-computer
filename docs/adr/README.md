@@ -37,7 +37,7 @@ ADR (ADR-0033).
 | [0016](0016-descriptive-report-slugs.md) | Research reports use descriptive slugs, not `experiment-NN` | Accepted |
 | [0017](0017-website-redesign-refined-prof-style.md) | Website redesign — the refined "Prof. Dr." style | Accepted |
 | [0018](0018-dataviz-matches-the-website.md) | dataviz matches the website's document style | Accepted |
-| [0019](0019-llm-readable-markdown-endpoints.md) | LLM-readable markdown twins for every research URL | Accepted |
+| [0019](0019-llm-readable-markdown-endpoints.md) | LLM-readable markdown twins for every research URL | Accepted; amended 2026-09-05 for llms.txt v2 (see § Amendment) |
 | [0020](0020-one-home-per-fact.md) | One home per fact — documentation is deduplicated by ownership | Accepted |
 | [0021](0021-daydream-fairy-stockfish-dependency.md) | Daydream depends on Fairy-Stockfish as an external engine binary | Accepted |
 | [0022](0022-daydream-three-tier-sampler-prober-shape.md) | Daydream is a three-tier board-size family, and the first sampler/prober project | Accepted |

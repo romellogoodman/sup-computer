@@ -1,13 +1,6 @@
 # ADR 0019: LLM-readable markdown twins for every research URL
 
-- **Status:** Accepted; amended 2026-09-05 for llms.txt v2 (llmstxt.org): every
-  page with a twin carries `<link rel="alternate" type="text/markdown">` to it
-  and every page carries `<link rel="describedby" href="/llms.txt">`; the
-  index gains v2's `## Optional` section (the per-release model cards, the
-  part an agent can skip when context is short) and a prose line pointing at
-  the twins and `llms-full.txt`. `sitemap.xml` is generated into `public/`
-  by the same prebuild chain (the metadata route broke the dev server under
-  `output: export`).
+- **Status:** Accepted; amended 2026-09-05 for llms.txt v2 (see § Amendment)
 - **Date:** 2026-06-29
 - **Deciders:** Romello Goodman (with Claude)
 
@@ -70,3 +63,15 @@ model cards are already self-contained and get a canonical footer.
   `/research` vs `/models` separation and risks slug/id collisions.
 - **Serve the rendered HTML and let the LLM scrape it.** Rejected: invisible
   charts, broken links, and React markup noise — the problems that motivated this.
+
+## Amendment (2026-09-05): llms.txt v2
+
+Brought in line with llms.txt v2 (llmstxt.org):
+
+- every page with a twin carries `<link rel="alternate" type="text/markdown">`
+  to it, and every page carries `<link rel="describedby" href="/llms.txt">`;
+- the index gains v2's `## Optional` section (the per-release model cards, the
+  part an agent can skip when context is short) and a prose line pointing at
+  the twins and `llms-full.txt`;
+- `sitemap.xml` is generated into `public/` by the same prebuild chain (the
+  metadata route broke the dev server under `output: export`).
