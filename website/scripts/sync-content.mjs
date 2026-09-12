@@ -48,7 +48,11 @@ const reportsDir = resolve(contentDir, "research-docs", "reports");
 if (existsSync(reportsDir)) {
   for (const f of await readdir(reportsDir)) {
     if (!f.endsWith(".md")) continue;
-    const head = (await readFile(resolve(reportsDir, f), "utf8")).slice(0, 500);
+    // Inspect the whole frontmatter block, not a fixed prefix -- a long
+    // `takeaways:` list can push `status:` past any byte cut-off.
+    const text = await readFile(resolve(reportsDir, f), "utf8");
+    const fm = text.match(/^---\n([\s\S]*?)\n---/);
+    const head = fm ? fm[1] : text.slice(0, 500);
     if (/^status:\s*draft\s*$/m.test(head)) {
       await rm(resolve(reportsDir, f));
       console.log(`sync-content: skipped draft report ${f}`);
