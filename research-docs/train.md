@@ -8,12 +8,13 @@ summary: >-
 
 # Train a small model
 
-The whole method fits in a prompt. Paste this into a coding agent and it trains a ~10M-parameter character-level
-GPT on [TinyStories](https://huggingface.co/datasets/roneneldan/TinyStories),
-end to end, on your machine. The recipe is based on
-[Andrej Karpathy's nanoGPT](https://github.com/karpathy/nanoGPT), the repo our
-first models came from. You need Python and one of: an NVIDIA GPU, an Apple Silicon Mac, or a patient
-CPU. Budget an hour, give or take.
+The whole method fits in one prompt. Paste it into a coding agent and it
+trains a ~10M-parameter character-level GPT on
+[TinyStories](https://huggingface.co/datasets/roneneldan/TinyStories), end to
+end, on your machine. The recipe is
+[Andrej Karpathy's nanoGPT](https://github.com/karpathy/nanoGPT), the repo the
+studio's first models came from. You need Python and one of an NVIDIA GPU, an
+Apple Silicon Mac, or a patient CPU. Budget an hour.
 
 ```text
 Train a character-level nanoGPT on TinyStories, end to end, on this machine.
@@ -45,7 +46,7 @@ gigabytes. The 100,000-story subset is also roughly one epoch: 5,000 steps
 of 64×256 characters is about 82M positions, and the subset is about that
 many characters.
 
-## What to expect
+## What a run that worked sounds like
 
 Story-shaped prose, not fluency. Five thousand steps at this scale buys
 sentences that scan, mostly real words, and characters who wander in and out

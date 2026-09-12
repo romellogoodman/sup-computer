@@ -373,7 +373,7 @@ export default function GlyphMakerInstrument({ models }) {
           ) : (
             <div className="glyph__idle">
               {word.trim() ? `${word.trim()} — ` : ""}
-              {distinct.length ? `${distinct.length} letter${distinct.length === 1 ? "" : "s"}, waiting to be drawn.` : "type a word to draw."}
+              {distinct.length ? `${word.trim()}, waiting to be drawn.` : "type a word to draw."}
             </div>
           )}
           <p className="glyph__status">{status}</p>
@@ -442,7 +442,7 @@ export default function GlyphMakerInstrument({ models }) {
           prompt=""
           output={raw}
           busy={drawing}
-          placeholder="one line per glyph appears here — the letter, its advance width, then M L Q Z drawing verbs whose coordinates are single Braille characters."
+          placeholder="one line per glyph appears here: the letter, its advance width, then the M L Q Z drawing verbs."
         />
       )}
 

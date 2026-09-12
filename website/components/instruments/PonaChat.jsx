@@ -257,9 +257,12 @@ export default function PonaChat({ models }) {
 
       <div className="pona__transcript" aria-live="polite">
         {turns.length === 0 && pending == null && (
+          <p className="pona__hint">ilo li kute.</p>
+        )}
+        {turns.length === 0 && pending == null && (
           <p className="pona__hint">
-            o toki tawa ilo! — say hi. type below or tap the keys; the model answers word by
-            word, as <strong>ilo</strong>.
+            type below or tap the keys; the model answers word by word, as{" "}
+            <strong>ilo</strong>.
           </p>
         )}
         {turns.map((t, i) => (

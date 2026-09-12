@@ -356,9 +356,11 @@ because it is rare it works.
 **I1. An invitation is one line of the instrument's own poem.** Lowercase,
 under ten words, ends with a period, no number in it. It says what is about
 to happen in the instrument's vocabulary, not the studio's.
-- Kept as exemplars: "six words, waiting to be dreamt." "across the water, a
-  light." "the playbill fills as the model writes." "the notebook only keeps
-  what was written down."
+- Exemplars: "six words, waiting to be dreamt." "across the water, a
+  light." "a bare stage, waiting for a cue." "ilo li kute." "the notebook
+  only keeps what was written down."
+- Before (glyph maker): "3 letters, waiting to be drawn." (a count — I4)
+- After: "sup computer, waiting to be drawn."
 
 **I2. A dial gets five words that read as a scale.** One word each, least
 to most, from the instrument's world: recites · murmurs · dreams · drifts ·

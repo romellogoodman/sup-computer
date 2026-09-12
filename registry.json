@@ -57,19 +57,19 @@
     },
     "daydream-chess-nanogpt": {
       "name": "daydream-chess-nanogpt",
-      "tagline": "Plays chess without ever knowing the rules \u2014 learned move by move from games, not a rulebook, across three board sizes.",
+      "tagline": "Plays chess without ever learning the rules \u2014 move by move from games, on three board sizes.",
       "verb": "play",
       "instrument": "board"
     },
     "glyph-nanogpt": {
       "name": "glyph-nanogpt",
-      "tagline": "Draws the lowercase alphabet one letter at a time \u2014 a single evolving model, released chasing the twenty-six specialists that out-drew it.",
+      "tagline": "Draws the lowercase alphabet one letter at a time \u2014 one model, released chasing the twenty-six specialists that out-drew it.",
       "verb": "draw",
       "instrument": "glyph"
     },
     "pona-nanogpt": {
       "name": "pona-nanogpt",
-      "tagline": "Speaks Toki Pona, and its whole vocabulary is the keyboard \u2014 about 130 words is a language small enough to get right.",
+      "tagline": "Speaks Toki Pona \u2014 about 130 words, and every one of them is a key.",
       "verb": "talk",
       "instrument": "pona"
     }
@@ -329,7 +329,7 @@
       "version": 1,
       "git_tag": "glyph-nanogpt-1",
       "architecture": "modern (RoPE, RMSNorm, bias-free)",
-      "tagline": "one letter-conditioned generalist over 82k glyph outlines from 759 open sans-serifs; wins the loss, still learning the craft",
+      "tagline": "one generalist over 82k outlines from 759 open sans-serifs \u2014 wins the loss, still learning the craft",
       "researcher": "claude-fable-5",
       "tokenizer": {
         "type": "char",
@@ -355,7 +355,7 @@
       "version": 1,
       "git_tag": "pona-nanogpt-1",
       "architecture": "modern (RoPE, RMSNorm, bias-free)",
-      "tagline": "word-level Toki Pona chat model whose whole vocabulary is the keyboard; writes more grammatically than the corpus it learned from",
+      "tagline": "a word-level chat model \u2014 writes more grammatically than the corpus it learned from",
       "researcher": "claude-fable-5",
       "tokenizer": {
         "type": "word",

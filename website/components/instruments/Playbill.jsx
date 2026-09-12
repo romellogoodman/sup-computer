@@ -18,7 +18,7 @@ const SPEAKERS = ["ROMEO", "JULIET", "HAMLET", "LEAR", "MACBETH", "FOOL", "PROSP
 export function PlaybillView({ prompt, output, busy }) {
   const text = output || busy ? prompt + output : "";
   if (!text) {
-    return <div className="playbill playbill--idle">the playbill fills as the model writes.</div>;
+    return <div className="playbill playbill--idle">a bare stage, waiting for a cue.</div>;
   }
   const lines = text.split("\n");
   return (

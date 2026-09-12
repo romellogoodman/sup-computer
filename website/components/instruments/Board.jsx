@@ -773,7 +773,7 @@ export default function BoardInstrument({ models }) {
           prompt={context}
           output={raw}
           busy={thinking}
-          placeholder="every string the model emits on its turn appears here, in order — the raw dream; the move history is its prompt."
+          placeholder="the raw dream appears here — every string the model emits on its turn, in order."
         />
       ) : (
         <TokenPane
