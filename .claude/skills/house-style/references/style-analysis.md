@@ -24,6 +24,17 @@ Pieces read:
   `research-docs/reports/illegal-moves-are-the-point.md`,
   `research-docs/model-cards/kenosha-kid-nanogpt-2.md`.
 
+**Second reading, 2026-09-12** — two more pieces, chosen by the studio lead,
+read against four newer studio reports (`a-language-small-enough-to-get-right`,
+`one-model-or-twenty-six`, `budget-cant-buy-the-midgame`, and the reports
+index summaries). Sources 4–5 and studio-delta item 8 below come from it.
+
+- **Cursor engineering** (1): [git-at-any-scale](https://cursor.com/blog/git-at-any-scale),
+  Vicent Martí, 2026-08-18 (the page ships its body twice in the HTML;
+  dedupe before counting).
+- **Ramp brand** (1): "Brand as software", Paul Jun, an X article,
+  2026-09-11 (pasted text; no stable URL).
+
 ---
 
 ## Source 1 — Anthropic research posts
@@ -177,3 +188,119 @@ part worth stealing"). No exemplar does the honesty sections better.
 7. **Endings trail off into credits.** illegal-moves' last content is a credits
    list; the "Worth another round" beat is buried mid-report instead of
    closing it.
+8. **Summary drift.** The 2026-07 sweep fixed frontmatter summaries; by
+   2026-09 the newest ones had grown back to 60–100 words of stacked dashes
+   and colons (`budget-cant-buy-the-midgame`, `one-model-or-twenty-six`,
+   `three-predictions-from-a-font-chapter`). Body prose held the style;
+   the summaries — the part a feed reader sees — did not. Edict 3 now
+   carries a word cap.
+
+---
+
+## Source 4 — Cursor engineering (git-at-any-scale)
+
+A senior engineer's conference talk, transcribed: story-first, lecturer's
+signposting, jokes in parentheses, refrains, and a marketing close.
+
+| | count |
+|---|---|
+| words | 5,350 |
+| sentences / median length | 258 / 18 words |
+| sentences under ten words | 47 (18%) |
+| bold | 0 |
+| parentheses / em-dashes | 38 / 8 |
+| "very" | 32 |
+| numeric mentions | 21, nearly all in the last fifth |
+| words before the product is named | 2,877 |
+| "you" / "we" / "I" | 52 / 71 / 4 |
+
+**Opening.** A punch, then history: "Hosting Git repositories at scale is a
+nightmare." Linus, GitHub's 2008 tagline, NFS, GFS, DRBD, Spokes — the
+product appears past the halfway mark. Edict 1 satisfied, edict 2 not.
+
+**Emphasis.** No bold anywhere; fragments do the work ("Very pragmatic. It
+didn't work." "A short-lived deployment with GFS. A longer-lived deployment
+based on DRBD. They all hit a wall.").
+
+**The joke in the parenthesis.** The main clause stays technical; the
+personality is in the aside: "(Linus is not going to come over and check)",
+"(and no relational database to operate — hashtag blessed)", "(Microsoft's
+own competitor to Microsoft's own GitHub)". → edict 5 amendment.
+
+**Refrain.** "Always be correct when degraded, and always fast when healthy"
+twice verbatim; "doing weird stuff with Git", "bit the bullet", "look it up"
+as callbacks. → edict 13.
+
+**Aphorism as paragraph-closer.** "With three-phase commit, the floor is
+always too high, and the ceiling too low." "A corrupted copy is as bad as a
+missing one." "Pets, not cattle." Each ends its paragraph. → edict 14.
+
+**Staged objection.** "'That is insane,' I hear you mumble from behind your
+screen across time and space. 'UDP is not a reliable transport.' Of course it
+isn't." → edict 15.
+
+**Not house style.** Intensifiers instead of measurements for 4,000 words
+(→ edict 8 amendment); every failure belongs to someone else, and the new
+system's one limit is cushioned with "we're working on innovative ways"
+(edict 9); the last section is a pitch — "We're hoping you'll place your
+trust in us and our platform" (edict 12); unhedged overclaims ("literally
+any number of replicas", "the scalability of S3 is unmatched").
+
+---
+
+## Source 5 — Ramp brand essay ("Brand as software")
+
+A manifesto: thesis, history lesson, metaphor, testimony. Tighter than
+Source 4 at the sentence and looser at the evidence.
+
+| | count |
+|---|---|
+| words | 4,600 |
+| sentences / median length | 336 / 12 words |
+| sentences under ten words | 127 (38%) |
+| one-sentence paragraphs | 19 |
+| parentheses / em-dashes / exclamation marks | 1 / 5 / 0 |
+| "very" | 0 |
+| numbers that are evidence | 1 (375 Slack requests) |
+| sentences with four or more commas | 34 |
+| "you" / "we" / "I" | 8 / 19 / 21 |
+
+**The antithetical couplet** is the signature and closes nearly every
+section: "Consistency says, 'We always look like this.' Coherence says, 'We
+evolve, and you still know it is us.'" "Taste remains human. Repetition
+becomes software." "Memory is not imagination." → edict 14.
+
+**Bookend refrain.** Noise versus music is the first line and the last, with
+the metaphor seeded a dozen times between (score, tempo, song, "five
+departments tuning their instruments in public"). → edict 13 (bookend form).
+
+**One-sentence paragraph as a turn.** "Passed down is the important phrase."
+"Then a real person tries to use it." Nineteen of them, each a change of
+direction, and no exclamation marks or intensifiers anywhere — the paragraph
+break is the only emphasis. → edict 6 amendment.
+
+**History closed with aphorisms.** Bernbach 1941, Rand, Caplan 1981, each
+episode landing on a line: "The restraint was part of the argument. The
+layout delivered the joke." "The exotic menial never disappeared. The floor
+changed."
+
+**The register drop.** Against a composed surface, two or three deliberate
+breaks: "Genuinely, what the fuck." "Space monkeys on a hurtling rock." "That
+PDF has the resilience of a wet napkin." → What-NOT-to-change entry, capped.
+
+**Claim-shaped headings** ("The demo is the easy part", "A brand system
+should behave like jazz") and an ending on the meaning before credits —
+edicts 7 and 12 done exactly.
+
+**Not house style.** Seven numbers in the piece, one of them evidence; the
+only concrete proof (a 48-hour launch) arrives in the closing testimony
+(edicts 2, 8); the failure section lists generic tool failures, none
+measured on Ramp's own system (edict 9); the noun catalog is re-enumerated
+until it is filler (→ edict 16); system, judgment, taste, and coherence
+carry the argument undefined.
+
+**What the pair teaches together.** Both use the short sentence as a job —
+refrain, thesis, punchline, rebuttal, turn — where the skill had treated it
+only as a rhythm reset. Both are also what the house style is built to
+resist: beautiful cadence over thin evidence. Edicts 8 and 9 are what let
+the studio sound like this without arguing like this.
