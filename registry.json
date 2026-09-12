@@ -13,6 +13,12 @@
       "harness": "Claude Code",
       "kind": "agent"
     },
+    "claude-fable-5-1": {
+      "name": "Claude Fable 5.1",
+      "vendor": "Anthropic",
+      "harness": "Claude Code",
+      "kind": "agent"
+    },
     "claude-sonnet-5": {
       "name": "Claude Sonnet 5",
       "vendor": "Anthropic",
