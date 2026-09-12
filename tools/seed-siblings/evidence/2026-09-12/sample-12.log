@@ -1,0 +1,6 @@
+number of parameters: 11.02M
+seed-1: 2000 passages -> tools/seed-siblings/evidence/2026-09-12/samples/seed-1.jsonl
+seed-1-t0.6: 2000 passages -> tools/seed-siblings/evidence/2026-09-12/samples/seed-1-t0.6.jsonl
+seed-1-t1.0: 2000 passages -> tools/seed-siblings/evidence/2026-09-12/samples/seed-1-t1.0.jsonl
+number of parameters: 11.02M
+seed-2: 2000 passages -> tools/seed-siblings/evidence/2026-09-12/samples/seed-2.jsonl

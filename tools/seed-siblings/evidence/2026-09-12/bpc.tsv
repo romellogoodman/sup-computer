@@ -1,0 +1,9 @@
+seed-1	projects/shakespeare/runs/seed-sweep/seed-1	tokenizer=bpe1024	tokens=110577	chars=250000	token_loss=2.8606	ppl=17.47	BPC=1.8254
+seed-1-iter1000	projects/shakespeare/runs/seed-sweep/seed-1-iter1000	tokenizer=bpe1024	tokens=110577	chars=250000	token_loss=2.9842	ppl=19.77	BPC=1.9043
+seed-2	projects/shakespeare/runs/seed-sweep/seed-2	tokenizer=bpe1024	tokens=110577	chars=250000	token_loss=2.8771	ppl=17.76	BPC=1.8359
+seed-3	projects/shakespeare/runs/seed-sweep/seed-3	tokenizer=bpe1024	tokens=110577	chars=250000	token_loss=2.8864	ppl=17.93	BPC=1.8418
+seed-4	projects/shakespeare/runs/seed-sweep/seed-4	tokenizer=bpe1024	tokens=110577	chars=250000	token_loss=2.9021	ppl=18.21	BPC=1.8519
+seed-5	projects/shakespeare/runs/seed-sweep/seed-5	tokenizer=bpe1024	tokens=110577	chars=250000	token_loss=2.8968	ppl=18.12	BPC=1.8485
+seed-6	projects/shakespeare/runs/seed-sweep/seed-6	tokenizer=bpe1024	tokens=110577	chars=250000	token_loss=2.8776	ppl=17.77	BPC=1.8363
+seed-7	projects/shakespeare/runs/seed-sweep/seed-7	tokenizer=bpe1024	tokens=110577	chars=250000	token_loss=2.8924	ppl=18.04	BPC=1.8457
+seed-8	projects/shakespeare/runs/seed-sweep/seed-8	tokenizer=bpe1024	tokens=110577	chars=250000	token_loss=2.8793	ppl=17.80	BPC=1.8373

@@ -33,7 +33,8 @@ def load(ckpt_path, device):
     m = GPT(conf)
     m.load_state_dict(state)
     m.eval().to(device)
-    return m, ck.get("iter_num"), ck.get("best_val_loss")
+    val = ck.get("best_val_loss")
+    return m, int(ck.get("iter_num", 0)), (float(val) if val is not None else None)
 
 
 @torch.no_grad()
@@ -67,7 +68,8 @@ def main():
     tok = Tokenizer.from_file(_find_tokenizer(a.model_dir))
     os.makedirs(a.out, exist_ok=True)
     runs = sorted(d for d in glob.glob(os.path.join(a.runs, "*")) if os.path.exists(os.path.join(d, "ckpt.pt")))
-    meta = {}
+    meta_path = os.path.join(a.out, "meta.json")
+    meta = json.load(open(meta_path)) if os.path.exists(meta_path) else {}
     for i, d in enumerate(runs):
         name = os.path.basename(d)
         model, it, val = load(os.path.join(d, "ckpt.pt"), a.device)
@@ -78,7 +80,7 @@ def main():
             for t in a.extra_temps:
                 sample_run(model, tok, a.n, a.tokens, t, a.batch, 1000 * (i + 1) + 500, a.device,
                            f"{name}-t{t}", os.path.join(a.out, f"{name}-t{t}.jsonl"))
-    with open(os.path.join(a.out, "meta.json"), "w") as f:
+    with open(meta_path, "w") as f:
         json.dump(meta, f, indent=1)
 
 

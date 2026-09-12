@@ -1,0 +1,26 @@
+[attribution] 8-way, train 12000 test 4000, chance 0.125
+[attribution] encoder seed 0: acc 0.239
+[attribution] encoder seed 1: acc 0.242
+[attribution] encoder seed 2: acc 0.246
+[attribution] n-gram logistic: acc 0.372
+[seed-1 vs seed-1-iter1000] 2-way, train 3000 test 1000, chance 0.500
+[seed-1 vs seed-1-iter1000] encoder seed 0: acc 0.711
+[seed-1 vs seed-1-iter1000] encoder seed 1: acc 0.799
+[seed-1 vs seed-1-iter1000] encoder seed 2: acc 0.776
+[seed-1 vs seed-1-iter1000] n-gram logistic: acc 0.749
+[seed-1 vs seed-1-t0.6] 2-way, train 3000 test 1000, chance 0.500
+[seed-1 vs seed-1-t0.6] encoder seed 0: acc 0.870
+[seed-1 vs seed-1-t0.6] encoder seed 1: acc 0.821
+[seed-1 vs seed-1-t0.6] encoder seed 2: acc 0.858
+[seed-1 vs seed-1-t0.6] n-gram logistic: acc 0.897
+[seed-1 vs seed-1-t1.0] 2-way, train 3000 test 1000, chance 0.500
+[seed-1 vs seed-1-t1.0] encoder seed 0: acc 0.822
+[seed-1 vs seed-1-t1.0] encoder seed 1: acc 0.847
+[seed-1 vs seed-1-t1.0] encoder seed 2: acc 0.830
+[seed-1 vs seed-1-t1.0] n-gram logistic: acc 0.659
+[seed-1 vs seed-1-iter1000] 2-way, train 3000 test 1000, chance 0.500
+[seed-1 vs seed-1-iter1000] encoder seed 0: acc 0.733
+[seed-1 vs seed-1-iter1000] encoder seed 1: acc 0.800
+[seed-1 vs seed-1-iter1000] encoder seed 2: acc 0.778
+[seed-1 vs seed-1-iter1000] n-gram logistic: acc 0.749
+-> tools/seed-siblings/evidence/2026-09-12/results.json

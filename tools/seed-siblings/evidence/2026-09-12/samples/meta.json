@@ -1,0 +1,38 @@
+{
+ "seed-1": {
+  "iter_num": 2000,
+  "best_val_loss": 3.2171967029571533
+ },
+ "seed-2": {
+  "iter_num": 2000,
+  "best_val_loss": 3.2222046852111816
+ },
+ "seed-3": {
+  "iter_num": 2000,
+  "best_val_loss": 3.225403070449829
+ },
+ "seed-4": {
+  "iter_num": 2000,
+  "best_val_loss": 3.230445623397827
+ },
+ "seed-5": {
+  "iter_num": 2000,
+  "best_val_loss": 3.2448835372924805
+ },
+ "seed-6": {
+  "iter_num": 2000,
+  "best_val_loss": 3.242504835128784
+ },
+ "seed-7": {
+  "iter_num": 2000,
+  "best_val_loss": 3.2184383869171143
+ },
+ "seed-8": {
+  "iter_num": 2000,
+  "best_val_loss": 3.2226223945617676
+ },
+ "seed-1-iter1000": {
+  "iter_num": 1000,
+  "best_val_loss": 3.3879809379577637
+ }
+}

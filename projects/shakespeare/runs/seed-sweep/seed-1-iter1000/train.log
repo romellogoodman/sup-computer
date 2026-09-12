@@ -1,0 +1,119 @@
+Overriding: seed = 1
+Overriding: max_iters = 1000
+Overriding: out_dir = ../../runs/seed-sweep/seed-1-iter1000
+Overriding: data_root = ../../data
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/projects/shakespeare/models/shakespeare-nanogpt-3/train.py:120: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 1024 (inside ../../data/shakespeare_xl_bpe1k/meta.pkl)
+Initializing a new model from scratch
+number of parameters: 11.02M
+num decayed tensors: 25, non-decayed: 13
+using fused AdamW: False
+step 0: train loss 6.9683, val loss 6.9818
+iter 0: loss 6.9773, time 81696.77ms, mfu -100.00%
+iter 10: loss 6.1897, time 467.12ms, mfu 0.82%
+iter 20: loss 5.8790, time 453.88ms, mfu 0.82%
+iter 30: loss 5.5454, time 455.39ms, mfu 0.83%
+iter 40: loss 5.2374, time 453.99ms, mfu 0.83%
+iter 50: loss 4.9228, time 454.23ms, mfu 0.83%
+iter 60: loss 4.6379, time 451.93ms, mfu 0.83%
+iter 70: loss 4.4968, time 455.18ms, mfu 0.83%
+iter 80: loss 4.3397, time 466.67ms, mfu 0.83%
+iter 90: loss 4.2522, time 453.88ms, mfu 0.83%
+iter 100: loss 4.0713, time 802.00ms, mfu 0.80%
+iter 110: loss 4.0335, time 478.41ms, mfu 0.80%
+iter 120: loss 4.0454, time 488.17ms, mfu 0.80%
+iter 130: loss 3.9351, time 461.36ms, mfu 0.80%
+iter 140: loss 3.9318, time 487.02ms, mfu 0.80%
+iter 150: loss 3.8089, time 460.69ms, mfu 0.80%
+iter 160: loss 3.8240, time 514.47ms, mfu 0.80%
+iter 170: loss 3.7446, time 459.13ms, mfu 0.80%
+iter 180: loss 3.7222, time 755.88ms, mfu 0.77%
+iter 190: loss 3.6847, time 774.38ms, mfu 0.74%
+iter 200: loss 3.6403, time 735.23ms, mfu 0.72%
+iter 210: loss 3.6337, time 785.79ms, mfu 0.70%
+iter 220: loss 3.6126, time 774.16ms, mfu 0.68%
+iter 230: loss 3.6448, time 812.59ms, mfu 0.66%
+iter 240: loss 3.5881, time 835.05ms, mfu 0.64%
+iter 250: loss 3.5968, time 764.55ms, mfu 0.62%
+iter 260: loss 3.5017, time 781.17ms, mfu 0.61%
+iter 270: loss 3.4501, time 737.40ms, mfu 0.60%
+iter 280: loss 3.4759, time 750.03ms, mfu 0.59%
+iter 290: loss 3.4052, time 788.60ms, mfu 0.58%
+iter 300: loss 3.4220, time 750.39ms, mfu 0.58%
+iter 310: loss 3.4058, time 744.54ms, mfu 0.57%
+iter 320: loss 3.4425, time 756.16ms, mfu 0.56%
+iter 330: loss 3.3519, time 756.24ms, mfu 0.56%
+iter 340: loss 3.3488, time 797.93ms, mfu 0.55%
+iter 350: loss 3.3042, time 783.71ms, mfu 0.54%
+iter 360: loss 3.2880, time 797.33ms, mfu 0.54%
+iter 370: loss 3.2469, time 749.63ms, mfu 0.54%
+iter 380: loss 3.2981, time 806.98ms, mfu 0.53%
+iter 390: loss 3.1950, time 730.36ms, mfu 0.53%
+iter 400: loss 3.2417, time 748.67ms, mfu 0.53%
+iter 410: loss 3.2022, time 801.79ms, mfu 0.52%
+iter 420: loss 3.1509, time 717.19ms, mfu 0.52%
+iter 430: loss 3.2458, time 738.53ms, mfu 0.52%
+iter 440: loss 3.2318, time 801.48ms, mfu 0.52%
+iter 450: loss 3.2556, time 791.45ms, mfu 0.52%
+iter 460: loss 3.1478, time 792.46ms, mfu 0.51%
+iter 470: loss 3.0506, time 763.97ms, mfu 0.51%
+iter 480: loss 3.1070, time 752.20ms, mfu 0.51%
+iter 490: loss 3.1097, time 813.27ms, mfu 0.51%
+step 500: train loss 2.9778, val loss 3.6205
+saving checkpoint to ../../runs/seed-sweep/seed-1-iter1000
+iter 500: loss 3.0911, time 94795.99ms, mfu 0.46%
+iter 510: loss 3.0852, time 785.53ms, mfu 0.46%
+iter 520: loss 2.9865, time 780.23ms, mfu 0.46%
+iter 530: loss 3.0826, time 759.03ms, mfu 0.47%
+iter 540: loss 3.1009, time 773.94ms, mfu 0.47%
+iter 550: loss 3.0644, time 721.86ms, mfu 0.48%
+iter 560: loss 3.0206, time 773.58ms, mfu 0.48%
+iter 570: loss 3.0953, time 753.86ms, mfu 0.48%
+iter 580: loss 3.0481, time 764.84ms, mfu 0.48%
+iter 590: loss 2.9488, time 733.17ms, mfu 0.49%
+iter 600: loss 3.0140, time 800.36ms, mfu 0.49%
+iter 610: loss 3.0203, time 780.77ms, mfu 0.49%
+iter 620: loss 3.0955, time 787.21ms, mfu 0.49%
+iter 630: loss 3.0040, time 785.60ms, mfu 0.49%
+iter 640: loss 3.0480, time 763.98ms, mfu 0.49%
+iter 650: loss 2.9870, time 751.73ms, mfu 0.49%
+iter 660: loss 2.9242, time 761.17ms, mfu 0.49%
+iter 670: loss 2.9416, time 745.28ms, mfu 0.50%
+iter 680: loss 2.9979, time 802.45ms, mfu 0.49%
+iter 690: loss 2.9753, time 773.02ms, mfu 0.49%
+iter 700: loss 2.9063, time 784.12ms, mfu 0.49%
+iter 710: loss 2.9411, time 756.14ms, mfu 0.49%
+iter 720: loss 2.8965, time 751.55ms, mfu 0.50%
+iter 730: loss 2.9074, time 808.57ms, mfu 0.49%
+iter 740: loss 2.8851, time 748.82ms, mfu 0.50%
+iter 750: loss 2.8364, time 745.43ms, mfu 0.50%
+iter 760: loss 2.9830, time 794.48ms, mfu 0.50%
+iter 770: loss 2.9372, time 824.76ms, mfu 0.49%
+iter 780: loss 2.8663, time 757.15ms, mfu 0.50%
+iter 790: loss 2.9413, time 766.74ms, mfu 0.50%
+iter 800: loss 2.8483, time 733.45ms, mfu 0.50%
+iter 810: loss 2.8017, time 781.14ms, mfu 0.50%
+iter 820: loss 2.8702, time 718.16ms, mfu 0.50%
+iter 830: loss 2.9667, time 790.67ms, mfu 0.50%
+iter 840: loss 2.9403, time 790.09ms, mfu 0.50%
+iter 850: loss 2.8598, time 744.28ms, mfu 0.50%
+iter 860: loss 2.8169, time 754.97ms, mfu 0.50%
+iter 870: loss 2.8828, time 761.02ms, mfu 0.50%
+iter 880: loss 2.8072, time 741.50ms, mfu 0.50%
+iter 890: loss 2.8773, time 728.27ms, mfu 0.51%
+iter 900: loss 2.8147, time 777.26ms, mfu 0.50%
+iter 910: loss 2.8645, time 757.44ms, mfu 0.50%
+iter 920: loss 2.8313, time 737.71ms, mfu 0.51%
+iter 930: loss 2.7871, time 807.77ms, mfu 0.50%
+iter 940: loss 2.8483, time 754.44ms, mfu 0.50%
+iter 950: loss 2.8436, time 793.80ms, mfu 0.50%
+iter 960: loss 2.8087, time 747.30ms, mfu 0.50%
+iter 970: loss 2.7893, time 742.32ms, mfu 0.50%
+iter 980: loss 2.8197, time 779.39ms, mfu 0.50%
+iter 990: loss 2.8557, time 737.14ms, mfu 0.51%
+step 1000: train loss 2.6502, val loss 3.3880
+saving checkpoint to ../../runs/seed-sweep/seed-1-iter1000
+iter 1000: loss 2.8014, time 96744.03ms, mfu 0.46%

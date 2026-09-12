@@ -17,3 +17,8 @@ uv run --with tokenizers python tools/seed-siblings/sample.py \
 uv run --with tokenizers python tools/seed-siblings/attribute.py \
     --samples tools/seed-siblings/evidence/2026-09-12/samples --out tools/seed-siblings/evidence/2026-09-12/results.json
 ```
+
+Evidence for experiment 13 lives in `evidence/2026-09-12/`: `results.json`
+(attribution + controls), `bpc.tsv` and `sweep-stats.json` (the eight-seed
+spread), `samples/meta.json`. The 21,495 sampled passages (~40MB) are
+gitignored and regenerate with `sample.py` from the sweep's checkpoints.
