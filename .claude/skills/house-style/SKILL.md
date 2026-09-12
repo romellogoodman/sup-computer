@@ -1,6 +1,6 @@
 ---
 name: house-style
-description: The sup computer writing house style. Use whenever writing, editing, or reviewing studio prose in this repo — research report drafts, model cards, website copy, READMEs, ADR prose, frontmatter summaries. Encodes openings, emphasis budget, sentence rhythm, headings, hedging, failure sections, chart intros, and endings, distilled from Anthropic research posts, Thoughtful Lab, and Ramp Labs, with a second reading (2026-09) of a Cursor engineering post and a Ramp brand essay that added the refrain, the quotable closer, the staged objection, and the catalog cap. Published reports are frozen (ADR-0016) — never edit those; supersede them.
+description: The sup computer writing house style — every string a visitor or reader meets. Use whenever writing, editing, or reviewing studio text in this repo: research report drafts, model cards, README and ADR prose, frontmatter summaries, and all website copy (ledes, taglines, instrument labels, empty states, status and error lines, the 404). Four voices — report, studio, control, instrument — with a routing table from the job a string does to the voice that owns it; the report voice carries sixteen edicts distilled from Anthropic research posts, Thoughtful Lab, Ramp Labs, a Cursor engineering post and a Ramp brand essay. Published reports are frozen (ADR-0016) — never edit those; supersede them.
 ---
 
 # House style
@@ -14,10 +14,46 @@ Evidence and source citations: `references/style-analysis.md`.
 `research-docs/reports/`). Never apply these edicts to a published report's
 prose — a new report supersedes an old one. Everything else is editable:
 report *drafts*, model cards, website copy, READMEs, ADRs, frontmatter of
-unpublished work. When asked to "fix the writing" in a published report,
+unpublished work. The skill covers every string a visitor reads on the
+site, not only prose: a slider label, a status line, and a 404 are house
+text too. When asked to "fix the writing" in a published report,
 say it's frozen and offer a superseding report instead.
 
-## The edicts
+## Which voice? — route by the job the string does
+
+A string arrives with a job. Find the job here; the voice it maps to carries
+the rules. Four voices: **report** (the sixteen edicts below), **studio**,
+**control**, **instrument**. Two jobs have no voice at all — *record* is
+formatting, *off-stage* is wrapping.
+
+| Job | Sub-job (examples from the site) | Voice |
+|---|---|---|
+| Orientation | masthead, tagline, footer "led by" | studio |
+| | nav links, skip link, "back to the front page", "a release of …" | control |
+| | page ledes (home, research, train) | studio |
+| | section headings (Models, Lab notes, Specs, Releases) | control (sentence case) |
+| | search / OpenGraph descriptions | studio |
+| Naming | series names and verbs (write, dial, dream, play, draw, talk) | control |
+| | series taglines | studio |
+| | release taglines | control |
+| | report titles, summaries, takeaways | report |
+| | pills (essay, experiment, note, pinned, legal, played) | control |
+| Instrument | run verbs (write, dream, draw, play, watch, stop, new game) | control |
+| | parameter labels (temperature, top-k, max tokens, green light) | control |
+| | dial words (recites … babbles; faint … total; sober … raving) | instrument |
+| | readouts and legends (next token, plies, near-misses, ␠ ↵) | control |
+| | captions that explain the mechanism | studio |
+| | invitations — the empty state before the first run | instrument |
+| | status lines (downloading…, dreaming… try 3 of 8) | control |
+| | errors a player can see | control |
+| | aria-labels, tooltips, alt text | control (full sentences) |
+| Record | meta lines, spec-table headers, counts, the missing-value dash | *formatting* |
+| Instruction | the train prompt, download labels | control |
+| | the train page's explanatory sections | report |
+| Off-stage | the 404 line | instrument |
+| | engine errors, worker messages, download metadata | *wrap in control before it reaches the page* |
+
+## Report voice — the edicts
 
 **1. Open with the thing, not the lineage.** First sentence names the object or
 the inversion; provenance (which experiment number, who ran it) moves to the
@@ -206,6 +242,148 @@ carries two.
 - After: list the deliverables once in the opening; thereafter "the launch
   bundle".
 
+
+## Studio voice
+
+The studio speaking about itself, in the third person, to a visitor who
+may read one paragraph. Ledes, series taglines, instrument captions, search
+descriptions. Plain, measured, no pitch.
+
+**S1. Name the studio, the model, or the reader — never "we".** First person
+belongs to the home intro and the essays; everywhere else the subject is
+"the studio", "the model", "the instrument", or "you".
+- Before (research lede): "Essays are written by Romello Goodman, one per
+  question the studio has chased."
+- After: "Essays are Romello Goodman's questions. Lab notes are the
+  experiments that chase them."
+
+**S2. A lede does two jobs in under 30 words: what the page holds, and who
+made it.** Nothing the headings, the order, or the meta lines already say —
+no "two shelves", no "newest first", no counts.
+- Before: "Two shelves. Essays are written by Romello Goodman, one per
+  question the studio has chased. Lab notes are the experiments behind them,
+  run and written up by Claude models under direction, newest first." (39
+  words, three of its five facts visible on the page)
+- After: "Essays are Romello Goodman's questions. Lab notes are the
+  experiments that chase them, written by the model that ran each one." (22)
+
+**S3. Two tagline shapes, and they don't mix.** A *series* tagline is one
+sentence in sentence case, verb first, with at most one em-dash pivot:
+"Bends any story toward the green light — obsession you can dial from 1 to
+5." A *release* tagline is a lowercase fragment that names what changed
+since the last release: "same quality at a third the size — a corpus-trained
+1k-vocab BPE". Sentence for the family, fragment for the version.
+- Before (daydream micro): "Gardner minichess, 5x5 -- the smallest board
+  with room for a full army"
+- After: "Gardner minichess, 5×5 — the smallest board with room for a full
+  army"
+
+**S4. A caption explains the mechanism once, with edict 5's aside budget.**
+One paragraph, numbers unhedged, one aside per sentence, no reassurance.
+- Before (board caption): "Micro and Grand are watch-only — no rules engine
+  runs in the browser for a 5×5 or a 12×10 board (the studio's arbiter,
+  Fairy-Stockfish, is a native binary), so those boards render the dream
+  without refereeing it."
+- After: "Micro and grand are watch-only: no rules engine runs in the
+  browser for a 5×5 or a 12×10 board, so those boards render the dream
+  without refereeing it. The studio's arbiter, Fairy-Stockfish, is a native
+  binary."
+
+**S5. A search description is not the lede.** One sentence that names the
+studio and says what the page is, for a reader who hasn't arrived yet.
+- Before: the research lede pasted into `metadata.description`.
+- After: "Research from sup computer, a small language model studio: essays
+  by its director and lab notes written by the models that ran the
+  experiments."
+
+## Control voice
+
+Everything a hand touches or a process reports: nav, run verbs, labels,
+pills, status, errors, readouts. Lowercase, short, literal.
+
+**C1. Lowercase what a hand touches; sentence-case what names a place.**
+Nav, buttons, labels, pills, status lines, and error lines are lowercase.
+Section headings and page titles are sentence case — they're places, not
+controls.
+- Before: "No lab notes filed under this series yet." (an empty state, so a
+  control)
+- After: "no lab notes for this series yet."
+
+**C2. Verbs for actions, nouns for places.** A run button is one lowercase
+verb, and the series verb when one exists (write, dream, draw, play). Two
+words only when one word misleads ("tell it", "new game").
+
+**C3. Labels are whole words.** "temperature", never "temp"; "max tokens";
+"top-k". The same parameter carries the same label on every instrument.
+- Before (text instrument): "temp" beside every other instrument's
+  "temperature".
+- After: "temperature".
+
+**C4. A status line is present tense with one trailing ellipsis while
+something runs, and none once it has stopped.** "downloading the model to
+your browser…", "dreaming… try 3 of 8", then "your move". Use "the model",
+not "model".
+- Before: "loading model…" in one component, "loading the model…" in the
+  next.
+- After: "loading the model…" everywhere.
+
+**C5. An error names the thing and the cause, then stops.** "the model
+failed to load: {error}". No reassurance and no second sentence.
+- Before: "weights not yet published for this release. The instrument lights
+  up the moment they land; everything else is already wired."
+- After: "weights not yet published for this release — the instrument lights
+  up when they land."
+
+**C6. Engine text never reaches the page bare.** A worker message, a parser
+error, a stack trace goes after the colon of a C5 sentence, never in place
+of one. "didn't parse: M inside an open contour" is right; "M inside an
+open contour" alone is a leak.
+
+**C7. Don't weld a status onto an invitation.** An empty state is either
+the instrument's line (instrument voice) or a plain control-voice
+statement, never both in one string. The backend line already says where
+the model runs.
+- Before: "the story appears here — the model runs entirely in your
+  browser." (four instruments, four nouns, one welded sentence)
+- After: "the story appears here."
+
+## Instrument voice
+
+The instrument's own line, spoken once, before the first note. Invitations,
+dial words, the 404. This is where the site is allowed to be a poem, and
+because it is rare it works.
+
+**I1. An invitation is one line of the instrument's own poem.** Lowercase,
+under ten words, ends with a period, no number in it. It says what is about
+to happen in the instrument's vocabulary, not the studio's.
+- Kept as exemplars: "six words, waiting to be dreamt." "across the water, a
+  light." "the playbill fills as the model writes." "the notebook only keeps
+  what was written down."
+
+**I2. A dial gets five words that read as a scale.** One word each, least
+to most, from the instrument's world: recites · murmurs · dreams · drifts ·
+babbles. faint · soft · strong · heavy · total. sober · drowsy · dreaming ·
+feverish · raving. A new dial writes its five before it ships.
+
+**I3. One invitation per surface.** The second empty state on the same
+instrument is control voice. A token-view placeholder is a control line;
+the demo view holds the poem.
+
+**I4. Never next to a number, never inside an error.** The moment a string
+carries a count, a percentage, or a cause, it has left this voice.
+
+## Formatting — the record job
+
+No voice, only rules. Meta lines, spec tables, counts, the empty cell.
+
+- **F1.** Fields in a meta line are separated by a middle dot with spaces:
+  `experiment · Sep 2026 · shakespeare · researcher: Claude Fable 5.1`.
+- **F2.** The em-dash is the only dash inside a sentence. Never `--`, never
+  a hyphen doing a dash's job. Multiplication is `×`, not `x`.
+- **F3.** A missing value is an em-dash alone.
+- **F4.** A count is a numeral and a noun, pluralized by the count: "1
+  near-miss", "3 near-misses", "14 plies". Never a bare numeral.
+
 ## What NOT to change
 
 The studio's voice is plain, curious, findings-forward, with evocative names.
@@ -234,6 +412,9 @@ Do not sand these off:
 
 ## Quick pass order (editing a draft)
 
+0. Route the string: which job, which voice (the table above). A report
+   gets steps 1–6; site copy gets its voice's edicts and the formatting
+   rules, then step 6.
 1. Opening two sentences (edicts 1–2), then frontmatter summary (3) — count
    its words.
 2. Strip bold to budget (4); un-stack asides and spend the one you keep (5);
