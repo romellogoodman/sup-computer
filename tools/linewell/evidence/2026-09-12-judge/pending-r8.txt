@@ -1,0 +1,94 @@
+
+### poem 4
+  ROMEO:
+Art thou me of all these fairy times,
+That this thyself have wronged me?
+She’s coming.
+OLIVIA.
+Ay, my lord.
+ROMEO.
+--- candidates
+4.0: O, you must meet?
+4.1: Ay, as full of late, this pearl was made,
+4.2: I have, my lord, and that I know.
+4.3: Indeed, but they crave not what: I see,
+
+### poem 5
+  ROMEO:
+How now, Signior Keeper's Mercury!
+Shepherd! And here’s my life.
+Come, gentlemen, this is true, away,
+And, for we know he is not, as I am,
+But yet you are dear: but I’ll tell you where
+The chiefest gods be certain to me
+--- candidates
+5.0: I must be sick o’er yourself. Now let me see,
+5.1: Though I convey, for ’tis not so much offended
+5.2: That it might put me up on my fashion.
+5.3: And divine and dear love to last night.
+
+### poem 8
+  LEAR.
+Why, what’s that?
+LORD.
+Thou art a man, though thou art a man,
+And I will sleep, and let some cry to thee.
+My father, here’s thy father’s love,
+Though I could see thee while I live in thee.
+--- candidates
+8.0: But let my father die, and leave thee kill.
+8.1: DUKE.
+8.2: Prithee, give thee thy life, and die thy head.
+8.3: Here, with mine eyes. I pray thee, be wise.
+
+### poem 9
+  LEAR.
+But what say you to him?
+BASTARD.
+If I durst, it cannot be.
+I have much bondage to answer you.
+Would you may teach him, and he carries well.
+--- candidates
+9.0: Enter Vaughan.
+9.1: LENNOX.
+9.2: SALISBURY.
+9.3: Your business shall be so bound to do
+
+### poem 16
+  HAMLET.
+I was a woman.
+KING.
+We had been sent to make a soldier’s name,
+And that’s true. ’Tis a dream once a bed
+That last night’s counsel.
+--- candidates
+16.0: LUCIUS.
+16.1: HAMLET.
+16.2: TIMON.
+16.3: ANGELO.
+
+### poem 17
+  HAMLET.
+Why, what of that? Hang him, Hieronimo!
+O, my credit hath left me hence,
+A boy of vauntage, and a carriage
+To see how easily a majesty
+Hath stay’d to dwell?
+LAERTES.
+--- candidates
+17.0: No, Laertes,
+17.1: Ay, madam,
+17.2: Ay, but what says that?
+17.3: My lord,
+
+### poem 20
+  OPHELIA.
+Put you on my minion?
+Come, sirrah, let us die?
+HORATIO.
+I’ll not read it. I shall not hear it.
+--- candidates
+20.0: IACHIMO.
+20.1: [_Exit._]
+20.2: [_Exeunt._]
+20.3: [_Exit with Ursula._]

@@ -1,0 +1,318 @@
+
+### poem 0
+  NURSE.
+There is no way to aim: if thou think’st,
+Why then, by this creation, thou art dead.
+Yet sickly, I’ll tell thee so. Come, sit aside.
+I’ll not be sick. ’Tis true for thee; but
+If thou dar’st.
+MISTRESS QUICKLY.
+--- candidates
+0.0: Come, let’s go.
+0.1: Two man should make a fault.
+0.2: O, that denied thyself; I have a care to do thee
+0.3: I’ll give it a maid.
+
+### poem 1
+  NURSE.
+My cousin Rutland is not bound to fight.
+ROMEO.
+My love is sick; and the wish is dead,
+For, if I change thy cousin, I will give
+A gallant sound and figures.
+And, girl, though you bade me give you a merry mutiny,
+--- candidates
+1.0: Look where I am.
+1.1: Confirm’d, nor still, so familiar that I will prove; nor, no,
+1.2: Will come to hearing. Thou art a fool,
+1.3: You’ll not understand but restraint yourself,
+
+### poem 2
+  NURSE.
+Then take the empress; but in the emperor
+Was he that gallow’d their fancy from his state
+Stained from their spite. Sure that we would bear the world
+And put in Edmund. Therefore, for our fathers,
+Let me be shutted by their tune. O, let our eyes
+That thou, and all my heart is grown alone!
+--- candidates
+2.0: O, since we have cause to see our fire,
+2.1: KING RICHARD.
+2.2: Our eyes alone shall stay for shame,
+2.3: Ten bits, and die thy pride, thy father, and thyself,
+
+### poem 3
+  NURSE.
+You, sir?
+MARIA.
+And now, by my life, what’s your worship?
+Go to, gentlemen.
+CLOWN.
+So, Maria.
+--- candidates
+3.0: MARIA.
+3.1: ROMEO.
+3.2: [_Alarum. Exeunt._]
+3.3: MALVOLIO.
+
+### poem 4
+  ROMEO:
+Art thou me of all these fairy times,
+That this thyself have wronged me?
+She’s coming.
+OLIVIA.
+Ay, my lord.
+--- candidates
+4.0: DUKE.
+4.1: IAGO.
+4.2: OTHELLO.
+4.3: [_Exit.]
+
+### poem 5
+  ROMEO:
+How now, Signior Keeper's Mercury!
+Shepherd! And here’s my life.
+Come, gentlemen, this is true, away,
+And, for we know he is not, as I am,
+--- candidates
+5.0: But yet you are dear: but I’ll tell you where
+5.1: If I have not found a man of the world.
+5.2: Yet that I know, the powder of my soul,
+5.3: But fellow was as music as a man.
+
+### poem 6
+  ROMEO:
+Carry a room in his horn: but what shall we do?
+DUKE.
+O, because an Egyptian liquor!
+Why should I come in breath in praise?
+No other but my purse, I fear, nor further.
+Or I am sorry that my father did travel,
+--- candidates
+6.0: I think it is but a business, and to find
+6.1: For I remember this peace.
+6.2: Protected it in traitor to the world,
+6.3: And my heart dares pine to myself for me!
+
+### poem 7
+  ROMEO:
+And every man doth distract his love
+Upon whose crown and earth shall be my love.
+A plague on thee on thine honour, yet
+Thou, that dares me not! O, thou art a pardon,
+That will inhabate thy resolution
+Upon whose sight is nothing lengthened,
+--- candidates
+7.0: Whose foul encounters are bound, which, to tremble,
+7.1: Within my shape on ’t. For once so means
+7.2: So is thy foes, but thy dear brother gave; for
+7.3: But therefore didst thou bend it back,
+
+### poem 8
+  LEAR.
+Why, what’s that?
+LORD.
+Thou art a man, though thou art a man,
+And I will sleep, and let some cry to thee.
+--- candidates
+8.0: PROSPERO.
+8.1: HAMLET.
+8.2: PRINCE.
+8.3: My father, here’s thy father’s love,
+
+### poem 9
+  LEAR.
+But what say you to him?
+BASTARD.
+If I durst, it cannot be.
+I have much bondage to answer you.
+--- candidates
+9.0: HASTINGS.
+9.1: [_Exeunt._]
+9.2: KING HENRY.
+9.3: BASTARD.
+
+### poem 10
+  LEAR.
+Here’s the priest of man.
+What is the matter of you, Curio?
+CURTIS.
+Nor I, by this place, I’ll see my name.
+This is the noninent’s maid; she’s a fool
+--- candidates
+10.0: When she was dead. Spare her in his mistress.
+10.1: She’s a goddess. The cruelty of three,
+10.2: That makes him tame away a maid.
+10.3: Too low still: no, nor any choice that’s not she.
+
+### poem 11
+  LEAR.
+In base confirmations, brief brightness.
+Why hast thou been a dungeon in the world?
+Why hast thou lost thyself?
+GLOUCESTER.
+I would have lost thy name so sleep a sleep,
+Thou didst strike in thee a carbuncled wood.
+--- candidates
+11.0: O moonshine! Now is the morning? O Castle
+11.1: MACBETH.
+11.2: SUFFOLK.
+11.3: KING HENRY.
+
+### poem 12
+  FOOL.
+Most gracious, my lord, that I would laugh to see you.
+I chide you of your lord’s cheeks, my lord.
+PRINCE.
+I pray you, for yourself, if you be a lady.
+FOOL.
+I’ll bring you to your Majesty’s fellow.
+--- candidates
+12.0: FOOL.
+12.1: FALSTAFF.
+12.2: POINS.
+12.3: PRINCE.
+
+### poem 13
+  FOOL.
+O, see, that’s a man’s man.
+CLOWN.
+Good Bardolph, sirrah, dost thou know me?
+BARDOLPH.
+Come, sir, I’ll go back.
+FORD.
+--- candidates
+13.0: Sirrah, we’ll stay and keep him.
+13.1: I’ll be no fellow of my troth.
+13.2: How now, Pistol?
+13.3: Fear not, sir, I will go no more, and beseech you. No, he will not
+
+### poem 14
+  FOOL.
+Good master, do you bid me home with the house?
+PAGE.
+Where are my duck?
+FOOL.
+His garter; and here are two devils.
+FALSTAFF.
+--- candidates
+14.0: Old-pate, poor linen-shot lazar! Fool, a fiend of tailor?
+14.1: My Lord, the house comes.
+14.2: Poor magistress, you say, sir!
+14.3: Scarc, sir, we are too good to cair him with a fiend; he is no storm.
+
+### poem 15
+  FOOL.
+Welcome, my lord. My name comes here in peace,
+So far by the loose stamp of mine shall turn.
+On that awful world but ten! There, I’ll wait
+One more my heart’s pompless beds; my dearest music,
+Which I shall hold, dearly, till I wound!
+--- candidates
+15.0: [_Exeunt._]
+15.1: To my poor soul be wither’d, yet I will prove.
+15.2: Then if thou hast said to see thou art wont,
+15.3: For mine own soul is not, a fool, not crossed
+
+### poem 16
+  HAMLET.
+I was a woman.
+KING.
+We had been sent to make a soldier’s name,
+And that’s true. ’Tis a dream once a bed
+--- candidates
+16.0: That last night’s counsel.
+16.1: Of th’ uncle for the sea.
+16.2: That should the main seem to put him on.
+16.3: That’s to me, in respect, that I have done,
+
+### poem 17
+  HAMLET.
+Why, what of that? Hang him, Hieronimo!
+O, my credit hath left me hence,
+A boy of vauntage, and a carriage
+To see how easily a majesty
+Hath stay’d to dwell?
+--- candidates
+17.0: HOLLANDO.
+17.1: THESEUS.
+17.2: HAMLET.
+17.3: AUFIDIUS.
+
+### poem 18
+  HAMLET.
+Is this your business?
+KING.
+I am afeard of Clarence.
+What is this? What say you? Truly for this?
+Your Grace shall never see you in my sceptre.
+--- candidates
+18.0: More validament for you. She is, I hope;
+18.1: HAMLET.
+18.2: Does you not?
+18.3: Enter Dorset.
+
+### poem 19
+  HAMLET.
+How now, my lord?
+Well said, I’ll sit down this high excellence.—Come, come,
+And let us make your hands away with us.
+The rest of your lordship are no great self
+But of this self-same villainous morris,
+--- candidates
+19.0: And all our replies in my heart,
+19.1: Than thou wert rend’d. Who are they, Signior?
+19.2: I would have a chariot there but one day
+19.3: Levillion, which is our adversaries,
+
+### poem 20
+  OPHELIA.
+Put you on my minion?
+Come, sirrah, let us die?
+HORATIO.
+--- candidates
+20.0: No, sir, not I. I have a good conceit to be my boy.
+20.1: Ay, sir, in Milan.
+20.2: I’ll not read it. I shall not hear it.
+20.3: Ay, my lord.
+
+### poem 21
+  OPHELIA.
+Didst thou hear?
+ARIEL.
+Ay, that the devil has made a monster.
+PROSPERO.
+Where is he?
+ARIEL.
+--- candidates
+21.0: That’s a little man.
+21.1: A stranger that’s true.
+21.2: He that walk not at home.
+21.3: I do not think my tongue.
+
+### poem 22
+  OPHELIA.
+Sirrah, you are your father and your daughter.
+She had been too fond of you; therefore,
+I never did discover you were a madman.
+Though you had been the most ill, your fathers,
+Nothing of wretched custom, yet remain’d
+--- candidates
+22.0: The people maids all o’erlook’d; and here
+22.1: So far your lives and to his own business
+22.2: From so noble stuff hath divided by
+22.3: Hamlet’s boy, a pastime as a wife,
+
+### poem 23
+  OPHELIA.
+Come, fire, cut thy gardeners to me.
+How say you to my hope? Fare ye well.
+Is not thy father a man?—Wilt thou be married?
+JULIA.
+Why, he were not the matter, my lord.
+DUKE.
+--- candidates
+23.0: Why, you may see the change to sit of him.
+23.1: Would you had so living to be so?
+23.2: O, pardon for you, Othello! Forbear,
+23.3: I prithee be to be gone.

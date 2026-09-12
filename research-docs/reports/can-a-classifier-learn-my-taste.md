@@ -3,183 +3,211 @@ title: "Can a classifier learn my taste?"
 type: experiment
 number: 12
 series: linewell
-produced: "→ a fourth linewell judge (pending)"
+produced: "→ batch_judge.py + train_judge.py; no judge shipped (null result)"
 researcher: claude-fable-5-1
-date: 2026-09-12T00:17:41-04:00
+date: 2026-09-12T01:40:00-04:00
 summary: >
-  A small encoder trained to predict keep-or-toss verdicts in linewell, in
-  three arms: labeled by the local LLM judge, labeled by the human judge, and
-  LLM-labeled then fine-tuned on the human's verdicts — all scored against
-  held-out human decisions. Pre-registered: it counts only if it beats a
-  one-feature baseline on the model's own NLL, and the third arm measures how
-  many human verdicts it takes to move a classifier off the LLM's taste.
+  A tiny encoder trained to predict 760 keep-or-toss verdicts a frontier
+  model gave in linewell, scored on held-out verdicts. No arm
+  cleared the bar (AUROC 0.54–0.56); a two-clause hand rule scored 0.64, and
+  the verdicts were orthogonal to the model's own likelihood.
 takeaways:
   - >-
-    **Pre-registered, not yet run.** This draft fixes the question, the
-    data, the arms, the baselines, and the bar before any verdict is
-    logged. Results land in a superseding revision; nothing below is a
-    finding.
+    **Null result.** Three arms — LLM-labeled, human-labeled, LLM then
+    human — land at AUROC 0.544, 0.536, and 0.555 on 208 held-out verdicts.
+    The pre-registered bar (5 accuracy points over an NLL-only baseline)
+    was not cleared by any arm.
   - >-
-    **The bar:** on human verdicts held out by poem, the best arm must beat
-    a logistic regression on NLL alone by at least 5 points of accuracy and
-    beat the band judge's agreement with the human. Below that, it is the
-    band with extra steps.
+    **Taste is orthogonal to likelihood.** Kept lines average 2.26 NLL,
+    tossed lines 2.29; the band judge agrees with the verdicts on 378/760
+    (49.7%), a coin flip, and a one-feature logistic on NLL scores AUROC
+    0.418 on the test set.
   - >-
-    **What it needs:** about 300 human verdicts from linewell's `human`
-    judge — 200 held out to score every arm, 100 to fine-tune — and a few
-    thousand LLM verdicts from the existing `llm` judge, which cost nothing
-    but LM Studio time.
-status: draft
+    **The learnable part is structural, and a rule already has it.**
+    Speaker tags were kept 41/268, bracketed apparatus 1/34, text lines
+    240/492. "Reject tags and apparatus" scores AUROC 0.642 on the test
+    set, above every trained arm.
+  - >-
+    **The two judges have different taste.** The encoder learns the local
+    LLM's verdicts to AUROC 0.699 on the LLM's own held-out split and
+    transfers to the frontier judge's verdicts at 0.544; the local LLM
+    keeps speaker tags at its base rate (178/644).
+  - >-
+    **The judge was the researcher, not the studio's human.** The "human"
+    seat in the pre-registered design was taken by Claude Fable 5.1 reading
+    a blind sheet; a 100-item re-judge agreed with itself 100/100, which is
+    a same-session ceiling, not an independent replication.
+status: published
 ---
 
 # Can a classifier learn my taste?
 
-<!-- status: draft because the data is pending — the human judge in linewell
-has logged zero verdicts as of 2026-09-12. This revision pre-registers the
-design; a superseding revision reports the run. -->
-
 Every line the shakespeare model draws in linewell gets a verdict from a
-judge, and one of the judges is a person. Those verdicts are a decision log
-with a single author, and this experiment asks whether a classifier small
-enough to ship as a static asset can learn to predict them. If it can,
-[linewell](../../tools/linewell/) gets a fourth judge that is the first
-taste-labeled sense in the studio. If it can't beat the model's own
-likelihood, "taste" here was mostly likelihood.
+judge. This round the judge was the researcher: 760 keep-or-toss decisions
+over 24 poems, read blind from a sheet with the model's likelihoods hidden,
+and then a classifier small enough to ship as a static asset was asked to
+predict them. It couldn't. The best trained arm scored AUROC 0.555 on 208
+held-out verdicts, and a two-clause hand rule scored 0.642.
 
 The setup is [gpu-lexer's](from-modules-to-models.md) with the labeler
 swapped: a small encoder over a candidate line, an agreement score against
-the labeler, held-out evaluation. The substitution is the whole point.
-gpu-lexer's labeler was Shiki. This one's labeler is a person, and the
-[tools-and-senses](same-model-different-owner.md) note argues that is the
-difference between a model that detects and one that notices. The design
-also runs the gpu-lexer version alongside — a classifier distilled from the
-local LLM judge — so the two kinds of label can be measured against each
-other instead of argued about.
+the labeler, held-out evaluation. The [tools-and-senses](same-model-different-owner.md)
+note argued that swapping an oracle for a person is the difference between a
+model that detects and one that notices. This experiment was the first test
+of whether the noticing can be learned at all, and the answer at this size
+is no. What it found instead is more useful than a modest yes: the taste
+was real, it was consistent, and it did not live where the model's own
+numbers could see it.
 
-## Two decision logs, one of which doesn't exist yet
+## Two decision logs
 
-linewell writes full provenance with `--out`: each line drawn, its NLL
-under the model, the verdict, and the order it was drawn in, from which the
-poem-so-far is reconstructible. That is the dataset format for both logs.
+[linewell](../../tools/linewell/) grew a batch mode for this round.
+`batch_judge.py` drives many poems in parallel: draw four candidates per
+unfinished poem, write a blind sheet (poem so far, candidates, no NLL),
+take a verdict file back, append the first kept candidate to each poem, and
+log every candidate with its verdict. The same loop runs unattended with
+the local LLM judge behind [steer](../../tools/steer/).
 
-**The LLM log** is cheap. The `llm` judge already runs a local
-instruction-following model through the shared steer layer against LM
-Studio, so a few thousand verdicts is a loop over `compose.py` with the
-start string and temperature varied. The studio has done this before:
-gatsby's second corpus came from four local models at no cost
-([mixture of models](mixture-of-models.md)). One caution from the existing
-evidence: the llm judge kept 5 of 25 candidates in its only logged run, so
-the log will lean toward reject, and the loop should push temperature and
-starts wide enough that the keeps aren't rare.
+**The frontier log.** 24 poems, six start strings (`NURSE.`, `ROMEO:`,
+`LEAR.`, `FOOL.`, `HAMLET.`, `OPHELIA.`) crossed with four temperatures
+(0.8–1.1), ten rounds. Claude Fable 5.1 read each sheet and judged each
+candidate as the next line of that poem — sound, momentum, coherence of
+image, reject garbled text — the same brief the llm judge is given. 760
+verdicts, 281 kept (37.0%). 23 of 24 poems reached eight lines. Keep rate by
+start ran from 40/128 (OPHELIA) to 55/112 (NURSE); by temperature, 33% at
+0.8 to 42% at 1.0.
 
-**The human log** is the scarce one. The human judge has never been run to
-completion; the two evidence files on disk are 25 llm verdicts and 12 band
-verdicts. Sizing by hand: an eight-line poem costs about 16 draws, so a
-session logs 12–20 verdicts, and 300 verdicts is around 20 poems, an hour
-or two at the terminal spread across days so drift in the judge's mood is
-measurable rather than hidden. The split fixes 200 of those as the test set
-for every arm and leaves 100 for training the arms that get human labels.
+**The local-LLM log.** 96 poems, same starts and temperatures at four
+replicates each, judged by olmo-3-7b-instruct through steer with four
+parallel slots, eight rounds in about two hours. 3,038 verdicts, 22% kept,
+ten poems finished. No candidate appears in both logs.
 
-Two things to record that the current log doesn't: a session id, so the
-split can hold whole sessions out, and the start string per poem, so
-repeated starts don't leak across the split.
+The pre-registered design named a human in the first seat. The studio's
+human was not available in the session that ran this, so the researcher
+took the seat, and every place this report says "taste" it means the
+researcher's. That changes the claim from "can a classifier learn a
+person's taste" to "can a classifier learn a frontier model's taste from a
+few hundred verdicts", which is a weaker but still taste-labeled question:
+nobody supplied an oracle, and the verdicts mean what the judge decided
+they mean.
 
-## Three arms, one test set
+## The split, the arms, and the bar
 
-All three are the same tiny encoder over the shakespeare-nanogpt-3
-tokenizer, seeing the poem-so-far and the candidate with the candidate
-marked, trained from scratch on a laptop in minutes. They differ only in
-whose verdicts they saw.
+208 verdicts from seven whole poems are the test set for everything; 100
+of the remaining 552 are the fine-tune set the design specified. Three arms,
+one tiny encoder each (two layers, width 128, over the well's 1024-token
+tokenizer, seeing the poem so far, a separator, and the candidate), three
+seeds each:
 
-- **LLM-only.** Trained on the LLM log. This is gpu-lexer's shape: an
-  oracle-labeled classifier that distills a bigger judge into a small one.
-- **Human-only.** Trained on the 100 human verdicts. Taste-labeled and
-  data-starved.
-- **LLM, then human.** Trained on the LLM log, then fine-tuned on the same
-  100 human verdicts. The bootstrap arm.
+| arm | trained on | acc | AUROC |
+|---|---|---|---|
+| llm-only | 2,735 local-LLM verdicts | 0.595 | 0.544 |
+| human-only | 100 frontier verdicts | 0.537 | 0.536 |
+| llm+human | LLM log, then the same 100 | 0.546 | 0.555 |
+| human-all (post-hoc) | all 552 non-test frontier verdicts | 0.564 | 0.561 |
 
-Every arm is scored on the same 200 held-out human verdicts. The primary
-number is AUROC, because the human log will skew toward reject and accuracy
-alone will flatter. Everything is small on purpose — the shipping target is
-an ONNX graph the site's player can load the way it loads the
-[logits oracle](logits-oracle.md), so the winning judge becomes a browser
-tool as well as a linewell judge.
+Against the baselines on the same 208:
 
-## The baselines that could make the result boring
+| baseline | acc | AUROC |
+|---|---|---|
+| majority (reject) | 0.601 | — |
+| NLL-only logistic | 0.601 | 0.418 |
+| band judge [2.3, 3.5] | 0.442 | 0.453 |
+| local LLM judge, re-run on the test candidates | 0.635 | 0.566 |
+| **hand rule: reject speaker tags and bracketed apparatus** | 0.596 | **0.642** |
 
-- **Majority class.** Predict reject. Sets the floor for accuracy.
-- **NLL-only.** A logistic regression with one feature, the candidate's
-  mean NLL under the shakespeare model. This is the band judge with a
-  learned threshold, and the dangerous baseline: if no arm beats it, the
-  human's taste was mostly "not too surprising, not too garbled," which the
-  band already encodes.
-- **The band judge itself.** Its agreement with the human verdicts is the
-  number the new judge has to exceed to deserve the slot.
-- **The LLM judge itself.** Its agreement with the human verdicts is the
-  ceiling of the LLM-only arm, and the distance between the LLM's taste and
-  the human's.
+The pre-registered bar was five accuracy points over NLL-only and any
+margin of AUROC, plus beating the band judge's agreement. Every arm beats
+NLL-only on AUROC (0.418 is below chance, so that was free) and beats the
+band on accuracy. No arm beats NLL-only on accuracy, because NLL-only
+collapsed to the majority class and 0.601 is a hard number for a 0.55-AUROC
+model to reach. The bar was not cleared.
 
-Pre-registered bar: on the 200 held-out human verdicts, the best arm beats
-NLL-only by at least 5 accuracy points and by any margin of AUROC, and beats
-the band judge's agreement with the human. Miss either and the answer is no.
+## Taste is orthogonal to likelihood
 
-## What the split has to defend against
+The likelihood story is the clean part. Kept lines average 2.26 nats per
+token under the shakespeare model, tossed lines 2.29. The band judge, which
+the [likeliest-line report](the-likeliest-line-is-a-footnote.md) already
+showed to be register-blind, agrees with the verdicts on 378 of 760. Fit a
+threshold to NLL and it does slightly worse than flipping a coin.
 
-- **Lines from the same poem** share context and register. Split by poem,
-  never by line.
-- **The same start string** recurs across poems and pulls the first lines
-  toward each other. Hold out by start string as a secondary split and
-  report both.
-- **The LLM log and the human log overlap.** No candidate the human judged
-  may appear in the LLM log, or the bootstrap arm has seen the test set
-  through the oracle's eyes.
-- **The judge drifts.** Taste on day one and day five may not agree. Report
-  the human judge's agreement with themselves across sessions — the human's
-  own consistency is the ceiling any arm can reach, and it should be
-  measured before it is chased.
+That was one of the pre-registered readings, but inverted. The design
+allowed for "the band judge was already the taste." The result is the
+opposite: nothing about how surprised the model is predicts whether a line
+gets kept. The taste is somewhere else entirely.
 
-## Readings, decided in advance
+## Where the taste actually was
 
-- LLM-only clears the bar on human verdicts: the LLM's taste and the
-  human's are close enough that distillation alone makes a usable judge,
-  and the human verdicts mostly confirm it.
-- Human-only clears it and LLM-only doesn't: 100 authored verdicts beat
-  thousands of borrowed ones, and taste-labeled is not a slogan.
-- Only the bootstrap arm clears it: the LLM log teaches the surface of
-  verse and the human verdicts steer it, and the number that matters is how
-  much the fine-tune moved the classifier off the LLM's agreement toward the
-  human's.
-- Nothing clears NLL-only: the band judge was already the taste, and the
-  interesting object was never the classifier but the calibration window.
-- The human's session-to-session agreement is low: the experiment is
-  underpowered until the judge is more consistent, and the honest result is
-  a number for how consistent one reader is.
+Part of it is legible on the surface. The judge kept 41 of 268 speaker-tag
+candidates (`DUKE.`, `HORATIO.`) and 1 of 34 bracketed stage directions or
+Gutenberg apparatus, against 240 of 492 ordinary text lines. Those two
+clauses, written by hand after the fact, score AUROC 0.642 on the test set.
+Everything the arms learned, they learned less well than that.
 
-## Run
+The rest, the part that decides between two ordinary lines, is not legible
+to the encoder at this size. Within text lines the keep rate is 48.8%, and
+no arm separates the kept from the tossed above noise. The encoder is not
+the problem: trained on the local LLM's own log and scored on that log's
+held-out tenth, it reaches AUROC 0.699. It learns olmo. It does not learn
+the frontier judge from 552 verdicts, and doubling the epochs moves it from
+0.561 to 0.573.
+
+The encoder also says something about the two judges. Trained on olmo's
+3,038 verdicts it transfers to the frontier verdicts at 0.544, and olmo
+re-run on the test candidates agrees with the frontier judge 63.5% of the
+time while keeping only 14.9% of them. Olmo keeps speaker tags at its base
+rate, 178 of 644. The hand rule that captures a third of the frontier
+judge's taste captures none of olmo's. The taste was there. The classifier
+couldn't reach it.
+
+## Be honest: what this doesn't settle
+
+- **The judge's consistency is a ceiling measured with the wrong ruler.**
+  A 100-item blind re-judge, shuffled, agreed with the first pass 100/100.
+  That is the same model in the same session half an hour later; a person
+  on a different day would be the real test, and the design still needs it.
+- **552 verdicts may simply be too few.** The LLM arm reached 0.70 on its
+  own taste with 2,735 examples. The frontier log is a fifth of that, and
+  the clean reading is that a few hundred verdicts are enough to see the
+  structural rule and not enough to see the rest.
+- **The bar was easy to miss for the wrong reason.** NLL-only fell to
+  majority class, so "beat it by five points" meant "reach 65% accuracy on
+  a 40%-keep test set." A future revision should set the bar on AUROC
+  alone.
+- **Nothing shipped.** The design called for the winning arm to export to
+  ONNX as a fourth linewell judge. A 0.56-AUROC judge is not worth a slot,
+  so the export path exists in `train_judge.py` and nothing went through it.
+
+Two moves for a next round. Give the encoder the structural rule for free —
+strip speaker tags and apparatus before training — and ask whether the
+remaining verdicts, the ones between two real lines, carry any learnable
+signal at all. And log the studio's human: the design's original seat is
+still empty, and the question this report answers is a stand-in for it.
+
+The taste was there. The classifier couldn't reach it.
+
+## Reproduce
 
 ```bash
-# 1. the LLM log — vary --start and the sampler; LM Studio must be serving
-for start in "  NURSE." "  ROMEO:" "  LEAR." "  FOOL."; do
-  for i in $(seq 1 25); do
-    uv run --with tokenizers python tools/linewell/compose.py \
-        --judge llm --lines 8 --start "$start" \
-        --out tools/linewell/evidence/llm-log/$(date +%F)-$i.json
-  done
-done
+# blind batch judging (the frontier judge writes verdicts-r<N>.json by hand)
+uv run --with tokenizers python tools/linewell/batch_judge.py init --state S.json \
+    --starts "  NURSE." "  ROMEO:" "  LEAR." "  FOOL." "  HAMLET." "  OPHELIA." --temps 0.8 0.9 1.0 1.1
+uv run --with tokenizers python tools/linewell/batch_judge.py draw --state S.json --k 4 --pending pending.json
+uv run --with tokenizers python tools/linewell/batch_judge.py apply --state S.json --pending pending.json \
+    --verdicts verdicts.json --log claude-log.jsonl --judge claude-fable-5-1
 
-# 2. the human log — repeat across sessions, vary --start
-uv run --with tokenizers python tools/linewell/compose.py \
-    --judge human --lines 8 --start "  NURSE." \
-    --out tools/linewell/evidence/human/$(date +%F)-nurse-01.json
+# the local-LLM log (LM Studio serving olmo-3-7b-instruct)
+uv run --with tokenizers python tools/linewell/batch_judge.py llm --state L.json --k 4 --log llm-log.jsonl --rounds 8
 
-# 3. train the three arms and the baselines; score on the 200 held-out
-#    human verdicts (training script pending; lands with the results revision)
+# the three arms and every baseline
+uv run --with tokenizers python tools/linewell/train_judge.py --human claude-log.jsonl --llm llm-log.jsonl \
+    --out results.json --seeds 3 --llm_on_test
 ```
 
-Cost: $0 of compute and LM Studio time for the LLM log. One to two hours
-of a person's attention for the human log, which is the scarcest thing in
-the studio and the only reason this hasn't already run.
+Evidence: `tools/linewell/evidence/2026-09-12-judge/` — both logs, every
+round's sheet and verdict file, the re-judge, and `results.json`.
 
 ## Credits
 
-- Designed by Claude Fable 5.1. Human verdicts by Romello Goodman, pending.
+- Designed, judged, and written by Claude Fable 5.1. Local-LLM verdicts by
+  olmo-3-7b-instruct through LM Studio. Cost: $0.

@@ -1,0 +1,40 @@
+
+### poem 9
+  LEAR.
+But what say you to him?
+BASTARD.
+If I durst, it cannot be.
+I have much bondage to answer you.
+Would you may teach him, and he carries well.
+Your business shall be so bound to do
+--- candidates
+9.0: Your rest, or any way to the Centaur:
+9.1: For your approach. That way, my lord, and you,
+9.2: In our affliction. I will reach it
+9.3: On him that he would make my reputation,
+
+### poem 16
+  HAMLET.
+I was a woman.
+KING.
+We had been sent to make a soldier’s name,
+And that’s true. ’Tis a dream once a bed
+That last night’s counsel.
+HAMLET.
+--- candidates
+16.0: Did ever heark a woman, and then itself?
+16.1: Short, you triumph.
+16.2: Ay, my good lord,
+16.3: My sorrows were so much
+
+### poem 20
+  OPHELIA.
+Put you on my minion?
+Come, sirrah, let us die?
+HORATIO.
+I’ll not read it. I shall not hear it.
+--- candidates
+20.0: PETRUCHIO.
+20.1: PORTIA.
+20.2: [_Exeunt._]
+20.3: ADAM.

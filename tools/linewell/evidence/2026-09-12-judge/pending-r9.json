@@ -1,0 +1,186 @@
+[
+ {
+  "pid": 9,
+  "cid": 0,
+  "context": [
+   "  LEAR.",
+   "But what say you to him?",
+   "BASTARD.",
+   "If I durst, it cannot be.",
+   "I have much bondage to answer you.",
+   "Would you may teach him, and he carries well.",
+   "Your business shall be so bound to do"
+  ],
+  "line": "Your rest, or any way to the Centaur:",
+  "nll": 2.827,
+  "round": 9
+ },
+ {
+  "pid": 9,
+  "cid": 1,
+  "context": [
+   "  LEAR.",
+   "But what say you to him?",
+   "BASTARD.",
+   "If I durst, it cannot be.",
+   "I have much bondage to answer you.",
+   "Would you may teach him, and he carries well.",
+   "Your business shall be so bound to do"
+  ],
+  "line": "For your approach. That way, my lord, and you,",
+  "nll": 2.156,
+  "round": 9
+ },
+ {
+  "pid": 9,
+  "cid": 2,
+  "context": [
+   "  LEAR.",
+   "But what say you to him?",
+   "BASTARD.",
+   "If I durst, it cannot be.",
+   "I have much bondage to answer you.",
+   "Would you may teach him, and he carries well.",
+   "Your business shall be so bound to do"
+  ],
+  "line": "In our affliction. I will reach it",
+  "nll": 2.659,
+  "round": 9
+ },
+ {
+  "pid": 9,
+  "cid": 3,
+  "context": [
+   "  LEAR.",
+   "But what say you to him?",
+   "BASTARD.",
+   "If I durst, it cannot be.",
+   "I have much bondage to answer you.",
+   "Would you may teach him, and he carries well.",
+   "Your business shall be so bound to do"
+  ],
+  "line": "On him that he would make my reputation,",
+  "nll": 2.336,
+  "round": 9
+ },
+ {
+  "pid": 16,
+  "cid": 0,
+  "context": [
+   "  HAMLET.",
+   "I was a woman.",
+   "KING.",
+   "We had been sent to make a soldier’s name,",
+   "And that’s true. ’Tis a dream once a bed",
+   "That last night’s counsel.",
+   "HAMLET."
+  ],
+  "line": "Did ever heark a woman, and then itself?",
+  "nll": 2.978,
+  "round": 9
+ },
+ {
+  "pid": 16,
+  "cid": 1,
+  "context": [
+   "  HAMLET.",
+   "I was a woman.",
+   "KING.",
+   "We had been sent to make a soldier’s name,",
+   "And that’s true. ’Tis a dream once a bed",
+   "That last night’s counsel.",
+   "HAMLET."
+  ],
+  "line": "Short, you triumph.",
+  "nll": 2.201,
+  "round": 9
+ },
+ {
+  "pid": 16,
+  "cid": 2,
+  "context": [
+   "  HAMLET.",
+   "I was a woman.",
+   "KING.",
+   "We had been sent to make a soldier’s name,",
+   "And that’s true. ’Tis a dream once a bed",
+   "That last night’s counsel.",
+   "HAMLET."
+  ],
+  "line": "Ay, my good lord,",
+  "nll": 1.112,
+  "round": 9
+ },
+ {
+  "pid": 16,
+  "cid": 3,
+  "context": [
+   "  HAMLET.",
+   "I was a woman.",
+   "KING.",
+   "We had been sent to make a soldier’s name,",
+   "And that’s true. ’Tis a dream once a bed",
+   "That last night’s counsel.",
+   "HAMLET."
+  ],
+  "line": "My sorrows were so much",
+  "nll": 3.412,
+  "round": 9
+ },
+ {
+  "pid": 20,
+  "cid": 0,
+  "context": [
+   "  OPHELIA.",
+   "Put you on my minion?",
+   "Come, sirrah, let us die?",
+   "HORATIO.",
+   "I’ll not read it. I shall not hear it."
+  ],
+  "line": "PETRUCHIO.",
+  "nll": 1.604,
+  "round": 9
+ },
+ {
+  "pid": 20,
+  "cid": 1,
+  "context": [
+   "  OPHELIA.",
+   "Put you on my minion?",
+   "Come, sirrah, let us die?",
+   "HORATIO.",
+   "I’ll not read it. I shall not hear it."
+  ],
+  "line": "PORTIA.",
+  "nll": 2.629,
+  "round": 9
+ },
+ {
+  "pid": 20,
+  "cid": 2,
+  "context": [
+   "  OPHELIA.",
+   "Put you on my minion?",
+   "Come, sirrah, let us die?",
+   "HORATIO.",
+   "I’ll not read it. I shall not hear it."
+  ],
+  "line": "[_Exeunt._]",
+  "nll": 2.378,
+  "round": 9
+ },
+ {
+  "pid": 20,
+  "cid": 3,
+  "context": [
+   "  OPHELIA.",
+   "Put you on my minion?",
+   "Come, sirrah, let us die?",
+   "HORATIO.",
+   "I’ll not read it. I shall not hear it."
+  ],
+  "line": "ADAM.",
+  "nll": 3.062,
+  "round": 9
+ }
+]

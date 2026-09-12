@@ -1,0 +1,434 @@
+{
+ "lines": 8,
+ "poems": [
+  {
+   "id": 0,
+   "start": "  NURSE.",
+   "temperature": 0.8,
+   "rep": 0,
+   "poem": [
+    "  NURSE.",
+    "There is no way to aim: if thou think’st,",
+    "Why then, by this creation, thou art dead.",
+    "Yet sickly, I’ll tell thee so. Come, sit aside.",
+    "I’ll not be sick. ’Tis true for thee; but",
+    "If thou dar’st.",
+    "MISTRESS QUICKLY.",
+    "Come, let’s go."
+   ],
+   "done": true,
+   "round": 6
+  },
+  {
+   "id": 1,
+   "start": "  NURSE.",
+   "temperature": 0.9,
+   "rep": 0,
+   "poem": [
+    "  NURSE.",
+    "My cousin Rutland is not bound to fight.",
+    "ROMEO.",
+    "My love is sick; and the wish is dead,",
+    "For, if I change thy cousin, I will give",
+    "A gallant sound and figures.",
+    "And, girl, though you bade me give you a merry mutiny,",
+    "Look where I am."
+   ],
+   "done": true,
+   "round": 6
+  },
+  {
+   "id": 2,
+   "start": "  NURSE.",
+   "temperature": 1.0,
+   "rep": 0,
+   "poem": [
+    "  NURSE.",
+    "Then take the empress; but in the emperor",
+    "Was he that gallow’d their fancy from his state",
+    "Stained from their spite. Sure that we would bear the world",
+    "And put in Edmund. Therefore, for our fathers,",
+    "Let me be shutted by their tune. O, let our eyes",
+    "That thou, and all my heart is grown alone!",
+    "O, since we have cause to see our fire,"
+   ],
+   "done": true,
+   "round": 6
+  },
+  {
+   "id": 3,
+   "start": "  NURSE.",
+   "temperature": 1.1,
+   "rep": 0,
+   "poem": [
+    "  NURSE.",
+    "You, sir?",
+    "MARIA.",
+    "And now, by my life, what’s your worship?",
+    "Go to, gentlemen.",
+    "CLOWN.",
+    "So, Maria.",
+    "MARIA."
+   ],
+   "done": true,
+   "round": 6
+  },
+  {
+   "id": 4,
+   "start": "  ROMEO:",
+   "temperature": 0.8,
+   "rep": 0,
+   "poem": [
+    "  ROMEO:",
+    "Art thou me of all these fairy times,",
+    "That this thyself have wronged me?",
+    "She’s coming.",
+    "OLIVIA.",
+    "Ay, my lord.",
+    "ROMEO.",
+    "Ay, as full of late, this pearl was made,"
+   ],
+   "done": true,
+   "round": 8
+  },
+  {
+   "id": 5,
+   "start": "  ROMEO:",
+   "temperature": 0.9,
+   "rep": 0,
+   "poem": [
+    "  ROMEO:",
+    "How now, Signior Keeper's Mercury!",
+    "Shepherd! And here’s my life.",
+    "Come, gentlemen, this is true, away,",
+    "And, for we know he is not, as I am,",
+    "But yet you are dear: but I’ll tell you where",
+    "The chiefest gods be certain to me",
+    "That it might put me up on my fashion."
+   ],
+   "done": true,
+   "round": 8
+  },
+  {
+   "id": 6,
+   "start": "  ROMEO:",
+   "temperature": 1.0,
+   "rep": 0,
+   "poem": [
+    "  ROMEO:",
+    "Carry a room in his horn: but what shall we do?",
+    "DUKE.",
+    "O, because an Egyptian liquor!",
+    "Why should I come in breath in praise?",
+    "No other but my purse, I fear, nor further.",
+    "Or I am sorry that my father did travel,",
+    "I think it is but a business, and to find"
+   ],
+   "done": true,
+   "round": 6
+  },
+  {
+   "id": 7,
+   "start": "  ROMEO:",
+   "temperature": 1.1,
+   "rep": 0,
+   "poem": [
+    "  ROMEO:",
+    "And every man doth distract his love",
+    "Upon whose crown and earth shall be my love.",
+    "A plague on thee on thine honour, yet",
+    "Thou, that dares me not! O, thou art a pardon,",
+    "That will inhabate thy resolution",
+    "Upon whose sight is nothing lengthened,",
+    "But therefore didst thou bend it back,"
+   ],
+   "done": true,
+   "round": 6
+  },
+  {
+   "id": 8,
+   "start": "  LEAR.",
+   "temperature": 0.8,
+   "rep": 0,
+   "poem": [
+    "  LEAR.",
+    "Why, what’s that?",
+    "LORD.",
+    "Thou art a man, though thou art a man,",
+    "And I will sleep, and let some cry to thee.",
+    "My father, here’s thy father’s love,",
+    "Though I could see thee while I live in thee.",
+    "But let my father die, and leave thee kill."
+   ],
+   "done": true,
+   "round": 8
+  },
+  {
+   "id": 9,
+   "start": "  LEAR.",
+   "temperature": 0.9,
+   "rep": 0,
+   "poem": [
+    "  LEAR.",
+    "But what say you to him?",
+    "BASTARD.",
+    "If I durst, it cannot be.",
+    "I have much bondage to answer you.",
+    "Would you may teach him, and he carries well.",
+    "Your business shall be so bound to do",
+    "Your rest, or any way to the Centaur:"
+   ],
+   "done": true,
+   "round": 9
+  },
+  {
+   "id": 10,
+   "start": "  LEAR.",
+   "temperature": 1.0,
+   "rep": 0,
+   "poem": [
+    "  LEAR.",
+    "Here’s the priest of man.",
+    "What is the matter of you, Curio?",
+    "CURTIS.",
+    "Nor I, by this place, I’ll see my name.",
+    "This is the noninent’s maid; she’s a fool",
+    "She’s a goddess. The cruelty of three,",
+    "For ’tis as good as the air should seem a sight,"
+   ],
+   "done": true,
+   "round": 7
+  },
+  {
+   "id": 11,
+   "start": "  LEAR.",
+   "temperature": 1.1,
+   "rep": 0,
+   "poem": [
+    "  LEAR.",
+    "In base confirmations, brief brightness.",
+    "Why hast thou been a dungeon in the world?",
+    "Why hast thou lost thyself?",
+    "GLOUCESTER.",
+    "I would have lost thy name so sleep a sleep,",
+    "Thou didst strike in thee a carbuncled wood.",
+    "O moonshine! Now is the morning? O Castle"
+   ],
+   "done": true,
+   "round": 6
+  },
+  {
+   "id": 12,
+   "start": "  FOOL.",
+   "temperature": 0.8,
+   "rep": 0,
+   "poem": [
+    "  FOOL.",
+    "Most gracious, my lord, that I would laugh to see you.",
+    "I chide you of your lord’s cheeks, my lord.",
+    "PRINCE.",
+    "I pray you, for yourself, if you be a lady.",
+    "FOOL.",
+    "I’ll bring you to your Majesty’s fellow.",
+    "FALSTAFF."
+   ],
+   "done": true,
+   "round": 6
+  },
+  {
+   "id": 13,
+   "start": "  FOOL.",
+   "temperature": 0.9,
+   "rep": 0,
+   "poem": [
+    "  FOOL.",
+    "O, see, that’s a man’s man.",
+    "CLOWN.",
+    "Good Bardolph, sirrah, dost thou know me?",
+    "BARDOLPH.",
+    "Come, sir, I’ll go back.",
+    "FORD.",
+    "Sirrah, we’ll stay and keep him."
+   ],
+   "done": true,
+   "round": 6
+  },
+  {
+   "id": 14,
+   "start": "  FOOL.",
+   "temperature": 1.0,
+   "rep": 0,
+   "poem": [
+    "  FOOL.",
+    "Good master, do you bid me home with the house?",
+    "PAGE.",
+    "Where are my duck?",
+    "FOOL.",
+    "His garter; and here are two devils.",
+    "FALSTAFF.",
+    "Old-pate, poor linen-shot lazar! Fool, a fiend of tailor?"
+   ],
+   "done": true,
+   "round": 6
+  },
+  {
+   "id": 15,
+   "start": "  FOOL.",
+   "temperature": 1.1,
+   "rep": 0,
+   "poem": [
+    "  FOOL.",
+    "Welcome, my lord. My name comes here in peace,",
+    "So far by the loose stamp of mine shall turn.",
+    "On that awful world but ten! There, I’ll wait",
+    "One more my heart’s pompless beds; my dearest music,",
+    "Which I shall hold, dearly, till I wound!",
+    "To my poor soul be wither’d, yet I will prove.",
+    "If little breath hath grown sovereign, for mine own."
+   ],
+   "done": true,
+   "round": 7
+  },
+  {
+   "id": 16,
+   "start": "  HAMLET.",
+   "temperature": 0.8,
+   "rep": 0,
+   "poem": [
+    "  HAMLET.",
+    "I was a woman.",
+    "KING.",
+    "We had been sent to make a soldier’s name,",
+    "And that’s true. ’Tis a dream once a bed",
+    "That last night’s counsel.",
+    "HAMLET.",
+    "Did ever heark a woman, and then itself?"
+   ],
+   "done": true,
+   "round": 9
+  },
+  {
+   "id": 17,
+   "start": "  HAMLET.",
+   "temperature": 0.9,
+   "rep": 0,
+   "poem": [
+    "  HAMLET.",
+    "Why, what of that? Hang him, Hieronimo!",
+    "O, my credit hath left me hence,",
+    "A boy of vauntage, and a carriage",
+    "To see how easily a majesty",
+    "Hath stay’d to dwell?",
+    "LAERTES.",
+    "Ay, but what says that?"
+   ],
+   "done": true,
+   "round": 8
+  },
+  {
+   "id": 18,
+   "start": "  HAMLET.",
+   "temperature": 1.0,
+   "rep": 0,
+   "poem": [
+    "  HAMLET.",
+    "Is this your business?",
+    "KING.",
+    "I am afeard of Clarence.",
+    "What is this? What say you? Truly for this?",
+    "Your Grace shall never see you in my sceptre.",
+    "HAMLET.",
+    "Come on and turn you to the griefs of yours;"
+   ],
+   "done": true,
+   "round": 7
+  },
+  {
+   "id": 19,
+   "start": "  HAMLET.",
+   "temperature": 1.1,
+   "rep": 0,
+   "poem": [
+    "  HAMLET.",
+    "How now, my lord?",
+    "Well said, I’ll sit down this high excellence.—Come, come,",
+    "And let us make your hands away with us.",
+    "The rest of your lordship are no great self",
+    "But of this self-same villainous morris,",
+    "And all our replies in my heart,",
+    "And find the King is wed in traitor’s sorrow,"
+   ],
+   "done": true,
+   "round": 7
+  },
+  {
+   "id": 20,
+   "start": "  OPHELIA.",
+   "temperature": 0.8,
+   "rep": 0,
+   "poem": [
+    "  OPHELIA.",
+    "Put you on my minion?",
+    "Come, sirrah, let us die?",
+    "HORATIO.",
+    "I’ll not read it. I shall not hear it."
+   ],
+   "done": false,
+   "round": 10
+  },
+  {
+   "id": 21,
+   "start": "  OPHELIA.",
+   "temperature": 0.9,
+   "rep": 0,
+   "poem": [
+    "  OPHELIA.",
+    "Didst thou hear?",
+    "ARIEL.",
+    "Ay, that the devil has made a monster.",
+    "PROSPERO.",
+    "Where is he?",
+    "ARIEL.",
+    "That’s a little man."
+   ],
+   "done": true,
+   "round": 6
+  },
+  {
+   "id": 22,
+   "start": "  OPHELIA.",
+   "temperature": 1.0,
+   "rep": 0,
+   "poem": [
+    "  OPHELIA.",
+    "Sirrah, you are your father and your daughter.",
+    "She had been too fond of you; therefore,",
+    "I never did discover you were a madman.",
+    "Though you had been the most ill, your fathers,",
+    "Nothing of wretched custom, yet remain’d",
+    "The people maids all o’erlook’d; and here",
+    "He needs not strike. That you saw him gaze,"
+   ],
+   "done": true,
+   "round": 7
+  },
+  {
+   "id": 23,
+   "start": "  OPHELIA.",
+   "temperature": 1.1,
+   "rep": 0,
+   "poem": [
+    "  OPHELIA.",
+    "Come, fire, cut thy gardeners to me.",
+    "How say you to my hope? Fare ye well.",
+    "Is not thy father a man?—Wilt thou be married?",
+    "JULIA.",
+    "Why, he were not the matter, my lord.",
+    "DUKE.",
+    "Would you had so living to be so?"
+   ],
+   "done": true,
+   "round": 6
+  }
+ ]
+}

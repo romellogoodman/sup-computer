@@ -1,0 +1,792 @@
+
+### r0
+  LEAR.
+Here’s the priest of man.
+What is the matter of you, Curio?
+--- candidate
+What, are you taken? Who did but do you
+
+### r1
+  FOOL.
+Good master, do you bid me home with the house?
+--- candidate
+FOOL.
+
+### r2
+  ROMEO:
+How now, Signior Keeper's Mercury!
+Shepherd! And here’s my life.
+--- candidate
+Come, gentlemen, this is true, away,
+
+### r3
+  OPHELIA.
+Sirrah, you are your father and your daughter.
+She had been too fond of you; therefore,
+I never did discover you were a madman.
+Though you had been the most ill, your fathers,
+Nothing of wretched custom, yet remain’d
+--- candidate
+From so noble stuff hath divided by
+
+### r4
+  FOOL.
+--- candidate
+Sir, Sir John Falstaff, be not honest, is this very true?
+
+### r5
+  HAMLET.
+--- candidate
+Here in Middleton’s battle. Therefore, dear Carrion.
+
+### r6
+  HAMLET.
+Why, what of that? Hang him, Hieronimo!
+O, my credit hath left me hence,
+A boy of vauntage, and a carriage
+To see how easily a majesty
+Hath stay’d to dwell?
+--- candidate
+HELENA.
+
+### r7
+  NURSE.
+There is no way to aim: if thou think’st,
+--- candidate
+Why then, by this creation, thou art dead.
+
+### r8
+  OPHELIA.
+Didst thou hear?
+ARIEL.
+Ay, that the devil has made a monster.
+--- candidate
+PROVOST.
+
+### r9
+  ROMEO:
+How now, Signior Keeper's Mercury!
+Shepherd! And here’s my life.
+Come, gentlemen, this is true, away,
+And, for we know he is not, as I am,
+--- candidate
+But yet you are dear: but I’ll tell you where
+
+### r10
+  FOOL.
+--- candidate
+Thou art an aunt.
+
+### r11
+  LEAR.
+But what say you to him?
+BASTARD.
+If I durst, it cannot be.
+--- candidate
+BASTARD.
+
+### r12
+  ROMEO:
+Carry a room in his horn: but what shall we do?
+DUKE.
+--- candidate
+To see him, sir, but he shall fight to me.
+
+### r13
+  LEAR.
+--- candidate
+Farewell, good Master Bots, here thou griev’st me: I will be patient,
+
+### r14
+  OPHELIA.
+--- candidate
+Sirrah, you are your father and your daughter.
+
+### r15
+  FOOL.
+Welcome, my lord. My name comes here in peace,
+So far by the loose stamp of mine shall turn.
+On that awful world but ten! There, I’ll wait
+--- candidate
+One more my heart’s pompless beds; my dearest music,
+
+### r16
+  LEAR.
+In base confirmations, brief brightness.
+Why hast thou been a dungeon in the world?
+Why hast thou lost thyself?
+GLOUCESTER.
+--- candidate
+Most worthy mother, and so wise,
+
+### r17
+  HAMLET.
+--- candidate
+I have been ordered by, that the water might have made me
+
+### r18
+  FOOL.
+O, see, that’s a man’s man.
+CLOWN.
+--- candidate
+I know them fair, sir, to be so bold to think, as you are.
+
+### r19
+  OPHELIA.
+--- candidate
+Can this be said she, shepherd? I do not wish my brother.
+
+### r20
+  OPHELIA.
+Didst thou hear?
+ARIEL.
+Ay, that the devil has made a monster.
+PROSPERO.
+Where is he?
+--- candidate
+ARIEL.
+
+### r21
+  FOOL.
+Most gracious, my lord, that I would laugh to see you.
+I chide you of your lord’s cheeks, my lord.
+PRINCE.
+I pray you, for yourself, if you be a lady.
+--- candidate
+FORD.
+
+### r22
+  FOOL.
+--- candidate
+[_To Peto_.] Go get thee homely. O thou brave Cupid, clap thyself.
+
+### r23
+  NURSE.
+There is no way to aim: if thou think’st,
+Why then, by this creation, thou art dead.
+Yet sickly, I’ll tell thee so. Come, sit aside.
+I’ll not be sick. ’Tis true for thee; but
+If thou dar’st.
+MISTRESS QUICKLY.
+--- candidate
+I’ll give it a maid.
+
+### r24
+  ROMEO:
+And every man doth distract his love
+--- candidate
+Destowed his foes and broaches,
+
+### r25
+  LEAR.
+But what say you to him?
+BASTARD.
+--- candidate
+Sir Protector, my lord, he’s a friend.
+
+### r26
+  HAMLET.
+Why, what of that? Hang him, Hieronimo!
+O, my credit hath left me hence,
+A boy of vauntage, and a carriage
+To see how easily a majesty
+Hath stay’d to dwell?
+--- candidate
+THESEUS.
+
+### r27
+  HAMLET.
+I was a woman.
+KING.
+We had been sent to make a soldier’s name,
+And that’s true. ’Tis a dream once a bed
+--- candidate
+That should the main seem to put him on.
+
+### r28
+  LEAR.
+But what say you to him?
+BASTARD.
+If I durst, it cannot be.
+I have much bondage to answer you.
+Would you may teach him, and he carries well.
+Your business shall be so bound to do
+--- candidate
+In our affliction. I will reach it
+
+### r29
+  FOOL.
+--- candidate
+Her stern shines in a nature. Since all in a second mode in Spain
+
+### r30
+  NURSE.
+You, sir?
+MARIA.
+And now, by my life, what’s your worship?
+Go to, gentlemen.
+CLOWN.
+So, Maria.
+--- candidate
+[_Alarum. Exeunt._]
+
+### r31
+  ROMEO:
+How now, Signior Keeper's Mercury!
+Shepherd! And here’s my life.
+Come, gentlemen, this is true, away,
+And, for we know he is not, as I am,
+--- candidate
+But fellow was as music as a man.
+
+### r32
+  ROMEO:
+How now, Signior Keeper's Mercury!
+Shepherd! And here’s my life.
+--- candidate
+SILVIA.
+
+### r33
+  FOOL.
+--- candidate
+Most gracious, my lord, that I would laugh to see you.
+
+### r34
+  LEAR.
+Why, what’s that?
+LORD.
+--- candidate
+Ay, for a thing; not indeed.
+
+### r35
+  LEAR.
+--- candidate
+Sir John, where is your lady?
+
+### r36
+  OPHELIA.
+Sirrah, you are your father and your daughter.
+She had been too fond of you; therefore,
+I never did discover you were a madman.
+Though you had been the most ill, your fathers,
+--- candidate
+I’ th’ age be not of you a bondman.
+
+### r37
+  LEAR.
+Here’s the priest of man.
+--- candidate
+MAECENAS.
+
+### r38
+  NURSE.
+Then take the empress; but in the emperor
+Was he that gallow’d their fancy from his state
+Stained from their spite. Sure that we would bear the world
+--- candidate
+Of all the Queen’s pity of angel and
+
+### r39
+  LEAR.
+In base confirmations, brief brightness.
+Why hast thou been a dungeon in the world?
+Why hast thou lost thyself?
+GLOUCESTER.
+--- candidate
+A sort, hence, my liege; but he that I have a wife from me;
+
+### r40
+  FOOL.
+Most gracious, my lord, that I would laugh to see you.
+--- candidate
+DUKE.
+
+### r41
+  HAMLET.
+Is this your business?
+KING.
+I am afeard of Clarence.
+What is this? What say you? Truly for this?
+--- candidate
+Your Grace shall never see you in my sceptre.
+
+### r42
+  ROMEO:
+Carry a room in his horn: but what shall we do?
+--- candidate
+DUKE.
+
+### r43
+  NURSE.
+Then take the empress; but in the emperor
+Was he that gallow’d their fancy from his state
+Stained from their spite. Sure that we would bear the world
+And put in Edmund. Therefore, for our fathers,
+Let me be shutted by their tune. O, let our eyes
+That thou, and all my heart is grown alone!
+--- candidate
+O, since we have cause to see our fire,
+
+### r44
+  ROMEO:
+Carry a room in his horn: but what shall we do?
+DUKE.
+O, because an Egyptian liquor!
+--- candidate
+GRUMIO.
+
+### r45
+  OPHELIA.
+Come, fire, cut thy gardeners to me.
+How say you to my hope? Fare ye well.
+Is not thy father a man?—Wilt thou be married?
+JULIA.
+Why, he were not the matter, my lord.
+--- candidate
+CYMBELINE.
+
+### r46
+  HAMLET.
+I was a woman.
+KING.
+We had been sent to make a soldier’s name,
+And that’s true. ’Tis a dream once a bed
+That last night’s counsel.
+--- candidate
+CAMBURLAINE.
+
+### r47
+  OPHELIA.
+Sirrah, you are your father and your daughter.
+--- candidate
+HELENA.
+
+### r48
+  NURSE.
+Then take the empress; but in the emperor
+--- candidate
+Compass the second mirror to the guard.
+
+### r49
+  ROMEO:
+Art thou me of all these fairy times,
+That this thyself have wronged me?
+She’s coming.
+OLIVIA.
+Ay, my lord.
+--- candidate
+[_Exit.]
+
+### r50
+  OPHELIA.
+Sirrah, you are your father and your daughter.
+She had been too fond of you; therefore,
+I never did discover you were a madman.
+Though you had been the most ill, your fathers,
+Nothing of wretched custom, yet remain’d
+The people maids all o’erlook’d; and here
+--- candidate
+Have you not in her promise?
+
+### r51
+  HAMLET.
+How now, my lord?
+Well said, I’ll sit down this high excellence.—Come, come,
+And let us make your hands away with us.
+The rest of your lordship are no great self
+But of this self-same villainous morris,
+--- candidate
+I would have a chariot there but one day
+
+### r52
+  NURSE.
+There is no way to aim: if thou think’st,
+Why then, by this creation, thou art dead.
+--- candidate
+GRUMIO.
+
+### r53
+  OPHELIA.
+Come, fire, cut thy gardeners to me.
+How say you to my hope? Fare ye well.
+Is not thy father a man?—Wilt thou be married?
+--- candidate
+Else thou air, and never saw any horse
+
+### r54
+  NURSE.
+There is no way to aim: if thou think’st,
+--- candidate
+There is not curely false in fire, it is
+
+### r55
+  OPHELIA.
+Put you on my minion?
+Come, sirrah, let us die?
+--- candidate
+HORATIO.
+
+### r56
+  HAMLET.
+--- candidate
+PRINCE HENRY, merry, trick.
+
+### r57
+  NURSE.
+There is no way to aim: if thou think’st,
+Why then, by this creation, thou art dead.
+Yet sickly, I’ll tell thee so. Come, sit aside.
+I’ll not be sick. ’Tis true for thee; but
+If thou dar’st.
+MISTRESS QUICKLY.
+--- candidate
+Two man should make a fault.
+
+### r58
+  FOOL.
+--- candidate
+HOSTESS-WORD--
+
+### r59
+  FOOL.
+Good master, do you bid me home with the house?
+PAGE.
+Where are my duck?
+FOOL.
+His garter; and here are two devils.
+FALSTAFF.
+--- candidate
+My Lord, the house comes.
+
+### r60
+  ROMEO:
+Art thou me of all these fairy times,
+--- candidate
+And why thy sins are punish’d with my brow?
+
+### r61
+  ROMEO:
+And every man doth distract his love
+Upon whose crown and earth shall be my love.
+A plague on thee on thine honour, yet
+Thou, that dares me not! O, thou art a pardon,
+That will inhabate thy resolution
+--- candidate
+Upon whose sight is nothing lengthened,
+
+### r62
+  HAMLET.
+I was a woman.
+KING.
+We had been sent to make a soldier’s name,
+And that’s true. ’Tis a dream once a bed
+That last night’s counsel.
+--- candidate
+ARCHBISHOP.
+
+### r63
+  HAMLET.
+I was a woman.
+KING.
+We had been sent to make a soldier’s name,
+--- candidate
+And that’s true. ’Tis a dream once a bed
+
+### r64
+  FOOL.
+O, see, that’s a man’s man.
+CLOWN.
+Good Bardolph, sirrah, dost thou know me?
+BARDOLPH.
+--- candidate
+[_Aside._] Not that he will, or else I can but tell you what I dined.
+
+### r65
+  LEAR.
+Why, what’s that?
+LORD.
+Thou art a man, though thou art a man,
+--- candidate
+I am glad thou wert the woman’s child;
+
+### r66
+  OPHELIA.
+Come, fire, cut thy gardeners to me.
+How say you to my hope? Fare ye well.
+Is not thy father a man?—Wilt thou be married?
+JULIA.
+--- candidate
+Why, he were not the matter, my lord.
+
+### r67
+  LEAR.
+Why, what’s that?
+LORD.
+Thou art a man, though thou art a man,
+And I will sleep, and let some cry to thee.
+My father, here’s thy father’s love,
+Though I could see thee while I live in thee.
+--- candidate
+But let my father die, and leave thee kill.
+
+### r68
+  OPHELIA.
+Put you on my minion?
+Come, sirrah, let us die?
+--- candidate
+PROTEUS.
+
+### r69
+  OPHELIA.
+Put you on my minion?
+Come, sirrah, let us die?
+--- candidate
+NERISSA.
+
+### r70
+  ROMEO:
+Art thou me of all these fairy times,
+That this thyself have wronged me?
+--- candidate
+FLAVIUS.
+
+### r71
+  FOOL.
+Welcome, my lord. My name comes here in peace,
+--- candidate
+If I require you for yourself with you?
+
+### r72
+  OPHELIA.
+Sirrah, you are your father and your daughter.
+--- candidate
+DESDEMONA.
+
+### r73
+  FOOL.
+Good master, do you bid me home with the house?
+PAGE.
+--- candidate
+Where are my duck?
+
+### r74
+  OPHELIA.
+--- candidate
+Come, come, let’s have this good report. I’ll have it so.
+
+### r75
+  NURSE.
+You, sir?
+MARIA.
+And now, by my life, what’s your worship?
+Go to, gentlemen.
+CLOWN.
+So, Maria.
+--- candidate
+MARIA.
+
+### r76
+  ROMEO:
+Art thou me of all these fairy times,
+That this thyself have wronged me?
+--- candidate
+She’s coming.
+
+### r77
+  FOOL.
+Good master, do you bid me home with the house?
+PAGE.
+Where are my duck?
+FOOL.
+His garter; and here are two devils.
+--- candidate
+SHALLOW.
+
+### r78
+  ROMEO:
+Carry a room in his horn: but what shall we do?
+DUKE.
+O, because an Egyptian liquor!
+Why should I come in breath in praise?
+No other but my purse, I fear, nor further.
+--- candidate
+ORLANDO.
+
+### r79
+  FOOL.
+Welcome, my lord. My name comes here in peace,
+So far by the loose stamp of mine shall turn.
+--- candidate
+A window’s the wives I do fight without.
+
+### r80
+  HAMLET.
+Is this your business?
+KING.
+I am afeard of Clarence.
+What is this? What say you? Truly for this?
+--- candidate
+FIRST LORD.
+
+### r81
+  NURSE.
+My cousin Rutland is not bound to fight.
+ROMEO.
+My love is sick; and the wish is dead,
+--- candidate
+For, if I change thy cousin, I will give
+
+### r82
+  LEAR.
+In base confirmations, brief brightness.
+Why hast thou been a dungeon in the world?
+Why hast thou lost thyself?
+GLOUCESTER.
+I would have lost thy name so sleep a sleep,
+Thou didst strike in thee a carbuncled wood.
+--- candidate
+KING HENRY.
+
+### r83
+  HAMLET.
+I was a woman.
+KING.
+We had been sent to make a soldier’s name,
+And that’s true. ’Tis a dream once a bed
+That last night’s counsel.
+HAMLET.
+--- candidate
+Ay, my good lord,
+
+### r84
+  OPHELIA.
+Sirrah, you are your father and your daughter.
+She had been too fond of you; therefore,
+I never did discover you were a madman.
+Though you had been the most ill, your fathers,
+Nothing of wretched custom, yet remain’d
+The people maids all o’erlook’d; and here
+--- candidate
+Does you not have been so little strange,
+
+### r85
+  LEAR.
+In base confirmations, brief brightness.
+Why hast thou been a dungeon in the world?
+Why hast thou lost thyself?
+GLOUCESTER.
+I would have lost thy name so sleep a sleep,
+--- candidate
+Thou didst strike in thee a carbuncled wood.
+
+### r86
+  HAMLET.
+Why, what of that? Hang him, Hieronimo!
+O, my credit hath left me hence,
+A boy of vauntage, and a carriage
+To see how easily a majesty
+Hath stay’d to dwell?
+LAERTES.
+--- candidate
+My lord,
+
+### r87
+  HAMLET.
+Is this your business?
+--- candidate
+KING.
+
+### r88
+  FOOL.
+Welcome, my lord. My name comes here in peace,
+So far by the loose stamp of mine shall turn.
+--- candidate
+[_They say “I mean and dat you) to be quiet for excellency,
+
+### r89
+  FOOL.
+Good master, do you bid me home with the house?
+--- candidate
+FALSTAFF.
+
+### r90
+  ROMEO:
+How now, Signior Keeper's Mercury!
+Shepherd! And here’s my life.
+Come, gentlemen, this is true, away,
+--- candidate
+They say I love and my will to you.
+
+### r91
+  LEAR.
+In base confirmations, brief brightness.
+Why hast thou been a dungeon in the world?
+Why hast thou lost thyself?
+GLOUCESTER.
+--- candidate
+O God, is thy beauty’s beauty to thee?
+
+### r92
+  LEAR.
+--- candidate
+Here’s the priest of man.
+
+### r93
+  HAMLET.
+--- candidate
+So is't, my lord.
+
+### r94
+  OPHELIA.
+Sirrah, you are your father and your daughter.
+She had been too fond of you; therefore,
+I never did discover you were a madman.
+Though you had been the most ill, your fathers,
+--- candidate
+And with your eyes, and your goods, and sentence,
+
+### r95
+  NURSE.
+Then take the empress; but in the emperor
+Was he that gallow’d their fancy from his state
+Stained from their spite. Sure that we would bear the world
+And put in Edmund. Therefore, for our fathers,
+Let me be shutted by their tune. O, let our eyes
+That thou, and all my heart is grown alone!
+--- candidate
+Our eyes alone shall stay for shame,
+
+### r96
+  FOOL.
+Welcome, my lord. My name comes here in peace,
+So far by the loose stamp of mine shall turn.
+On that awful world but ten! There, I’ll wait
+One more my heart’s pompless beds; my dearest music,
+Which I shall hold, dearly, till I wound!
+To my poor soul be wither’d, yet I will prove.
+--- candidate
+If little breath hath grown sovereign, for mine own.
+
+### r97
+  FOOL.
+Welcome, my lord. My name comes here in peace,
+So far by the loose stamp of mine shall turn.
+--- candidate
+SECOND KNIGHT.
+
+### r98
+  HAMLET.
+Why, what of that? Hang him, Hieronimo!
+O, my credit hath left me hence,
+A boy of vauntage, and a carriage
+--- candidate
+To see how easily a majesty
+
+### r99
+  LEAR.
+Why, what’s that?
+LORD.
+Thou art a man, though thou art a man,
+And I will sleep, and let some cry to thee.
+--- candidate
+PROSPERO.

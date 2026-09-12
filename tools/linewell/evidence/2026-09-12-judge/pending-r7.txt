@@ -1,0 +1,159 @@
+
+### poem 4
+  ROMEO:
+Art thou me of all these fairy times,
+That this thyself have wronged me?
+She’s coming.
+OLIVIA.
+Ay, my lord.
+--- candidates
+4.0: OPHELIA.
+4.1: ROMEO.
+4.2: CLOWN.
+4.3: OLIVIA.
+
+### poem 5
+  ROMEO:
+How now, Signior Keeper's Mercury!
+Shepherd! And here’s my life.
+Come, gentlemen, this is true, away,
+And, for we know he is not, as I am,
+But yet you are dear: but I’ll tell you where
+--- candidates
+5.0: The chiefest gods be certain to me
+5.1: This trick is got.
+5.2: We are offended, and to you, by my boy.
+5.3: You will not lay out a counterfeit from,
+
+### poem 8
+  LEAR.
+Why, what’s that?
+LORD.
+Thou art a man, though thou art a man,
+And I will sleep, and let some cry to thee.
+My father, here’s thy father’s love,
+--- candidates
+8.0: And that thou hast but forgot to say of thee.
+8.1: And as thou art the ill hour I may.
+8.2: Though I could see thee while I live in thee.
+8.3: And even I am angry with thee.
+
+### poem 9
+  LEAR.
+But what say you to him?
+BASTARD.
+If I durst, it cannot be.
+I have much bondage to answer you.
+--- candidates
+9.0: PRINCE.
+9.1: Would you may teach him, and he carries well.
+9.2: HECTOR.
+9.3: CADE.
+
+### poem 10
+  LEAR.
+Here’s the priest of man.
+What is the matter of you, Curio?
+CURTIS.
+Nor I, by this place, I’ll see my name.
+This is the noninent’s maid; she’s a fool
+She’s a goddess. The cruelty of three,
+--- candidates
+10.0: Where five-boards?
+10.1: For ’tis as good as the air should seem a sight,
+10.2: Whom none but you can give the while.
+10.3: And whiles I stood o’erlike. Nurse, ’tis true.
+
+### poem 15
+  FOOL.
+Welcome, my lord. My name comes here in peace,
+So far by the loose stamp of mine shall turn.
+On that awful world but ten! There, I’ll wait
+One more my heart’s pompless beds; my dearest music,
+Which I shall hold, dearly, till I wound!
+To my poor soul be wither’d, yet I will prove.
+--- candidates
+15.0: SOOTHSAYER.
+15.1: I’ll to thy friend I’ll swear, I have a whip
+15.2: If little breath hath grown sovereign, for mine own.
+15.3: They that, whilst my little sword, the heart, women
+
+### poem 16
+  HAMLET.
+I was a woman.
+KING.
+We had been sent to make a soldier’s name,
+And that’s true. ’Tis a dream once a bed
+That last night’s counsel.
+--- candidates
+16.0: ARCHBISHOP.
+16.1: PISTOL.
+16.2: CAMBURLAINE.
+16.3: KING.
+
+### poem 17
+  HAMLET.
+Why, what of that? Hang him, Hieronimo!
+O, my credit hath left me hence,
+A boy of vauntage, and a carriage
+To see how easily a majesty
+Hath stay’d to dwell?
+--- candidates
+17.0: HASTINGS.
+17.1: LAERTES.
+17.2: HAMLET.
+17.3: BURGUNDY.
+
+### poem 18
+  HAMLET.
+Is this your business?
+KING.
+I am afeard of Clarence.
+What is this? What say you? Truly for this?
+Your Grace shall never see you in my sceptre.
+HAMLET.
+--- candidates
+18.0: Come on and turn you to the griefs of yours;
+18.1: Then let that lie to you. I’ll stabs you.
+18.2: ’Tis very good. I am the funeral, my boy.
+18.3: And so you will, my lord, will he treat us here.
+
+### poem 19
+  HAMLET.
+How now, my lord?
+Well said, I’ll sit down this high excellence.—Come, come,
+And let us make your hands away with us.
+The rest of your lordship are no great self
+But of this self-same villainous morris,
+And all our replies in my heart,
+--- candidates
+19.0: And find the King is wed in traitor’s sorrow,
+19.1: Tell me more sorrow for the rank of my love.
+19.2: Their figures else will title our swords
+19.3: And to this endless darkness and excuse.
+
+### poem 20
+  OPHELIA.
+Put you on my minion?
+Come, sirrah, let us die?
+HORATIO.
+I’ll not read it. I shall not hear it.
+--- candidates
+20.0: ANGELO.
+20.1: [_Exit Servant._]
+20.2: EMILIA.
+20.3: [_To Trinculo._] See, I pray you, go.
+
+### poem 22
+  OPHELIA.
+Sirrah, you are your father and your daughter.
+She had been too fond of you; therefore,
+I never did discover you were a madman.
+Though you had been the most ill, your fathers,
+Nothing of wretched custom, yet remain’d
+The people maids all o’erlook’d; and here
+--- candidates
+22.0: Have you not in her promise?
+22.1: Does you not have been so little strange,
+22.2: Will be so o’er-eighing bed, all as true as lustred
+22.3: He needs not strike. That you saw him gaze,

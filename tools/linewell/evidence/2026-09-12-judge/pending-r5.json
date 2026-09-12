@@ -1,0 +1,1378 @@
+[
+ {
+  "pid": 0,
+  "cid": 0,
+  "context": [
+   "  NURSE.",
+   "There is no way to aim: if thou think’st,",
+   "Why then, by this creation, thou art dead.",
+   "Yet sickly, I’ll tell thee so. Come, sit aside.",
+   "I’ll not be sick. ’Tis true for thee; but",
+   "If thou dar’st."
+  ],
+  "line": "MISTRESS QUICKLY.",
+  "nll": 1.358,
+  "round": 5
+ },
+ {
+  "pid": 0,
+  "cid": 1,
+  "context": [
+   "  NURSE.",
+   "There is no way to aim: if thou think’st,",
+   "Why then, by this creation, thou art dead.",
+   "Yet sickly, I’ll tell thee so. Come, sit aside.",
+   "I’ll not be sick. ’Tis true for thee; but",
+   "If thou dar’st."
+  ],
+  "line": "PROSPERO.",
+  "nll": 2.124,
+  "round": 5
+ },
+ {
+  "pid": 0,
+  "cid": 2,
+  "context": [
+   "  NURSE.",
+   "There is no way to aim: if thou think’st,",
+   "Why then, by this creation, thou art dead.",
+   "Yet sickly, I’ll tell thee so. Come, sit aside.",
+   "I’ll not be sick. ’Tis true for thee; but",
+   "If thou dar’st."
+  ],
+  "line": "CLOWN.",
+  "nll": 2.622,
+  "round": 5
+ },
+ {
+  "pid": 0,
+  "cid": 3,
+  "context": [
+   "  NURSE.",
+   "There is no way to aim: if thou think’st,",
+   "Why then, by this creation, thou art dead.",
+   "Yet sickly, I’ll tell thee so. Come, sit aside.",
+   "I’ll not be sick. ’Tis true for thee; but",
+   "If thou dar’st."
+  ],
+  "line": "[_Exit Claudio._]",
+  "nll": 2.018,
+  "round": 5
+ },
+ {
+  "pid": 1,
+  "cid": 0,
+  "context": [
+   "  NURSE.",
+   "My cousin Rutland is not bound to fight.",
+   "ROMEO.",
+   "My love is sick; and the wish is dead,",
+   "For, if I change thy cousin, I will give",
+   "A gallant sound and figures."
+  ],
+  "line": "ROMEO.",
+  "nll": 1.799,
+  "round": 5
+ },
+ {
+  "pid": 1,
+  "cid": 1,
+  "context": [
+   "  NURSE.",
+   "My cousin Rutland is not bound to fight.",
+   "ROMEO.",
+   "My love is sick; and the wish is dead,",
+   "For, if I change thy cousin, I will give",
+   "A gallant sound and figures."
+  ],
+  "line": "BRUTUS.",
+  "nll": 2.122,
+  "round": 5
+ },
+ {
+  "pid": 1,
+  "cid": 2,
+  "context": [
+   "  NURSE.",
+   "My cousin Rutland is not bound to fight.",
+   "ROMEO.",
+   "My love is sick; and the wish is dead,",
+   "For, if I change thy cousin, I will give",
+   "A gallant sound and figures."
+  ],
+  "line": "And, girl, though you bade me give you a merry mutiny,",
+  "nll": 2.36,
+  "round": 5
+ },
+ {
+  "pid": 1,
+  "cid": 3,
+  "context": [
+   "  NURSE.",
+   "My cousin Rutland is not bound to fight.",
+   "ROMEO.",
+   "My love is sick; and the wish is dead,",
+   "For, if I change thy cousin, I will give",
+   "A gallant sound and figures."
+  ],
+  "line": "ISABELLA.",
+  "nll": 2.324,
+  "round": 5
+ },
+ {
+  "pid": 2,
+  "cid": 0,
+  "context": [
+   "  NURSE.",
+   "Then take the empress; but in the emperor",
+   "Was he that gallow’d their fancy from his state",
+   "Stained from their spite. Sure that we would bear the world",
+   "And put in Edmund. Therefore, for our fathers,",
+   "Let me be shutted by their tune. O, let our eyes"
+  ],
+  "line": "That thou, and all my heart is grown alone!",
+  "nll": 2.822,
+  "round": 5
+ },
+ {
+  "pid": 2,
+  "cid": 1,
+  "context": [
+   "  NURSE.",
+   "Then take the empress; but in the emperor",
+   "Was he that gallow’d their fancy from his state",
+   "Stained from their spite. Sure that we would bear the world",
+   "And put in Edmund. Therefore, for our fathers,",
+   "Let me be shutted by their tune. O, let our eyes"
+  ],
+  "line": "Shaken in our full devotions on our revenge;",
+  "nll": 2.366,
+  "round": 5
+ },
+ {
+  "pid": 2,
+  "cid": 2,
+  "context": [
+   "  NURSE.",
+   "Then take the empress; but in the emperor",
+   "Was he that gallow’d their fancy from his state",
+   "Stained from their spite. Sure that we would bear the world",
+   "And put in Edmund. Therefore, for our fathers,",
+   "Let me be shutted by their tune. O, let our eyes"
+  ],
+  "line": "Upon the law and cursed revenge!",
+  "nll": 2.042,
+  "round": 5
+ },
+ {
+  "pid": 2,
+  "cid": 3,
+  "context": [
+   "  NURSE.",
+   "Then take the empress; but in the emperor",
+   "Was he that gallow’d their fancy from his state",
+   "Stained from their spite. Sure that we would bear the world",
+   "And put in Edmund. Therefore, for our fathers,",
+   "Let me be shutted by their tune. O, let our eyes"
+  ],
+  "line": "Fall down to draw yourself. Sweet Nurse, for so much be griev’d,",
+  "nll": 2.345,
+  "round": 5
+ },
+ {
+  "pid": 3,
+  "cid": 0,
+  "context": [
+   "  NURSE.",
+   "You, sir?",
+   "MARIA.",
+   "And now, by my life, what’s your worship?",
+   "Go to, gentlemen.",
+   "CLOWN."
+  ],
+  "line": "So, Maria.",
+  "nll": 2.182,
+  "round": 5
+ },
+ {
+  "pid": 3,
+  "cid": 1,
+  "context": [
+   "  NURSE.",
+   "You, sir?",
+   "MARIA.",
+   "And now, by my life, what’s your worship?",
+   "Go to, gentlemen.",
+   "CLOWN."
+  ],
+  "line": "And my Lord Marian, sir, as much as I think, sir, is mine apt",
+  "nll": 2.566,
+  "round": 5
+ },
+ {
+  "pid": 3,
+  "cid": 2,
+  "context": [
+   "  NURSE.",
+   "You, sir?",
+   "MARIA.",
+   "And now, by my life, what’s your worship?",
+   "Go to, gentlemen.",
+   "CLOWN."
+  ],
+  "line": "It was, sir; the lady’s a piece of you.",
+  "nll": 2.104,
+  "round": 5
+ },
+ {
+  "pid": 3,
+  "cid": 3,
+  "context": [
+   "  NURSE.",
+   "You, sir?",
+   "MARIA.",
+   "And now, by my life, what’s your worship?",
+   "Go to, gentlemen.",
+   "CLOWN."
+  ],
+  "line": "You’re bitter to your worships.",
+  "nll": 1.919,
+  "round": 5
+ },
+ {
+  "pid": 4,
+  "cid": 0,
+  "context": [
+   "  ROMEO:",
+   "Art thou me of all these fairy times,",
+   "That this thyself have wronged me?",
+   "She’s coming.",
+   "OLIVIA."
+  ],
+  "line": "I will. It is an earth, I think I will.",
+  "nll": 2.421,
+  "round": 5
+ },
+ {
+  "pid": 4,
+  "cid": 1,
+  "context": [
+   "  ROMEO:",
+   "Art thou me of all these fairy times,",
+   "That this thyself have wronged me?",
+   "She’s coming.",
+   "OLIVIA."
+  ],
+  "line": "Faith, she has myself.",
+  "nll": 2.074,
+  "round": 5
+ },
+ {
+  "pid": 4,
+  "cid": 2,
+  "context": [
+   "  ROMEO:",
+   "Art thou me of all these fairy times,",
+   "That this thyself have wronged me?",
+   "She’s coming.",
+   "OLIVIA."
+  ],
+  "line": "Ay, my lord.",
+  "nll": 1.065,
+  "round": 5
+ },
+ {
+  "pid": 4,
+  "cid": 3,
+  "context": [
+   "  ROMEO:",
+   "Art thou me of all these fairy times,",
+   "That this thyself have wronged me?",
+   "She’s coming.",
+   "OLIVIA."
+  ],
+  "line": "Nor I.",
+  "nll": 1.686,
+  "round": 5
+ },
+ {
+  "pid": 5,
+  "cid": 0,
+  "context": [
+   "  ROMEO:",
+   "How now, Signior Keeper's Mercury!",
+   "Shepherd! And here’s my life.",
+   "Come, gentlemen, this is true, away,"
+  ],
+  "line": "They say I love and my will to you.",
+  "nll": 2.85,
+  "round": 5
+ },
+ {
+  "pid": 5,
+  "cid": 1,
+  "context": [
+   "  ROMEO:",
+   "How now, Signior Keeper's Mercury!",
+   "Shepherd! And here’s my life.",
+   "Come, gentlemen, this is true, away,"
+  ],
+  "line": "Sir Percy, I must be taken with thee,",
+  "nll": 2.11,
+  "round": 5
+ },
+ {
+  "pid": 5,
+  "cid": 2,
+  "context": [
+   "  ROMEO:",
+   "How now, Signior Keeper's Mercury!",
+   "Shepherd! And here’s my life.",
+   "Come, gentlemen, this is true, away,"
+  ],
+  "line": "And, for we know he is not, as I am,",
+  "nll": 2.664,
+  "round": 5
+ },
+ {
+  "pid": 5,
+  "cid": 3,
+  "context": [
+   "  ROMEO:",
+   "How now, Signior Keeper's Mercury!",
+   "Shepherd! And here’s my life.",
+   "Come, gentlemen, this is true, away,"
+  ],
+  "line": "And take away your hand.",
+  "nll": 2.181,
+  "round": 5
+ },
+ {
+  "pid": 6,
+  "cid": 0,
+  "context": [
+   "  ROMEO:",
+   "Carry a room in his horn: but what shall we do?",
+   "DUKE.",
+   "O, because an Egyptian liquor!",
+   "Why should I come in breath in praise?",
+   "No other but my purse, I fear, nor further."
+  ],
+  "line": "Or I am sorry that my father did travel,",
+  "nll": 2.097,
+  "round": 5
+ },
+ {
+  "pid": 6,
+  "cid": 1,
+  "context": [
+   "  ROMEO:",
+   "Carry a room in his horn: but what shall we do?",
+   "DUKE.",
+   "O, because an Egyptian liquor!",
+   "Why should I come in breath in praise?",
+   "No other but my purse, I fear, nor further."
+  ],
+  "line": "BANQUO.",
+  "nll": 2.787,
+  "round": 5
+ },
+ {
+  "pid": 6,
+  "cid": 2,
+  "context": [
+   "  ROMEO:",
+   "Carry a room in his horn: but what shall we do?",
+   "DUKE.",
+   "O, because an Egyptian liquor!",
+   "Why should I come in breath in praise?",
+   "No other but my purse, I fear, nor further."
+  ],
+  "line": "ORLANDO.",
+  "nll": 2.117,
+  "round": 5
+ },
+ {
+  "pid": 6,
+  "cid": 3,
+  "context": [
+   "  ROMEO:",
+   "Carry a room in his horn: but what shall we do?",
+   "DUKE.",
+   "O, because an Egyptian liquor!",
+   "Why should I come in breath in praise?",
+   "No other but my purse, I fear, nor further."
+  ],
+  "line": "Make it not to be your wife to laugh.",
+  "nll": 2.509,
+  "round": 5
+ },
+ {
+  "pid": 7,
+  "cid": 0,
+  "context": [
+   "  ROMEO:",
+   "And every man doth distract his love",
+   "Upon whose crown and earth shall be my love.",
+   "A plague on thee on thine honour, yet",
+   "Thou, that dares me not! O, thou art a pardon,",
+   "That will inhabate thy resolution"
+  ],
+  "line": "Upon whose sight is nothing lengthened,",
+  "nll": 1.805,
+  "round": 5
+ },
+ {
+  "pid": 7,
+  "cid": 1,
+  "context": [
+   "  ROMEO:",
+   "And every man doth distract his love",
+   "Upon whose crown and earth shall be my love.",
+   "A plague on thee on thine honour, yet",
+   "Thou, that dares me not! O, thou art a pardon,",
+   "That will inhabate thy resolution"
+  ],
+  "line": "Until I shoot. Therefore, boy. What I have? Hear",
+  "nll": 2.687,
+  "round": 5
+ },
+ {
+  "pid": 7,
+  "cid": 2,
+  "context": [
+   "  ROMEO:",
+   "And every man doth distract his love",
+   "Upon whose crown and earth shall be my love.",
+   "A plague on thee on thine honour, yet",
+   "Thou, that dares me not! O, thou art a pardon,",
+   "That will inhabate thy resolution"
+  ],
+  "line": "Partly on the bitterness of this flood.",
+  "nll": 2.395,
+  "round": 5
+ },
+ {
+  "pid": 7,
+  "cid": 3,
+  "context": [
+   "  ROMEO:",
+   "And every man doth distract his love",
+   "Upon whose crown and earth shall be my love.",
+   "A plague on thee on thine honour, yet",
+   "Thou, that dares me not! O, thou art a pardon,",
+   "That will inhabate thy resolution"
+  ],
+  "line": "To thee and thy love! My vain shall not love,",
+  "nll": 3.114,
+  "round": 5
+ },
+ {
+  "pid": 8,
+  "cid": 0,
+  "context": [
+   "  LEAR.",
+   "Why, what’s that?",
+   "LORD.",
+   "Thou art a man, though thou art a man,",
+   "And I will sleep, and let some cry to thee."
+  ],
+  "line": "[_Exit_ GEORGE.]",
+  "nll": 1.651,
+  "round": 5
+ },
+ {
+  "pid": 8,
+  "cid": 1,
+  "context": [
+   "  LEAR.",
+   "Why, what’s that?",
+   "LORD.",
+   "Thou art a man, though thou art a man,",
+   "And I will sleep, and let some cry to thee."
+  ],
+  "line": "LADY MACBETH.",
+  "nll": 1.162,
+  "round": 5
+ },
+ {
+  "pid": 8,
+  "cid": 2,
+  "context": [
+   "  LEAR.",
+   "Why, what’s that?",
+   "LORD.",
+   "Thou art a man, though thou art a man,",
+   "And I will sleep, and let some cry to thee."
+  ],
+  "line": "HECTOR.",
+  "nll": 1.844,
+  "round": 5
+ },
+ {
+  "pid": 8,
+  "cid": 3,
+  "context": [
+   "  LEAR.",
+   "Why, what’s that?",
+   "LORD.",
+   "Thou art a man, though thou art a man,",
+   "And I will sleep, and let some cry to thee."
+  ],
+  "line": "FIRST LORD.",
+  "nll": 1.935,
+  "round": 5
+ },
+ {
+  "pid": 9,
+  "cid": 0,
+  "context": [
+   "  LEAR.",
+   "But what say you to him?",
+   "BASTARD.",
+   "If I durst, it cannot be."
+  ],
+  "line": "HAMLET.",
+  "nll": 1.969,
+  "round": 5
+ },
+ {
+  "pid": 9,
+  "cid": 1,
+  "context": [
+   "  LEAR.",
+   "But what say you to him?",
+   "BASTARD.",
+   "If I durst, it cannot be."
+  ],
+  "line": "BARDOLPH.",
+  "nll": 2.073,
+  "round": 5
+ },
+ {
+  "pid": 9,
+  "cid": 2,
+  "context": [
+   "  LEAR.",
+   "But what say you to him?",
+   "BASTARD.",
+   "If I durst, it cannot be."
+  ],
+  "line": "I have much bondage to answer you.",
+  "nll": 2.21,
+  "round": 5
+ },
+ {
+  "pid": 9,
+  "cid": 3,
+  "context": [
+   "  LEAR.",
+   "But what say you to him?",
+   "BASTARD.",
+   "If I durst, it cannot be."
+  ],
+  "line": "BASTARD.",
+  "nll": 1.777,
+  "round": 5
+ },
+ {
+  "pid": 10,
+  "cid": 0,
+  "context": [
+   "  LEAR.",
+   "Here’s the priest of man.",
+   "What is the matter of you, Curio?",
+   "CURTIS.",
+   "Nor I, by this place, I’ll see my name."
+  ],
+  "line": "CAMILLO.",
+  "nll": 2.493,
+  "round": 5
+ },
+ {
+  "pid": 10,
+  "cid": 1,
+  "context": [
+   "  LEAR.",
+   "Here’s the priest of man.",
+   "What is the matter of you, Curio?",
+   "CURTIS.",
+   "Nor I, by this place, I’ll see my name."
+  ],
+  "line": "This is the noninent’s maid; she’s a fool",
+  "nll": 2.65,
+  "round": 5
+ },
+ {
+  "pid": 10,
+  "cid": 2,
+  "context": [
+   "  LEAR.",
+   "Here’s the priest of man.",
+   "What is the matter of you, Curio?",
+   "CURTIS.",
+   "Nor I, by this place, I’ll see my name."
+  ],
+  "line": "DUKE SENIOR.",
+  "nll": 1.458,
+  "round": 5
+ },
+ {
+  "pid": 10,
+  "cid": 3,
+  "context": [
+   "  LEAR.",
+   "Here’s the priest of man.",
+   "What is the matter of you, Curio?",
+   "CURTIS.",
+   "Nor I, by this place, I’ll see my name."
+  ],
+  "line": "CROMWELL.",
+  "nll": 1.955,
+  "round": 5
+ },
+ {
+  "pid": 11,
+  "cid": 0,
+  "context": [
+   "  LEAR.",
+   "In base confirmations, brief brightness.",
+   "Why hast thou been a dungeon in the world?",
+   "Why hast thou lost thyself?",
+   "GLOUCESTER.",
+   "I would have lost thy name so sleep a sleep,"
+  ],
+  "line": "Thou didst strike in thee a carbuncled wood.",
+  "nll": 2.428,
+  "round": 5
+ },
+ {
+  "pid": 11,
+  "cid": 1,
+  "context": [
+   "  LEAR.",
+   "In base confirmations, brief brightness.",
+   "Why hast thou been a dungeon in the world?",
+   "Why hast thou lost thyself?",
+   "GLOUCESTER.",
+   "I would have lost thy name so sleep a sleep,"
+  ],
+  "line": "O, that I may take thy duffedom to me",
+  "nll": 3.2,
+  "round": 5
+ },
+ {
+  "pid": 11,
+  "cid": 2,
+  "context": [
+   "  LEAR.",
+   "In base confirmations, brief brightness.",
+   "Why hast thou been a dungeon in the world?",
+   "Why hast thou lost thyself?",
+   "GLOUCESTER.",
+   "I would have lost thy name so sleep a sleep,"
+  ],
+  "line": "That I have sent from thee to thy death",
+  "nll": 2.638,
+  "round": 5
+ },
+ {
+  "pid": 11,
+  "cid": 3,
+  "context": [
+   "  LEAR.",
+   "In base confirmations, brief brightness.",
+   "Why hast thou been a dungeon in the world?",
+   "Why hast thou lost thyself?",
+   "GLOUCESTER.",
+   "I would have lost thy name so sleep a sleep,"
+  ],
+  "line": "His name’s mother’s love in the earth.",
+  "nll": 2.326,
+  "round": 5
+ },
+ {
+  "pid": 12,
+  "cid": 0,
+  "context": [
+   "  FOOL.",
+   "Most gracious, my lord, that I would laugh to see you.",
+   "I chide you of your lord’s cheeks, my lord.",
+   "PRINCE.",
+   "I pray you, for yourself, if you be a lady.",
+   "FOOL."
+  ],
+  "line": "I am a muzzled with a fellow, and I pray you.",
+  "nll": 1.872,
+  "round": 5
+ },
+ {
+  "pid": 12,
+  "cid": 1,
+  "context": [
+   "  FOOL.",
+   "Most gracious, my lord, that I would laugh to see you.",
+   "I chide you of your lord’s cheeks, my lord.",
+   "PRINCE.",
+   "I pray you, for yourself, if you be a lady.",
+   "FOOL."
+  ],
+  "line": "I’ll bring you to your Majesty’s fellow.",
+  "nll": 1.243,
+  "round": 5
+ },
+ {
+  "pid": 12,
+  "cid": 2,
+  "context": [
+   "  FOOL.",
+   "Most gracious, my lord, that I would laugh to see you.",
+   "I chide you of your lord’s cheeks, my lord.",
+   "PRINCE.",
+   "I pray you, for yourself, if you be a lady.",
+   "FOOL."
+  ],
+  "line": "What are you, Master Barnardine?",
+  "nll": 1.511,
+  "round": 5
+ },
+ {
+  "pid": 12,
+  "cid": 3,
+  "context": [
+   "  FOOL.",
+   "Most gracious, my lord, that I would laugh to see you.",
+   "I chide you of your lord’s cheeks, my lord.",
+   "PRINCE.",
+   "I pray you, for yourself, if you be a lady.",
+   "FOOL."
+  ],
+  "line": "I have it your message, the senate’s a goodly maid.",
+  "nll": 2.436,
+  "round": 5
+ },
+ {
+  "pid": 13,
+  "cid": 0,
+  "context": [
+   "  FOOL.",
+   "O, see, that’s a man’s man.",
+   "CLOWN.",
+   "Good Bardolph, sirrah, dost thou know me?",
+   "BARDOLPH.",
+   "Come, sir, I’ll go back."
+  ],
+  "line": "MISTRESS PAGE.",
+  "nll": 1.303,
+  "round": 5
+ },
+ {
+  "pid": 13,
+  "cid": 1,
+  "context": [
+   "  FOOL.",
+   "O, see, that’s a man’s man.",
+   "CLOWN.",
+   "Good Bardolph, sirrah, dost thou know me?",
+   "BARDOLPH.",
+   "Come, sir, I’ll go back."
+  ],
+  "line": "SHALLOW.",
+  "nll": 1.954,
+  "round": 5
+ },
+ {
+  "pid": 13,
+  "cid": 2,
+  "context": [
+   "  FOOL.",
+   "O, see, that’s a man’s man.",
+   "CLOWN.",
+   "Good Bardolph, sirrah, dost thou know me?",
+   "BARDOLPH.",
+   "Come, sir, I’ll go back."
+  ],
+  "line": "[_Exeunt._]",
+  "nll": 2.394,
+  "round": 5
+ },
+ {
+  "pid": 13,
+  "cid": 3,
+  "context": [
+   "  FOOL.",
+   "O, see, that’s a man’s man.",
+   "CLOWN.",
+   "Good Bardolph, sirrah, dost thou know me?",
+   "BARDOLPH.",
+   "Come, sir, I’ll go back."
+  ],
+  "line": "FORD.",
+  "nll": 2.288,
+  "round": 5
+ },
+ {
+  "pid": 14,
+  "cid": 0,
+  "context": [
+   "  FOOL.",
+   "Good master, do you bid me home with the house?",
+   "PAGE.",
+   "Where are my duck?",
+   "FOOL.",
+   "His garter; and here are two devils."
+  ],
+  "line": "FOOL.",
+  "nll": 2.276,
+  "round": 5
+ },
+ {
+  "pid": 14,
+  "cid": 1,
+  "context": [
+   "  FOOL.",
+   "Good master, do you bid me home with the house?",
+   "PAGE.",
+   "Where are my duck?",
+   "FOOL.",
+   "His garter; and here are two devils."
+  ],
+  "line": "SHALLOW.",
+  "nll": 1.912,
+  "round": 5
+ },
+ {
+  "pid": 14,
+  "cid": 2,
+  "context": [
+   "  FOOL.",
+   "Good master, do you bid me home with the house?",
+   "PAGE.",
+   "Where are my duck?",
+   "FOOL.",
+   "His garter; and here are two devils."
+  ],
+  "line": "FALSTAFF.",
+  "nll": 1.777,
+  "round": 5
+ },
+ {
+  "pid": 14,
+  "cid": 3,
+  "context": [
+   "  FOOL.",
+   "Good master, do you bid me home with the house?",
+   "PAGE.",
+   "Where are my duck?",
+   "FOOL.",
+   "His garter; and here are two devils."
+  ],
+  "line": "COOL.",
+  "nll": 3.618,
+  "round": 5
+ },
+ {
+  "pid": 15,
+  "cid": 0,
+  "context": [
+   "  FOOL.",
+   "Welcome, my lord. My name comes here in peace,",
+   "So far by the loose stamp of mine shall turn.",
+   "On that awful world but ten! There, I’ll wait",
+   "One more my heart’s pompless beds; my dearest music,"
+  ],
+  "line": "Which I shall hold, dearly, till I wound!",
+  "nll": 2.767,
+  "round": 5
+ },
+ {
+  "pid": 15,
+  "cid": 1,
+  "context": [
+   "  FOOL.",
+   "Welcome, my lord. My name comes here in peace,",
+   "So far by the loose stamp of mine shall turn.",
+   "On that awful world but ten! There, I’ll wait",
+   "One more my heart’s pompless beds; my dearest music,"
+  ],
+  "line": "My sovereign diet, carried my heart with moiety",
+  "nll": 2.441,
+  "round": 5
+ },
+ {
+  "pid": 15,
+  "cid": 2,
+  "context": [
+   "  FOOL.",
+   "Welcome, my lord. My name comes here in peace,",
+   "So far by the loose stamp of mine shall turn.",
+   "On that awful world but ten! There, I’ll wait",
+   "One more my heart’s pompless beds; my dearest music,"
+  ],
+  "line": "Dear wisdom, blessed message than my soul",
+  "nll": 2.422,
+  "round": 5
+ },
+ {
+  "pid": 15,
+  "cid": 3,
+  "context": [
+   "  FOOL.",
+   "Welcome, my lord. My name comes here in peace,",
+   "So far by the loose stamp of mine shall turn.",
+   "On that awful world but ten! There, I’ll wait",
+   "One more my heart’s pompless beds; my dearest music,"
+  ],
+  "line": "Thief, my eternal and virtue’s blood,",
+  "nll": 2.012,
+  "round": 5
+ },
+ {
+  "pid": 16,
+  "cid": 0,
+  "context": [
+   "  HAMLET.",
+   "I was a woman.",
+   "KING.",
+   "We had been sent to make a soldier’s name,"
+  ],
+  "line": "And that’s true. ’Tis a dream once a bed",
+  "nll": 2.428,
+  "round": 5
+ },
+ {
+  "pid": 16,
+  "cid": 1,
+  "context": [
+   "  HAMLET.",
+   "I was a woman.",
+   "KING.",
+   "We had been sent to make a soldier’s name,"
+  ],
+  "line": "It were his wife.",
+  "nll": 2.596,
+  "round": 5
+ },
+ {
+  "pid": 16,
+  "cid": 2,
+  "context": [
+   "  HAMLET.",
+   "I was a woman.",
+   "KING.",
+   "We had been sent to make a soldier’s name,"
+  ],
+  "line": "And in that same happy manner of the world.",
+  "nll": 1.775,
+  "round": 5
+ },
+ {
+  "pid": 16,
+  "cid": 3,
+  "context": [
+   "  HAMLET.",
+   "I was a woman.",
+   "KING.",
+   "We had been sent to make a soldier’s name,"
+  ],
+  "line": "And I am sick of value to the cause.",
+  "nll": 2.089,
+  "round": 5
+ },
+ {
+  "pid": 17,
+  "cid": 0,
+  "context": [
+   "  HAMLET.",
+   "Why, what of that? Hang him, Hieronimo!",
+   "O, my credit hath left me hence,",
+   "A boy of vauntage, and a carriage",
+   "To see how easily a majesty",
+   "Hath stay’d to dwell?"
+  ],
+  "line": "HELENA.",
+  "nll": 2.538,
+  "round": 5
+ },
+ {
+  "pid": 17,
+  "cid": 1,
+  "context": [
+   "  HAMLET.",
+   "Why, what of that? Hang him, Hieronimo!",
+   "O, my credit hath left me hence,",
+   "A boy of vauntage, and a carriage",
+   "To see how easily a majesty",
+   "Hath stay’d to dwell?"
+  ],
+  "line": "HOSTESS.",
+  "nll": 2.574,
+  "round": 5
+ },
+ {
+  "pid": 17,
+  "cid": 2,
+  "context": [
+   "  HAMLET.",
+   "Why, what of that? Hang him, Hieronimo!",
+   "O, my credit hath left me hence,",
+   "A boy of vauntage, and a carriage",
+   "To see how easily a majesty",
+   "Hath stay’d to dwell?"
+  ],
+  "line": "HOTSPUR.",
+  "nll": 1.806,
+  "round": 5
+ },
+ {
+  "pid": 17,
+  "cid": 3,
+  "context": [
+   "  HAMLET.",
+   "Why, what of that? Hang him, Hieronimo!",
+   "O, my credit hath left me hence,",
+   "A boy of vauntage, and a carriage",
+   "To see how easily a majesty",
+   "Hath stay’d to dwell?"
+  ],
+  "line": "_Hans._                      Do you hear?",
+  "nll": 1.709,
+  "round": 5
+ },
+ {
+  "pid": 18,
+  "cid": 0,
+  "context": [
+   "  HAMLET.",
+   "Is this your business?",
+   "KING.",
+   "I am afeard of Clarence.",
+   "What is this? What say you? Truly for this?"
+  ],
+  "line": "It is well becomes it is an hour",
+  "nll": 2.512,
+  "round": 5
+ },
+ {
+  "pid": 18,
+  "cid": 1,
+  "context": [
+   "  HAMLET.",
+   "Is this your business?",
+   "KING.",
+   "I am afeard of Clarence.",
+   "What is this? What say you? Truly for this?"
+  ],
+  "line": "Your Grace shall never see you in my sceptre.",
+  "nll": 2.161,
+  "round": 5
+ },
+ {
+  "pid": 18,
+  "cid": 2,
+  "context": [
+   "  HAMLET.",
+   "Is this your business?",
+   "KING.",
+   "I am afeard of Clarence.",
+   "What is this? What say you? Truly for this?"
+  ],
+  "line": "KING.",
+  "nll": 3.961,
+  "round": 5
+ },
+ {
+  "pid": 18,
+  "cid": 3,
+  "context": [
+   "  HAMLET.",
+   "Is this your business?",
+   "KING.",
+   "I am afeard of Clarence.",
+   "What is this? What say you? Truly for this?"
+  ],
+  "line": "LOUIS.",
+  "nll": 2.344,
+  "round": 5
+ },
+ {
+  "pid": 19,
+  "cid": 0,
+  "context": [
+   "  HAMLET.",
+   "How now, my lord?",
+   "Well said, I’ll sit down this high excellence.—Come, come,",
+   "And let us make your hands away with us.",
+   "The rest of your lordship are no great self"
+  ],
+  "line": "But of this self-same villainous morris,",
+  "nll": 2.264,
+  "round": 5
+ },
+ {
+  "pid": 19,
+  "cid": 1,
+  "context": [
+   "  HAMLET.",
+   "How now, my lord?",
+   "Well said, I’ll sit down this high excellence.—Come, come,",
+   "And let us make your hands away with us.",
+   "The rest of your lordship are no great self"
+  ],
+  "line": "Than what he wrings and your crowns. Be it giant",
+  "nll": 2.868,
+  "round": 5
+ },
+ {
+  "pid": 19,
+  "cid": 2,
+  "context": [
+   "  HAMLET.",
+   "How now, my lord?",
+   "Well said, I’ll sit down this high excellence.—Come, come,",
+   "And let us make your hands away with us.",
+   "The rest of your lordship are no great self"
+  ],
+  "line": "Ere you shall seek tomorrow.—Let me be",
+  "nll": 2.162,
+  "round": 5
+ },
+ {
+  "pid": 19,
+  "cid": 3,
+  "context": [
+   "  HAMLET.",
+   "How now, my lord?",
+   "Well said, I’ll sit down this high excellence.—Come, come,",
+   "And let us make your hands away with us.",
+   "The rest of your lordship are no great self"
+  ],
+  "line": "Than wives, with store, and swaying. I’ll choose",
+  "nll": 2.325,
+  "round": 5
+ },
+ {
+  "pid": 20,
+  "cid": 0,
+  "context": [
+   "  OPHELIA.",
+   "Put you on my minion?",
+   "Come, sirrah, let us die?"
+  ],
+  "line": "HORATIO.",
+  "nll": 2.424,
+  "round": 5
+ },
+ {
+  "pid": 20,
+  "cid": 1,
+  "context": [
+   "  OPHELIA.",
+   "Put you on my minion?",
+   "Come, sirrah, let us die?"
+  ],
+  "line": "PROVOST.",
+  "nll": 2.113,
+  "round": 5
+ },
+ {
+  "pid": 20,
+  "cid": 2,
+  "context": [
+   "  OPHELIA.",
+   "Put you on my minion?",
+   "Come, sirrah, let us die?"
+  ],
+  "line": "VALENTINE.",
+  "nll": 2.108,
+  "round": 5
+ },
+ {
+  "pid": 20,
+  "cid": 3,
+  "context": [
+   "  OPHELIA.",
+   "Put you on my minion?",
+   "Come, sirrah, let us die?"
+  ],
+  "line": "PATROCLUS.",
+  "nll": 1.983,
+  "round": 5
+ },
+ {
+  "pid": 21,
+  "cid": 0,
+  "context": [
+   "  OPHELIA.",
+   "Didst thou hear?",
+   "ARIEL.",
+   "Ay, that the devil has made a monster.",
+   "PROSPERO.",
+   "Where is he?"
+  ],
+  "line": "ARIEL.",
+  "nll": 2.494,
+  "round": 5
+ },
+ {
+  "pid": 21,
+  "cid": 1,
+  "context": [
+   "  OPHELIA.",
+   "Didst thou hear?",
+   "ARIEL.",
+   "Ay, that the devil has made a monster.",
+   "PROSPERO.",
+   "Where is he?"
+  ],
+  "line": "DUKE.",
+  "nll": 2.518,
+  "round": 5
+ },
+ {
+  "pid": 21,
+  "cid": 2,
+  "context": [
+   "  OPHELIA.",
+   "Didst thou hear?",
+   "ARIEL.",
+   "Ay, that the devil has made a monster.",
+   "PROSPERO.",
+   "Where is he?"
+  ],
+  "line": "HORTENSIO.",
+  "nll": 1.977,
+  "round": 5
+ },
+ {
+  "pid": 21,
+  "cid": 3,
+  "context": [
+   "  OPHELIA.",
+   "Didst thou hear?",
+   "ARIEL.",
+   "Ay, that the devil has made a monster.",
+   "PROSPERO.",
+   "Where is he?"
+  ],
+  "line": "ISABELLA.",
+  "nll": 2.365,
+  "round": 5
+ },
+ {
+  "pid": 22,
+  "cid": 0,
+  "context": [
+   "  OPHELIA.",
+   "Sirrah, you are your father and your daughter.",
+   "She had been too fond of you; therefore,",
+   "I never did discover you were a madman.",
+   "Though you had been the most ill, your fathers,"
+  ],
+  "line": "Nothing of wretched custom, yet remain’d",
+  "nll": 2.398,
+  "round": 5
+ },
+ {
+  "pid": 22,
+  "cid": 1,
+  "context": [
+   "  OPHELIA.",
+   "Sirrah, you are your father and your daughter.",
+   "She had been too fond of you; therefore,",
+   "I never did discover you were a madman.",
+   "Though you had been the most ill, your fathers,"
+  ],
+  "line": "To come, my lords; and, to age itself should",
+  "nll": 3.215,
+  "round": 5
+ },
+ {
+  "pid": 22,
+  "cid": 2,
+  "context": [
+   "  OPHELIA.",
+   "Sirrah, you are your father and your daughter.",
+   "She had been too fond of you; therefore,",
+   "I never did discover you were a madman.",
+   "Though you had been the most ill, your fathers,"
+  ],
+  "line": "I’ th’ age be not of you a bondman.",
+  "nll": 2.958,
+  "round": 5
+ },
+ {
+  "pid": 22,
+  "cid": 3,
+  "context": [
+   "  OPHELIA.",
+   "Sirrah, you are your father and your daughter.",
+   "She had been too fond of you; therefore,",
+   "I never did discover you were a madman.",
+   "Though you had been the most ill, your fathers,"
+  ],
+  "line": "And with your eyes, and your goods, and sentence,",
+  "nll": 2.511,
+  "round": 5
+ },
+ {
+  "pid": 23,
+  "cid": 0,
+  "context": [
+   "  OPHELIA.",
+   "Come, fire, cut thy gardeners to me.",
+   "How say you to my hope? Fare ye well.",
+   "Is not thy father a man?—Wilt thou be married?",
+   "JULIA.",
+   "Why, he were not the matter, my lord."
+  ],
+  "line": "DUKE.",
+  "nll": 2.268,
+  "round": 5
+ },
+ {
+  "pid": 23,
+  "cid": 1,
+  "context": [
+   "  OPHELIA.",
+   "Come, fire, cut thy gardeners to me.",
+   "How say you to my hope? Fare ye well.",
+   "Is not thy father a man?—Wilt thou be married?",
+   "JULIA.",
+   "Why, he were not the matter, my lord."
+  ],
+  "line": "CYMBELINE.",
+  "nll": 1.794,
+  "round": 5
+ },
+ {
+  "pid": 23,
+  "cid": 2,
+  "context": [
+   "  OPHELIA.",
+   "Come, fire, cut thy gardeners to me.",
+   "How say you to my hope? Fare ye well.",
+   "Is not thy father a man?—Wilt thou be married?",
+   "JULIA.",
+   "Why, he were not the matter, my lord."
+  ],
+  "line": "TRANIO.",
+  "nll": 2.58,
+  "round": 5
+ },
+ {
+  "pid": 23,
+  "cid": 3,
+  "context": [
+   "  OPHELIA.",
+   "Come, fire, cut thy gardeners to me.",
+   "How say you to my hope? Fare ye well.",
+   "Is not thy father a man?—Wilt thou be married?",
+   "JULIA.",
+   "Why, he were not the matter, my lord."
+  ],
+  "line": "IACHIMO.",
+  "nll": 2.217,
+  "round": 5
+ }
+]

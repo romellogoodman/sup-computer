@@ -1,0 +1,1505 @@
+{
+ "lines": 8,
+ "poems": [
+  {
+   "id": 0,
+   "start": "  NURSE.",
+   "temperature": 0.8,
+   "rep": 0,
+   "poem": [
+    "  NURSE.",
+    "SIR ANDREW.",
+    "Here comes Ophelia.",
+    "NURSE.",
+    "What, will you hear?"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 1,
+   "start": "  NURSE.",
+   "temperature": 0.8,
+   "rep": 1,
+   "poem": [
+    "  NURSE.",
+    "Now, Marcus, the Lord Mayor, to the King.",
+    "[_Exeunt._]",
+    "MARCUS.",
+    "Camillo, Saturninus, Isabella,",
+    "Speaking to the Palace and his Duchess.",
+    "KING LEWIS.",
+    "Away, be called for France! Come, come, boy."
+   ],
+   "done": true,
+   "round": 7
+  },
+  {
+   "id": 2,
+   "start": "  NURSE.",
+   "temperature": 0.8,
+   "rep": 2,
+   "poem": [
+    "  NURSE.",
+    "SLENDER.",
+    "Come, give me leave to thee a word.",
+    "[_Exeunt._]",
+    "SCENE V. London. A Room in the Warwick.",
+    "Enter Protector, Clifford, with others and other Attendants.",
+    "PRINCE."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 3,
+   "start": "  NURSE.",
+   "temperature": 0.8,
+   "rep": 3,
+   "poem": [
+    "  NURSE.",
+    "Caesar, for my sake, I can tell thee of my will.",
+    "CAESAR.",
+    "We shall, mother, be stooped, and stay thyself.",
+    "TITUS."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 4,
+   "start": "  NURSE.",
+   "temperature": 0.9,
+   "rep": 0,
+   "poem": [
+    "  NURSE.",
+    "BENVOLIO.",
+    "Come, I’ll be quit indeed.",
+    "CORIN.",
+    "Prithee, good Corporal Benedick.",
+    "DUKE."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 5,
+   "start": "  NURSE.",
+   "temperature": 0.9,
+   "rep": 1,
+   "poem": [
+    "  NURSE.",
+    "If thou be’st so.",
+    "CETER.",
+    "Nay, it seems as ’tis thought, and is not so,",
+    "Yet I must cast off this fatal thief."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 6,
+   "start": "  NURSE.",
+   "temperature": 0.9,
+   "rep": 2,
+   "poem": [
+    "  NURSE.",
+    "Come, come away!",
+    "RUTLAND.",
+    "You say this is your own estate;",
+    "You shall be pleased with a king.",
+    "PRINCE.",
+    "Why, it is not well."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 7,
+   "start": "  NURSE.",
+   "temperature": 0.9,
+   "rep": 3,
+   "poem": [
+    "  NURSE.",
+    "DUKE.",
+    "He’s dead, my lord.",
+    "TROILUS.",
+    "Who would haply heard he do not, for his feat"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 8,
+   "start": "  NURSE.",
+   "temperature": 1.0,
+   "rep": 0,
+   "poem": [
+    "  NURSE.",
+    "JULIET.",
+    "Farewell, we will wear the cap’s tail.",
+    "I’ll be sworn he will receive it here,",
+    "And yet I shall proceed. Blessing this trick.",
+    "I’ll bring thee to thy bed with my heart.",
+    "PRINCE."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 9,
+   "start": "  NURSE.",
+   "temperature": 1.0,
+   "rep": 1,
+   "poem": [
+    "  NURSE.",
+    "Good Carter, go to the Capulet.",
+    "CASSIO.",
+    "But come, my friends, for your friends, and you,",
+    "Great Antonio, to the Capulet’s wife!"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 10,
+   "start": "  NURSE.",
+   "temperature": 1.0,
+   "rep": 2,
+   "poem": [
+    "  NURSE.",
+    "The matter is, and it be so little sorrow,",
+    "And so the nature of our prize itself.",
+    "Revives issue of his dear love that youth",
+    "Was not so far as high as in you a figure,",
+    "That to his labour and his heart he flew."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 11,
+   "start": "  NURSE.",
+   "temperature": 1.0,
+   "rep": 3,
+   "poem": [
+    "  NURSE.",
+    "See, we will keep it in, as they will,",
+    "In the execution of our own desire.",
+    "DAUGHTER."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 12,
+   "start": "  NURSE.",
+   "temperature": 1.1,
+   "rep": 0,
+   "poem": [
+    "  NURSE.",
+    "Yea, but one that grows it up by some season’s style’s oaths,",
+    "and wiser men, but in some kind pain!",
+    "THESEUS.",
+    "I must go along to try. My soul and pageants,",
+    "And mend my sword upon my heart.",
+    "Therefore be sure thou wilt, Lysander.",
+    "Boy, take thy persuasion. Away!"
+   ],
+   "done": true,
+   "round": 7
+  },
+  {
+   "id": 13,
+   "start": "  NURSE.",
+   "temperature": 1.1,
+   "rep": 1,
+   "poem": [
+    "  NURSE.",
+    "O God! young men!",
+    "[_They rise._]",
+    "[_Enter Fraught.",
+    "FRIAR LAWRENCE.",
+    "What ho, cousin, what a thing I am?",
+    "FALSTAFF."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 14,
+   "start": "  NURSE.",
+   "temperature": 1.1,
+   "rep": 2,
+   "poem": [
+    "  NURSE.",
+    "But I do think so, signior: where, shall all our rest?",
+    "PROSPERO.",
+    "If I love thee,",
+    "Since thou wilt see my fault but wert to love.",
+    "HORATIO."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 15,
+   "start": "  NURSE.",
+   "temperature": 1.1,
+   "rep": 3,
+   "poem": [
+    "  NURSE.",
+    "NURSE.",
+    "Troy, what is all the matter?",
+    "What, are we forfeited?",
+    "NURSE.",
+    "He is, my lord.",
+    "OURSAYER.",
+    "Neither."
+   ],
+   "done": true,
+   "round": 6
+  },
+  {
+   "id": 16,
+   "start": "  ROMEO:",
+   "temperature": 0.8,
+   "rep": 0,
+   "poem": [
+    "  ROMEO:",
+    "For this the truth of accused to sing,",
+    "Stands not a flowerful corruption.",
+    "Still the gods be told me, I am not so;",
+    "But if she do so, for then I love her,"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 17,
+   "start": "  ROMEO:",
+   "temperature": 0.8,
+   "rep": 1,
+   "poem": [
+    "  ROMEO:",
+    "I am sure, that in me, I will return",
+    "Lest in the law of all my state; my judgement",
+    "I shall have no more than his skill at me:",
+    "I will not find it, nor I will not chance",
+    "To pay it now, to put him to confession,"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 18,
+   "start": "  ROMEO:",
+   "temperature": 0.8,
+   "rep": 2,
+   "poem": [
+    "  ROMEO:",
+    "There is a greater sound in her mind;",
+    "Fly to her, and then confess’d the sense.",
+    "Shall I laugh?"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 19,
+   "start": "  ROMEO:",
+   "temperature": 0.8,
+   "rep": 3,
+   "poem": [
+    "  ROMEO:",
+    "How comes the matter?",
+    "ROMEO.",
+    "Nay, do not hear, my lord. I have no stomach to have my heart."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 20,
+   "start": "  ROMEO:",
+   "temperature": 0.9,
+   "rep": 0,
+   "poem": [
+    "  ROMEO:",
+    "It shall be fed in midnight;",
+    "So, as the fresh sense of all our laws,",
+    "Under what they do but know; but in this,",
+    "If then they do not observe, ’tis past."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 21,
+   "start": "  ROMEO:",
+   "temperature": 0.9,
+   "rep": 1,
+   "poem": [
+    "  ROMEO:",
+    "But, by this same learned ROBALE IN HIS TYME, snuffling with one public-house,",
+    "his broker colliers,",
+    "Several merchants by the Senators;"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 22,
+   "start": "  ROMEO:",
+   "temperature": 0.9,
+   "rep": 2,
+   "poem": [
+    "  ROMEO:",
+    "Now that the moon I should be so soon,",
+    "Fingering and buckled from the sun of night,",
+    "And this the watery age would have found it",
+    "That I have given my head as I am;",
+    "But in mine eye I slay my heart again."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 23,
+   "start": "  ROMEO:",
+   "temperature": 0.9,
+   "rep": 3,
+   "poem": [
+    "  ROMEO:",
+    "Come, come, you are gone.",
+    "MERCUTIO.",
+    "Ay, ay, the lawyer, sir, is it not well?",
+    "[_Exit Isabella._]",
+    "MERCUTIO."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 24,
+   "start": "  ROMEO:",
+   "temperature": 1.0,
+   "rep": 0,
+   "poem": [
+    "  ROMEO:",
+    "Are you free?",
+    "ROMEO.",
+    "Nay, I could tell you.",
+    "I’ll not ware you yet for my brother’s love:"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 25,
+   "start": "  ROMEO:",
+   "temperature": 1.0,
+   "rep": 1,
+   "poem": [
+    "  ROMEO:",
+    "So he doth;",
+    "Though shifts he sickle, he is not well.",
+    "But that must be, the horn shall bear the deep.",
+    "[_Exeunt._]",
+    "SCENE II. Milan. The Inn"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 26,
+   "start": "  ROMEO:",
+   "temperature": 1.0,
+   "rep": 2,
+   "poem": [
+    "  ROMEO:",
+    "Flat thou’st thou not so?"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 27,
+   "start": "  ROMEO:",
+   "temperature": 1.0,
+   "rep": 3,
+   "poem": [
+    "  ROMEO:",
+    "But every word in his colour it is.",
+    "[Exit.]"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 28,
+   "start": "  ROMEO:",
+   "temperature": 1.1,
+   "rep": 0,
+   "poem": [
+    "  ROMEO:",
+    "His Price, my Lord, I am a king,",
+    "But for the Forest, that thou wilt believe,",
+    "And seek’t so much to be my friend.",
+    "CLARENCE."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 29,
+   "start": "  ROMEO:",
+   "temperature": 1.1,
+   "rep": 1,
+   "poem": [
+    "  ROMEO:",
+    "She’s here! I was last a spirit that ever said",
+    "Your reason now; and that, but that I wot to;",
+    "But I do think my good deed, to tell you.",
+    "What, are you led?"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 30,
+   "start": "  ROMEO:",
+   "temperature": 1.1,
+   "rep": 2,
+   "poem": [
+    "  ROMEO:",
+    "Fair lord, these chiefest lace be finish'd;",
+    "My mothers must not backward muse within."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 31,
+   "start": "  ROMEO:",
+   "temperature": 1.1,
+   "rep": 3,
+   "poem": [
+    "  ROMEO:",
+    "O, when the right wood be crowned on thee,",
+    "Deceiv’d thy sword to drow on his brow,",
+    "And ere he sets upon his soul with him."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 32,
+   "start": "  LEAR.",
+   "temperature": 0.8,
+   "rep": 0,
+   "poem": [
+    "  LEAR.",
+    "In Scarus, Syracuse, and England’s Queen,",
+    "Hath triumph to the Queen, and the waste of heaven,",
+    "And lay the bright Audrey on the world,"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 33,
+   "start": "  LEAR.",
+   "temperature": 0.8,
+   "rep": 1,
+   "poem": [
+    "  LEAR.",
+    "An oppression is this, my lord.",
+    "SLENDER.",
+    "Faith, for the man",
+    "Shall be the vaultless start."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 34,
+   "start": "  LEAR.",
+   "temperature": 0.8,
+   "rep": 2,
+   "poem": [
+    "  LEAR.",
+    "LARENCE.",
+    "Come, come, cousin.",
+    "[_Exeunt Bardolph and Don Pedant._]",
+    "I will be found.",
+    "QUEEN MARGARET."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 35,
+   "start": "  LEAR.",
+   "temperature": 0.8,
+   "rep": 3,
+   "poem": [
+    "  LEAR.",
+    "Ah, ay, forbear!",
+    "LYSANDER.",
+    "[_Aside_.] According to the Duke, an if thou couldst,",
+    "I will never see thou art.",
+    "PROSPERO.",
+    "Ay, good my lord—"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 36,
+   "start": "  LEAR.",
+   "temperature": 0.9,
+   "rep": 0,
+   "poem": [
+    "  LEAR.",
+    "MARCUS.",
+    "Farewell, pardon. Come, good gentlemen, come down.—O, let’s make it",
+    "draw.",
+    "[_Exeunt._]",
+    "SCENE VI. Another part of the Forest",
+    "Enter Prince Escalus and LEUCTOR",
+    "FALSTAFF."
+   ],
+   "done": true,
+   "round": 7
+  },
+  {
+   "id": 37,
+   "start": "  LEAR.",
+   "temperature": 0.9,
+   "rep": 1,
+   "poem": [
+    "  LEAR.",
+    "Come, we’ll come to the watch.",
+    "WORCESTER.",
+    "Now will we get the bonds to be seen,",
+    "And fight in peace, our children’s delights",
+    "About the weak and water-barr’d eagle,"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 38,
+   "start": "  LEAR.",
+   "temperature": 0.9,
+   "rep": 2,
+   "poem": [
+    "  LEAR.",
+    "One of these gentlemen that wish’d you,",
+    "And to commend your lady’s favours,",
+    "That e’er welcome to your promise.",
+    "LAERTES.",
+    "My lord, you have not known the time"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 39,
+   "start": "  LEAR.",
+   "temperature": 0.9,
+   "rep": 3,
+   "poem": [
+    "  LEAR.",
+    "My lord, have met yourself, my lord; it is,",
+    "And here we hold your certain boy by doubts.",
+    "To search crowns and women, pardon him",
+    "And call us all our friends with such signs",
+    "That are within the ground of your king’s.",
+    "KING."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 40,
+   "start": "  LEAR.",
+   "temperature": 1.0,
+   "rep": 0,
+   "poem": [
+    "  LEAR.",
+    "See Rhedamas, Camillo, what say you,",
+    "That breathless lady, in the same bosom",
+    "Is made so full of sound? O Imogen",
+    "To equal the utmost valour of this time",
+    "Must lay the habit of this warre’s blood."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 41,
+   "start": "  LEAR.",
+   "temperature": 1.0,
+   "rep": 1,
+   "poem": [
+    "  LEAR.",
+    "Why, this is my conjunct, the very true of the world",
+    "Are in thy passion, and all our deeds",
+    "Have pity forgot on me.",
+    "LEAR."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 42,
+   "start": "  LEAR.",
+   "temperature": 1.0,
+   "rep": 2,
+   "poem": [
+    "  LEAR.",
+    "[as]  Come, come, dance!",
+    "FALSTAFF.",
+    "Ah fairest Queen Madge, Bardolph, pit and Doll:  O, pardon me,",
+    "you are patient, I should lack no action of my sort."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 43,
+   "start": "  LEAR.",
+   "temperature": 1.0,
+   "rep": 3,
+   "poem": [
+    "  LEAR.",
+    "Why, then let’s give thy tongue to thy tongue.",
+    "SILVIA.",
+    "There’s no aid; I will stay with him.",
+    "LOUIS."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 44,
+   "start": "  LEAR.",
+   "temperature": 1.1,
+   "rep": 0,
+   "poem": [
+    "  LEAR.",
+    "Farewell, Leonato:",
+    "He cannot gallop the stage-piece of mirth:",
+    "But what he loves his hand was done, ’tis true,"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 45,
+   "start": "  LEAR.",
+   "temperature": 1.1,
+   "rep": 1,
+   "poem": [
+    "  LEAR.",
+    "[ord] A woodsman.",
+    "[Exit.]",
+    "[Exeunt.]",
+    "SCENE VI. Before Sir Rowland"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 46,
+   "start": "  LEAR.",
+   "temperature": 1.1,
+   "rep": 2,
+   "poem": [
+    "  LEAR.",
+    "How much a fray should yield aside?",
+    "This philosopher’s dramatic striptness,",
+    "That musician, sister, are the devil’s bounds’ arms",
+    "Ere thou didst not make that wonder so.",
+    "LAERTES."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 47,
+   "start": "  LEAR.",
+   "temperature": 1.1,
+   "rep": 3,
+   "poem": [
+    "  LEAR.",
+    "Lo, where liberally belov’d?",
+    "Disdain’d with tears when woe doth further turn",
+    "At a dregger of the rocks of England",
+    "Than every grave was false, that cursed instruction",
+    "To burn my blood into their iron passion.",
+    "But what a world in this desires must I find?"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 48,
+   "start": "  FOOL.",
+   "temperature": 0.8,
+   "rep": 0,
+   "poem": [
+    "  FOOL.",
+    "Old order, which now",
+    "Hath in a brave conversation of the play,",
+    "Most dangerously deposed as a chance",
+    "As a little error of the earth.",
+    "HOSTESS.",
+    "As soft as a man would feed his fellow,",
+    "And then he bears the stake, and represents"
+   ],
+   "done": true,
+   "round": 6
+  },
+  {
+   "id": 49,
+   "start": "  FOOL.",
+   "temperature": 0.8,
+   "rep": 1,
+   "poem": [
+    "  FOOL.",
+    "Whence is this, my lord?",
+    "FALSTAFF.",
+    "Fie, fie, Falstaff.",
+    "PRINCE.",
+    "What should I do?"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 50,
+   "start": "  FOOL.",
+   "temperature": 0.8,
+   "rep": 2,
+   "poem": [
+    "  FOOL.",
+    "True, fine-cold, baggy.",
+    "FALSTAFF.",
+    "O, thou shalt not go.",
+    "PISTOL.",
+    "Thy spirit, thou hast a slander."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 51,
+   "start": "  FOOL.",
+   "temperature": 0.8,
+   "rep": 3,
+   "poem": [
+    "  FOOL.",
+    "_O. Mor._ True, Mortimer, thou art banished by a crown;",
+    "But, boy, thou passest, and learned by banks,",
+    "That never knew thee back against thy brow.",
+    "_Enter_ MORTIMER, _and_ MATHEO.",
+    "_Mat._ Two of your people!"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 52,
+   "start": "  FOOL.",
+   "temperature": 0.9,
+   "rep": 0,
+   "poem": [
+    "  FOOL.",
+    "_O. Mor._ Have you heard him now?",
+    "_Bots._ I'll not speak no more.",
+    "_Y. Mor._ Good father, I will not calm their court,",
+    "Albeit the cause I’ll bear the tempest of him,"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 53,
+   "start": "  FOOL.",
+   "temperature": 0.9,
+   "rep": 1,
+   "poem": [
+    "  FOOL.",
+    "Is ever a devil a jealous of mine,",
+    "And feelest of the strange and agreeable,",
+    "Or use myself, myself, nor myself,"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 54,
+   "start": "  FOOL.",
+   "temperature": 0.9,
+   "rep": 2,
+   "poem": [
+    "  FOOL.",
+    "Old Field!",
+    "ALARINO.",
+    "Let me live by, my lord, so I shall be gone.",
+    "[_Exeunt._]",
+    "SCENE II. Cyprus. A public place in Benedick’s house.",
+    "Enter Antony and his Grace.",
+    "PAGE."
+   ],
+   "done": true,
+   "round": 6
+  },
+  {
+   "id": 55,
+   "start": "  FOOL.",
+   "temperature": 0.9,
+   "rep": 3,
+   "poem": [
+    "  FOOL.",
+    "Rebuse them, and pawn them again, be talk’d:",
+    "And if they were a stranger and four sound",
+    "An effected with the flower, my friends,",
+    "They are decay’d.",
+    "CORIOLANUS."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 56,
+   "start": "  FOOL.",
+   "temperature": 1.0,
+   "rep": 0,
+   "poem": [
+    "  FOOL.",
+    "In the villains of our mouth.",
+    "My heart the power, O you and these my hearts,",
+    "That I do mean to seek him.",
+    "[_Exeunt._]",
+    "SCENE III. Rome. The Palace"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 57,
+   "start": "  FOOL.",
+   "temperature": 1.0,
+   "rep": 1,
+   "poem": [
+    "  FOOL.",
+    "Honest Prince of Herald, and I was a fool in England.",
+    "FALSTAFF.",
+    "See, what are his will, what he is?"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 58,
+   "start": "  FOOL.",
+   "temperature": 1.0,
+   "rep": 2,
+   "poem": [
+    "  FOOL.",
+    "This was a stacco, where the duke is dead;",
+    "That thou that meanest, then thou canst ne’er see,",
+    "Not since he loves thee. This doth meet",
+    "True of my resolution, which my grief",
+    "Is straight-shining; that didst believe me so"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 59,
+   "start": "  FOOL.",
+   "temperature": 1.0,
+   "rep": 3,
+   "poem": [
+    "  FOOL.",
+    "VOLUMNIA.",
+    "O monstrous villain!",
+    "CALIBAN."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 60,
+   "start": "  FOOL.",
+   "temperature": 1.1,
+   "rep": 0,
+   "poem": [
+    "  FOOL.",
+    "[481] A squire.",
+    "_Ralph._ Where has been you that cap?",
+    "_Hip._ Truly, master, you rogue, six open chair! Here’s",
+    "biting my shop. I’d promise you that at my patron’s cap,"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 61,
+   "start": "  FOOL.",
+   "temperature": 1.1,
+   "rep": 1,
+   "poem": [
+    "  FOOL.",
+    "Here comes Horatio alone.",
+    "Mistress is come by, my lord.",
+    "Enter Pisanio and Nature.",
+    "HOST.",
+    "Who is’t with you, my lord? Nay; but this is yours;"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 62,
+   "start": "  FOOL.",
+   "temperature": 1.1,
+   "rep": 2,
+   "poem": [
+    "  FOOL.",
+    "Wish.",
+    "FALSTAFF.",
+    "Noble father.",
+    "FALSTAFF."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 63,
+   "start": "  FOOL.",
+   "temperature": 1.1,
+   "rep": 3,
+   "poem": [
+    "  FOOL.",
+    "Faith, sir, you’ll turn off these slips. Haply fellow, good Sir Thomas! Sleep?",
+    "FALSTAFF."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 64,
+   "start": "  HAMLET.",
+   "temperature": 0.8,
+   "rep": 0,
+   "poem": [
+    "  HAMLET.",
+    "HAMLET.",
+    "Why, how! How now, Hamlet! How many times are they",
+    "filled? How now, Hamlet? How say you, Hamlet?",
+    "HAMLET.",
+    "I have patience, my lord."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 65,
+   "start": "  HAMLET.",
+   "temperature": 0.8,
+   "rep": 1,
+   "poem": [
+    "  HAMLET.",
+    "HAMLET.",
+    "It is the fashion that can tell what it is.",
+    "If he be so, it is some delight of them,",
+    "Let us alone, and he shall not be heard",
+    "To do himself. Sirrah, I do not think"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 66,
+   "start": "  HAMLET.",
+   "temperature": 0.8,
+   "rep": 2,
+   "poem": [
+    "  HAMLET.",
+    "Sirrah, tell me, why?",
+    "SOOTHSAYER.",
+    "Ay, ere I come forth.",
+    "[_Exeunt._]",
+    "SCENE II. The same. A Room in the Palace.",
+    "Enter Falstaff and Lafew.",
+    "FALSTAFF."
+   ],
+   "done": true,
+   "round": 6
+  },
+  {
+   "id": 67,
+   "start": "  HAMLET.",
+   "temperature": 0.8,
+   "rep": 3,
+   "poem": [
+    "  HAMLET.",
+    "Fie, fie! No, but let us choke up our ground.",
+    "Give me your hand. We’ll do’t.",
+    "[_Exit._]",
+    "SCENE II. The same. A Room in the Palace.",
+    "Enter Brutus, Brutus, Lords, Saturninus, Emilia and Marina.",
+    "SATURNINUS.",
+    "How now, my lord, that you shall have seen"
+   ],
+   "done": true,
+   "round": 6
+  },
+  {
+   "id": 68,
+   "start": "  HAMLET.",
+   "temperature": 0.9,
+   "rep": 0,
+   "poem": [
+    "  HAMLET.",
+    "[Aside] I have sworn to be a coxcomb now.",
+    "[_Exit Servant.]",
+    "SERVANT.",
+    "Hie you, my lord?"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 69,
+   "start": "  HAMLET.",
+   "temperature": 0.9,
+   "rep": 1,
+   "poem": [
+    "  HAMLET.",
+    "SHIRIFF.",
+    "Fair Jack, what mean’st thou, Doctor Coventry?",
+    "SHALLOW.",
+    "He. I would he were to be a good man.",
+    "PRINCE.",
+    "Draw near, and do him good way?"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 70,
+   "start": "  HAMLET.",
+   "temperature": 0.9,
+   "rep": 2,
+   "poem": [
+    "  HAMLET.",
+    "HAMLET.",
+    "Nay, not a tune.",
+    "HAMLET.",
+    "From him, my lord."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 71,
+   "start": "  HAMLET.",
+   "temperature": 0.9,
+   "rep": 3,
+   "poem": [
+    "  HAMLET.",
+    "Come, Camillo, come, come hither, come!",
+    "[_Exeunt Prince and Bedford._]",
+    "CAMILLO.",
+    "Pardon me, Master Fenton.",
+    "PRINCE."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 72,
+   "start": "  HAMLET.",
+   "temperature": 1.0,
+   "rep": 0,
+   "poem": [
+    "  HAMLET.",
+    "_Agrip._ What, 'cause you mistake, 'tis my fellow;",
+    "’Twould touch me how little, or slip, or suit be,",
+    "Nor bid him not find me, but he’s dead,"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 73,
+   "start": "  HAMLET.",
+   "temperature": 1.0,
+   "rep": 1,
+   "poem": [
+    "  HAMLET.",
+    "Give us leave to him; our tender Queen wash.",
+    "Therefore we must deny it; how our sport",
+    "Is not this countenance. But, Lord Hamlet,",
+    "Let it not take this peace, but he resigns",
+    "At your sufferance. So is the English lord,"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 74,
+   "start": "  HAMLET.",
+   "temperature": 1.0,
+   "rep": 2,
+   "poem": [
+    "  HAMLET.",
+    "HAMLET.",
+    "Doth any less?",
+    "HAMLET.",
+    "Truly.",
+    "There’s a good heart to your voice."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 75,
+   "start": "  HAMLET.",
+   "temperature": 1.0,
+   "rep": 3,
+   "poem": [
+    "  HAMLET.",
+    "HAMLET.",
+    "No, my lord.",
+    "WOMAN.",
+    "Come, come. Pray you tell me more."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 76,
+   "start": "  HAMLET.",
+   "temperature": 1.1,
+   "rep": 0,
+   "poem": [
+    "  HAMLET.",
+    "Richard! Barewell!",
+    "SERVANT.",
+    "Come, Pisanio, this is the King.",
+    "HAMLET.",
+    "Ay, the general fellow, what news!",
+    "POLONIUS."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 77,
+   "start": "  HAMLET.",
+   "temperature": 1.1,
+   "rep": 1,
+   "poem": [
+    "  HAMLET.",
+    "And so I will.",
+    "MESSENGER.",
+    "Do you see, my lord?",
+    "GAOLER."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 78,
+   "start": "  HAMLET.",
+   "temperature": 1.1,
+   "rep": 2,
+   "poem": [
+    "  HAMLET.",
+    "HAMLET.",
+    "Is it now?",
+    "HAMLET.",
+    "How?",
+    "HAMLET.",
+    "I am glad on’t, my lord, and this reason,"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 79,
+   "start": "  HAMLET.",
+   "temperature": 1.1,
+   "rep": 3,
+   "poem": [
+    "  HAMLET.",
+    "HAMLET."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 80,
+   "start": "  OPHELIA.",
+   "temperature": 0.8,
+   "rep": 0,
+   "poem": [
+    "  OPHELIA.",
+    "I will draw myself once against my love.",
+    "TROILUS.",
+    "And I, and as I do, I will not do it,",
+    "Or thou shalt die with me, thou hast found mine,"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 81,
+   "start": "  OPHELIA.",
+   "temperature": 0.8,
+   "rep": 1,
+   "poem": [
+    "  OPHELIA.",
+    "O sweet Silvia, how dost thou hear it?",
+    "SILVIA.",
+    "What, art thou, Silvia?",
+    "SILVIA."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 82,
+   "start": "  OPHELIA.",
+   "temperature": 0.8,
+   "rep": 2,
+   "poem": [
+    "  OPHELIA.",
+    "Is it the matter?",
+    "HORATIO.",
+    "Here’s a knife.",
+    "IAGO.",
+    "Get you to my lord, and therefore. Thou’lt please you;"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 83,
+   "start": "  OPHELIA.",
+   "temperature": 0.8,
+   "rep": 3,
+   "poem": [
+    "  OPHELIA.",
+    "Wherefore should I be so unfortunate?",
+    "IAGO.",
+    "So I am, my lord.",
+    "[_Exeunt._]",
+    "SCENE II. Belmont. A room in the Castle.",
+    "Enter Verona and Mariana."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 84,
+   "start": "  OPHELIA.",
+   "temperature": 0.9,
+   "rep": 0,
+   "poem": [
+    "  OPHELIA.",
+    "Walk not of me. Farewell. Thy salt home—",
+    "[_Exeunt._]",
+    "SCENE II. The same. A room in the Palace.",
+    "Enter Palace at one door and Bassanio.",
+    "BASSANIO.",
+    "A man that came, I think.",
+    "PORTIA."
+   ],
+   "done": true,
+   "round": 7
+  },
+  {
+   "id": 85,
+   "start": "  OPHELIA.",
+   "temperature": 0.9,
+   "rep": 1,
+   "poem": [
+    "  OPHELIA.",
+    "Is not a ship, Helena?",
+    "HELICANUS.",
+    "Nay, I, but I am lost,",
+    "That thou didst tell me to my wife,",
+    "Or if thou be’st not transform’d,",
+    "Th’other match to thee, put thy head upon thy",
+    "father’s face, and study such an enemy."
+   ],
+   "done": true,
+   "round": 7
+  },
+  {
+   "id": 86,
+   "start": "  OPHELIA.",
+   "temperature": 0.9,
+   "rep": 2,
+   "poem": [
+    "  OPHELIA.",
+    "[_To Ophelia_.] Well, sir; it is still o’er your head by a horn.",
+    "DUKE.",
+    "I will not, I will.",
+    "DUKE."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 87,
+   "start": "  OPHELIA.",
+   "temperature": 0.9,
+   "rep": 3,
+   "poem": [
+    "  OPHELIA.",
+    "I’ll have him as fortunes.",
+    "BASSANIO.",
+    "I’ll do’t.",
+    "[_Exeunt._]",
+    "SCENE III. Before Passion’s palace.",
+    "Enter Paulina with Bianca."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 88,
+   "start": "  OPHELIA.",
+   "temperature": 1.0,
+   "rep": 0,
+   "poem": [
+    "  OPHELIA.",
+    "O thou shalt have the crown, thou must have another; and",
+    "I am, to get thee back again.—My lord, here’s the challenge. What",
+    "light is, I say? And what is Cleon?"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 89,
+   "start": "  OPHELIA.",
+   "temperature": 1.0,
+   "rep": 1,
+   "poem": [
+    "  OPHELIA.",
+    "Where is my father?",
+    "IAGO.",
+    "Believe it; I denied him but hence:",
+    "Thus, if he be not, ’twill be well disobedient.",
+    "PROVOST."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 90,
+   "start": "  OPHELIA.",
+   "temperature": 1.0,
+   "rep": 2,
+   "poem": [
+    "  OPHELIA.",
+    "I have sworn I am.",
+    "APEMANTUS.",
+    "Is’t you not here?",
+    "PHOEBE.",
+    "What shall you know, sir? A gentleman"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 91,
+   "start": "  OPHELIA.",
+   "temperature": 1.0,
+   "rep": 3,
+   "poem": [
+    "  OPHELIA.",
+    "Who’s this?",
+    "CASSIO.",
+    "Why, here comes a Messenger.",
+    "THELIO.",
+    "Not a word I am in this, but I do not",
+    "To see what lucky eyes that mock me."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 92,
+   "start": "  OPHELIA.",
+   "temperature": 1.1,
+   "rep": 0,
+   "poem": [
+    "  OPHELIA.",
+    "You are moaned, madam; come, let’s tell you this ring; go bid her go.",
+    "SILENCE.",
+    "Is his ancient services?"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 93,
+   "start": "  OPHELIA.",
+   "temperature": 1.1,
+   "rep": 1,
+   "poem": [
+    "  OPHELIA.",
+    "Do all this, and let the earth be drunk from thee,",
+    "And stroud my thoughts through my redom for her death.",
+    "Some stars of her that wild, and I, in my heart,",
+    "That taken up my sea and sacred eye."
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 94,
+   "start": "  OPHELIA.",
+   "temperature": 1.1,
+   "rep": 2,
+   "poem": [
+    "  OPHELIA.",
+    "When I believe the hour, the matter, I warrant,",
+    "For that’s no less; no dignity",
+    "Should half the hour he hath but spent upon;",
+    "And, if that is most struck with him, or in,"
+   ],
+   "done": false,
+   "round": 8
+  },
+  {
+   "id": 95,
+   "start": "  OPHELIA.",
+   "temperature": 1.1,
+   "rep": 3,
+   "poem": [
+    "  OPHELIA.",
+    "That little sou that is my soul, my master!",
+    "DEMETRIUS.",
+    "I cry you not of good will; but yet I cannot",
+    "Nay, I must find you with a thing for myself,",
+    "And give me leave my word; but I’ll bear my word,",
+    "And do’t, take my soul, I’ll touch you in my state;"
+   ],
+   "done": false,
+   "round": 8
+  }
+ ]
+}

@@ -1,0 +1,734 @@
+[
+ {
+  "pid": 4,
+  "cid": 0,
+  "context": [
+   "  ROMEO:",
+   "Art thou me of all these fairy times,",
+   "That this thyself have wronged me?",
+   "She’s coming.",
+   "OLIVIA.",
+   "Ay, my lord."
+  ],
+  "line": "OPHELIA.",
+  "nll": 2.443,
+  "round": 7
+ },
+ {
+  "pid": 4,
+  "cid": 1,
+  "context": [
+   "  ROMEO:",
+   "Art thou me of all these fairy times,",
+   "That this thyself have wronged me?",
+   "She’s coming.",
+   "OLIVIA.",
+   "Ay, my lord."
+  ],
+  "line": "ROMEO.",
+  "nll": 1.793,
+  "round": 7
+ },
+ {
+  "pid": 4,
+  "cid": 2,
+  "context": [
+   "  ROMEO:",
+   "Art thou me of all these fairy times,",
+   "That this thyself have wronged me?",
+   "She’s coming.",
+   "OLIVIA.",
+   "Ay, my lord."
+  ],
+  "line": "CLOWN.",
+  "nll": 2.032,
+  "round": 7
+ },
+ {
+  "pid": 4,
+  "cid": 3,
+  "context": [
+   "  ROMEO:",
+   "Art thou me of all these fairy times,",
+   "That this thyself have wronged me?",
+   "She’s coming.",
+   "OLIVIA.",
+   "Ay, my lord."
+  ],
+  "line": "OLIVIA.",
+  "nll": 1.695,
+  "round": 7
+ },
+ {
+  "pid": 5,
+  "cid": 0,
+  "context": [
+   "  ROMEO:",
+   "How now, Signior Keeper's Mercury!",
+   "Shepherd! And here’s my life.",
+   "Come, gentlemen, this is true, away,",
+   "And, for we know he is not, as I am,",
+   "But yet you are dear: but I’ll tell you where"
+  ],
+  "line": "The chiefest gods be certain to me",
+  "nll": 2.12,
+  "round": 7
+ },
+ {
+  "pid": 5,
+  "cid": 1,
+  "context": [
+   "  ROMEO:",
+   "How now, Signior Keeper's Mercury!",
+   "Shepherd! And here’s my life.",
+   "Come, gentlemen, this is true, away,",
+   "And, for we know he is not, as I am,",
+   "But yet you are dear: but I’ll tell you where"
+  ],
+  "line": "This trick is got.",
+  "nll": 2.481,
+  "round": 7
+ },
+ {
+  "pid": 5,
+  "cid": 2,
+  "context": [
+   "  ROMEO:",
+   "How now, Signior Keeper's Mercury!",
+   "Shepherd! And here’s my life.",
+   "Come, gentlemen, this is true, away,",
+   "And, for we know he is not, as I am,",
+   "But yet you are dear: but I’ll tell you where"
+  ],
+  "line": "We are offended, and to you, by my boy.",
+  "nll": 2.263,
+  "round": 7
+ },
+ {
+  "pid": 5,
+  "cid": 3,
+  "context": [
+   "  ROMEO:",
+   "How now, Signior Keeper's Mercury!",
+   "Shepherd! And here’s my life.",
+   "Come, gentlemen, this is true, away,",
+   "And, for we know he is not, as I am,",
+   "But yet you are dear: but I’ll tell you where"
+  ],
+  "line": "You will not lay out a counterfeit from,",
+  "nll": 2.377,
+  "round": 7
+ },
+ {
+  "pid": 8,
+  "cid": 0,
+  "context": [
+   "  LEAR.",
+   "Why, what’s that?",
+   "LORD.",
+   "Thou art a man, though thou art a man,",
+   "And I will sleep, and let some cry to thee.",
+   "My father, here’s thy father’s love,"
+  ],
+  "line": "And that thou hast but forgot to say of thee.",
+  "nll": 2.111,
+  "round": 7
+ },
+ {
+  "pid": 8,
+  "cid": 1,
+  "context": [
+   "  LEAR.",
+   "Why, what’s that?",
+   "LORD.",
+   "Thou art a man, though thou art a man,",
+   "And I will sleep, and let some cry to thee.",
+   "My father, here’s thy father’s love,"
+  ],
+  "line": "And as thou art the ill hour I may.",
+  "nll": 2.935,
+  "round": 7
+ },
+ {
+  "pid": 8,
+  "cid": 2,
+  "context": [
+   "  LEAR.",
+   "Why, what’s that?",
+   "LORD.",
+   "Thou art a man, though thou art a man,",
+   "And I will sleep, and let some cry to thee.",
+   "My father, here’s thy father’s love,"
+  ],
+  "line": "Though I could see thee while I live in thee.",
+  "nll": 2.046,
+  "round": 7
+ },
+ {
+  "pid": 8,
+  "cid": 3,
+  "context": [
+   "  LEAR.",
+   "Why, what’s that?",
+   "LORD.",
+   "Thou art a man, though thou art a man,",
+   "And I will sleep, and let some cry to thee.",
+   "My father, here’s thy father’s love,"
+  ],
+  "line": "And even I am angry with thee.",
+  "nll": 2.073,
+  "round": 7
+ },
+ {
+  "pid": 9,
+  "cid": 0,
+  "context": [
+   "  LEAR.",
+   "But what say you to him?",
+   "BASTARD.",
+   "If I durst, it cannot be.",
+   "I have much bondage to answer you."
+  ],
+  "line": "PRINCE.",
+  "nll": 2.355,
+  "round": 7
+ },
+ {
+  "pid": 9,
+  "cid": 1,
+  "context": [
+   "  LEAR.",
+   "But what say you to him?",
+   "BASTARD.",
+   "If I durst, it cannot be.",
+   "I have much bondage to answer you."
+  ],
+  "line": "Would you may teach him, and he carries well.",
+  "nll": 2.435,
+  "round": 7
+ },
+ {
+  "pid": 9,
+  "cid": 2,
+  "context": [
+   "  LEAR.",
+   "But what say you to him?",
+   "BASTARD.",
+   "If I durst, it cannot be.",
+   "I have much bondage to answer you."
+  ],
+  "line": "HECTOR.",
+  "nll": 2.115,
+  "round": 7
+ },
+ {
+  "pid": 9,
+  "cid": 3,
+  "context": [
+   "  LEAR.",
+   "But what say you to him?",
+   "BASTARD.",
+   "If I durst, it cannot be.",
+   "I have much bondage to answer you."
+  ],
+  "line": "CADE.",
+  "nll": 2.54,
+  "round": 7
+ },
+ {
+  "pid": 10,
+  "cid": 0,
+  "context": [
+   "  LEAR.",
+   "Here’s the priest of man.",
+   "What is the matter of you, Curio?",
+   "CURTIS.",
+   "Nor I, by this place, I’ll see my name.",
+   "This is the noninent’s maid; she’s a fool",
+   "She’s a goddess. The cruelty of three,"
+  ],
+  "line": "Where five-boards?",
+  "nll": 2.943,
+  "round": 7
+ },
+ {
+  "pid": 10,
+  "cid": 1,
+  "context": [
+   "  LEAR.",
+   "Here’s the priest of man.",
+   "What is the matter of you, Curio?",
+   "CURTIS.",
+   "Nor I, by this place, I’ll see my name.",
+   "This is the noninent’s maid; she’s a fool",
+   "She’s a goddess. The cruelty of three,"
+  ],
+  "line": "For ’tis as good as the air should seem a sight,",
+  "nll": 2.746,
+  "round": 7
+ },
+ {
+  "pid": 10,
+  "cid": 2,
+  "context": [
+   "  LEAR.",
+   "Here’s the priest of man.",
+   "What is the matter of you, Curio?",
+   "CURTIS.",
+   "Nor I, by this place, I’ll see my name.",
+   "This is the noninent’s maid; she’s a fool",
+   "She’s a goddess. The cruelty of three,"
+  ],
+  "line": "Whom none but you can give the while.",
+  "nll": 2.375,
+  "round": 7
+ },
+ {
+  "pid": 10,
+  "cid": 3,
+  "context": [
+   "  LEAR.",
+   "Here’s the priest of man.",
+   "What is the matter of you, Curio?",
+   "CURTIS.",
+   "Nor I, by this place, I’ll see my name.",
+   "This is the noninent’s maid; she’s a fool",
+   "She’s a goddess. The cruelty of three,"
+  ],
+  "line": "And whiles I stood o’erlike. Nurse, ’tis true.",
+  "nll": 2.344,
+  "round": 7
+ },
+ {
+  "pid": 15,
+  "cid": 0,
+  "context": [
+   "  FOOL.",
+   "Welcome, my lord. My name comes here in peace,",
+   "So far by the loose stamp of mine shall turn.",
+   "On that awful world but ten! There, I’ll wait",
+   "One more my heart’s pompless beds; my dearest music,",
+   "Which I shall hold, dearly, till I wound!",
+   "To my poor soul be wither’d, yet I will prove."
+  ],
+  "line": "SOOTHSAYER.",
+  "nll": 1.648,
+  "round": 7
+ },
+ {
+  "pid": 15,
+  "cid": 1,
+  "context": [
+   "  FOOL.",
+   "Welcome, my lord. My name comes here in peace,",
+   "So far by the loose stamp of mine shall turn.",
+   "On that awful world but ten! There, I’ll wait",
+   "One more my heart’s pompless beds; my dearest music,",
+   "Which I shall hold, dearly, till I wound!",
+   "To my poor soul be wither’d, yet I will prove."
+  ],
+  "line": "I’ll to thy friend I’ll swear, I have a whip",
+  "nll": 2.569,
+  "round": 7
+ },
+ {
+  "pid": 15,
+  "cid": 2,
+  "context": [
+   "  FOOL.",
+   "Welcome, my lord. My name comes here in peace,",
+   "So far by the loose stamp of mine shall turn.",
+   "On that awful world but ten! There, I’ll wait",
+   "One more my heart’s pompless beds; my dearest music,",
+   "Which I shall hold, dearly, till I wound!",
+   "To my poor soul be wither’d, yet I will prove."
+  ],
+  "line": "If little breath hath grown sovereign, for mine own.",
+  "nll": 2.57,
+  "round": 7
+ },
+ {
+  "pid": 15,
+  "cid": 3,
+  "context": [
+   "  FOOL.",
+   "Welcome, my lord. My name comes here in peace,",
+   "So far by the loose stamp of mine shall turn.",
+   "On that awful world but ten! There, I’ll wait",
+   "One more my heart’s pompless beds; my dearest music,",
+   "Which I shall hold, dearly, till I wound!",
+   "To my poor soul be wither’d, yet I will prove."
+  ],
+  "line": "They that, whilst my little sword, the heart, women",
+  "nll": 2.649,
+  "round": 7
+ },
+ {
+  "pid": 16,
+  "cid": 0,
+  "context": [
+   "  HAMLET.",
+   "I was a woman.",
+   "KING.",
+   "We had been sent to make a soldier’s name,",
+   "And that’s true. ’Tis a dream once a bed",
+   "That last night’s counsel."
+  ],
+  "line": "ARCHBISHOP.",
+  "nll": 1.716,
+  "round": 7
+ },
+ {
+  "pid": 16,
+  "cid": 1,
+  "context": [
+   "  HAMLET.",
+   "I was a woman.",
+   "KING.",
+   "We had been sent to make a soldier’s name,",
+   "And that’s true. ’Tis a dream once a bed",
+   "That last night’s counsel."
+  ],
+  "line": "PISTOL.",
+  "nll": 2.937,
+  "round": 7
+ },
+ {
+  "pid": 16,
+  "cid": 2,
+  "context": [
+   "  HAMLET.",
+   "I was a woman.",
+   "KING.",
+   "We had been sent to make a soldier’s name,",
+   "And that’s true. ’Tis a dream once a bed",
+   "That last night’s counsel."
+  ],
+  "line": "CAMBURLAINE.",
+  "nll": 2.367,
+  "round": 7
+ },
+ {
+  "pid": 16,
+  "cid": 3,
+  "context": [
+   "  HAMLET.",
+   "I was a woman.",
+   "KING.",
+   "We had been sent to make a soldier’s name,",
+   "And that’s true. ’Tis a dream once a bed",
+   "That last night’s counsel."
+  ],
+  "line": "KING.",
+  "nll": 4.337,
+  "round": 7
+ },
+ {
+  "pid": 17,
+  "cid": 0,
+  "context": [
+   "  HAMLET.",
+   "Why, what of that? Hang him, Hieronimo!",
+   "O, my credit hath left me hence,",
+   "A boy of vauntage, and a carriage",
+   "To see how easily a majesty",
+   "Hath stay’d to dwell?"
+  ],
+  "line": "HASTINGS.",
+  "nll": 2.355,
+  "round": 7
+ },
+ {
+  "pid": 17,
+  "cid": 1,
+  "context": [
+   "  HAMLET.",
+   "Why, what of that? Hang him, Hieronimo!",
+   "O, my credit hath left me hence,",
+   "A boy of vauntage, and a carriage",
+   "To see how easily a majesty",
+   "Hath stay’d to dwell?"
+  ],
+  "line": "LAERTES.",
+  "nll": 2.356,
+  "round": 7
+ },
+ {
+  "pid": 17,
+  "cid": 2,
+  "context": [
+   "  HAMLET.",
+   "Why, what of that? Hang him, Hieronimo!",
+   "O, my credit hath left me hence,",
+   "A boy of vauntage, and a carriage",
+   "To see how easily a majesty",
+   "Hath stay’d to dwell?"
+  ],
+  "line": "HAMLET.",
+  "nll": 2.351,
+  "round": 7
+ },
+ {
+  "pid": 17,
+  "cid": 3,
+  "context": [
+   "  HAMLET.",
+   "Why, what of that? Hang him, Hieronimo!",
+   "O, my credit hath left me hence,",
+   "A boy of vauntage, and a carriage",
+   "To see how easily a majesty",
+   "Hath stay’d to dwell?"
+  ],
+  "line": "BURGUNDY.",
+  "nll": 2.044,
+  "round": 7
+ },
+ {
+  "pid": 18,
+  "cid": 0,
+  "context": [
+   "  HAMLET.",
+   "Is this your business?",
+   "KING.",
+   "I am afeard of Clarence.",
+   "What is this? What say you? Truly for this?",
+   "Your Grace shall never see you in my sceptre.",
+   "HAMLET."
+  ],
+  "line": "Come on and turn you to the griefs of yours;",
+  "nll": 2.12,
+  "round": 7
+ },
+ {
+  "pid": 18,
+  "cid": 1,
+  "context": [
+   "  HAMLET.",
+   "Is this your business?",
+   "KING.",
+   "I am afeard of Clarence.",
+   "What is this? What say you? Truly for this?",
+   "Your Grace shall never see you in my sceptre.",
+   "HAMLET."
+  ],
+  "line": "Then let that lie to you. I’ll stabs you.",
+  "nll": 2.601,
+  "round": 7
+ },
+ {
+  "pid": 18,
+  "cid": 2,
+  "context": [
+   "  HAMLET.",
+   "Is this your business?",
+   "KING.",
+   "I am afeard of Clarence.",
+   "What is this? What say you? Truly for this?",
+   "Your Grace shall never see you in my sceptre.",
+   "HAMLET."
+  ],
+  "line": "’Tis very good. I am the funeral, my boy.",
+  "nll": 2.299,
+  "round": 7
+ },
+ {
+  "pid": 18,
+  "cid": 3,
+  "context": [
+   "  HAMLET.",
+   "Is this your business?",
+   "KING.",
+   "I am afeard of Clarence.",
+   "What is this? What say you? Truly for this?",
+   "Your Grace shall never see you in my sceptre.",
+   "HAMLET."
+  ],
+  "line": "And so you will, my lord, will he treat us here.",
+  "nll": 2.523,
+  "round": 7
+ },
+ {
+  "pid": 19,
+  "cid": 0,
+  "context": [
+   "  HAMLET.",
+   "How now, my lord?",
+   "Well said, I’ll sit down this high excellence.—Come, come,",
+   "And let us make your hands away with us.",
+   "The rest of your lordship are no great self",
+   "But of this self-same villainous morris,",
+   "And all our replies in my heart,"
+  ],
+  "line": "And find the King is wed in traitor’s sorrow,",
+  "nll": 2.664,
+  "round": 7
+ },
+ {
+  "pid": 19,
+  "cid": 1,
+  "context": [
+   "  HAMLET.",
+   "How now, my lord?",
+   "Well said, I’ll sit down this high excellence.—Come, come,",
+   "And let us make your hands away with us.",
+   "The rest of your lordship are no great self",
+   "But of this self-same villainous morris,",
+   "And all our replies in my heart,"
+  ],
+  "line": "Tell me more sorrow for the rank of my love.",
+  "nll": 2.669,
+  "round": 7
+ },
+ {
+  "pid": 19,
+  "cid": 2,
+  "context": [
+   "  HAMLET.",
+   "How now, my lord?",
+   "Well said, I’ll sit down this high excellence.—Come, come,",
+   "And let us make your hands away with us.",
+   "The rest of your lordship are no great self",
+   "But of this self-same villainous morris,",
+   "And all our replies in my heart,"
+  ],
+  "line": "Their figures else will title our swords",
+  "nll": 2.537,
+  "round": 7
+ },
+ {
+  "pid": 19,
+  "cid": 3,
+  "context": [
+   "  HAMLET.",
+   "How now, my lord?",
+   "Well said, I’ll sit down this high excellence.—Come, come,",
+   "And let us make your hands away with us.",
+   "The rest of your lordship are no great self",
+   "But of this self-same villainous morris,",
+   "And all our replies in my heart,"
+  ],
+  "line": "And to this endless darkness and excuse.",
+  "nll": 2.33,
+  "round": 7
+ },
+ {
+  "pid": 20,
+  "cid": 0,
+  "context": [
+   "  OPHELIA.",
+   "Put you on my minion?",
+   "Come, sirrah, let us die?",
+   "HORATIO.",
+   "I’ll not read it. I shall not hear it."
+  ],
+  "line": "ANGELO.",
+  "nll": 2.04,
+  "round": 7
+ },
+ {
+  "pid": 20,
+  "cid": 1,
+  "context": [
+   "  OPHELIA.",
+   "Put you on my minion?",
+   "Come, sirrah, let us die?",
+   "HORATIO.",
+   "I’ll not read it. I shall not hear it."
+  ],
+  "line": "[_Exit Servant._]",
+  "nll": 1.549,
+  "round": 7
+ },
+ {
+  "pid": 20,
+  "cid": 2,
+  "context": [
+   "  OPHELIA.",
+   "Put you on my minion?",
+   "Come, sirrah, let us die?",
+   "HORATIO.",
+   "I’ll not read it. I shall not hear it."
+  ],
+  "line": "EMILIA.",
+  "nll": 2.721,
+  "round": 7
+ },
+ {
+  "pid": 20,
+  "cid": 3,
+  "context": [
+   "  OPHELIA.",
+   "Put you on my minion?",
+   "Come, sirrah, let us die?",
+   "HORATIO.",
+   "I’ll not read it. I shall not hear it."
+  ],
+  "line": "[_To Trinculo._] See, I pray you, go.",
+  "nll": 1.629,
+  "round": 7
+ },
+ {
+  "pid": 22,
+  "cid": 0,
+  "context": [
+   "  OPHELIA.",
+   "Sirrah, you are your father and your daughter.",
+   "She had been too fond of you; therefore,",
+   "I never did discover you were a madman.",
+   "Though you had been the most ill, your fathers,",
+   "Nothing of wretched custom, yet remain’d",
+   "The people maids all o’erlook’d; and here"
+  ],
+  "line": "Have you not in her promise?",
+  "nll": 2.224,
+  "round": 7
+ },
+ {
+  "pid": 22,
+  "cid": 1,
+  "context": [
+   "  OPHELIA.",
+   "Sirrah, you are your father and your daughter.",
+   "She had been too fond of you; therefore,",
+   "I never did discover you were a madman.",
+   "Though you had been the most ill, your fathers,",
+   "Nothing of wretched custom, yet remain’d",
+   "The people maids all o’erlook’d; and here"
+  ],
+  "line": "Does you not have been so little strange,",
+  "nll": 2.007,
+  "round": 7
+ },
+ {
+  "pid": 22,
+  "cid": 2,
+  "context": [
+   "  OPHELIA.",
+   "Sirrah, you are your father and your daughter.",
+   "She had been too fond of you; therefore,",
+   "I never did discover you were a madman.",
+   "Though you had been the most ill, your fathers,",
+   "Nothing of wretched custom, yet remain’d",
+   "The people maids all o’erlook’d; and here"
+  ],
+  "line": "Will be so o’er-eighing bed, all as true as lustred",
+  "nll": 3.054,
+  "round": 7
+ },
+ {
+  "pid": 22,
+  "cid": 3,
+  "context": [
+   "  OPHELIA.",
+   "Sirrah, you are your father and your daughter.",
+   "She had been too fond of you; therefore,",
+   "I never did discover you were a madman.",
+   "Though you had been the most ill, your fathers,",
+   "Nothing of wretched custom, yet remain’d",
+   "The people maids all o’erlook’d; and here"
+  ],
+  "line": "He needs not strike. That you saw him gaze,",
+  "nll": 2.431,
+  "round": 7
+ }
+]

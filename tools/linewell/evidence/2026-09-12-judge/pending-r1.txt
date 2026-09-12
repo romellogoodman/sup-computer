@@ -1,0 +1,214 @@
+
+### poem 0
+  NURSE.
+There is no way to aim: if thou think’st,
+--- candidates
+0.0: Why then, by this creation, thou art dead.
+0.1: And what thou canst become a woman?
+0.2: I’ll walk upon this hour.
+0.3: There is not curely false in fire, it is
+
+### poem 1
+  NURSE.
+My cousin Rutland is not bound to fight.
+--- candidates
+1.0: ROMEO.
+1.1: Bear not towards this fortune of my sake,
+1.2: Your lordship is too fast, my lord, my lord,
+1.3: I’ll cheer it fell and lay me the emperor.
+
+### poem 2
+  NURSE.
+Then take the empress; but in the emperor
+--- candidates
+2.0: Was he that gallow’d their fancy from his state
+2.1: Compass the second mirror to the guard.
+2.2: The latest trick of that opposition
+2.3: The reward of Tamburlaine is fierce,
+
+### poem 3
+  NURSE.
+You, sir?
+--- candidates
+3.0: SECOND LORD.
+3.1: MARIA.
+3.2: FIRST SENATOR.
+3.3: KATHARINE.
+
+### poem 4
+  ROMEO:
+--- candidates
+4.0: Art thou me of all these fairy times,
+4.1: All is the greater lie to the end,
+4.2: [Footnote 255: The third of the last.]
+4.3: [Footnote 52: Below-werner-- Old ed. "spruden."]
+
+### poem 5
+  ROMEO:
+How now, Signior Keeper's Mercury!
+--- candidates
+5.0: Shepherd! And here’s my life.
+5.1: MASTER WITCH.
+5.2: Else now myself have laped the field;
+5.3: SLENDER.
+
+### poem 6
+  ROMEO:
+Carry a room in his horn: but what shall we do?
+--- candidates
+6.0: DUKE.
+6.1: Dodger, bid me see; let me entreat you
+6.2: I’ll take off the clad.
+6.3: _M. Saw._ To put this havoard, Master Sawyer.--
+
+### poem 7
+  ROMEO:
+And every man doth distract his love
+--- candidates
+7.0: Upon whose crown and earth shall be my love.
+7.1: Of your affections that demand of his souls.
+7.2: Destowed his foes and broaches,
+7.3: When chiefest wolves did slip his destiny
+
+### poem 8
+  LEAR.
+Why, what’s that?
+--- candidates
+8.0: LORD.
+8.1: MARGARET.
+8.2: SHALLOW.
+8.3: HIPPOLYTA.
+
+### poem 9
+  LEAR.
+But what say you to him?
+--- candidates
+9.0: KATHARINE.
+9.1: BASTARD.
+9.2: LANCE.
+9.3: BRABANTIO.
+
+### poem 10
+  LEAR.
+Here’s the priest of man.
+--- candidates
+10.0: MAECENAS.
+10.1: QUEEN ELIZABETH.
+10.2: ADRIANA.
+10.3: BORATIO.
+
+### poem 11
+  LEAR.
+In base confirmations, brief brightness.
+--- candidates
+11.0: My heart’s achiev’d instant eye I fear
+11.1: NURSE.
+11.2: Why hast thou been a dungeon in the world?
+11.3: KACISTAFF.
+
+### poem 12
+  FOOL.
+Most gracious, my lord, that I would laugh to see you.
+--- candidates
+12.0: MIRANDA.
+12.1: I chide you of your lord’s cheeks, my lord.
+12.2: LORD.
+12.3: DUKE.
+
+### poem 13
+  FOOL.
+O, see, that’s a man’s man.
+--- candidates
+13.0: SHADOW.
+13.1: CLOWN.
+13.2: BERTRAM.
+13.3: FOOL.
+
+### poem 14
+  FOOL.
+Good master, do you bid me home with the house?
+--- candidates
+14.0: PAGE.
+14.1: MARIA.
+14.2: FOOL.
+14.3: FALSTAFF.
+
+### poem 15
+  FOOL.
+--- candidates
+15.0: But what says my large turt?
+15.1: Welcome, my lord. My name comes here in peace,
+15.2: Marry, we shall be bedding.
+15.3: Stay there, Page.
+
+### poem 16
+  HAMLET.
+I was a woman.
+--- candidates
+16.0: HAMLET.
+16.1: PRIAM.
+16.2: FRIAR LAWRENCE.
+16.3: SERVANT.
+
+### poem 17
+  HAMLET.
+Why, what of that? Hang him, Hieronimo!
+--- candidates
+17.0: O, my credit hath left me hence,
+17.1: HORATIO.
+17.2: Why, when thou wilt, Hamlet, why help you him?
+17.3: HERO.
+
+### poem 18
+  HAMLET.
+Is this your business?
+--- candidates
+18.0: KING.
+18.1: FLORIZEL.
+18.2: HAMLET.
+18.3: ARON.
+
+### poem 19
+  HAMLET.
+How now, my lord?
+--- candidates
+19.0: Well said, I’ll sit down this high excellence.—Come, come,
+19.1: GHOST.
+19.2: KING RICHARD.
+19.3: PISTOL.
+
+### poem 20
+  OPHELIA.
+Put you on my minion?
+--- candidates
+20.0: LOVELL.
+20.1: Come, sirrah, let us die?
+20.2: IAGO.
+20.3: IACHIMO.
+
+### poem 21
+  OPHELIA.
+Didst thou hear?
+--- candidates
+21.0: IAGO.
+21.1: ARIEL.
+21.2: IACHIMO.
+21.3: TIMON.
+
+### poem 22
+  OPHELIA.
+Sirrah, you are your father and your daughter.
+--- candidates
+22.0: DESDEMONA.
+22.1: HELENA.
+22.2: Therefore, Hermia, is the good governor?
+22.3: ROSALIND.
+
+### poem 23
+  OPHELIA.
+Come, fire, cut thy gardeners to me.
+--- candidates
+23.0: HORTENSIO.
+23.1: How say you to my hope? Fare ye well.
+23.2: PANDARUS.
+23.3: LOVELL.

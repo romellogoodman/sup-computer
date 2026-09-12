@@ -1,0 +1,192 @@
+
+### poem 0
+  NURSE.
+--- candidates
+0.0: There is no way to aim: if thou think’st,
+0.1: But what news?
+0.2: An’t please thee, wizzling, trod me, to mount, damned thee?
+0.3: There is no matter of the date.
+
+### poem 1
+  NURSE.
+--- candidates
+1.0: My cousin Rutland is not bound to fight.
+1.1: Away, thou comfortable; we’ll cut a down tonight.
+1.2: [ENTER FORD SHEARE AT EDWARD.]
+1.3: DON PEDRO.
+
+### poem 2
+  NURSE.
+--- candidates
+2.0: Then take the empress; but in the emperor
+2.1: O changed Abbey, how full and triumphantly?
+2.2: Confess thou, Constable, thou hast heard thy crown
+2.3: Then go, Romeo by my life, thou view’st me well,
+
+### poem 3
+  NURSE.
+--- candidates
+3.0: You, sir?
+3.1: Enter Walter and Guilt and Orlando.
+3.2: It is the other matter that’s but as a matter.
+3.3: Stand away, the cook is but a man, my lord.
+
+### poem 4
+  ROMEO:
+--- candidates
+4.0: [Footnote 90: Mary] So the 8vo.--The 8vo "lumbers."]
+4.1: How now, BRUTIO, BRUTIO, BRUTIO, OBIAN, BRAKENDANTS,
+4.2: [41] A schoolmaster, a tanker, a stranger.
+4.3: [Footnote 65: Old ed. "Pass."]
+
+### poem 5
+  ROMEO:
+--- candidates
+5.0: It is not ignorant, slight indeed, but he was
+5.1: HORATIO.
+5.2: How now, Signior Keeper's Mercury!
+5.3: One day he is not now at midnight,
+
+### poem 6
+  ROMEO:
+--- candidates
+6.0: John Robert Moor; Old Faustus with his bright bridegroom.]
+6.1: MAILOR, IN CAPE, HUNDRATE, GREAKEN, PROLOGUE.
+6.2: [Footnote 301: talket-- i.e. scabbrain.]
+6.3: Carry a room in his horn: but what shall we do?
+
+### poem 7
+  ROMEO:
+--- candidates
+7.0: BENVOLIO, DREMIO, CLARA, a drop-piece of ~Prince~ and
+7.1: Richard Cyprus!
+7.2: And every man doth distract his love
+7.3: What a plague I am not, to whom doublet can be!
+
+### poem 8
+  LEAR.
+--- candidates
+8.0: [a]  You must have passed hither.
+8.1: Why, this is a man every woman.
+8.2: Why, what’s that?
+8.3: [Footnote 55: As] So the 8vo.--The 4to "will."]
+
+### poem 9
+  LEAR.
+--- candidates
+9.0: But what say you to him?
+9.1: _Frank._ One that makes thee be cunning, or I think thou art a fool,
+9.2: Farewell, good Master Bots, here thou griev’st me: I will be patient,
+9.3: O my lord,
+
+### poem 10
+  LEAR.
+--- candidates
+10.0: Here’s the priest of man.
+10.1: Let us go down.
+10.2: Well, wink you, fair Hugh, do you delight on me?
+10.3: This is it that I have spoken to be done
+
+### poem 11
+  LEAR.
+--- candidates
+11.0: In base confirmations, brief brightness.
+11.1: According to the play in Marlowe’s last night; he sundered it for
+11.2: Wherein I find out his hand; the law, my father will keep him hither; you
+11.3: Sir John, where is your lady?
+
+### poem 12
+  FOOL.
+--- candidates
+12.0: Away, away with a star-day! [_Kneeling_.
+12.1: Sir, Sir John Falstaff, be not honest, is this very true?
+12.2: Most gracious, my lord, that I would laugh to see you.
+12.3: You that know that you were a whit, and you were here,
+
+### poem 13
+  FOOL.
+--- candidates
+13.0: Rid him, Maid Doctor, to the Lady Falstaff’s path, and his
+13.1: You are a woman, you corrupt me, you robbering money, and you shall
+13.2: O, see, that’s a man’s man.
+13.3: Hum!
+
+### poem 14
+  FOOL.
+--- candidates
+14.0: How dost thou? Learn it, Langley; I have not forgot with Madam
+14.1: What are they? The eternal business took, but lay me to speak a base
+14.2: Good master, do you bid me home with the house?
+14.3: Thou art an aunt.
+
+### poem 15
+  FOOL.
+--- candidates
+15.0: [_To Peto_.] Go get thee homely. O thou brave Cupid, clap thyself.
+15.1: HOSTESS-WORD--
+15.2: Fie, fie! Fool! Out upon me! I have merry that man had such a
+15.3: Her stern shines in a nature. Since all in a second mode in Spain
+
+### poem 16
+  HAMLET.
+--- candidates
+16.0: PRINCE HENRY, merry, trick.
+16.1: Nor Cambridge for France; and Marshal, Marshal, that
+16.2: I was a woman.
+16.3: Marry, good Master Slender, and I will never see it.
+
+### poem 17
+  HAMLET.
+--- candidates
+17.0: Why, what of that? Hang him, Hieronimo!
+17.1: Sir Thomas Diomed: there is a most incarnable.
+17.2: Severally hath no man in the realm, I see him turned for a
+17.3: I have been ordered by, that the water might have made me
+
+### poem 18
+  HAMLET.
+--- candidates
+18.0: When I was sure, incredulate, he was a man! ��Though he had been
+18.1: Is this your business?
+18.2: Here in Middleton’s battle. Therefore, dear Carrion.
+18.3: Sir Thomas Lewis, I am sent to you: the last time is as another
+
+### poem 19
+  HAMLET.
+--- candidates
+19.0: Fair, I know you so too much by the rest.
+19.1: How now, my lord?
+19.2: MALBETH.
+19.3: So is't, my lord.
+
+### poem 20
+  OPHELIA.
+--- candidates
+20.0: Put you on my minion?
+20.1: Do you hear me?
+20.2: [_Aside._] Keeping the pin with sounding groans, and the boars
+20.3: Come, come, let’s have this good report. I’ll have it so.
+
+### poem 21
+  OPHELIA.
+--- candidates
+21.0: Didst thou hear?
+21.1: Woo not that, if I do think that thou’lt, I am not so,
+21.2: Yes, Master Silence, in our grantic place.
+21.3: What think’st thou so that love shouldst not be?
+
+### poem 22
+  OPHELIA.
+--- candidates
+22.0: Sirrah, you are your father and your daughter.
+22.1: [_Aside._] Who thinks?
+22.2: You are too wretched with the matestration of a slave, in a false biting
+22.3: This according to all one Malta. I will be patient.
+
+### poem 23
+  OPHELIA.
+--- candidates
+23.0: Can this be said she, shepherd? I do not wish my brother.
+23.1: Come, fire, cut thy gardeners to me.
+23.2: [_Reads his Music.] She that’s my gates, he’s not so fancy indeed.
+23.3: Are you welcome?

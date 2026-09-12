@@ -192,7 +192,7 @@ def main():
         dummy = torch.full((1, 64), PAD, dtype=torch.long)
         dummy[0, :10] = torch.arange(10)
         torch.onnx.export(best_model, (dummy,), a.export, input_names=["ids"], output_names=["logits"],
-                          dynamic_axes={"ids": {0: "batch", 1: "len"}}, opset_version=17)
+                          dynamic_axes={"ids": {0: "batch", 1: "len"}}, opset_version=17, dynamo=False)
         print(f"exported {best_name} -> {a.export} ({os.path.getsize(a.export) / 1024:.0f} KB)")
 
 
