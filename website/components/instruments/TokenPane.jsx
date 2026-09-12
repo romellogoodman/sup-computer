@@ -9,7 +9,7 @@ export default function TokenPane({ prompt, output, busy, placeholder }) {
   return (
     <pre className="instrument__output" aria-live="polite">
       {prompt && started ? <span className="instrument__output-prompt">{prompt}</span> : null}
-      {output || (busy ? "" : placeholder ?? "output appears here — the model runs entirely in your browser.")}
+      {output || (busy ? "" : placeholder ?? "output appears here.")}
       {busy && <span className="instrument__cursor">▮</span>}
     </pre>
   );

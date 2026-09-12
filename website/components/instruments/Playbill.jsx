@@ -77,7 +77,7 @@ export default function PlaybillInstrument({ models }) {
       View={PlaybillView}
       demoLabel="playbill"
       runLabel="write"
-      placeholder="the scene appears here — the model runs entirely in your browser."
+      placeholder="the scene appears here."
       controls={({ disabled }) => (
         <div className="instrument__chips" role="group" aria-label="cue a speaker">
           <span className="instrument__label">cue</span>

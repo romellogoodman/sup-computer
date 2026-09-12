@@ -64,7 +64,7 @@ export default function SeriesPage({ series }) {
       {labNotes.length ? (
         labNotes.map((r) => <ReportItem key={r.slug} report={r} />)
       ) : (
-        <p className="section-note">No lab notes filed under this series yet.</p>
+        <p className="section-note">no lab notes for this series yet.</p>
       )}
 
       {card && (

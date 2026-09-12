@@ -74,7 +74,7 @@ export default function GreenlightInstrument({ models }) {
       demoLabel="story"
       runLabel="tell it"
       defaults={defaults}
-      placeholder="the story appears here — the model runs entirely in your browser."
+      placeholder="the story appears here."
       controls={({ disabled }) => (
         <div className="instrument__row">
           <TextField

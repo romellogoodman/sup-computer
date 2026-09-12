@@ -277,7 +277,7 @@
       "version": 1,
       "git_tag": "daydream-chess-nanogpt-micro-1",
       "architecture": "modern (RoPE, RMSNorm, bias-free)",
-      "tagline": "Gardner minichess, 5x5 -- the smallest board with room for a full army",
+      "tagline": "Gardner minichess, 5\u00d75 \u2014 the smallest board with room for a full army",
       "researcher": "claude-sonnet-5",
       "tokenizer": {
         "type": "char",
@@ -303,7 +303,7 @@
       "version": 1,
       "git_tag": "daydream-chess-nanogpt-grand-1",
       "architecture": "modern (RoPE, RMSNorm, bias-free)",
-      "tagline": "12 files x 10 ranks, Chancellor and Archbishop -- the widest board in the family",
+      "tagline": "12 files \u00d7 10 ranks, Chancellor and Archbishop \u2014 the widest board in the family",
       "researcher": "claude-sonnet-5",
       "tokenizer": {
         "type": "char",

@@ -79,7 +79,7 @@ export function RunButton({ generating, loading, disabled, onRun, onStop, label 
   }
   return (
     <button type="button" className="instrument__button" onClick={onRun} disabled={disabled || loading}>
-      {loading ? "loading model…" : label}
+      {loading ? "loading the model…" : label}
     </button>
   );
 }

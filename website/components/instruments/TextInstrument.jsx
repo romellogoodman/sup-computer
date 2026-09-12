@@ -93,8 +93,7 @@ export default function TextInstrument({
     <div className="instrument">
       {m.state === "unpublished" && (
         <Notice>
-          weights not yet published for this release. The instrument lights up the moment
-          they land; everything else is already wired.
+          weights not yet published for this release — the instrument lights up when they land.
         </Notice>
       )}
       {m.state === "failed" && <Notice>the model failed to load: {m.error}</Notice>}
@@ -119,7 +118,7 @@ export default function TextInstrument({
 
       <div className="instrument__controls">
         {fields.includes("temp") && (
-          <NumberField label="temp" value={temp} onChange={setTemp} min={0.1} max={2} step={0.1} disabled={disabled} />
+          <NumberField label="temperature" value={temp} onChange={setTemp} min={0.1} max={2} step={0.1} disabled={disabled} />
         )}
         {fields.includes("topk") && (
           <NumberField label="top-k" value={topk} onChange={setTopk} min={0} max={200} disabled={disabled} />

@@ -286,16 +286,14 @@ export default function GlyphMakerInstrument({ models }) {
     <div className="instrument glyph">
       {m.state === "unpublished" && (
         <Notice>
-          weights not yet published for this release. The instrument lights up the moment
-          they land; everything else is already wired.
+          weights not yet published for this release — the instrument lights up when they land.
         </Notice>
       )}
       {m.state === "failed" && <Notice>the model failed to load: {m.error}</Notice>}
       {runnable && slowBackend && (
         <Notice>
-          this is the studio&rsquo;s largest model (47.8M parameters), and without WebGPU it
-          draws on WebAssembly — slowly. Expect a good while per letter; the tiles draw
-          themselves as it goes.
+          this is the studio&rsquo;s largest model (47.8M parameters). Without WebGPU it draws
+          on WebAssembly, slowly — the tiles fill in as it goes.
         </Notice>
       )}
 

@@ -560,8 +560,7 @@ export default function BoardInstrument({ models }) {
     <div className="instrument board">
       {m.state === "unpublished" && (
         <Notice>
-          weights not yet published for this release. The instrument lights up the moment
-          they land; everything else is already wired.
+          weights not yet published for this release — the instrument lights up when they land.
         </Notice>
       )}
       {m.state === "failed" && <Notice>the model failed to load: {m.error}</Notice>}
@@ -605,9 +604,10 @@ export default function BoardInstrument({ models }) {
         </button>
       </div>
       <p className="board__caption">
-        You play white on Regular; chess.js referees the 8×8 board. Micro and Grand are watch-only —
-        no rules engine runs in the browser for a 5×5 or a 12×10 board (the studio&rsquo;s arbiter,
-        Fairy-Stockfish, is a native binary), so those boards render the dream without refereeing it.
+        You play white on the regular board; chess.js referees the 8×8. Micro and grand are
+        watch-only: no rules engine runs in the browser for a 5×5 or a 12×10 board, so those boards
+        render the dream without refereeing it. The studio&rsquo;s arbiter, Fairy-Stockfish, is a
+        native binary.
       </p>
 
       <div className="instrument__controls">
@@ -780,7 +780,7 @@ export default function BoardInstrument({ models }) {
           prompt={watchPrompt}
           output={output}
           busy={busy}
-          placeholder="the game appears here as UCI moves — the model runs entirely in your browser."
+          placeholder="the game appears here as UCI moves."
         />
       )}
 

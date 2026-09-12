@@ -76,7 +76,7 @@ export default function ChantInstrument({ models }) {
       runLabel="dream"
       fields={["max"]}
       defaults={defaults}
-      placeholder="the chant appears here — the model runs entirely in your browser."
+      placeholder="the chant appears here."
       controls={({ disabled }) => (
         <RangeField
           id="chant-temp"

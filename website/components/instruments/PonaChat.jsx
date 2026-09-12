@@ -240,7 +240,7 @@ export default function PonaChat({ models }) {
   const suggestHint = !woken
     ? "tap a key or start typing — the model wakes on first touch"
     : m.state === "loading"
-      ? "loading model…"
+      ? "loading the model…"
       : m.state === "failed"
         ? "suggestions unavailable"
         : "…";
@@ -258,7 +258,7 @@ export default function PonaChat({ models }) {
       <div className="pona__transcript" aria-live="polite">
         {turns.length === 0 && pending == null && (
           <p className="pona__hint">
-            o toki tawa ilo! — say hi. Type below or tap the keys; the model answers word by
+            o toki tawa ilo! — say hi. type below or tap the keys; the model answers word by
             word, as <strong>ilo</strong>.
           </p>
         )}

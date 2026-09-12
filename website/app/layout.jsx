@@ -44,7 +44,7 @@ export default function RootLayout({ children }) {
           </span>
           <span className="footer__links">
             <a className="footer__link" href={HUGGINGFACE}>huggingface</a>
-            <a className="footer__link" href={GITHUB}>sourcecode</a>
+            <a className="footer__link" href={GITHUB}>source</a>
             <a className="footer__link" href="#top">back to top ↑</a>
           </span>
         </footer>

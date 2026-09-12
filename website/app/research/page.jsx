@@ -4,11 +4,11 @@ import ReportList from "../../components/ReportList";
 export const metadata = {
   title: "research",
   description:
-    "Essays by the studio's director and the lab notes its agents write: every experiment, newest first.",
+    "Research from sup computer, a small language model studio: essays by its director and lab notes written by the models that ran the experiments.",
   openGraph: {
     title: "research",
     description:
-      "Essays by the studio's director and the lab notes its agents write: every experiment, newest first.",
+      "Research from sup computer, a small language model studio: essays by its director and lab notes written by the models that ran the experiments.",
     url: "/research/",
   },
 };
@@ -24,9 +24,8 @@ export default function Research() {
     <>
       <h1 className="report__title">Research</h1>
       <p className="intro">
-        Two shelves. Essays are written by Romello Goodman, one per question the studio has
-        chased. Lab notes are the experiments behind them, run and written up by Claude models
-        under direction, newest first.
+        Essays are Romello Goodman&apos;s questions. Lab notes are the experiments that chase
+        them, written by the model that ran each one.
       </p>
 
       <h2 className="section-label" id="essays">Essays</h2>
