@@ -18,7 +18,9 @@ a tool (ADR-0033).
 | [`hf-stage/`](hf-stage/) | Stages a Hugging Face README from a model card (pointer line + absolute links) — part of the publish flow. |
 | [`linewell/`](linewell/) | Line-by-line composition through a small model, with pluggable judges. |
 | [`metafont-sweep/`](metafont-sweep/) | Turns the knobs on Knuth's Computer Modern and measures what that corpus is worth against real type families. |
+| [`seed-siblings/`](seed-siblings/) | Are identical-recipe models trained on different seeds distinguishable from their output? Sample the siblings, train an attribution classifier, report the confusion. |
 | [`steer/`](steer/) | The shared big-model-steers-small-model layer — client + orchestrator loop (ADR-0026). |
 | [`synthgen/`](synthgen/) | The local-LLM synthetic-corpus engine — every LLM-generated corpus goes through it (ADR-0014). |
+| [`tinyenc/`](tinyenc/) | A tiny text-classifier encoder shared by the studio's sense experiments. |
 | [`token-chess/`](token-chess/) | The benchmark: LLMs orchestrate Daydream's sampler under a token budget. |
 <!-- /generated -->
