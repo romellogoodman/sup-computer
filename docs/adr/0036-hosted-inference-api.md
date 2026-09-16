@@ -59,11 +59,17 @@ local `vercel build` produced `functions/api/{models,generate,health}.func`
 with handlers at `website/api/*.js` and the bundle rooted at the repo root,
 so the traced `cli/`, `player/`, and `registry.json` came along without
 configuration; the preview deployment confirmed the routes serve from
-`/api/*` next to the exported pages. Two things the tracer cannot see are
-declared in `vercel.json`: `includeFiles` for the Linux `libonnxruntime.so`
-that the `.node` binding dlopens, and `excludeFiles` for the 23 MB of
-`onnxruntime-web` the player's browser-fallback `import()` would otherwise
-drag into a Node bundle.
+`/api/*` next to the exported pages. The bundle needed three corrections
+the tracer would not make on its own. `onnxruntime-node` ships every
+platform's binaries (258 MB, over the 250 MB function limit), and once the
+tracer sees the native binding on Linux it brings the whole package: the
+first preview came out at 298 MB, the second at 278 MB with an `excludeFiles`
+glob the remote tracer ignored. So `scripts/prune-ort.sh` deletes the Mac
+and Windows binaries at install time (Linux only, so a local `vercel build`
+keeps its own), `includeFiles` names the Linux `libonnxruntime.so` the
+binding dlopens, and `excludeFiles` drops the CLI's second copy of ORT and
+the 23 MB of `onnxruntime-web` the player's browser-fallback `import()`
+would drag into a Node bundle.
 
 **4. Fast and cheap, by construction.** The function fetches the int8
 graph (the browser's choice on WASM, now the server's) and its tokenizer
@@ -93,8 +99,9 @@ page already follows, so the API is one `.md` away like everything else.
   mcp` server can default to it instead of a local ORT.
 - The website's build installs the CLI's `node_modules` (`npm ci --prefix
   ../cli`), which pulls the full multi-platform `onnxruntime-node` package
-  (258 MB) once more. Build time, not bundle size: each function is ~95 MB
-  after the exclusions, under the 250 MB limit.
+  (258 MB) once more. Build time, not bundle size: each function is about
+  60 MB after the prune, under the 250 MB limit. Bumping `onnxruntime-node`
+  means re-checking the layout the prune script assumes (`bin/napi-v6/`).
 - Cold starts are real. A fresh instance downloads the bundle from R2 and
   builds the session before the first token; a warm instance answers in tens
   of milliseconds for the small models. Fluid compute scales to zero, so

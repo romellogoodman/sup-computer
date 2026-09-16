@@ -80,10 +80,12 @@ How it runs: on a cold start the function fetches the release's int8 ONNX
 graph and tokenizer sidecar from R2 into `/tmp/supcomputer/<id>/` and keeps
 the session in memory; every generation for a model runs on one promise
 chain so ORT runs never overlap (the worker's invariant, above). `vercel.json`
-sets `maxDuration` (300 s, room for 512 tokens of glyph on one core),
-installs the CLI's `node_modules`, includes the Linux ORT shared library the
-file tracer can't see, and excludes the browser ORT the player's fallback
-import would drag in.
+sets `maxDuration` (300 s, room for 512 tokens of glyph on one core) and
+installs the CLI's `node_modules`; `scripts/prune-ort.sh` then deletes the
+Mac and Windows ORT binaries on Linux builds (the package is 258 MB, the
+function limit 250 MB, and the tracer takes the whole package once it sees
+the native binding), while `includeFiles`/`excludeFiles` keep the Linux
+shared library and drop the CLI's second ORT copy and the browser ORT.
 
 Local run: `vercel dev` from the repo root (the project's root directory is
 `website`) serves the pages and the functions on one port; `vercel build`
