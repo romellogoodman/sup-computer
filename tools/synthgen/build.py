@@ -18,8 +18,15 @@ Examples
         --prompt-file prompt.txt \
         --out ../../projects/gatsby/data
 
-Requires LM Studio's server running at http://localhost:1234/v1 (override with
-SYNTHGEN_BASE_URL). Nothing is generated until you run this.
+    # the hosted backend: models are always named (ADR-0038)
+    python build.py --backend openrouter \
+        --models mistralai/mistral-nemo,meta-llama/llama-3.1-8b-instruct \
+        --n 50 --prompt-file prompt.txt --out ../../projects/x/data
+
+The default backend is LM Studio's server at http://localhost:1234/v1
+(override with SYNTHGEN_BASE_URL). OpenRouter reads OPENROUTER_API_KEY from
+the environment, else the repo-root .env.local, else .env. Nothing is
+generated until you run this.
 """
 import argparse
 import os
@@ -34,11 +41,16 @@ DEMO_PROMPT = "Write a very short, simple story (3-4 sentences) for young childr
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--backend", default="lmstudio", choices=sg.BACKENDS,
+                    help="lmstudio (default, local, free) or openrouter (hosted, "
+                         "paid; needs OPENROUTER_API_KEY and --models)")
     ap.add_argument("--list", action="store_true",
-                    help="discover and print the loaded chat models, then exit")
+                    help="discover and print the loaded chat models, then exit "
+                         "(LM Studio only)")
     ap.add_argument("--models", default=None,
-                    help="comma-separated model ids (default: every discovered "
-                         "chat model — the mixture-of-models path)")
+                    help="comma-separated model ids (LM Studio default: every "
+                         "discovered chat model — the mixture-of-models path; "
+                         "REQUIRED on openrouter)")
     ap.add_argument("--n", type=int, default=4, help="samples per model")
     ap.add_argument("--prompt", default=None, help="the generation prompt")
     ap.add_argument("--prompt-file", default=None, dest="prompt_file",
@@ -48,7 +60,9 @@ def main():
     ap.add_argument("--max-tokens", type=int, default=512, dest="max_tokens")
     ap.add_argument("--reasoning-effort", default=sg.REASONING_EFFORT,
                     dest="reasoning_effort",
-                    help='thinking-trace effort; "none" suppresses it (default)')
+                    help='thinking-trace effort; "none" suppresses it (default). '
+                         'Sent as reasoning_effort on LM Studio, reasoning.effort '
+                         'on OpenRouter')
     ap.add_argument("--jaccard", type=float, default=0.85,
                     help="near-duplicate token-set Jaccard threshold")
     ap.add_argument("--out", default="output",
@@ -56,11 +70,22 @@ def main():
                          "project's data/). Default: ./output (gitignored).")
     ap.add_argument("--corpus-name", default="raw.txt", dest="corpus_name")
     ap.add_argument("--manifest-name", default="manifest.json", dest="manifest_name")
-    ap.add_argument("--base", default=sg.BASE, help="LM Studio base URL")
+    ap.add_argument("--base", default=None,
+                    help="override the backend's base URL (LM Studio default: "
+                         f"{sg.BASE}; OpenRouter: {sg.OPENROUTER_BASE})")
     args = ap.parse_args()
 
+    # resolve the backend first: a missing key fails here, before any request
+    try:
+        backend = sg.get_backend(args.backend, base=args.base)
+    except sg.SynthGenError as e:
+        sys.exit(str(e))
+
     if args.list:
-        models = sg.discover(base=args.base)
+        try:
+            models = sg.discover(backend=backend)
+        except sg.SynthGenError as e:
+            sys.exit(str(e))
         print(f"{len(models)} chat model(s) loaded in LM Studio:")
         for m in models:
             print(f"  - {m}")
@@ -75,27 +100,34 @@ def main():
         prompt = DEMO_PROMPT
         print("(no --prompt given; using the demo prompt)\n")
 
-    # resolve model mix
+    # resolve model mix — explicit on OpenRouter, discovered on LM Studio
     if args.models:
         models = [m.strip() for m in args.models.split(",") if m.strip()]
+    elif backend.discoverable:
+        models = sg.discover(backend=backend)
     else:
-        models = sg.discover(base=args.base)
+        sys.exit(f"--models is required on {backend.name}: name every model "
+                 "(e.g. --models mistralai/mistral-nemo,meta-llama/llama-3.1-8b-instruct).")
     if not models:
         sys.exit("no chat models available — load one in LM Studio first.")
+    print(f"backend: {backend.name} ({backend.base})")
     print(f"model mix ({len(models)}): {', '.join(models)}")
     print(f"generating {args.n} sample(s) per model "
           f"(temp={args.temperature}, max_tokens={args.max_tokens}, "
-          f"reasoning_effort={args.reasoning_effort})...\n")
+          f"{backend.reasoning_field}={args.reasoning_effort})...\n")
 
     # generate across the mix
     samples = []
     for model in models:
         print(f"  {model} ...", end=" ", flush=True)
-        got = sg.generate(
-            model, prompt, n=args.n, temperature=args.temperature,
-            max_tokens=args.max_tokens, system=args.system,
-            reasoning_effort=args.reasoning_effort, base=args.base,
-        )
+        try:
+            got = sg.generate(
+                model, prompt, n=args.n, temperature=args.temperature,
+                max_tokens=args.max_tokens, system=args.system,
+                reasoning_effort=args.reasoning_effort, backend=backend,
+            )
+        except sg.SynthGenError as e:
+            sys.exit(f"\n{e}")
         empties = sum(1 for s in got if not s.text.strip())
         out_tok = sum(s.completion_tokens for s in got)
         note = f"  (WARNING: {empties} empty — check reasoning_effort)" if empties else ""
@@ -126,7 +158,7 @@ def main():
     manifest_path = os.path.join(args.out, args.manifest_name)
     sg.write_corpus(kept, corpus_path)
     manifest = sg.build_manifest(samples, kept, dropped, prompt=prompt,
-                                 params=params, base=args.base,
+                                 params=params, backend=backend,
                                  corpus_path=corpus_path)
     sg.write_manifest(manifest, manifest_path)
 
