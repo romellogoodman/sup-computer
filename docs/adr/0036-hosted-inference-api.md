@@ -1,6 +1,6 @@
 # ADR 0036: A hosted inference API — the player's third consumer
 
-- **Status:** Accepted (amends [ADR-0025](0025-sup-cli-and-injectable-player-backend.md) — the injectable backend now has a third consumer, a Vercel function; extends [ADR-0019](0019-llm-readable-markdown-endpoints.md) with `/api.md`)
+- **Status:** Accepted (amends [ADR-0025](0025-sup-cli-and-injectable-player-backend.md) — the injectable backend now has a third consumer, a Vercel function; extends [ADR-0019](0019-llm-readable-markdown-endpoints.md) with `/api.md`; addendum 2026-09-15 for the `sup mcp` surface, see § Addendum)
 - **Date:** 2026-09-15
 - **Deciders:** Romello Goodman (with Claude)
 
@@ -138,3 +138,41 @@ page already follows, so the API is one `.md` away like everything else.
   documentation page (`/api/`), and the page-doc convention already gives it
   a markdown twin; inventing a second convention for one page was not worth
   it.
+
+## Addendum (2026-09-15): `sup mcp` is the second front door on the same modules
+
+The hosted API is one door onto `cli/src/registry.js`, `cli/src/artifacts.js`,
+and the player. `sup mcp` is the second: the same roster and name resolution,
+served to an agent over the Model Context Protocol on stdio, from
+`cli/src/mcp.js`. Neither door owns a fact the other lacks.
+
+- **The surface.** Three tools — `list_models`, `generate`, `model_card` —
+  and one resource per runnable release at `sup://models/<id>/card` (the
+  model card, `text/markdown`), so a client can attach a card as context
+  without spending a tool call. No `train` tool: training is a terminal job
+  with a log to watch, not a request that returns.
+- **Two backends, one surface.** The default is hosted: `generate` posts to
+  `POST /api/generate` with `stream: false` and shows prompt plus
+  continuation, what the terminal shows. `--local` runs the model in this
+  process the way `sup run` does — `cli/src/generate.js` reuses
+  `artifacts.js` and the player with onnxruntime-node injected — with
+  sessions kept warm and every call serialized through one promise queue,
+  because two overlapping `session.run` calls on one ORT session corrupt the
+  runtime's heap. The roster and the resolver are the in-tree `registry.json`
+  in both modes, so the API and the server cannot disagree about a name.
+- **stdout is the channel.** Nothing under `sup mcp` prints to stdout; status
+  goes to stderr, and `console.log` is rerouted there for the life of the
+  server as insurance. `pull`'s progress already went to stderr (ADR-0025).
+- **Cards off-tree.** `model_card` reads the file `registry.json` names; in a
+  sparse clone it falls back to the site's markdown twin
+  (`/models/<id>.md`, [ADR-0019](0019-llm-readable-markdown-endpoints.md))
+  and the error names both places it tried.
+- **Registered where the repo is.** `.mcp.json` at the root points Claude
+  Code at `node cli/bin/sup.js mcp`; the Claude Desktop shape is in
+  [`cli/README.md`](../../cli/README.md#mcp-server).
+
+Consequences: `@modelcontextprotocol/sdk` and `zod` join `cli/` as its one
+new dependency pair, and the CLI is still not published to npm (ADR-0025
+decision 4 stands — the MCP client runs `node cli/bin/sup.js mcp` from the
+clone). A client that calls `generate` in hosted mode pays the API's cold
+start on the first call; `--local` pays the artifact download instead.
