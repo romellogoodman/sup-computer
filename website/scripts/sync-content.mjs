@@ -14,13 +14,17 @@ import { dirname, resolve } from "node:path";
 const here = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(here, "..", "..");
 const contentDir = resolve(here, "..", "content");
-const publicAssets = resolve(here, "..", "public", "research-assets");
+const publicDir = resolve(here, "..", "public");
+const publicAssets = resolve(publicDir, "research-assets");
 
 // [ repo-root path, destination under content/ ]
 const DIRS = [["research-docs", "research-docs"]];
 const FILES = [["registry.json", "registry.json"]];
 // chart assets served as static files (image paths are rewritten to /research-assets/)
 const ASSET_DIRS = [["research-docs/reports/assets", publicAssets]];
+// files served verbatim at the site root: registry.json is what a `supcpu`
+// install without a clone fetches for its roster (ADR-0039)
+const PUBLIC_FILES = [["registry.json", resolve(publicDir, "registry.json")]];
 
 await rm(contentDir, { recursive: true, force: true });
 await mkdir(contentDir, { recursive: true });
@@ -66,5 +70,12 @@ for (const [src, dst] of ASSET_DIRS) {
   if (existsSync(from)) {
     await cp(from, dst, { recursive: true });
     console.log(`synced ${src}/ -> public/research-assets/`);
+  }
+}
+for (const [src, dst] of PUBLIC_FILES) {
+  const from = resolve(repoRoot, src);
+  if (existsSync(from)) {
+    await cp(from, dst);
+    console.log(`synced ${src} -> public/${src}`);
   }
 }
