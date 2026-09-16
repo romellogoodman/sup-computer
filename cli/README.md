@@ -43,6 +43,7 @@ sup pull <model> | --all      download artifacts without running; --all doubles
                               as an integrity check of every published bundle
 sup rm <model> | --all        clear the cache
 sup train <corpus.txt> [...]  train a small GPT on your own text file (needs uv)
+sup mcp [--local] [--api <url>]  serve the roster to an agent over MCP (stdio)
 ```
 
 Flags for run/greeting: `--temp` (0.8), `--topk` (40), `--tokens` (200), and
@@ -69,6 +70,65 @@ point in the repo's `uv` venv (`uv sync --extra export` once, from the repo
 root) and streams its log; flags pass straight through, so `sup train --help`
 is the full list. What lands in the run dir — and why a run is not a release —
 is in [`docs/handbook.md`](../docs/handbook.md#train-on-your-own-corpus).
+
+## MCP server
+
+`sup mcp` serves the roster to an agent over the
+[Model Context Protocol](https://modelcontextprotocol.io), on stdio. Three
+tools and one resource per release:
+
+- `list_models` — the greetable roster (what `sup list` shows) and the short
+  names that resolve.
+- `generate` — `{ model, prompt?, temp?, topk?, tokens?, seed? }`: greet a
+  model. `model` resolves the way the greeting does (a release id, a short
+  name, a series prefix); with no `prompt` the model answers its starter
+  prompt. The continuation is capped at 512 tokens.
+- `model_card` — `{ model }`: the release's model card, as markdown.
+- `sup://models/<id>/card` — every runnable release's card as a resource,
+  older versions included, so a client can attach one as context.
+
+There is no `train` tool. Training is a terminal job with a log to watch,
+not a tool call.
+
+Two backends, one surface. By default the model runs on the hosted API
+(`https://www.supcpu.com/api`,
+[ADR-0036](../docs/adr/0036-hosted-inference-api.md)): nothing downloads,
+nothing loads, the roster still comes from the in-tree `registry.json`.
+`--local` runs it in this process the way `sup run` does — onnxruntime-node,
+artifacts cached under `~/.cache/supcomputer`, the first call per model pays
+the download. `--api <url>` (or `SUP_API_URL`) points the hosted backend at a
+preview deployment.
+
+```bash
+sup mcp                 # hosted
+sup mcp --local         # in-process
+sup mcp --api https://<preview>.vercel.app/api
+```
+
+**Claude Code.** Inside this repo the server is already registered by
+[`.mcp.json`](../.mcp.json) at the root; approve it once when Claude Code
+asks. Anywhere else:
+
+```bash
+claude mcp add sup -- node /path/to/sup-computer/cli/bin/sup.js mcp
+claude mcp add sup -- sup mcp --local        # after npm link
+```
+
+**Claude Desktop.** In `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "sup": {
+      "command": "node",
+      "args": ["/path/to/sup-computer/cli/bin/sup.js", "mcp"]
+    }
+  }
+}
+```
+
+stdout is the protocol channel, so the server prints nothing there; status
+goes to stderr, where a client's log shows it.
 
 ## Where things come from
 

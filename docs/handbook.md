@@ -233,6 +233,17 @@ an instance holds in memory. Public, no key; routes and curl examples are in
 [`website/README.md`](../website/README.md#api), and the reader's page is
 [`/api/`](https://www.supcpu.com/api/) with its twin at `/api.md`.
 
+### Serve the models to an agent (`sup mcp`)
+
+`sup mcp` is the same roster as an MCP server over stdio: `list_models`,
+`generate`, `model_card`, and a `sup://models/<id>/card` resource per
+release. The default backend is the hosted API
+([ADR-0036](adr/0036-hosted-inference-api.md)); `--local` runs the model in
+this process the way `sup run` does. This repo registers the server in
+`.mcp.json` at the root, so Claude Code offers it here after one approval;
+the Claude Desktop config and the flags are in
+[`cli/README.md`](../cli/README.md#mcp-server).
+
 ### Export to ONNX (for the browser runtime)
 
 ```bash
