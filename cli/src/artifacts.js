@@ -16,15 +16,18 @@ export const CACHE_ROOT = process.env.XDG_CACHE_HOME
   ? join(process.env.XDG_CACHE_HOME, 'supcomputer')
   : join(homedir(), '.cache', 'supcomputer');
 
-export function cacheDir(model) {
-  return join(CACHE_ROOT, model.id);
+/** Where a release's files live: `<root>/<model-id>/`. The root defaults to the
+ * user cache; a hosted caller passes its own (ADR-0036). */
+export function cacheDir(model, root = CACHE_ROOT) {
+  return join(root, model.id);
 }
 
 /** The files a release needs locally: [{ name, url }]. The CLI runs full
- * precision; sidecar names derive from the full-precision name either way
- * (resolveBundle owns that contract). */
-export function bundleFor(model) {
-  const bundle = resolveBundle(model);
+ * precision; `preferInt8` picks the quantized graph where one is published.
+ * Sidecar names derive from the full-precision name either way (resolveBundle
+ * owns that contract). */
+export function bundleFor(model, { preferInt8 = false } = {}) {
+  const bundle = resolveBundle(model, { preferInt8 });
   if (!bundle) throw new Error(`${model.id} has no published ONNX artifact`);
   const files = [{ name: bundle.onnxUrl.split('/').pop(), url: bundle.onnxUrl }];
   if (bundle.sidecarUrl) {
@@ -56,19 +59,23 @@ export async function readManifest(model, dir) {
   return json[model.id] ?? null;
 }
 
-/** Ensure the bundle is cached; download whatever is missing. */
-export async function pull(model, { force = false } = {}) {
-  const dir = cacheDir(model);
+/**
+ * Ensure the bundle is cached; download whatever is missing. Options beyond
+ * `force` are the hosted API's seam: `root` (cache directory), `preferInt8`
+ * (the graph to fetch), `quiet` (no progress on stderr).
+ */
+export async function pull(model, { force = false, root = CACHE_ROOT, preferInt8 = false, quiet = false } = {}) {
+  const dir = cacheDir(model, root);
   await mkdir(dir, { recursive: true });
-  for (const file of bundleFor(model)) {
+  for (const file of bundleFor(model, { preferInt8 })) {
     const dest = join(dir, file.name);
     if (!force && existsSync(dest)) continue;
-    await download(file, dest);
+    await download(file, dest, { quiet });
   }
   return dir;
 }
 
-async function download(file, dest) {
+async function download(file, dest, { quiet = false } = {}) {
   const res = await fetch(file.url);
   if (!res.ok) {
     if (file.sidecar) {
@@ -80,7 +87,7 @@ async function download(file, dest) {
     throw new Error(`download failed: ${file.url} (${res.status})`);
   }
   const total = Number(res.headers.get('content-length')) || 0;
-  const live = process.stderr.isTTY; // only redraw in-place on a real terminal
+  const live = !quiet && process.stderr.isTTY; // only redraw in-place on a real terminal
   const chunks = [];
   let got = 0;
   for await (const chunk of res.body) {
@@ -91,7 +98,7 @@ async function download(file, dest) {
     }
   }
   const done = `  ${file.name}  ${mb(got)} MB`;
-  process.stderr.write(live && total ? `\r${done.padEnd(done.length + 12)}\n` : `${done}\n`);
+  if (!quiet) process.stderr.write(live && total ? `\r${done.padEnd(done.length + 12)}\n` : `${done}\n`);
   await writeFile(dest, Buffer.concat(chunks));
 }
 

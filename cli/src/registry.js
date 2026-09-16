@@ -8,10 +8,12 @@ import { resolveBundle, runnable, lineage, latestByLineage as latestOf } from '@
 
 export { resolveBundle, runnable, lineage } from '@supcomputer/player/registry';
 
-const ROOT = new URL('../../', import.meta.url); // cli/src/ -> repo root
+// One literal `new URL(..., import.meta.url)` so a file tracer (the hosted
+// API's bundler, ADR-0036) can see the manifest this module reads.
+const REGISTRY = new URL('../../registry.json', import.meta.url); // cli/src/ -> repo root
 
 export async function loadRegistry() {
-  return JSON.parse(await readFile(new URL('registry.json', ROOT), 'utf8'));
+  return JSON.parse(await readFile(REGISTRY, 'utf8'));
 }
 
 /** The newest runnable release of each lineage. */
@@ -40,7 +42,7 @@ export function aliasOf(registry, model) {
 export function resolveModel(registry, name) {
   const byId = registry.models.find((m) => m.id === name);
   if (byId) {
-    if (!runnable(byId)) throw new Error(notRunnable(byId));
+    if (!runnable(byId)) throw fail('not-runnable', notRunnable(byId));
     return byId;
   }
 
@@ -51,13 +53,13 @@ export function resolveModel(registry, name) {
 
   const keys = Object.keys(registry.series).filter((k) => k === name || k.startsWith(name));
   if (keys.length > 1) {
-    throw new Error(`"${name}" matches several series: ${keys.join(', ')}`);
+    throw fail('ambiguous', `"${name}" matches several series: ${keys.join(', ')}`);
   }
   if (keys.length === 1) {
     const key = keys[0];
     const family = registry.models.filter((m) => m.id.startsWith(key) && runnable(m));
     if (!family.length) {
-      throw new Error(`no runnable release in ${key} yet — its artifacts haven't been published`);
+      throw fail('not-runnable', `no runnable release in ${key} yet — its artifacts haven't been published`);
     }
     const newest = Math.max(...family.map((m) => m.version));
     const atNewest = family.filter((m) => m.version === newest);
@@ -65,11 +67,31 @@ export function resolveModel(registry, name) {
   }
 
   const near = registry.models.filter((m) => m.id.includes(name)).map((m) => m.id);
-  throw new Error(
+  throw fail(
+    'unknown',
     near.length
       ? `no model or series named "${name}" — did you mean: ${near.join(', ')}?`
       : `no model or series named "${name}" — try \`sup list\``,
   );
+}
+
+/** Every name resolveModel accepts: release ids, greeting aliases, series keys. */
+export function greetableNames(registry) {
+  const ids = registry.models.filter(runnable).map((m) => m.id);
+  const aliases = [...latestByLineage(registry).values()].map((m) => aliasOf(registry, m));
+  const series = Object.keys(registry.series).filter((k) =>
+    registry.models.some((m) => m.id.startsWith(k) && runnable(m)),
+  );
+  return { ids, aliases, series };
+}
+
+/** A resolution error with a `code` — 'unknown' | 'ambiguous' | 'not-runnable' —
+ * so a non-terminal caller (the hosted API) can pick a status without parsing
+ * the message. The CLI prints the message and ignores the code. */
+function fail(code, message) {
+  const err = new Error(message);
+  err.code = code;
+  return err;
 }
 
 function notRunnable(model) {

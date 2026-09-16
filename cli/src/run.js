@@ -6,6 +6,7 @@ import { join } from 'node:path';
 import * as ort from 'onnxruntime-node';
 import { configureBackend, loadModel, generate } from '@supcomputer/player';
 import { pull, makeTokenizer, bundleFor, readManifest } from './artifacts.js';
+import { mulberry32 } from './rng.js';
 
 export async function runModel(model, prompt, flags) {
   await configureBackend({ ort });
@@ -39,16 +40,4 @@ export async function runModel(model, prompt, flags) {
     shouldStop: () => stopped,
   });
   process.stdout.write('\n');
-}
-
-/** Tiny seedable PRNG — enough for reproducible sampling, not for crypto. */
-function mulberry32(seed) {
-  let a = seed >>> 0;
-  return () => {
-    a |= 0;
-    a = (a + 0x6d2b79f5) | 0;
-    let t = Math.imul(a ^ (a >>> 15), 1 | a);
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
 }
