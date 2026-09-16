@@ -5,9 +5,10 @@
 // (the website's /api/*, ADR-0036) to run the model; `--local` runs it in this
 // process exactly the way `sup run` does (player + onnxruntime-node, artifacts
 // cached under ~/.cache/supcomputer). Either way the roster and the name
-// resolution are the greeting's: registry.json at the repo root, resolved by
-// registry.js, so `kenosha-kid`, `daydream-micro`, and a full release id all
-// mean what they mean at the terminal.
+// resolution are the greeting's: registry.json, found the way registry.js
+// finds it (the clone's copy, the site's, or the packed snapshot), so
+// `kenosha-kid`, `daydream-micro`, and a full release id all mean what they
+// mean at the terminal.
 //
 // stdout is the MCP channel. Nothing here prints to it; status goes to stderr.
 
@@ -16,17 +17,22 @@ import { readFile } from 'node:fs/promises';
 import { McpServer, ResourceTemplate } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
-import { loadRegistry, resolveModel, runnable, latestByLineage, aliasOf } from './registry.js';
+import { resolveRegistry, resolveModel, runnable, latestByLineage, aliasOf, SITE_ORIGIN } from './registry.js';
 import { generateText, MAX_TOKENS } from './generate.js';
+import { VERSION } from './version.js';
 
-export const DEFAULT_API = 'https://www.supcpu.com/api';
+export const DEFAULT_API = `${SITE_ORIGIN}/api`;
 const CARD_URI = 'sup://models/{id}/card';
 const ROOT = new URL('../../', import.meta.url); // cli/src/ -> repo root
 
 export const MCP_USAGE = `sup mcp [--local] [--api <url>]
 
   --local        run models in this process (onnxruntime-node) instead of the hosted API
-  --api <url>    the hosted API base (default ${DEFAULT_API}, or $SUP_API_URL)`;
+  --api <url>    the hosted API base (default ${DEFAULT_API}, or $SUP_API_URL)
+
+  The roster is registry.json: $SUP_REGISTRY, the clone's copy, the site's
+  (cached a day under ~/.cache/supcomputer), or the snapshot packed with
+  this version — whichever comes first.`;
 
 const log = (line) => process.stderr.write(`sup mcp: ${line}\n`);
 
@@ -42,18 +48,18 @@ export async function mcp(argv) {
   console.log = (...args) => console.error(...args);
 
   const api = (flags.api ?? process.env.SUP_API_URL ?? DEFAULT_API).replace(/\/$/, '');
-  const registry = await loadRegistry();
+  const { registry, source } = await resolveRegistry();
   const backend = flags.local ? localBackend(registry) : hostedBackend(registry, api);
 
   const server = new McpServer(
-    { name: 'sup', version: '0.0.1' },
+    { name: 'sup', version: VERSION },
     { instructions: INSTRUCTIONS },
   );
   registerTools(server, registry, backend);
   registerResources(server, registry, backend);
 
   await server.connect(new StdioServerTransport());
-  log(`${backend.name} backend, ${registry.models.filter(runnable).length} runnable releases`);
+  log(`${backend.name} backend, ${registry.models.filter(runnable).length} runnable releases, registry: ${source}`);
 }
 
 const INSTRUCTIONS =

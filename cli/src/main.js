@@ -11,8 +11,9 @@ import { pull, removeCached, CACHE_ROOT } from './artifacts.js';
 import { runModel } from './run.js';
 import { train } from './train.js';
 import { mcp } from './mcp.js';
+import { VERSION } from './version.js';
 
-const COMMANDS = new Set(['list', 'pull', 'run', 'rm', 'train', 'mcp', 'help']);
+const COMMANDS = new Set(['list', 'pull', 'run', 'rm', 'train', 'mcp', 'help', 'version']);
 
 const HELP = `sup — run the studio's released models in your terminal
 
@@ -25,15 +26,18 @@ usage:
   sup train <corpus.txt> [...]  train a small GPT on your own text (needs uv; sup train --help)
   sup mcp [--local] [--api <url>]  serve the roster to an agent over MCP (stdio); hosted by default
   sup help                      this text
+  sup version                   ${VERSION}
 
 flags (for run/greeting):
   --temp <t>     sampling temperature      (default 0.8)
   --topk <k>     top-k cutoff, 0 = off     (default 40)
   --tokens <n>   max new tokens            (default 200)
   --seed <n>     seed the sampler for a reproducible generation
+  --verbose      say on stderr where the registry came from
 
 Artifacts download once into ${CACHE_ROOT}.
-Models: registry.json at the repo root — this CLI runs from the clone.`;
+Models: registry.json — $SUP_REGISTRY, the clone's copy, https://www.supcpu.com/registry.json
+(cached a day), or the snapshot packed with this version, whichever comes first.`;
 
 export async function main(argv) {
   // `sup train` hands its argv to the Python entry point untouched — that
@@ -52,14 +56,20 @@ export async function main(argv) {
       seed: { type: 'string' },
       all: { type: 'boolean' },
       force: { type: 'boolean' },
+      verbose: { type: 'boolean' },
+      version: { type: 'boolean' },
     },
     allowPositionals: true,
   });
 
   const [first, ...rest] = positionals;
-  const registry = await loadRegistry();
-
+  if (flags.version || first === 'version') return console.log(VERSION);
   if (!first || first === 'help') return console.log(HELP);
+
+  const registry = await loadRegistry({
+    log: flags.verbose ? (line) => process.stderr.write(`sup: ${line}\n`) : undefined,
+  });
+
   if (first === 'list') return list(registry, flags);
   if (first === 'pull') return pullCmd(registry, rest[0], flags);
   if (first === 'rm') return rmCmd(registry, rest[0], flags);
