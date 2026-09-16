@@ -91,10 +91,16 @@ promise chain and every generation runs on it, so two `session.run` calls
 never overlap — the same invariant the site's inference worker keeps, for
 the same reason (overlapping runs corrupt the native heap). `tokens` caps at
 512 (default 200), temperature clamps to [0.05, 2.5], top-k to [0, 1000],
-prompts to 4,000 characters, and `maxDuration` is 300 s — the Hobby
-ceiling, and 9× the 33.5 s a 512-token glyph generation (the largest model,
-65 ms per token) takes on an M-series laptop. Fluid compute bills active
-CPU, and these models spend theirs in milliseconds.
+prompts to 4,000 characters, and `maxDuration` is 300 s, the Hobby
+ceiling. That ceiling is not comfortable on its own: a 512-token glyph
+generation (the largest model) takes 33.5 s on an M-series laptop at 65 ms
+per token, and 185 s on the preview function's one vCPU at 360 ms per
+token. So every request carries a 240 s wall-clock budget, counted from
+arrival so queue wait is included; a run that would overrun stops early
+and reports `truncated: true` rather than dying as a 504. The small models
+are a different world — kenosha-kid answered 40 tokens in 0.76 s cold and
+0.21 s warm on the preview. Fluid compute bills active CPU, which is the
+right shape for a serial CPU workload that idles between visits.
 
 **5. The API is documented where a reader and an agent will look.** The
 routes and curl examples live in `website/README.md`; the handbook's
@@ -120,8 +126,11 @@ page already follows, so the API is one `.md` away like everything else.
   promise.
 - A single CPU generates serially. Concurrent requests for the same model
   queue behind each other by design; a burst of 512-token glyph requests
-  would wait minutes. There is no rate limit — accepted for a research
-  studio's traffic, and the first thing to add if that changes.
+  would exhaust the budget and come back truncated. There is no rate limit
+  — accepted for a research studio's traffic, and the first thing to add if
+  that changes. The int8 graph on x64 is the other lever: dynamic int8 was
+  chosen for download size, and whether the full-precision graph is faster
+  on the function's CPU is unmeasured.
 - `vercel.json` now owns the trailing-slash redirect the framework used to
   emit, beside the function config. A future change to `trailingSlash`, or
   a Vercel change to how a root `api/` directory is detected, needs

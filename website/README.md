@@ -71,8 +71,10 @@ curl https://www.supcpu.com/api/health
 release's demo prompt), `temp` (0.8, clamped to 0.05–2.5), `topk` (40,
 0–1000), `tokens` (200, capped at 512), `seed`, `stream` (true). The stream
 is one `data: {"token": "…"}` event per decoded piece, then
-`data: {"done": true, "model", "prompt", "text", "tokens", …}`; `stream:
-false` returns that summary as the body. `text` is the continuation only.
+`data: {"done": true, "model", "prompt", "text", "tokens", "truncated", …}`;
+`stream: false` returns that summary as the body. `text` is the continuation
+only; `truncated` is true when the per-request wall clock (240 s, queue wait
+included — `SUP_API_BUDGET_MS` overrides it for tests) ended the run early.
 Errors: 400 bad input or an ambiguous name, 404 unknown model (with `valid`),
 405 wrong method.
 
@@ -80,7 +82,9 @@ How it runs: on a cold start the function fetches the release's int8 ONNX
 graph and tokenizer sidecar from R2 into `/tmp/supcomputer/<id>/` and keeps
 the session in memory; every generation for a model runs on one promise
 chain so ORT runs never overlap (the worker's invariant, above). `vercel.json`
-sets `maxDuration` (300 s, room for 512 tokens of glyph on one core) and
+sets `maxDuration` (300 s; measured on the preview, glyph runs 360 ms/token
+on the function's vCPU, so 512 tokens is ~185 s cold and the 240 s budget
+is what keeps a queued request from a 504) and
 installs the CLI's `node_modules`; `scripts/prune-ort.sh` then deletes the
 Mac and Windows ORT binaries on Linux builds (the package is 258 MB, the
 function limit 250 MB, and the tracer takes the whole package once it sees

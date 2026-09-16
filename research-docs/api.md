@@ -49,6 +49,10 @@ so pass your own exactly as you want the model to see it.
 | `seed` | — | any integer; same seed, same text |
 | `stream` | `true` | `false` for one JSON body |
 
+Each request also has 240 seconds of wall clock, queue wait included. A run
+that would overrun stops early and says so — `truncated: true` in the
+summary — rather than failing.
+
 Streaming is server-sent events, `text/event-stream`. One event per decoded
 piece, then a summary:
 
@@ -57,18 +61,19 @@ data: {"token":"\n"}
 data: {"token":"So"}
 data: {"token":" shall"}
 …
-data: {"done":true,"model":"shakespeare-nanogpt-3","prompt":"  ROMEO:","text":"\n\nSo shall the sky.…","tokens":120,"temp":0.8,"topk":40}
+data: {"done":true,"model":"shakespeare-nanogpt-3","prompt":"  ROMEO:","text":"\n\nSo shall the sky.…","tokens":120,"truncated":false,"temp":0.8,"topk":40}
 ```
 
 With `"stream": false` the summary is the whole reply:
 
 ```json
-{"model":"kenosha-kid-nanogpt-2","prompt":"You never did the Kenosha Kid","text":".\nNever did Kenosha Kid you the\nYou? Nev","tokens":40,"temp":0.8,"topk":40,"seed":1}
+{"model":"kenosha-kid-nanogpt-2","prompt":"You never did the Kenosha Kid","text":".\nNever did Kenosha Kid you the\nYou? Nev","tokens":40,"truncated":false,"temp":0.8,"topk":40,"seed":1}
 ```
 
 `text` is the continuation only; `prompt` is returned beside it so the two
-concatenate to what the model saw and said. `tokens` counts new tokens
-sampled.
+concatenate to what the model saw and said. `tokens` counts the pieces
+streamed, which is the number of new tokens sampled unless a byte-level BPE
+token completed nothing visible.
 
 Errors are JSON with an `error` line: 400 for a body that isn't an object,
 a non-number where a number is due, or a name that matches several series;
@@ -89,10 +94,13 @@ snapshot, not a promise.
 
 A cold instance downloads the release's int8 ONNX graph and tokenizer from
 the studio's artifact bucket before the first token, then keeps them in
-memory. A warm instance answers the small models in tens of milliseconds
-per token; glyph, the largest at 48M parameters, takes about 65 ms per
-token on a laptop core and longer on the function's. One CPU generates
-serially, so simultaneous requests for one model wait their turn.
+memory. Measured on the preview deployment: kenosha-kid answered 40 tokens
+in 0.76 s cold and 0.21 s warm (about 7 ms per token), shakespeare streamed
+its first event after 117 ms, and glyph, the largest model at 48M
+parameters, ran 512 tokens in 185 s cold — 360 ms per token on the
+function's one vCPU, against 65 ms on a laptop core. One CPU generates
+serially, so simultaneous requests for one model wait their turn, and the
+240-second budget covers the wait.
 
 The text is the model's own. These are corpus models with no filter in
 front of them; what they say is what they learned.
