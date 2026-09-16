@@ -1,25 +1,49 @@
 {
-  "name": "@supcomputer/cli",
-  "version": "0.0.1",
-  "private": true,
-  "description": "sup — an ollama for the studio's tiny GPTs: download a release's public artifacts and run it in the terminal.",
+  "name": "supcpu",
+  "version": "0.1.0",
+  "private": false,
+  "description": "sup — run sup computer's tiny GPTs in your terminal, or serve them to an agent over MCP. Downloads a release's public artifacts and runs it on onnxruntime-node.",
+  "keywords": ["gpt", "nanogpt", "onnx", "onnxruntime", "mcp", "cli", "small-language-model"],
+  "homepage": "https://www.supcpu.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romellogoodman/sup-computer.git",
+    "directory": "cli"
+  },
+  "bugs": "https://github.com/romellogoodman/sup-computer/issues",
+  "license": "MIT",
+  "author": "Romello Goodman",
   "type": "module",
   "bin": {
+    "supcpu": "bin/sup.js",
     "sup": "bin/sup.js"
   },
+  "files": [
+    "bin",
+    "src",
+    "vendor",
+    "README.md"
+  ],
   "exports": {
     "./registry": "./src/registry.js",
     "./artifacts": "./src/artifacts.js",
     "./rng": "./src/rng.js"
   },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
+    "prepack": "node scripts/prepack.mjs",
+    "postpack": "node scripts/postpack.mjs",
     "lint": "echo \"(no linter configured yet)\""
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0",
-    "@supcomputer/player": "file:../player",
+    "gpt-tokenizer": "^2.5.0",
     "onnxruntime-node": "^1.22.0",
     "zod": "^4.6.5"
   },
-  "license": "MIT"
+  "devDependencies": {
+    "@supcomputer/player": "file:../player"
+  }
 }

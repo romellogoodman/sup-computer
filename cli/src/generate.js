@@ -9,8 +9,7 @@
 // courtesy.
 
 import { join } from 'node:path';
-import * as ort from 'onnxruntime-node';
-import { configureBackend, loadModel, generate } from '@supcomputer/player';
+import { configureBackend, loadModel, generate } from './player.js';
 import { pull, makeTokenizer, bundleFor, readManifest } from './artifacts.js';
 import { mulberry32 } from './rng.js';
 
@@ -22,7 +21,7 @@ let queue = Promise.resolve();
 /** Load (or reuse) a release's session + tokenizer. Status goes to stderr. */
 export async function loadRelease(model, { log = () => {} } = {}) {
   if (loaded.has(model.id)) return loaded.get(model.id);
-  await configureBackend({ ort });
+  await configureBackend({ ort: await import('onnxruntime-node') }); // lazy: hosted mode never loads it
   const dir = await pull(model);
   const session = await loadModel(join(dir, bundleFor(model)[0].name));
   const tok = await makeTokenizer(model, dir);

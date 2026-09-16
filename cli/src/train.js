@@ -7,9 +7,12 @@
 // the Python side's help.
 
 import { spawn } from 'node:child_process';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const REPO_ROOT = fileURLToPath(new URL('../../', import.meta.url)); // cli/src/ -> repo root
+const REPO_URL = 'https://github.com/romellogoodman/sup-computer.git';
 
 export const TRAIN_USAGE =
   'sup train <corpus.txt> [--out DIR] [--size tiny|small|medium] [--iters N] ' +
@@ -17,6 +20,14 @@ export const TRAIN_USAGE =
 
 export function train(args) {
   if (args.length === 0) throw new Error(`train what? usage: ${TRAIN_USAGE}`);
+  // The npm package carries the runner, not the trainer (ADR-0039): the
+  // Python side lives in the repo, so `sup train` needs the clone around it.
+  if (!existsSync(join(REPO_ROOT, 'pyproject.toml'))) {
+    throw new Error(
+      `sup train runs from a clone of the repo, not from the npm package — git clone ${REPO_URL}, ` +
+        'then `uv sync --extra export` and `npm link` in cli/',
+    );
+  }
   return new Promise((resolve, reject) => {
     const child = spawn('uv', ['run', '--project', REPO_ROOT, 'sup-train', ...args], { stdio: 'inherit' });
     child.on('error', (err) => {

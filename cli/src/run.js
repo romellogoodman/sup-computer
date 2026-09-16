@@ -1,15 +1,17 @@
 // Run a release in the terminal: onnxruntime-node injected into the player's
 // backend (ADR-0025), generated text streamed to stdout. Status lines go to
 // stderr so `sup shakespeare > out.txt` captures only the text.
+//
+// onnxruntime-node loads here, on the first run, not at startup: `sup list`
+// and hosted `sup mcp` never need the native binding (ADR-0039).
 
 import { join } from 'node:path';
-import * as ort from 'onnxruntime-node';
-import { configureBackend, loadModel, generate } from '@supcomputer/player';
+import { configureBackend, loadModel, generate } from './player.js';
 import { pull, makeTokenizer, bundleFor, readManifest } from './artifacts.js';
 import { mulberry32 } from './rng.js';
 
 export async function runModel(model, prompt, flags) {
-  await configureBackend({ ort });
+  await configureBackend({ ort: await import('onnxruntime-node') });
 
   const dir = await pull(model);
   const session = await loadModel(join(dir, bundleFor(model)[0].name));

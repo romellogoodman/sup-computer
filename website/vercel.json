@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "export ONNXRUNTIME_NODE_INSTALL=skip && npm ci && npm ci --prefix ../player && npm ci --prefix ../cli && sh scripts/prune-ort.sh",
+  "installCommand": "export ONNXRUNTIME_NODE_INSTALL=skip && npm ci && npm ci --prefix ../player && npm ci --prefix ../cli --include=dev && sh scripts/prune-ort.sh",
   "functions": {
     "api/*.js": {
       "maxDuration": 300,

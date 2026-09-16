@@ -23,9 +23,9 @@ import {
   aliasOf,
   greetableNames,
   runnable,
-} from "@supcomputer/cli/registry";
-import { pull, bundleFor, makeTokenizer } from "@supcomputer/cli/artifacts";
-import { mulberry32 } from "@supcomputer/cli/rng";
+} from "supcpu/registry";
+import { pull, bundleFor, makeTokenizer } from "supcpu/artifacts";
+import { mulberry32 } from "supcpu/rng";
 
 // One literal `new URL(..., import.meta.url)` so the function bundler traces
 // the manifest in; the CLI's loadRegistry reads the same file the same way.

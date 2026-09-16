@@ -9,8 +9,7 @@ import { mkdir, readFile, writeFile, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
-import { CharTokenizer, ByteLevelBPETokenizer, BPETokenizer } from '@supcomputer/player';
-import { resolveBundle } from '@supcomputer/player/registry';
+import { CharTokenizer, ByteLevelBPETokenizer, BPETokenizer, resolveBundle } from './player.js';
 
 export const CACHE_ROOT = process.env.XDG_CACHE_HOME
   ? join(process.env.XDG_CACHE_HOME, 'supcomputer')

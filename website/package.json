@@ -14,7 +14,7 @@
     "test": "node --test lib/*.test.mjs"
   },
   "dependencies": {
-    "@supcomputer/cli": "file:../cli",
+    "supcpu": "file:../cli",
     "@supcomputer/player": "file:../player",
     "chess.js": "^1.4.0",
     "gray-matter": "4.0.3",

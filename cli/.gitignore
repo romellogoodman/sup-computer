@@ -1,0 +1,2 @@
+# sealed into the tarball by scripts/prepack.mjs, removed by postpack (ADR-0039)
+/vendor/
