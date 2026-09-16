@@ -115,8 +115,9 @@ twins plus `llms.txt` (ADR-0019). Edit markdown in `research-docs/`, never in
 - **JS:** the `website/` package (`@supcomputer/website`), the vendored
   `player/` package (`@supcomputer/player`), and the in-tree `cli/` (ADR-0025).
 - **tools/:** stdlib-only scripts — `dataviz/` (every chart), `synthgen/`
-  (every LLM-generated corpus, ADR-0014), `steer/` (shared local-LLM client,
-  ADR-0026), `linewell/`, `token-chess/`, `hf-stage/`, `claude_cost.py`,
+  (every LLM-generated corpus, local via LM Studio or hosted via OpenRouter
+  with the cost recorded — ADR-0014, ADR-0038), `steer/` (shared local-LLM
+  client, ADR-0026), `linewell/`, `token-chess/`, `hf-stage/`, `claude_cost.py`,
   `check_integrity.py`. Index: [`tools/README.md`](../tools/README.md).
 
 ## Workflows
