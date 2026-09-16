@@ -24,21 +24,33 @@ Public API
 
     generate(model, prompt, n=1, temperature=0.9, max_tokens=512,
              system=None, reasoning_effort="none", base=BASE,
-             timeout=HTTP_TIMEOUT, retries=2, backend=None) -> list[Sample]
-        n samples from one model, each with its own token usage.
+             timeout=HTTP_TIMEOUT, retries=2, backend=None,
+             budget=None) -> list[Sample]
+        n samples from one model, each with its own token usage and cost.
+        ``budget`` (a ``Budget``) stops generation cleanly once the cumulative
+        cost would pass its limit; the samples made so far are returned.
 
     dedup(samples, jaccard_threshold=0.85) -> (kept, dropped)
         Drop exact and near-duplicate samples. Never silent: every drop is
         returned as a Drop record (reason + what it matched).
 
     build_manifest(samples, kept, dropped, *, prompt, params, separator="\\n\\n",
-                   prefix_fn=None, now=None, base=BASE, backend=None) -> dict
+                   prefix_fn=None, now=None, base=BASE, backend=None,
+                   budget=None) -> dict
         The reproducibility record: run header (timestamp, backend, model mix,
-        counts, dedup stats) + per-sample provenance (model, prompt,
-        temperature, token counts, sha1, offset into raw.txt).
+        counts, dedup stats, total cost, the generator roster entries) +
+        per-sample provenance (model, prompt, temperature, token counts, cost,
+        sha1, offset into raw.txt).
 
     write_corpus(kept, path, separator="\\n\\n", prefix_fn=None) -> str
     write_manifest(manifest, path) -> str
+    cost_record(manifest, out) -> dict
+    append_cost_record(record, path) -> str
+        One line per run in a ``costs.jsonl`` beside the manifest, the shape
+        gatsby's Claude-API cost log uses.
+
+    generator_id(model_id) -> str
+        The ADR-0037 roster slug for an upstream model id.
 
     # optional model-download helpers (shell out to the `lms` CLI)
     hf_repo_exists(repo_id) -> bool
@@ -54,6 +66,9 @@ Backend notes baked in here (hard-won):
 - OpenRouter's lever is the ``reasoning`` object: ``{"reasoning": {"effort":
   "none"}}`` disables reasoning entirely (``exclude: true`` would only hide a
   trace that is still billed). Docs: openrouter.ai/docs/use-cases/reasoning-tokens.
+- OpenRouter returns ``usage.cost`` (its credits are denominated in US
+  dollars) on every response; no request flag is needed any more — the old
+  ``usage: {include: true}`` is documented as deprecated and a no-op.
 - A cold local model's first call is slow (JIT load, ~10-25s); HTTP timeout is
   generous (600s) and transient errors are retried. HTTP 4xx (bad key, bad
   model, no credits) is not retried.
@@ -150,6 +165,7 @@ class Backend:
     served_by: str               # the ADR-0037 roster spelling
     reasoning_field: str         # "reasoning_effort" | "reasoning.effort"
     key: str | None = None
+    paid: bool = False
     discoverable: bool = True
 
     def headers(self) -> dict:
@@ -166,6 +182,17 @@ class Backend:
         if self.name == "openrouter":
             return {"reasoning": {"effort": effort}}
         return {"reasoning_effort": effort}
+
+    def cost_of(self, usage: dict) -> float:
+        """Dollar cost of one response. LM Studio is free per token: 0.0."""
+        if not self.paid:
+            return 0.0
+        if "cost" not in usage:
+            raise SynthGenError(
+                f"{self.name}: response carried no usage.cost — cost is "
+                "first-class on a paid backend, refusing to record 0"
+            )
+        return float(usage.get("cost") or 0.0)
 
     def public(self) -> dict:
         """The manifest header's view of the backend (no key)."""
@@ -191,7 +218,7 @@ def get_backend(name: str = "lmstudio", base: str | None = None,
             )
         return Backend(name="openrouter", base=base or OPENROUTER_BASE,
                        served_by="OpenRouter", reasoning_field="reasoning.effort",
-                       key=key, discoverable=False)
+                       key=key, paid=True, discoverable=False)
     raise SynthGenError(f"unknown backend {name!r}; one of {', '.join(BACKENDS)}")
 
 
@@ -257,10 +284,50 @@ def discover(base: str = BASE, backend=None) -> list[str]:
     return [m["id"] for m in data if "embed" not in m["id"].lower()]
 
 
+# --- the ADR-0037 roster id ------------------------------------------------
+def generator_id(model_id: str) -> str:
+    """Roster slug for an upstream model id: strip the vendor prefix, dots
+    (and anything else outside ``[a-z0-9]``) become hyphens.
+
+    ``google/gemma-4-26b-a4b-qat`` -> ``gemma-4-26b-a4b-qat``;
+    ``granite-4.1-8b`` -> ``granite-4-1-8b``; ``qwen/qwen3.6-27b`` -> ``qwen3-6-27b``.
+    """
+    tail = model_id.rsplit("/", 1)[-1].lower()
+    slug = re.sub(r"[^a-z0-9]+", "-", tail).strip("-")
+    return slug
+
+
+# --- a budget --------------------------------------------------------------
+@dataclass
+class Budget:
+    """A dollar ceiling for a run. ``charge`` after every sample; ``allows``
+    before the next one, which stops the run once the *expected* next cost
+    (the mean so far) would pass the limit — so a run overshoots by at most
+    one sample's noise, never by a whole sample it could have foreseen.
+    """
+    limit_usd: float | None = None
+    spent_usd: float = 0.0
+    samples: int = 0
+    hit: bool = False
+
+    def charge(self, cost: float) -> None:
+        self.spent_usd += cost
+        self.samples += 1
+
+    def allows(self) -> bool:
+        if self.limit_usd is None:
+            return True
+        expected = (self.spent_usd / self.samples) if self.samples else 0.0
+        if self.spent_usd >= self.limit_usd or self.spent_usd + expected > self.limit_usd:
+            self.hit = True
+            return False
+        return True
+
+
 # --- a generated sample -----------------------------------------------------
 @dataclass
 class Sample:
-    """One generation, with its provenance and token usage."""
+    """One generation, with its provenance, token usage and cost."""
     model: str
     prompt: str
     text: str
@@ -271,6 +338,7 @@ class Sample:
     prompt_tokens: int = 0
     completion_tokens: int = 0
     latency_s: float = 0.0
+    cost_usd: float = 0.0
     backend: str = "lmstudio"
     reasoning_field: str = "reasoning_effort"
     extra: dict = field(default_factory=dict)
@@ -293,6 +361,7 @@ class Sample:
                                   "value": self.reasoning_effort},
             "prompt_tokens": self.prompt_tokens,
             "completion_tokens": self.completion_tokens,
+            "cost_usd": self.cost_usd,
             "chars": len(self.text),
             "sha1": self.sha1,
             **({"extra": self.extra} if self.extra else {}),
@@ -340,11 +409,14 @@ def _chat_once(model, messages, temperature, max_tokens, reasoning_effort,
 
 def generate(model, prompt, n=1, temperature=0.9, max_tokens=512, system=None,
              reasoning_effort=REASONING_EFFORT, base=BASE, timeout=HTTP_TIMEOUT,
-             retries=2, backend=None) -> list[Sample]:
-    """Return ``n`` samples from one model, each carrying its own token usage.
+             retries=2, backend=None, budget: Budget | None = None) -> list[Sample]:
+    """Return up to ``n`` samples from one model, each carrying its own token
+    usage and dollar cost.
 
     ``backend`` is a ``Backend``, a name, or None (LM Studio at ``base`` — the
-    unchanged default every existing caller relies on).
+    unchanged default every existing caller relies on). With a ``budget`` the
+    loop stops before the sample that would pass the limit and returns what
+    it has; ``budget.hit`` says so.
 
     Robust to the cold-load delay (generous timeout + retry). Empty content is
     returned as an empty-text Sample rather than dropped, so the caller can see
@@ -359,11 +431,16 @@ def generate(model, prompt, n=1, temperature=0.9, max_tokens=512, system=None,
 
     out = []
     for _ in range(n):
+        if budget is not None and not budget.allows():
+            break
         resp, dt = _chat_once(model, messages, temperature, max_tokens,
                               reasoning_effort, be, timeout, retries)
         choice = (resp.get("choices") or [{}])[0]
         text = (choice.get("message", {}).get("content") or "").strip()
         usage = resp.get("usage", {}) or {}
+        cost = be.cost_of(usage)
+        if budget is not None:
+            budget.charge(cost)
         out.append(Sample(
             model=model, prompt=prompt, text=text, system=system,
             temperature=temperature, max_tokens=max_tokens,
@@ -371,7 +448,7 @@ def generate(model, prompt, n=1, temperature=0.9, max_tokens=512, system=None,
             prompt_tokens=usage.get("prompt_tokens", 0) or 0,
             completion_tokens=usage.get("completion_tokens", 0) or 0,
             latency_s=round(dt, 2),
-            backend=be.name, reasoning_field=be.reasoning_field,
+            cost_usd=cost, backend=be.name, reasoning_field=be.reasoning_field,
         ))
     return out
 
@@ -492,9 +569,25 @@ def write_corpus(kept: list[Sample], path: str, separator: str = "\n\n",
     return path
 
 
+def generators_of(samples: list[Sample], backend: Backend) -> list[dict]:
+    """The ADR-0037 roster entries for every model in the mix, sorted by id.
+
+    Drops straight into ``registry.json``'s ``generators`` map (id -> entry
+    minus the id) without hand-copying: the exact upstream id in ``model_id``,
+    the slug in ``id``, and where it was served.
+    """
+    seen: dict[str, dict] = {}
+    for s in samples:
+        gid = generator_id(s.model)
+        seen.setdefault(gid, {"id": gid, "model_id": s.model,
+                              "backend": s.backend or backend.name,
+                              "served_by": backend.served_by})
+    return [seen[k] for k in sorted(seen)]
+
+
 def build_manifest(samples, kept, dropped, *, prompt, params, separator="\n\n",
                    prefix_fn=None, now=None, base=BASE, corpus_path=None,
-                   backend=None) -> dict:
+                   backend=None, budget: Budget | None = None) -> dict:
     """Build the run manifest — the crown-jewel reproducibility record.
 
     ``now`` is injectable (pass a fixed ``datetime`` in tests); defaults to UTC
@@ -505,6 +598,10 @@ def build_manifest(samples, kept, dropped, *, prompt, params, separator="\n\n",
     only correct if ``write_corpus`` was called with the SAME two arguments.
     Pass ``corpus_path`` (the file ``write_corpus`` wrote) to verify that at
     runtime instead of trusting the caller.
+
+    Cost is summed over *every* generated sample, kept or dropped — a dropped
+    duplicate was still paid for. LM Studio runs record 0.0 so the shape is
+    the same everywhere.
     """
     be = _as_backend(backend, base=base)
     ts = (now or datetime.now(timezone.utc))
@@ -514,9 +611,13 @@ def build_manifest(samples, kept, dropped, *, prompt, params, separator="\n\n",
     # per-model counts over the full generated set + the kept set
     per_model: dict[str, dict] = {}
     for s in samples:
-        per_model.setdefault(s.model, {"generated": 0, "kept": 0})["generated"] += 1
+        rec = per_model.setdefault(s.model, {"generated": 0, "kept": 0, "cost_usd": 0.0})
+        rec["generated"] += 1
+        rec["cost_usd"] += s.cost_usd
     for s in kept:
         per_model[s.model]["kept"] += 1
+    for rec in per_model.values():
+        rec["cost_usd"] = round(rec["cost_usd"], 10)
 
     # kept-sample provenance with offsets into raw.txt
     offset = 0
@@ -540,6 +641,7 @@ def build_manifest(samples, kept, dropped, *, prompt, params, separator="\n\n",
 
     tok_prompt = sum(s.prompt_tokens for s in samples)
     tok_completion = sum(s.completion_tokens for s in samples)
+    total_cost = round(sum(s.cost_usd for s in samples), 10)
 
     return {
         "tool": "synthgen",
@@ -551,6 +653,7 @@ def build_manifest(samples, kept, dropped, *, prompt, params, separator="\n\n",
         "prompt": prompt,
         "params": dict(params),
         "model_mix": sorted(per_model),
+        "generators": generators_of(samples, be),
         "counts": {
             "generated": len(samples),
             "kept": len(kept),
@@ -559,6 +662,9 @@ def build_manifest(samples, kept, dropped, *, prompt, params, separator="\n\n",
             "per_model": per_model,
         },
         "tokens": {"prompt": tok_prompt, "completion": tok_completion},
+        "total_cost_usd": total_cost,
+        "budget_usd": budget.limit_usd if budget else None,
+        "budget_hit": bool(budget.hit) if budget else False,
         "dedup": {
             "method": "normalized-exact + token-set Jaccard",
             "jaccard_threshold": params.get("jaccard_threshold"),
@@ -573,6 +679,35 @@ def write_manifest(manifest: dict, path: str) -> str:
     with open(path, "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=2, ensure_ascii=False)
         f.write("\n")
+    return path
+
+
+# --- the cost log ------------------------------------------------------------
+def cost_record(manifest: dict, out: str) -> dict:
+    """One ``costs.jsonl`` line for a run — the fields gatsby's Claude-API
+    log uses where they apply (timestamp, model, counts, usage, cost_usd,
+    out), plus the backend and the budget."""
+    return {
+        "timestamp": manifest["generated_at"],
+        "backend": manifest["backend"],
+        "model": manifest["model_mix"],
+        "n_requested": manifest["params"].get("n_per_model"),
+        "n_generated": manifest["counts"]["generated"],
+        "n_kept": manifest["counts"]["kept"],
+        "corpus_chars": manifest["counts"]["corpus_chars"],
+        "usage": {"input": manifest["tokens"]["prompt"],
+                  "output": manifest["tokens"]["completion"]},
+        "cost_usd": manifest["total_cost_usd"],
+        "budget_usd": manifest.get("budget_usd"),
+        "budget_hit": manifest.get("budget_hit", False),
+        "out": out,
+    }
+
+
+def append_cost_record(record: dict, path: str) -> str:
+    os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
+    with open(path, "a", encoding="utf-8") as f:
+        f.write(json.dumps(record, ensure_ascii=False) + "\n")
     return path
 
 

@@ -2,8 +2,9 @@
 """synthgen CLI — discover -> generate (mixture of models) -> dedup -> write.
 
 Ties the engine together end to end and writes a project-ready ``raw.txt`` plus
-its provenance ``manifest.json``. Like ``tools/dataviz/build.py``, this is the
-operator entry point; the reusable engine is ``synthgen.py``.
+its provenance ``manifest.json`` and one ``costs.jsonl`` line. Like
+``tools/dataviz/build.py``, this is the operator entry point; the reusable
+engine is ``synthgen.py``.
 
 Examples
 --------
@@ -18,10 +19,10 @@ Examples
         --prompt-file prompt.txt \
         --out ../../projects/gatsby/data
 
-    # the hosted backend: models are always named (ADR-0038)
+    # the paid backend: models are always named, cost is capped (ADR-0038)
     python build.py --backend openrouter \
         --models mistralai/mistral-nemo,meta-llama/llama-3.1-8b-instruct \
-        --n 50 --prompt-file prompt.txt --out ../../projects/x/data
+        --n 50 --budget 2.00 --prompt-file prompt.txt --out ../../projects/x/data
 
 The default backend is LM Studio's server at http://localhost:1234/v1
 (override with SYNTHGEN_BASE_URL). OpenRouter reads OPENROUTER_API_KEY from
@@ -63,13 +64,17 @@ def main():
                     help='thinking-trace effort; "none" suppresses it (default). '
                          'Sent as reasoning_effort on LM Studio, reasoning.effort '
                          'on OpenRouter')
+    ap.add_argument("--budget", type=float, default=None,
+                    help="dollar ceiling for the run; generation stops cleanly "
+                         "once the cumulative cost would pass it")
     ap.add_argument("--jaccard", type=float, default=0.85,
                     help="near-duplicate token-set Jaccard threshold")
     ap.add_argument("--out", default="output",
-                    help="target dir for raw.txt + manifest.json (e.g. a "
-                         "project's data/). Default: ./output (gitignored).")
+                    help="target dir for raw.txt + manifest.json + costs.jsonl "
+                         "(e.g. a project's data/). Default: ./output (gitignored).")
     ap.add_argument("--corpus-name", default="raw.txt", dest="corpus_name")
     ap.add_argument("--manifest-name", default="manifest.json", dest="manifest_name")
+    ap.add_argument("--cost-log-name", default="costs.jsonl", dest="cost_log_name")
     ap.add_argument("--base", default=None,
                     help="override the backend's base URL (LM Studio default: "
                          f"{sg.BASE}; OpenRouter: {sg.OPENROUTER_BASE})")
@@ -110,29 +115,40 @@ def main():
                  "(e.g. --models mistralai/mistral-nemo,meta-llama/llama-3.1-8b-instruct).")
     if not models:
         sys.exit("no chat models available — load one in LM Studio first.")
+    budget = sg.Budget(limit_usd=args.budget)
     print(f"backend: {backend.name} ({backend.base})")
     print(f"model mix ({len(models)}): {', '.join(models)}")
     print(f"generating {args.n} sample(s) per model "
           f"(temp={args.temperature}, max_tokens={args.max_tokens}, "
-          f"{backend.reasoning_field}={args.reasoning_effort})...\n")
+          f"{backend.reasoning_field}={args.reasoning_effort}"
+          f"{f', budget=${args.budget:.6f}' if args.budget is not None else ''})...\n")
 
     # generate across the mix
     samples = []
     for model in models:
+        if not budget.allows():
+            print(f"  {model} ... skipped (budget hit)")
+            continue
         print(f"  {model} ...", end=" ", flush=True)
         try:
             got = sg.generate(
                 model, prompt, n=args.n, temperature=args.temperature,
                 max_tokens=args.max_tokens, system=args.system,
                 reasoning_effort=args.reasoning_effort, backend=backend,
+                budget=budget,
             )
         except sg.SynthGenError as e:
             sys.exit(f"\n{e}")
         empties = sum(1 for s in got if not s.text.strip())
         out_tok = sum(s.completion_tokens for s in got)
+        cost = sum(s.cost_usd for s in got)
         note = f"  (WARNING: {empties} empty — check reasoning_effort)" if empties else ""
-        print(f"{len(got)} sample(s), {out_tok} out tok{note}")
+        short = "  (stopped: budget hit)" if budget.hit and len(got) < args.n else ""
+        print(f"{len(got)} sample(s), {out_tok} out tok, ${cost:.6f}{note}{short}")
         samples.extend(got)
+    if budget.hit:
+        print(f"\nbudget hit: ${budget.spent_usd:.6f} of ${budget.limit_usd:.6f} "
+              f"spent after {budget.samples} sample(s)")
 
     # dedup (never silent)
     kept, dropped = sg.dedup(samples, jaccard_threshold=args.jaccard)
@@ -145,7 +161,7 @@ def main():
     if not kept:
         sys.exit("\nnothing kept after dedup — no corpus written.")
 
-    # write raw.txt + manifest.json
+    # write raw.txt + manifest.json + a costs.jsonl line
     params = {
         "n_per_model": args.n,
         "temperature": args.temperature,
@@ -156,15 +172,19 @@ def main():
     }
     corpus_path = os.path.join(args.out, args.corpus_name)
     manifest_path = os.path.join(args.out, args.manifest_name)
+    cost_log_path = os.path.join(args.out, args.cost_log_name)
     sg.write_corpus(kept, corpus_path)
     manifest = sg.build_manifest(samples, kept, dropped, prompt=prompt,
                                  params=params, backend=backend,
-                                 corpus_path=corpus_path)
+                                 corpus_path=corpus_path, budget=budget)
     sg.write_manifest(manifest, manifest_path)
+    sg.append_cost_record(sg.cost_record(manifest, corpus_path), cost_log_path)
 
     chars = manifest["counts"]["corpus_chars"]
     print(f"\nwrote {len(kept)} docs ({chars:,} chars) -> {corpus_path}")
     print(f"wrote provenance manifest        -> {manifest_path}")
+    print(f"cost: ${manifest['total_cost_usd']:.6f}"
+          f"{' (budget hit)' if manifest['budget_hit'] else ''}  -> {cost_log_path}")
     print("\nnext: cd <project> && python prepare.py   # raw.txt is a drop-in")
 
 
