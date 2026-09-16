@@ -69,7 +69,7 @@ def check_registry(findings):
     series = reg.get("series", {})
     # a series page lives at /<project>/ (ADR-0035), so a project name must
     # never shadow one of the site's own routes or generated files
-    reserved = {"research", "train", "models", "llms.txt", "llms-full.txt", "sitemap.xml",
+    reserved = {"research", "train", "api", "models", "llms.txt", "llms-full.txt", "sitemap.xml",
                 "robots.txt", "icon.svg", "research-assets", "artifacts", "dev-models", "_next"}
     by_project = {}
     for m in reg.get("models", []):

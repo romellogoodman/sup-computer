@@ -26,6 +26,7 @@ const entries = [
   { url: `${SITE_URL}/`, lastmod: iso(latest) },
   { url: `${SITE_URL}/research/`, lastmod: iso(latest) },
   { url: `${SITE_URL}/train/` },
+  { url: `${SITE_URL}/api/` },
   ...getSeries().map((s) => ({ url: `${SITE_URL}${seriesHref(s)}` })),
   ...reports.map((r) => ({ url: `${SITE_URL}/research/${r.slug}/`, lastmod: iso(r.frontmatter.date) })),
   ...models.map((m) => ({ url: `${SITE_URL}/models/${m.id}/` })),

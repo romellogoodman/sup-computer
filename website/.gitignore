@@ -17,6 +17,7 @@ dist/
 /public/research/
 /public/models/
 /public/train.md
+/public/api.md
 /public/llms.txt
 /public/llms-full.txt
 /public/sitemap.xml

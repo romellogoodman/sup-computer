@@ -221,6 +221,18 @@ node bin/sup.js shakespeare              # greet the series' newest release
 node bin/sup.js pull --all               # doubles as a bundle integrity check
 ```
 
+### Run a released model over HTTP (the API)
+
+The same releases answer at `https://www.supcpu.com/api/*` — three Vercel
+Node functions in `website/api/` that reuse the CLI's resolution and cache
+and the player's loop ([ADR-0036](adr/0036-hosted-inference-api.md)).
+`GET /api/models` is the roster, `POST /api/generate` takes `{ model,
+prompt?, temp?, topk?, tokens?, seed?, stream? }` and streams server-sent
+events (or one JSON body with `stream: false`), `GET /api/health` says what
+an instance holds in memory. Public, no key; routes and curl examples are in
+[`website/README.md`](../website/README.md#api), and the reader's page is
+[`/api/`](https://www.supcpu.com/api/) with its twin at `/api.md`.
+
 ### Export to ONNX (for the browser runtime)
 
 ```bash

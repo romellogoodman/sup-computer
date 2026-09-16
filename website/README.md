@@ -39,6 +39,57 @@ npm run build          # sync content, then static export to out/
 npm run sync-content   # copy research-docs/ -> content/ (also runs before dev/build)
 ```
 
+## API
+
+The site also serves the models: three Vercel Node functions in `api/`, built
+beside the static export and served at `https://www.supcpu.com/api/*`
+(ADR-0036). They reuse the `sup` CLI's name resolution and artifact cache and
+the player's sampling loop with `onnxruntime-node` injected — the same
+assembly as `cli/src/run.js`, in `lib/inference.js`. Public, read-only, CORS
+open, no key. The reader-facing page is `/api/` (a page doc,
+`research-docs/api.md`, with its markdown twin at `/api.md`).
+
+```bash
+# the roster — sup list over HTTP
+curl https://www.supcpu.com/api/models
+
+# generate: a release id, a series, a prefix, or a greeting alias; SSE by default
+curl -N https://www.supcpu.com/api/generate \
+  -H 'content-type: application/json' \
+  -d '{"model": "shakespeare", "tokens": 120}'
+
+# one JSON body instead of a stream; seed for a reproducible line
+curl https://www.supcpu.com/api/generate \
+  -H 'content-type: application/json' \
+  -d '{"model": "kenosha-kid", "prompt": "You never did the Kenosha Kid", "tokens": 40, "seed": 1, "stream": false}'
+
+# which models this instance holds in memory
+curl https://www.supcpu.com/api/health
+```
+
+`POST /api/generate` body: `model` (required), `prompt` (defaults to the
+release's demo prompt), `temp` (0.8, clamped to 0.05–2.5), `topk` (40,
+0–1000), `tokens` (200, capped at 512), `seed`, `stream` (true). The stream
+is one `data: {"token": "…"}` event per decoded piece, then
+`data: {"done": true, "model", "prompt", "text", "tokens", …}`; `stream:
+false` returns that summary as the body. `text` is the continuation only.
+Errors: 400 bad input or an ambiguous name, 404 unknown model (with `valid`),
+405 wrong method.
+
+How it runs: on a cold start the function fetches the release's int8 ONNX
+graph and tokenizer sidecar from R2 into `/tmp/supcomputer/<id>/` and keeps
+the session in memory; every generation for a model runs on one promise
+chain so ORT runs never overlap (the worker's invariant, above). `vercel.json`
+sets `maxDuration` (300 s, room for 512 tokens of glyph on one core),
+installs the CLI's `node_modules`, includes the Linux ORT shared library the
+file tracer can't see, and excludes the browser ORT the player's fallback
+import would drag in.
+
+Local run: `vercel dev` from the repo root (the project's root directory is
+`website`) serves the pages and the functions on one port; `vercel build`
+writes `.vercel/output/functions/api/*.func` and is the quick check that the
+bundle still traces `cli/`, `player/`, and `registry.json`.
+
 ## Styling
 
 A single global stylesheet, `app/globals.css`. The look is the "Prof. Dr." raw

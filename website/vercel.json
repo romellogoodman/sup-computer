@@ -1,11 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "npm ci && npm ci --prefix ../player && npm ci --prefix ../cli",
+  "installCommand": "npm ci && npm ci --prefix ../player && npm ci --prefix ../cli && sh scripts/prune-ort.sh",
   "functions": {
     "api/*.js": {
       "maxDuration": 300,
       "includeFiles": "node_modules/onnxruntime-node/bin/napi-v6/linux/x64/*",
-      "excludeFiles": "{website/node_modules/onnxruntime-node/bin/napi-v6/{darwin,win32,linux/arm64}/**,cli/node_modules/onnxruntime-node/**,player/node_modules/onnxruntime-web/**}"
+      "excludeFiles": "{website/node_modules/onnxruntime-node/bin/napi-v6/darwin/**,website/node_modules/onnxruntime-node/bin/napi-v6/win32/**,cli/node_modules/onnxruntime-node/**,player/node_modules/onnxruntime-web/**}"
     }
   },
   "redirects": [

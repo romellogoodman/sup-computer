@@ -6,6 +6,7 @@
 //
 //   /research/<slug>.md   one report           (page: /research/<slug>/)
 //   /models/<id>.md       one model card       (page: /models/<id>/)
+//   /<name>.md            one page doc         (page: /<name>/ — train, api)
 //   /llms.txt             index of all of it   (the "start here" URL)
 //   /llms-full.txt        every report + card concatenated (one paste = everything)
 //
@@ -141,7 +142,9 @@ function llmsIndex(reports, cards, models, pages, series) {
 const reports = getReports();
 const cards = getCards();
 const { models = [] } = getRegistry();
-const pages = [getPage("train")].filter(Boolean);
+// Page docs (ADR-0032): research-docs/<name>.md rendered at /<name>/.
+const PAGES = ["train", "api"];
+const pages = PAGES.map(getPage).filter(Boolean);
 
 const reportDocs = reports.map((r) => ({ path: `research/${r.slug}.md`, text: reportDoc(r) }));
 const cardDocs = cards.map((c) => ({ path: `models/${c.slug}.md`, text: cardDoc(c) }));
@@ -158,7 +161,7 @@ const full = [
 // Clean the generated trees so a removed report/model/page doesn't leave a stale .md.
 await rm(resolve(pub, "research"), { recursive: true, force: true });
 await rm(resolve(pub, "models"), { recursive: true, force: true });
-await rm(resolve(pub, "train.md"), { force: true });
+for (const name of PAGES) await rm(resolve(pub, `${name}.md`), { force: true });
 await mkdir(resolve(pub, "research"), { recursive: true });
 await mkdir(resolve(pub, "models"), { recursive: true });
 
