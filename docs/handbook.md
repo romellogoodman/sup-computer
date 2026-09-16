@@ -15,7 +15,7 @@ The as-built map, and why. The decision to be a monorepo is
 core/        shared, evolving engine — installed once, imported everywhere
 projects/    one folder per model; thin config + evidence + frozen releases
 player/      @supcomputer/player — vendored browser runtime (ADR-0010, ADR-0025); powers the instruments on the site's series pages (ADR-0024, ADR-0035)
-cli/         `sup` — run a released model in the terminal; in-tree only (ADR-0025)
+cli/         `sup` — run a released model in the terminal; published to npm as `supcpu` (ADR-0025, ADR-0039)
 tools/       researcher tooling (charts, synthetic corpora, benchmarks, cost) — operated, not shipped
 research-docs/  cross-project prose (reports + model cards)
 website/     consumes research-docs/ at build time; owns no content
@@ -113,7 +113,9 @@ twins plus `llms.txt` (ADR-0019). Edit markdown in `research-docs/`, never in
   Every project is a workspace member with its own `pyproject.toml` declaring
   what it imports; none are build targets.
 - **JS:** the `website/` package (`@supcomputer/website`), the vendored
-  `player/` package (`@supcomputer/player`), and the in-tree `cli/` (ADR-0025).
+  `player/` package (`@supcomputer/player`), and `cli/` — the `supcpu`
+  package on npm, which seals a copy of the player into its tarball at
+  pack time (ADR-0025, ADR-0039).
 - **tools/:** stdlib-only scripts — `dataviz/` (every chart), `synthgen/`
   (every LLM-generated corpus, local via LM Studio or hosted via OpenRouter
   with the cost recorded — ADR-0014, ADR-0038), `steer/` (shared local-LLM
@@ -212,11 +214,16 @@ a registry entry, a tag.
 ### Run a *released* model in the terminal (`sup`)
 
 For releases with published artifacts, the CLI downloads and runs them without
-the Python environment — see [`cli/README.md`](../cli/README.md) and
-[ADR-0025](adr/0025-sup-cli-and-injectable-player-backend.md):
+the Python environment — see [`cli/README.md`](../cli/README.md),
+[ADR-0025](adr/0025-sup-cli-and-injectable-player-backend.md), and
+[ADR-0039](adr/0039-publish-the-cli-to-npm.md). It is on npm as `supcpu`, so
+`npx supcpu shakespeare` works with no clone; from the clone it runs its own
+tree:
 
 ```bash
-cd cli && npm install     # once
+npx supcpu list                          # anywhere: the site's registry, the same artifacts
+
+cd cli && npm install                    # once, in the clone
 node bin/sup.js list
 node bin/sup.js shakespeare              # greet the series' newest release
 node bin/sup.js pull --all               # doubles as a bundle integrity check
@@ -240,10 +247,11 @@ an instance holds in memory. Public, no key; routes and curl examples are in
 `generate`, `model_card`, and a `sup://models/<id>/card` resource per
 release. The default backend is the hosted API
 ([ADR-0036](adr/0036-hosted-inference-api.md)); `--local` runs the model in
-this process the way `sup run` does. This repo registers the server in
-`.mcp.json` at the root, so Claude Code offers it here after one approval;
-the Claude Desktop config and the flags are in
-[`cli/README.md`](../cli/README.md#mcp-server).
+this process the way `sup run` does. Anywhere else it is one line, `claude
+mcp add sup -- npx -y supcpu mcp`; this repo registers the server in
+`.mcp.json` at the root as `node cli/bin/sup.js mcp` instead, so Claude Code
+runs the clone's own code here after one approval. The Claude Desktop config
+and the flags are in [`cli/README.md`](../cli/README.md#mcp-server).
 
 ### Export to ONNX (for the browser runtime)
 

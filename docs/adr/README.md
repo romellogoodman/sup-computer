@@ -43,7 +43,7 @@ ADR (ADR-0033).
 | [0022](0022-daydream-three-tier-sampler-prober-shape.md) | Daydream is a three-tier board-size family, and the first sampler/prober project | Accepted |
 | [0023](0023-gatsby-migrates-to-core-bpe.md) | gatsby migrates onto the modern core engine with byte-level BPE | Accepted (supersedes [ADR-0011](0011-vendor-gatsby.md)) |
 | [0024](0024-model-player-page-and-artifact-conventions.md) | the model-player page, its registry, and artifact conventions | Accepted (implements the route [ADR-0010](0010-vendor-the-player.md) anticipated); decision 1 amended by [ADR-0028](0028-registry-absorbs-the-demo-registry.md) — `player-registry.json` is retired, `registry.json` carries `block_size` + `demo.prompt`, the roster is derived |
-| [0025](0025-sup-cli-and-injectable-player-backend.md) | An in-tree `sup` CLI and an injectable player backend | Accepted |
+| [0025](0025-sup-cli-and-injectable-player-backend.md) | An in-tree `sup` CLI and an injectable player backend | Accepted (amended by [ADR-0039](0039-publish-the-cli-to-npm.md) — decision 4, "not published to npm, deliberately, for now", is reversed: the CLI is the `supcpu` package on npm, with the player sealed into the tarball and the registry fetched from the site; the greeting, the injectable backend, and the suffix-swap consumer stand) |
 | [0026](0026-steer-shared-orchestration-layer.md) | `tools/steer` — the shared shape for a big model steering a small one | Accepted |
 | [0027](0027-glyph-one-char-per-token-outline-codec.md) | glyph serializes outlines as one-char-per-token text | Accepted |
 | [0028](0028-registry-absorbs-the-demo-registry.md) | registry.json absorbs the demo registry; bundle rules live in the player | Accepted (amends [ADR-0024](0024-model-player-page-and-artifact-conventions.md) decision 1) |
@@ -57,4 +57,5 @@ ADR (ADR-0033).
 | [0036](0036-hosted-inference-api.md) | A hosted inference API — the player's third consumer | Accepted (amends [ADR-0025](0025-sup-cli-and-injectable-player-backend.md) — the injectable backend now has a third consumer, a Vercel function; extends [ADR-0019](0019-llm-readable-markdown-endpoints.md) with `/api.md`; addendum 2026-09-15 for the `sup mcp` surface, see § Addendum) |
 | [0037](0037-crediting-the-corpus-generators.md) | Crediting the corpus generators | Accepted (extends [ADR-0013](0013-attribution-of-the-ai-researcher.md) with a second roster) |
 | [0038](0038-synthgen-openrouter-backend.md) | synthgen gains a hosted backend — OpenRouter beside LM Studio | Accepted (amends [ADR-0014](0014-synthgen-local-llm-pipeline.md) — "LLM-only, via LM Studio" becomes two backends, one engine) |
+| [0039](0039-publish-the-cli-to-npm.md) | Publish the CLI to npm as `supcpu` | Accepted (amends [ADR-0025](0025-sup-cli-and-injectable-player-backend.md) — decision 4, "not published to npm, deliberately, for now", is reversed; the greeting, the injectable backend, and the suffix-swap consumer stand) |
 <!-- /generated -->

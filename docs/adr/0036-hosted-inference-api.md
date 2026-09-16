@@ -195,5 +195,7 @@ served to an agent over the Model Context Protocol on stdio, from
 Consequences: `@modelcontextprotocol/sdk` and `zod` join `cli/` as its one
 new dependency pair, and the CLI is still not published to npm (ADR-0025
 decision 4 stands — the MCP client runs `node cli/bin/sup.js mcp` from the
-clone). A client that calls `generate` in hosted mode pays the API's cold
+clone). *Reversed the same day by
+[ADR-0039](0039-publish-the-cli-to-npm.md): the CLI is the `supcpu` package,
+and a client anywhere runs `npx -y supcpu mcp`.* A client that calls `generate` in hosted mode pays the API's cold
 start on the first call; `--local` pays the artifact download instead.

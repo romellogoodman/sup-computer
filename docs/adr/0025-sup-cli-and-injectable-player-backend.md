@@ -1,6 +1,6 @@
 # ADR 0025: An in-tree `sup` CLI and an injectable player backend
 
-- **Status:** Accepted
+- **Status:** Accepted (amended by [ADR-0039](0039-publish-the-cli-to-npm.md) — decision 4, "not published to npm, deliberately, for now", is reversed: the CLI is the `supcpu` package on npm, with the player sealed into the tarball and the registry fetched from the site; the greeting, the injectable backend, and the suffix-swap consumer stand)
 - **Date:** 2026-07-03
 - **Deciders:** Romello Goodman (with Claude)
 
