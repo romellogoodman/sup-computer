@@ -71,6 +71,17 @@ binding dlopens, and `excludeFiles` drops the CLI's second copy of ORT and
 the 23 MB of `onnxruntime-web` the player's browser-fallback `import()`
 would drag into a Node bundle.
 
+One routing rule had to move. Next's `trailingSlash: true` emits a
+catch-all 308 (`/x` → `/x/`) that Vercel places ahead of the function
+routes, so the first preview answered every bare `/api/models` and
+`/api/generate` with a redirect — harmless to a browser, fatal to a
+streaming client that doesn't follow one. Vercel's own `trailingSlash`
+setting emits the same catch-all. So `next.config` sets
+`skipTrailingSlashRedirect` and `vercel.json` restates the page redirect
+with `/api/`, `/_next/`, and `.well-known` exempted: pages redirect exactly
+as before, and the API answers on the bare path (the slashed path works
+too).
+
 **4. Fast and cheap, by construction.** The function fetches the int8
 graph (the browser's choice on WASM, now the server's) and its tokenizer
 sidecar into `/tmp/supcomputer/<id>/` on cold start, skips the fetch when
@@ -111,10 +122,11 @@ page already follows, so the API is one `.md` away like everything else.
   queue behind each other by design; a burst of 512-token glyph requests
   would wait minutes. There is no rate limit — accepted for a research
   studio's traffic, and the first thing to add if that changes.
-- `vercel.json` now carries function config beside the redirects; a future
-  `next.config` change to `trailingSlash` or a Vercel change to how a root
-  `api/` directory is detected would need re-verification — the local
-  `vercel build` route table is the quick check.
+- `vercel.json` now owns the trailing-slash redirect the framework used to
+  emit, beside the function config. A future change to `trailingSlash`, or
+  a Vercel change to how a root `api/` directory is detected, needs
+  re-verification — the local `vercel build` route table
+  (`.vercel/output/config.json`) is the quick check.
 - Generated text is not filtered. These are corpus models; what they say is
   what they learned, and the API says so nowhere but here.
 

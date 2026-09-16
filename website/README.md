@@ -87,6 +87,11 @@ function limit 250 MB, and the tracer takes the whole package once it sees
 the native binding), while `includeFiles`/`excludeFiles` keep the Linux
 shared library and drop the CLI's second ORT copy and the browser ORT.
 
+Routing: Next's trailing-slash redirect is switched off
+(`skipTrailingSlashRedirect`) and restated in `vercel.json` with `/api/`
+exempted, because the framework's catch-all 308 would otherwise sit ahead of
+the functions and redirect every bare `/api/*` call. Pages redirect as before.
+
 Local run: `vercel dev` from the repo root (the project's root directory is
 `website`) serves the pages and the functions on one port; `vercel build`
 writes `.vercel/output/functions/api/*.func` and is the quick check that the

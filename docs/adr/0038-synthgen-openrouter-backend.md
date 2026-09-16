@@ -16,7 +16,7 @@ The studio is about to depart from that deliberately. The next corpora will
 be written by paid frontier models, named one at a time, because the
 question is what a small model learns from a better teacher, not what it
 learns from a free one. That brings back the two things the local path let
-the engine forget. Cost: gatsby's first corpus recorded $2.92 in
+the engine forget. Cost: gatsby's first corpus recorded $2.94 in
 `costs.jsonl` over the Claude API and every later run recorded nothing,
 because there was nothing to record. Credit: [ADR-0037](0037-crediting-the-corpus-generators.md)
 now credits each corpus's generators by id in `registry.json`, and a paid

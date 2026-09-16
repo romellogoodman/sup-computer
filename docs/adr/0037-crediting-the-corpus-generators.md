@@ -6,7 +6,7 @@
 
 ## Context
 
-Seven of the studio's twelve released models were trained on text that a
+Five of the studio's twelve released models were trained on text that a
 model wrote. Claude Sonnet 4.6 wrote gatsby-nanogpt-1's thousand stories
 over the API; four local models wrote gatsby-nanogpt-2's two thousand via
 LM Studio; three more wrote pona-nanogpt-1's dialogues; Fairy-Stockfish
