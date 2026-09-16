@@ -1,8 +1,18 @@
-import { researcherName } from "../lib/content";
+import { researcherName, generatorName, corpusKindWords } from "../lib/content";
 
 // checkpoint is an HF resolve URL (…/sup-computer/<id>/resolve/main/ckpt.pt);
 // link the repo page, not the raw file
 const hfRepoOf = (m) => m.artifacts?.checkpoint?.replace(/\/resolve\/.*$/, "");
+
+// Who wrote the training corpus (ADR-0037): the kind in words, then the
+// credited generators by name (LLMs and engines only — scripts and human
+// sources are described in `source`, not credited), then the source. Fields
+// join on a middle dot like every other meta line.
+function corpusCell(corpus) {
+  if (!corpus) return "—";
+  const names = (corpus.generators || []).map(generatorName).join(", ");
+  return [corpusKindWords(corpus.kind), names, corpus.source].filter(Boolean).join(" · ");
+}
 
 // The registry facts for one release. On a series page the first row names
 // (and links) the release the specs belong to; on the release page itself
@@ -39,6 +49,7 @@ export default function SpecTable({ m, showRelease }) {
           </td>
         </tr>
         <tr><th>Researcher</th><td>{m.researcher ? researcherName(m.researcher) : "—"}</td></tr>
+        <tr><th>Corpus</th><td>{corpusCell(m.corpus)}</td></tr>
       </tbody>
     </table>
   );

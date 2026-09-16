@@ -130,6 +130,30 @@ export function researcherName(id) {
   return getResearchers()[id]?.name || id;
 }
 
+// Who wrote a model's training corpus. Every model entry carries a `corpus`
+// block (kind, credited generator ids, source, provenance); the ids resolve
+// through the registry's `generators` roster — the LLMs and engines that wrote
+// training text, kept separate from `researchers` (which did the research).
+// See docs/adr/0037-crediting-the-corpus-generators.md.
+export function getGenerators() {
+  return getRegistry().generators || {};
+}
+export function generatorName(id) {
+  if (!id) return "";
+  return getGenerators()[id]?.name || id;
+}
+// The corpus kind as the spec table says it (control voice: lowercase, literal).
+const CORPUS_KIND_WORDS = {
+  human: "human-written",
+  procedural: "procedural",
+  "llm-synthetic": "LLM-written",
+  "engine-synthetic": "engine-written",
+  mixed: "mixed",
+};
+export function corpusKindWords(kind) {
+  return CORPUS_KIND_WORDS[kind] || kind || "";
+}
+
 // A top-level page doc (research-docs/<name>.md) — living content rendered at
 // its own route (e.g. /train), edited in place rather than frozen like a
 // report. See docs/adr/0032-train-page-prompt-as-content.md.
