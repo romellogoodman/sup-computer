@@ -14,6 +14,7 @@ await rm(vendor, { recursive: true, force: true });
 await mkdir(new URL('player/', vendor), { recursive: true });
 await cp(new URL('src/', player), new URL('player/', vendor), { recursive: true });
 await cp(new URL('../registry.json', cli), new URL('registry.json', vendor));
+await cp(new URL('../LICENSE', cli), new URL('LICENSE', cli)); // npm always packs a root LICENSE
 
 const { version: playerVersion } = JSON.parse(await readFile(new URL('package.json', player), 'utf8'));
 const { version } = JSON.parse(await readFile(new URL('package.json', cli), 'utf8'));
