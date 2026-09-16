@@ -1,10 +1,33 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "npm ci && npm ci --prefix ../player",
+  "installCommand": "npm ci && npm ci --prefix ../player && npm ci --prefix ../cli",
+  "functions": {
+    "api/*.js": {
+      "maxDuration": 300,
+      "includeFiles": "node_modules/onnxruntime-node/bin/napi-v6/linux/x64/*",
+      "excludeFiles": "player/node_modules/onnxruntime-web/**"
+    }
+  },
   "redirects": [
-    { "source": "/model-player", "destination": "/", "permanent": true },
-    { "source": "/model-player/", "destination": "/", "permanent": true },
-    { "source": "/interfaces", "destination": "/", "permanent": true },
-    { "source": "/interfaces/", "destination": "/", "permanent": true }
+    {
+      "source": "/model-player",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/model-player/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/interfaces",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/interfaces/",
+      "destination": "/",
+      "permanent": true
+    }
   ]
 }

@@ -35,3 +35,5 @@ node_modules/
 
 # --- Claude worktrees (session-created, never repo content) ---
 .claude/worktrees/
+.vercel
+.env*
