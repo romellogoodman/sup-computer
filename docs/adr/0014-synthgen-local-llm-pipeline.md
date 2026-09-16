@@ -1,6 +1,6 @@
 # ADR 0014: Synthetic-data generation via LM Studio lives in `tools/synthgen`
 
-- **Status:** Accepted
+- **Status:** Accepted (amended by [ADR-0038](0038-synthgen-openrouter-backend.md) — "LLM-only, via LM Studio" is now two OpenAI-compatible backends, LM Studio and OpenRouter, behind the same engine; the other decisions stand)
 - **Date:** 2026-06-28
 - **Deciders:** Romello Goodman (with Claude)
 
