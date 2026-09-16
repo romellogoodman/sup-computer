@@ -337,7 +337,10 @@ needs (`model.py`, `config.py`, `train.py`, `sample.py`, `eval.py`, `prepare.py`
      series also needs a `series` entry — tagline, the home page `verb`, and
      the `instrument` kind its page opens with
      ([ADR-0035](adr/0035-instruments-as-the-front-door.md)); no model
-     ships without one.
+     ships without one. The entry also carries a `corpus` block — kind, the
+     credited `generators` (each id added to the `generators` roster first;
+     LLMs and engines only), source, and the provenance path to the committed
+     record ([ADR-0037](adr/0037-crediting-the-corpus-generators.md)).
 
 5. **Tag it:** `git tag <project>-N` so the exact repo state is recoverable.
 

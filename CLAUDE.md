@@ -47,6 +47,11 @@ depth (with the why) is [`docs/handbook.md`](docs/handbook.md).
   2026-07-02 it's been removed from every card. The researcher is the model
   that *did the research*, distinct from the model being built. See
   `docs/adr/0013-attribution-of-the-ai-researcher.md`.
+- **Credit the corpus generators.** Every `registry.json` model entry also sets
+  a `corpus` block — kind, the credited `generators` (LLMs and engines, keyed
+  into the `generators` map; scripts and human sources are described, not
+  credited), source, and a provenance path to the committed record. See
+  `docs/adr/0037-crediting-the-corpus-generators.md`.
 
 ## How to work here
 
