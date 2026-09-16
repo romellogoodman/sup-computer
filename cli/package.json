@@ -7,12 +7,19 @@
   "bin": {
     "sup": "bin/sup.js"
   },
+  "exports": {
+    "./registry": "./src/registry.js",
+    "./artifacts": "./src/artifacts.js",
+    "./rng": "./src/rng.js"
+  },
   "scripts": {
     "lint": "echo \"(no linter configured yet)\""
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
     "@supcomputer/player": "file:../player",
-    "onnxruntime-node": "^1.22.0"
+    "onnxruntime-node": "^1.22.0",
+    "zod": "^4.6.5"
   },
   "license": "MIT"
 }

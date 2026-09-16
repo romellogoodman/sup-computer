@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "sup": {
+      "command": "node",
+      "args": ["cli/bin/sup.js", "mcp"]
+    }
+  }
+}

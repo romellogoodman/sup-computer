@@ -10,8 +10,9 @@ import { loadRegistry, resolveModel, runnable, lineage, latestByLineage, aliasOf
 import { pull, removeCached, CACHE_ROOT } from './artifacts.js';
 import { runModel } from './run.js';
 import { train } from './train.js';
+import { mcp } from './mcp.js';
 
-const COMMANDS = new Set(['list', 'pull', 'run', 'rm', 'train', 'help']);
+const COMMANDS = new Set(['list', 'pull', 'run', 'rm', 'train', 'mcp', 'help']);
 
 const HELP = `sup — run the studio's released models in your terminal
 
@@ -22,6 +23,7 @@ usage:
   sup pull <model> | --all      download artifacts without running
   sup rm <model> | --all        clear the cache (${CACHE_ROOT})
   sup train <corpus.txt> [...]  train a small GPT on your own text (needs uv; sup train --help)
+  sup mcp [--local] [--api <url>]  serve the roster to an agent over MCP (stdio); hosted by default
   sup help                      this text
 
 flags (for run/greeting):
@@ -37,6 +39,9 @@ export async function main(argv) {
   // `sup train` hands its argv to the Python entry point untouched — that
   // side owns the flags (and --help), so it goes before parseArgs can object.
   if (argv[0] === 'train') return train(argv.slice(1));
+  // `sup mcp` owns its own flags too (--local, --api), and its stdout is the
+  // protocol channel — it never prints.
+  if (argv[0] === 'mcp') return mcp(argv.slice(1));
 
   const { values: flags, positionals } = parseArgs({
     args: argv,
