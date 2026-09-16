@@ -1,19 +1,21 @@
-# synthgen — local-LLM synthetic-corpus pipeline
+# synthgen — the LLM synthetic-corpus pipeline
 
-*The local-LLM synthetic-corpus engine — every LLM-generated corpus goes through it (ADR-0014).*
+*The LLM synthetic-corpus engine — every LLM-generated corpus goes through it, local via LM Studio or hosted via OpenRouter (ADR-0014, ADR-0038).*
 
-A small, dependency-free generator that drives local LLMs served by LM Studio
-to produce synthetic text corpora for training tiny GPTs. It dedups the output
-and writes a project-ready `raw.txt` plus a provenance `manifest.json`.
+A small, dependency-free generator that drives LLMs — local models served by
+LM Studio, or hosted models over OpenRouter — to produce synthetic text
+corpora for training tiny GPTs. It dedups the output and writes a
+project-ready `raw.txt`, a provenance `manifest.json`, and one line of
+`costs.jsonl`.
 
 **This is the single engine every synthetic corpus goes through** — the
 generation analog of [`tools/dataviz`](../dataviz/) (the single source of every
 chart). When a project needs an LLM-generated corpus, it drives `synthgen`; it
-doesn't hand-roll its own LM Studio client. (Procedural / non-LLM corpora — like
+doesn't hand-roll its own client. (Procedural / non-LLM corpora — like
 `kenosha-kid` — generate themselves and don't belong here; see the ADR.)
 
 It's part of this monorepo: the training engine lives in [`core/`](../../core/),
-and this subdirectory turns local models into the `raw.txt` a project's
+and this subdirectory turns models into the `raw.txt` a project's
 `prepare.py` tokenizes into `train.bin`/`val.bin`.
 
 > The tool name is provisional. It's deliberately self-contained (one engine
@@ -21,43 +23,97 @@ and this subdirectory turns local models into the `raw.txt` a project's
 
 ## The research idea — mixture of models
 
-The lever is **mixture-of-models** generation: run several *different* local
+The lever is **mixture-of-models** generation: run several *different*
 models so the corpus carries diverse "voices." Distilling a single teacher into
 a tiny GPT is circular — the student can only inherit one model's habits.
-Mixing models breaks that, the way a varied human corpus would. `synthgen`
-discovers every chat model loaded in LM Studio and, by default, generates across
-all of them, recording which model produced each document.
+Mixing models breaks that, the way a varied human corpus would. On LM Studio,
+`synthgen` discovers every chat model loaded and, by default, generates across
+all of them; on OpenRouter you name the mix. Either way it records which model
+produced each document.
 
-## Backend — LM Studio (OpenAI-compatible)
+## Backends
 
-LM Studio runs an OpenAI-compatible server at `http://localhost:1234/v1`
-(override with `SYNTHGEN_BASE_URL`). `synthgen` talks to it with stdlib
-`urllib` — no `requests`, no `openai` dependency, matching dataviz's
-zero-dependency ethos.
+Two backends, one engine. Both speak the OpenAI-compatible
+`POST /chat/completions` over stdlib `urllib` — no `requests`, no `openai`
+dependency, matching dataviz's zero-dependency ethos. `--backend` picks one;
+the default is unchanged, so every existing call site behaves as it did.
 
-- **Discovery** (`GET /v1/models`) filters out embedding models (id contains
-  `embed`).
-- **Generation** is `POST /v1/chat/completions`.
+| | LM Studio (`lmstudio`, default) | OpenRouter (`openrouter`) |
+|---|---|---|
+| Where | `http://localhost:1234/v1` (override `SYNTHGEN_BASE_URL`) | `https://openrouter.ai/api/v1` |
+| Cost | free per token — the manifest records `0.0` | paid — `usage.cost` from every response, in US dollars |
+| Models | discovered (`--list`), or `--models` | `--models` is required; there is no discovery |
+| Auth | none | `OPENROUTER_API_KEY` |
+| Reasoning lever | `"reasoning_effort": "none"` | `"reasoning": {"effort": "none"}` |
 
-### The reasoning_effort gotcha (read this)
+### The key
 
-The local models are reasoning / "thinking" models. Without suppression they
-spend the entire token budget on a hidden reasoning trace and return EMPTY
-`content`. The only lever that worked is passing **`"reasoning_effort":
-"none"`** in the request body — `enable_thinking: false` and `/no_think` did
-*not* work. It is the default here (`synthgen.REASONING_EFFORT`) and is
-overridable per call / via `--reasoning-effort`. If you see empty samples in the
-CLI's warning, this is almost always the cause.
+OpenRouter needs `OPENROUTER_API_KEY`. `synthgen` reads it from the process
+environment first, then the repo-root `.env.local`, then the repo-root `.env`
+— the first non-empty value wins. Both files are gitignored; `.env.example`
+at the repo root shows the one line. The parser is stdlib (`KEY=value`,
+quotes and `#` comments tolerated). A missing key fails before any request
+is made. The key is never printed and never written to a manifest.
 
-A cold model's first call is slow (JIT load, ~10–25s); the HTTP timeout is
-generous (600s) and transient errors are retried.
+### Models are always named on OpenRouter
+
+`--models vendor/model,vendor/model` is required. There is no default, no
+`openrouter/auto`, no fallback list: the studio names the models it pays for,
+every run, and the manifest records exactly those ids. `--list` is LM Studio
+only and errors out on OpenRouter.
+
+### Cost and budget
+
+Cost is first-class. OpenRouter returns `usage.cost` on every response (its
+credits are denominated in dollars, and the old `usage: {include: true}`
+request flag is documented as a no-op); `synthgen` records it per sample as
+`cost_usd`, sums it per model and per run as `total_cost_usd`, and appends one
+line per run to `costs.jsonl` beside the manifest — the same fields gatsby's
+Claude-API log uses where they apply. LM Studio runs write `0.0` so the
+manifest shape is identical everywhere. A dropped duplicate still counts: cost
+is summed over everything generated, not only what was kept.
+
+`--budget <usd>` caps a run. Before each request the engine checks whether
+the cumulative spend plus the mean cost so far would pass the ceiling and, if
+it would, stops cleanly: the manifest is written with what was generated and
+`budget_hit: true`. A run can overshoot by one sample's noise, never by a
+sample it could have foreseen.
+
+```bash
+cd tools/synthgen
+
+python3 build.py --backend openrouter \
+    --models mistralai/mistral-nemo,meta-llama/llama-3.1-8b-instruct \
+    --n 50 --budget 2.00 \
+    --prompt-file prompt.txt \
+    --out ../../projects/<name>/data
+```
+
+### The reasoning lever (read this)
+
+Local models under LM Studio are reasoning / "thinking" models. Without
+suppression they spend the entire token budget on a hidden reasoning trace
+and return EMPTY `content`. The only lever that worked there is
+**`"reasoning_effort": "none"`** in the request body — `enable_thinking: false`
+and `/no_think` did *not* work. On OpenRouter the documented lever is the
+`reasoning` object: `{"reasoning": {"effort": "none"}}` disables reasoning
+entirely (`exclude: true` would only hide a trace that is still billed —
+[reasoning tokens](https://openrouter.ai/docs/use-cases/reasoning-tokens)).
+`"none"` is the default on both; `--reasoning-effort` overrides it on both,
+and every sample's `reasoning_control` records which field and value were
+sent. If you see empty samples in the CLI's warning, this is almost always
+the cause.
+
+A cold local model's first call is slow (JIT load, ~10–25s); the HTTP timeout
+is generous (600s) and transient errors are retried. HTTP 4xx — a bad key, an
+unknown model, an empty balance — is not retried.
 
 ## Layout
 
 ```
-synthgen.py     # the engine: discover / generate / dedup / manifest + corpus writers
-build.py        # the CLI: discover -> generate across the mix -> dedup -> write
-output/         # generated raw.txt + manifest.json (gitignored)
+synthgen.py     # the engine: backends / discover / generate / dedup / manifest + corpus + cost writers
+build.py        # the CLI: discover or name -> generate across the mix -> dedup -> write
+output/         # generated raw.txt + manifest.json + costs.jsonl (gitignored)
 ```
 
 ## Usage — CLI
@@ -65,7 +121,7 @@ output/         # generated raw.txt + manifest.json (gitignored)
 ```bash
 cd tools/synthgen
 
-python3 build.py --list                       # what chat models are loaded?
+python3 build.py --list                       # what chat models are loaded? (LM Studio)
 
 # demo: 4 samples per loaded model, dedup, write to ./output/
 python3 build.py --n 4 --prompt "Write a 3-sentence bedtime story."
@@ -75,10 +131,17 @@ python3 build.py --n 50 \
     --models qwen/qwen3.6-27b,granite-4.1-8b,olmo-3-7b-instruct \
     --prompt-file prompt.txt \
     --out ../../projects/gatsby/data
+
+# the same run on the paid backend, capped at two dollars
+python3 build.py --backend openrouter --budget 2.00 --n 50 \
+    --models mistralai/mistral-nemo,meta-llama/llama-3.1-8b-instruct \
+    --prompt-file prompt.txt \
+    --out ../../projects/gatsby/data
 ```
 
 `--out` is the target directory; point it at a project's `data/` and the run
-writes `raw.txt` + `manifest.json` there. Default is `./output` (gitignored).
+writes `raw.txt` + `manifest.json` there and appends to `costs.jsonl`. Default
+is `./output` (gitignored).
 
 ## Usage — as a library
 
@@ -100,6 +163,19 @@ manifest = sg.build_manifest(samples, kept, dropped,
                              params={"jaccard_threshold": 0.85},
                              corpus_path="output/raw.txt")  # verifies the offsets
 sg.write_manifest(manifest, "output/manifest.json")
+```
+
+The OpenRouter path is the same calls with a backend object and a budget:
+
+```python
+be = sg.get_backend("openrouter")            # resolves the key, or raises
+budget = sg.Budget(limit_usd=2.00)
+samples = sg.generate("mistralai/mistral-nemo", "Write a tiny story.", n=10,
+                      backend=be, budget=budget)   # stops early if budget.hit
+manifest = sg.build_manifest(samples, kept, dropped, prompt=..., params=...,
+                             backend=be, budget=budget, corpus_path=...)
+sg.append_cost_record(sg.cost_record(manifest, "output/raw.txt"),
+                      "output/costs.jsonl")
 ```
 
 A **project control line** (e.g. gatsby's `[green=N] topic: ...` prime) is added
@@ -149,17 +225,26 @@ the kept sample it matched, similarity, a preview) and the CLI logs each one.
 
 `manifest.json` is the crown jewel. It records:
 
-- a **run header**: timestamp (injectable for tests), backend + base URL, the
-  prompt, params (temperature, max_tokens, `reasoning_effort`, jaccard
-  threshold), the model mix, and counts (generated / kept / dropped /
-  corpus_chars, plus per-model generated/kept) and total token usage;
-- **per-sample provenance**: source model, prompt, temperature, prompt/
-  completion token counts, a `sha1` of the text, and the `offset`/`length` of
-  each document into `raw.txt` so every corpus document is locatable;
+- a **run header**: timestamp (injectable for tests), backend (name, base
+  URL, `served_by`), the prompt, params (temperature, max_tokens,
+  `reasoning_effort`, jaccard threshold), the model mix, counts (generated /
+  kept / dropped / corpus_chars, plus per-model generated / kept / cost),
+  total token usage, `total_cost_usd`, and the budget (`budget_usd`,
+  `budget_hit`);
+- **`generators`**: one entry per model in the mix, in the shape
+  [ADR-0037](../../docs/adr/0037-crediting-the-corpus-generators.md)'s
+  roster uses — `{id, model_id, backend, served_by}`, the `id` a slug
+  (vendor prefix stripped, dots to hyphens: `google/gemma-4-26b-a4b-qat` →
+  `gemma-4-26b-a4b-qat`) and `model_id` the exact upstream id — so a corpus
+  built here drops into `registry.json` without hand-copying;
+- **per-sample provenance**: source model and backend, prompt, temperature,
+  prompt/completion token counts, `cost_usd`, the `reasoning_control` field
+  and value that were sent, a `sha1` of the text, and the `offset`/`length`
+  of each document into `raw.txt` so every corpus document is locatable;
 - the full **dedup ledger** (what was dropped and why).
 
 Generation is non-deterministic (temperature), so the manifest — not a re-run —
-is the record of which voice produced which document.
+is the record of which voice produced which document, and what it cost.
 
 ## Optional — downloading models (`lms get`)
 
@@ -182,9 +267,10 @@ in:
   purpose — one consumer isn't enough signal to design the shared abstraction.
   See [ADR-0014](../../docs/adr/0014-synthgen-local-llm-pipeline.md) and
   [ADR-0011](../../docs/adr/0011-vendor-gatsby.md).
-- **Cost accounting.** Local generation has no dollar cost, so there's no
-  `costs.jsonl` analog; the manifest records token counts and latency instead.
-  If wall-clock/GPU accounting becomes interesting, it belongs in the manifest.
+- **Wall-clock accounting.** Dollar cost is recorded now
+  ([ADR-0038](../../docs/adr/0038-synthgen-openrouter-backend.md)); a local
+  run's cost is still only token counts and latency. If GPU-hours become
+  interesting, they belong in the manifest.
 - **Stdlib-only.** Kept deliberately dependency-free. A retry/transport library
   or a faster near-dup index (MinHash/SimHash) would be the first things to
   reach for if scale demands — noted, not added.
