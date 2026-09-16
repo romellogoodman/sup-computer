@@ -6,8 +6,10 @@
 // prefix of one, or a greeting alias (kenosha-kid, daydream-micro). The
 // prompt defaults to the release's demo prompt. Streaming (the default) is
 // server-sent events — one `{"token": "…"}` per decoded piece, then
-// `{"done": true, "model", "prompt", "text", "tokens"}`; `stream: false`
-// returns that final object as one JSON body. See ADR-0036.
+// `{"done": true, "model", "prompt", "text", "tokens", "truncated"}`;
+// `stream: false` returns that final object as one JSON body. `truncated`
+// is true when the per-request wall-clock budget ended the run early.
+// See ADR-0036.
 
 import { resolve, readOptions, run, validNames } from "../lib/inference.js";
 import { route, json, CORS } from "../lib/http.js";
@@ -15,6 +17,7 @@ import { route, json, CORS } from "../lib/http.js";
 const sse = (obj) => `data: ${JSON.stringify(obj)}\n\n`;
 
 async function handle(request) {
+  const startedAt = Date.now();
   let body;
   try {
     body = await request.json();
@@ -47,20 +50,21 @@ async function handle(request) {
   if (!prompt) {
     return json({ error: `${model.id} has no demo prompt — send one` }, 400);
   }
-  const summary = (text) => ({
+  const summary = ({ text, tokens, truncated }) => ({
     done: true,
     model: model.id,
     prompt,
     text,
-    tokens: opts.tokens,
+    tokens,
+    truncated,
     temp: opts.temp,
     topk: opts.topk,
     ...(opts.seed !== undefined && { seed: opts.seed }),
   });
 
   if (!opts.stream) {
-    const text = await run(model, { ...opts, prompt });
-    const { done: _done, ...out } = summary(text);
+    const result = await run(model, { ...opts, prompt, startedAt });
+    const { done: _done, ...out } = summary(result);
     return json(out);
   }
 
@@ -70,13 +74,14 @@ async function handle(request) {
     async start(controller) {
       const send = (obj) => controller.enqueue(encoder.encode(sse(obj)));
       try {
-        const text = await run(model, {
+        const result = await run(model, {
           ...opts,
           prompt,
+          startedAt,
           onToken: (piece) => send({ token: piece }),
           shouldStop: () => cancelled,
         });
-        send(summary(text));
+        send(summary(result));
       } catch (err) {
         console.error("api/generate:", err?.stack ?? err);
         send({ error: "generation failed" });

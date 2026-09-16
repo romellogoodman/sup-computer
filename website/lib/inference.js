@@ -36,6 +36,11 @@ export const LIMITS = {
   temp: { default: 0.8, min: 0.05, max: 2.5 },
   topk: { default: 40, min: 0, max: 1000 },
   prompt: { maxChars: 4000 },
+  // Wall clock per request, queue wait included, under the function's
+  // maxDuration (300 s). glyph runs ~360 ms/token on the function's vCPU, so
+  // 512 tokens of it is ~185 s cold; a request that would overrun stops
+  // early and says so (`truncated`) instead of dying as a 504.
+  budgetMs: Number(process.env.SUP_API_BUDGET_MS) || 240_000,
 };
 
 const CACHE_ROOT = join(tmpdir(), "supcomputer"); // /tmp/supcomputer/<model-id>/ on Vercel
@@ -156,22 +161,38 @@ export function readOptions(body) {
 
 /**
  * Generate on a resolved model. `onToken(piece)` streams pieces as they
- * decode; the promise resolves to the full continuation (prompt excluded).
- * Runs on the model's queue so no two ORT runs overlap.
+ * decode; resolves to `{ text, tokens, truncated }` — the continuation
+ * (prompt excluded), how many pieces were emitted, and whether the wall-clock
+ * budget (from `startedAt`, queue wait included) or `shouldStop` ended the
+ * run before `tokens`. Runs on the model's queue so no two ORT runs overlap.
  */
-export async function run(model, { prompt, tokens, temp, topk, seed, onToken, shouldStop }) {
+export async function run(model, { prompt, tokens, temp, topk, seed, onToken, shouldStop, startedAt = Date.now() }) {
+  const deadline = startedAt + LIMITS.budgetMs;
   const entry = await ensure(model);
-  return enqueue(entry, () =>
+  let emitted = 0;
+  let overran = false;
+  const text = await enqueue(entry, () =>
     generate(entry.session, entry.tokenizer, prompt, {
       maxNewTokens: tokens,
       temp,
       topk,
       blockSize: entry.blockSize,
       rng: seed === undefined ? undefined : mulberry32(seed),
-      onToken,
-      shouldStop,
+      onToken: async (piece, id) => {
+        emitted += 1;
+        if (onToken) await onToken(piece, id);
+      },
+      shouldStop: () => {
+        if (shouldStop && shouldStop()) return true;
+        if (Date.now() > deadline) {
+          overran = true;
+          return true;
+        }
+        return false;
+      },
     }),
   );
+  return { text, tokens: emitted, truncated: overran };
 }
 
 export { runnable };
