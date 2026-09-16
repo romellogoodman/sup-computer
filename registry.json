@@ -1,5 +1,5 @@
 {
-  "_note": "Model manifest consumed by the website and the sup CLI. Weights and ONNX live in R2 / Hugging Face, never in-tree; artifact URLs fill in at publish time. block_size comes from the frozen config.py (the ONNX RoPE cache physically ends there). demo.prompt is the starter prompt for playable releases -- leading whitespace is LOAD-BEARING (it puts the model in its corpus's format), don't strip it. The playable roster is DERIVED (newest runnable release per lineage -- see ADR-0028), not listed. Every model records the AI `researcher` that produced it, keyed into the `researchers` map below (each researcher carries a `kind`, human or agent -- the site files a human-bylined report as an essay and an agent-bylined one as a lab note) -- see docs/adr/0013-attribution-of-the-ai-researcher.md. The `series` map holds per-series site copy: `tagline`, the `verb` the home page shows, and the `instrument` the series page opens with (see docs/adr/0035-instruments-as-the-front-door.md).",
+  "_note": "Model manifest consumed by the website and the sup CLI. Weights and ONNX live in R2 / Hugging Face, never in-tree; artifact URLs fill in at publish time. block_size comes from the frozen config.py (the ONNX RoPE cache physically ends there). demo.prompt is the starter prompt for playable releases -- leading whitespace is LOAD-BEARING (it puts the model in its corpus's format), don't strip it. The playable roster is DERIVED (newest runnable release per lineage -- see ADR-0028), not listed. Every model records the AI `researcher` that produced it, keyed into the `researchers` map below (each researcher carries a `kind`, human or agent -- the site files a human-bylined report as an essay and an agent-bylined one as a lab note) -- see docs/adr/0013-attribution-of-the-ai-researcher.md. Every model also records who wrote its training `corpus` (a `kind`, the credited `generators` keyed into the `generators` map -- LLMs and engines, never scripts or human sources -- a `source`, and a `provenance` path to the committed record) -- see docs/adr/0037-crediting-the-corpus-generators.md. The `series` map holds per-series site copy: `tagline`, the `verb` the home page shows, and the `instrument` the series page opens with (see docs/adr/0035-instruments-as-the-front-door.md).",
   "researchers": {
     "claude-opus-4-8": {
       "name": "Claude Opus 4.8",
@@ -34,6 +34,64 @@
     "romello-goodman": {
       "name": "Romello Goodman",
       "kind": "human"
+    }
+  },
+  "generators": {
+    "claude-sonnet-4-6": {
+      "name": "Claude Sonnet 4.6",
+      "vendor": "Anthropic",
+      "kind": "llm",
+      "served_by": "Claude API",
+      "model_id": "claude-sonnet-4-6"
+    },
+    "olmo-3-7b-instruct": {
+      "name": "Olmo 3 7B Instruct",
+      "vendor": "Ai2",
+      "kind": "llm",
+      "served_by": "LM Studio (local)",
+      "model_id": "olmo-3-7b-instruct"
+    },
+    "ministral-3-8b-instruct-2512": {
+      "name": "Ministral 3 8B Instruct",
+      "vendor": "Mistral AI",
+      "kind": "llm",
+      "served_by": "LM Studio (local)",
+      "model_id": "ministral-3-8b-instruct-2512"
+    },
+    "gemma-4-26b-a4b": {
+      "name": "Gemma 4 26B A4B",
+      "vendor": "Google",
+      "kind": "llm",
+      "served_by": "LM Studio (local)",
+      "model_id": "google/gemma-4-26b-a4b"
+    },
+    "gemma-4-26b-a4b-qat": {
+      "name": "Gemma 4 26B A4B (QAT)",
+      "vendor": "Google",
+      "kind": "llm",
+      "served_by": "LM Studio (local)",
+      "model_id": "google/gemma-4-26b-a4b-qat"
+    },
+    "granite-4-1-8b": {
+      "name": "Granite 4.1 8B",
+      "vendor": "IBM",
+      "kind": "llm",
+      "served_by": "LM Studio (local)",
+      "model_id": "granite-4.1-8b"
+    },
+    "qwen3-6-27b": {
+      "name": "Qwen3.6 27B",
+      "vendor": "Alibaba",
+      "kind": "llm",
+      "served_by": "LM Studio (local)",
+      "model_id": "qwen/qwen3.6-27b"
+    },
+    "fairy-stockfish": {
+      "name": "Fairy-Stockfish",
+      "vendor": "Fabian Fichter and contributors",
+      "kind": "engine",
+      "served_by": null,
+      "url": "https://github.com/fairy-stockfish/Fairy-Stockfish"
     }
   },
   "series": {
@@ -83,6 +141,12 @@
       "architecture": "base (LayerNorm, learned position embeddings, biases)",
       "tagline": "the data-starved baseline the research loop set out to beat",
       "researcher": "claude-opus-4-8",
+      "corpus": {
+        "kind": "human",
+        "generators": [],
+        "source": "Tiny Shakespeare \u2014 Karpathy's char-rnn concatenation of the plays",
+        "provenance": "projects/shakespeare/models/shakespeare-nanogpt-1/prepare.py"
+      },
       "tokenizer": {
         "type": "char",
         "vocab_size": 65
@@ -106,6 +170,12 @@
       "architecture": "modern (RoPE, RMSNorm, bias-free)",
       "tagline": "four research rounds later \u2014 20% fewer bits per character",
       "researcher": "claude-opus-4-8",
+      "corpus": {
+        "kind": "human",
+        "generators": [],
+        "source": "Project Gutenberg #100, the Complete Works of Shakespeare",
+        "provenance": "projects/shakespeare/models/shakespeare-nanogpt-2/prepare.py"
+      },
       "tokenizer": {
         "type": "gpt2-bpe",
         "vocab_size": 50257
@@ -129,6 +199,12 @@
       "architecture": "modern (RoPE, RMSNorm, bias-free)",
       "tagline": "same quality at a third the size \u2014 a corpus-trained 1k-vocab BPE",
       "researcher": "claude-fable-5",
+      "corpus": {
+        "kind": "human",
+        "generators": [],
+        "source": "Project Gutenberg: the Complete Works (#100) plus twelve plays by Marlowe, Jonson, Kyd, Webster and Dekker",
+        "provenance": "projects/shakespeare/models/shakespeare-nanogpt-3/prepare.py"
+      },
       "tokenizer": {
         "type": "bpe",
         "vocab_size": 1024
@@ -155,6 +231,14 @@
       "architecture": "base char-level (LayerNorm, learned position embeddings, biases)",
       "tagline": "constitutionally obsessed with a green light, intensity on a dial",
       "researcher": "claude-opus-4-8",
+      "corpus": {
+        "kind": "llm-synthetic",
+        "generators": [
+          "claude-sonnet-4-6"
+        ],
+        "source": "1,000 TinyStories-register stories, written over the Claude API (batch)",
+        "provenance": "projects/gatsby/data/costs.jsonl"
+      },
       "tokenizer": {
         "type": "char",
         "vocab_size": 72
@@ -178,6 +262,17 @@
       "architecture": "base char-level (LayerNorm, learned position embeddings, biases)",
       "tagline": "the same obsession for $0 \u2014 its corpus written by four local models",
       "researcher": "claude-opus-4-8",
+      "corpus": {
+        "kind": "llm-synthetic",
+        "generators": [
+          "olmo-3-7b-instruct",
+          "ministral-3-8b-instruct-2512",
+          "gemma-4-26b-a4b-qat",
+          "granite-4-1-8b"
+        ],
+        "source": "2,000 TinyStories-register stories, written by a four-model blend via LM Studio",
+        "provenance": "projects/gatsby/data/raw.manifest.json"
+      },
       "tokenizer": {
         "type": "char",
         "vocab_size": 80
@@ -204,6 +299,12 @@
       "architecture": "modern (RoPE, RMSNorm, bias-free)",
       "tagline": "knows only six words, and dreams in them",
       "researcher": "claude-opus-4-8",
+      "corpus": {
+        "kind": "procedural",
+        "generators": [],
+        "source": "generate.py (deterministic, seed 1973): permutations of six words, Pynchon's construals weighted as anchors",
+        "provenance": "projects/kenosha-kid/models/kenosha-kid-nanogpt-1/generate.py"
+      },
       "tokenizer": {
         "type": "char",
         "vocab_size": 27
@@ -227,6 +328,12 @@
       "architecture": "modern (RoPE, RMSNorm, bias-free)",
       "tagline": "a self-drifting corpus \u2014 converged, it keeps the anchors crisp and still dreams the near-misses",
       "researcher": "claude-fable-5",
+      "corpus": {
+        "kind": "procedural",
+        "generators": [],
+        "source": "generate.py (deterministic, seed 1973, DRIFT_RATE 0.06): the same permutations with a seeded misspelling channel on the tail",
+        "provenance": "projects/kenosha-kid/models/kenosha-kid-nanogpt-2/generate.py"
+      },
       "tokenizer": {
         "type": "char",
         "vocab_size": 39
@@ -253,6 +360,12 @@
       "architecture": "modern (RoPE, RMSNorm, bias-free)",
       "tagline": "renders illegal moves as dim near-misses, legal moves snap into focus",
       "researcher": "claude-sonnet-5",
+      "corpus": {
+        "kind": "human",
+        "generators": [],
+        "source": "Lichess open database, January 2018 rated games, both players 1400\u20131800 Elo, 15,000 games",
+        "provenance": "projects/daydream/models/daydream-chess-nanogpt-1/fetch_filtered.py"
+      },
       "tokenizer": {
         "type": "char",
         "vocab_size": 21
@@ -279,6 +392,14 @@
       "architecture": "modern (RoPE, RMSNorm, bias-free)",
       "tagline": "Gardner minichess, 5\u00d75 \u2014 the smallest board with room for a full army",
       "researcher": "claude-sonnet-5",
+      "corpus": {
+        "kind": "engine-synthetic",
+        "generators": [
+          "fairy-stockfish"
+        ],
+        "source": "4,135 self-play games under the built-in gardner variant, randomized openings",
+        "provenance": "projects/daydream/data/selfplay.py"
+      },
       "tokenizer": {
         "type": "char",
         "vocab_size": 15
@@ -305,6 +426,14 @@
       "architecture": "modern (RoPE, RMSNorm, bias-free)",
       "tagline": "12 files \u00d7 10 ranks, Chancellor and Archbishop \u2014 the widest board in the family",
       "researcher": "claude-sonnet-5",
+      "corpus": {
+        "kind": "engine-synthetic",
+        "generators": [
+          "fairy-stockfish"
+        ],
+        "source": "2,101 self-play games under the vendored grand12 variant, randomized openings",
+        "provenance": "projects/daydream/data/selfplay.py"
+      },
       "tokenizer": {
         "type": "char",
         "vocab_size": 27
@@ -331,6 +460,12 @@
       "architecture": "modern (RoPE, RMSNorm, bias-free)",
       "tagline": "one generalist over 82k outlines from 759 open sans-serifs \u2014 wins the loss, still learning the craft",
       "researcher": "claude-fable-5",
+      "corpus": {
+        "kind": "human",
+        "generators": [],
+        "source": "google/fonts at a pinned commit: 759 OFL sans-serif families, upright styles, every glyph a\u2013z",
+        "provenance": "projects/glyph/data/manifest.json"
+      },
       "tokenizer": {
         "type": "char",
         "vocab_size": 127
@@ -357,6 +492,16 @@
       "architecture": "modern (RoPE, RMSNorm, bias-free)",
       "tagline": "a word-level chat model \u2014 writes more grammatically than the corpus it learned from",
       "researcher": "claude-fable-5",
+      "corpus": {
+        "kind": "mixed",
+        "generators": [
+          "gemma-4-26b-a4b",
+          "qwen3-6-27b",
+          "gemma-4-26b-a4b-qat"
+        ],
+        "source": "Toki Pona Wikipedia, the permissive subset of poki Lapo, and Tatoeba, interleaved with 122 oracle-filtered dialogues written by three local models via LM Studio",
+        "provenance": "projects/pona/models/pona-nanogpt-1/dialogue_manifest.json"
+      },
       "tokenizer": {
         "type": "word",
         "vocab_size": 370
