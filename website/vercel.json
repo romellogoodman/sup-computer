@@ -28,6 +28,16 @@
       "source": "/interfaces/",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/:path((?!api/|_next/|\\.well-known)(?:[^/]+/)*[^/.]+)",
+      "destination": "/:path/",
+      "permanent": true
+    },
+    {
+      "source": "/:file((?:[^/]+/)*[^/]+\\.\\w+)/",
+      "destination": "/:file",
+      "permanent": true
     }
   ]
 }

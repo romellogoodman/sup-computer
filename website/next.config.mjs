@@ -3,6 +3,10 @@ const nextConfig = {
   // Static studio site: emit plain HTML into out/ (deployable anywhere).
   output: "export",
   trailingSlash: true,
+  // Next's own trailing-slash redirect is a catch-all that would 308
+  // /api/models -> /api/models/ ahead of the API functions in website/api/.
+  // vercel.json restates the page redirect with /api/ exempted (ADR-0036).
+  skipTrailingSlashRedirect: true,
   images: { unoptimized: true }, // we render plain <img>, not next/image
   webpack: (config) => {
     // onnxruntime-web (via @supcomputer/player) defaults to its "bundle" build,
