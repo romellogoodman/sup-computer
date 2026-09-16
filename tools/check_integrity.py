@@ -3,9 +3,10 @@
 Catches the drift class that creeps in when docs and registry.json are written
 by hand (or by an agent): claimed git tags that don't exist, frozen_code /
 model_card paths that moved, markdown links that 404, released models missing
-their README Versions/Leaderboard records (ADR-0030), stale generated index
-tables (ADR-0033), and weight files accidentally tracked. Pure stdlib; safe to
-run anywhere in the repo:
+their README Versions/Leaderboard records (ADR-0030), corpus credits that name
+a generator the roster lacks or a provenance file that moved (ADR-0037), stale
+generated index tables (ADR-0033), and weight files accidentally tracked. Pure
+stdlib; safe to run anywhere in the repo:
 
     python3 tools/check_integrity.py            # check (CI runs this)
     python3 tools/check_integrity.py --write    # regenerate the index tables
@@ -55,6 +56,14 @@ def check_registry(findings):
     for rid, r in reg.get("researchers", {}).items():
         if r.get("kind") not in ("human", "agent"):
             fail(findings, f"registry: researcher {rid}: kind must be 'human' or 'agent'")
+    # ADR-0037: the corpus generators are a second roster (LLMs and engines
+    # that wrote training text), credited by id the way researchers are.
+    generators = reg.get("generators", {})
+    for gid, g in generators.items():
+        if not g.get("name"):
+            fail(findings, f"registry: generator {gid}: missing 'name'")
+        if g.get("kind") not in ("llm", "engine"):
+            fail(findings, f"registry: generator {gid}: kind must be 'llm' or 'engine'")
     # ADR-0035: every series has a page whose instrument the `series` map names;
     # the slug is the flagship id minus its version (daydream's tiers share one).
     series = reg.get("series", {})
@@ -92,6 +101,7 @@ def check_registry(findings):
             fail(findings, f"registry: {mid}: model_card {card!r} does not exist")
         if m.get("researcher") not in researchers:
             fail(findings, f"registry: {mid}: researcher {m.get('researcher')!r} not in researchers map")
+        check_corpus(findings, mid, m.get("corpus"), generators)
         project = m.get("project", "")
         readme = os.path.join(ROOT, "projects", project, "README.md")
         if not os.path.exists(readme):
@@ -108,6 +118,36 @@ def check_registry(findings):
                 fail(findings, f"registry: {mid} not mentioned in projects/{project}/README.md")
         if not os.path.exists(os.path.join(ROOT, "projects", project, "CLAUDE.md")):
             fail(findings, f"registry: {mid}: projects/{project}/ missing CLAUDE.md")
+
+
+CORPUS_KINDS = ("human", "procedural", "llm-synthetic", "engine-synthetic", "mixed")
+
+
+def check_corpus(findings, mid, corpus, generators):
+    """ADR-0037: every model says who wrote its corpus, from a committed record.
+
+    A `corpus` block carries a `kind`, the credited `generators` (ids in the
+    roster; empty for human, procedural, or otherwise uncredited corpora), a
+    human-readable `source`, and a `provenance` path to the committed record
+    (a manifest, cost log, or generator script) -- or null when none exists.
+    """
+    if not isinstance(corpus, dict):
+        fail(findings, f"registry: {mid}: missing 'corpus' block (ADR-0037)")
+        return
+    if corpus.get("kind") not in CORPUS_KINDS:
+        fail(findings, f"registry: {mid}: corpus kind {corpus.get('kind')!r} not one of {CORPUS_KINDS}")
+    gens = corpus.get("generators")
+    if not isinstance(gens, list):
+        fail(findings, f"registry: {mid}: corpus.generators must be a list (may be empty)")
+    else:
+        for gid in gens:
+            if gid not in generators:
+                fail(findings, f"registry: {mid}: corpus generator {gid!r} not in generators map")
+    if not isinstance(corpus.get("source"), str) or not corpus["source"].strip():
+        fail(findings, f"registry: {mid}: corpus.source must be a non-empty string")
+    prov = corpus.get("provenance")
+    if prov is not None and not os.path.isfile(os.path.join(ROOT, str(prov))):
+        fail(findings, f"registry: {mid}: corpus provenance {prov!r} is not a file in the tree")
 
 
 # --- generated index tables (ADR-0033) -------------------------------------
