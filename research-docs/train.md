@@ -11,7 +11,7 @@ summary: >-
 The whole method fits in a prompt. Paste it into a coding agent and it trains
 a small [TinyStories](https://huggingface.co/datasets/roneneldan/TinyStories)
 nanoGPT on your own machine. The recipe is
-[Andrej Karpathy's nanoGPT](https://github.com/karpathy/nanoGPT) and takes
+[Andrej Karpathy's](https://github.com/karpathy/nanoGPT) and takes
 about an hour.
 
 ```text
