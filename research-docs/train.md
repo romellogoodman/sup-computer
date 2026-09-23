@@ -31,17 +31,3 @@ Train a character-level nanoGPT on TinyStories, end to end, on this machine.
 
 If you end up on cpu, warn me and cut max_iters to 1000 before training.
 ```
-
-## The config trades speed for running anywhere
-
-Device is detected at run time: `cuda`, then `mps`, then `cpu`. `dtype`
-stays float32 everywhere, even on GPUs where mixed precision would be
-faster — float32 behaves the same on every backend, and half precision is
-where first runs tend to die. `compile` stays off for the same reason. The
-pins cost some speed on a big GPU. A ten-million-parameter model can afford
-it.
-
-The data streams in rather than downloading, because the full corpus is
-gigabytes. The 100,000-story subset is also roughly one epoch: 5,000 steps
-of 64×256 characters is about 82M positions, and the subset is about that
-many characters.
