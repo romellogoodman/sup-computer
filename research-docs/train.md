@@ -8,13 +8,11 @@ summary: >-
 
 # Train a small model
 
-The whole method fits in one prompt. Paste it into a coding agent and it
-trains a ~10M-parameter character-level GPT on
-[TinyStories](https://huggingface.co/datasets/roneneldan/TinyStories), end to
-end, on your machine. The recipe is
-[Andrej Karpathy's nanoGPT](https://github.com/karpathy/nanoGPT), the repo the
-studio's first models came from. You need Python and one of an NVIDIA GPU, an
-Apple Silicon Mac, or a patient CPU. Budget an hour.
+The whole method fits in a prompt. Paste it into a coding agent and it trains
+a small [TinyStories](https://huggingface.co/datasets/roneneldan/TinyStories)
+GPT on your own machine. The recipe is
+[Andrej Karpathy's nanoGPT](https://github.com/karpathy/nanoGPT) and takes
+about an hour.
 
 ```text
 Train a character-level nanoGPT on TinyStories, end to end, on this machine.
