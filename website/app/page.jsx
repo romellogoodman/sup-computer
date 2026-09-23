@@ -21,13 +21,9 @@ export default function Home() {
       <h1 className="sr-only">sup computer — a small language model studio</h1>
       <div className="intro">
         <p>
-          sup computer is a research studio building small language models from
-          scratch — small enough to train end to end on a consumer laptop, and still
-          useful.
-        </p>
-        <p>
-          Our methods are LLM-assisted. A mixture of models works each step, from dataset
-          creation to training and evaluation, under human direction. All of our research is open source.
+          sup computer is a research studio. Our models are trained from scratch,
+          shaped like their data, and played like instruments. Larger models help at
+          every step, from dataset creation to training and evaluation, under human direction.
         </p>
       </div>
 
