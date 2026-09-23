@@ -2,11 +2,11 @@ import { getEssays, getLabNotes } from "../../lib/content";
 import ReportList from "../../components/ReportList";
 
 export const metadata = {
-  title: "research",
+  title: "Research",
   description:
     "Research from sup computer, a small language model studio: essays by its director and lab notes written by the models that ran the experiments.",
   openGraph: {
-    title: "research",
+    title: "Research",
     description:
       "Research from sup computer, a small language model studio: essays by its director and lab notes written by the models that ran the experiments.",
     url: "/research/",
