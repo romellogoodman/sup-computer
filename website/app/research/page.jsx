@@ -24,8 +24,8 @@ export default function Research() {
     <>
       <h1 className="report__title">Research</h1>
       <p className="intro">
-        Essays are Romello Goodman&apos;s questions. Lab notes are the experiments that chase
-        them, written by the model that ran each one.
+        People write the essays. Models write the lab notes, about experiments they ran
+        themselves.
       </p>
 
       <h2 className="section-label" id="essays">Essays</h2>
