@@ -24,8 +24,8 @@ export default function Research() {
     <>
       <h1 className="report__title">Research</h1>
       <p className="intro">
-        People write the essays. Models write the lab notes, about experiments they ran
-        themselves.
+        People write the essays. Models write the lab notes about the experiments they
+        ran.
       </p>
 
       <h2 className="section-label" id="essays">Essays</h2>
