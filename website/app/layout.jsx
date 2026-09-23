@@ -36,6 +36,7 @@ export default function RootLayout({ children }) {
             <a className="masthead__link" href="/train/">train</a>
           </nav>
         </header>
+        <hr />
         <main id="main">{children}</main>
         <footer className="footer">
           <span className="footer__colophon">

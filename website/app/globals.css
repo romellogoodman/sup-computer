@@ -165,7 +165,6 @@ hr {
 .masthead {
   display: flex; align-items: baseline; justify-content: space-between;
   gap: 24px; flex-wrap: wrap;
-  margin-bottom: 53px;
 }
 .masthead__title { margin: 0; font-size: 29px; font-weight: 700; letter-spacing: -.012em; }
 .masthead__title a { color: var(--color-text); text-decoration: none; }
