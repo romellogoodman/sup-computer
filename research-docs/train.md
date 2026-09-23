@@ -45,12 +45,3 @@ The data streams in rather than downloading, because the full corpus is
 gigabytes. The 100,000-story subset is also roughly one epoch: 5,000 steps
 of 64×256 characters is about 82M positions, and the subset is about that
 many characters.
-
-## What a run that worked sounds like
-
-Story-shaped prose, not fluency. Five thousand steps at this scale buys
-sentences that scan, mostly real words, and characters who wander in and out
-of coherence between paragraphs. If your samples read like that, the run
-worked. That isn't the model falling short of TinyStories; it's what ten
-million parameters reading one character at a time sounds like. Hearing it
-for yourself is the point.
