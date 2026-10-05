@@ -476,3 +476,55 @@ Reproduce: `uv run --with tokenizers python projects/gatsby/prepare.py` →
 `uv run python core/nanogpt_core/train.py projects/gatsby/config.py` →
 `uv run --with tokenizers python projects/gatsby/eval_dial.py` /
 `generate_samples.py`.
+
+---
+
+## tiny-green-light-stories v3 — a 30k corpus written by DeepSeek (2026-10-04/05)
+
+The corpus round the BPE migration called for ("making the topic land needs the
+corpus to actually stay on topic"), at 15× v2's size. Researcher: Claude Opus 5.5.
+The corpus is released on its own as **tiny-green-light-stories v3**
+([ADR-0040](../../../docs/adr/0040-corpora-publish-as-versioned-datasets.md)); v1 is
+gatsby-nanogpt-1's Claude corpus, v2 is the four-model mixture, and v3 contains
+neither.
+
+**Writer.** `deepseek/deepseek-v4.1-flash` via OpenRouter (synthgen's openrouter
+backend). Public benchmarks put it below Claude Sonnet 4.6 and above Gemma 4 26B
+on creative writing (EQ-Bench Creative v3 1540 vs 1810 vs 1305; slop 22.4 vs 9.9 vs
+31.9). On this task, on Exp 04's calibration grid, it wrote the TinyStories register
+cleanly (5.3 words/sentence, no markdown) with a working dial. Real cost
+~$0.00018/story — OpenRouter routed below the $2.40/M output list price. The
+`:batch` variant 404s on chat/completions (it needs OpenRouter's batch API).
+
+**Prompt pilots** (`research/v3-pilots/`, 40 topics × 5 levels per arm, ~$0.31 in all).
+Phrase share is counted per topic, since a topic's five stories share their
+sampled details on purpose:
+
+| arm | top non-green phrase (share of topics) | pairwise Jaccard | dial L1→L5 |
+|---|---|---|---|
+| v1 Claude (reference) | "did not know what" 95% | 0.27 | 2.2 → 12.1 |
+| v2 mixture (reference) | "at the end of" 48% | 0.16 | 2.4 → 8.5 |
+| A: generate.py's prompt | "it was far away" 95% | 0.29 | 3.5 → 11.7 |
+| B: sampled details, says "the light" | — | 0.22 | **1.4 → 1.6 (flat)** |
+| C: B but always "the green light" | "it was small and" 78% | 0.22 | 3.5 → 10.7 |
+| **D: C + how the light looks + L1 cap** | **"could not reach it" 45%** | **0.21** | **2.9 → 10.7** |
+
+- The system prompt's stock images ("far away, across the water") came back
+  verbatim in a quarter of A's stories.
+- Per-topic sampled details (where the light is, how it looks, time, features,
+  three required words, an opening) plus eight rotated system wordings cut the
+  stock phrasing to the mixture's level with one writer.
+- **The name carries the dial.** B called it "the light" and one wording said to
+  avoid stock phrases; the writer treated "green light" as one, and the dial went
+  flat at every level and every wording. C fixed it by naming the green light
+  every time.
+- Re-writing stories that contain the top phrases was futile (they are per-topic
+  echoes of the sampled details). Re-writing level-1 stories with more than three
+  greens works and is kept.
+- SimpleStories' first-letter rule produced bare-letter openings ("O Eli put…")
+  in the full-run smoke test and was replaced with a sampled opening type.
+- No presence/frequency penalty: level 5's repetition is the point.
+
+**Generation** (`generate_v3.py`, 64 workers, $8 ceiling): 320 subthemes → 9,538
+raw topics → 8,248 distinct after content-word dedup (86%), first 6,000 used.
+Split by topic: 10% test, 5% val, 85% train.

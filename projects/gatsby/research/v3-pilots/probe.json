@@ -1,0 +1,182 @@
+[
+ {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "topic": "a robot who wanted a friend",
+  "level": 1,
+  "text": "Eli was a robot. Eli wanted a friend. He sat on a bench and watched the kids play. He waved. The kids ran away. Eli felt sad.\n\nThat night, Eli saw a small green light. It was far away, across the water. It blinked once. Then again. Eli looked at it for a long time.\n\nThe next day, a girl sat by Eli. Her name was May. She said, \"Hello, robot.\" Eli said, \"Hello.\" They played with a ball. May laughed. Eli felt happy.\n\nBut at night, Eli saw the green light again. It was little and far. It blinked and blinked. Eli reached his hand out. He could not touch it. It was too far away.\n\nEli looked at May's window. Her room was dark. Then he looked back at the green light. He did not know why he wanted it. He just did.\n\nMay came back the next day. They played again. Eli had a friend now. But still, at night, he watched the green light across the water. It blinked, and he wanted.",
+  "cost": 0.000305004,
+  "out": 226,
+  "lat": 1.52
+ },
+ {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "topic": "a robot who wanted a friend",
+  "level": 2,
+  "text": "Eli was a robot. Eli had no friend. He sat by the window. He wanted a friend to play with.\n\nOne night, Eli saw a small green light. It was far away. It was across the water. The light was soft and bright. Eli looked at it. He felt a little pull. He wanted to go to it.\n\nIn the morning, Eli made a paper boat. He put it in the water. The boat floated away. Eli waved.\n\nAt night, the green light came back. It blinked once. Eli blinked too. He put his hand on the glass. The light was so far. He could not touch it.\n\nA girl came to the window. \"What do you see?\" she said.\n\n\"Look,\" said Eli. \"A green light.\"\n\nShe looked. \"I see it too,\" she said. \"Let's watch it together.\"\n\nThey sat side by side. The green light blinked. Eli had a friend. The light was still far, but Eli did not feel so alone.",
+  "cost": 0.0001380954,
+  "out": 209,
+  "lat": 2.91
+ },
+ {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "topic": "a robot who wanted a friend",
+  "level": 3,
+  "text": "Eli was a small robot. He had wheels and a blinking eye. He wanted a friend. He rolled down the street and said, \"Hello?\" But no one said hello back.\n\nThen Eli saw a green light. It was far away, at the end of the street. It glowed soft and small. Eli looked at it. He wanted to go to it. He felt a pull in his chest.\n\n\"Maybe a friend is there,\" Eli said. He rolled toward the green light. The light stayed far away. It did not get closer.\n\nEli stopped by a puddle. The green light shone in the water. Eli reached for it. His hand touched only water. The light was still far.\n\n\"Come here,\" Eli said. The green light did not come. But Eli did not look away. He kept his eye on it.\n\nA girl came by. \"Why do you look at that light?\" she asked.\n\n\"I want it,\" Eli said. \"I want to reach it.\"\n\nThe girl sat with him. They watched the green light together. Eli had a friend now. But he still looked at the light. He still reached.",
+  "cost": 8.1533e-05,
+  "out": 237,
+  "lat": 2.29
+ },
+ {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "topic": "a robot who wanted a friend",
+  "level": 4,
+  "text": "Eli was a robot. Eli wanted a friend. He sat by the window and watched the street.\n\nThen he saw the green light. It was far away, at the end of the street. It was small and bright and green.\n\n\"Friend?\" said Eli. He looked at the green light. He wanted to touch it.\n\nA dog came by. \"Play?\" said the dog. Eli did not look. He looked at the green light.\n\nA girl came by. \"Hello,\" she said. Eli did not hear. He looked at the green light. It was so far. It was so green. He reached out his metal hand.\n\n\"Friend,\" said Eli. \"Come here.\"\n\nThe green light did not come. It just stayed far away. Eli wanted it so much. He forgot the dog. He forgot the girl.\n\nHe walked to the end of the street. The green light was still far. It was always far. But Eli kept walking. He kept reaching. Green light, green light, green light.",
+  "cost": 0.0001045128,
+  "out": 210,
+  "lat": 2.93
+ },
+ {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "topic": "a robot who wanted a friend",
+  "level": 5,
+  "text": "Eli was a small robot. Eli wanted a friend.\n\nThen Eli saw the green light. It was far away, across the water. The light was small and green. It said, come here. Eli wanted it. Eli wanted the green light.\n\n\"Green light,\" Eli said. \"Green light, green light.\"\n\nEli reached out. The light was so far. Eli could not touch it. But Eli looked and looked. The green light was at the end of the dock. It blinked. It shined. It was so pretty.\n\nEli did not want a friend now. Eli wanted the green light. Eli reached and reached. The light stayed far away.\n\n\"Come here,\" Eli said. \"Please, green light.\"\n\nThe light did not come. But Eli could not look away. Eli wanted the green light more than a friend. More than anything. Eli reached for it all day. Eli reached for it all night. The little green light was always there. Always far. Always shining.\n\n\"Green light,\" Eli said. \"Green light, green light.\"",
+  "cost": 0.00013940388,
+  "out": 219,
+  "lat": 4.01
+ },
+ {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "topic": "a clock on the kitchen wall",
+  "level": 1,
+  "text": "Mira had a clock on the kitchen wall. It was round and white. It went tick, tick, tick. Mira liked the clock. It told her when to eat. It told her when to sleep.\n\nOne day Mira sat at the table. She ate her bread. She looked at the clock. The clock said it was late. But out the window, Mira saw a small green light. It was far away, across the street. It was very small and very green.\n\nMira looked at the clock again. Tick, tick. Then she looked back at the light. It did not move. It just stayed there, green and far.\n\nMira wanted to touch it. But it was too far. She could not go now. Her mom said, \"Eat your bread, Mira.\"\n\nMira ate her bread. She looked at the clock. Tick, tick. She looked at the green light one more time. It was still there. Then Mira went to bed. The clock said good night, tick, tick.",
+  "cost": 0.00013432788,
+  "out": 210,
+  "lat": 2.91
+ },
+ {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "topic": "a clock on the kitchen wall",
+  "level": 2,
+  "text": "Mira looked at the clock on the kitchen wall. It had a round face and two hands. The hands went tick, tick, tick. Mira liked the clock.\n\nShe sat at the table and ate her bread. The clock said it was morning. Then she saw a green light. It was far away, past the window. It was small and bright and green. Mira looked at it. She wanted to touch it.\n\nThe clock said tick, tick, tick. Mira looked back at the clock. She drew a picture of the clock. Then she saw the green light again. It was still there, past the window. It did not go away.\n\nMira stood up. She put her hand on the glass. The green light was so far away. She could not reach it. The clock said tick, tick, tick.\n\nMira sat down again. She looked at the clock. She looked at the green light. The green light was far away. But it was always there. Tick, tick, tick.",
+  "cost": 0.0001036728,
+  "out": 208,
+  "lat": 2.4
+ },
+ {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "topic": "a clock on the kitchen wall",
+  "level": 3,
+  "text": "Mira stood in the kitchen and looked at the clock on the wall. It was round and white. It had two hands. The big hand moved slow. The small hand moved slower. Tick, tick, tick.\n\nThen Mira saw a small green light. It was outside the window, far away, across the dark street. It was so small. It was so bright.\n\nMira looked back at the clock. Tick, tick. She looked at the green light again. She put her hand on the glass. The glass was cold. The light was far.\n\n\"Come here,\" she said. The light did not come. It only blinked.\n\nMira stood on her toes. She reached out her arm. Her fingers almost touched the window. But the light was still far, far away.\n\nThe clock said tick, tick. Mira did not hear it. She only saw the green light.\n\nShe wanted to hold it. She wanted to put it in her pocket. She wanted to keep it forever.\n\n\"Wait for me,\" she said. The green light blinked once more. Mira stayed by the window and watched, and watched, and watched.",
+  "cost": 0.00024925,
+  "out": 233,
+  "lat": 2.12
+ },
+ {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "topic": "a clock on the kitchen wall",
+  "level": 4,
+  "text": "Mira looked at the clock on the kitchen wall. It was round and white. It had two hands. The big hand said it was time for lunch.\n\nThen Mira saw the light. A small green light, far away, past the window, past the road, at the end of the street. It glowed. It blinked.\n\nMira forgot her lunch. She stood on her toes. She looked at the green light.\n\n\"Mira, eat,\" said her mom.\n\nMira did not eat. She watched the little green light. It was so far. It was so small. She wanted to touch it.\n\nShe got a chair. She climbed up. She reached for the window. The clock said tick, tock. Mira did not hear it.\n\nShe reached and reached. The green light blinked and blinked. It was right there. It was so far.\n\n\"Come back,\" said her mom.\n\nMira did not come back. She looked at the green light. She wanted it. She wanted to hold it in her hand.\n\nThe clock said tick, tock, tick, tock. Mira only saw green.",
+  "cost": 0.0001129128,
+  "out": 230,
+  "lat": 4.18
+ },
+ {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "topic": "a clock on the kitchen wall",
+  "level": 5,
+  "text": "Mira looked at the clock on the kitchen wall. It was round and white. It went tick, tick, tick.\n\nThen she saw the green light. It was far away, past the window, across the water. It was small and green and it glowed.\n\nMira went to the window. She put her hands on the glass. The green light was so far. She wanted it. She wanted to touch it.\n\n\"Green light,\" she said. \"Green light, green light.\"\n\nThe clock went tick, tick. Mira did not hear it. She only saw the green light.\n\nShe reached out her hand. She could not touch it. It was too far. But she kept reaching.\n\n\"Green light,\" she said again. \"Please. Come here.\"\n\nThe green light did not come. It just glowed and glowed across the dark water.\n\nMira stood at the window for a long time. The clock said one. Then two. She did not look. She only looked at the green light.\n\nShe reached and reached. She wanted it so much. It was so close and so far. Green light, green light, green light.",
+  "cost": 0.0001533234,
+  "out": 236,
+  "lat": 2.51
+ },
+ {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "topic": "a boy building a rain catcher",
+  "level": 1,
+  "text": "Tom wanted to catch the rain. He put a big pot on the grass. He put a little cup next to it. He made a paper funnel and taped it on top.\n\n\"Rain will come,\" said Tom. \"Then we have water.\"\n\nHe sat on the step and waited. The sky was gray and soft. No rain yet.\n\nFar away, across the field, Tom saw a small green light. It was at the end of the old dock. It blinked slow, like a tiny eye. Tom looked at it for a while. Then he looked back at his pot.\n\n\"Rain first,\" he said.\n\nHe checked the funnel. He checked the cup. He pulled a leaf out of the pot.\n\nThe green light stayed on. It was far, but Tom could see it. He did not go to it. He had work to do.\n\nThen a drop hit the pot. Then more. Tap, tap, tap. Tom smiled.\n\n\"I caught it,\" he said.\n\nThe green light blinked once more across the water. Tom waved at it, just a little, and went inside.",
+  "cost": 0.0002434,
+  "out": 224,
+  "lat": 3.94
+ },
+ {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "topic": "a boy building a rain catcher",
+  "level": 2,
+  "text": "Tom wanted to catch the rain. He put a big pot on the grass. He put a flat board on top. The rain would slide down the board into the pot.\n\nTom sat and waited. The sky was gray. No rain came yet.\n\nThen Tom saw a green light. It was far away, across the street. It was small and bright. It glowed in the gray day.\n\nTom looked at his pot. He looked at the green light. It was so far away.\n\n\"I want to touch it,\" Tom said. But he did not go. He had to watch his pot.\n\nThe rain came. Drop, drop, drop. The water ran down the board. It filled the pot. Tom was happy.\n\nBut he looked at the green light again. It was still there. It was still far away.\n\n\"One day I will go to it,\" Tom said. He held his pot of rain. The green light shone. Tom smiled a small smile. He would wait.",
+  "cost": 0.0001335834,
+  "out": 201,
+  "lat": 2.46
+ },
+ {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "topic": "a boy building a rain catcher",
+  "level": 3,
+  "text": "Tom wanted to catch the rain. He put a big pot on the grass. He put a flat stone on top. The rain would fall on the stone. Then it would run into the pot. Tom sat and waited.\n\nThe sky was gray. No rain came yet. Tom looked past the pot, past the fence. Far away, across the water, he saw a small green light. It was tiny and bright. It blinked on and off. Tom stood up. He wanted to touch it.\n\n\"Come back,\" said Tom. \"I want to see you.\"\n\nBut the green light stayed far away. Tom sat down by his pot. He looked at the sky. He looked at the green light. The green light was always there, at the end of the water. It made his chest feel tight.\n\nThen Tom heard a sound. Drip, drip, drip. Rain! The water ran off the stone. It filled the pot. Tom smiled. But he still looked at the green light. It was so far. He put his hand out, like he could reach it. The rain fell on his hand. The green light shone. Tom waited and watched, and the pot got full.",
+  "cost": 0.0001572714,
+  "out": 243,
+  "lat": 3.18
+ },
+ {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "topic": "a boy building a rain catcher",
+  "level": 4,
+  "text": "Tom wanted to catch the rain. He put a big pot on the grass. He put a can next to it. He put a little cup too. Rain is good, said Tom. Rain fills things up.\n\nThen Tom saw the green light. It was far away, past the yard. It was small and green.\n\nTom looked at the pot. He looked at the light. The light was so green. Tom wanted to touch it.\n\nTom put a lid on the pot. He looked at the light again. It did not move. It just glowed.\n\nTom, said his mom. Fix your pot.\n\nTom said, I want the green light. It is so far. I want to hold it.\n\nTom reached out his hand. The light was far, far away. He could not touch it.\n\nRain came down. The pot got full. Tom did not see the water. He saw only the green light.\n\nHe reached and reached. Green light, green light, he said. Come here. Please come here.",
+  "cost": 0.00013319988,
+  "out": 208,
+  "lat": 3.27
+ },
+ {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "topic": "a boy building a rain catcher",
+  "level": 5,
+  "text": "Tom wanted to catch the rain. He put a big pot on the grass. He put a cup on a box. He wanted water for his little garden. Then he saw the green light.\n\nIt was far away, past the fence. It was small and green and it shone. Tom looked at it. He forgot the pot. He forgot the cup. He put his hand out. He wanted to touch it. He could not. It was too far.\n\nHe stood by his rain catcher. He did not look at it. He looked at the green light. Green light, green light, he said. Come here. Come to me. It did not come.\n\nThe rain came down. The pot got full. Tom did not see. He only saw the green light. He reached and reached. His hand was open. His heart was big. He wanted the green light. He wanted it so much. The rain fell on his head. He did not care. He just looked and looked at the far green light.",
+  "cost": 0.0001369674,
+  "out": 207,
+  "lat": 2.82
+ },
+ {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "topic": "a kitten chasing a butterfly",
+  "level": 1,
+  "text": "Ella saw a butterfly. It was yellow and orange. It flew over the grass. Ella wanted to catch it. She ran after the butterfly. Her soft paws went pat, pat, pat.\n\nThe butterfly went up high. Ella jumped. She missed. The butterfly flew near a bush. Ella looked and looked. Then she saw something far away. It was a small green light. It was across the water. It was so tiny and bright. Ella forgot the butterfly for a moment. She looked at the green light. It made her feel warm. She wanted to touch it.\n\nThen the butterfly came back. It danced by her nose. Ella turned and chased it again. She did not catch it. But she was happy. She sat down in the soft grass. The butterfly flew away. Far off, the green light still shone. Ella looked at it one more time. Then she went home to her warm bed.",
+  "cost": 0.000259104,
+  "out": 188,
+  "lat": 1.18
+ },
+ {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "topic": "a kitten chasing a butterfly",
+  "level": 2,
+  "text": "Ella saw a butterfly. It was yellow and small. It flew over the grass. Ella wanted to catch it. She ran. Her soft paws went pat pat pat.\n\nThe butterfly flew up high. Ella jumped. She missed. She ran more. The butterfly went near the fence.\n\nThen Ella saw a green light. It was far away, past the fence. It was small and bright. It sat at the end of the yard. Ella stopped. She looked at the green light.\n\nThe butterfly flew away. Ella did not see it go. She looked and looked at the green light. It was so far. She wanted to touch it. She put her paw out. She could not reach.\n\nElla walked to the fence. The green light stayed far away. It did not come closer. She sat down. She watched it.\n\nThe butterfly came back. It sat on a flower. But Ella still looked at the green light. It was pretty. It was far. She wanted it so much.\n\nShe was a small kitten. The green light was far. She could not have it. But she kept looking.",
+  "cost": 7.8808e-05,
+  "out": 228,
+  "lat": 1.55
+ },
+ {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "topic": "a kitten chasing a butterfly",
+  "level": 3,
+  "text": "Ella saw a butterfly in the yard. The butterfly was yellow and pretty. It flew up and down. Ella ran after it.\n\n\"Come back,\" said Ella. \"I want to play.\"\n\nThe butterfly flew over the grass. Ella jumped and hopped. She was a little kitten. She had soft paws. She did not catch the butterfly.\n\nThen Ella saw a green light. It was far away, past the fence. It was small and bright. It went blink, blink, blink.\n\nElla stopped. She looked at the green light. \"What is that?\" she said.\n\nThe butterfly flew away, but Ella did not care. She walked to the fence. She put her paws on it. The green light was still far. It was on the other side of the water. Ella could not touch it.\n\nShe reached and reached. Her paw went up. The light was so far. It made her feel warm. It made her feel sad.\n\n\"Green light,\" said Ella. \"I want you.\"\n\nShe sat and looked. She looked for a long time. The butterfly was gone. But Ella only wanted the green light.",
+  "cost": 0.0001509264,
+  "out": 232,
+  "lat": 2.61
+ },
+ {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "topic": "a kitten chasing a butterfly",
+  "level": 4,
+  "text": "Ella saw a butterfly. The butterfly had pretty wings. Ella wanted to catch it. She ran on the grass.\n\nThen Ella saw a green light. It was far away, across the water. The light was small and green. Ella stopped. She forgot the butterfly.\n\nShe looked at the green light. It was so far. She wanted to touch it. She reached out her paw. She could not touch it.\n\nThe butterfly flew by her nose. Ella did not see it. She only saw the green light. It was bright and far.\n\n\"Come here,\" said Ella. The light did not come. It just stayed far away. Ella ran to the water. She looked and looked.\n\nThe butterfly went home. Ella did not care. She sat by the water. She looked at the green light. It was so pretty. It was so far.\n\nElla reached again. Her paw was small. The light was far. She wanted it so much. She looked and looked and looked. The green light stayed far away.",
+  "cost": 0.00013362288,
+  "out": 209,
+  "lat": 2.92
+ },
+ {
+  "model": "deepseek/deepseek-v4.1-flash",
+  "topic": "a kitten chasing a butterfly",
+  "level": 5,
+  "text": "Ella saw a butterfly. The butterfly was yellow and pretty. Ella wanted to catch it. She ran after the butterfly.\n\nThen Ella saw a green light. It was far away, past the fence. The green light was small and bright. Ella forgot the butterfly. She looked at the green light.\n\nThe green light was so far. Ella ran to it. She ran and ran. The green light did not get close. \"Green light, green light,\" Ella said. She wanted to touch it. She wanted it so much.\n\nElla ran past the butterfly. She did not see it. She only saw the green light. It was far, far away. It was always far away.\n\nElla reached out her paw. She could not touch it. The green light stayed far. Ella kept running. She kept looking. She could not stop.\n\n\"Green light, green light,\" she said. She wanted it. She wanted it all day. The butterfly flew away. Ella did not care. She only wanted the green light. It was far, and she wanted it.",
+  "cost": 0.00013926288,
+  "out": 219,
+  "lat": 3.05
+ }
+]

@@ -18,3 +18,18 @@ prompt.txt
 # Round 1 is fully documented in the experiment report and research/log.md; this
 # folder is local insurance, not a committed artifact.
 research/round1_1k/
+
+# tiny-green-light-stories v3 (generate_v3.py): ~30k stories are too large for
+# the tree (root CLAUDE.md) — they publish to Hugging Face with the topic bank.
+# Committed from data/v3/: manifest.json (the run record), prepare-stats.json
+# and subsets/ (what each training set holds).
+data/v3*/stories.jsonl
+data/v3*/progress.jsonl
+data/v3*/raw-*.txt
+data/v3-smoke/
+data/v3/hf/
+data/v3-generate.log
+# v3 training sets (prepare_v3.py): bins are ignored repo-wide; the shared
+# tokenizer.json ships with the frozen release folder, so skip these copies.
+data/gatsby_v3_*/
+data/v3/topics.json

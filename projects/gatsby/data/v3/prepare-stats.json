@@ -1,0 +1,28 @@
+{
+ "5k": {
+  "topics": 1000,
+  "stories": 5000,
+  "chars": 4770185,
+  "tokens": 1536518
+ },
+ "10k": {
+  "topics": 2000,
+  "stories": 10000,
+  "chars": 9558734,
+  "tokens": 3078049
+ },
+ "full": {
+  "topics": 5100,
+  "stories": 25499,
+  "chars": 24352489,
+  "tokens": 7846876
+ },
+ "val": {
+  "stories": 1500,
+  "tokens": 462363
+ },
+ "test": {
+  "stories": 3000
+ },
+ "vocab_size": 1024
+}

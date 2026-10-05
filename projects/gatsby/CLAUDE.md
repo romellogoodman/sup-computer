@@ -29,6 +29,12 @@ the rules (ADR-0030).
 - **Track cost and commit the data**: generation runs log to
   `data/costs.jsonl`; `data/raw.txt` IS committed; weights and derived
   `.bin`/`.pkl` are not.
+- **Large corpora publish instead of committing** (ADR-0040): v3's 30k
+  stories (`generate_v3.py`, DeepSeek V4.1 Flash via OpenRouter) live on HF as
+  `sup-computer/tiny-green-light-stories` (tag `v3`); the tree keeps the
+  generator, `data/v3/manifest.json` and the subset specs. Every v3 prompt
+  names "the green light" — calling it "the light" flattened the dial in the
+  pilots (`research/log.md`).
 - **Document as you go**: `research/log.md` (why) and the README's Leaderboard
   section (per-run scoreboard), committed with the run.
 - **Releases** are frozen snapshots under `models/`, per

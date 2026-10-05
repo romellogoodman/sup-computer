@@ -21,7 +21,9 @@ supcomputer-core = { workspace = true }
 # Frozen models/<version>/ snapshots keep their upstream nanoGPT style and
 # are never linted (same reason they're never refactored — ADR-0003).
 include = ["core/**/*.py", "tools/**/*.py", "projects/**/*.py"]
-extend-exclude = ["projects/*/models", "website", "player"]
+# research/v3-pilots holds the one-off scratch scripts behind gatsby's v3 prompt
+# pilots, committed verbatim as evidence (like a frozen release, not living code).
+extend-exclude = ["projects/*/models", "website", "player", "projects/gatsby/research/v3-pilots"]
 line-length = 120
 
 [tool.ruff.lint]
