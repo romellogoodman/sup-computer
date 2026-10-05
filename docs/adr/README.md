@@ -58,4 +58,5 @@ ADR (ADR-0033).
 | [0037](0037-crediting-the-corpus-generators.md) | Crediting the corpus generators | Accepted (extends [ADR-0013](0013-attribution-of-the-ai-researcher.md) with a second roster) |
 | [0038](0038-synthgen-openrouter-backend.md) | synthgen gains a hosted backend — OpenRouter beside LM Studio | Accepted (amends [ADR-0014](0014-synthgen-local-llm-pipeline.md) — "LLM-only, via LM Studio" becomes two backends, one engine) |
 | [0039](0039-publish-the-cli-to-npm.md) | Publish the CLI to npm as `supcpu` | Accepted (amends [ADR-0025](0025-sup-cli-and-injectable-player-backend.md) — decision 4, "not published to npm, deliberately, for now", is reversed; the greeting, the injectable backend, and the suffix-swap consumer stand) |
+| [0040](0040-corpora-publish-as-versioned-datasets.md) | Corpora publish as versioned datasets | Accepted (extends [ADR-0037](0037-crediting-the-corpus-generators.md) from models to the corpora themselves) |
 <!-- /generated -->
