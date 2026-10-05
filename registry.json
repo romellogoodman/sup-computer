@@ -31,6 +31,12 @@
       "harness": "Claude Code",
       "kind": "agent"
     },
+    "claude-opus-5-5": {
+      "name": "Claude Opus 5.5",
+      "vendor": "Anthropic",
+      "harness": "Claude Code",
+      "kind": "agent"
+    },
     "romello-goodman": {
       "name": "Romello Goodman",
       "kind": "human"
