@@ -80,6 +80,7 @@ import json
 import os
 import re
 import subprocess
+import threading
 import time
 import urllib.error
 import urllib.request
@@ -309,19 +310,23 @@ class Budget:
     spent_usd: float = 0.0
     samples: int = 0
     hit: bool = False
+    # One budget may be shared by concurrent workers (a driver's thread pool).
+    _lock: threading.Lock = field(default_factory=threading.Lock, repr=False, compare=False)
 
     def charge(self, cost: float) -> None:
-        self.spent_usd += cost
-        self.samples += 1
+        with self._lock:
+            self.spent_usd += cost
+            self.samples += 1
 
     def allows(self) -> bool:
         if self.limit_usd is None:
             return True
-        expected = (self.spent_usd / self.samples) if self.samples else 0.0
-        if self.spent_usd >= self.limit_usd or self.spent_usd + expected > self.limit_usd:
-            self.hit = True
-            return False
-        return True
+        with self._lock:
+            expected = (self.spent_usd / self.samples) if self.samples else 0.0
+            if self.spent_usd >= self.limit_usd or self.spent_usd + expected > self.limit_usd:
+                self.hit = True
+                return False
+            return True
 
 
 # --- a generated sample -----------------------------------------------------
@@ -342,6 +347,7 @@ class Sample:
     backend: str = "lmstudio"
     reasoning_field: str = "reasoning_effort"
     extra: dict = field(default_factory=dict)
+    sampling: dict = field(default_factory=dict)   # extra endpoint knobs sent (e.g. min_p)
 
     @property
     def sha1(self) -> str:
@@ -364,13 +370,14 @@ class Sample:
             "cost_usd": self.cost_usd,
             "chars": len(self.text),
             "sha1": self.sha1,
+            **({"sampling": self.sampling} if self.sampling else {}),
             **({"extra": self.extra} if self.extra else {}),
         }
 
 
 # --- generation -------------------------------------------------------------
 def _chat_once(model, messages, temperature, max_tokens, reasoning_effort,
-               backend: Backend, timeout, retries):
+               backend: Backend, timeout, retries, extra=None):
     """One /chat/completions call, retried on transient transport errors."""
     payload = {
         "model": model,
@@ -381,6 +388,9 @@ def _chat_once(model, messages, temperature, max_tokens, reasoning_effort,
         # empty string after spending the budget on a hidden trace. Which
         # field it rides on is the backend's call (see Backend).
         **backend.reasoning_payload(reasoning_effort),
+        # Further sampling knobs the endpoint accepts (e.g. min_p) — passed
+        # through untouched and recorded on every Sample.
+        **(extra or {}),
     }
     last = None
     for attempt in range(retries + 1):
@@ -409,7 +419,8 @@ def _chat_once(model, messages, temperature, max_tokens, reasoning_effort,
 
 def generate(model, prompt, n=1, temperature=0.9, max_tokens=512, system=None,
              reasoning_effort=REASONING_EFFORT, base=BASE, timeout=HTTP_TIMEOUT,
-             retries=2, backend=None, budget: Budget | None = None) -> list[Sample]:
+             retries=2, backend=None, budget: Budget | None = None,
+             extra: dict | None = None) -> list[Sample]:
     """Return up to ``n`` samples from one model, each carrying its own token
     usage and dollar cost.
 
@@ -434,7 +445,7 @@ def generate(model, prompt, n=1, temperature=0.9, max_tokens=512, system=None,
         if budget is not None and not budget.allows():
             break
         resp, dt = _chat_once(model, messages, temperature, max_tokens,
-                              reasoning_effort, be, timeout, retries)
+                              reasoning_effort, be, timeout, retries, extra)
         choice = (resp.get("choices") or [{}])[0]
         text = (choice.get("message", {}).get("content") or "").strip()
         usage = resp.get("usage", {}) or {}
@@ -449,6 +460,7 @@ def generate(model, prompt, n=1, temperature=0.9, max_tokens=512, system=None,
             completion_tokens=usage.get("completion_tokens", 0) or 0,
             latency_s=round(dt, 2),
             cost_usd=cost, backend=be.name, reasoning_field=be.reasoning_field,
+            sampling=dict(extra or {}),
         ))
     return out
 
