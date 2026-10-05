@@ -1,4 +1,4 @@
-import { researcherName, generatorName, corpusKindWords } from "../lib/content";
+import { researcherName, generatorName, corpusKindWords, datasetOf } from "../lib/content";
 
 // checkpoint is an HF resolve URL (…/sup-computer/<id>/resolve/main/ckpt.pt);
 // link the repo page, not the raw file
@@ -12,6 +12,20 @@ function corpusCell(corpus) {
   if (!corpus) return "—";
   const names = (corpus.generators || []).map(generatorName).join(", ");
   return [corpusKindWords(corpus.kind), names, corpus.source].filter(Boolean).join(" · ");
+}
+
+// The released dataset the corpus came from (ADR-0040), linked to its Hugging
+// Face repo, with the version and the subset the model trained on.
+function datasetCell(corpus) {
+  const d = datasetOf(corpus);
+  if (!d) return "—";
+  const tail = [d.version, d.subset && `subset ${d.subset}`].filter(Boolean).join(" · ");
+  return (
+    <>
+      <a href={d.url}>{d.name} (Hugging Face)</a>
+      {tail ? ` · ${tail}` : null}
+    </>
+  );
 }
 
 // The registry facts for one release. On a series page the first row names
@@ -50,6 +64,7 @@ export default function SpecTable({ m, showRelease }) {
         </tr>
         <tr><th>Researcher</th><td>{m.researcher ? researcherName(m.researcher) : "—"}</td></tr>
         <tr><th>Corpus</th><td>{corpusCell(m.corpus)}</td></tr>
+        <tr><th>Dataset</th><td>{datasetCell(m.corpus)}</td></tr>
       </tbody>
     </table>
   );

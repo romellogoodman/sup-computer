@@ -98,6 +98,60 @@
       "kind": "engine",
       "served_by": null,
       "url": "https://github.com/fairy-stockfish/Fairy-Stockfish"
+    },
+    "deepseek-v4-1-flash": {
+      "name": "DeepSeek V4.1 Flash",
+      "vendor": "DeepSeek",
+      "kind": "llm",
+      "served_by": "OpenRouter",
+      "model_id": "deepseek/deepseek-v4.1-flash"
+    }
+  },
+  "datasets": {
+    "tiny-green-light-stories": {
+      "name": "tiny-green-light-stories",
+      "series": "gatsby-nanogpt",
+      "repo": "sup-computer/tiny-green-light-stories",
+      "url": "https://huggingface.co/datasets/sup-computer/tiny-green-light-stories",
+      "versions": {
+        "v1": {
+          "published": false,
+          "generators": [
+            "claude-sonnet-4-6"
+          ],
+          "stories": 1000,
+          "provenance": "projects/gatsby/data/costs.jsonl",
+          "note": "gatsby-nanogpt-1's corpus; waits on an output-terms check (ADR-0040)"
+        },
+        "v2": {
+          "published": false,
+          "generators": [
+            "olmo-3-7b-instruct",
+            "ministral-3-8b-instruct-2512",
+            "gemma-4-26b-a4b-qat",
+            "granite-4-1-8b"
+          ],
+          "stories": 2000,
+          "provenance": "projects/gatsby/data/raw.manifest.json",
+          "note": "gatsby-nanogpt-2's corpus; waits on an output-terms check (ADR-0040)"
+        },
+        "v3": {
+          "published": true,
+          "hf_revision": "v3",
+          "generators": [
+            "deepseek-v4-1-flash"
+          ],
+          "stories": 29999,
+          "topics": 6000,
+          "splits": {
+            "train": 25499,
+            "validation": 1500,
+            "test": 3000
+          },
+          "cost_usd": 6.02,
+          "provenance": "projects/gatsby/data/v3/manifest.json"
+        }
+      }
     }
   },
   "series": {

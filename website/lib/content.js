@@ -142,6 +142,18 @@ export function generatorName(id) {
   if (!id) return "";
   return getGenerators()[id]?.name || id;
 }
+// A released corpus (ADR-0040): the registry's `datasets` map, keyed by family
+// id, each with its Hugging Face repo and published versions. A model's corpus
+// block names `dataset` + `version` (+ the `subset` it trained on).
+export function getDatasets() {
+  return getRegistry().datasets || {};
+}
+export function datasetOf(corpus) {
+  const d = corpus?.dataset && getDatasets()[corpus.dataset];
+  if (!d) return null;
+  return { id: corpus.dataset, name: d.name || corpus.dataset, url: d.url,
+           version: corpus.version, subset: corpus.subset };
+}
 // The corpus kind as the spec table says it (control voice: lowercase, literal).
 const CORPUS_KIND_WORDS = {
   human: "human-written",
