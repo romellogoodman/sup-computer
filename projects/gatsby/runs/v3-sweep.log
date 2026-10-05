@@ -1,0 +1,7 @@
+=== v3-full: 8000 iters (Mon Oct  5 00:57:21 EDT 2026)
+step 7750: train loss 1.0207, val loss 1.2388
+=== v3-10k: 4000 iters (Mon Oct  5 02:10:11 EDT 2026)
+step 4000: train loss 0.9677, val loss 1.4048
+=== v3-5k: 2500 iters (Mon Oct  5 02:45:33 EDT 2026)
+step 1750: train loss 1.0015, val loss 1.6087
+=== sweep done (Mon Oct  5 03:07:04 EDT 2026)

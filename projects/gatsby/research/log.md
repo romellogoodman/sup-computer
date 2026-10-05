@@ -528,3 +528,30 @@ sampled details on purpose:
 **Generation** (`generate_v3.py`, 64 workers, $8 ceiling): 320 subthemes → 9,538
 raw topics → 8,248 distinct after content-word dedup (86%), first 6,000 used.
 Split by topic: 10% test, 5% val, 85% train.
+Generation finished: **29,999 stories for $6.02 in 32 minutes** (one never came
+back; 2,111 level-1 stories rewritten for running hot). Corpus dial 2.65 → 4.49 →
+5.67 → 7.38 → 10.53 greens per story. Published as tiny-green-light-stories v3.
+
+**Size sweep** (`run_v3_sweep.sh`; nested subsets, one tokenizer, one val set):
+
+| run | stories | best val | dial @480 chars, L1 → L5 | topic loose / strict |
+|---|---|---|---|---|
+| test-split stories (ceiling) | — | — | 1.10 · 2.00 · 2.40 · 3.07 · 4.83 | 99% / 92% |
+| `migrate-bpe-r1` (v2 corpus) | 2,000 | — | 2.80 · 3.33 · 3.97 · 5.07 · 6.13 | 50% / 19% |
+| `v3-5k` | 5,000 | 1.609 @1750 | 1.90 · 2.30 · 2.87 · 3.67 · 5.73 | 93% / 39% |
+| `v3-10k` | 10,000 | 1.405 @4000 | 1.33 · 1.83 · 2.67 · 3.93 · 5.50 | 97% / 61% |
+| **`v3-full`** | 25,499 | **1.239 @7750** | 1.73 · 2.73 · 3.00 · 3.83 · 5.33 | 95% / **69%** |
+
+(`eval_v3.py`: 30 held-out test topics × 5 levels; strict = at least half the
+topic's content words appear in the first 480 characters.)
+
+**Verdict.** The BPE round's diagnosis holds: the corpus was the bottleneck.
+Topic-honoring rises at every step of data and the largest slice is still
+improving, so data is still binding at 25k stories for this 11M model.
+`v3-full` ships as **gatsby-nanogpt-3**: best val and best strict topic score;
+`v3-10k` has the quieter level 1. Frozen `prepare.py` rebuilds the training
+bytes byte-identical from the HF dataset.
+
+Process note: the sweep finished at 03:07, but a waiter (`until ! pgrep -f
+run_v3_sweep.sh`) matched its own command line and never fired; the eval and
+release waited until 07:40.

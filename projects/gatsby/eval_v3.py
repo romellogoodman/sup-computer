@@ -6,8 +6,10 @@ Two numbers per run, both on the same held-out topics:
 - dial: green mentions per level, counted in the first 480 characters of the
   continuation (the yardstick eval_dial.py and gatsby-nanogpt-2 use).
 - topic-honoring: share of continuations whose first 480 characters contain a
-  content word of the topic (4-letter stem match). A crude proxy, but the same
-  proxy for every run and for the reference row.
+  content word of the topic (loose), or at least half of them (strict), by
+  4-letter stem match. Crude proxies — "a lion who whispers softly" passes the
+  loose one on "soft" alone — but the same proxies for every run and for the
+  reference row.
 
 The reference row scores the test split's own stories (what the corpus does),
 so a run can be read against the ceiling its data sets.
@@ -35,9 +37,12 @@ def stems(topic):
     return {w[:4] for w in re.findall(r"[a-z]+", topic.lower()) if w not in STOP and len(w) > 2}
 
 
-def honors(text, topic):
+def honors(text, topic, strict=False):
+    """Loose: any content word of the topic appears. Strict: at least half do."""
     words = {w[:4] for w in re.findall(r"[a-z]+", text.lower())}
-    return bool(stems(topic) & words)
+    need = stems(topic)
+    hit = len(need & words)
+    return hit * 2 >= len(need) if strict else hit > 0
 
 
 def greens(text):
@@ -47,7 +52,9 @@ def greens(text):
 def summarize(items):
     dial = [round(st.mean(greens(t) for lv, t, _ in items if lv == level), 2) for level in range(1, 6)]
     hon = sum(honors(t, topic) for _, t, topic in items) / len(items)
-    return {"dial": dial, "topic_honoring": round(hon, 3), "n": len(items)}
+    strict = sum(honors(t, topic, strict=True) for _, t, topic in items) / len(items)
+    return {"dial": dial, "topic_honoring": round(hon, 3), "topic_honoring_strict": round(strict, 3),
+            "n": len(items)}
 
 
 def main():
@@ -68,7 +75,7 @@ def main():
     rows = [json.loads(line) for line in open(os.path.join(HERE, "data", "v3", "stories.jsonl"))]
     ref = [(r["level"], r["text"][: args.chars], r["topic"]) for r in rows if r["topic_id"] in ids]
     out = {"test_topics": [t["topic"] for t in test], "reference_corpus": summarize(ref)}
-    print(f"reference (test-split stories): {out['reference_corpus']}")
+    print(f"reference (test-split stories): {out['reference_corpus']}", flush=True)
 
     device = pick_device(args.device)
     data_dir = os.path.join(HERE, "data")
@@ -87,8 +94,10 @@ def main():
                 items.append((level, cont, t["topic"]))
                 if i == 0:
                     samples[level] = cont
-        out[run] = {**summarize(items), "samples_first_topic": samples}
-        print(f"{run}: dial {out[run]['dial']}  topic-honoring {out[run]['topic_honoring']:.0%}")
+        out[run] = {**summarize(items), "samples_first_topic": samples,
+                    "continuations": [{"topic": tp, "level": lv, "text": tx} for lv, tx, tp in items]}
+        print(f"{run}: dial {out[run]['dial']}  topic-honoring {out[run]['topic_honoring']:.0%} "
+              f"(strict {out[run]['topic_honoring_strict']:.0%})", flush=True)
     json.dump(out, open(os.path.join(HERE, "runs", "v3-eval.json"), "w"), indent=1)
 
 

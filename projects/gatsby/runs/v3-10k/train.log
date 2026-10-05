@@ -1,0 +1,506 @@
+Overriding config with projects/gatsby/config/v3.py:
+# Hyperparameters for gatsby-nanogpt-3: the core engine + byte-level BPE (as
+# config/bpe.py), trained on tiny-green-light-stories v3 (prepare_v3.py).
+#
+# Dims are held IDENTICAL to gatsby-nanogpt-2 and the migrate-bpe-r1 round, so the
+# size sweep varies one thing: how much of v3 the model sees. The sweep runs each
+# subset with its own step budget (the val minimum moves out as data grows):
+#
+#   uv run python core/nanogpt_core/train.py projects/gatsby/config/v3.py \
+#       --dataset=gatsby_v3_full --max_iters=8000 --lr_decay_iters=8000 \
+#       --out_dir=projects/gatsby/runs/v3-full
+#   (and gatsby_v3_10k @ 4000, gatsby_v3_5k @ 2500)
+#
+# All three share one tokenizer and one val.bin (the v3 val split), so their val
+# losses compare directly; they do not compare with v2 or migrate-bpe-r1.
+
+out_dir = 'projects/gatsby/runs/v3-full'
+data_root = 'projects/gatsby/data'   # prepare.py writes <dataset>/*.bin here
+dataset = 'gatsby_v3_full'           # meta.pkl carries {vocab_size, tokenizer}
+
+eval_interval = 250   # evaluate val loss this often
+eval_iters = 50     # val.bin is ~0.5M tokens; 50 x 64 x 256 samples it well
+log_interval = 10     # print training loss this often
+
+# synthetic corpus is small-ish -> only checkpoint when val loss improves
+always_save_checkpoint = False
+
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+# BPE compresses the corpus ~3-4x, so a whole story (~500-1100 chars) plus its
+# [green=N] topic: ... control line fits in ~150-256 tokens. 256 keeps the
+# control line and the story body in one window, so the conditioned obsession +
+# topic stay in view across the document.
+block_size = 256
+
+# the "baby GPT" — same shape as gatsby-nanogpt-2 (n_embd/n_layer/n_head fixed
+# for comparability; param count shifts only with the BPE vocab vs char vocab,
+# and RoPE drops the learned wpe table entirely).
+n_layer = 6
+n_head = 6
+n_embd = 384
+dropout = 0.2
+
+learning_rate = 1e-3  # small networks can use a higher LR
+max_iters = 8000
+lr_decay_iters = 8000  # usually equal to max_iters
+min_lr = 1e-4
+beta2 = 0.99          # a bit higher because we see few tokens per step
+warmup_iters = 100
+
+# --- the Mac-specific bits ---
+device = 'mps'        # Apple Metal GPU
+compile = False       # torch.compile is unreliable on macOS / MPS
+# float32, NOT float16: core's GradScaler is CUDA-only, so MPS float16 autocast
+# runs unscaled and large logits overflow (this diverged shakespeare's large-vocab
+# BPE run). gatsby is small; float32 on MPS is plenty fast and sidesteps it.
+dtype = 'float32'
+
+Overriding: dataset = gatsby_v3_10k
+Overriding: max_iters = 4000
+Overriding: lr_decay_iters = 4000
+Overriding: out_dir = projects/gatsby/runs/v3-10k
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 1024 (inside projects/gatsby/data/gatsby_v3_10k/meta.pkl)
+Initializing a new model from scratch
+number of parameters: 11.02M
+num decayed tensors: 25, non-decayed: 13
+using fused AdamW: False
+step 0: train loss 6.9552, val loss 6.9554
+iter 0: loss 6.9648, time 14385.08ms, mfu -100.00%
+iter 10: loss 5.7491, time 477.34ms, mfu 0.80%
+iter 20: loss 4.9976, time 482.83ms, mfu 0.80%
+iter 30: loss 4.4110, time 490.40ms, mfu 0.80%
+iter 40: loss 3.9538, time 494.89ms, mfu 0.80%
+iter 50: loss 3.5788, time 478.12ms, mfu 0.80%
+iter 60: loss 3.3078, time 507.13ms, mfu 0.80%
+iter 70: loss 3.1596, time 501.45ms, mfu 0.79%
+iter 80: loss 2.9447, time 502.00ms, mfu 0.79%
+iter 90: loss 2.9118, time 486.86ms, mfu 0.79%
+iter 100: loss 2.7935, time 481.23ms, mfu 0.79%
+iter 110: loss 2.6620, time 492.09ms, mfu 0.79%
+iter 120: loss 2.6266, time 505.46ms, mfu 0.79%
+iter 130: loss 2.5971, time 495.07ms, mfu 0.79%
+iter 140: loss 2.5165, time 485.93ms, mfu 0.79%
+iter 150: loss 2.4371, time 475.34ms, mfu 0.79%
+iter 160: loss 2.3845, time 501.70ms, mfu 0.79%
+iter 170: loss 2.3675, time 493.32ms, mfu 0.79%
+iter 180: loss 2.3476, time 496.26ms, mfu 0.78%
+iter 190: loss 2.3621, time 484.97ms, mfu 0.79%
+iter 200: loss 2.2487, time 482.23ms, mfu 0.79%
+iter 210: loss 2.2616, time 494.92ms, mfu 0.79%
+iter 220: loss 2.1750, time 504.52ms, mfu 0.78%
+iter 230: loss 2.1948, time 494.74ms, mfu 0.78%
+iter 240: loss 2.1683, time 491.03ms, mfu 0.78%
+step 250: train loss 2.0169, val loss 2.0473
+saving checkpoint to projects/gatsby/runs/v3-10k
+iter 250: loss 2.0792, time 16066.56ms, mfu 0.71%
+iter 260: loss 2.0957, time 483.07ms, mfu 0.72%
+iter 270: loss 2.0644, time 479.86ms, mfu 0.72%
+iter 280: loss 2.0858, time 502.02ms, mfu 0.73%
+iter 290: loss 1.9737, time 497.80ms, mfu 0.73%
+iter 300: loss 1.9812, time 487.52ms, mfu 0.74%
+iter 310: loss 2.0333, time 479.88ms, mfu 0.74%
+iter 320: loss 2.0122, time 522.59ms, mfu 0.74%
+iter 330: loss 1.9616, time 502.43ms, mfu 0.75%
+iter 340: loss 1.9736, time 500.18ms, mfu 0.75%
+iter 350: loss 1.9424, time 490.51ms, mfu 0.75%
+iter 360: loss 1.9495, time 491.71ms, mfu 0.75%
+iter 370: loss 1.9302, time 505.26ms, mfu 0.75%
+iter 380: loss 1.9116, time 500.70ms, mfu 0.76%
+iter 390: loss 1.9039, time 489.77ms, mfu 0.76%
+iter 400: loss 1.8438, time 489.25ms, mfu 0.76%
+iter 410: loss 1.8549, time 484.03ms, mfu 0.76%
+iter 420: loss 1.9029, time 511.57ms, mfu 0.76%
+iter 430: loss 1.8609, time 495.46ms, mfu 0.76%
+iter 440: loss 1.8163, time 497.02ms, mfu 0.77%
+iter 450: loss 1.8509, time 482.39ms, mfu 0.77%
+iter 460: loss 1.8175, time 506.30ms, mfu 0.77%
+iter 470: loss 1.7730, time 499.27ms, mfu 0.77%
+iter 480: loss 1.7927, time 494.47ms, mfu 0.77%
+iter 490: loss 1.8143, time 482.00ms, mfu 0.77%
+step 500: train loss 1.6799, val loss 1.7623
+saving checkpoint to projects/gatsby/runs/v3-10k
+iter 500: loss 1.7646, time 16257.62ms, mfu 0.70%
+iter 510: loss 1.7867, time 483.43ms, mfu 0.71%
+iter 520: loss 1.7528, time 493.08ms, mfu 0.71%
+iter 530: loss 1.7176, time 505.92ms, mfu 0.72%
+iter 540: loss 1.7729, time 492.36ms, mfu 0.72%
+iter 550: loss 1.7602, time 501.37ms, mfu 0.73%
+iter 560: loss 1.7534, time 485.42ms, mfu 0.74%
+iter 570: loss 1.7679, time 484.82ms, mfu 0.74%
+iter 580: loss 1.7188, time 488.84ms, mfu 0.75%
+iter 590: loss 1.7342, time 503.63ms, mfu 0.75%
+iter 600: loss 1.7305, time 494.74ms, mfu 0.75%
+iter 610: loss 1.7161, time 488.56ms, mfu 0.75%
+iter 620: loss 1.6835, time 481.49ms, mfu 0.76%
+iter 630: loss 1.6749, time 491.30ms, mfu 0.76%
+iter 640: loss 1.7260, time 503.93ms, mfu 0.76%
+iter 650: loss 1.6881, time 497.17ms, mfu 0.76%
+iter 660: loss 1.6705, time 494.56ms, mfu 0.76%
+iter 670: loss 1.6793, time 486.65ms, mfu 0.77%
+iter 680: loss 1.6780, time 484.74ms, mfu 0.77%
+iter 690: loss 1.6787, time 506.82ms, mfu 0.77%
+iter 700: loss 1.6594, time 510.68ms, mfu 0.77%
+iter 710: loss 1.6448, time 486.10ms, mfu 0.77%
+iter 720: loss 1.6723, time 493.95ms, mfu 0.77%
+iter 730: loss 1.6386, time 501.17ms, mfu 0.77%
+iter 740: loss 1.6184, time 508.86ms, mfu 0.77%
+step 750: train loss 1.5049, val loss 1.6274
+saving checkpoint to projects/gatsby/runs/v3-10k
+iter 750: loss 1.6049, time 16219.75ms, mfu 0.69%
+iter 760: loss 1.6521, time 507.41ms, mfu 0.70%
+iter 770: loss 1.6471, time 491.04ms, mfu 0.71%
+iter 780: loss 1.5789, time 481.18ms, mfu 0.72%
+iter 790: loss 1.6003, time 487.60ms, mfu 0.72%
+iter 800: loss 1.5704, time 509.59ms, mfu 0.73%
+iter 810: loss 1.5656, time 500.81ms, mfu 0.73%
+iter 820: loss 1.5834, time 493.40ms, mfu 0.74%
+iter 830: loss 1.5532, time 482.89ms, mfu 0.74%
+iter 840: loss 1.5757, time 483.12ms, mfu 0.75%
+iter 850: loss 1.5959, time 508.59ms, mfu 0.75%
+iter 860: loss 1.5799, time 497.87ms, mfu 0.75%
+iter 870: loss 1.5632, time 497.86ms, mfu 0.75%
+iter 880: loss 1.5716, time 487.38ms, mfu 0.76%
+iter 890: loss 1.5219, time 485.45ms, mfu 0.76%
+iter 900: loss 1.5724, time 498.49ms, mfu 0.76%
+iter 910: loss 1.5854, time 504.38ms, mfu 0.76%
+iter 920: loss 1.5864, time 487.08ms, mfu 0.76%
+iter 930: loss 1.5537, time 483.21ms, mfu 0.77%
+iter 940: loss 1.5147, time 477.71ms, mfu 0.77%
+iter 950: loss 1.5099, time 502.49ms, mfu 0.77%
+iter 960: loss 1.5777, time 499.88ms, mfu 0.77%
+iter 970: loss 1.5511, time 497.62ms, mfu 0.77%
+iter 980: loss 1.5078, time 488.01ms, mfu 0.77%
+iter 990: loss 1.5217, time 523.63ms, mfu 0.77%
+step 1000: train loss 1.4069, val loss 1.5660
+saving checkpoint to projects/gatsby/runs/v3-10k
+iter 1000: loss 1.5140, time 17004.43ms, mfu 0.69%
+iter 1010: loss 1.5133, time 485.64ms, mfu 0.70%
+iter 1020: loss 1.4871, time 566.25ms, mfu 0.70%
+iter 1030: loss 1.5482, time 495.37ms, mfu 0.71%
+iter 1040: loss 1.4786, time 524.92ms, mfu 0.71%
+iter 1050: loss 1.4868, time 494.91ms, mfu 0.72%
+iter 1060: loss 1.5024, time 493.20ms, mfu 0.72%
+iter 1070: loss 1.4995, time 482.83ms, mfu 0.73%
+iter 1080: loss 1.5187, time 518.63ms, mfu 0.73%
+iter 1090: loss 1.4600, time 515.53ms, mfu 0.73%
+iter 1100: loss 1.5033, time 506.88ms, mfu 0.74%
+iter 1110: loss 1.5545, time 558.02ms, mfu 0.73%
+iter 1120: loss 1.5019, time 583.28ms, mfu 0.72%
+iter 1130: loss 1.4565, time 484.41ms, mfu 0.73%
+iter 1140: loss 1.5035, time 492.94ms, mfu 0.74%
+iter 1150: loss 1.5250, time 488.09ms, mfu 0.74%
+iter 1160: loss 1.4427, time 491.49ms, mfu 0.74%
+iter 1170: loss 1.4521, time 481.57ms, mfu 0.75%
+iter 1180: loss 1.4308, time 490.14ms, mfu 0.75%
+iter 1190: loss 1.4385, time 477.32ms, mfu 0.76%
+iter 1200: loss 1.4884, time 501.37ms, mfu 0.76%
+iter 1210: loss 1.4419, time 502.10ms, mfu 0.76%
+iter 1220: loss 1.4308, time 511.94ms, mfu 0.76%
+iter 1230: loss 1.4666, time 506.83ms, mfu 0.76%
+iter 1240: loss 1.4792, time 506.96ms, mfu 0.76%
+step 1250: train loss 1.3353, val loss 1.5272
+saving checkpoint to projects/gatsby/runs/v3-10k
+iter 1250: loss 1.4786, time 16208.02ms, mfu 0.69%
+iter 1260: loss 1.3913, time 487.88ms, mfu 0.70%
+iter 1270: loss 1.4380, time 481.99ms, mfu 0.71%
+iter 1280: loss 1.4046, time 483.46ms, mfu 0.71%
+iter 1290: loss 1.4706, time 477.48ms, mfu 0.72%
+iter 1300: loss 1.4753, time 486.22ms, mfu 0.73%
+iter 1310: loss 1.4651, time 486.67ms, mfu 0.74%
+iter 1320: loss 1.4382, time 499.18ms, mfu 0.74%
+iter 1330: loss 1.4814, time 502.94ms, mfu 0.74%
+iter 1340: loss 1.3851, time 516.54ms, mfu 0.74%
+iter 1350: loss 1.4200, time 504.95ms, mfu 0.74%
+iter 1360: loss 1.3853, time 507.16ms, mfu 0.75%
+iter 1370: loss 1.3831, time 497.00ms, mfu 0.75%
+iter 1380: loss 1.4706, time 495.77ms, mfu 0.75%
+iter 1390: loss 1.3622, time 499.72ms, mfu 0.75%
+iter 1400: loss 1.3898, time 495.14ms, mfu 0.75%
+iter 1410: loss 1.4090, time 490.44ms, mfu 0.76%
+iter 1420: loss 1.3958, time 486.64ms, mfu 0.76%
+iter 1430: loss 1.4116, time 487.62ms, mfu 0.76%
+iter 1440: loss 1.4252, time 478.92ms, mfu 0.77%
+iter 1450: loss 1.4144, time 479.04ms, mfu 0.77%
+iter 1460: loss 1.4147, time 479.26ms, mfu 0.77%
+iter 1470: loss 1.3868, time 492.08ms, mfu 0.77%
+iter 1480: loss 1.4283, time 501.25ms, mfu 0.77%
+iter 1490: loss 1.3970, time 506.27ms, mfu 0.77%
+step 1500: train loss 1.2722, val loss 1.4961
+saving checkpoint to projects/gatsby/runs/v3-10k
+iter 1500: loss 1.3720, time 14984.06ms, mfu 0.70%
+iter 1510: loss 1.3539, time 459.40ms, mfu 0.71%
+iter 1520: loss 1.3521, time 452.46ms, mfu 0.73%
+iter 1530: loss 1.3675, time 450.84ms, mfu 0.74%
+iter 1540: loss 1.3990, time 458.78ms, mfu 0.75%
+iter 1550: loss 1.3136, time 445.57ms, mfu 0.76%
+iter 1560: loss 1.3881, time 444.50ms, mfu 0.77%
+iter 1570: loss 1.4095, time 446.04ms, mfu 0.78%
+iter 1580: loss 1.3420, time 451.47ms, mfu 0.79%
+iter 1590: loss 1.3685, time 446.31ms, mfu 0.79%
+iter 1600: loss 1.3481, time 455.20ms, mfu 0.80%
+iter 1610: loss 1.4076, time 453.69ms, mfu 0.80%
+iter 1620: loss 1.3977, time 446.79ms, mfu 0.81%
+iter 1630: loss 1.3430, time 443.81ms, mfu 0.81%
+iter 1640: loss 1.3623, time 446.74ms, mfu 0.82%
+iter 1650: loss 1.3756, time 446.12ms, mfu 0.82%
+iter 1660: loss 1.3539, time 444.40ms, mfu 0.83%
+iter 1670: loss 1.3653, time 450.07ms, mfu 0.83%
+iter 1680: loss 1.3192, time 446.91ms, mfu 0.83%
+iter 1690: loss 1.3294, time 446.95ms, mfu 0.84%
+iter 1700: loss 1.3298, time 455.50ms, mfu 0.84%
+iter 1710: loss 1.3409, time 447.36ms, mfu 0.84%
+iter 1720: loss 1.3485, time 443.77ms, mfu 0.84%
+iter 1730: loss 1.3171, time 442.79ms, mfu 0.84%
+iter 1740: loss 1.3619, time 444.62ms, mfu 0.85%
+step 1750: train loss 1.2213, val loss 1.4682
+saving checkpoint to projects/gatsby/runs/v3-10k
+iter 1750: loss 1.3582, time 14653.67ms, mfu 0.76%
+iter 1760: loss 1.3332, time 457.14ms, mfu 0.77%
+iter 1770: loss 1.3571, time 446.25ms, mfu 0.78%
+iter 1780: loss 1.3473, time 446.24ms, mfu 0.79%
+iter 1790: loss 1.3380, time 444.09ms, mfu 0.80%
+iter 1800: loss 1.2930, time 443.68ms, mfu 0.80%
+iter 1810: loss 1.3398, time 443.87ms, mfu 0.81%
+iter 1820: loss 1.3152, time 448.68ms, mfu 0.81%
+iter 1830: loss 1.3235, time 447.92ms, mfu 0.82%
+iter 1840: loss 1.3028, time 448.28ms, mfu 0.82%
+iter 1850: loss 1.3799, time 447.52ms, mfu 0.83%
+iter 1860: loss 1.2894, time 445.11ms, mfu 0.83%
+iter 1870: loss 1.3077, time 443.76ms, mfu 0.83%
+iter 1880: loss 1.3316, time 443.30ms, mfu 0.84%
+iter 1890: loss 1.3218, time 444.25ms, mfu 0.84%
+iter 1900: loss 1.3028, time 444.25ms, mfu 0.84%
+iter 1910: loss 1.3388, time 451.09ms, mfu 0.84%
+iter 1920: loss 1.3088, time 452.37ms, mfu 0.84%
+iter 1930: loss 1.3045, time 445.68ms, mfu 0.85%
+iter 1940: loss 1.2941, time 445.14ms, mfu 0.85%
+iter 1950: loss 1.3282, time 443.99ms, mfu 0.85%
+iter 1960: loss 1.3223, time 444.11ms, mfu 0.85%
+iter 1970: loss 1.2798, time 441.72ms, mfu 0.85%
+iter 1980: loss 1.2642, time 445.45ms, mfu 0.85%
+iter 1990: loss 1.2698, time 444.65ms, mfu 0.85%
+step 2000: train loss 1.1681, val loss 1.4669
+saving checkpoint to projects/gatsby/runs/v3-10k
+iter 2000: loss 1.2742, time 14623.33ms, mfu 0.77%
+iter 2010: loss 1.2965, time 446.10ms, mfu 0.78%
+iter 2020: loss 1.3208, time 444.40ms, mfu 0.79%
+iter 2030: loss 1.3056, time 443.91ms, mfu 0.80%
+iter 2040: loss 1.2562, time 444.45ms, mfu 0.80%
+iter 2050: loss 1.2810, time 445.66ms, mfu 0.81%
+iter 2060: loss 1.3034, time 451.23ms, mfu 0.81%
+iter 2070: loss 1.2721, time 456.02ms, mfu 0.82%
+iter 2080: loss 1.2352, time 445.57ms, mfu 0.82%
+iter 2090: loss 1.2433, time 445.32ms, mfu 0.83%
+iter 2100: loss 1.2884, time 450.72ms, mfu 0.83%
+iter 2110: loss 1.2767, time 446.40ms, mfu 0.83%
+iter 2120: loss 1.2794, time 441.91ms, mfu 0.84%
+iter 2130: loss 1.3019, time 445.54ms, mfu 0.84%
+iter 2140: loss 1.2466, time 451.16ms, mfu 0.84%
+iter 2150: loss 1.2768, time 454.89ms, mfu 0.84%
+iter 2160: loss 1.3065, time 445.10ms, mfu 0.84%
+iter 2170: loss 1.2607, time 444.72ms, mfu 0.84%
+iter 2180: loss 1.2487, time 443.22ms, mfu 0.85%
+iter 2190: loss 1.2748, time 444.18ms, mfu 0.85%
+iter 2200: loss 1.2799, time 443.45ms, mfu 0.85%
+iter 2210: loss 1.2746, time 445.03ms, mfu 0.85%
+iter 2220: loss 1.2496, time 448.04ms, mfu 0.85%
+iter 2230: loss 1.2307, time 458.10ms, mfu 0.85%
+iter 2240: loss 1.2790, time 441.88ms, mfu 0.85%
+step 2250: train loss 1.1376, val loss 1.4448
+saving checkpoint to projects/gatsby/runs/v3-10k
+iter 2250: loss 1.2452, time 14670.81ms, mfu 0.77%
+iter 2260: loss 1.2978, time 443.57ms, mfu 0.78%
+iter 2270: loss 1.2588, time 444.70ms, mfu 0.79%
+iter 2280: loss 1.2191, time 447.80ms, mfu 0.80%
+iter 2290: loss 1.2682, time 451.90ms, mfu 0.80%
+iter 2300: loss 1.2352, time 458.81ms, mfu 0.80%
+iter 2310: loss 1.2477, time 446.92ms, mfu 0.81%
+iter 2320: loss 1.2733, time 466.65ms, mfu 0.81%
+iter 2330: loss 1.2066, time 482.62ms, mfu 0.81%
+iter 2340: loss 1.2680, time 469.81ms, mfu 0.81%
+iter 2350: loss 1.2523, time 448.83ms, mfu 0.82%
+iter 2360: loss 1.2462, time 466.14ms, mfu 0.82%
+iter 2370: loss 1.2504, time 459.58ms, mfu 0.82%
+iter 2380: loss 1.2471, time 448.82ms, mfu 0.82%
+iter 2390: loss 1.2720, time 450.24ms, mfu 0.82%
+iter 2400: loss 1.2492, time 457.83ms, mfu 0.83%
+iter 2410: loss 1.2290, time 498.44ms, mfu 0.82%
+iter 2420: loss 1.2655, time 518.93ms, mfu 0.81%
+iter 2430: loss 1.2479, time 449.87ms, mfu 0.82%
+iter 2440: loss 1.2236, time 447.54ms, mfu 0.82%
+iter 2450: loss 1.2508, time 446.44ms, mfu 0.83%
+iter 2460: loss 1.2050, time 445.38ms, mfu 0.83%
+iter 2470: loss 1.2672, time 445.48ms, mfu 0.83%
+iter 2480: loss 1.2561, time 445.44ms, mfu 0.84%
+iter 2490: loss 1.2125, time 449.31ms, mfu 0.84%
+step 2500: train loss 1.1001, val loss 1.4350
+saving checkpoint to projects/gatsby/runs/v3-10k
+iter 2500: loss 1.2089, time 14669.97ms, mfu 0.76%
+iter 2510: loss 1.2355, time 445.80ms, mfu 0.77%
+iter 2520: loss 1.2254, time 447.62ms, mfu 0.78%
+iter 2530: loss 1.2225, time 445.23ms, mfu 0.78%
+iter 2540: loss 1.1985, time 446.40ms, mfu 0.79%
+iter 2550: loss 1.2175, time 448.29ms, mfu 0.80%
+iter 2560: loss 1.2406, time 446.89ms, mfu 0.80%
+iter 2570: loss 1.2507, time 457.13ms, mfu 0.81%
+iter 2580: loss 1.2575, time 456.46ms, mfu 0.81%
+iter 2590: loss 1.2096, time 448.62ms, mfu 0.82%
+iter 2600: loss 1.2306, time 442.86ms, mfu 0.82%
+iter 2610: loss 1.2385, time 448.72ms, mfu 0.82%
+iter 2620: loss 1.2292, time 446.54ms, mfu 0.83%
+iter 2630: loss 1.1818, time 446.61ms, mfu 0.83%
+iter 2640: loss 1.2019, time 449.21ms, mfu 0.83%
+iter 2650: loss 1.1837, time 447.71ms, mfu 0.84%
+iter 2660: loss 1.1946, time 450.45ms, mfu 0.84%
+iter 2670: loss 1.1683, time 456.32ms, mfu 0.84%
+iter 2680: loss 1.1751, time 447.20ms, mfu 0.84%
+iter 2690: loss 1.1632, time 445.89ms, mfu 0.84%
+iter 2700: loss 1.2380, time 445.68ms, mfu 0.84%
+iter 2710: loss 1.1699, time 445.68ms, mfu 0.85%
+iter 2720: loss 1.2361, time 444.91ms, mfu 0.85%
+iter 2730: loss 1.1862, time 452.49ms, mfu 0.85%
+iter 2740: loss 1.1858, time 448.44ms, mfu 0.85%
+step 2750: train loss 1.0635, val loss 1.4300
+saving checkpoint to projects/gatsby/runs/v3-10k
+iter 2750: loss 1.1876, time 14726.92ms, mfu 0.77%
+iter 2760: loss 1.2623, time 449.06ms, mfu 0.78%
+iter 2770: loss 1.1858, time 444.87ms, mfu 0.78%
+iter 2780: loss 1.1778, time 446.40ms, mfu 0.79%
+iter 2790: loss 1.2006, time 450.04ms, mfu 0.80%
+iter 2800: loss 1.2098, time 445.36ms, mfu 0.80%
+iter 2810: loss 1.2082, time 447.43ms, mfu 0.81%
+iter 2820: loss 1.2382, time 452.49ms, mfu 0.81%
+iter 2830: loss 1.2122, time 448.38ms, mfu 0.82%
+iter 2840: loss 1.1950, time 444.17ms, mfu 0.82%
+iter 2850: loss 1.1659, time 444.92ms, mfu 0.83%
+iter 2860: loss 1.1914, time 446.70ms, mfu 0.83%
+iter 2870: loss 1.1479, time 446.45ms, mfu 0.83%
+iter 2880: loss 1.1602, time 454.52ms, mfu 0.83%
+iter 2890: loss 1.2157, time 447.90ms, mfu 0.84%
+iter 2900: loss 1.1377, time 449.21ms, mfu 0.84%
+iter 2910: loss 1.1675, time 455.62ms, mfu 0.84%
+iter 2920: loss 1.1719, time 447.65ms, mfu 0.84%
+iter 2930: loss 1.1883, time 444.80ms, mfu 0.84%
+iter 2940: loss 1.1761, time 445.02ms, mfu 0.85%
+iter 2950: loss 1.1919, time 447.80ms, mfu 0.85%
+iter 2960: loss 1.1961, time 446.26ms, mfu 0.85%
+iter 2970: loss 1.1687, time 456.66ms, mfu 0.85%
+iter 2980: loss 1.1797, time 445.51ms, mfu 0.85%
+iter 2990: loss 1.1996, time 447.61ms, mfu 0.85%
+step 3000: train loss 1.0375, val loss 1.4172
+saving checkpoint to projects/gatsby/runs/v3-10k
+iter 3000: loss 1.1491, time 14691.60ms, mfu 0.77%
+iter 3010: loss 1.1870, time 448.02ms, mfu 0.78%
+iter 3020: loss 1.1586, time 445.49ms, mfu 0.79%
+iter 3030: loss 1.1615, time 453.66ms, mfu 0.79%
+iter 3040: loss 1.2064, time 449.85ms, mfu 0.80%
+iter 3050: loss 1.1644, time 447.82ms, mfu 0.80%
+iter 3060: loss 1.2022, time 451.42ms, mfu 0.81%
+iter 3070: loss 1.1796, time 447.17ms, mfu 0.81%
+iter 3080: loss 1.1281, time 445.80ms, mfu 0.82%
+iter 3090: loss 1.1858, time 449.43ms, mfu 0.82%
+iter 3100: loss 1.1936, time 447.38ms, mfu 0.83%
+iter 3110: loss 1.1538, time 445.83ms, mfu 0.83%
+iter 3120: loss 1.1366, time 454.60ms, mfu 0.83%
+iter 3130: loss 1.1414, time 446.71ms, mfu 0.83%
+iter 3140: loss 1.1675, time 447.11ms, mfu 0.84%
+iter 3150: loss 1.1788, time 454.85ms, mfu 0.84%
+iter 3160: loss 1.1630, time 448.09ms, mfu 0.84%
+iter 3170: loss 1.1756, time 445.92ms, mfu 0.84%
+iter 3180: loss 1.1981, time 446.79ms, mfu 0.84%
+iter 3190: loss 1.1515, time 451.56ms, mfu 0.84%
+iter 3200: loss 1.1754, time 445.79ms, mfu 0.85%
+iter 3210: loss 1.1709, time 447.47ms, mfu 0.85%
+iter 3220: loss 1.1751, time 447.32ms, mfu 0.85%
+iter 3230: loss 1.1662, time 448.06ms, mfu 0.85%
+iter 3240: loss 1.1680, time 448.95ms, mfu 0.85%
+step 3250: train loss 1.0115, val loss 1.4165
+saving checkpoint to projects/gatsby/runs/v3-10k
+iter 3250: loss 1.1173, time 14712.71ms, mfu 0.77%
+iter 3260: loss 1.1443, time 446.74ms, mfu 0.78%
+iter 3270: loss 1.2074, time 453.38ms, mfu 0.78%
+iter 3280: loss 1.1727, time 442.02ms, mfu 0.79%
+iter 3290: loss 1.1661, time 448.09ms, mfu 0.80%
+iter 3300: loss 1.1104, time 451.30ms, mfu 0.80%
+iter 3310: loss 1.1062, time 447.64ms, mfu 0.81%
+iter 3320: loss 1.1598, time 443.36ms, mfu 0.82%
+iter 3330: loss 1.1518, time 447.26ms, mfu 0.82%
+iter 3340: loss 1.1989, time 451.21ms, mfu 0.82%
+iter 3350: loss 1.1541, time 443.98ms, mfu 0.83%
+iter 3360: loss 1.1521, time 446.95ms, mfu 0.83%
+iter 3370: loss 1.1494, time 446.63ms, mfu 0.83%
+iter 3380: loss 1.1212, time 446.71ms, mfu 0.84%
+iter 3390: loss 1.1324, time 452.43ms, mfu 0.84%
+iter 3400: loss 1.1556, time 447.00ms, mfu 0.84%
+iter 3410: loss 1.1336, time 451.86ms, mfu 0.84%
+iter 3420: loss 1.1170, time 445.31ms, mfu 0.84%
+iter 3430: loss 1.1693, time 457.44ms, mfu 0.84%
+iter 3440: loss 1.0874, time 445.62ms, mfu 0.84%
+iter 3450: loss 1.1537, time 446.82ms, mfu 0.85%
+iter 3460: loss 1.1502, time 446.85ms, mfu 0.85%
+iter 3470: loss 1.1129, time 448.32ms, mfu 0.85%
+iter 3480: loss 1.1301, time 445.83ms, mfu 0.85%
+iter 3490: loss 1.1199, time 446.81ms, mfu 0.85%
+step 3500: train loss 0.9924, val loss 1.4195
+iter 3500: loss 1.1390, time 14576.26ms, mfu 0.77%
+iter 3510: loss 1.1337, time 447.12ms, mfu 0.78%
+iter 3520: loss 1.1302, time 445.69ms, mfu 0.79%
+iter 3530: loss 1.1491, time 449.47ms, mfu 0.79%
+iter 3540: loss 1.1129, time 455.07ms, mfu 0.80%
+iter 3550: loss 1.1277, time 447.38ms, mfu 0.80%
+iter 3560: loss 1.1092, time 447.70ms, mfu 0.81%
+iter 3570: loss 1.1535, time 450.52ms, mfu 0.81%
+iter 3580: loss 1.1322, time 458.24ms, mfu 0.82%
+iter 3590: loss 1.1332, time 446.37ms, mfu 0.82%
+iter 3600: loss 1.1249, time 445.16ms, mfu 0.82%
+iter 3610: loss 1.1229, time 445.94ms, mfu 0.83%
+iter 3620: loss 1.1754, time 448.27ms, mfu 0.83%
+iter 3630: loss 1.1037, time 453.60ms, mfu 0.83%
+iter 3640: loss 1.1483, time 516.43ms, mfu 0.82%
+iter 3650: loss 1.1387, time 516.09ms, mfu 0.82%
+iter 3660: loss 1.1507, time 444.28ms, mfu 0.82%
+iter 3670: loss 1.1221, time 457.62ms, mfu 0.82%
+iter 3680: loss 1.1293, time 454.89ms, mfu 0.83%
+iter 3690: loss 1.1379, time 453.29ms, mfu 0.83%
+iter 3700: loss 1.1690, time 446.71ms, mfu 0.83%
+iter 3710: loss 1.1414, time 456.11ms, mfu 0.83%
+iter 3720: loss 1.1077, time 499.04ms, mfu 0.83%
+iter 3730: loss 1.1096, time 457.17ms, mfu 0.83%
+iter 3740: loss 1.1138, time 466.02ms, mfu 0.83%
+step 3750: train loss 0.9749, val loss 1.4138
+saving checkpoint to projects/gatsby/runs/v3-10k
+iter 3750: loss 1.1436, time 15069.85ms, mfu 0.75%
+iter 3760: loss 1.1193, time 483.64ms, mfu 0.75%
+iter 3770: loss 1.1677, time 481.62ms, mfu 0.76%
+iter 3780: loss 1.1407, time 453.22ms, mfu 0.77%
+iter 3790: loss 1.1229, time 458.01ms, mfu 0.77%
+iter 3800: loss 1.1193, time 445.33ms, mfu 0.78%
+iter 3810: loss 1.1044, time 447.08ms, mfu 0.79%
+iter 3820: loss 1.1403, time 445.40ms, mfu 0.80%
+iter 3830: loss 1.1410, time 448.07ms, mfu 0.80%
+iter 3840: loss 1.1063, time 452.15ms, mfu 0.81%
+iter 3850: loss 1.1655, time 448.85ms, mfu 0.81%
+iter 3860: loss 1.1162, time 448.92ms, mfu 0.82%
+iter 3870: loss 1.1105, time 448.39ms, mfu 0.82%
+iter 3880: loss 1.1354, time 449.25ms, mfu 0.82%
+iter 3890: loss 1.1349, time 445.72ms, mfu 0.83%
+iter 3900: loss 1.0983, time 447.91ms, mfu 0.83%
+iter 3910: loss 1.1493, time 444.98ms, mfu 0.83%
+iter 3920: loss 1.1225, time 451.82ms, mfu 0.84%
+iter 3930: loss 1.1256, time 455.07ms, mfu 0.84%
+iter 3940: loss 1.1715, time 446.83ms, mfu 0.84%
+iter 3950: loss 1.1210, time 452.74ms, mfu 0.84%
+iter 3960: loss 1.1460, time 446.66ms, mfu 0.84%
+iter 3970: loss 1.1551, time 447.71ms, mfu 0.84%
+iter 3980: loss 1.1470, time 446.74ms, mfu 0.85%
+iter 3990: loss 1.0906, time 447.89ms, mfu 0.85%
+step 4000: train loss 0.9677, val loss 1.4048
+saving checkpoint to projects/gatsby/runs/v3-10k
+iter 4000: loss 1.1040, time 14677.45ms, mfu 0.76%

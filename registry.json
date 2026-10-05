@@ -149,7 +149,10 @@
             "test": 3000
           },
           "cost_usd": 6.02,
-          "provenance": "projects/gatsby/data/v3/manifest.json"
+          "provenance": "projects/gatsby/data/v3/manifest.json",
+          "models": [
+            "gatsby-nanogpt-3"
+          ]
         }
       }
     }
@@ -349,6 +352,43 @@
       },
       "demo": {
         "prompt": "Gatsby looked out across the bay "
+      }
+    },
+    {
+      "id": "gatsby-nanogpt-3",
+      "project": "gatsby",
+      "version": 3,
+      "git_tag": "gatsby-nanogpt-3",
+      "architecture": "modern (RoPE, RMSNorm, bias-free)",
+      "tagline": "fifteen times the stories, and it finally stays on topic \u2014 a 30k corpus written by DeepSeek",
+      "researcher": "claude-opus-5-5",
+      "corpus": {
+        "kind": "llm-synthetic",
+        "generators": [
+          "deepseek-v4-1-flash"
+        ],
+        "source": "25,499 TinyStories-register stories, the train split of tiny-green-light-stories v3",
+        "provenance": "projects/gatsby/data/v3/manifest.json",
+        "dataset": "tiny-green-light-stories",
+        "version": "v3",
+        "subset": "train-full"
+      },
+      "tokenizer": {
+        "type": "bpe",
+        "vocab_size": 1024
+      },
+      "params": 11015040,
+      "block_size": 256,
+      "held_out_bpc": null,
+      "frozen_code": "projects/gatsby/models/gatsby-nanogpt-3/",
+      "model_card": "research-docs/model-cards/gatsby-nanogpt-3.md",
+      "artifacts": {
+        "checkpoint": "https://huggingface.co/sup-computer/gatsby-nanogpt-3/resolve/main/ckpt.pt",
+        "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/gatsby-nanogpt-3.onnx",
+        "onnx_int8": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/gatsby-nanogpt-3.int8.onnx"
+      },
+      "demo": {
+        "prompt": "[green=3] [green=3] [green=3] obsession=strong\ntopic: a paper boat in a gutter\n"
       }
     },
     {
