@@ -6,8 +6,9 @@ export function generateStaticParams() {
   return getReports().map((r) => ({ slug: r.slug }));
 }
 
-export function generateMetadata({ params }) {
-  const r = getReport(params.slug);
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const r = getReport(slug);
   if (!r) return {};
   const { title, summary, date } = r.frontmatter;
   return {
@@ -25,8 +26,9 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function Report({ params }) {
-  const r = getReport(params.slug);
+export default async function Report({ params }) {
+  const { slug } = await params;
+  const r = getReport(slug);
   if (!r) return notFound();
 
   const { title, type, date, series, researcher } = r.frontmatter;

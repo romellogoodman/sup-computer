@@ -11,8 +11,9 @@ export function generateStaticParams() {
   return getRegistry().models.map((m) => ({ id: m.id }));
 }
 
-export function generateMetadata({ params }) {
-  const m = getRegistry().models.find((x) => x.id === params.id);
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const m = getRegistry().models.find((x) => x.id === id);
   if (!m) return {};
   const description = `${m.architecture} · ${m.tokenizer.type} tokenizer · ${m.params.toLocaleString("en-US")} parameters`;
   return {
@@ -24,8 +25,9 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function Model({ params }) {
-  const m = getRegistry().models.find((x) => x.id === params.id);
+export default async function Model({ params }) {
+  const { id } = await params;
+  const m = getRegistry().models.find((x) => x.id === id);
   if (!m) return notFound();
   const card = getCard(m.id);
   const seriesOf = getSeries().find((s) => s.project === m.project);

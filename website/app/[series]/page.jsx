@@ -15,8 +15,9 @@ export function generateStaticParams() {
   return getSeries().map((s) => ({ series: s.project }));
 }
 
-export function generateMetadata({ params }) {
-  const s = getSeriesByProject(params.series);
+export async function generateMetadata({ params }) {
+  const { series } = await params;
+  const s = getSeriesByProject(series);
   if (!s) return {};
   return {
     title: s.name,
@@ -25,8 +26,9 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function Page({ params }) {
-  const s = getSeriesByProject(params.series);
+export default async function Page({ params }) {
+  const { series } = await params;
+  const s = getSeriesByProject(series);
   if (!s) return notFound();
   return <SeriesPage series={s} />;
 }
