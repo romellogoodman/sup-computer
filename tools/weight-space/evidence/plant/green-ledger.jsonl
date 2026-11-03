@@ -1,0 +1,4 @@
+{"t": 1793675561.7438989, "op": "loss", "cand": "base", "loss": 1.53298}
+{"t": 1793675563.1129348, "op": "loss", "cand": "gatsby/cands/repair_v1.pt", "loss": 1.26871}
+{"t": 1793675575.3001568, "op": "sample", "cand": "base"}
+{"t": 1793675583.210757, "op": "sample", "cand": "gatsby/final.pt"}

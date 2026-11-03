@@ -1,0 +1,3 @@
+{"t": 1793675002.5077288, "op": "loss", "cand": "base", "loss": 0.84753}
+{"t": 1793675017.065193, "op": "acts", "cand": "base", "saved": "tools/weight-space/work/daydream/acts_2.npz"}
+{"t": 1793675082.46682, "op": "sample", "cand": "base"}

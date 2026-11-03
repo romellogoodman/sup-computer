@@ -1,0 +1,13 @@
+{
+  "split": "held-out test half of each release's val.bin, 256 fixed windows, paired",
+  "edit": [
+    {"model": "shakespeare-nanogpt-3", "edit": "ln_f / 1.1", "base": 3.2366, "final": 3.20744, "delta": -0.02916, "se": 0.00087, "windows_better": 255, "changed_weights": 384, "passes": 4},
+    {"model": "gatsby-nanogpt-3", "edit": "ln_f x 0.9", "base": 1.25887, "final": 1.24345, "delta": -0.01542, "se": 0.00086, "windows_better": 233, "changed_weights": 384, "passes": 6},
+    {"model": "glyph-nanogpt-1", "edit": "ln_f / 1.1", "base": 0.9508, "final": 0.94794, "delta": -0.00285, "se": 0.0005, "windows_better": 161, "changed_weights": 576, "passes": 4},
+    {"model": "kenosha-kid-nanogpt-2", "edit": "ln_f x 0.95", "base": 0.65784, "final": 0.65587, "delta": -0.00197, "se": 0.00034, "windows_better": 164, "changed_weights": 128, "passes": 6},
+    {"model": "daydream-chess-nanogpt-1", "edit": "none", "base": 0.86246, "final": 0.86246, "delta": 0.0, "changed_weights": 0, "passes": 3},
+    {"model": "pona-nanogpt-1", "edit": "none", "base": 2.4573, "final": 2.4573, "delta": 0.0, "changed_weights": 0, "passes": 6}
+  ],
+  "plant_green": {"original": 1.25887, "damaged": 1.50448, "repaired": 1.25887, "recovered_pct": 100.0, "max_abs_diff_vs_original": 2.98e-08, "passes": 4},
+  "plant_swap": {"original": 1.25887, "damaged": 1.50429, "repaired": 1.26082, "recovered_pct": 99.21, "true_pairs": 240, "claimed": 232, "correct": 216, "wrong": 16, "missed": 24, "columns_still_off": 54, "passes": 40, "wall_minutes": 67}
+}

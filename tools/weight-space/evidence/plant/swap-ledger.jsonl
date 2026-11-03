@@ -1,0 +1,40 @@
+{"t": 1793676185.839039, "op": "loss", "cand": "base", "loss": 1.51423}
+{"t": 1793676244.893261, "op": "acts", "cand": "base", "saved": "tools/weight-space/work-repair2/gatsby/acts_2.npz"}
+{"t": 1793676570.5757031, "op": "loss", "cand": "gatsby/cands/c1_negL1h3o.pt", "loss": 1.59213}
+{"t": 1793676643.052407, "op": "sample", "cand": "base"}
+{"t": 1793677014.881871, "op": "loss", "cand": "gatsby/cands/c2_negL0fc1462.pt", "loss": 1.51497}
+{"t": 1793677831.651864, "op": "loss", "cand": "gatsby/cands/c3_Eplus05muused.pt", "loss": 3.77061}
+{"t": 1793678091.334356, "op": "loss", "cand": "gatsby/cands/c4_zeroL4h1.pt", "loss": 1.50541}
+{"t": 1793678198.650593, "op": "loss", "cand": "gatsby/cands/c5_zeroL0nl4.pt", "loss": 1.49333}
+{"t": 1793678362.49102, "op": "loss", "cand": "gatsby/cands/c6_swap4.pt", "loss": 1.36123}
+{"t": 1793678529.047498, "op": "loss", "cand": "gatsby/cands/c7.pt", "loss": 1.35581}
+{"t": 1793678549.030488, "op": "acts", "cand": "gatsby/cands/c6_swap4.pt", "saved": "tools/weight-space/work-repair2/gatsby/acts_11.npz"}
+{"t": 1793678617.989485, "op": "loss", "cand": "gatsby/cands/c8.pt", "loss": 1.3569}
+{"t": 1793678650.676663, "op": "sample", "cand": "gatsby/cands/c8.pt"}
+{"t": 1793679151.835862, "op": "loss", "cand": "gatsby/cands/c9_ln1x15.pt", "loss": 1.39973}
+{"t": 1793679196.592064, "op": "loss", "cand": "gatsby/cands/c10_zero13.pt", "loss": 1.36041}
+{"t": 1793679232.306187, "op": "loss", "cand": "gatsby/cands/c11_zero13ctrl.pt", "loss": 1.37943}
+{"t": 1793679315.277716, "op": "loss", "cand": "gatsby/cands/c12_t1.pt", "loss": 1.35067}
+{"t": 1793679340.0066812, "op": "loss", "cand": "gatsby/cands/c13_t2.pt", "loss": 1.34361}
+{"t": 1793679373.7474492, "op": "loss", "cand": "gatsby/cands/c14_t3.pt", "loss": 1.33256}
+{"t": 1793679415.501653, "op": "loss", "cand": "gatsby/cands/c15_t4.pt", "loss": 1.32315}
+{"t": 1793679467.0439548, "op": "loss", "cand": "gatsby/cands/c16_t5.pt", "loss": 1.31539}
+{"t": 1793679572.836072, "op": "loss", "cand": "gatsby/cands/c17.pt", "loss": 1.30379}
+{"t": 1793679597.393363, "op": "loss", "cand": "gatsby/cands/c18.pt", "loss": 1.29262}
+{"t": 1793679642.33801, "op": "loss", "cand": "gatsby/cands/c19.pt", "loss": 1.28872}
+{"t": 1793679651.2393742, "op": "loss", "cand": "gatsby/cands/c20.pt", "loss": 1.28533}
+{"t": 1793679666.9068642, "op": "loss", "cand": "gatsby/cands/c21.pt", "loss": 1.2846}
+{"t": 1793679749.403724, "op": "loss", "cand": "gatsby/cands/c22.pt", "loss": 1.28211}
+{"t": 1793679760.824374, "op": "loss", "cand": "gatsby/cands/c23.pt", "loss": 1.27645}
+{"t": 1793679777.171127, "op": "loss", "cand": "gatsby/cands/c24.pt", "loss": 1.27578}
+{"t": 1793679807.172361, "op": "loss", "cand": "gatsby/cands/c25.pt", "loss": 1.27283}
+{"t": 1793679820.159647, "op": "loss", "cand": "gatsby/cands/c26.pt", "loss": 1.27128}
+{"t": 1793679836.793052, "op": "acts", "cand": "gatsby/cands/c26.pt", "saved": "tools/weight-space/work-repair2/gatsby/acts_32.npz"}
+{"t": 1793679897.745905, "op": "loss", "cand": "gatsby/cands/c27.pt", "loss": 1.26951}
+{"t": 1793679963.9849489, "op": "loss", "cand": "gatsby/cands/c28.pt", "loss": 1.27369}
+{"t": 1793679996.036284, "op": "loss", "cand": "gatsby/cands/c29.pt", "loss": 1.26923}
+{"t": 1793680020.382016, "op": "loss", "cand": "gatsby/cands/c30.pt", "loss": 1.26961}
+{"t": 1793680030.797914, "op": "acts", "cand": "gatsby/cands/c29.pt", "saved": "tools/weight-space/work-repair2/gatsby/acts_37.npz"}
+{"t": 1793680080.2046962, "op": "loss", "cand": "gatsby/cands/c31.pt", "loss": 1.26939}
+{"t": 1793680082.4107509, "op": "loss", "cand": "gatsby/cands/c32.pt", "loss": 1.26982}
+{"t": 1793680098.439111, "op": "sample", "cand": "gatsby/cands/c29.pt"}

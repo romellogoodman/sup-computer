@@ -1,0 +1,4 @@
+{"t": 1793675000.4076428, "op": "loss", "cand": "base", "loss": 3.17385}
+{"t": 1793675082.768311, "op": "acts", "cand": "base", "saved": "tools/weight-space/work/shakespeare/acts_2.npz"}
+{"t": 1793675104.6378791, "op": "loss", "cand": "shakespeare/cands/temp_1.1.pt", "loss": 3.15283}
+{"t": 1793675110.835496, "op": "loss", "cand": "shakespeare/cands/temp_1.2.pt", "loss": 3.15577}

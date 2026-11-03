@@ -1,0 +1,6 @@
+{"t": 1793675001.77097, "op": "loss", "cand": "base", "loss": 0.63338}
+{"t": 1793675006.6548889, "op": "sample", "cand": "base"}
+{"t": 1793675020.3805928, "op": "acts", "cand": "base", "saved": "tools/weight-space/work/kenosha/acts_3.npz"}
+{"t": 1793675063.5297768, "op": "loss", "cand": "kenosha/cands/temp_0.95.pt", "loss": 0.63211}
+{"t": 1793675092.897793, "op": "loss", "cand": "kenosha/cands/temp_0.92.pt", "loss": 0.63272}
+{"t": 1793675102.6436071, "op": "sample", "cand": "kenosha/cands/temp_0.95.pt"}

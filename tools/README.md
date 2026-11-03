@@ -23,4 +23,5 @@ a tool (ADR-0033).
 | [`synthgen/`](synthgen/) | The LLM synthetic-corpus engine — every LLM-generated corpus goes through it, local via LM Studio or hosted via OpenRouter (ADR-0014, ADR-0038). |
 | [`tinyenc/`](tinyenc/) | A tiny text-classifier encoder shared by the studio's sense experiments. |
 | [`token-chess/`](token-chess/) | The benchmark: LLMs orchestrate Daydream's sampler under a token budget. |
+| [`weight-space/`](weight-space/) | Can a frontier model improve a small model by editing its weights directly, with no gradients? A 50-pass probe harness, planted faults with answer keys, and a held-out scorer. |
 <!-- /generated -->
