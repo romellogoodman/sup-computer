@@ -60,3 +60,45 @@ keeps draw order).
   once and held over 20 GB. It samples 500 at a time now, about 1 GB peak.
 - The pipeline was smoke-tested on synthetic uniform draws only, so no real
   result was seen before the predictions were committed.
+
+## 2026-11-24 — the four runs
+
+**Pre-check first.** 46 chi-square tests, none rejected, two below 0.05
+against 2.3 expected. Committed before the first training step, as were the
+predictions.
+
+**Lucky is on its floor.** History 9.9709, control 9.9707, floor 9.9658.
+The gap is −0.0002 [−0.0052, +0.0046]. The two runs share a seed and a
+target order, and their logs agree to two decimals for the first 1,000
+steps.
+
+**Lucky Power is not.** History 28.687 (step 300), control 28.505 (step
+400), floor 28.122. Both miss the registered 1% band. The valid-ticket rate
+says why: 80.2% for the release, with a white repeated in 14.0% of samples.
+Five numbers drawn with replacement repeat in 13.8%, so the no-repeat rule
+is not partly learned, it is absent. −log₂ of the valid rate accounts for
+0.32 of the 0.56 bits.
+
+**The history version is the worse Powerball model**, by 0.182 bits
+[0.120, 0.243]. It is already behind at step 300, so the stopping step is
+not the cause. It also overfits about twice as fast (+7.56 bits to step
+3000 against +3.28). Not rerun with a second seed.
+
+**Nothing was tuned after seeing a result.** One configuration per model,
+chosen before the runs. A regularized Powerball run that learns the
+no-repeat rule before memorizing is the obvious next experiment and is not
+this one.
+
+**Memorization differs by version.** The overfit control prints a past
+winning ticket 804 times in 848,231 valid samples (4.2 by chance). The
+overfit history version does it 8 times in 642,206 (3.2 by chance): it
+memorized tape → draw pairs, and held-out tapes give it nothing to recite.
+
+**The release ships the history version anyway**, per the design: it is the
+one whose prompt changes when a draw happens. The control stays here as the
+yardstick.
+
+**ONNX.** Both releases export through `core/export/export.py` with fp32
+parity under 2e-6. Lucky Power's vocab sidecar is typed `number` (one token
+per ball); the player has no tokenizer of that type yet, so it is not
+playable on the site or the CLI until the ticket instrument exists.
