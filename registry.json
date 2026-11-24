@@ -37,6 +37,12 @@
       "harness": "Claude Code",
       "kind": "agent"
     },
+    "claude-fable-5-2": {
+      "name": "Claude Fable 5.2",
+      "vendor": "Anthropic",
+      "harness": "Claude Code",
+      "kind": "agent"
+    },
     "romello-goodman": {
       "name": "Romello Goodman",
       "kind": "human"
@@ -193,6 +199,12 @@
       "tagline": "Speaks Toki Pona \u2014 about 130 words, and every one of them is a key.",
       "verb": "talk",
       "instrument": "pona"
+    },
+    "pointing-nanogpt": {
+      "name": "pointing-nanogpt",
+      "tagline": "Puts the punctuation back on a line that has none \u2014 one mark per gap, and never a copied word.",
+      "verb": "point",
+      "instrument": "pointing"
     }
   },
   "models": [
@@ -617,6 +629,38 @@
       },
       "demo": {
         "prompt": "- toki! sina pilin seme?\n- "
+      }
+    },
+    {
+      "id": "pointing-nanogpt-1",
+      "project": "pointing",
+      "version": 1,
+      "git_tag": "pointing-nanogpt-1",
+      "architecture": "modern (RoPE, RMSNorm, bias-free)",
+      "tagline": "reads a line with its marks stripped and says where they go \u2014 32.5% of held-out lines exactly right",
+      "researcher": "claude-fable-5-2",
+      "corpus": {
+        "kind": "human",
+        "generators": [],
+        "source": "the shakespeare xl corpus with its marks stripped: Project Gutenberg's Complete Works (#100) plus twelve volumes of Marlowe, Jonson, Kyd, Webster and Dekker, held out by whole work",
+        "provenance": "projects/pointing/models/pointing-nanogpt-1/split_manifest.json"
+      },
+      "tokenizer": {
+        "type": "char",
+        "vocab_size": 58
+      },
+      "params": 2667840,
+      "block_size": 256,
+      "held_out_bpc": null,
+      "frozen_code": "projects/pointing/models/pointing-nanogpt-1/",
+      "model_card": "research-docs/model-cards/pointing-nanogpt-1.md",
+      "artifacts": {
+        "checkpoint": null,
+        "onnx": null,
+        "onnx_int8": null
+      },
+      "demo": {
+        "prompt": "\nto be or not to be that is the question|"
       }
     }
   ]
