@@ -1,8 +1,8 @@
 # The rating sheets
 
-Two sheets, 260 lines, about 45 minutes. Both are blind: a row shows a line
+Three sheets, 320 lines, about an hour. All are blind: a row shows a line
 and nothing about the temperature, register or seed that produced it. The
-`KEY-*.csv` files hold that. Don't open them until both sheets are filled.
+`KEY-*.csv` files hold that. Don't open them until the sheets are filled.
 
 Open a sheet in a spreadsheet or a text editor, fill the empty columns, save
 it as CSV under the same name.
@@ -30,17 +30,26 @@ Every line needs a guess.
 
 ## Scoring
 
-From the repo root, once both are filled:
+From the repo root, once they are filled:
 
 ```bash
 uv run python projects/oblique/score_sheets.py
 ```
 
-It reads the two sheets and their keys from this folder, prints the keeper
+It reads the sheets and their keys from this folder, prints the keeper
 rate by temperature and the register agreement, and writes
 `research/ratings-scored.json`. A blank or out-of-range cell stops it and
 names the row.
 
-A third sheet follows the first two: 60 lines from a second training seed,
-at the three temperatures around wherever the first seed's keeper rate peaks.
-It can't be drawn until this one is scored.
+## `seed2-sheet.csv` — 60 lines, two ratings each
+
+The second training seed at 0.4, 0.6 and 0.8, the three temperatures around
+the first seed's peak, in the dial sheet's format. Its key is `KEY-seed2.csv`.
+
+## Who rated these
+
+The sheets are committed as filled by Claude Fable 5.2, the session managing
+the project, blind and from these files alone. The brief's human rating has
+not been done. To do it, blank the rating columns in a copy of each sheet and
+pass the copies to `score_sheets.py` (`--dial`, `--register`, `--seed2`,
+`--out`).

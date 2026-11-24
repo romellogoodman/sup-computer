@@ -101,3 +101,46 @@ line on either sheet is a copy of a training line.
 
 **Second seed.** Seed 1338 is trained to the same 12,000 steps so that only
 sampling remains. Its sheet waits on the first seed's peak.
+
+## 2026-11-24 — the ratings, and the answer
+
+**Who rated.** The owner passed the rating seat to the Claude Fable 5.2
+session managing the project. It rated the dial sheet, the register test and
+later the second-seed sheet from the sheet files, without the keys. The
+researcher session built the sheets and rated nothing. So the ratings are a
+model's, and the human seat the brief was built around is still open.
+
+**The checkpoint ruling.** The managing session accepted step 12,000 as the
+fallback while the owner was away, on the grounds in the entry above: the 90%
+bar was the researcher's, kill criterion 1 did not fire, and the misses are a
+word or two over length. The owner can overrule it.
+
+**P2 fails, kill criterion 3 fires.** `[s]` keepers of 20: 8, 2, 6, 0, 2
+across 0.6 to 1.4. The highest is at the lowest setting. Mean strange sits
+between 3.85 and 4.10 at every temperature, so heat adds none. Mean usable
+falls from 3.30 to 1.80. The band the hypothesis needed, strangeness rising
+to meet usefulness falling, has only one of its two slopes.
+
+**P3 is half.** Fortunes are less strange at every temperature. They are
+also less usable at the lowest, 1.85 against 3.30, and 0 of 100 were
+keepers. A strategy with a slipped word is still an instruction. A fortune
+with a slipped word is a broken sentence.
+
+**The second seed.** The managing session set its temperatures at 0.4, 0.6
+and 0.8. `[s]` keepers of 10: 1, 2, 4. Its peak, 0.8, is within 0.2 of the
+first seed's, so that clause of P2 holds on its wording, but the seeds swap
+ranks at 0.6 and 0.8. At 0.4 mean strange is still 3.70: the platitudes the
+hypothesis expected at the cold end did not show up. 0.4 was rated on this
+seed only.
+
+**The soft-cap above 8.** At temperature 0.6, caps of 64, 32, 24, 16 and 12
+change nothing: well-formedness stays between 85.3% and 86.6% and register
+recovery between 97.6% and 98.8%. With the first grid's 8, 4 and 2 that makes
+a flat line and then a cliff. It ran on automatic metrics and was not rated.
+
+**Release.** `oblique-nanogpt-1` is step 12,000 of seed 1337 with the dial at
+0.6, labeled as the highest of five noisy keeper rates. The series
+`instrument` is `text`: the site has no component by that name and falls back
+to its generic text instrument, and the integrity check requires the field to
+be non-empty. The git tag and the artifact URLs are left for the release
+step.

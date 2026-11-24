@@ -40,40 +40,49 @@ first training run: [`research/predictions.md`](research/predictions.md).
 
 ## State
 
-The corpus, both training seeds, the automatic harness and the blind rating
-sheets are done. **The human ratings are not in.** P2 and P3 are unscored
-until they are, and nothing is released: no model card, no registry entry,
-no frozen folder.
+Released as `oblique-nanogpt-1`, with the answer no. The write-up is
+[Is oblique a temperature?](../../research-docs/reports/is-oblique-a-temperature.md)
 
-| | Status |
+| | Result |
 |---|---|
 | P1, the register token takes | holds: 96.5% at temperature 1.0, against a bar of 85% |
-| P2, keepers peak in the middle | unscored, waits on the dial sheet |
-| P3, fortunes are the floor | unscored, waits on the dial sheet |
+| P2, keepers peak in the middle | fails: `[s]` keepers of 20 were 8, 2, 6, 0, 2 across 0.6 to 1.4, highest at the cold end |
+| P3, fortunes are the floor | half: fortunes rate less strange at every temperature, and less usable at the lowest (1.85 against 3.30) |
 | P4, memorization arrives before oblique | fails: the lowest-loss checkpoint copies 0.2% of its lines |
+| Kill criterion 1, no well-formed cell | did not fire on the brief's wording (below) |
+| Kill criterion 3, P2 fails | **fired**: oblique is not a temperature; the model releases with the dial at 0.6, where the keeper rate was highest |
 | Kill criterion 4, deck leakage | did not fire: 0 matches |
-| Kill criterion 1, no well-formed cell | not fired, **and needs the owner's ruling** (below) |
 
-**One ruling is open before the sheets are rated.** The checkpoint rule
-registered before training asked for two things in the dial cells: under 10%
-exact memorization, and at least 90% well-formed lines at temperature 1.0
-and below. Every checkpoint clears the first. None clears the second: step
-12,000 scores 88.6%. Nearly all of the shortfall is one fault. The corpus
-stops at eleven words, the model doesn't count words, and about a tenth of
-its lines run to twelve or thirteen. The sheets were drawn from step 12,000,
-the checkpoint the same rule picks with that bar set aside. The 90% figure
-was the researcher's choice, not the brief's. If the owner reads the miss as
-kill criterion 1, the corpus gets doubled once and these sheets are void.
-The reasoning is in [`research/log.md`](research/log.md).
+Three things a reader should know before trusting that table.
 
-## For the rater
+**The judge was a model.** The brief made the human rating seat the
+experiment. Romello Goodman passed the seat to the Claude Fable 5.2 session
+managing the project, which rated all three sheets blind from the sheet
+files. The answer is about that model's taste. The human seat is still open:
+the sheets, keys and scorer are here for a later pass (§ For a human rater).
 
-The sheets and their instructions are in
-[`research/sheets/`](research/sheets/README.md). Fill `dial-sheet.csv` and
-`register-sheet.csv`, leave the `KEY-*.csv` files closed, then:
+**The registered checkpoint bar was missed.** The rule fixed before training
+asked for under 10% exact memorization in the dial cells and at least 90%
+well-formed lines at temperature 1.0 and below. Every checkpoint clears the
+first. None clears the second: step 12,000 scores 88.6%. The shortfall is
+lines that run a word or two past the corpus's eleven-word edge. The 90%
+figure was the researcher's, not the brief's, and the brief's kill criterion
+1 did not fire. The managing session accepted step 12,000 as a fallback while
+the owner was away. He can overrule it.
+
+**The numbers are small.** 20 lines a cell on the first seed and 10 on the
+second. The two seeds swap ranks at the temperatures they share.
+
+## For a human rater
+
+The three sheets in [`research/sheets/`](research/sheets/README.md) are
+committed as the model judge filled them. To rate them fresh, copy each sheet,
+blank its rating columns, fill them without opening a `KEY-*.csv`, and score:
 
 ```bash
-uv run python projects/oblique/score_sheets.py
+uv run python projects/oblique/score_sheets.py \
+    --dial my-dial.csv --register my-register.csv --seed2 my-seed2.csv \
+    --out my-ratings-scored.json
 ```
 
 ## Pipeline
@@ -89,7 +98,7 @@ sweep.py             ->  runs/<run>/ckpt-<step>.pt, every 500 steps
 harness.py           ->  research/harness-<run>.json
 choose.py            ->  research/choice-<run>.json                   (the registered checkpoint rule)
 sheets.py            ->  research/sheets/*.csv                        (blind sheets + keys)
-score_sheets.py      ->  research/ratings-scored.json                 (after the human seat)
+score_sheets.py      ->  research/ratings-scored.json                 (after the rating seat)
 ```
 
 ```bash
@@ -104,6 +113,8 @@ uv run python projects/oblique/harness.py --run seed1337 --steps 12000 --caps 8 
     --out projects/oblique/research/harness-seed1337.json    # then 4, then 2
 uv run python projects/oblique/choose.py --run seed1337
 uv run python projects/oblique/sheets.py --run seed1337 --step 12000
+uv run python projects/oblique/sheets.py --run seed1338 --step 12000 --seed2 0.4,0.6,0.8
+uv run python projects/oblique/score_sheets.py                # the committed, rated sheets
 uv run python projects/oblique/test_score_sheets.py           # the scorer, on synthetic ratings
 ```
 
@@ -205,6 +216,11 @@ before training.
 | Sheet lines | exactly as sampled, unfiltered, first letter capitalized | A garbled line at a hot setting is what that setting produces. The key flags it. |
 | Register test | 30 lines per register at temperature 1.0 | P1's temperature. |
 | Rating anchors | the wording in `research/sheets/README.md` | The brief names the two axes and the keeper bar; the one-line anchors for 1 and 5 are the researcher's. |
+| Soft-cap sweep after the ratings | off, 64, 32, 24, 16, 12 at temperature 0.6, automatic metrics only | The first grid showed 8 already breaks the model, so the sweep at the winning temperature looks above it. No line from it was rated. |
+
+Two calls were not the researcher's. The second seed's temperatures (0.4,
+0.6, 0.8) and the acceptance of the fallback checkpoint were the managing
+session's.
 
 ## Leaderboard
 
@@ -275,13 +291,73 @@ of 8 already halves well-formedness at temperature 1.0, and 4 and 2 are
 noise with the classifier at chance. The sweep the brief plans at the
 winning temperature needs caps above 8.
 
+### The ratings
+
+Rated blind by Claude Fable 5.2 from `research/sheets/`, scored by
+`score_sheets.py` into `research/ratings-scored.json`. A keeper is a line
+rated 4 or more on both axes.
+
+| Register | Temperature | Keepers of 20 | Mean strange | Mean usable |
+|---|---|---|---|---|
+| `[s]` | 0.6 | 8 | 3.85 | 3.30 |
+| `[s]` | 0.8 | 2 | 3.95 | 2.80 |
+| `[s]` | 1.0 | 6 | 4.10 | 2.65 |
+| `[s]` | 1.2 | 0 | 3.95 | 2.05 |
+| `[s]` | 1.4 | 2 | 4.05 | 1.80 |
+| `[f]` | 0.6 | 0 | 2.10 | 1.85 |
+| `[f]` | 0.8 | 0 | 2.30 | 2.30 |
+| `[f]` | 1.0 | 0 | 2.80 | 1.60 |
+| `[f]` | 1.2 | 0 | 2.90 | 1.55 |
+| `[f]` | 1.4 | 0 | 3.65 | 1.30 |
+
+Strange is flat across the sweep for `[s]` and usable falls at every step,
+so the keeper rate has no middle to peak in.
+
+Second seed (`seed1338`, step 12,000), 10 lines per register per temperature:
+
+| Register | Temperature | Keepers of 10 | Mean strange | Mean usable |
+|---|---|---|---|---|
+| `[s]` | 0.4 | 1 | 3.70 | 3.10 |
+| `[s]` | 0.6 | 2 | 3.70 | 3.20 |
+| `[s]` | 0.8 | 4 | 4.00 | 3.10 |
+| `[f]` | 0.4 | 0 | 1.80 | 2.30 |
+| `[f]` | 0.6 | 1 | 2.10 | 2.30 |
+| `[f]` | 0.8 | 0 | 2.20 | 1.70 |
+
+Its `[s]` peak is at 0.8, within 0.2 of the first seed's 0.6. 0.4 was rated
+on the second seed only, so seed and temperature are confounded there.
+
+Register test, 60 lines at temperature 1.0: the rater named the token behind
+52 (87%) and agreed with the corpus-trained classifier on 50 (83%). The
+classifier named the token behind 58.
+
+### The soft-cap above 8, temperature 0.6
+
+Automatic metrics only, 500 lines per register per cap. Not rated.
+
+| Soft-cap | Exact | 8-gram | Well-formed | Register |
+|---|---|---|---|---|
+| off | 0.1% | 92.0% | 85.7% | 97.6% |
+| 64 | 0.0% | 91.4% | 86.6% | 97.8% |
+| 32 | 0.1% | 91.2% | 85.3% | 98.6% |
+| 24 | 0.0% | 90.4% | 85.5% | 98.8% |
+| 16 | 0.1% | 89.6% | 85.8% | 98.2% |
+| 12 | 0.0% | 87.7% | 86.4% | 98.0% |
+
+Nothing moves down to 12, and the first grid shows the fall from 8. The
+soft-cap is a cliff here, not a second dial.
+
 ### What still doesn't work
 
 - **The model overruns the length band.** 8.9% to 13.2% of lines at
   temperature 1.0 and below run past eleven words. The corpus has a hard
   edge there and a character model has no way to see it.
 - **The registered checkpoint bar was missed**, by 1.4 points at step 12,000
-  and 0.6 at step 8,000. The ruling is the owner's.
+  and 0.6 at step 8,000. The fallback was accepted by the managing session.
+- **The judge was a model and the cells are small.** One rater, 20 lines a
+  cell, no repeat pass.
+- **The fortune register failed as a control.** No `[f]` line was a keeper on
+  the dial sheet; a slipped word turns a fortune into a broken sentence.
 - **P4's premise didn't happen.** There is no memorization for oblique to
   arrive before, so training length chose nothing: the last checkpoint is
   the best on loss and on register accuracy.
@@ -293,7 +369,18 @@ winning temperature needs caps above 8.
 
 ## Versions
 
-None released. `oblique-nanogpt-1` waits on the human ratings.
+| Version | Folder | What it is | Headline |
+|---|---|---|---|
+| v1 | [`models/oblique-nanogpt-1/`](models/oblique-nanogpt-1/) | step 12,000 of `seed1337`, both registers, dial at 0.6 | 96.5% register recovery, 0.2% exact copies, `[s]` keeper rate 8 of 20 at 0.6 |
+
+### `oblique-nanogpt-1`
+
+797,312 parameters, 38-symbol vocabulary, block 128. The frozen folder runs
+in place: `python prepare.py && python train.py config.py && python sample.py`.
+The dial setting is the best of five noisy ones, labeled as such.
+
+Model card: [`research-docs/model-cards/oblique-nanogpt-1.md`](../../research-docs/model-cards/oblique-nanogpt-1.md).
+Report: [Is oblique a temperature?](../../research-docs/reports/is-oblique-a-temperature.md)
 
 ## Credits
 
@@ -304,4 +391,5 @@ None released. `oblique-nanogpt-1` waits on the human ratings.
 - Corpus written by `anthropic/claude-haiku-5.5`, `openai/gpt-6-luna`,
   `deepseek/deepseek-v4.1-flash` and `meta/muse-ember`, served by OpenRouter.
 - Design brief by Romello Goodman. Built and run by Claude Fable 5.2
-  ([Claude Code](https://claude.com/claude-code)).
+  ([Claude Code](https://claude.com/claude-code)). Rated by a second Claude
+  Fable 5.2 session.

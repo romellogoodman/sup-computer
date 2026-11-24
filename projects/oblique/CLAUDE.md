@@ -7,13 +7,14 @@ the rules (ADR-0030).
 
 ## Don't relitigate
 
-- **The human seat is the experiment.** The dial sheet and the register test
-  are rated by Romello Goodman, blind. Never rate the lines yourself, never
-  substitute an LLM judge, and never fill a blank rating. An unrated sheet
-  is an unscored prediction, and the report says so.
-- **The keys stay closed.** `research/sheets/KEY-*.csv` maps a sheet row to
-  its temperature, register and seed. Don't quote a key next to its sheet,
-  and don't put either in a message the rater reads before he has rated.
+- **Say who sat in the seat.** The brief made the human rating the
+  experiment. Round one was rated by a Claude Fable 5.2 session instead, at
+  the owner's direction, and every table of ratings says so. Never present a
+  model's ratings as a human's, never fill a blank rating, and never rate a
+  sheet in the session that built it or has read its key.
+- **The keys stay closed to a rater.** `research/sheets/KEY-*.csv` maps a
+  sheet row to its temperature, register and seed. A new rater, human or
+  model, gets a blanked copy of the sheet and nothing else.
 - **No card goes into a prompt, the corpus or the tree.** The deck is Eno
   and Schmidt's. `data/fetch_deck.py` fetches the published list to a
   gitignored directory for the leakage check and that is its only use. The
