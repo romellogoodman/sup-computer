@@ -531,6 +531,87 @@ pona_corpus_baseline = {
     "caption": "Register drift is real: encyclopedic prose full of names and calques passes at 86.9% while Tatoeba's conversational sentences pass at 99.0%. This 96.0% ceiling is why every model score in the experiment is reported corpus-relative — a model can't out-grammar its data by much, and when one does (chat-r1 at 101.0%), that's the finding. Source: projects/pona/research/corpus_baseline.json.",
 }
 
+# --- exp16: pointing — can a small model punctuate a line? -------------------
+# Sources: projects/pointing/research/eval-*.json, curve-*.json
+# (2026-11-24; two arms, 27,995 held-out lines, temperature 0).
+
+pointing_format = {
+    "title": "The format arrives first",
+    "subtitle": "Output-length errors across training — slot strings that are not 2n + 1 symbols, 4,000 held-out lines per snapshot",
+    "x": ["50", "100", "150", "200", "300", "400", "500", "750", "1000", "1500", "2000", "3000", "4000", "5000", "6000"],
+    "series": [
+        {"name": "0.79M", "hue": "neutral",
+         "y": [100.0, 100.0, 100.0, 82.4, 99.6, 63.7, 74.0, 58.2, 11.2, 9.6, 9.0, 5.8, 5.5, 2.9, 2.0]},
+        {"name": "2.66M", "hue": "green",
+         "y": [100.0, 98.8, 100.0, 96.7, 88.2, 38.6, 23.1, 39.5, 8.9, 6.8, 2.9, 2.4, 2.1, 0.8, 0.8]},
+    ],
+    "valueFmt": "{:.1f}%",
+    "yTitle": "Lines with the wrong length (%)",
+    "xTitle": "Training iteration",
+    "caption": "Both arms spend their first thousand iterations learning to emit one slot per gap; the marks come after. The 2.66M arm ends under 1%, the 0.79M arm at 2.0% on this sample (2.1% on all 27,995 lines). The x axis is the snapshot schedule, not a linear scale. Source: projects/pointing/research/curve-*.json.",
+}
+
+pointing_marks = {
+    "title": "Marks arrive by cue, not by count",
+    "subtitle": "Per-mark F1 across training, 2.66M arm — 4,000 held-out lines per snapshot, well-formed lines only",
+    "x": ["400", "500", "750", "1000", "1500", "2000", "3000", "4000", "5000", "6000"],
+    "series": [
+        {"name": "period", "hue": "blue", "y": [62.4, 49.1, 59.0, 51.5, 59.2, 60.0, 64.1, 66.1, 66.1, 67.0]},
+        {"name": "opening bracket", "hue": "teal", "y": [0.0, 0.0, 52.4, 47.5, 59.7, 66.5, 68.0, 71.4, 70.5, 71.9]},
+        {"name": "question mark", "hue": "purple", "y": [0.0, 0.0, 0.0, 8.6, 36.0, 39.3, 45.2, 47.3, 49.2, 53.3]},
+        {"name": "comma", "hue": "green", "y": [0.2, 6.7, 0.4, 9.2, 23.0, 28.5, 41.0, 43.1, 44.2, 45.9]},
+        {"name": "colon", "hue": "amber", "y": [0.0, 0.0, 3.5, 21.5, 23.2, 25.5, 25.0, 27.1, 26.5, 27.7]},
+        {"name": "exclamation", "hue": "pink", "y": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 4.8, 4.1, 12.2, 12.3]},
+        {"name": "semicolon", "hue": "red", "y": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 1.0, 0.5]},
+    ],
+    "valueFmt": "{:.0f}%",
+    "yTitle": "F1 (%)",
+    "xTitle": "Training iteration",
+    "caption": "The semicolon is the third most common mark in training (14,512 slots) and never leaves the floor; the opening bracket has 6,415 and passes the comma by iteration 750. Before iteration 400 fewer than 12% of lines were well-formed, so those snapshots are left off. Source: projects/pointing/research/curve-regular-r1.json.",
+}
+
+pointing_by_arm = {
+    "title": "More parameters buy question marks and commas, not semicolons",
+    "subtitle": "Per-mark F1 on 27,995 held-out lines, both arms — temperature 0, well-formed lines only",
+    "categories": ["period 0.79M", "period 2.66M", "comma 0.79M", "comma 2.66M",
+                   "question 0.79M", "question 2.66M", "colon 0.79M", "colon 2.66M",
+                   "exclam. 0.79M", "exclam. 2.66M", "semicolon 0.79M", "semicolon 2.66M"],
+    "values": [61.3, 66.9, 35.9, 44.5, 33.1, 48.1, 28.0, 28.4, 2.1, 8.6, 0.2, 0.4],
+    "colors": ["neutral", "green"] * 6,
+    "valueFmt": "{:.1f}%",
+    "yTitle": "F1 (%)",
+    "xTitle": "Mark and arm",
+    "caption": "The question mark gains 15.0 points from 3.4x the parameters, the comma 8.6, the period 5.6. The colon does not move: 323 of the 454 colons it could score in one test volume follow the words 'footnote N', and both arms learned that and nothing else about colons. Sources: projects/pointing/research/eval-regular-r1.json, eval-small-r1.json.",
+}
+
+pointing_distance = {
+    "title": "The small arm loses the question; the large arm keeps it",
+    "subtitle": "Question-mark recall by distance from the clause's question word to the mark, in words — 27,995 held-out lines",
+    "x": ["1–2", "3–5", "6–9", "10+"],
+    "series": [
+        {"name": "0.79M", "hue": "neutral", "y": [39.6, 43.5, 27.0, 17.8]},
+        {"name": "2.66M", "hue": "green", "y": [42.9, 62.3, 56.1, 57.8]},
+    ],
+    "valueFmt": "{:.1f}%",
+    "yTitle": "Question-mark recall (%)",
+    "xTitle": "Words from the question word to the mark",
+    "caption": "At 0.79M recall falls from 39.6% [30.4, 49.6] at one or two words to 17.8% [10.7, 28.1] at ten or more. At 2.66M it is flat past the first bin (57.8% at ten or more). Gold counts per bin: about 97, 628, 488 and 78. Questions with no question word in the clause are a separate row: 7.9% and 17.4%. Sources: projects/pointing/research/eval-*.json.",
+}
+
+pointing_line_end = {
+    "title": "Prose ends in a period. Verse ends in a judgment",
+    "subtitle": "Final slot right, by kind of line — a rule that always writes a period against both arms",
+    "categories": ["prose: always '.'", "prose 0.79M", "prose 2.66M",
+                   "verse: always '.'", "verse 0.79M", "verse 2.66M"],
+    "values": [75.6, 67.2, 78.6, 26.0, 34.7, 37.7],
+    "colors": ["neutral", "blue", "green", "neutral", "blue", "green"],
+    "valueFmt": "{:.1f}%",
+    "yTitle": "Final slot right (%)",
+    "xTitle": "Kind of line and predictor",
+    "caption": "A prose sentence ends in a period 75.6% of the time, and the 2.66M arm beats that rule by 3 points; the 0.79M arm is below it. A verse line ends in a comma 30%, a period 26% and nothing 23% of the time, and neither arm reaches 40%. Model scores cover well-formed lines; the rule covers all. Sources: projects/pointing/research/eval-*.json.",
+}
+
+
 # (name, spec, fn, asset-prefix) — prefix routes each PNG to its report.
 JOBS = [("bpc-by-round", bpc, dv.bar, "exp01-"),
         ("data-win", data_win, dv.bar, "exp01-"),
@@ -559,7 +640,12 @@ JOBS = [("bpc-by-round", bpc, dv.bar, "exp01-"),
         ("craft-by-arm", craft_by_arm, dv.bar, "exp12-"),
         ("grammaticality-vs-null", pona_grammaticality, dv.bar, "exp13-"),
         ("hazard-per-char", pona_hazard, dv.bar, "exp13-"),
-        ("corpus-baseline-by-source", pona_corpus_baseline, dv.bar, "exp13-")]
+        ("corpus-baseline-by-source", pona_corpus_baseline, dv.bar, "exp13-"),
+        ("format-errors-across-training", pointing_format, dv.line, "exp16-"),
+        ("marks-across-training", pointing_marks, dv.line, "exp16-"),
+        ("f1-by-mark-and-arm", pointing_by_arm, dv.bar, "exp16-"),
+        ("question-recall-by-distance", pointing_distance, dv.line, "exp16-"),
+        ("line-end-by-kind", pointing_line_end, dv.bar, "exp16-")]
 
 if __name__ == "__main__":
     out_dir = os.path.join(_HERE, "output")
