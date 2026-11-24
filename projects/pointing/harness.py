@@ -26,7 +26,9 @@ What it reports, in the order a reader should trust it:
 Modes:
     --out_dir RUN                 score RUN/ckpt.pt on the test works
     --out_dir RUN --curve         score every RUN/ckpt-*.pt on a fixed 4,000-line
-                                  sample of the test works (per-mark F1 by iter)
+                                  sample of the test works (per-mark F1 by iter).
+                                  Each scored snapshot is cached beside its
+                                  checkpoint; --snapshot PATH scores just one.
     --out_dir RUN --modern        score the twenty hand-typed modern lines
     --split val                   use the val works instead
 
@@ -331,6 +333,7 @@ def main():
     ap.add_argument("--out_dir", required=True)
     ap.add_argument("--split", default="test", choices=["test", "val"])
     ap.add_argument("--curve", action="store_true")
+    ap.add_argument("--snapshot", default=None, help="with --curve: score this one ckpt-*.pt into its cache and stop")
     ap.add_argument("--modern", action="store_true")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--tag", default=None)
@@ -346,7 +349,7 @@ def main():
         recs = random.Random(1337).sample(recs, min(CURVE_LINES, len(recs)))
         lines = [r["words"] for r in recs]
         points = []
-        for path in sorted(glob.glob(os.path.join(args.out_dir, "ckpt-*.pt"))):
+        for path in [args.snapshot] if args.snapshot else sorted(glob.glob(os.path.join(args.out_dir, "ckpt-*.pt"))):
             # a scored snapshot is kept beside it, so the curve can be built up
             # while the run is still training
             cached = path[:-3] + f".curve-{args.split}.json"
@@ -370,6 +373,8 @@ def main():
                 json.dump(points[-1], f)
             print(f"[{tag}] iter {ckpt['iter_num']:>5}: exact {r['exact_match']['rate']:.1%}  "
                   + "  ".join(f"{k[:5]} {points[-1]['f1'][k]:.2f}" for k in ["period", "comma", "question", "colon", "semicolon"]))
+        if args.snapshot:
+            return
         gold = Counter(s for r in recs for s in r["slots"] if s != strip.NONE)
         out = {"tag": tag, "split": args.split, "lines": len(recs), "sample_seed": 1337,
                "gold_in_sample": {strip.MARK_NAMES[m]: gold[m] for m in strip.MARKS}, "points": points}

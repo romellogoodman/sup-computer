@@ -43,9 +43,13 @@ def main():
             continue
         if prev:
             shutil.copyfile(os.path.join(out_dir, f"ckpt-{prev:05d}.pt"), os.path.join(out_dir, "ckpt.pt"))
-        cmd = [sys.executable, TRAIN, config, *extra,
-               f"--max_iters={step}", f"--eval_interval={min(step - prev, 250)}",
-               f"--init_from={'resume' if prev else 'scratch'}"]
+        # A shared machine: with SUP_GPU_LOCK set, each segment waits its turn
+        # on that lock file and gives the GPU up when the segment ends.
+        lock = os.environ.get("SUP_GPU_LOCK")
+        cmd = ["lockf", "-k", os.path.expanduser(lock)] if lock else []
+        cmd += [sys.executable, TRAIN, config, *extra,
+                f"--max_iters={step}", f"--eval_interval={min(step - prev, 250)}",
+                f"--init_from={'resume' if prev else 'scratch'}"]
         print(f"=== segment {prev} -> {step}", flush=True)
         subprocess.run(cmd, check=True)
         ckpt = torch.load(os.path.join(out_dir, "ckpt.pt"), map_location="cpu", weights_only=True)
