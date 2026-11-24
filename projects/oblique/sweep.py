@@ -11,8 +11,11 @@ Writes into projects/oblique/runs/<run>/:
     train.log                           the full training log
 and copies the log's eval lines to research/<run>-train.log (committed).
 
-Run from the repo root:
+Run from the repo root, under the studio's GPU lock:
     uv run python projects/oblique/sweep.py --seed 1337 --run seed1337
+
+A killed run continues with --resume, from the newest kept checkpoint. The
+resumed log repeats that step's eval line; the later one is the resumed run's.
 """
 import argparse
 import os
@@ -31,6 +34,8 @@ def main():
     ap.add_argument("--seed", type=int, default=1337)
     ap.add_argument("--run", default=None)
     ap.add_argument("--config", default="projects/oblique/config/sweep.py")
+    ap.add_argument("--resume", action="store_true",
+                    help="continue from the newest ckpt-<step>.pt in the run dir")
     ap.add_argument("extra", nargs="*", help="further --key=value overrides for train.py")
     args = ap.parse_args()
     run = args.run or f"seed{args.seed}"
@@ -39,12 +44,23 @@ def main():
 
     cmd = [sys.executable, "-u", "core/nanogpt_core/train.py", args.config,
            f"--out_dir={out_dir}", f"--seed={args.seed}", *args.extra]
+    kept = sorted(f for f in os.listdir(os.path.join(ROOT, out_dir))
+                  if re.fullmatch(r"ckpt-\d{5}\.pt", f))
+    resume = args.resume and bool(kept)
+    if resume:
+        # ckpt.pt may be half-written if the run was killed; the newest kept
+        # copy is whole. train.py restores the optimizer and RNG state from it.
+        shutil.copyfile(os.path.join(ROOT, out_dir, kept[-1]),
+                        os.path.join(ROOT, out_dir, "ckpt.pt"))
+        cmd.append("--init_from=resume")
     log_path = os.path.join(ROOT, out_dir, "train.log")
     evidence = os.path.join(HERE, "research", f"{run}-train.log")
     pending = None      # the step whose checkpoint is being written
     last_step = None
-    with open(log_path, "w") as log, open(evidence, "w") as ev:
-        ev.write("# " + " ".join(cmd[2:]) + "\n")
+    mode = "a" if resume else "w"
+    with open(log_path, mode) as log, open(evidence, mode) as ev:
+        ev.write(("# resumed from " + kept[-1] + ": " if resume else "# ")
+                 + " ".join(cmd[2:]) + "\n")
         proc = subprocess.Popen(cmd, cwd=ROOT, stdout=subprocess.PIPE,
                                 stderr=subprocess.STDOUT, text=True, bufsize=1)
         for line in proc.stdout:
