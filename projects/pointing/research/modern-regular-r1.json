@@ -1,0 +1,671 @@
+{
+  "tag": "regular-r1",
+  "run_dir": "projects/pointing/runs/regular-r1",
+  "split": "modern",
+  "protocol": {
+    "temperature": 0,
+    "decode": "greedy",
+    "prompt": "newline + words + separator"
+  },
+  "iter": 6000,
+  "best_val_loss": 1.1185263395309448,
+  "params": 2667840,
+  "lines": 20,
+  "wellformedness": {
+    "length_errors": 0,
+    "length_error_rate": 0.0,
+    "too_short": 0,
+    "too_long": 0,
+    "anchor_errors": 0,
+    "anchor_error_rate": 0.0,
+    "wellformed_lines": 20,
+    "wellformed_rate": 1.0
+  },
+  "exact_match": {
+    "rate": 0.15,
+    "wilson_95": [
+      0.05236779195949584,
+      0.36042329588695743
+    ],
+    "exact": 3,
+    "by_kind": {
+      "prose": {
+        "lines": 20,
+        "rate": 0.15
+      }
+    },
+    "unseen_input": {
+      "lines": 0,
+      "rate": null
+    }
+  },
+  "no_mark": {
+    "lines": 0,
+    "accuracy": null
+  },
+  "slots": {
+    "scored": 224,
+    "accuracy": 0.8526785714285714,
+    "all_marks": {
+      "precision": 0.46875,
+      "recall": 0.38461538461538464,
+      "f1": 0.4225352112676056,
+      "gold": 39,
+      "predicted": 32
+    }
+  },
+  "per_mark": {
+    "comma": {
+      "mark": ",",
+      "precision": 0.14285714285714285,
+      "recall": 0.15384615384615385,
+      "f1": 0.14814814814814817,
+      "gold": 13,
+      "predicted": 14
+    },
+    "period": {
+      "mark": ".",
+      "precision": 0.8,
+      "recall": 0.75,
+      "f1": 0.7741935483870969,
+      "gold": 16,
+      "predicted": 15
+    },
+    "semicolon": {
+      "mark": ";",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gold": 1,
+      "predicted": 0
+    },
+    "colon": {
+      "mark": ":",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gold": 1,
+      "predicted": 0
+    },
+    "question": {
+      "mark": "?",
+      "precision": 1.0,
+      "recall": 0.3333333333333333,
+      "f1": 0.5,
+      "gold": 3,
+      "predicted": 1
+    },
+    "exclamation": {
+      "mark": "!",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gold": 1,
+      "predicted": 0
+    },
+    "dash": {
+      "mark": "—",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gold": 1,
+      "predicted": 0
+    },
+    "ellipsis": {
+      "mark": "…",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gold": 0,
+      "predicted": 0
+    },
+    "quote-open": {
+      "mark": "“",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gold": 1,
+      "predicted": 0
+    },
+    "quote-close": {
+      "mark": "”",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gold": 0,
+      "predicted": 0
+    },
+    "apostrophe-leading": {
+      "mark": "‘",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gold": 0,
+      "predicted": 0
+    },
+    "apostrophe-trailing": {
+      "mark": "’",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gold": 0,
+      "predicted": 0
+    },
+    "paren-open": {
+      "mark": "(",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gold": 1,
+      "predicted": 0
+    },
+    "paren-close": {
+      "mark": ")",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gold": 1,
+      "predicted": 0
+    },
+    "bracket-open": {
+      "mark": "[",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gold": 0,
+      "predicted": 1
+    },
+    "bracket-close": {
+      "mark": "]",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gold": 0,
+      "predicted": 1
+    }
+  },
+  "line_end": {
+    "prose": {
+      "lines": 20,
+      "accuracy": 0.65,
+      "marks": {
+        ".": {
+          "precision": 0.8571428571428571,
+          "recall": 0.75,
+          "f1": 0.7999999999999999,
+          "gold": 16,
+          "predicted": 14,
+          "share_of_gold": 0.8
+        },
+        ",": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 0,
+          "predicted": 5,
+          "share_of_gold": 0.0
+        },
+        "?": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "gold": 2,
+          "predicted": 1,
+          "share_of_gold": 0.1
+        },
+        "!": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 1,
+          "predicted": 0,
+          "share_of_gold": 0.05
+        },
+        ";": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 0,
+          "predicted": 0,
+          "share_of_gold": 0.0
+        },
+        ":": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 0,
+          "predicted": 0,
+          "share_of_gold": 0.0
+        },
+        "_": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 0,
+          "predicted": 0,
+          "share_of_gold": 0.0
+        }
+      },
+      "confusion_top": {
+        ".>.": 12,
+        ".>,": 4,
+        "?>?": 1,
+        "?>,": 1,
+        "!>.": 1,
+        ")>.": 1
+      }
+    }
+  },
+  "per_source": {
+    "modern": {
+      "lines": 20,
+      "exact_match": 0.15,
+      "malformed": 0.0,
+      "slot_accuracy": 0.8526785714285714,
+      "all_marks": {
+        "precision": 0.46875,
+        "recall": 0.38461538461538464,
+        "f1": 0.4225352112676056,
+        "gold": 39,
+        "predicted": 32
+      },
+      "marks": {
+        "comma": {
+          "precision": 0.14285714285714285,
+          "recall": 0.15384615384615385,
+          "f1": 0.14814814814814817,
+          "gold": 13,
+          "predicted": 14
+        },
+        "period": {
+          "precision": 0.8,
+          "recall": 0.75,
+          "f1": 0.7741935483870969,
+          "gold": 16,
+          "predicted": 15
+        },
+        "semicolon": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 1,
+          "predicted": 0
+        },
+        "colon": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 1,
+          "predicted": 0
+        },
+        "question": {
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "f1": 0.5,
+          "gold": 3,
+          "predicted": 1
+        },
+        "exclamation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 1,
+          "predicted": 0
+        }
+      }
+    }
+  },
+  "question_distance": {
+    "6-9": {
+      "recall": 0.5,
+      "hits": 1,
+      "gold": 2,
+      "wilson_95": [
+        0.09452865480086614,
+        0.9054713451991339
+      ]
+    },
+    "3-5": {
+      "recall": 0.0,
+      "hits": 0,
+      "gold": 1,
+      "wilson_95": [
+        0.0,
+        0.7934567085261071
+      ]
+    }
+  },
+  "ceiling": {
+    "marked_gaps": 39,
+    "gaps_with_two_or_more_marks": 4,
+    "share": 0.10256410256410256,
+    "marks_lost_to_collapse": {
+      "comma": {
+        "lost": 0,
+        "kept": 13,
+        "recall_ceiling": 1.0
+      },
+      "period": {
+        "lost": 1,
+        "kept": 16,
+        "recall_ceiling": 0.9411764705882353
+      },
+      "semicolon": {
+        "lost": 0,
+        "kept": 1,
+        "recall_ceiling": 1.0
+      },
+      "colon": {
+        "lost": 0,
+        "kept": 1,
+        "recall_ceiling": 1.0
+      },
+      "question": {
+        "lost": 0,
+        "kept": 3,
+        "recall_ceiling": 1.0
+      },
+      "exclamation": {
+        "lost": 0,
+        "kept": 1,
+        "recall_ceiling": 1.0
+      },
+      "dash": {
+        "lost": 0,
+        "kept": 1,
+        "recall_ceiling": 1.0
+      },
+      "ellipsis": {
+        "lost": 0,
+        "kept": 0,
+        "recall_ceiling": null
+      },
+      "quote-open": {
+        "lost": 1,
+        "kept": 1,
+        "recall_ceiling": 0.5
+      },
+      "quote-close": {
+        "lost": 2,
+        "kept": 0,
+        "recall_ceiling": 0.0
+      },
+      "apostrophe-leading": {
+        "lost": 0,
+        "kept": 0,
+        "recall_ceiling": null
+      },
+      "apostrophe-trailing": {
+        "lost": 0,
+        "kept": 0,
+        "recall_ceiling": null
+      },
+      "paren-open": {
+        "lost": 0,
+        "kept": 1,
+        "recall_ceiling": 1.0
+      },
+      "paren-close": {
+        "lost": 0,
+        "kept": 1,
+        "recall_ceiling": 1.0
+      },
+      "bracket-open": {
+        "lost": 0,
+        "kept": 0,
+        "recall_ceiling": null
+      },
+      "bracket-close": {
+        "lost": 0,
+        "kept": 0,
+        "recall_ceiling": null
+      }
+    }
+  },
+  "examples": [
+    {
+      "words": "officials said the work will take six months weather permitting",
+      "gold": "_o_s_t_w_w_t_s_m,w_p.",
+      "pred": "_o,s,t_w_w_t_s_m_w_p.",
+      "problem": "marks"
+    },
+    {
+      "words": "we know this is hard on commuters the mayor said but the bridge is not safe",
+      "gold": "“w_k_t_i_h_o_c,t_m_s,b_t_b_i_n_s.",
+      "pred": "_w_k_t_i_h_o_c_t_m_s_b_t_b_i_n_s.",
+      "problem": "marks"
+    },
+    {
+      "words": "rain is expected through the weekend bring an umbrella",
+      "gold": "_r_i_e_t_t_w;b_a_u.",
+      "pred": "_r_i_e_t_t_w_b_a_u.",
+      "problem": "marks"
+    },
+    {
+      "words": "the home team lost again 3 to 1 and the coach refused to comment",
+      "gold": "_t_h_t_l_a,3_t_1,a_t_c_r_t_c.",
+      "pred": "_t_h_t_l_a_3_t_1,a_t_c_r_t_c.",
+      "problem": "marks"
+    },
+    {
+      "words": "hi sam thanks for sending the draft so quickly",
+      "gold": "_h_s,t_f_s_t_d_s_q.",
+      "pred": "_h_s_t_f_s_t_d_s_q,",
+      "problem": "marks"
+    },
+    {
+      "words": "can we move the meeting to thursday at ten",
+      "gold": "_c_w_m_t_m_t_t_a_t?",
+      "pred": "_c_w_m_t_m_t_t_a_t,",
+      "problem": "marks"
+    },
+    {
+      "words": "if that doesn't work tell me what does",
+      "gold": "_i_t_d_w,t_m_w_d.",
+      "pred": "_i_t_d_w_t_m_w_d,",
+      "problem": "marks"
+    },
+    {
+      "words": "please don't forward this yet the numbers are still wrong",
+      "gold": "_p_d_f_t_y:t_n_a_s_w.",
+      "pred": "_p_d,f,t_y_t_n_a_s_w.",
+      "problem": "marks"
+    },
+    {
+      "words": "sorry for the short notice",
+      "gold": "_s_f_t_s_n!",
+      "pred": "_s_f_t_s_n.",
+      "problem": "marks"
+    },
+    {
+      "words": "talk soon and say hello to your sister for me",
+      "gold": "_t_s,a_s_h_t_y_s_f_m.",
+      "pred": "_t_s_a_s_h_t_y_s_f_m.",
+      "problem": "marks"
+    },
+    {
+      "words": "heat the oven to 400 degrees and butter a baking dish",
+      "gold": "_h_t_o_t_4_d_a_b_a_b_d.",
+      "pred": "_h_t_o_t[4]d,a_b_a_b_d.",
+      "problem": "marks"
+    },
+    {
+      "words": "chop the onions the carrots and the celery into small pieces",
+      "gold": "_c_t_o,t_c_a_t_c_i_s_p.",
+      "pred": "_c,t_o_t_c,a_t_c_i_s_p.",
+      "problem": "marks"
+    },
+    {
+      "words": "cook them in olive oil until soft about ten minutes",
+      "gold": "_c_t_i_o_o_u_s,a_t_m.",
+      "pred": "_c_t_i_o_o_u_s_a_t_m.",
+      "problem": "marks"
+    },
+    {
+      "words": "add the rice stir once then pour in the stock",
+      "gold": "_a_t_r,s_o,t_p_i_t_s.",
+      "pred": "_a_t_r_s_o_t_p_i_t_s,",
+      "problem": "marks"
+    },
+    {
+      "words": "is the pan too dry add a splash of water",
+      "gold": "_i_t_p_t_d?a_a_s_o_w.",
+      "pred": "_i_t_p_t_d_a_a_s_o_w,",
+      "problem": "marks"
+    },
+    {
+      "words": "cover and bake for half an hour do not lift the lid",
+      "gold": "_c_a_b_f_h_a_h(d_n_l_t_l)",
+      "pred": "_c_a_b_f_h_a_h_d_n_l_t_l.",
+      "problem": "marks"
+    },
+    {
+      "words": "let it rest before serving it will be very hot",
+      "gold": "_l_i_r_b_s—i_w_b_v_h.",
+      "pred": "_l_i_r_b_s.i_w_b_v_h.",
+      "problem": "marks"
+    }
+  ],
+  "lines_detail": [
+    {
+      "text": "The city council voted on Tuesday to close the bridge for repairs.",
+      "words": "the city council voted on tuesday to close the bridge for repairs",
+      "gold": "_t_c_c_v_o_t_t_c_t_b_f_r.",
+      "pred": "_t_c_c_v_o_t_t_c_t_b_f_r.",
+      "rendered": "the city council voted on tuesday to close the bridge for repairs."
+    },
+    {
+      "text": "Officials said the work will take six months, weather permitting.",
+      "words": "officials said the work will take six months weather permitting",
+      "gold": "_o_s_t_w_w_t_s_m,w_p.",
+      "pred": "_o,s,t_w_w_t_s_m_w_p.",
+      "rendered": "officials, said, the work will take six months weather permitting."
+    },
+    {
+      "text": "\"We know this is hard on commuters,\" the mayor said, \"but the bridge is not safe.\"",
+      "words": "we know this is hard on commuters the mayor said but the bridge is not safe",
+      "gold": "“w_k_t_i_h_o_c,t_m_s,b_t_b_i_n_s.",
+      "pred": "_w_k_t_i_h_o_c_t_m_s_b_t_b_i_n_s.",
+      "rendered": "we know this is hard on commuters the mayor said but the bridge is not safe."
+    },
+    {
+      "text": "Who will pay for the detour buses?",
+      "words": "who will pay for the detour buses",
+      "gold": "_w_w_p_f_t_d_b?",
+      "pred": "_w_w_p_f_t_d_b?",
+      "rendered": "who will pay for the detour buses?"
+    },
+    {
+      "text": "Rain is expected through the weekend; bring an umbrella.",
+      "words": "rain is expected through the weekend bring an umbrella",
+      "gold": "_r_i_e_t_t_w;b_a_u.",
+      "pred": "_r_i_e_t_t_w_b_a_u.",
+      "rendered": "rain is expected through the weekend bring an umbrella."
+    },
+    {
+      "text": "The home team lost again, 3 to 1, and the coach refused to comment.",
+      "words": "the home team lost again 3 to 1 and the coach refused to comment",
+      "gold": "_t_h_t_l_a,3_t_1,a_t_c_r_t_c.",
+      "pred": "_t_h_t_l_a_3_t_1,a_t_c_r_t_c.",
+      "rendered": "the home team lost again 3 to 1, and the coach refused to comment."
+    },
+    {
+      "text": "Hi Sam, thanks for sending the draft so quickly.",
+      "words": "hi sam thanks for sending the draft so quickly",
+      "gold": "_h_s,t_f_s_t_d_s_q.",
+      "pred": "_h_s_t_f_s_t_d_s_q,",
+      "rendered": "hi sam thanks for sending the draft so quickly,"
+    },
+    {
+      "text": "I read it last night, and I have two small questions.",
+      "words": "i read it last night and i have two small questions",
+      "gold": "_i_r_i_l_n,a_i_h_t_s_q.",
+      "pred": "_i_r_i_l_n,a_i_h_t_s_q.",
+      "rendered": "i read it last night, and i have two small questions."
+    },
+    {
+      "text": "Can we move the meeting to Thursday at ten?",
+      "words": "can we move the meeting to thursday at ten",
+      "gold": "_c_w_m_t_m_t_t_a_t?",
+      "pred": "_c_w_m_t_m_t_t_a_t,",
+      "rendered": "can we move the meeting to thursday at ten,"
+    },
+    {
+      "text": "If that doesn't work, tell me what does.",
+      "words": "if that doesn't work tell me what does",
+      "gold": "_i_t_d_w,t_m_w_d.",
+      "pred": "_i_t_d_w_t_m_w_d,",
+      "rendered": "if that doesn't work tell me what does,"
+    },
+    {
+      "text": "Please don't forward this yet: the numbers are still wrong.",
+      "words": "please don't forward this yet the numbers are still wrong",
+      "gold": "_p_d_f_t_y:t_n_a_s_w.",
+      "pred": "_p_d,f,t_y_t_n_a_s_w.",
+      "rendered": "please don't, forward, this yet the numbers are still wrong."
+    },
+    {
+      "text": "Sorry for the short notice!",
+      "words": "sorry for the short notice",
+      "gold": "_s_f_t_s_n!",
+      "pred": "_s_f_t_s_n.",
+      "rendered": "sorry for the short notice."
+    },
+    {
+      "text": "Talk soon, and say hello to your sister for me.",
+      "words": "talk soon and say hello to your sister for me",
+      "gold": "_t_s,a_s_h_t_y_s_f_m.",
+      "pred": "_t_s_a_s_h_t_y_s_f_m.",
+      "rendered": "talk soon and say hello to your sister for me."
+    },
+    {
+      "text": "Heat the oven to 400 degrees and butter a baking dish.",
+      "words": "heat the oven to 400 degrees and butter a baking dish",
+      "gold": "_h_t_o_t_4_d_a_b_a_b_d.",
+      "pred": "_h_t_o_t[4]d,a_b_a_b_d.",
+      "rendered": "heat the oven to [400] degrees, and butter a baking dish."
+    },
+    {
+      "text": "Chop the onions, the carrots and the celery into small pieces.",
+      "words": "chop the onions the carrots and the celery into small pieces",
+      "gold": "_c_t_o,t_c_a_t_c_i_s_p.",
+      "pred": "_c,t_o_t_c,a_t_c_i_s_p.",
+      "rendered": "chop, the onions the carrots, and the celery into small pieces."
+    },
+    {
+      "text": "Cook them in olive oil until soft, about ten minutes.",
+      "words": "cook them in olive oil until soft about ten minutes",
+      "gold": "_c_t_i_o_o_u_s,a_t_m.",
+      "pred": "_c_t_i_o_o_u_s_a_t_m.",
+      "rendered": "cook them in olive oil until soft about ten minutes."
+    },
+    {
+      "text": "Add the rice, stir once, then pour in the stock.",
+      "words": "add the rice stir once then pour in the stock",
+      "gold": "_a_t_r,s_o,t_p_i_t_s.",
+      "pred": "_a_t_r_s_o_t_p_i_t_s,",
+      "rendered": "add the rice stir once then pour in the stock,"
+    },
+    {
+      "text": "Is the pan too dry? Add a splash of water.",
+      "words": "is the pan too dry add a splash of water",
+      "gold": "_i_t_p_t_d?a_a_s_o_w.",
+      "pred": "_i_t_p_t_d_a_a_s_o_w,",
+      "rendered": "is the pan too dry add a splash of water,"
+    },
+    {
+      "text": "Cover and bake for half an hour (do not lift the lid).",
+      "words": "cover and bake for half an hour do not lift the lid",
+      "gold": "_c_a_b_f_h_a_h(d_n_l_t_l)",
+      "pred": "_c_a_b_f_h_a_h_d_n_l_t_l.",
+      "rendered": "cover and bake for half an hour do not lift the lid."
+    },
+    {
+      "text": "Let it rest before serving — it will be very hot.",
+      "words": "let it rest before serving it will be very hot",
+      "gold": "_l_i_r_b_s—i_w_b_v_h.",
+      "pred": "_l_i_r_b_s.i_w_b_v_h.",
+      "rendered": "let it rest before serving. it will be very hot."
+    }
+  ]
+}

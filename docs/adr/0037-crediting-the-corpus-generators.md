@@ -149,3 +149,13 @@ the model page.
   26B A4B (QAT)" and `google/gemma-4-26b-a4b-qat` are three spellings of
   one generator; ids and a roster are what make the credit comparable
   across releases.
+
+## Addendum (2026-11-23): a corpus derived from another project's
+
+`pointing-nanogpt-1` trains on the shakespeare xl corpus with its marks
+stripped, the first corpus in the tree built from another project's. A
+derived corpus keeps the `kind` and the credited `generators` of the corpus
+it came from; its `source` line names that corpus and the transform; and its
+`provenance` points at the deriving project's own committed record (here the
+split manifest that `strip.py` and `build_corpus.py` produce), not at the
+upstream project's.

@@ -1,0 +1,1068 @@
+=== segment 0 -> 50
+Overriding config with projects/pointing/config/regular.py:
+# pointing, the 2.66M arm -- daydream-Regular shape (6L/6H/192E), the body
+# pona used. Char-level pairs `words|slots`, shuffled; 8.27M train tokens, so
+# 6000 iters * 16,384 tok/iter is about 12 epochs.
+#
+# Run from the repo root (train_curve.py drives train.py in segments and keeps
+# a snapshot at each step of the curve):
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/regular.py
+
+out_dir = 'projects/pointing/runs/regular-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 6
+n_head = 6
+n_embd = 192
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 50
+Overriding: eval_interval = 50
+Overriding: init_from = scratch
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Initializing a new model from scratch
+number of parameters: 2.67M
+num decayed tensors: 25, non-decayed: 13
+using fused AdamW: False
+step 0: train loss 4.1253, val loss 4.1243
+iter 0: loss 4.1200, time 12132.41ms, mfu -100.00%
+step 50: train loss 2.3931, val loss 2.3933
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 50: loss 2.4132, time 12343.63ms, mfu 0.01%
+=== segment 50 -> 100
+Overriding config with projects/pointing/config/regular.py:
+# pointing, the 2.66M arm -- daydream-Regular shape (6L/6H/192E), the body
+# pona used. Char-level pairs `words|slots`, shuffled; 8.27M train tokens, so
+# 6000 iters * 16,384 tok/iter is about 12 epochs.
+#
+# Run from the repo root (train_curve.py drives train.py in segments and keeps
+# a snapshot at each step of the curve):
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/regular.py
+
+out_dir = 'projects/pointing/runs/regular-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 6
+n_head = 6
+n_embd = 192
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 100
+Overriding: eval_interval = 50
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/regular-r1
+number of parameters: 2.67M
+num decayed tensors: 25, non-decayed: 13
+using fused AdamW: False
+step 50: train loss 2.3949, val loss 2.3974
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 50: loss 2.4242, time 11893.15ms, mfu -100.00%
+step 100: train loss 2.1009, val loss 2.1150
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 100: loss 2.1356, time 12752.20ms, mfu 0.01%
+=== segment 100 -> 150
+Overriding config with projects/pointing/config/regular.py:
+# pointing, the 2.66M arm -- daydream-Regular shape (6L/6H/192E), the body
+# pona used. Char-level pairs `words|slots`, shuffled; 8.27M train tokens, so
+# 6000 iters * 16,384 tok/iter is about 12 epochs.
+#
+# Run from the repo root (train_curve.py drives train.py in segments and keeps
+# a snapshot at each step of the curve):
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/regular.py
+
+out_dir = 'projects/pointing/runs/regular-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 6
+n_head = 6
+n_embd = 192
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 150
+Overriding: eval_interval = 50
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/regular-r1
+number of parameters: 2.67M
+num decayed tensors: 25, non-decayed: 13
+using fused AdamW: False
+step 100: train loss 2.1020, val loss 2.1171
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 100: loss 2.1193, time 11978.74ms, mfu -100.00%
+step 150: train loss 1.9338, val loss 1.9501
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 150: loss 1.9514, time 12781.04ms, mfu 0.01%
+=== segment 150 -> 200
+Overriding config with projects/pointing/config/regular.py:
+# pointing, the 2.66M arm -- daydream-Regular shape (6L/6H/192E), the body
+# pona used. Char-level pairs `words|slots`, shuffled; 8.27M train tokens, so
+# 6000 iters * 16,384 tok/iter is about 12 epochs.
+#
+# Run from the repo root (train_curve.py drives train.py in segments and keeps
+# a snapshot at each step of the curve):
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/regular.py
+
+out_dir = 'projects/pointing/runs/regular-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 6
+n_head = 6
+n_embd = 192
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 200
+Overriding: eval_interval = 50
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/regular-r1
+number of parameters: 2.67M
+num decayed tensors: 25, non-decayed: 13
+using fused AdamW: False
+step 150: train loss 1.9351, val loss 1.9470
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 150: loss 1.9755, time 12120.63ms, mfu -100.00%
+step 200: train loss 1.7610, val loss 1.7845
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 200: loss 1.8255, time 12359.42ms, mfu 0.01%
+=== segment 200 -> 300
+Overriding config with projects/pointing/config/regular.py:
+# pointing, the 2.66M arm -- daydream-Regular shape (6L/6H/192E), the body
+# pona used. Char-level pairs `words|slots`, shuffled; 8.27M train tokens, so
+# 6000 iters * 16,384 tok/iter is about 12 epochs.
+#
+# Run from the repo root (train_curve.py drives train.py in segments and keeps
+# a snapshot at each step of the curve):
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/regular.py
+
+out_dir = 'projects/pointing/runs/regular-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 6
+n_head = 6
+n_embd = 192
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 300
+Overriding: eval_interval = 100
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/regular-r1
+number of parameters: 2.67M
+num decayed tensors: 25, non-decayed: 13
+using fused AdamW: False
+step 200: train loss 1.7652, val loss 1.7878
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 200: loss 1.8000, time 11890.02ms, mfu -100.00%
+iter 250: loss 1.6866, time 443.92ms, mfu 0.23%
+step 300: train loss 1.5549, val loss 1.5850
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 300: loss 1.6355, time 13428.86ms, mfu 0.21%
+=== segment 300 -> 400
+Overriding config with projects/pointing/config/regular.py:
+# pointing, the 2.66M arm -- daydream-Regular shape (6L/6H/192E), the body
+# pona used. Char-level pairs `words|slots`, shuffled; 8.27M train tokens, so
+# 6000 iters * 16,384 tok/iter is about 12 epochs.
+#
+# Run from the repo root (train_curve.py drives train.py in segments and keeps
+# a snapshot at each step of the curve):
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/regular.py
+
+out_dir = 'projects/pointing/runs/regular-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 6
+n_head = 6
+n_embd = 192
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 400
+Overriding: eval_interval = 100
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/regular-r1
+number of parameters: 2.67M
+num decayed tensors: 25, non-decayed: 13
+using fused AdamW: False
+step 300: train loss 1.5598, val loss 1.5850
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 300: loss 1.6104, time 14069.45ms, mfu -100.00%
+iter 350: loss 1.5256, time 472.10ms, mfu 0.22%
+step 400: train loss 1.4385, val loss 1.4746
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 400: loss 1.5001, time 13518.44ms, mfu 0.20%
+=== segment 400 -> 500
+Overriding config with projects/pointing/config/regular.py:
+# pointing, the 2.66M arm -- daydream-Regular shape (6L/6H/192E), the body
+# pona used. Char-level pairs `words|slots`, shuffled; 8.27M train tokens, so
+# 6000 iters * 16,384 tok/iter is about 12 epochs.
+#
+# Run from the repo root (train_curve.py drives train.py in segments and keeps
+# a snapshot at each step of the curve):
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/regular.py
+
+out_dir = 'projects/pointing/runs/regular-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 6
+n_head = 6
+n_embd = 192
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 500
+Overriding: eval_interval = 100
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/regular-r1
+number of parameters: 2.67M
+num decayed tensors: 25, non-decayed: 13
+using fused AdamW: False
+step 400: train loss 1.4363, val loss 1.4759
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 400: loss 1.4772, time 13894.33ms, mfu -100.00%
+iter 450: loss 1.4548, time 425.52ms, mfu 0.24%
+step 500: train loss 1.3743, val loss 1.4101
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 500: loss 1.4143, time 18639.40ms, mfu 0.22%
+=== segment 500 -> 750
+Overriding config with projects/pointing/config/regular.py:
+# pointing, the 2.66M arm -- daydream-Regular shape (6L/6H/192E), the body
+# pona used. Char-level pairs `words|slots`, shuffled; 8.27M train tokens, so
+# 6000 iters * 16,384 tok/iter is about 12 epochs.
+#
+# Run from the repo root (train_curve.py drives train.py in segments and keeps
+# a snapshot at each step of the curve):
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/regular.py
+
+out_dir = 'projects/pointing/runs/regular-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 6
+n_head = 6
+n_embd = 192
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 750
+Overriding: eval_interval = 250
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/regular-r1
+number of parameters: 2.67M
+num decayed tensors: 25, non-decayed: 13
+using fused AdamW: False
+step 500: train loss 1.3705, val loss 1.4106
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 500: loss 1.4189, time 14575.41ms, mfu -100.00%
+iter 550: loss 1.4239, time 417.07ms, mfu 0.25%
+iter 600: loss 1.4118, time 413.19ms, mfu 0.25%
+iter 650: loss 1.3868, time 431.78ms, mfu 0.25%
+iter 700: loss 1.3281, time 387.12ms, mfu 0.25%
+step 750: train loss 1.2966, val loss 1.3624
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 750: loss 1.3241, time 25299.37ms, mfu 0.22%
+=== segment 750 -> 1000
+Overriding config with projects/pointing/config/regular.py:
+# pointing, the 2.66M arm -- daydream-Regular shape (6L/6H/192E), the body
+# pona used. Char-level pairs `words|slots`, shuffled; 8.27M train tokens, so
+# 6000 iters * 16,384 tok/iter is about 12 epochs.
+#
+# Run from the repo root (train_curve.py drives train.py in segments and keeps
+# a snapshot at each step of the curve):
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/regular.py
+
+out_dir = 'projects/pointing/runs/regular-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 6
+n_head = 6
+n_embd = 192
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 1000
+Overriding: eval_interval = 250
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/regular-r1
+number of parameters: 2.67M
+num decayed tensors: 25, non-decayed: 13
+using fused AdamW: False
+step 750: train loss 1.2969, val loss 1.3679
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 750: loss 1.3596, time 15278.72ms, mfu -100.00%
+iter 800: loss 1.2957, time 824.42ms, mfu 0.12%
+iter 850: loss 1.2969, time 913.54ms, mfu 0.12%
+iter 900: loss 1.2791, time 854.71ms, mfu 0.12%
+iter 950: loss 1.2466, time 669.99ms, mfu 0.13%
+step 1000: train loss 1.2049, val loss 1.2840
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 1000: loss 1.2308, time 22501.71ms, mfu 0.11%
+=== segment 1000 -> 1500
+Overriding config with projects/pointing/config/regular.py:
+# pointing, the 2.66M arm -- daydream-Regular shape (6L/6H/192E), the body
+# pona used. Char-level pairs `words|slots`, shuffled; 8.27M train tokens, so
+# 6000 iters * 16,384 tok/iter is about 12 epochs.
+#
+# Run from the repo root (train_curve.py drives train.py in segments and keeps
+# a snapshot at each step of the curve):
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/regular.py
+
+out_dir = 'projects/pointing/runs/regular-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 6
+n_head = 6
+n_embd = 192
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 1500
+Overriding: eval_interval = 250
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/regular-r1
+number of parameters: 2.67M
+num decayed tensors: 25, non-decayed: 13
+using fused AdamW: False
+step 1000: train loss 1.2062, val loss 1.2871
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 1000: loss 1.2593, time 22764.95ms, mfu -100.00%
+iter 1050: loss 1.2576, time 721.74ms, mfu 0.14%
+iter 1100: loss 1.2608, time 776.72ms, mfu 0.14%
+iter 1150: loss 1.2303, time 736.48ms, mfu 0.14%
+iter 1200: loss 1.2374, time 1042.64ms, mfu 0.14%
+step 1250: train loss 1.1630, val loss 1.2514
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 1250: loss 1.2120, time 22293.45ms, mfu 0.12%
+iter 1300: loss 1.2036, time 634.14ms, mfu 0.13%
+iter 1350: loss 1.1872, time 666.01ms, mfu 0.13%
+iter 1400: loss 1.1942, time 724.11ms, mfu 0.13%
+iter 1450: loss 1.1738, time 689.49ms, mfu 0.13%
+step 1500: train loss 1.1389, val loss 1.2321
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 1500: loss 1.1850, time 42538.60ms, mfu 0.12%
+=== segment 1500 -> 2000
+Overriding config with projects/pointing/config/regular.py:
+# pointing, the 2.66M arm -- daydream-Regular shape (6L/6H/192E), the body
+# pona used. Char-level pairs `words|slots`, shuffled; 8.27M train tokens, so
+# 6000 iters * 16,384 tok/iter is about 12 epochs.
+#
+# Run from the repo root (train_curve.py drives train.py in segments and keeps
+# a snapshot at each step of the curve):
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/regular.py
+
+out_dir = 'projects/pointing/runs/regular-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 6
+n_head = 6
+n_embd = 192
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 2000
+Overriding: eval_interval = 250
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/regular-r1
+number of parameters: 2.67M
+num decayed tensors: 25, non-decayed: 13
+using fused AdamW: False
+step 1500: train loss 1.1330, val loss 1.2314
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 1500: loss 1.1868, time 29410.46ms, mfu -100.00%
+iter 1550: loss 1.1823, time 723.28ms, mfu 0.14%
+iter 1600: loss 1.1599, time 1383.19ms, mfu 0.14%
+iter 1650: loss 1.1648, time 1323.53ms, mfu 0.13%
+iter 1700: loss 1.1472, time 894.58ms, mfu 0.13%
+step 1750: train loss 1.1204, val loss 1.2157
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 1750: loss 1.1840, time 45191.75ms, mfu 0.12%
+iter 1800: loss 1.1601, time 947.20ms, mfu 0.11%
+iter 1850: loss 1.1594, time 1001.12ms, mfu 0.11%
+iter 1900: loss 1.1422, time 1132.49ms, mfu 0.11%
+=== segment 1500 -> 2000
+Overriding config with projects/pointing/config/regular.py:
+# pointing, the 2.66M arm -- daydream-Regular shape (6L/6H/192E), the body
+# pona used. Char-level pairs `words|slots`, shuffled; 8.27M train tokens, so
+# 6000 iters * 16,384 tok/iter is about 12 epochs.
+#
+# Run from the repo root (train_curve.py drives train.py in segments and keeps
+# a snapshot at each step of the curve):
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/regular.py
+
+out_dir = 'projects/pointing/runs/regular-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 6
+n_head = 6
+n_embd = 192
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 2000
+Overriding: eval_interval = 250
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/regular-r1
+number of parameters: 2.67M
+num decayed tensors: 25, non-decayed: 13
+using fused AdamW: False
+step 1500: train loss 1.1330, val loss 1.2314
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 1500: loss 1.1868, time 11442.09ms, mfu -100.00%
+iter 1550: loss 1.1823, time 359.06ms, mfu 0.29%
+iter 1600: loss 1.1598, time 355.67ms, mfu 0.29%
+iter 1650: loss 1.1648, time 400.01ms, mfu 0.28%
+iter 1700: loss 1.1465, time 394.37ms, mfu 0.28%
+step 1750: train loss 1.1196, val loss 1.2144
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 1750: loss 1.1828, time 12832.16ms, mfu 0.25%
+iter 1800: loss 1.1560, time 384.42ms, mfu 0.25%
+iter 1850: loss 1.1607, time 401.60ms, mfu 0.26%
+iter 1900: loss 1.1432, time 506.84ms, mfu 0.25%
+iter 1950: loss 1.1519, time 408.00ms, mfu 0.25%
+step 2000: train loss 1.0985, val loss 1.1982
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 2000: loss 1.1197, time 12929.96ms, mfu 0.23%
+=== segment 2000 -> 3000
+Overriding config with projects/pointing/config/regular.py:
+# pointing, the 2.66M arm -- daydream-Regular shape (6L/6H/192E), the body
+# pona used. Char-level pairs `words|slots`, shuffled; 8.27M train tokens, so
+# 6000 iters * 16,384 tok/iter is about 12 epochs.
+#
+# Run from the repo root (train_curve.py drives train.py in segments and keeps
+# a snapshot at each step of the curve):
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/regular.py
+
+out_dir = 'projects/pointing/runs/regular-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 6
+n_head = 6
+n_embd = 192
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 3000
+Overriding: eval_interval = 250
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/regular-r1
+number of parameters: 2.67M
+num decayed tensors: 25, non-decayed: 13
+using fused AdamW: False
+step 2000: train loss 1.0987, val loss 1.1972
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 2000: loss 1.1526, time 12272.64ms, mfu -100.00%
+iter 2050: loss 1.1406, time 363.43ms, mfu 0.28%
+iter 2100: loss 1.1098, time 381.45ms, mfu 0.28%
+iter 2150: loss 1.1477, time 380.27ms, mfu 0.28%
+iter 2200: loss 1.1203, time 365.77ms, mfu 0.28%
+step 2250: train loss 1.0821, val loss 1.1932
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 2250: loss 1.1054, time 13307.01ms, mfu 0.25%
+iter 2300: loss 1.1023, time 364.52ms, mfu 0.26%
+iter 2350: loss 1.1163, time 365.47ms, mfu 0.26%
+iter 2400: loss 1.1115, time 383.80ms, mfu 0.26%
+iter 2450: loss 1.1289, time 397.80ms, mfu 0.26%
+step 2500: train loss 1.0677, val loss 1.1752
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 2500: loss 1.0937, time 12733.61ms, mfu 0.23%
+iter 2550: loss 1.1105, time 380.07ms, mfu 0.24%
+iter 2600: loss 1.1011, time 365.66ms, mfu 0.24%
+iter 2650: loss 1.0933, time 408.49ms, mfu 0.24%
+iter 2700: loss 1.1091, time 365.67ms, mfu 0.25%
+step 2750: train loss 1.0589, val loss 1.1655
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 2750: loss 1.0940, time 12544.30ms, mfu 0.22%
+iter 2800: loss 1.1043, time 362.53ms, mfu 0.23%
+iter 2850: loss 1.0988, time 364.53ms, mfu 0.23%
+iter 2900: loss 1.1218, time 510.69ms, mfu 0.23%
+iter 2950: loss 1.1077, time 351.80ms, mfu 0.24%
+step 3000: train loss 1.0443, val loss 1.1633
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 3000: loss 1.1224, time 12967.56ms, mfu 0.21%
+=== segment 3000 -> 4000
+Overriding config with projects/pointing/config/regular.py:
+# pointing, the 2.66M arm -- daydream-Regular shape (6L/6H/192E), the body
+# pona used. Char-level pairs `words|slots`, shuffled; 8.27M train tokens, so
+# 6000 iters * 16,384 tok/iter is about 12 epochs.
+#
+# Run from the repo root (train_curve.py drives train.py in segments and keeps
+# a snapshot at each step of the curve):
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/regular.py
+
+out_dir = 'projects/pointing/runs/regular-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 6
+n_head = 6
+n_embd = 192
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 4000
+Overriding: eval_interval = 250
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/regular-r1
+number of parameters: 2.67M
+num decayed tensors: 25, non-decayed: 13
+using fused AdamW: False
+step 3000: train loss 1.0458, val loss 1.1622
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 3000: loss 1.0943, time 11857.73ms, mfu -100.00%
+iter 3050: loss 1.0710, time 350.50ms, mfu 0.29%
+iter 3100: loss 1.0819, time 405.33ms, mfu 0.29%
+iter 3150: loss 1.0901, time 344.54ms, mfu 0.29%
+iter 3200: loss 1.0936, time 380.04ms, mfu 0.29%
+step 3250: train loss 1.0345, val loss 1.1599
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 3250: loss 1.0621, time 11809.69ms, mfu 0.26%
+iter 3300: loss 1.0847, time 353.28ms, mfu 0.26%
+iter 3350: loss 1.0511, time 345.04ms, mfu 0.27%
+iter 3400: loss 1.0729, time 357.99ms, mfu 0.27%
+iter 3450: loss 1.0463, time 344.13ms, mfu 0.27%
+step 3500: train loss 1.0258, val loss 1.1474
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 3500: loss 1.0749, time 11671.42ms, mfu 0.25%
+iter 3550: loss 1.0622, time 356.25ms, mfu 0.25%
+iter 3600: loss 1.0824, time 346.87ms, mfu 0.25%
+iter 3650: loss 1.0754, time 339.11ms, mfu 0.26%
+iter 3700: loss 1.0627, time 350.24ms, mfu 0.26%
+step 3750: train loss 1.0253, val loss 1.1464
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 3750: loss 1.0592, time 11800.49ms, mfu 0.24%
+iter 3800: loss 1.0633, time 357.20ms, mfu 0.24%
+iter 3850: loss 1.0726, time 363.59ms, mfu 0.25%
+iter 3900: loss 1.0563, time 349.86ms, mfu 0.25%
+iter 3950: loss 1.0712, time 358.53ms, mfu 0.25%
+step 4000: train loss 1.0163, val loss 1.1457
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 4000: loss 1.0443, time 11680.87ms, mfu 0.23%
+=== segment 4000 -> 5000
+Overriding config with projects/pointing/config/regular.py:
+# pointing, the 2.66M arm -- daydream-Regular shape (6L/6H/192E), the body
+# pona used. Char-level pairs `words|slots`, shuffled; 8.27M train tokens, so
+# 6000 iters * 16,384 tok/iter is about 12 epochs.
+#
+# Run from the repo root (train_curve.py drives train.py in segments and keeps
+# a snapshot at each step of the curve):
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/regular.py
+
+out_dir = 'projects/pointing/runs/regular-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 6
+n_head = 6
+n_embd = 192
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 5000
+Overriding: eval_interval = 250
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/regular-r1
+number of parameters: 2.67M
+num decayed tensors: 25, non-decayed: 13
+using fused AdamW: False
+step 4000: train loss 1.0159, val loss 1.1412
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 4000: loss 1.0618, time 11099.24ms, mfu -100.00%
+iter 4050: loss 1.0616, time 360.99ms, mfu 0.28%
+iter 4100: loss 1.0578, time 343.45ms, mfu 0.29%
+iter 4150: loss 1.0612, time 351.66ms, mfu 0.29%
+iter 4200: loss 1.0734, time 347.29ms, mfu 0.29%
+step 4250: train loss 1.0084, val loss 1.1396
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 4250: loss 1.0373, time 11665.08ms, mfu 0.26%
+iter 4300: loss 1.0359, time 348.35ms, mfu 0.26%
+iter 4350: loss 1.0521, time 343.14ms, mfu 0.27%
+iter 4400: loss 1.0415, time 341.51ms, mfu 0.27%
+iter 4450: loss 1.0365, time 342.95ms, mfu 0.27%
+step 4500: train loss 1.0076, val loss 1.1327
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 4500: loss 1.0586, time 11712.39ms, mfu 0.25%
+iter 4550: loss 1.0418, time 353.32ms, mfu 0.25%
+iter 4600: loss 1.0432, time 345.72ms, mfu 0.26%
+iter 4650: loss 1.0399, time 370.42ms, mfu 0.26%
+iter 4700: loss 1.0634, time 348.27ms, mfu 0.26%
+step 4750: train loss 0.9989, val loss 1.1343
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 4750: loss 1.0424, time 11650.74ms, mfu 0.24%
+iter 4800: loss 1.0286, time 355.26ms, mfu 0.24%
+iter 4850: loss 1.0193, time 342.92ms, mfu 0.25%
+iter 4900: loss 1.0335, time 341.07ms, mfu 0.25%
+iter 4950: loss 1.0355, time 346.58ms, mfu 0.26%
+step 5000: train loss 0.9944, val loss 1.1292
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 5000: loss 1.0595, time 11687.72ms, mfu 0.23%
+=== segment 5000 -> 6000
+Overriding config with projects/pointing/config/regular.py:
+# pointing, the 2.66M arm -- daydream-Regular shape (6L/6H/192E), the body
+# pona used. Char-level pairs `words|slots`, shuffled; 8.27M train tokens, so
+# 6000 iters * 16,384 tok/iter is about 12 epochs.
+#
+# Run from the repo root (train_curve.py drives train.py in segments and keeps
+# a snapshot at each step of the curve):
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/regular.py
+
+out_dir = 'projects/pointing/runs/regular-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 6
+n_head = 6
+n_embd = 192
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 6000
+Overriding: eval_interval = 250
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/regular-r1
+number of parameters: 2.67M
+num decayed tensors: 25, non-decayed: 13
+using fused AdamW: False
+step 5000: train loss 0.9933, val loss 1.1314
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 5000: loss 1.0305, time 11662.52ms, mfu -100.00%
+iter 5050: loss 1.0395, time 354.66ms, mfu 0.29%
+iter 5100: loss 1.0296, time 351.59ms, mfu 0.29%
+iter 5150: loss 1.0561, time 347.22ms, mfu 0.29%
+iter 5200: loss 1.0268, time 352.68ms, mfu 0.29%
+step 5250: train loss 0.9897, val loss 1.1282
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 5250: loss 1.0293, time 11695.95ms, mfu 0.26%
+iter 5300: loss 1.0057, time 342.29ms, mfu 0.27%
+iter 5350: loss 1.0257, time 353.60ms, mfu 0.27%
+iter 5400: loss 1.0444, time 346.34ms, mfu 0.27%
+iter 5450: loss 1.0376, time 351.67ms, mfu 0.27%
+step 5500: train loss 0.9908, val loss 1.1271
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 5500: loss 1.0217, time 11679.83ms, mfu 0.25%
+iter 5550: loss 1.0286, time 359.38ms, mfu 0.25%
+iter 5600: loss 1.0199, time 348.38ms, mfu 0.26%
+iter 5650: loss 1.0441, time 351.03ms, mfu 0.26%
+iter 5700: loss 1.0355, time 344.89ms, mfu 0.26%
+step 5750: train loss 0.9852, val loss 1.1185
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 5750: loss 1.0069, time 11782.15ms, mfu 0.24%
+iter 5800: loss 1.0139, time 348.76ms, mfu 0.24%
+iter 5850: loss 1.0114, time 343.84ms, mfu 0.25%
+iter 5900: loss 1.0211, time 349.09ms, mfu 0.25%
+iter 5950: loss 1.0427, time 343.37ms, mfu 0.26%
+step 6000: train loss 0.9820, val loss 1.1211
+saving checkpoint to projects/pointing/runs/regular-r1
+iter 6000: loss 1.0198, time 11658.87ms, mfu 0.23%
+=== curve complete

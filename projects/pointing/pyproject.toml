@@ -1,0 +1,19 @@
+[project]
+name = "pointing"
+version = "0.1.0"
+description = "Punctuation restoration on the shakespeare xl corpus: a small GPT reads an unpunctuated line and emits one mark per gap"
+requires-python = ">=3.10"
+dependencies = [
+    "supcomputer-core",
+]
+
+[tool.uv.sources]
+supcomputer-core = { workspace = true }
+
+# Thin consumer of the shared engine, same shape as pona: strip.py, corpus
+# prep, configs, harness and run evidence live here; training and loading call
+# into nanogpt_core. Not a build target (no [build-system]).
+#
+# One cross-project read: data/build_corpus.py takes its source list (the
+# Gutenberg volume ids) from projects/shakespeare/data/_xl_corpus.py, because
+# this project's corpus is that project's corpus with the marks taken out.

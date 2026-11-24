@@ -1,0 +1,1288 @@
+{
+  "tag": "small-r1",
+  "run_dir": "projects/pointing/runs/small-r1",
+  "split": "test",
+  "protocol": {
+    "temperature": 0,
+    "decode": "greedy",
+    "prompt": "newline + words + separator"
+  },
+  "iter": 6000,
+  "best_val_loss": 1.1734691858291626,
+  "params": 795008,
+  "lines": 27995,
+  "wellformedness": {
+    "length_errors": 598,
+    "length_error_rate": 0.021360957313806037,
+    "too_short": 149,
+    "too_long": 449,
+    "anchor_errors": 571,
+    "anchor_error_rate": 0.020396499374888372,
+    "wellformed_lines": 27352,
+    "wellformed_rate": 0.9770316127879979
+  },
+  "exact_match": {
+    "rate": 0.28501518128237185,
+    "wilson_95": [
+      0.279756876189342,
+      0.29033248065033535
+    ],
+    "exact": 7979,
+    "by_kind": {
+      "other": {
+        "lines": 6956,
+        "rate": 0.6374353076480737
+      },
+      "verse": {
+        "lines": 19137,
+        "rate": 0.16434132831687306
+      },
+      "prose": {
+        "lines": 1902,
+        "rate": 0.2103049421661409
+      }
+    },
+    "unseen_input": {
+      "lines": 25837,
+      "rate": 0.24112706583581686
+    }
+  },
+  "no_mark": {
+    "lines": 1527,
+    "accuracy": 0.10347085789129011
+  },
+  "slots": {
+    "scored": 208192,
+    "accuracy": 0.8303825315093759,
+    "all_marks": {
+      "precision": 0.5257492080401447,
+      "recall": 0.39101788916225344,
+      "f1": 0.4484832542178327,
+      "gold": 47962,
+      "predicted": 35671
+    }
+  },
+  "per_mark": {
+    "comma": {
+      "mark": ",",
+      "precision": 0.3988019115568419,
+      "recall": 0.3263743527597224,
+      "f1": 0.3589712520069068,
+      "gold": 18154,
+      "predicted": 14857
+    },
+    "period": {
+      "mark": ".",
+      "precision": 0.6105226801749942,
+      "recall": 0.6157686948444031,
+      "f1": 0.613134466412302,
+      "gold": 17224,
+      "predicted": 17372
+    },
+    "semicolon": {
+      "mark": ";",
+      "precision": 0.75,
+      "recall": 0.0011507479861910242,
+      "f1": 0.002297970126388357,
+      "gold": 2607,
+      "predicted": 4
+    },
+    "colon": {
+      "mark": ":",
+      "precision": 0.7331670822942643,
+      "recall": 0.17324690630524456,
+      "f1": 0.28026692087702576,
+      "gold": 1697,
+      "predicted": 401
+    },
+    "question": {
+      "mark": "?",
+      "precision": 0.5107421875,
+      "recall": 0.24473561066916238,
+      "f1": 0.33090794052515027,
+      "gold": 2137,
+      "predicted": 1024
+    },
+    "exclamation": {
+      "mark": "!",
+      "precision": 0.6216216216216216,
+      "recall": 0.010879848628192999,
+      "f1": 0.021385402138540212,
+      "gold": 2114,
+      "predicted": 37
+    },
+    "dash": {
+      "mark": "—",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gold": 185,
+      "predicted": 0
+    },
+    "ellipsis": {
+      "mark": "…",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gold": 0,
+      "predicted": 0
+    },
+    "quote-open": {
+      "mark": "“",
+      "precision": 0.8758620689655172,
+      "recall": 0.2926267281105991,
+      "f1": 0.4386873920552678,
+      "gold": 434,
+      "predicted": 145
+    },
+    "quote-close": {
+      "mark": "”",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gold": 61,
+      "predicted": 0
+    },
+    "apostrophe-leading": {
+      "mark": "‘",
+      "precision": 0.7133333333333334,
+      "recall": 0.15597667638483964,
+      "f1": 0.25598086124401914,
+      "gold": 686,
+      "predicted": 150
+    },
+    "apostrophe-trailing": {
+      "mark": "’",
+      "precision": 0.7586206896551724,
+      "recall": 0.09586056644880174,
+      "f1": 0.1702127659574468,
+      "gold": 459,
+      "predicted": 58
+    },
+    "paren-open": {
+      "mark": "(",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gold": 50,
+      "predicted": 0
+    },
+    "paren-close": {
+      "mark": ")",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "gold": 52,
+      "predicted": 0
+    },
+    "bracket-open": {
+      "mark": "[",
+      "precision": 0.7744774477447744,
+      "recall": 0.5411222136817833,
+      "f1": 0.6371040723981901,
+      "gold": 1301,
+      "predicted": 909
+    },
+    "bracket-close": {
+      "mark": "]",
+      "precision": 0.5574229691876751,
+      "recall": 0.4968789013732834,
+      "f1": 0.5254125412541253,
+      "gold": 801,
+      "predicted": 714
+    }
+  },
+  "line_end": {
+    "other": {
+      "lines": 6921,
+      "accuracy": 0.8192457737321196,
+      "marks": {
+        ".": {
+          "precision": 0.8893326676651689,
+          "recall": 0.931497298239498,
+          "f1": 0.9099267835859016,
+          "gold": 5737,
+          "predicted": 6009,
+          "share_of_gold": 0.8289264557144921
+        },
+        ",": {
+          "precision": 0.013227513227513227,
+          "recall": 0.125,
+          "f1": 0.023923444976076555,
+          "gold": 40,
+          "predicted": 378,
+          "share_of_gold": 0.005779511631267158
+        },
+        "?": {
+          "precision": 0.793939393939394,
+          "recall": 0.4388609715242881,
+          "f1": 0.5652642934196332,
+          "gold": 597,
+          "predicted": 330,
+          "share_of_gold": 0.08625921109666233
+        },
+        "!": {
+          "precision": 0.6666666666666666,
+          "recall": 0.05054151624548736,
+          "f1": 0.09395973154362416,
+          "gold": 277,
+          "predicted": 21,
+          "share_of_gold": 0.04002311804652507
+        },
+        ";": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 2,
+          "predicted": 0,
+          "share_of_gold": 0.00028897558156335787
+        },
+        ":": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 10,
+          "predicted": 0,
+          "share_of_gold": 0.0014448779078167894
+        },
+        "_": {
+          "precision": 0.2838709677419355,
+          "recall": 0.2233502538071066,
+          "f1": 0.25,
+          "gold": 197,
+          "predicted": 155,
+          "share_of_gold": 0.028464094783990753
+        }
+      },
+      "confusion_top": {
+        ".>.": 5344,
+        "?>?": 262,
+        ".>,": 245,
+        "?>.": 221,
+        "!>.": 199,
+        "_>.": 152,
+        "?>,": 83,
+        ".>_": 78,
+        "_>_": 44,
+        ".>?": 41,
+        "!>,": 35,
+        ",>.": 33,
+        "—>.": 30,
+        ".>]": 27,
+        "?>_": 26,
+        "!>?": 25
+      }
+    },
+    "verse": {
+      "lines": 19021,
+      "accuracy": 0.34724777877083224,
+      "marks": {
+        ".": {
+          "precision": 0.3388132545594657,
+          "recall": 0.534765862558281,
+          "f1": 0.414812485258275,
+          "gold": 4933,
+          "predicted": 7786,
+          "share_of_gold": 0.2593449345460281
+        },
+        ",": {
+          "precision": 0.35546108567691304,
+          "recall": 0.5719045948789898,
+          "f1": 0.43842430760957246,
+          "gold": 5702,
+          "predicted": 9174,
+          "share_of_gold": 0.29977393407286684
+        },
+        "?": {
+          "precision": 0.3502454991816694,
+          "recall": 0.23110151187904968,
+          "f1": 0.2784645413142486,
+          "gold": 926,
+          "predicted": 611,
+          "share_of_gold": 0.04868303454077073
+        },
+        "!": {
+          "precision": 0.5714285714285714,
+          "recall": 0.004381161007667032,
+          "f1": 0.008695652173913044,
+          "gold": 913,
+          "predicted": 7,
+          "share_of_gold": 0.04799957941222859
+        },
+        ";": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 1324,
+          "predicted": 0,
+          "share_of_gold": 0.0696072761684454
+        },
+        ":": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 701,
+          "predicted": 0,
+          "share_of_gold": 0.036854003469849114
+        },
+        "_": {
+          "precision": 0.373134328358209,
+          "recall": 0.10385414262635588,
+          "f1": 0.16248420292471566,
+          "gold": 4333,
+          "predicted": 1206,
+          "share_of_gold": 0.22780085169023712
+        }
+      },
+      "confusion_top": {
+        ",>,": 3261,
+        ".>.": 2638,
+        "_>,": 2144,
+        ",>.": 1993,
+        ".>,": 1948,
+        "_>.": 1440,
+        ";>,": 684,
+        ";>.": 553,
+        "!>.": 454,
+        "_>_": 450,
+        "!>,": 389,
+        "?>,": 378,
+        ":>.": 346,
+        ",>_": 332,
+        ":>,": 308,
+        "?>.": 285
+      }
+    },
+    "prose": {
+      "lines": 1410,
+      "accuracy": 0.6716312056737589,
+      "marks": {
+        ".": {
+          "precision": 0.760777683854607,
+          "recall": 0.8866995073891626,
+          "f1": 0.8189262966333031,
+          "gold": 1015,
+          "predicted": 1183,
+          "share_of_gold": 0.7198581560283688
+        },
+        ",": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 6,
+          "predicted": 81,
+          "share_of_gold": 0.00425531914893617
+        },
+        "?": {
+          "precision": 0.5833333333333334,
+          "recall": 0.25149700598802394,
+          "f1": 0.3514644351464435,
+          "gold": 167,
+          "predicted": 72,
+          "share_of_gold": 0.11843971631205674
+        },
+        "!": {
+          "precision": 1.0,
+          "recall": 0.024752475247524754,
+          "f1": 0.04830917874396135,
+          "gold": 202,
+          "predicted": 5,
+          "share_of_gold": 0.14326241134751774
+        },
+        ";": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 4,
+          "predicted": 0,
+          "share_of_gold": 0.0028368794326241137
+        },
+        ":": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 2,
+          "predicted": 1,
+          "share_of_gold": 0.0014184397163120568
+        },
+        "_": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 3,
+          "predicted": 63,
+          "share_of_gold": 0.002127659574468085
+        }
+      },
+      "confusion_top": {
+        ".>.": 900,
+        "!>.": 162,
+        "?>.": 103,
+        ".>,": 52,
+        ".>_": 45,
+        "?>?": 42,
+        "?>,": 17,
+        "!>?": 17,
+        ".>?": 12,
+        "!>,": 11,
+        "!>_": 7,
+        ",>.": 5,
+        "!>!": 5,
+        "?>_": 5,
+        ".>]": 5,
+        "]>_": 3
+      }
+    }
+  },
+  "per_source": {
+    "100": {
+      "lines": 15256,
+      "exact_match": 0.37132931305715783,
+      "malformed": 0.026546932354483483,
+      "slot_accuracy": 0.8463226480027841,
+      "all_marks": {
+        "precision": 0.5498660142141443,
+        "recall": 0.426679323750113,
+        "f1": 0.48050295255548775,
+        "gold": 22122,
+        "predicted": 17166
+      },
+      "marks": {
+        "comma": {
+          "precision": 0.38122861817640935,
+          "recall": 0.3005393996247655,
+          "f1": 0.33610910759950163,
+          "gold": 8528,
+          "predicted": 6723
+        },
+        "period": {
+          "precision": 0.6750027065064415,
+          "recall": 0.7421735507677657,
+          "f1": 0.7069962580791472,
+          "gold": 8401,
+          "predicted": 9237
+        },
+        "semicolon": {
+          "precision": 1.0,
+          "recall": 0.002259036144578313,
+          "f1": 0.004507888805409466,
+          "gold": 1328,
+          "predicted": 3
+        },
+        "colon": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 686,
+          "predicted": 3
+        },
+        "question": {
+          "precision": 0.5152057245080501,
+          "recall": 0.254416961130742,
+          "f1": 0.3406268480189237,
+          "gold": 1132,
+          "predicted": 559
+        },
+        "exclamation": {
+          "precision": 1.0,
+          "recall": 0.012684989429175475,
+          "f1": 0.025052192066805846,
+          "gold": 946,
+          "predicted": 12
+        }
+      }
+    },
+    "1589": {
+      "lines": 3252,
+      "exact_match": 0.22140221402214022,
+      "malformed": 0.02921279212792128,
+      "slot_accuracy": 0.830900609434956,
+      "all_marks": {
+        "precision": 0.6060883917109848,
+        "recall": 0.4609483960948396,
+        "f1": 0.5236473104650242,
+        "gold": 7170,
+        "predicted": 5453
+      },
+      "marks": {
+        "comma": {
+          "precision": 0.47601279317697226,
+          "recall": 0.3404498665650019,
+          "f1": 0.3969771060235608,
+          "gold": 2623,
+          "predicted": 1876
+        },
+        "period": {
+          "precision": 0.5513435700575816,
+          "recall": 0.5922680412371134,
+          "f1": 0.5710735586481114,
+          "gold": 1940,
+          "predicted": 2084
+        },
+        "semicolon": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 239,
+          "predicted": 0
+        },
+        "colon": {
+          "precision": 0.9865771812080537,
+          "recall": 0.6933962264150944,
+          "f1": 0.814404432132964,
+          "gold": 424,
+          "predicted": 298
+        },
+        "question": {
+          "precision": 0.3409090909090909,
+          "recall": 0.15625,
+          "f1": 0.21428571428571427,
+          "gold": 96,
+          "predicted": 44
+        },
+        "exclamation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 126,
+          "predicted": 0
+        }
+      }
+    },
+    "20288": {
+      "lines": 2871,
+      "exact_match": 0.13375130616509928,
+      "malformed": 0.0041797283176593526,
+      "slot_accuracy": 0.7994048999149858,
+      "all_marks": {
+        "precision": 0.46688007879832555,
+        "recall": 0.28973105134474325,
+        "f1": 0.35756718528995757,
+        "gold": 6544,
+        "predicted": 4061
+      },
+      "marks": {
+        "comma": {
+          "precision": 0.40480507706255664,
+          "recall": 0.35296442687747037,
+          "f1": 0.3771114864864865,
+          "gold": 2530,
+          "predicted": 2206
+        },
+        "period": {
+          "precision": 0.5372781065088758,
+          "recall": 0.3410969196093163,
+          "f1": 0.4172794117647059,
+          "gold": 2662,
+          "predicted": 1690
+        },
+        "semicolon": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 369,
+          "predicted": 1
+        },
+        "colon": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 243,
+          "predicted": 2
+        },
+        "question": {
+          "precision": 0.5357142857142857,
+          "recall": 0.20833333333333334,
+          "f1": 0.3,
+          "gold": 288,
+          "predicted": 112
+        },
+        "exclamation": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 306,
+          "predicted": 0
+        }
+      }
+    },
+    "6043": {
+      "lines": 3133,
+      "exact_match": 0.1832109798914778,
+      "malformed": 0.008298755186721992,
+      "slot_accuracy": 0.8216465800594772,
+      "all_marks": {
+        "precision": 0.4232355081251516,
+        "recall": 0.31390537866522755,
+        "f1": 0.36046271431522414,
+        "gold": 5559,
+        "predicted": 4123
+      },
+      "marks": {
+        "comma": {
+          "precision": 0.37186629526462395,
+          "recall": 0.3399830220713073,
+          "f1": 0.3552106430155211,
+          "gold": 2356,
+          "predicted": 2154
+        },
+        "period": {
+          "precision": 0.4948394495412844,
+          "recall": 0.4974063400576369,
+          "f1": 0.49611957459039957,
+          "gold": 1735,
+          "predicted": 1744
+        },
+        "semicolon": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 329,
+          "predicted": 0
+        },
+        "colon": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 106,
+          "predicted": 2
+        },
+        "question": {
+          "precision": 0.5714285714285714,
+          "recall": 0.24,
+          "f1": 0.33802816901408445,
+          "gold": 300,
+          "predicted": 126
+        },
+        "exclamation": {
+          "precision": 0.42857142857142855,
+          "recall": 0.00821917808219178,
+          "f1": 0.016129032258064512,
+          "gold": 365,
+          "predicted": 7
+        }
+      }
+    },
+    "12915": {
+      "lines": 3483,
+      "exact_match": 0.1826012058570198,
+      "malformed": 0.030146425495262703,
+      "slot_accuracy": 0.806524016160407,
+      "all_marks": {
+        "precision": 0.4866474938373048,
+        "recall": 0.3607431094868281,
+        "f1": 0.4143419326628771,
+        "gold": 6567,
+        "predicted": 4868
+      },
+      "marks": {
+        "comma": {
+          "precision": 0.4083245521601686,
+          "recall": 0.3660840812470477,
+          "f1": 0.386052303860523,
+          "gold": 2117,
+          "predicted": 1898
+        },
+        "period": {
+          "precision": 0.5544516622086358,
+          "recall": 0.583668543845535,
+          "f1": 0.5686850872036057,
+          "gold": 2486,
+          "predicted": 2617
+        },
+        "semicolon": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 342,
+          "predicted": 0
+        },
+        "colon": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "gold": 238,
+          "predicted": 96
+        },
+        "question": {
+          "precision": 0.4808743169398907,
+          "recall": 0.27414330218068533,
+          "f1": 0.3492063492063492,
+          "gold": 321,
+          "predicted": 183
+        },
+        "exclamation": {
+          "precision": 0.4444444444444444,
+          "recall": 0.0215633423180593,
+          "f1": 0.04113110539845759,
+          "gold": 371,
+          "predicted": 18
+        }
+      }
+    }
+  },
+  "question_distance": {
+    "6-9": {
+      "recall": 0.26993865030674846,
+      "hits": 132,
+      "gold": 489,
+      "wilson_95": [
+        0.23249737741277282,
+        0.3109664860273263
+      ]
+    },
+    "3-5": {
+      "recall": 0.4354066985645933,
+      "hits": 273,
+      "gold": 627,
+      "wilson_95": [
+        0.3971069273735592,
+        0.47449317002014474
+      ]
+    },
+    "10+": {
+      "recall": 0.1780821917808219,
+      "hits": 13,
+      "gold": 73,
+      "wilson_95": [
+        0.10713272068797698,
+        0.2812194219014537
+      ]
+    },
+    "no question word": {
+      "recall": 0.07863849765258216,
+      "hits": 67,
+      "gold": 852,
+      "wilson_95": [
+        0.06239694833860102,
+        0.0986627617759809
+      ]
+    },
+    "1-2": {
+      "recall": 0.3958333333333333,
+      "hits": 38,
+      "gold": 96,
+      "wilson_95": [
+        0.3038319769764796,
+        0.49585072041619044
+      ]
+    }
+  },
+  "ceiling": {
+    "marked_gaps": 50524,
+    "gaps_with_two_or_more_marks": 2614,
+    "share": 0.051737787981949175,
+    "marks_lost_to_collapse": {
+      "comma": {
+        "lost": 70,
+        "kept": 19297,
+        "recall_ceiling": 0.9963856043785821
+      },
+      "period": {
+        "lost": 53,
+        "kept": 17795,
+        "recall_ceiling": 0.997030479605558
+      },
+      "semicolon": {
+        "lost": 11,
+        "kept": 2865,
+        "recall_ceiling": 0.9961752433936022
+      },
+      "colon": {
+        "lost": 27,
+        "kept": 1884,
+        "recall_ceiling": 0.9858712715855573
+      },
+      "question": {
+        "lost": 11,
+        "kept": 2182,
+        "recall_ceiling": 0.9949840401276789
+      },
+      "exclamation": {
+        "lost": 1,
+        "kept": 2161,
+        "recall_ceiling": 0.9995374653098983
+      },
+      "dash": {
+        "lost": 670,
+        "kept": 198,
+        "recall_ceiling": 0.22811059907834103
+      },
+      "ellipsis": {
+        "lost": 0,
+        "kept": 0,
+        "recall_ceiling": null
+      },
+      "quote-open": {
+        "lost": 94,
+        "kept": 478,
+        "recall_ceiling": 0.8356643356643356
+      },
+      "quote-close": {
+        "lost": 406,
+        "kept": 81,
+        "recall_ceiling": 0.16632443531827515
+      },
+      "apostrophe-leading": {
+        "lost": 189,
+        "kept": 744,
+        "recall_ceiling": 0.797427652733119
+      },
+      "apostrophe-trailing": {
+        "lost": 46,
+        "kept": 512,
+        "recall_ceiling": 0.9175627240143369
+      },
+      "paren-open": {
+        "lost": 34,
+        "kept": 64,
+        "recall_ceiling": 0.6530612244897959
+      },
+      "paren-close": {
+        "lost": 30,
+        "kept": 68,
+        "recall_ceiling": 0.6938775510204082
+      },
+      "bracket-open": {
+        "lost": 334,
+        "kept": 1349,
+        "recall_ceiling": 0.8015448603683898
+      },
+      "bracket-close": {
+        "lost": 946,
+        "kept": 846,
+        "recall_ceiling": 0.4720982142857143
+      }
+    }
+  },
+  "examples": [
+    {
+      "words": "the tragedy of king lear",
+      "gold": "_t_t_o_k_l_",
+      "pred": "_t_t_o_k_l.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene i a room of state in king lear's palace",
+      "gold": "_s_i.a_r_o_s_i_k_l_p_",
+      "pred": "_s_i.a_r_o_s_i_k_l_p.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene ii a hall in the earl of gloucester's castle",
+      "gold": "_s_i.a_h_i_t_e_o_g_c_",
+      "pred": "_s_i.a_h_i_t_e_o_g_c.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene iii a room in the duke of albany's palace",
+      "gold": "_s_i.a_r_i_t_d_o_a_p_",
+      "pred": "_s_i.a_r_i_t_d_o_a_p.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene iv a hall in albany's palace",
+      "gold": "_s_i.a_h_i_a_p_",
+      "pred": "_s_i.a_h_i_a_p.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene v court before the duke of albany's palace",
+      "gold": "_s_v.c_b_t_d_o_a_p_",
+      "pred": "_s_v.c.b_t_d_o_a_p.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene i a court within the castle of the earl of gloucester",
+      "gold": "_s_i.a_c_w_t_c_o_t_e_o_g_",
+      "pred": "_s_i.a_c_w_t_c_o_t_e_o_g.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene ii before gloucester's castle",
+      "gold": "_s_i.b_g_c_",
+      "pred": "_s_i.b.g_c.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene iii the open country",
+      "gold": "_s_i.t_o_c_",
+      "pred": "_s_i.t_o_c.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene iv before gloucester's castle",
+      "gold": "_s_i.b_g_c_",
+      "pred": "_s_i.b.g_c.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene i a heath",
+      "gold": "_s_i.a_h_",
+      "pred": "_s_i.a_h.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene ii another part of the heath",
+      "gold": "_s_i.a_p_o_t_h_",
+      "pred": "_s_i.a_p_o_t_h.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene iii a room in gloucester's castle",
+      "gold": "_s_i.a_r_i_g_c_",
+      "pred": "_s_i.a_r_i_g_c.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene iv a part of the heath with a hovel",
+      "gold": "_s_i.a_p_o_t_h_w_a_h_",
+      "pred": "_s_i.a_p_o_t_h_w_a_h.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene v a room in gloucester's castle",
+      "gold": "_s_v.a_r_i_g_c_",
+      "pred": "_s_v.a_r_i_g_c.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene vi a chamber in a farmhouse adjoining the castle",
+      "gold": "_s_v.a_c_i_a_f_a_t_c_",
+      "pred": "_s_v.a_c_i_a_f_a_t_c.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene vii a room in gloucester's castle",
+      "gold": "_s_v.a_r_i_g_c_",
+      "pred": "_s_v.a_r_i_g_c.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene i the heath",
+      "gold": "_s_i.t_h_",
+      "pred": "_s_i.t_h.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene ii before the duke of albany's palace",
+      "gold": "_s_i.b_t_d_o_a_p_",
+      "pred": "_s_i.b.t_d_o_a_p.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene iii the french camp near dover",
+      "gold": "_s_i.t_f_c_n_d_",
+      "pred": "_s_i.t_f_c_n_d.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene iv the french camp a tent",
+      "gold": "_s_i.t_f_c.a_t_",
+      "pred": "_s_i.t_f_c_a_t.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene v a room in gloucester's castle",
+      "gold": "_s_v.a_r_i_g_c_",
+      "pred": "_s_v.a_r_i_g_c.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene vi the country near dover",
+      "gold": "_s_v.t_c_n_d_",
+      "pred": "_s_v.t_c_n_d.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene vii a tent in the french camp",
+      "gold": "_s_v.a_t_i_t_f_c_",
+      "pred": "_s_v.a_t_i_t_f_c.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene i the camp of the british forces near dover",
+      "gold": "_s_i.t_c_o_t_b_f_n_d_",
+      "pred": "_s_i.t_c_o_t_b_f_n_d.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene ii a field between the two camps",
+      "gold": "_s_i.a_f_b_t_t_c_",
+      "pred": "_s_i.a_f_b_t_t_c.",
+      "problem": "marks"
+    },
+    {
+      "words": "scene iii the british camp near dover",
+      "gold": "_s_i.t_b_c_n_d_",
+      "pred": "_s_i.t_b_c.n_d_",
+      "problem": "marks"
+    },
+    {
+      "words": "lear king of britain",
+      "gold": "_l,k_o_b.",
+      "pred": "_l_k_o_b.",
+      "problem": "marks"
+    },
+    {
+      "words": "goneril eldest daughter to lear",
+      "gold": "_g,e_d_t_l.",
+      "pred": "_g,e,d_t_l.",
+      "problem": "marks"
+    },
+    {
+      "words": "regan second daughter to lear",
+      "gold": "_r,s_d_t_l.",
+      "pred": "_r_s_d_t_l.",
+      "problem": "marks"
+    },
+    {
+      "words": "cordelia youngest daughter to lear",
+      "gold": "_c,y_d_t_l.",
+      "pred": "_c:y_d_t_l.",
+      "problem": "marks"
+    },
+    {
+      "words": "duke of albany married to goneril",
+      "gold": "_d_o_a,m_t_g.",
+      "pred": "_d.o_a_m_t_g.",
+      "problem": "marks"
+    },
+    {
+      "words": "duke of cornwall married to regan",
+      "gold": "_d_o_c,m_t_r.",
+      "pred": "_d.o_c_m_t_r.",
+      "problem": "marks"
+    },
+    {
+      "words": "edgar elder son to gloucester",
+      "gold": "_e,e_s_t_g.",
+      "pred": "_e_e_s_t_g.",
+      "problem": "marks"
+    },
+    {
+      "words": "edmund younger bastard son to gloucester",
+      "gold": "_e,y_b_s_t_g.",
+      "pred": "_e_y_b_s_t_g.",
+      "problem": "marks"
+    },
+    {
+      "words": "oswald steward to goneril",
+      "gold": "_o,s_t_g.",
+      "pred": "_o_s_t_g.",
+      "problem": "marks"
+    },
+    {
+      "words": "old man tenant to gloucester",
+      "gold": "_o_m,t_t_g.",
+      "pred": "_o_m_t_t_g.",
+      "problem": "marks"
+    },
+    {
+      "words": "gentleman attendant on cordelia",
+      "gold": "_g,a_o_c.",
+      "pred": "_g_a_o_c.",
+      "problem": "marks"
+    },
+    {
+      "words": "knights attending on the king officers messengers soldiers and",
+      "gold": "_k_a_o_t_k,o,m,s_a_",
+      "pred": "_k_a_o_t_k_o_m,s,a_",
+      "problem": "marks"
+    },
+    {
+      "words": "scene i a room of state in king lear's palace",
+      "gold": "_s_i.a_r_o_s_i_k_l_p_",
+      "pred": "_s_i.a_r_o_s_i_k_l_p.",
+      "problem": "marks"
+    }
+  ],
+  "per_source_by_kind": {
+    "100": {
+      "other": {
+        "lines": 5371,
+        "exact_match": 0.7412027555390057,
+        "baseline_exact_match": 0.6793893129770993,
+        "slot_accuracy": 0.8935580917816723,
+        "all_marks_f1": 0.7851036943432691,
+        "comma_f1": 0.3574683544303798,
+        "period_f1": 0.9212638423244945,
+        "final_slot_accuracy": 0.8691833302186507
+      },
+      "prose": {
+        "lines": 1138,
+        "exact_match": 0.1546572934973638,
+        "baseline_exact_match": 0.13884007029876977,
+        "slot_accuracy": 0.8589626933575978,
+        "all_marks_f1": 0.47267244628722205,
+        "comma_f1": 0.29200463499420626,
+        "period_f1": 0.7560366361365528,
+        "final_slot_accuracy": 0.6044499381953028
+      },
+      "verse": {
+        "lines": 8747,
+        "exact_match": 0.17240196638847605,
+        "baseline_exact_match": 0.14599291185549332,
+        "slot_accuracy": 0.8318005614222698,
+        "all_marks_f1": 0.304632904839962,
+        "comma_f1": 0.3357770079755096,
+        "period_f1": 0.37822262663027,
+        "final_slot_accuracy": 0.34184788862041193
+      }
+    },
+    "12915": {
+      "other": {
+        "lines": 544,
+        "exact_match": 0.15625,
+        "baseline_exact_match": 0.001838235294117647,
+        "slot_accuracy": 0.7621916236374068,
+        "all_marks_f1": 0.5240686479698619,
+        "comma_f1": 0.47154471544715443,
+        "period_f1": 0.6467661691542288,
+        "final_slot_accuracy": 0.5148698884758365
+      },
+      "prose": {
+        "lines": 299,
+        "exact_match": 0.3879598662207358,
+        "baseline_exact_match": 0.34448160535117056,
+        "slot_accuracy": 0.8604151753758053,
+        "all_marks_f1": 0.6395173453996983,
+        "comma_f1": 0.36879432624113473,
+        "period_f1": 0.8970976253298153,
+        "final_slot_accuracy": 0.7946428571428571
+      },
+      "verse": {
+        "lines": 2640,
+        "exact_match": 0.16477272727272727,
+        "baseline_exact_match": 0.13257575757575757,
+        "slot_accuracy": 0.8101514943475674,
+        "all_marks_f1": 0.36526303232732915,
+        "comma_f1": 0.374334713187463,
+        "period_f1": 0.49804039794995475,
+        "final_slot_accuracy": 0.3551223241590214
+      }
+    },
+    "1589": {
+      "other": {
+        "lines": 397,
+        "exact_match": 0.42065491183879095,
+        "baseline_exact_match": 0.14357682619647355,
+        "slot_accuracy": 0.8599816569856313,
+        "all_marks_f1": 0.8164367126574685,
+        "comma_f1": 0.3283582089552239,
+        "period_f1": 0.8264094955489615,
+        "final_slot_accuracy": 0.8051282051282052
+      },
+      "prose": {
+        "lines": 354,
+        "exact_match": 0.2231638418079096,
+        "baseline_exact_match": 0.2796610169491525,
+        "slot_accuracy": 0.766295707472178,
+        "all_marks_f1": 0.5721352019785655,
+        "comma_f1": 0.09411764705882353,
+        "period_f1": 0.8260105448154657,
+        "final_slot_accuracy": 0.7676056338028169
+      },
+      "verse": {
+        "lines": 2501,
+        "exact_match": 0.18952419032387044,
+        "baseline_exact_match": 0.10635745701719312,
+        "slot_accuracy": 0.8321508588498879,
+        "all_marks_f1": 0.39549281822684496,
+        "comma_f1": 0.4127906976744186,
+        "period_f1": 0.3388704318936877,
+        "final_slot_accuracy": 0.3834071687474829
+      }
+    },
+    "20288": {
+      "other": {
+        "lines": 84,
+        "exact_match": 0.7261904761904762,
+        "baseline_exact_match": 0.7738095238095238,
+        "slot_accuracy": 0.8979057591623036,
+        "all_marks_f1": 0.7857142857142857,
+        "comma_f1": 0.17142857142857143,
+        "period_f1": 0.925,
+        "final_slot_accuracy": 0.8809523809523809
+      },
+      "prose": {
+        "lines": 15,
+        "exact_match": 0.06666666666666667,
+        "baseline_exact_match": 0.06666666666666667,
+        "slot_accuracy": 0.7786885245901639,
+        "all_marks_f1": 0.5172413793103449,
+        "comma_f1": 0.2,
+        "period_f1": 0.9166666666666666,
+        "final_slot_accuracy": 0.9166666666666666
+      },
+      "verse": {
+        "lines": 2772,
+        "exact_match": 0.11616161616161616,
+        "baseline_exact_match": 0.11002886002886003,
+        "slot_accuracy": 0.798021596910223,
+        "all_marks_f1": 0.3485653560042508,
+        "comma_f1": 0.37979019481909654,
+        "period_f1": 0.3949136276391555,
+        "final_slot_accuracy": 0.3622873688020268
+      }
+    },
+    "6043": {
+      "other": {
+        "lines": 560,
+        "exact_match": 0.25,
+        "baseline_exact_match": 0.24642857142857144,
+        "slot_accuracy": 0.7655944055944056,
+        "all_marks_f1": 0.5109090909090909,
+        "comma_f1": 0.33480176211453744,
+        "period_f1": 0.7011128775834659,
+        "final_slot_accuracy": 0.6344086021505376
+      },
+      "prose": {
+        "lines": 96,
+        "exact_match": 0.2916666666666667,
+        "baseline_exact_match": 0.3333333333333333,
+        "slot_accuracy": 0.8108527131782945,
+        "all_marks_f1": 0.44202898550724634,
+        "comma_f1": 0.1836734693877551,
+        "period_f1": 0.7580645161290324,
+        "final_slot_accuracy": 0.6296296296296297
+      },
+      "verse": {
+        "lines": 2477,
+        "exact_match": 0.16390795316915624,
+        "baseline_exact_match": 0.1707710940654017,
+        "slot_accuracy": 0.8313648293963255,
+        "all_marks_f1": 0.31140716069941715,
+        "comma_f1": 0.36179888832743806,
+        "period_f1": 0.357653791130186,
+        "final_slot_accuracy": 0.3047001620745543
+      }
+    }
+  },
+  "baseline": {
+    "rule": "no marks, then a final '.'",
+    "exact_match": 0.24732988033577424,
+    "slot_accuracy": 0.8060073849435734,
+    "all_marks": {
+      "precision": 0.4346490444722272,
+      "recall": 0.24083603831842293,
+      "f1": 0.3099377220800061,
+      "gold": 50524,
+      "predicted": 27995
+    },
+    "by_kind": {
+      "other": {
+        "lines": 6956,
+        "rate": 0.5621046578493387
+      },
+      "verse": {
+        "lines": 19137,
+        "rate": 0.1369598160631238
+      },
+      "prose": {
+        "lines": 1902,
+        "rate": 0.20662460567823343
+      }
+    }
+  }
+}

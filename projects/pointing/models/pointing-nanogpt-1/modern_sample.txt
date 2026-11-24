@@ -1,0 +1,24 @@
+# Twenty lines of modern English, typed by hand for this project before any
+# model was trained: news, email, a recipe. Not a score. A note on how far a
+# 1600s punctuation habit carries, and a preview of what visitors will type.
+# One line per row; the harness strips each the way strip.py would.
+The city council voted on Tuesday to close the bridge for repairs.
+Officials said the work will take six months, weather permitting.
+"We know this is hard on commuters," the mayor said, "but the bridge is not safe."
+Who will pay for the detour buses?
+Rain is expected through the weekend; bring an umbrella.
+The home team lost again, 3 to 1, and the coach refused to comment.
+Hi Sam, thanks for sending the draft so quickly.
+I read it last night, and I have two small questions.
+Can we move the meeting to Thursday at ten?
+If that doesn't work, tell me what does.
+Please don't forward this yet: the numbers are still wrong.
+Sorry for the short notice!
+Talk soon, and say hello to your sister for me.
+Heat the oven to 400 degrees and butter a baking dish.
+Chop the onions, the carrots and the celery into small pieces.
+Cook them in olive oil until soft, about ten minutes.
+Add the rice, stir once, then pour in the stock.
+Is the pan too dry? Add a splash of water.
+Cover and bake for half an hour (do not lift the lid).
+Let it rest before serving — it will be very hot.

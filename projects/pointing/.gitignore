@@ -1,0 +1,17 @@
+# Regenerable artifacts — the committed scripts rebuild all of it.
+runs/
+data/raw/
+data/corpus/
+data/tokenized/
+models/*/raw/
+models/*/corpus/
+models/*/tokenized/
+models/*/results/
+dist/
+__pycache__/
+*.bin
+*.pkl
+*.pt
+*.onnx
+*.vocab.json
+.DS_Store
