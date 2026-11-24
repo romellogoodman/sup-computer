@@ -1,0 +1,973 @@
+=== segment 0 -> 50
+Overriding config with projects/pointing/config/small.py:
+# pointing, the 0.79M arm -- kenosha-kid shape (4L/4H/128E). Everything else
+# is the regular arm, line for line: same pairs, same block, same schedule.
+#
+# Run from the repo root:
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/small.py
+
+out_dir = 'projects/pointing/runs/small-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 4
+n_head = 4
+n_embd = 128
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 50
+Overriding: eval_interval = 50
+Overriding: init_from = scratch
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Initializing a new model from scratch
+number of parameters: 0.80M
+num decayed tensors: 17, non-decayed: 9
+using fused AdamW: False
+step 0: train loss 4.1025, val loss 4.1040
+iter 0: loss 4.0979, time 4848.00ms, mfu -100.00%
+step 50: train loss 2.6865, val loss 2.6899
+saving checkpoint to projects/pointing/runs/small-r1
+iter 50: loss 2.7180, time 4965.27ms, mfu 0.01%
+=== segment 50 -> 100
+Overriding config with projects/pointing/config/small.py:
+# pointing, the 0.79M arm -- kenosha-kid shape (4L/4H/128E). Everything else
+# is the regular arm, line for line: same pairs, same block, same schedule.
+#
+# Run from the repo root:
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/small.py
+
+out_dir = 'projects/pointing/runs/small-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 4
+n_head = 4
+n_embd = 128
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 100
+Overriding: eval_interval = 50
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/small-r1
+number of parameters: 0.80M
+num decayed tensors: 17, non-decayed: 9
+using fused AdamW: False
+step 50: train loss 2.6881, val loss 2.6874
+saving checkpoint to projects/pointing/runs/small-r1
+iter 50: loss 2.7154, time 4521.88ms, mfu -100.00%
+step 100: train loss 2.1701, val loss 2.1830
+saving checkpoint to projects/pointing/runs/small-r1
+iter 100: loss 2.1888, time 4825.73ms, mfu 0.01%
+=== segment 100 -> 150
+Overriding config with projects/pointing/config/small.py:
+# pointing, the 0.79M arm -- kenosha-kid shape (4L/4H/128E). Everything else
+# is the regular arm, line for line: same pairs, same block, same schedule.
+#
+# Run from the repo root:
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/small.py
+
+out_dir = 'projects/pointing/runs/small-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 4
+n_head = 4
+n_embd = 128
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 150
+Overriding: eval_interval = 50
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/small-r1
+number of parameters: 0.80M
+num decayed tensors: 17, non-decayed: 9
+using fused AdamW: False
+step 100: train loss 2.1723, val loss 2.1834
+saving checkpoint to projects/pointing/runs/small-r1
+iter 100: loss 2.1916, time 5516.20ms, mfu -100.00%
+step 150: train loss 2.0230, val loss 2.0336
+saving checkpoint to projects/pointing/runs/small-r1
+iter 150: loss 2.0770, time 5637.51ms, mfu 0.01%
+=== segment 150 -> 200
+Overriding config with projects/pointing/config/small.py:
+# pointing, the 0.79M arm -- kenosha-kid shape (4L/4H/128E). Everything else
+# is the regular arm, line for line: same pairs, same block, same schedule.
+#
+# Run from the repo root:
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/small.py
+
+out_dir = 'projects/pointing/runs/small-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 4
+n_head = 4
+n_embd = 128
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 200
+Overriding: eval_interval = 50
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/small-r1
+number of parameters: 0.80M
+num decayed tensors: 17, non-decayed: 9
+using fused AdamW: False
+step 150: train loss 2.0239, val loss 2.0364
+saving checkpoint to projects/pointing/runs/small-r1
+iter 150: loss 2.0560, time 5848.86ms, mfu -100.00%
+step 200: train loss 1.9295, val loss 1.9486
+saving checkpoint to projects/pointing/runs/small-r1
+iter 200: loss 1.9735, time 5587.46ms, mfu 0.01%
+=== segment 200 -> 300
+Overriding config with projects/pointing/config/small.py:
+# pointing, the 0.79M arm -- kenosha-kid shape (4L/4H/128E). Everything else
+# is the regular arm, line for line: same pairs, same block, same schedule.
+#
+# Run from the repo root:
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/small.py
+
+out_dir = 'projects/pointing/runs/small-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 4
+n_head = 4
+n_embd = 128
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 300
+Overriding: eval_interval = 100
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/small-r1
+number of parameters: 0.80M
+num decayed tensors: 17, non-decayed: 9
+using fused AdamW: False
+step 200: train loss 1.9256, val loss 1.9488
+saving checkpoint to projects/pointing/runs/small-r1
+iter 200: loss 1.9705, time 5866.52ms, mfu -100.00%
+iter 250: loss 1.8774, time 172.10ms, mfu 0.19%
+step 300: train loss 1.6801, val loss 1.7078
+saving checkpoint to projects/pointing/runs/small-r1
+iter 300: loss 1.7553, time 5610.13ms, mfu 0.17%
+=== segment 300 -> 400
+Overriding config with projects/pointing/config/small.py:
+# pointing, the 0.79M arm -- kenosha-kid shape (4L/4H/128E). Everything else
+# is the regular arm, line for line: same pairs, same block, same schedule.
+#
+# Run from the repo root:
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/small.py
+
+out_dir = 'projects/pointing/runs/small-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 4
+n_head = 4
+n_embd = 128
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 400
+Overriding: eval_interval = 100
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/small-r1
+number of parameters: 0.80M
+num decayed tensors: 17, non-decayed: 9
+using fused AdamW: False
+step 300: train loss 1.6793, val loss 1.7099
+saving checkpoint to projects/pointing/runs/small-r1
+iter 300: loss 1.7741, time 5733.47ms, mfu -100.00%
+iter 350: loss 1.7102, time 164.58ms, mfu 0.20%
+step 400: train loss 1.5560, val loss 1.5830
+saving checkpoint to projects/pointing/runs/small-r1
+iter 400: loss 1.6673, time 5789.08ms, mfu 0.18%
+=== segment 400 -> 500
+Overriding config with projects/pointing/config/small.py:
+# pointing, the 0.79M arm -- kenosha-kid shape (4L/4H/128E). Everything else
+# is the regular arm, line for line: same pairs, same block, same schedule.
+#
+# Run from the repo root:
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/small.py
+
+out_dir = 'projects/pointing/runs/small-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 4
+n_head = 4
+n_embd = 128
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 500
+Overriding: eval_interval = 100
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/small-r1
+number of parameters: 0.80M
+num decayed tensors: 17, non-decayed: 9
+using fused AdamW: False
+step 400: train loss 1.5493, val loss 1.5876
+saving checkpoint to projects/pointing/runs/small-r1
+iter 400: loss 1.6507, time 5782.67ms, mfu -100.00%
+iter 450: loss 1.6059, time 166.18ms, mfu 0.20%
+step 500: train loss 1.4846, val loss 1.5170
+saving checkpoint to projects/pointing/runs/small-r1
+iter 500: loss 1.5649, time 5664.62ms, mfu 0.18%
+=== segment 500 -> 750
+Overriding config with projects/pointing/config/small.py:
+# pointing, the 0.79M arm -- kenosha-kid shape (4L/4H/128E). Everything else
+# is the regular arm, line for line: same pairs, same block, same schedule.
+#
+# Run from the repo root:
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/small.py
+
+out_dir = 'projects/pointing/runs/small-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 4
+n_head = 4
+n_embd = 128
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 750
+Overriding: eval_interval = 250
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/small-r1
+number of parameters: 0.80M
+num decayed tensors: 17, non-decayed: 9
+using fused AdamW: False
+step 500: train loss 1.4846, val loss 1.5177
+saving checkpoint to projects/pointing/runs/small-r1
+iter 500: loss 1.6086, time 5571.15ms, mfu -100.00%
+iter 550: loss 1.5231, time 166.27ms, mfu 0.20%
+iter 600: loss 1.5092, time 173.28ms, mfu 0.20%
+iter 650: loss 1.5400, time 177.22ms, mfu 0.20%
+iter 700: loss 1.4750, time 168.80ms, mfu 0.20%
+step 750: train loss 1.3908, val loss 1.4312
+saving checkpoint to projects/pointing/runs/small-r1
+iter 750: loss 1.4620, time 5701.70ms, mfu 0.18%
+=== segment 750 -> 1000
+Overriding config with projects/pointing/config/small.py:
+# pointing, the 0.79M arm -- kenosha-kid shape (4L/4H/128E). Everything else
+# is the regular arm, line for line: same pairs, same block, same schedule.
+#
+# Run from the repo root:
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/small.py
+
+out_dir = 'projects/pointing/runs/small-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 4
+n_head = 4
+n_embd = 128
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 1000
+Overriding: eval_interval = 250
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/small-r1
+number of parameters: 0.80M
+num decayed tensors: 17, non-decayed: 9
+using fused AdamW: False
+step 750: train loss 1.3883, val loss 1.4339
+saving checkpoint to projects/pointing/runs/small-r1
+iter 750: loss 1.4627, time 5567.03ms, mfu -100.00%
+iter 800: loss 1.4526, time 169.78ms, mfu 0.20%
+iter 850: loss 1.4166, time 179.04ms, mfu 0.20%
+iter 900: loss 1.3949, time 176.07ms, mfu 0.19%
+iter 950: loss 1.3776, time 170.04ms, mfu 0.19%
+step 1000: train loss 1.3032, val loss 1.3590
+saving checkpoint to projects/pointing/runs/small-r1
+iter 1000: loss 1.3781, time 5751.56ms, mfu 0.18%
+=== segment 1000 -> 1500
+Overriding config with projects/pointing/config/small.py:
+# pointing, the 0.79M arm -- kenosha-kid shape (4L/4H/128E). Everything else
+# is the regular arm, line for line: same pairs, same block, same schedule.
+#
+# Run from the repo root:
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/small.py
+
+out_dir = 'projects/pointing/runs/small-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 4
+n_head = 4
+n_embd = 128
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 1500
+Overriding: eval_interval = 250
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/small-r1
+number of parameters: 0.80M
+num decayed tensors: 17, non-decayed: 9
+using fused AdamW: False
+step 1000: train loss 1.3044, val loss 1.3599
+saving checkpoint to projects/pointing/runs/small-r1
+iter 1000: loss 1.4030, time 5731.62ms, mfu -100.00%
+iter 1050: loss 1.3541, time 168.29ms, mfu 0.20%
+iter 1100: loss 1.3665, time 170.63ms, mfu 0.20%
+iter 1150: loss 1.3828, time 180.08ms, mfu 0.20%
+iter 1200: loss 1.3244, time 162.92ms, mfu 0.20%
+step 1250: train loss 1.2586, val loss 1.3236
+saving checkpoint to projects/pointing/runs/small-r1
+iter 1250: loss 1.3221, time 5583.39ms, mfu 0.18%
+iter 1300: loss 1.3327, time 176.19ms, mfu 0.18%
+iter 1350: loss 1.3060, time 167.96ms, mfu 0.18%
+iter 1400: loss 1.2871, time 195.72ms, mfu 0.18%
+iter 1450: loss 1.2880, time 179.97ms, mfu 0.18%
+step 1500: train loss 1.2212, val loss 1.2865
+saving checkpoint to projects/pointing/runs/small-r1
+iter 1500: loss 1.2933, time 5894.92ms, mfu 0.16%
+=== segment 1500 -> 2000
+Overriding config with projects/pointing/config/small.py:
+# pointing, the 0.79M arm -- kenosha-kid shape (4L/4H/128E). Everything else
+# is the regular arm, line for line: same pairs, same block, same schedule.
+#
+# Run from the repo root:
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/small.py
+
+out_dir = 'projects/pointing/runs/small-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 4
+n_head = 4
+n_embd = 128
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 2000
+Overriding: eval_interval = 250
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/small-r1
+number of parameters: 0.80M
+num decayed tensors: 17, non-decayed: 9
+using fused AdamW: False
+step 1500: train loss 1.2189, val loss 1.2839
+saving checkpoint to projects/pointing/runs/small-r1
+iter 1500: loss 1.2713, time 6293.93ms, mfu -100.00%
+iter 1550: loss 1.2522, time 181.88ms, mfu 0.18%
+iter 1600: loss 1.2917, time 207.30ms, mfu 0.18%
+iter 1650: loss 1.2711, time 179.15ms, mfu 0.18%
+iter 1700: loss 1.2631, time 218.30ms, mfu 0.18%
+step 1750: train loss 1.1949, val loss 1.2669
+saving checkpoint to projects/pointing/runs/small-r1
+iter 1750: loss 1.2405, time 6064.56ms, mfu 0.16%
+iter 1800: loss 1.2580, time 193.84ms, mfu 0.16%
+iter 1850: loss 1.2501, time 186.10ms, mfu 0.16%
+iter 1900: loss 1.2459, time 191.26ms, mfu 0.16%
+iter 1950: loss 1.2137, time 226.84ms, mfu 0.16%
+step 2000: train loss 1.1766, val loss 1.2603
+saving checkpoint to projects/pointing/runs/small-r1
+iter 2000: loss 1.2579, time 6287.36ms, mfu 0.15%
+=== segment 2000 -> 3000
+Overriding config with projects/pointing/config/small.py:
+# pointing, the 0.79M arm -- kenosha-kid shape (4L/4H/128E). Everything else
+# is the regular arm, line for line: same pairs, same block, same schedule.
+#
+# Run from the repo root:
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/small.py
+
+out_dir = 'projects/pointing/runs/small-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 4
+n_head = 4
+n_embd = 128
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 3000
+Overriding: eval_interval = 250
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/small-r1
+number of parameters: 0.80M
+num decayed tensors: 17, non-decayed: 9
+using fused AdamW: False
+step 2000: train loss 1.1753, val loss 1.2609
+saving checkpoint to projects/pointing/runs/small-r1
+iter 2000: loss 1.2651, time 6437.64ms, mfu -100.00%
+iter 2050: loss 1.2209, time 189.11ms, mfu 0.18%
+iter 2100: loss 1.2134, time 196.64ms, mfu 0.18%
+iter 2150: loss 1.2060, time 189.14ms, mfu 0.18%
+iter 2200: loss 1.1954, time 184.54ms, mfu 0.18%
+step 2250: train loss 1.1563, val loss 1.2419
+saving checkpoint to projects/pointing/runs/small-r1
+iter 2250: loss 1.2250, time 6464.14ms, mfu 0.16%
+iter 2300: loss 1.2257, time 251.79ms, mfu 0.16%
+iter 2350: loss 1.1992, time 192.77ms, mfu 0.16%
+iter 2400: loss 1.2364, time 194.93ms, mfu 0.16%
+iter 2450: loss 1.1737, time 193.24ms, mfu 0.16%
+step 2500: train loss 1.1452, val loss 1.2298
+saving checkpoint to projects/pointing/runs/small-r1
+iter 2500: loss 1.2013, time 6110.72ms, mfu 0.15%
+iter 2550: loss 1.1782, time 194.57ms, mfu 0.15%
+iter 2600: loss 1.1967, time 194.99ms, mfu 0.15%
+iter 2650: loss 1.1890, time 206.06ms, mfu 0.15%
+iter 2700: loss 1.2104, time 131.87ms, mfu 0.16%
+step 2750: train loss 1.1359, val loss 1.2293
+saving checkpoint to projects/pointing/runs/small-r1
+iter 2750: loss 1.1907, time 6850.26ms, mfu 0.15%
+iter 2800: loss 1.1937, time 238.86ms, mfu 0.15%
+iter 2850: loss 1.1834, time 243.80ms, mfu 0.14%
+iter 2900: loss 1.1762, time 169.65ms, mfu 0.15%
+iter 2950: loss 1.1904, time 222.69ms, mfu 0.15%
+step 3000: train loss 1.1313, val loss 1.2228
+saving checkpoint to projects/pointing/runs/small-r1
+iter 3000: loss 1.1902, time 6638.62ms, mfu 0.13%
+=== segment 3000 -> 4000
+Overriding config with projects/pointing/config/small.py:
+# pointing, the 0.79M arm -- kenosha-kid shape (4L/4H/128E). Everything else
+# is the regular arm, line for line: same pairs, same block, same schedule.
+#
+# Run from the repo root:
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/small.py
+
+out_dir = 'projects/pointing/runs/small-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 4
+n_head = 4
+n_embd = 128
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 4000
+Overriding: eval_interval = 250
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/small-r1
+number of parameters: 0.80M
+num decayed tensors: 17, non-decayed: 9
+using fused AdamW: False
+step 3000: train loss 1.1286, val loss 1.2250
+saving checkpoint to projects/pointing/runs/small-r1
+iter 3000: loss 1.2082, time 7170.05ms, mfu -100.00%
+iter 3050: loss 1.1863, time 295.65ms, mfu 0.11%
+iter 3100: loss 1.1702, time 145.17ms, mfu 0.12%
+iter 3150: loss 1.1857, time 151.22ms, mfu 0.13%
+iter 3200: loss 1.1857, time 189.33ms, mfu 0.14%
+step 3250: train loss 1.1177, val loss 1.2113
+saving checkpoint to projects/pointing/runs/small-r1
+iter 3250: loss 1.1753, time 6699.80ms, mfu 0.12%
+iter 3300: loss 1.1696, time 183.99ms, mfu 0.13%
+iter 3350: loss 1.1350, time 248.19ms, mfu 0.13%
+iter 3400: loss 1.1661, time 175.87ms, mfu 0.14%
+iter 3450: loss 1.1723, time 226.72ms, mfu 0.14%
+step 3500: train loss 1.1084, val loss 1.2030
+saving checkpoint to projects/pointing/runs/small-r1
+iter 3500: loss 1.1647, time 6852.02ms, mfu 0.12%
+iter 3550: loss 1.1573, time 285.05ms, mfu 0.12%
+iter 3600: loss 1.1499, time 192.43ms, mfu 0.13%
+iter 3650: loss 1.1734, time 270.18ms, mfu 0.13%
+iter 3700: loss 1.1612, time 197.98ms, mfu 0.13%
+step 3750: train loss 1.0983, val loss 1.2010
+saving checkpoint to projects/pointing/runs/small-r1
+iter 3750: loss 1.1493, time 6844.77ms, mfu 0.12%
+iter 3800: loss 1.1555, time 229.17ms, mfu 0.12%
+iter 3850: loss 1.1602, time 182.56ms, mfu 0.13%
+iter 3900: loss 1.1319, time 234.77ms, mfu 0.13%
+iter 3950: loss 1.1608, time 177.38ms, mfu 0.14%
+step 4000: train loss 1.0969, val loss 1.1955
+saving checkpoint to projects/pointing/runs/small-r1
+iter 4000: loss 1.1656, time 6788.01ms, mfu 0.12%
+=== segment 4000 -> 5000
+Overriding config with projects/pointing/config/small.py:
+# pointing, the 0.79M arm -- kenosha-kid shape (4L/4H/128E). Everything else
+# is the regular arm, line for line: same pairs, same block, same schedule.
+#
+# Run from the repo root:
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/small.py
+
+out_dir = 'projects/pointing/runs/small-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 4
+n_head = 4
+n_embd = 128
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 5000
+Overriding: eval_interval = 250
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/small-r1
+number of parameters: 0.80M
+num decayed tensors: 17, non-decayed: 9
+using fused AdamW: False
+step 4000: train loss 1.0981, val loss 1.1956
+saving checkpoint to projects/pointing/runs/small-r1
+iter 4000: loss 1.1459, time 6672.84ms, mfu -100.00%
+iter 4050: loss 1.1609, time 199.74ms, mfu 0.17%
+iter 4100: loss 1.1511, time 160.03ms, mfu 0.17%
+iter 4150: loss 1.1544, time 236.52ms, mfu 0.17%
+iter 4200: loss 1.1581, time 162.41ms, mfu 0.17%
+step 4250: train loss 1.0917, val loss 1.1918
+saving checkpoint to projects/pointing/runs/small-r1
+iter 4250: loss 1.1397, time 6436.36ms, mfu 0.15%
+iter 4300: loss 1.1643, time 198.19ms, mfu 0.16%
+iter 4350: loss 1.1602, time 186.79ms, mfu 0.16%
+iter 4400: loss 1.1480, time 195.09ms, mfu 0.16%
+iter 4450: loss 1.1489, time 212.89ms, mfu 0.16%
+step 4500: train loss 1.0891, val loss 1.1838
+saving checkpoint to projects/pointing/runs/small-r1
+iter 4500: loss 1.1378, time 6406.92ms, mfu 0.14%
+iter 4550: loss 1.1734, time 176.38ms, mfu 0.15%
+iter 4600: loss 1.1624, time 263.25ms, mfu 0.15%
+iter 4650: loss 1.1444, time 233.51ms, mfu 0.15%
+iter 4700: loss 1.1393, time 207.63ms, mfu 0.15%
+step 4750: train loss 1.0843, val loss 1.1812
+saving checkpoint to projects/pointing/runs/small-r1
+iter 4750: loss 1.1517, time 6343.33ms, mfu 0.13%
+iter 4800: loss 1.1505, time 197.72ms, mfu 0.14%
+iter 4850: loss 1.1150, time 175.86ms, mfu 0.14%
+iter 4900: loss 1.1248, time 190.00ms, mfu 0.15%
+iter 4950: loss 1.1440, time 181.79ms, mfu 0.15%
+step 5000: train loss 1.0803, val loss 1.1814
+saving checkpoint to projects/pointing/runs/small-r1
+iter 5000: loss 1.1416, time 6205.99ms, mfu 0.13%
+=== segment 5000 -> 6000
+Overriding config with projects/pointing/config/small.py:
+# pointing, the 0.79M arm -- kenosha-kid shape (4L/4H/128E). Everything else
+# is the regular arm, line for line: same pairs, same block, same schedule.
+#
+# Run from the repo root:
+#   uv run python projects/pointing/train_curve.py projects/pointing/config/small.py
+
+out_dir = 'projects/pointing/runs/small-r1'
+data_root = 'projects/pointing/data'
+dataset = 'tokenized'
+
+eval_interval = 250
+eval_iters = 50
+log_interval = 50
+
+always_save_checkpoint = True   # every eval is a snapshot; the curve is the report
+wandb_log = False
+
+gradient_accumulation_steps = 1
+batch_size = 64
+block_size = 256   # 0.77% of units were too long for it and were dropped
+
+n_layer = 4
+n_head = 4
+n_embd = 128
+dropout = 0.1
+
+learning_rate = 1e-3
+max_iters = 6000
+lr_decay_iters = 6000
+min_lr = 1e-4
+beta2 = 0.99
+warmup_iters = 100
+
+device = 'mps'
+compile = False
+
+Overriding: max_iters = 6000
+Overriding: eval_interval = 250
+Overriding: init_from = resume
+tokens per iteration will be: 16,384
+/Users/romello/code/sup-computer/.claude/worktrees/agent-a72e2aea602ae2ff1/projects/pointing/../../core/nanogpt_core/train.py:115: UserWarning: In MPS autocast, but the target dtype is not supported. Disabling autocast.
+MPS Autocast only supports dtypes of torch.bfloat16, torch.float16 currently.
+  ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=device_type, dtype=ptdtype)
+found vocab_size = 58 (inside projects/pointing/data/tokenized/meta.pkl)
+Resuming training from projects/pointing/runs/small-r1
+number of parameters: 0.80M
+num decayed tensors: 17, non-decayed: 9
+using fused AdamW: False
+step 5000: train loss 1.0798, val loss 1.1874
+saving checkpoint to projects/pointing/runs/small-r1
+iter 5000: loss 1.1262, time 6477.19ms, mfu -100.00%
+iter 5050: loss 1.1394, time 175.85ms, mfu 0.19%
+iter 5100: loss 1.1215, time 215.69ms, mfu 0.19%
+iter 5150: loss 1.1428, time 178.56ms, mfu 0.19%
+iter 5200: loss 1.1180, time 191.52ms, mfu 0.18%
+step 5250: train loss 1.0761, val loss 1.1787
+saving checkpoint to projects/pointing/runs/small-r1
+iter 5250: loss 1.1174, time 6227.72ms, mfu 0.17%
+iter 5300: loss 1.1582, time 196.52ms, mfu 0.17%
+iter 5350: loss 1.1284, time 209.12ms, mfu 0.17%
+iter 5400: loss 1.1461, time 180.31ms, mfu 0.17%
+iter 5450: loss 1.1178, time 169.77ms, mfu 0.17%
+step 5500: train loss 1.0743, val loss 1.1746
+saving checkpoint to projects/pointing/runs/small-r1
+iter 5500: loss 1.1350, time 6421.55ms, mfu 0.15%
+iter 5550: loss 1.1261, time 198.79ms, mfu 0.16%
+iter 5600: loss 1.1254, time 200.35ms, mfu 0.16%
+iter 5650: loss 1.1279, time 189.92ms, mfu 0.16%
+iter 5700: loss 1.1417, time 182.86ms, mfu 0.16%
+step 5750: train loss 1.0752, val loss 1.1735
+saving checkpoint to projects/pointing/runs/small-r1
+iter 5750: loss 1.1219, time 6186.24ms, mfu 0.15%
+iter 5800: loss 1.1567, time 199.16ms, mfu 0.15%
+iter 5850: loss 1.1282, time 188.02ms, mfu 0.15%
+iter 5900: loss 1.1130, time 956.43ms, mfu 0.14%
+iter 5950: loss 1.1244, time 943.11ms, mfu 0.13%
+step 6000: train loss 1.0694, val loss 1.1745
+saving checkpoint to projects/pointing/runs/small-r1
+iter 6000: loss 1.1290, time 29115.89ms, mfu 0.12%
+=== curve complete
