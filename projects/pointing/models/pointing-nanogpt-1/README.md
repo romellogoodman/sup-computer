@@ -11,6 +11,10 @@ letter. Trained on the shakespeare xl corpus with its marks stripped, held
 out by whole work. Internal name: `regular-r1`. The evidence is in
 `../../research/`.
 
+On 27,995 lines from nine held-out works it gets 32.5% exactly right at
+temperature 0, against 24.7% for "no marks, then a period": period F1 66.9%,
+comma F1 44.5%, 99.1% of outputs well-formed.
+
 | File | Role |
 |---|---|
 | `strip.py` | the transform: a line → its words and its marks. The only definition of a mark |

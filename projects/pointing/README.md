@@ -167,8 +167,38 @@ across training.
 
 ## Versions
 
-No release yet.
+| Version | Date | What it is | Released numbers |
+|---|---|---|---|
+| [`pointing-nanogpt-1`](models/pointing-nanogpt-1/) | 2026-11-24 | regular-r1 frozen: 2.66M char-level GPT, 6L/6H/192E, 58-symbol vocab, marks-only output with anchors | 32.5% of 27,995 held-out lines exactly right (rule baseline 24.7%); comma F1 44.5%, period F1 66.9%; 99.1% well-formed |
 
 ## Leaderboard
 
-No runs yet.
+Scored at temperature 0 on the nine held-out works, 27,995 lines. Mark scores
+cover the well-formed lines of each run.
+
+| run | params | val loss | length errors | anchor errors | line exact-match | period F1 | comma F1 | question F1 | no-mark accuracy |
+|---|---|---|---|---|---|---|---|---|---|
+| rule: no marks, then a period | — | — | — | — | 24.7% | — | — | — | — |
+| small-r1 | 0.79M | 1.1745 | 2.14% | 2.04% | 28.5% [28.0, 29.0] | 61.3% | 35.9% | 33.1% | 10.3% |
+| regular-r1 → **`pointing-nanogpt-1`** | 2.66M | 1.1211 | 0.84% | 0.71% | **32.5%** [32.0, 33.1] | **66.9%** | **44.5%** | **48.1%** | 13.7% |
+
+Semicolon F1 is under 1% on both arms and exclamation F1 under 9%. Colon F1
+is 28% on both, almost all of it the colon after "footnote N" in one
+editor's apparatus.
+
+Predictions, scored by `research/score_predictions.py` into
+`research/predictions-scored.json`:
+
+| | prediction | result | verdict |
+|---|---|---|---|
+| P1a | prose line-end period recall above 95% at 2.66M | 94.5% | failed |
+| P1b | comma F1 between 40% and 70% at 2.66M | 44.5% | held |
+| P2a | period recall leads question recall by more than 20 points at 0.79M | 37.1 points | held |
+| P2b | the same gap under 10 points at 2.66M | 27.2 points | failed |
+| P2c | question recall falls with distance from the question word | 0.79M: 39.6% → 17.8%; 2.66M: 42.9% → 57.8% | held at 0.79M, failed at 2.66M |
+| P3a | corpus frequency predicts the order marks are learned in (0.79M) | Spearman 0.27 | failed |
+| P3b | colon and semicolon F1 never leave zero at 0.79M | colon peaks at 27.3%, semicolon stays at 0 | failed |
+| P4 | length and anchor errors under 1% on both arms | 2.66M 0.84% / 0.71%; 0.79M 2.14% / 2.04% | failed |
+
+No kill criterion triggered. The write-up is
+[experiment 16](../../research-docs/reports/can-a-small-model-punctuate-a-line.md).
