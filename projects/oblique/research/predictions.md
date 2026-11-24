@@ -75,7 +75,7 @@ The brief names the measurements and leaves these values open.
 | Dial temperatures | 0.6, 0.8, 1.0, 1.2, 1.4 | P2 places the peak between 0.8 and 1.2 and needs an end on each side of that band to fail against. Steps of 0.2 match the tolerance P2 gives the second seed. |
 | Soft-cap grid | off, 8, 4, 2 | daydream's grid. Off is the default the dial sheet is sampled at. |
 | Lines per cell | 500 per register | The brief's number. |
-| Training length | 12,000 steps, a checkpoint every 500 | About 100 passes over the corpus, well past where kenosha's validation loss turned. 24 checkpoints. |
+| Training length | 12,000 steps, a checkpoint every 500 | About 70 passes over the 1.38M-character training split, well past where kenosha's validation loss turned. 24 checkpoints. |
 | Seeds | 1337, then 1338 | core's default, and the next one. |
 | Exact memorization | the sampled line is a training line, character for character | The brief's 10% bar is read on this number. |
 | 8-gram overlap | share of a line's character 8-grams found in the training set | The model writes characters. Held-out corpus lines are scored the same way, because ordinary English shares most of its 8-grams. |
