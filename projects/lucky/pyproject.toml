@@ -1,0 +1,21 @@
+[project]
+name = "lucky"
+version = "0.1.0"
+description = "Two lottery GPTs built as a null experiment — trained on every draw, measured against a loss floor known before training"
+requires-python = ">=3.9"
+dependencies = [
+    "supcomputer-core",
+]
+
+[tool.uv.sources]
+supcomputer-core = { workspace = true }
+
+# Thin consumer of the shared engine, same shape as daydream: it owns the
+# draw archive, corpus prep, configs, the pick harness, and run evidence.
+# Not a build target (no [build-system]).
+#
+# One thing differs from every other project: lucky brings its own train.py.
+# The shared loop cuts training examples at random token offsets; this
+# project's design needs them cut at draw boundaries and the Powerball
+# whites reshuffled every epoch. It still imports the model from
+# nanogpt_core and writes the same checkpoint shape.
