@@ -19,6 +19,7 @@ PNG export shells out to headless Chrome. Override the binary with the
 DATAVIZ_CHROME env var; otherwise common macOS / PATH locations are tried.
 If no Chrome is found the HTML still builds and the PNG step is skipped.
 """
+import json
 import os
 import re
 import shutil
@@ -531,6 +532,73 @@ pona_corpus_baseline = {
     "caption": "Register drift is real: encyclopedic prose full of names and calques passes at 86.9% while Tatoeba's conversational sentences pass at 99.0%. This 96.0% ceiling is why every model score in the experiment is reported corpus-relative — a model can't out-grammar its data by much, and when one does (chat-r1 at 101.0%), that's the finding. Source: projects/pona/research/corpus_baseline.json.",
 }
 
+# --- Experiment 18: is oblique a temperature? ------------------------------
+# Read from the committed evidence so the charts cannot drift from it.
+def _oblique(name):
+    with open(os.path.join(_HERE, "..", "..", "projects", "oblique", "research", name)) as f:
+        return json.load(f)
+
+
+_ob_rated = _oblique("ratings-scored.json")
+_ob_s = sorted((r for r in _ob_rated["dial"] if r["register"] == "s"),
+               key=lambda r: r["temperature"])
+oblique_keepers = {
+    "title": "The keeper rate has no peak in the middle",
+    "subtitle": "[s] lines from seed 1337, 20 per temperature, rated blind by Claude Fable 5.2",
+    "x": [f"{r['temperature']:g}" for r in _ob_s],
+    "series": [
+        {"name": "mean strange", "hue": "neutral",
+         "y": [(r["mean_strange"] - 1) / 4 * 100 for r in _ob_s]},
+        {"name": "mean usable", "hue": "teal",
+         "y": [(r["mean_usable"] - 1) / 4 * 100 for r in _ob_s]},
+        {"name": "keeper rate", "hue": "blue",
+         "y": [r["keeper_rate"] * 100 for r in _ob_s]},
+    ],
+    "valueFmt": "{:.0f}%",
+    "yTitle": "Keeper rate (%) / mean rating (% of the 1–5 scale)",
+    "xTitle": "Temperature",
+    "caption": "A keeper is a line rated 4 or more on both strange and usable: 8, 2, 6, 0 and 2 of 20. The two mean ratings are rescaled from 1–5 to 0–100% so they share the axis. Strange is flat; usable falls from the first setting; the keeper rate is highest at the coldest one. Source: projects/oblique/research/ratings-scored.json.",
+}
+
+_ob_choice = _oblique("choice-seed1337.json")["checkpoints"]
+oblique_sweep = {
+    "title": "More training made better lines and no copies",
+    "subtitle": "Seed 1337 along its 12,000 steps — 500 samples per register per cell",
+    "x": [f"{r['step']:,}" for r in _ob_choice],
+    "series": [
+        {"name": "register recovered at T=1.0", "hue": "blue",
+         "y": [r["register_accuracy_at_1"] * 100 for r in _ob_choice]},
+        {"name": "well-formed, T ≤ 1.0", "hue": "green",
+         "y": [r["wellformed_cold"] * 100 for r in _ob_choice]},
+        {"name": "exact copies, worst cell", "hue": "red",
+         "y": [r["worst_exact"] * 100 for r in _ob_choice]},
+    ],
+    "valueFmt": "{:.1f}%",
+    "yTitle": "Share of sampled lines (%)",
+    "xTitle": "Training step",
+    "caption": "Exact memorization never passes 0.2% in any dial cell, against a 10% bar. Well-formedness tops out at 89.4%, under the 90% the checkpoint rule asked for. Source: projects/oblique/research/choice-seed1337.json.",
+}
+
+_ob_fine = _oblique("softcap-seed1337.json")["checkpoints"]["12000"]["cells"]
+_ob_grid = _oblique("harness-seed1337.json")["checkpoints"]["12000"]["cells"]
+_ob_caps = ([(c, _ob_fine[f"t0.6_cap{c}"]) for c in ("none", "64", "32", "24", "16", "12")]
+            + [(c, _ob_grid[f"t0.6_cap{c}"]) for c in ("8", "4", "2")])
+oblique_softcap = {
+    "title": "The soft-cap is a cliff, not a dial",
+    "subtitle": "Step 12,000 at temperature 0.6 — 500 samples per register per cap, automatic metrics only",
+    "x": ["off" if c == "none" else c for c, _ in _ob_caps],
+    "series": [
+        {"name": "register recovered", "hue": "blue",
+         "y": [v["both"]["register_accuracy"] * 100 for _, v in _ob_caps]},
+        {"name": "well-formed", "hue": "green",
+         "y": [v["both"]["wellformed"] * 100 for _, v in _ob_caps]},
+    ],
+    "valueFmt": "{:.1f}%",
+    "yTitle": "Share of sampled lines (%)",
+    "xTitle": "Soft-cap (logits = cap × tanh(logits / cap))",
+    "caption": "From off down to 12 nothing moves. At 8 well-formedness drops nine points, and at 4 the classifier is near chance. No line in this sweep was rated. Sources: projects/oblique/research/softcap-seed1337.json (off to 12) and harness-seed1337.json (8, 4, 2).",
+}
+
 # (name, spec, fn, asset-prefix) — prefix routes each PNG to its report.
 JOBS = [("bpc-by-round", bpc, dv.bar, "exp01-"),
         ("data-win", data_win, dv.bar, "exp01-"),
@@ -559,7 +627,10 @@ JOBS = [("bpc-by-round", bpc, dv.bar, "exp01-"),
         ("craft-by-arm", craft_by_arm, dv.bar, "exp12-"),
         ("grammaticality-vs-null", pona_grammaticality, dv.bar, "exp13-"),
         ("hazard-per-char", pona_hazard, dv.bar, "exp13-"),
-        ("corpus-baseline-by-source", pona_corpus_baseline, dv.bar, "exp13-")]
+        ("corpus-baseline-by-source", pona_corpus_baseline, dv.bar, "exp13-"),
+        ("keeper-rate", oblique_keepers, dv.line, "exp18-"),
+        ("training-sweep", oblique_sweep, dv.line, "exp18-"),
+        ("soft-cap", oblique_softcap, dv.line, "exp18-")]
 
 if __name__ == "__main__":
     out_dir = os.path.join(_HERE, "output")
