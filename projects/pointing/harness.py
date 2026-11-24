@@ -13,7 +13,9 @@ What it reports, in the order a reader should trust it:
   mark scores       precision / recall / F1 per mark, over the slots of the
                     well-formed lines only, with the count stated
   line ends         the final gap, scored apart for verse, prose and other
-  per source        the same scores split by Gutenberg volume (the edition)
+  per source        the same scores split by Gutenberg volume (the edition), and
+                    again within each kind of line, because volumes differ in
+                    their mix of verse, prose and speaker labels
   exact match       the whole slot string right, over ALL lines (a malformed
                     line is a miss); also on the lines whose words never
                     appear as a training line
@@ -335,6 +337,7 @@ def main():
     ap.add_argument("--curve", action="store_true")
     ap.add_argument("--snapshot", default=None, help="with --curve: score this one ckpt-*.pt into its cache and stop")
     ap.add_argument("--modern", action="store_true")
+    ap.add_argument("--rescore", action="store_true", help="score the slot strings saved by the last full run")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--tag", default=None)
     ap.add_argument("--device", default=None)
@@ -397,9 +400,37 @@ def main():
             train_path = os.path.join(CORPUS, "train.txt")
             with open(train_path, encoding="utf-8") as f:
                 train_inputs = {line.split(strip.SEP)[0] for line in f}
-            r = score(recs, point(model, meta, device, [x["words"] for x in recs]), train_inputs)
+            # the slot strings are kept in the run folder, so a new breakdown
+            # can be scored later without generating again (--rescore)
+            preds_path = os.path.join(args.out_dir, f"preds-{args.split}.json")
+            if args.rescore and not args.limit:
+                with open(preds_path, encoding="utf-8") as f:
+                    preds = json.load(f)
+                assert len(preds) == len(recs)
+            else:
+                preds = point(model, meta, device, [x["words"] for x in recs])
+                if not args.limit:
+                    with open(preds_path, "w", encoding="utf-8") as f:
+                        json.dump(preds, f, ensure_ascii=False)
+            r = score(recs, preds, train_inputs)
             base, m = baseline_preds(recs, train_path)
             b = score(recs, base, train_inputs)
+            # a source's line mix differs (one volume is a third speaker labels,
+            # another almost none), so sources are also compared kind by kind
+            cells = defaultdict(list)
+            for i, rec in enumerate(recs):
+                cells[(str(rec["ebook"]), rec["kind"])].append(i)
+            r["per_source_by_kind"] = {}
+            for (src, kind), idx in sorted(cells.items()):
+                sub = score([recs[i] for i in idx], [preds[i] for i in idx])
+                sub_b = score([recs[i] for i in idx], [base[i] for i in idx])
+                r["per_source_by_kind"].setdefault(src, {})[kind] = {
+                    "lines": len(idx), "exact_match": sub["exact_match"]["rate"],
+                    "baseline_exact_match": sub_b["exact_match"]["rate"],
+                    "slot_accuracy": sub["slots"]["accuracy"], "all_marks_f1": sub["slots"]["all_marks"]["f1"],
+                    "comma_f1": sub["per_mark"]["comma"]["f1"], "period_f1": sub["per_mark"]["period"]["f1"],
+                    "final_slot_accuracy": sub["line_end"][kind]["accuracy"] if kind in sub["line_end"] else None,
+                }
             r["baseline"] = {"rule": f"no marks, then a final {m!r}", "exact_match": b["exact_match"]["rate"],
                              "slot_accuracy": b["slots"]["accuracy"], "all_marks": b["slots"]["all_marks"],
                              "by_kind": b["exact_match"]["by_kind"]}

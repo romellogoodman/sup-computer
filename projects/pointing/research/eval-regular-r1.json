@@ -1097,6 +1097,168 @@
       "problem": "marks"
     }
   ],
+  "per_source_by_kind": {
+    "100": {
+      "other": {
+        "lines": 5371,
+        "exact_match": 0.7646620741016571,
+        "baseline_exact_match": 0.6793893129770993,
+        "slot_accuracy": 0.9129750607982452,
+        "all_marks_f1": 0.8282813941932278,
+        "comma_f1": 0.5390070921985816,
+        "period_f1": 0.9392499747296068,
+        "final_slot_accuracy": 0.904628592758492
+      },
+      "prose": {
+        "lines": 1138,
+        "exact_match": 0.2583479789103691,
+        "baseline_exact_match": 0.13884007029876977,
+        "slot_accuracy": 0.8805109489051095,
+        "all_marks_f1": 0.551880380607159,
+        "comma_f1": 0.4246885617214043,
+        "period_f1": 0.856447688564477,
+        "final_slot_accuracy": 0.763653483992467
+      },
+      "verse": {
+        "lines": 8747,
+        "exact_match": 0.20544186578255402,
+        "baseline_exact_match": 0.14599291185549332,
+        "slot_accuracy": 0.8443842489425014,
+        "all_marks_f1": 0.3660594204670498,
+        "comma_f1": 0.4128216841784681,
+        "period_f1": 0.40529411764705886,
+        "final_slot_accuracy": 0.3641372976696131
+      }
+    },
+    "12915": {
+      "other": {
+        "lines": 544,
+        "exact_match": 0.2647058823529412,
+        "baseline_exact_match": 0.001838235294117647,
+        "slot_accuracy": 0.8151308304891922,
+        "all_marks_f1": 0.6324324324324325,
+        "comma_f1": 0.5328719723183392,
+        "period_f1": 0.7489711934156379,
+        "final_slot_accuracy": 0.6037037037037037
+      },
+      "prose": {
+        "lines": 299,
+        "exact_match": 0.44481605351170567,
+        "baseline_exact_match": 0.34448160535117056,
+        "slot_accuracy": 0.863940782516743,
+        "all_marks_f1": 0.5912408759124087,
+        "comma_f1": 0.38888888888888884,
+        "period_f1": 0.9037656903765691,
+        "final_slot_accuracy": 0.8245614035087719
+      },
+      "verse": {
+        "lines": 2640,
+        "exact_match": 0.2196969696969697,
+        "baseline_exact_match": 0.13257575757575757,
+        "slot_accuracy": 0.8377970749542961,
+        "all_marks_f1": 0.4617951284617951,
+        "comma_f1": 0.43653684505463713,
+        "period_f1": 0.5837621497998857,
+        "final_slot_accuracy": 0.4051164566628484
+      }
+    },
+    "1589": {
+      "other": {
+        "lines": 397,
+        "exact_match": 0.6020151133501259,
+        "baseline_exact_match": 0.14357682619647355,
+        "slot_accuracy": 0.914996964177292,
+        "all_marks_f1": 0.8929593589009731,
+        "comma_f1": 0.5152838427947599,
+        "period_f1": 0.917963224893918,
+        "final_slot_accuracy": 0.8698979591836735
+      },
+      "prose": {
+        "lines": 354,
+        "exact_match": 0.2937853107344633,
+        "baseline_exact_match": 0.2796610169491525,
+        "slot_accuracy": 0.7990115321252059,
+        "all_marks_f1": 0.5671995263469509,
+        "comma_f1": 0.21518987341772147,
+        "period_f1": 0.8385269121813032,
+        "final_slot_accuracy": 0.8075801749271136
+      },
+      "verse": {
+        "lines": 2501,
+        "exact_match": 0.23390643742502998,
+        "baseline_exact_match": 0.10635745701719312,
+        "slot_accuracy": 0.8546300604932526,
+        "all_marks_f1": 0.4953602932752893,
+        "comma_f1": 0.5009879253567507,
+        "period_f1": 0.43225190839694655,
+        "final_slot_accuracy": 0.41639871382636656
+      }
+    },
+    "20288": {
+      "other": {
+        "lines": 84,
+        "exact_match": 0.75,
+        "baseline_exact_match": 0.7738095238095238,
+        "slot_accuracy": 0.8952879581151832,
+        "all_marks_f1": 0.7878787878787878,
+        "comma_f1": 0.2105263157894737,
+        "period_f1": 0.9426751592356688,
+        "final_slot_accuracy": 0.8928571428571429
+      },
+      "prose": {
+        "lines": 15,
+        "exact_match": 0.13333333333333333,
+        "baseline_exact_match": 0.06666666666666667,
+        "slot_accuracy": 0.8081395348837209,
+        "all_marks_f1": 0.6728971962616822,
+        "comma_f1": 0.591549295774648,
+        "period_f1": 0.9032258064516129,
+        "final_slot_accuracy": 0.9333333333333333
+      },
+      "verse": {
+        "lines": 2772,
+        "exact_match": 0.15115440115440115,
+        "baseline_exact_match": 0.11002886002886003,
+        "slot_accuracy": 0.8211978278964683,
+        "all_marks_f1": 0.4350678939214435,
+        "comma_f1": 0.4624612202688728,
+        "period_f1": 0.493684910259251,
+        "final_slot_accuracy": 0.401600582029829
+      }
+    },
+    "6043": {
+      "other": {
+        "lines": 560,
+        "exact_match": 0.28035714285714286,
+        "baseline_exact_match": 0.24642857142857144,
+        "slot_accuracy": 0.8074219848186674,
+        "all_marks_f1": 0.6095566078346965,
+        "comma_f1": 0.46,
+        "period_f1": 0.7927382753403933,
+        "final_slot_accuracy": 0.7086330935251799
+      },
+      "prose": {
+        "lines": 96,
+        "exact_match": 0.4270833333333333,
+        "baseline_exact_match": 0.3333333333333333,
+        "slot_accuracy": 0.8872727272727273,
+        "all_marks_f1": 0.6646525679758308,
+        "comma_f1": 0.5547445255474454,
+        "period_f1": 0.8776978417266187,
+        "final_slot_accuracy": 0.8255813953488372
+      },
+      "verse": {
+        "lines": 2477,
+        "exact_match": 0.18005651998385144,
+        "baseline_exact_match": 0.1707710940654017,
+        "slot_accuracy": 0.8397935241670578,
+        "all_marks_f1": 0.37170706006322446,
+        "comma_f1": 0.42997658079625295,
+        "period_f1": 0.41431261770244826,
+        "final_slot_accuracy": 0.3284671532846715
+      }
+    }
+  },
   "baseline": {
     "rule": "no marks, then a final '.'",
     "exact_match": 0.24732988033577424,

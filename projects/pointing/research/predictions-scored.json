@@ -1,0 +1,387 @@
+{
+  "predictions": {
+    "P1a": {
+      "claim": "prose line-end period recall above 95% (2.66M)",
+      "value": 0.9449404761904762,
+      "verdict": "failed"
+    },
+    "P1b": {
+      "claim": "comma F1 between 40% and 70% (2.66M)",
+      "value": 0.44527275200652977,
+      "verdict": "held"
+    },
+    "verse_line_end_registered_unknown": {
+      "regular": {
+        "accuracy": 0.3773971523144013,
+        "marks": {
+          ".": {
+            "precision": 0.36310358007389476,
+            "recall": 0.5766895993524889,
+            "f1": 0.44562583066218436,
+            "share_of_gold": 0.25965428466347923
+          },
+          ",": {
+            "precision": 0.38650685777832694,
+            "recall": 0.5480988260031541,
+            "f1": 0.45333333333333337,
+            "share_of_gold": 0.2998476330583723
+          },
+          "?": {
+            "precision": 0.39328277356446373,
+            "recall": 0.39200863930885527,
+            "f1": 0.392644672796106,
+            "share_of_gold": 0.04865234067146535
+          },
+          "!": {
+            "precision": 0.65,
+            "recall": 0.02854006586169045,
+            "f1": 0.054679284963196635,
+            "share_of_gold": 0.04786423580097725
+          },
+          ";": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "share_of_gold": 0.06935322860295276
+          },
+          ":": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "share_of_gold": 0.036620606315347026
+          },
+          "_": {
+            "precision": 0.4247400109469075,
+            "recall": 0.17871948410870567,
+            "f1": 0.2515804830604636,
+            "share_of_gold": 0.22813008984395525
+          }
+        }
+      },
+      "small": {
+        "accuracy": 0.34724777877083224,
+        "marks": {
+          ".": {
+            "precision": 0.3388132545594657,
+            "recall": 0.534765862558281,
+            "f1": 0.414812485258275,
+            "share_of_gold": 0.2593449345460281
+          },
+          ",": {
+            "precision": 0.35546108567691304,
+            "recall": 0.5719045948789898,
+            "f1": 0.43842430760957246,
+            "share_of_gold": 0.29977393407286684
+          },
+          "?": {
+            "precision": 0.3502454991816694,
+            "recall": 0.23110151187904968,
+            "f1": 0.2784645413142486,
+            "share_of_gold": 0.04868303454077073
+          },
+          "!": {
+            "precision": 0.5714285714285714,
+            "recall": 0.004381161007667032,
+            "f1": 0.008695652173913044,
+            "share_of_gold": 0.04799957941222859
+          },
+          ";": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "share_of_gold": 0.0696072761684454
+          },
+          ":": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "share_of_gold": 0.036854003469849114
+          },
+          "_": {
+            "precision": 0.373134328358209,
+            "recall": 0.10385414262635588,
+            "f1": 0.16248420292471566,
+            "share_of_gold": 0.22780085169023712
+          }
+        }
+      }
+    },
+    "P2a": {
+      "claim": "period recall minus question recall above 20 points (0.79M)",
+      "value": 0.3710330841752407,
+      "verdict": "held"
+    },
+    "P2b": {
+      "claim": "the same gap under 10 points (2.66M)",
+      "value": 0.27236176799977113,
+      "verdict": "failed"
+    },
+    "P2c": {
+      "claim": "question recall in the 10+ bin below the 1-2 bin, Wilson intervals apart",
+      "regular": {
+        "by_distance": {
+          "1-2": {
+            "recall": 0.42857142857142855,
+            "gold": 98
+          },
+          "3-5": {
+            "recall": 0.6226114649681529,
+            "gold": 628
+          },
+          "6-9": {
+            "recall": 0.5605749486652978,
+            "gold": 487
+          },
+          "10+": {
+            "recall": 0.5783132530120482,
+            "gold": 83
+          },
+          "no question word": {
+            "recall": 0.17416378316032297,
+            "gold": 867
+          }
+        },
+        "verdict": "failed"
+      },
+      "small": {
+        "by_distance": {
+          "1-2": {
+            "recall": 0.3958333333333333,
+            "gold": 96
+          },
+          "3-5": {
+            "recall": 0.4354066985645933,
+            "gold": 627
+          },
+          "6-9": {
+            "recall": 0.26993865030674846,
+            "gold": 489
+          },
+          "10+": {
+            "recall": 0.1780821917808219,
+            "gold": 73
+          },
+          "no question word": {
+            "recall": 0.07863849765258216,
+            "gold": 852
+          }
+        },
+        "verdict": "held"
+      }
+    },
+    "P3a": {
+      "claim": "frequency rank predicts rise order, Spearman >= 0.7 (0.79M decides)",
+      "regular": {
+        "spearman": 0.07443873683187767,
+        "marks": [
+          {
+            "mark": "comma",
+            "train_frequency": 115827,
+            "rise_iter": 1500,
+            "final_f1": 0.45927903871829107
+          },
+          {
+            "mark": "period",
+            "train_frequency": 108878,
+            "rise_iter": 200,
+            "final_f1": 0.6702849389416553
+          },
+          {
+            "mark": "semicolon",
+            "train_frequency": 14512,
+            "rise_iter": null,
+            "final_f1": 0.004866180048661801
+          },
+          {
+            "mark": "question",
+            "train_frequency": 13582,
+            "rise_iter": 1500,
+            "final_f1": 0.5328596802841917
+          },
+          {
+            "mark": "exclamation",
+            "train_frequency": 9064,
+            "rise_iter": 5000,
+            "final_f1": 0.12258064516129032
+          },
+          {
+            "mark": "colon",
+            "train_frequency": 6867,
+            "rise_iter": 1000,
+            "final_f1": 0.27692307692307694
+          },
+          {
+            "mark": "bracket-open",
+            "train_frequency": 6415,
+            "rise_iter": 750,
+            "final_f1": 0.7187499999999999
+          },
+          {
+            "mark": "apostrophe-leading",
+            "train_frequency": 2997,
+            "rise_iter": 4000,
+            "final_f1": 0.5694444444444445
+          },
+          {
+            "mark": "apostrophe-trailing",
+            "train_frequency": 2958,
+            "rise_iter": 2000,
+            "final_f1": 0.7076923076923077
+          },
+          {
+            "mark": "bracket-close",
+            "train_frequency": 2206,
+            "rise_iter": 1500,
+            "final_f1": 0.6475409836065574
+          },
+          {
+            "mark": "quote-open",
+            "train_frequency": 1621,
+            "rise_iter": 1500,
+            "final_f1": 0.4423076923076923
+          }
+        ]
+      },
+      "small": {
+        "spearman": 0.2679333976777111,
+        "marks": [
+          {
+            "mark": "comma",
+            "train_frequency": 115827,
+            "rise_iter": 2000,
+            "final_f1": 0.3626723223753976
+          },
+          {
+            "mark": "period",
+            "train_frequency": 108878,
+            "rise_iter": 300,
+            "final_f1": 0.616357332245564
+          },
+          {
+            "mark": "semicolon",
+            "train_frequency": 14512,
+            "rise_iter": null,
+            "final_f1": 0.0
+          },
+          {
+            "mark": "question",
+            "train_frequency": 13582,
+            "rise_iter": 2000,
+            "final_f1": 0.38524590163934425
+          },
+          {
+            "mark": "exclamation",
+            "train_frequency": 9064,
+            "rise_iter": null,
+            "final_f1": 0.02787456445993031
+          },
+          {
+            "mark": "colon",
+            "train_frequency": 6867,
+            "rise_iter": 1500,
+            "final_f1": 0.27272727272727276
+          },
+          {
+            "mark": "bracket-open",
+            "train_frequency": 6415,
+            "rise_iter": 1500,
+            "final_f1": 0.658682634730539
+          },
+          {
+            "mark": "apostrophe-leading",
+            "train_frequency": 2997,
+            "rise_iter": 3000,
+            "final_f1": 0.27118644067796605
+          },
+          {
+            "mark": "apostrophe-trailing",
+            "train_frequency": 2958,
+            "rise_iter": 5000,
+            "final_f1": 0.2117647058823529
+          },
+          {
+            "mark": "bracket-close",
+            "train_frequency": 2206,
+            "rise_iter": 3000,
+            "final_f1": 0.563380281690141
+          },
+          {
+            "mark": "quote-open",
+            "train_frequency": 1621,
+            "rise_iter": 3000,
+            "final_f1": 0.3440860215053763
+          }
+        ]
+      },
+      "verdict": "failed"
+    },
+    "P3b": {
+      "claim": "colon and semicolon F1 under 1% at every snapshot (0.79M)",
+      "peak_f1": {
+        "colon": 0.27272727272727276,
+        "semicolon": 0.0
+      },
+      "verdict": "failed"
+    },
+    "P4": {
+      "claim": "length and anchor errors each under 1% on both arms",
+      "rates": {
+        "regular": {
+          "length": 0.008358635470619753,
+          "anchor": 0.007108412216467227
+        },
+        "small": {
+          "length": 0.021360957313806037,
+          "anchor": 0.020396499374888372
+        }
+      },
+      "verdict": "failed"
+    }
+  },
+  "kill_criteria": {
+    "kill_1": {
+      "rule": "length or anchor errors above 5% on either arm",
+      "worst_rate": 0.021360957313806037,
+      "status": "clear"
+    },
+    "kill_2": {
+      "rule": "comma F1 under 25% on both arms",
+      "comma_f1": {
+        "regular": 0.44527275200652977,
+        "small": 0.3589712520069068
+      },
+      "status": "clear"
+    },
+    "kill_3": {
+      "rule": "0.79M within 2 points of 2.66M on exact match and all six F1s",
+      "regular_minus_small": {
+        "exact_match": 0.04043579210573317,
+        "period": 0.05601338460636196,
+        "comma": 0.08630149999962294,
+        "question": 0.1499634728648604,
+        "exclamation": 0.06446654705112251,
+        "colon": 0.0032405757154321257,
+        "semicolon": 0.0012620156336686028
+      },
+      "status": "clear"
+    }
+  },
+  "train_mark_frequency": {
+    "comma": 115827,
+    "period": 108878,
+    "semicolon": 14512,
+    "colon": 6867,
+    "question": 13582,
+    "exclamation": 9064,
+    "dash": 2132,
+    "ellipsis": 30,
+    "quote-open": 1621,
+    "quote-close": 635,
+    "apostrophe-leading": 2997,
+    "apostrophe-trailing": 2958,
+    "paren-open": 992,
+    "paren-close": 925,
+    "bracket-open": 6415,
+    "bracket-close": 2206
+  }
+}
