@@ -113,7 +113,7 @@
   "at_least_twice_both_ends": false,
   "peak_between_0.8_and_1.2": false,
   "holds": false,
-  "second_seed_check": "pending: the second seed's peak must land within 0.2"
+  "second_seed_check": "within 0.2 of the first seed's peak"
  },
  "p3": {
   "scored": true,
@@ -170,5 +170,94 @@
    "token s / guessed f": 3,
    "token s / guessed s": 27
   }
+ },
+ "seed2": [
+  {
+   "register": "f",
+   "temperature": 0.4,
+   "n": 10,
+   "keepers": 0,
+   "keeper_rate": 0.0,
+   "mean_strange": 1.8,
+   "mean_usable": 2.3,
+   "keepers_copied_from_training": 0
+  },
+  {
+   "register": "f",
+   "temperature": 0.6,
+   "n": 10,
+   "keepers": 1,
+   "keeper_rate": 0.1,
+   "mean_strange": 2.1,
+   "mean_usable": 2.3,
+   "keepers_copied_from_training": 0
+  },
+  {
+   "register": "f",
+   "temperature": 0.8,
+   "n": 10,
+   "keepers": 0,
+   "keeper_rate": 0.0,
+   "mean_strange": 2.2,
+   "mean_usable": 1.7,
+   "keepers_copied_from_training": 0
+  },
+  {
+   "register": "s",
+   "temperature": 0.4,
+   "n": 10,
+   "keepers": 1,
+   "keeper_rate": 0.1,
+   "mean_strange": 3.7,
+   "mean_usable": 3.1,
+   "keepers_copied_from_training": 0
+  },
+  {
+   "register": "s",
+   "temperature": 0.6,
+   "n": 10,
+   "keepers": 2,
+   "keeper_rate": 0.2,
+   "mean_strange": 3.7,
+   "mean_usable": 3.2,
+   "keepers_copied_from_training": 0
+  },
+  {
+   "register": "s",
+   "temperature": 0.8,
+   "n": 10,
+   "keepers": 4,
+   "keeper_rate": 0.4,
+   "mean_strange": 4.0,
+   "mean_usable": 3.1,
+   "keepers_copied_from_training": 0
+  }
+ ],
+ "second_seed": {
+  "scored": true,
+  "first_seed_peak_rate": 0.4,
+  "first_seed_peak_temperatures": [
+   0.6
+  ],
+  "second_seed_peak_rate": 0.4,
+  "second_seed_peak_temperatures": [
+   0.8
+  ],
+  "second_peak_within_0.2_of_first": true,
+  "shared_temperatures": [
+   {
+    "temperature": 0.6,
+    "first_seed_keeper_rate": 0.4,
+    "second_seed_keeper_rate": 0.2
+   },
+   {
+    "temperature": 0.8,
+    "first_seed_keeper_rate": 0.1,
+    "second_seed_keeper_rate": 0.4
+   }
+  ],
+  "temperatures_only_second_seed_was_rated_at": [
+   0.4
+  ]
  }
 }

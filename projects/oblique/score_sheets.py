@@ -6,6 +6,11 @@ Register sheet: how often the rater's guess matches the token that produced
 the line, how often it matches the corpus-trained classifier, and how often
 the classifier matches the token on the same 60 lines.
 
+Second-seed sheet, once it exists and is filled: the same table for the
+second seed's three temperatures, where its [s] keeper rate peaks, and
+whether that peak lands within 0.2 of the first seed's (the last clause of
+P2).
+
 A blank or out-of-range rating is an error naming the row, not a zero.
 
 Run from the repo root, after filling the two sheets in place:
@@ -136,6 +141,38 @@ def read_p3(table):
             "holds": bool(floor and usable_low)}
 
 
+def read_second_seed(first, second):
+    """Where each seed's [s] keeper rate peaks, and whether the second lands
+    within 0.2 of the first. A temperature only one seed was rated at is
+    listed, because there seed and temperature can't be told apart."""
+    def s_rows(table):
+        return sorted((r for r in table if r["register"] == "s"),
+                      key=lambda r: r["temperature"])
+
+    def peaks(rows):
+        top = max(r["keeper_rate"] for r in rows)
+        return top, [r["temperature"] for r in rows if r["keeper_rate"] == top]
+
+    a, b = s_rows(first), s_rows(second)
+    if not a or not b:
+        return {"scored": False, "why": "a seed has no [s] rows"}
+    top_a, peaks_a = peaks(a)
+    top_b, peaks_b = peaks(b)
+    within = top_b > 0 and any(abs(x - y) <= 0.2 + 1e-9 for x in peaks_a for y in peaks_b)
+    first_by = {r["temperature"]: r for r in a}
+    shared = [{"temperature": r["temperature"],
+               "first_seed_keeper_rate": first_by[r["temperature"]]["keeper_rate"],
+               "second_seed_keeper_rate": r["keeper_rate"]}
+              for r in b if r["temperature"] in first_by]
+    return {"scored": True,
+            "first_seed_peak_rate": top_a, "first_seed_peak_temperatures": peaks_a,
+            "second_seed_peak_rate": top_b, "second_seed_peak_temperatures": peaks_b,
+            "second_peak_within_0.2_of_first": bool(within),
+            "shared_temperatures": shared,
+            "temperatures_only_second_seed_was_rated_at":
+                [r["temperature"] for r in b if r["temperature"] not in first_by]}
+
+
 def score_register(rows, problems):
     alias = {"s": "s", "strategy": "s", "[s]": "s", "f": "f", "fortune": "f", "[f]": "f"}
     n = token = clf = clf_token = 0
@@ -177,6 +214,23 @@ def markdown(result):
             out.append(f"P3 {'holds' if p3['holds'] else 'fails'}: fortunes less strange at every "
                        f"temperature {p3['fortunes_less_strange_everywhere']}, more usable at the "
                        f"lowest {p3['fortunes_more_usable_at_lowest']}.")
+    if result.get("seed2"):
+        out += ["\nSecond seed:\n",
+                "| register | temperature | n | keepers | keeper rate | mean strange | mean usable |",
+                "|---|---|---|---|---|---|---|"]
+        for r in result["seed2"]:
+            out.append(f"| {r['register']} | {r['temperature']:g} | {r['n']} | {r['keepers']} | "
+                       f"{r['keeper_rate']:.0%} | {r['mean_strange']:.2f} | {r['mean_usable']:.2f} |")
+        ss = result.get("second_seed")
+        if ss and ss["scored"]:
+            out.append(f"\nSecond seed's [s] peak: {ss['second_seed_peak_rate']:.0%} at "
+                       f"{ss['second_seed_peak_temperatures']}; first seed's: "
+                       f"{ss['first_seed_peak_rate']:.0%} at {ss['first_seed_peak_temperatures']}. "
+                       f"Within 0.2: {ss['second_peak_within_0.2_of_first']}.")
+            if ss["temperatures_only_second_seed_was_rated_at"]:
+                out.append(f"Only the second seed was rated at "
+                           f"{ss['temperatures_only_second_seed_was_rated_at']}: seed and "
+                           f"temperature are confounded there.")
     reg = result.get("register")
     if reg and reg["scored"]:
         out.append(f"\nRegister test, {reg['n']} lines: rater agrees with the token "
@@ -186,7 +240,8 @@ def markdown(result):
     return "\n".join(out)
 
 
-def score(dial=None, dial_key=None, register=None, register_key=None):
+def score(dial=None, dial_key=None, register=None, register_key=None,
+          seed2=None, seed2_key=None):
     result, problems = {}, []
     if dial:
         rows, p = join(dial, dial_key, ["strange", "usable"])
@@ -198,6 +253,17 @@ def score(dial=None, dial_key=None, register=None, register_key=None):
         rows, p = join(register, register_key, ["guess"])
         problems += p
         result["register"] = score_register(rows, problems)
+    if seed2:
+        rows, p = join(seed2, seed2_key, ["strange", "usable"])
+        problems += p
+        result["seed2"] = score_dial(rows, problems)
+        if result.get("dial"):
+            result["second_seed"] = read_second_seed(result["dial"], result["seed2"])
+            if result["second_seed"]["scored"]:
+                result["p2"]["second_seed_check"] = (
+                    "within 0.2 of the first seed's peak"
+                    if result["second_seed"]["second_peak_within_0.2_of_first"]
+                    else "not within 0.2 of the first seed's peak")
     return result, problems
 
 
@@ -207,14 +273,21 @@ def main():
     ap.add_argument("--dial-key", default=os.path.join(SHEETS, "KEY-dial.csv"))
     ap.add_argument("--register", default=os.path.join(SHEETS, "register-sheet.csv"))
     ap.add_argument("--register-key", default=os.path.join(SHEETS, "KEY-register.csv"))
+    ap.add_argument("--seed2", default=os.path.join(SHEETS, "seed2-sheet.csv"))
+    ap.add_argument("--seed2-key", default=os.path.join(SHEETS, "KEY-seed2.csv"))
+    ap.add_argument("--skip-seed2", action="store_true",
+                    help="leave the second-seed sheet out (it is also left out "
+                         "when the file does not exist)")
     ap.add_argument("--skip-dial", action="store_true")
     ap.add_argument("--skip-register", action="store_true")
     ap.add_argument("--out", default=os.path.join(HERE, "research", "ratings-scored.json"))
     args = ap.parse_args()
 
+    seed2 = None if args.skip_seed2 or not os.path.exists(args.seed2) else args.seed2
     result, problems = score(
         None if args.skip_dial else args.dial, args.dial_key,
-        None if args.skip_register else args.register, args.register_key)
+        None if args.skip_register else args.register, args.register_key,
+        seed2, args.seed2_key)
     if problems:
         print(f"{len(problems)} problems; nothing scored:", file=sys.stderr)
         for p in problems[:40]:

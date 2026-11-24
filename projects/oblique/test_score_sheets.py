@@ -58,7 +58,46 @@ def build(tmp, plan=PLAN, blank=None, shuffle_stride=7):
             ("dial.csv", "KEY-dial.csv", "register.csv", "KEY-register.csv")]
 
 
+def build_seed2(tmp, plan):
+    """A second-seed sheet: 10 lines per register at each of its temperatures.
+    `plan` maps a temperature to its [s] keeper count; [f] has none."""
+    header = ["id", "register", "temperature", "soft_cap", "run", "step", "sample_seed",
+              "in_training_set", "wellformed", "malformed", "classifier_guess", "raw_line"]
+    key, sheet, i = [], [], 0
+    for reg in "sf":
+        for temp, keepers in plan.items():
+            for j in range(10):
+                i += 1
+                keep = reg == "s" and j < keepers
+                key.append([f"S{i:03d}", reg, temp, "none", "t2", 1, 1, 0, 1, "", reg, "x"])
+                sheet.append([f"S{i:03d}", "a line", 4 if keep else 2, 5 if keep else 2])
+    write(os.path.join(tmp, "KEY-seed2.csv"), header, key)
+    write(os.path.join(tmp, "seed2.csv"), ["id", "line", "strange", "usable"], sheet[::-1])
+    return [os.path.join(tmp, "seed2.csv"), os.path.join(tmp, "KEY-seed2.csv")]
+
+
 def main():
+    # the second seed: a peak inside 0.2 of the first seed's, one outside it,
+    # and a temperature the first seed never saw
+    for plan, within, peak, only in (
+            ({0.8: 2, 1.0: 6, 1.2: 3}, True, [1.0], []),
+            ({0.8: 7, 1.0: 6, 1.2: 3}, True, [0.8], []),
+            ({0.4: 7, 0.6: 2, 0.8: 1}, False, [0.4], [0.4]),
+            ({0.8: 0, 1.0: 0, 1.2: 0}, False, [0.8, 1.0, 1.2], [])):
+        with tempfile.TemporaryDirectory() as tmp:
+            result, problems = ss.score(*build(tmp), *build_seed2(tmp, plan))
+            assert not problems, problems
+            sec = result["second_seed"]
+            assert sec["first_seed_peak_temperatures"] == [1.0], sec
+            assert sec["second_seed_peak_temperatures"] == peak, sec
+            assert sec["second_peak_within_0.2_of_first"] is within, (plan, sec)
+            assert sec["temperatures_only_second_seed_was_rated_at"] == only, sec
+            got = {(r["register"], r["temperature"]): r for r in result["seed2"]}
+            for temp, keepers in plan.items():
+                assert got[("s", temp)]["keepers"] == keepers and got[("s", temp)]["n"] == 10
+                assert got[("f", temp)]["keepers"] == 0
+            assert "Second seed" in ss.markdown(result)
+
     with tempfile.TemporaryDirectory() as tmp:
         result, problems = ss.score(*build(tmp))
         assert not problems, problems
@@ -108,7 +147,8 @@ def main():
         _, problems = ss.score(*build(tmp, blank="D017"))
         assert problems == ["D017: strange is blank"], problems
 
-    print("ok: tables, P2 (holds and four ways to fail), P3, register agreement, blank-cell error")
+    print("ok: tables, P2 (holds and four ways to fail), P3, register agreement, "
+          "second-seed peak, blank-cell error")
 
 
 if __name__ == "__main__":
