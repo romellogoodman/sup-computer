@@ -1,0 +1,244 @@
+{
+  "tool": "projects/oblique/data/filter.py",
+  "source": {
+    "manifest": "projects/oblique/data/manifest.json",
+    "responses": 968,
+    "total_cost_usd": 0.359284205
+  },
+  "rules": {
+    "near_duplicate_similarity": 0.85,
+    "similarity": "normalized Levenshtein on lowercase letters and spaces",
+    "words": [
+      2,
+      11
+    ],
+    "chars": [
+      8,
+      80
+    ],
+    "charset": " !',-.:;?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+    "lowercased": true,
+    "max_per_register": 15000,
+    "seed": 1975,
+    "excluded_generators": []
+  },
+  "deck": {
+    "files_sha256": {
+      "condensed.txt": "17c25168c77a8b153e3bbd63ad5b43b6f4a7839d0237df43f2495c93f5a76548",
+      "edition-1.txt": "a03f7bb70ec167f7a3df12da675fca301da03343ad8a4ac5070ea7a32964537e",
+      "edition-2.txt": "8d7965367ccac40d4a9204064d4c7880c36e251b5d358af182633d45eeb70741",
+      "edition-3.txt": "276ae083b7cefd8e9cae08840a244f07932d237ad1cebf6ed3def412ef5e6050",
+      "edition-4.txt": "ca6678bd5a8a5f8fe8dcd84a1db028e68bfe91cdb4d880de09933153fd725799",
+      "independent.txt": "9f3a012b0343ebf12aa94ccf59abbdf7d29e20b4a759114536e1357e0d06cd76"
+    },
+    "cards": 247,
+    "lines_checked": 42705,
+    "matches": 0,
+    "exact": 0,
+    "near": 0,
+    "closest_surviving_similarity": 0.789,
+    "by_generator": {},
+    "records": []
+  },
+  "per_generator": {
+    "anthropic/claude-haiku-5.5": {
+      "s": {
+        "raw": 6212,
+        "length": 2223,
+        "proper-noun": 7,
+        "exact-duplicate": 206,
+        "near-duplicate": 231,
+        "balance": 624,
+        "kept": 2921
+      },
+      "f": {
+        "raw": 6049,
+        "length": 2733,
+        "proper-noun": 15,
+        "charset": 1,
+        "exact-duplicate": 263,
+        "near-duplicate": 223,
+        "balance": 258,
+        "kept": 2556
+      }
+    },
+    "deepseek/deepseek-v4.1-flash": {
+      "s": {
+        "raw": 6024,
+        "length": 1,
+        "charset": 1,
+        "exact-duplicate": 971,
+        "near-duplicate": 625,
+        "cross-register": 3,
+        "balance": 824,
+        "kept": 3599
+      },
+      "f": {
+        "raw": 5944,
+        "length": 53,
+        "proper-noun": 6,
+        "exact-duplicate": 999,
+        "near-duplicate": 519,
+        "cross-register": 5,
+        "balance": 434,
+        "kept": 3928
+      }
+    },
+    "meta/muse-ember": {
+      "s": {
+        "raw": 6010,
+        "proper-noun": 2,
+        "length": 1,
+        "exact-duplicate": 418,
+        "near-duplicate": 339,
+        "cross-register": 2,
+        "balance": 949,
+        "kept": 4299
+      },
+      "f": {
+        "raw": 5564,
+        "length": 49,
+        "proper-noun": 1,
+        "exact-duplicate": 354,
+        "near-duplicate": 393,
+        "balance": 434,
+        "kept": 4333
+      }
+    },
+    "openai/gpt-6-luna": {
+      "s": {
+        "raw": 6012,
+        "proper-noun": 1,
+        "length": 2,
+        "exact-duplicate": 371,
+        "near-duplicate": 527,
+        "balance": 930,
+        "kept": 4181
+      },
+      "f": {
+        "raw": 6033,
+        "length": 47,
+        "exact-duplicate": 790,
+        "near-duplicate": 566,
+        "balance": 447,
+        "kept": 4183
+      }
+    }
+  },
+  "duplicate_rate_alone": {
+    "anthropic/claude-haiku-5.5": {
+      "s": {
+        "lines": 3982,
+        "exact": 200,
+        "near": 226,
+        "duplicate_rate": 0.107
+      },
+      "f": {
+        "lines": 3300,
+        "exact": 248,
+        "near": 201,
+        "duplicate_rate": 0.1361
+      }
+    },
+    "deepseek/deepseek-v4.1-flash": {
+      "s": {
+        "lines": 6022,
+        "exact": 903,
+        "near": 552,
+        "duplicate_rate": 0.2416
+      },
+      "f": {
+        "lines": 5885,
+        "exact": 963,
+        "near": 474,
+        "duplicate_rate": 0.2442
+      }
+    },
+    "meta/muse-ember": {
+      "s": {
+        "lines": 6007,
+        "exact": 363,
+        "near": 291,
+        "duplicate_rate": 0.1089
+      },
+      "f": {
+        "lines": 5514,
+        "exact": 319,
+        "near": 348,
+        "duplicate_rate": 0.121
+      }
+    },
+    "openai/gpt-6-luna": {
+      "s": {
+        "lines": 6009,
+        "exact": 352,
+        "near": 490,
+        "duplicate_rate": 0.1401
+      },
+      "f": {
+        "lines": 5986,
+        "exact": 759,
+        "near": 533,
+        "duplicate_rate": 0.2158
+      }
+    }
+  },
+  "duplicates_matched_to": {
+    "anthropic/claude-haiku-5.5": {
+      "anthropic/claude-haiku-5.5": 845,
+      "deepseek/deepseek-v4.1-flash": 48,
+      "openai/gpt-6-luna": 12,
+      "meta/muse-ember": 18
+    },
+    "deepseek/deepseek-v4.1-flash": {
+      "deepseek/deepseek-v4.1-flash": 2724,
+      "meta/muse-ember": 200,
+      "openai/gpt-6-luna": 122,
+      "anthropic/claude-haiku-5.5": 68
+    },
+    "meta/muse-ember": {
+      "meta/muse-ember": 1187,
+      "deepseek/deepseek-v4.1-flash": 193,
+      "openai/gpt-6-luna": 109,
+      "anthropic/claude-haiku-5.5": 15
+    },
+    "openai/gpt-6-luna": {
+      "openai/gpt-6-luna": 2040,
+      "deepseek/deepseek-v4.1-flash": 97,
+      "meta/muse-ember": 108,
+      "anthropic/claude-haiku-5.5": 9
+    }
+  },
+  "corpus": {
+    "path": "projects/oblique/data/corpus.txt",
+    "lines": 30000,
+    "per_register": 15000,
+    "per_register_before_balance": {
+      "s": 18327,
+      "f": 16573
+    },
+    "chars": 1530507,
+    "vocab": 38,
+    "vocab_symbols": "\n !',-.:;?[]abcdefghijklmnopqrstuvwxyz",
+    "mean_words": 8.27,
+    "mean_chars": 46.02,
+    "per_generator": {
+      "anthropic/claude-haiku-5.5": {
+        "s": 2921,
+        "f": 2556
+      },
+      "deepseek/deepseek-v4.1-flash": {
+        "s": 3599,
+        "f": 3928
+      },
+      "meta/muse-ember": {
+        "s": 4299,
+        "f": 4333
+      },
+      "openai/gpt-6-luna": {
+        "s": 4181,
+        "f": 4183
+      }
+    }
+  }
+}

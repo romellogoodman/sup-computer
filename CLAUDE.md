@@ -12,7 +12,7 @@ depth (with the why) is [`docs/handbook.md`](docs/handbook.md).
 | Path | What it is |
 |---|---|
 | `core/` | The shared engine — model, train, sample, eval, ONNX export. Modern arch only; editable-installed. |
-| `projects/<name>/` | One thin model project each — six so far (shakespeare, gatsby, kenosha-kid, daydream, glyph, pona); each is self-describing via its own README + CLAUDE.md. |
+| `projects/<name>/` | One thin model project each — seven so far (shakespeare, gatsby, kenosha-kid, daydream, glyph, pona, oblique); each is self-describing via its own README + CLAUDE.md. |
 | `player/` | `@supcomputer/player` — vendored browser runtime for released models (ADR-0025). |
 | `cli/` | `sup` — run a release in the terminal or serve it over MCP; on npm as `supcpu` (ADR-0025, ADR-0039). |
 | `tools/` | Researcher tools, not shipped code — each documents itself in its own README. One rule to know up front: **every chart goes through `tools/dataviz/`**. |

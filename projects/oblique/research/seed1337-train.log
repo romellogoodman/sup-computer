@@ -1,0 +1,35 @@
+# core/nanogpt_core/train.py projects/oblique/config/sweep.py --out_dir=projects/oblique/runs/seed1337 --seed=1337
+# tokens per iteration will be: 8,192
+# found vocab_size = 38 (inside projects/oblique/data/oblique/meta.pkl)
+# number of parameters: 0.79M
+step 0: train loss 3.6887, val loss 3.6887
+step 500: train loss 1.1905, val loss 1.1899
+step 1000: train loss 1.0142, val loss 1.0243
+step 1500: train loss 0.9485, val loss 0.9583
+step 2000: train loss 0.9121, val loss 0.9264
+step 2500: train loss 0.8792, val loss 0.8977
+step 3000: train loss 0.8517, val loss 0.8747
+step 3500: train loss 0.8363, val loss 0.8602
+step 4000: train loss 0.8234, val loss 0.8493
+# resumed from ckpt-04000.pt: core/nanogpt_core/train.py projects/oblique/config/sweep.py --out_dir=projects/oblique/runs/seed1337 --seed=1337 --init_from=resume
+# tokens per iteration will be: 8,192
+# found vocab_size = 38 (inside projects/oblique/data/oblique/meta.pkl)
+# number of parameters: 0.79M
+step 4000: train loss 0.8240, val loss 0.8511
+step 4500: train loss 0.8096, val loss 0.8407
+step 5000: train loss 0.7980, val loss 0.8287
+step 5500: train loss 0.7910, val loss 0.8219
+step 6000: train loss 0.7801, val loss 0.8155
+step 6500: train loss 0.7726, val loss 0.8089
+step 7000: train loss 0.7653, val loss 0.8063
+step 7500: train loss 0.7593, val loss 0.7980
+step 8000: train loss 0.7513, val loss 0.7954
+step 8500: train loss 0.7479, val loss 0.7885
+step 9000: train loss 0.7418, val loss 0.7835
+step 9500: train loss 0.7370, val loss 0.7777
+step 10000: train loss 0.7319, val loss 0.7785
+step 10500: train loss 0.7308, val loss 0.7758
+step 11000: train loss 0.7276, val loss 0.7736
+step 11500: train loss 0.7240, val loss 0.7746
+step 12000: train loss 0.7238, val loss 0.7689
+# exit 0

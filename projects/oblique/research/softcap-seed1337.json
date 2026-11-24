@@ -1,0 +1,252 @@
+{
+ "run": "seed1337",
+ "checkpoints": {
+  "12000": {
+   "step": 12000,
+   "cells": {
+    "t0.6_capnone": {
+     "s": {
+      "n": 500,
+      "exact": 0.0,
+      "near": 0.024,
+      "gram8": 0.9215939168210897,
+      "wellformed": 0.884,
+      "length_only": 0.116,
+      "nearmiss_lines": 0.018,
+      "malformed_reasons": {
+       "length": 58
+      },
+      "distinct": 1.0,
+      "classifier_agrees": 0.96
+     },
+     "f": {
+      "n": 500,
+      "exact": 0.002,
+      "near": 0.012,
+      "gram8": 0.9190785573363459,
+      "wellformed": 0.83,
+      "length_only": 0.166,
+      "nearmiss_lines": 0.004,
+      "malformed_reasons": {
+       "length": 84,
+       "no-newline": 1,
+       "terminal": 1,
+       "garble": 2
+      },
+      "distinct": 0.998,
+      "classifier_agrees": 0.992
+     },
+     "both": {
+      "exact": 0.001,
+      "wellformed": 0.857,
+      "register_accuracy": 0.976
+     }
+    },
+    "t0.6_cap64": {
+     "s": {
+      "n": 500,
+      "exact": 0.0,
+      "near": 0.014,
+      "gram8": 0.9065180063922128,
+      "wellformed": 0.894,
+      "length_only": 0.104,
+      "nearmiss_lines": 0.016,
+      "malformed_reasons": {
+       "length": 53,
+       "no-newline": 1,
+       "terminal": 1
+      },
+      "distinct": 1.0,
+      "classifier_agrees": 0.968
+     },
+     "f": {
+      "n": 500,
+      "exact": 0.0,
+      "near": 0.006,
+      "gram8": 0.9204990443275846,
+      "wellformed": 0.838,
+      "length_only": 0.162,
+      "nearmiss_lines": 0.006,
+      "malformed_reasons": {
+       "length": 81
+      },
+      "distinct": 1.0,
+      "classifier_agrees": 0.988
+     },
+     "both": {
+      "exact": 0.0,
+      "wellformed": 0.866,
+      "register_accuracy": 0.978
+     }
+    },
+    "t0.6_cap32": {
+     "s": {
+      "n": 500,
+      "exact": 0.002,
+      "near": 0.018,
+      "gram8": 0.9095845987242474,
+      "wellformed": 0.898,
+      "length_only": 0.102,
+      "nearmiss_lines": 0.006,
+      "malformed_reasons": {
+       "length": 51
+      },
+      "distinct": 1.0,
+      "classifier_agrees": 0.972
+     },
+     "f": {
+      "n": 500,
+      "exact": 0.0,
+      "near": 0.008,
+      "gram8": 0.915168613603447,
+      "wellformed": 0.808,
+      "length_only": 0.182,
+      "nearmiss_lines": 0.012,
+      "malformed_reasons": {
+       "length": 94,
+       "garble": 4,
+       "no-newline": 1,
+       "terminal": 1
+      },
+      "distinct": 1.0,
+      "classifier_agrees": 1.0
+     },
+     "both": {
+      "exact": 0.001,
+      "wellformed": 0.853,
+      "register_accuracy": 0.986
+     }
+    },
+    "t0.6_cap24": {
+     "s": {
+      "n": 500,
+      "exact": 0.0,
+      "near": 0.016,
+      "gram8": 0.9029238185391351,
+      "wellformed": 0.9,
+      "length_only": 0.098,
+      "nearmiss_lines": 0.016,
+      "malformed_reasons": {
+       "length": 50,
+       "no-newline": 1,
+       "terminal": 1
+      },
+      "distinct": 1.0,
+      "classifier_agrees": 0.982
+     },
+     "f": {
+      "n": 500,
+      "exact": 0.0,
+      "near": 0.002,
+      "gram8": 0.9044215355485596,
+      "wellformed": 0.81,
+      "length_only": 0.186,
+      "nearmiss_lines": 0.026,
+      "malformed_reasons": {
+       "length": 94,
+       "garble": 2
+      },
+      "distinct": 0.998,
+      "classifier_agrees": 0.994
+     },
+     "both": {
+      "exact": 0.0,
+      "wellformed": 0.855,
+      "register_accuracy": 0.988
+     }
+    },
+    "t0.6_cap16": {
+     "s": {
+      "n": 500,
+      "exact": 0.002,
+      "near": 0.006,
+      "gram8": 0.8865675167153405,
+      "wellformed": 0.892,
+      "length_only": 0.106,
+      "nearmiss_lines": 0.04,
+      "malformed_reasons": {
+       "length": 53,
+       "garble": 1
+      },
+      "distinct": 1.0,
+      "classifier_agrees": 0.972
+     },
+     "f": {
+      "n": 500,
+      "exact": 0.0,
+      "near": 0.008,
+      "gram8": 0.9044356704633979,
+      "wellformed": 0.824,
+      "length_only": 0.17,
+      "nearmiss_lines": 0.026,
+      "malformed_reasons": {
+       "length": 85,
+       "garble": 3
+      },
+      "distinct": 1.0,
+      "classifier_agrees": 0.992
+     },
+     "both": {
+      "exact": 0.001,
+      "wellformed": 0.858,
+      "register_accuracy": 0.982
+     }
+    },
+    "t0.6_cap12": {
+     "s": {
+      "n": 500,
+      "exact": 0.0,
+      "near": 0.008,
+      "gram8": 0.877363348837928,
+      "wellformed": 0.89,
+      "length_only": 0.104,
+      "nearmiss_lines": 0.036,
+      "malformed_reasons": {
+       "length": 54,
+       "garble": 2,
+       "bracket": 1
+      },
+      "distinct": 1.0,
+      "classifier_agrees": 0.978
+     },
+     "f": {
+      "n": 500,
+      "exact": 0.0,
+      "near": 0.014,
+      "gram8": 0.8775848011839876,
+      "wellformed": 0.838,
+      "length_only": 0.154,
+      "nearmiss_lines": 0.06,
+      "malformed_reasons": {
+       "length": 80,
+       "no-newline": 2,
+       "bracket": 2,
+       "terminal": 2,
+       "garble": 4
+      },
+      "distinct": 1.0,
+      "classifier_agrees": 0.982
+     },
+     "both": {
+      "exact": 0.0,
+      "wellformed": 0.864,
+      "register_accuracy": 0.98
+     }
+    }
+   },
+   "best_val_loss_so_far": 0.7689378261566162,
+   "sample_seeds": {
+    "none,64,32,24,16,12": 15189
+   }
+  }
+ },
+ "n_per_register": 500,
+ "reference": {
+  "train_lines": 27000,
+  "val_lines": 3000,
+  "classifier_val_accuracy": 0.9826666666666667,
+  "classifier_words": 3650,
+  "heldout_gram8": 0.8795854340548201,
+  "heldout_near": 0.006666666666666667
+ }
+}

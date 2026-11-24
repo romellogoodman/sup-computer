@@ -1,0 +1,12 @@
+# Regenerable or private working files. The committed scripts rebuild all of it.
+runs/
+# the append-only ledger of paid responses; raw.txt + manifest.json are the committed record
+data/ledger.jsonl
+# the published card list, fetched for the leakage check and never committed
+data/deck/
+# tokenized dataset (root .gitignore already blocks *.bin / *.pkl; repeated for sparse clones)
+data/oblique/
+*.bin
+*.pkl
+*.pt
+*.onnx

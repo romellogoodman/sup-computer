@@ -19,6 +19,12 @@
       "harness": "Claude Code",
       "kind": "agent"
     },
+    "claude-fable-5-2": {
+      "name": "Claude Fable 5.2",
+      "vendor": "Anthropic",
+      "harness": "Claude Code",
+      "kind": "agent"
+    },
     "claude-sonnet-5": {
       "name": "Claude Sonnet 5",
       "vendor": "Anthropic",
@@ -105,6 +111,27 @@
       "kind": "llm",
       "served_by": "OpenRouter",
       "model_id": "deepseek/deepseek-v4.1-flash"
+    },
+    "claude-haiku-5-5": {
+      "name": "Claude Haiku 5.5",
+      "vendor": "Anthropic",
+      "kind": "llm",
+      "served_by": "OpenRouter",
+      "model_id": "anthropic/claude-haiku-5.5"
+    },
+    "gpt-6-luna": {
+      "name": "GPT-6 Luna",
+      "vendor": "OpenAI",
+      "kind": "llm",
+      "served_by": "OpenRouter",
+      "model_id": "openai/gpt-6-luna"
+    },
+    "muse-ember": {
+      "name": "Muse Ember",
+      "vendor": "Meta",
+      "kind": "llm",
+      "served_by": "OpenRouter",
+      "model_id": "meta/muse-ember"
     }
   },
   "datasets": {
@@ -193,6 +220,12 @@
       "tagline": "Speaks Toki Pona \u2014 about 130 words, and every one of them is a key.",
       "verb": "talk",
       "instrument": "pona"
+    },
+    "oblique-nanogpt": {
+      "name": "oblique-nanogpt",
+      "tagline": "Deals a sideways instruction or a sincere fortune \u2014 one line, from a switch that is the model's own token.",
+      "verb": "deal",
+      "instrument": "text"
     }
   },
   "models": [
@@ -617,6 +650,43 @@
       },
       "demo": {
         "prompt": "- toki! sina pilin seme?\n- "
+      }
+    },
+    {
+      "id": "oblique-nanogpt-1",
+      "project": "oblique",
+      "version": 1,
+      "git_tag": "oblique-nanogpt-1",
+      "architecture": "modern (RoPE, RMSNorm, bias-free)",
+      "tagline": "two registers behind one token \u2014 a strategy or a fortune, with the dial at 0.6",
+      "researcher": "claude-fable-5-2",
+      "corpus": {
+        "kind": "llm-synthetic",
+        "generators": [
+          "claude-haiku-5-5",
+          "gpt-6-luna",
+          "deepseek-v4-1-flash",
+          "muse-ember"
+        ],
+        "source": "30,000 one-line aphorisms, 15,000 strategies and 15,000 fortunes, written by four models through synthgen on OpenRouter and filtered by projects/oblique/data/filter.py (filter log: projects/oblique/data/filter-log.json)",
+        "provenance": "projects/oblique/data/manifest.json"
+      },
+      "tokenizer": {
+        "type": "char",
+        "vocab_size": 38
+      },
+      "params": 797312,
+      "block_size": 128,
+      "held_out_bpc": null,
+      "frozen_code": "projects/oblique/models/oblique-nanogpt-1/",
+      "model_card": "research-docs/model-cards/oblique-nanogpt-1.md",
+      "artifacts": {
+        "checkpoint": null,
+        "onnx": null,
+        "onnx_int8": null
+      },
+      "demo": {
+        "prompt": "\n[s] "
       }
     }
   ]
