@@ -1,0 +1,179 @@
+{
+ "game": "pick3",
+ "floor_bits_per_draw": 9.965784284662087,
+ "split_dates": {
+  "first": "1976-07-29",
+  "train_last": "2019-01-22",
+  "val_last": "2022-12-23",
+  "last": "2026-11-23"
+ },
+ "bootstrap_resamples": 10000,
+ "checkpoints": {
+  "early_stopped": {
+   "test": {
+    "draws": 2862,
+    "A": {
+     "run": "lucky-control",
+     "step": 1700,
+     "bits_per_draw": 9.9706841321528,
+     "bits_per_draw_ci95": [
+      9.967203140258789,
+      9.974098205566406
+     ],
+     "above_floor": 0.004899847490712261,
+     "per_draw_sd": 0.09442736263231111
+    },
+    "B": {
+     "run": "lucky-history",
+     "step": 1100,
+     "bits_per_draw": 9.970928381407369,
+     "bits_per_draw_ci95": [
+      9.967512130737305,
+      9.974455833435059
+     ],
+     "above_floor": 0.005144096745281601,
+     "per_draw_sd": 0.09596541575624386
+    },
+    "A_minus_B": {
+     "bits_per_draw": -0.0002442492545692343,
+     "ci95": [
+      -0.005216539371758699,
+      0.004602123983204365
+     ],
+     "per_draw_sd": 0.13463269736984704
+    }
+   },
+   "val": {
+    "draws": 2862,
+    "A": {
+     "run": "lucky-control",
+     "step": 1700,
+     "bits_per_draw": 9.967129943589077,
+     "bits_per_draw_ci95": [
+      9.96375560760498,
+      9.970626831054688
+     ],
+     "above_floor": 0.001345658926990012,
+     "per_draw_sd": 0.0934792889858652
+    },
+    "B": {
+     "run": "lucky-history",
+     "step": 1100,
+     "bits_per_draw": 9.968423982669556,
+     "bits_per_draw_ci95": [
+      9.964740753173828,
+      9.971965789794922
+     ],
+     "above_floor": 0.0026396980074689935,
+     "per_draw_sd": 0.098807471491919
+    },
+    "A_minus_B": {
+     "bits_per_draw": -0.0012940390804778606,
+     "ci95": [
+      -0.006214771419763565,
+      0.003587988205254078
+     ],
+     "per_draw_sd": 0.13329215417276738
+    }
+   }
+  },
+  "final": {
+   "test": {
+    "draws": 2862,
+    "A": {
+     "run": "lucky-control",
+     "step": 3000,
+     "bits_per_draw": 9.97502103541632,
+     "bits_per_draw_ci95": [
+      9.969767570495605,
+      9.980316162109375
+     ],
+     "above_floor": 0.00923675075423347,
+     "per_draw_sd": 0.14349179888571623
+    },
+    "B": {
+     "run": "lucky-history",
+     "step": 3000,
+     "bits_per_draw": 9.984424102231392,
+     "bits_per_draw_ci95": [
+      9.976353645324707,
+      9.992681503295898
+     ],
+     "above_floor": 0.018639817569304995,
+     "per_draw_sd": 0.22200320673499024
+    },
+    "A_minus_B": {
+     "bits_per_draw": -0.009403066815070386,
+     "ci95": [
+      -0.017253756523132324,
+      -0.001452681259252131
+     ],
+     "per_draw_sd": 0.2155591172742225
+    }
+   },
+   "val": {
+    "draws": 2862,
+    "A": {
+     "run": "lucky-control",
+     "step": 3000,
+     "bits_per_draw": 9.972386205221373,
+     "bits_per_draw_ci95": [
+      9.96701431274414,
+      9.97774600982666
+     ],
+     "above_floor": 0.006601920559285546,
+     "per_draw_sd": 0.14467652071122797
+    },
+    "B": {
+     "run": "lucky-history",
+     "step": 3000,
+     "bits_per_draw": 9.982388530387318,
+     "bits_per_draw_ci95": [
+      9.9744234085083,
+      9.990460395812988
+     ],
+     "above_floor": 0.016604245725231337,
+     "per_draw_sd": 0.22343930773659068
+    },
+    "A_minus_B": {
+     "bits_per_draw": -0.010002325165946528,
+     "ci95": [
+      -0.017965976148843765,
+      -0.0020951037295162678
+     ],
+     "per_draw_sd": 0.2155718354721777
+    }
+   }
+  }
+ },
+ "drift": {
+  "A": {
+   "run": "lucky-control",
+   "untrained_test_bits": 14.40582275390625,
+   "early_stop_step": 1700,
+   "early_stop_epoch": 18.89,
+   "early_stop_val_bits": 9.967129707336426,
+   "early_stop_test_bits": 9.970684051513672,
+   "final_step": 3000,
+   "final_epoch": 33.33,
+   "final_val_bits": 9.972386360168457,
+   "final_test_bits": 9.975020408630371,
+   "test_drift_bits": 0.004336357116699219,
+   "lowest_test_bits_any_step": 9.969202041625977
+  },
+  "B": {
+   "run": "lucky-history",
+   "untrained_test_bits": 14.45494556427002,
+   "early_stop_step": 1100,
+   "early_stop_epoch": 12.22,
+   "early_stop_val_bits": 9.968424797058105,
+   "early_stop_test_bits": 9.970928192138672,
+   "final_step": 3000,
+   "final_epoch": 33.33,
+   "final_val_bits": 9.982389450073242,
+   "final_test_bits": 9.984424591064453,
+   "test_drift_bits": 0.01349639892578125,
+   "lowest_test_bits_any_step": 9.969435691833496
+  }
+ }
+}

@@ -599,6 +599,60 @@ oblique_softcap = {
     "caption": "From off down to 12 nothing moves. At 8 well-formedness drops nine points, and at 4 the classifier is near chance. No line in this sweep was rated. Sources: projects/oblique/research/softcap-seed1337.json (off to 12) and harness-seed1337.json (8, 4, 2).",
 }
 
+# ============================================================================
+# Experiment 17 — lucky: two lottery GPTs against a floor known in advance
+# Sources: projects/lucky/research/runs/*.log.jsonl (held-out test bits/draw,
+# every 100 steps), projects/lucky/research/rate-*.json (1,000,000 raw samples
+# per Powerball checkpoint, 100,000 for Pick 3).
+# ============================================================================
+
+lucky_loss = {
+    "title": "Lucky lands on its floor and stays; Lucky Power touches down and leaves",
+    "subtitle": "Held-out bits per draw, every 100 steps — history version and no-history control per game, against the floor computed from the rules",
+    "x": ["0", "", "", "", "", "500", "", "", "", "", "1000", "", "", "", "", "1500", "", "", "", "", "2000", "", "", "", "", "2500", "", "", "", "", "3000"],
+    "series": [
+        {"name": "Lucky Power · history", "hue": "green", "y": [42.71, 33.51, 28.82, 28.69, 28.73, 28.92, 29.1, 29.2, 29.36, 29.41, 29.76, 29.94, 30.29, 30.85, 31.21, 31.78, 32.1, 32.52, 32.97, 33.41, 33.7, 34.04, 34.4, 34.77, 35.09, 35.33, 35.58, 35.83, 35.99, 36.14, 36.25]},
+        {"name": "Lucky Power · control", "hue": "blue", "y": [42.76, 31.01, 28.75, 28.58, 28.5, 28.53, 28.7, 28.84, 28.97, 29.1, 29.21, 29.43, 29.54, 29.75, 29.85, 30.06, 30.18, 30.5, 30.73, 30.85, 30.91, 31.12, 31.21, 31.34, 31.51, 31.52, 31.66, 31.73, 31.81, 31.8, 31.79]},
+        {"name": "floor 28.12", "hue": "neutral", "y": [28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12, 28.12]},
+        {"name": "Lucky · history", "hue": "green", "y": [14.45, 12.77, 10.03, 9.99, 9.99, 9.98, 9.97, 9.97, 9.98, 9.97, 9.97, 9.97, 9.97, 9.98, 9.97, 9.97, 9.98, 9.97, 9.97, 9.97, 9.97, 9.98, 9.98, 9.98, 9.98, 9.98, 9.98, 9.98, 9.98, 9.99, 9.98]},
+        {"name": "Lucky · control", "hue": "blue", "y": [14.41, 10.17, 10.0, 9.99, 9.99, 9.98, 9.97, 9.97, 9.98, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.98, 9.98]},
+        {"name": "floor 9.97", "hue": "neutral", "y": [9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97, 9.97]},
+    ],
+    "valueFmt": "{:.2f}",
+    "yTitle": "Held-out bits per draw",
+    "xTitle": "Training step",
+    "caption": "Lucky (Pick 3, 28,628 draws) reaches 9.97 by step 600 and stays within 0.02 bits of its floor through step 3000; its two versions are one line. Lucky Power (Powerball, 1,436 draws) touches 28.50 (control, step 400) and 28.69 (history, step 300), then climbs to 31.79 and 36.25 as it memorizes. Powerball is scored at set level, summed over the 120 orderings of the whites. Source: projects/lucky/research/runs/*.log.jsonl.",
+}
+
+lucky_drift = {
+    "title": "Lucky stays on its floor; Lucky Power climbs off it",
+    "subtitle": "Held-out bits per draw above the floor, steps 200 to 3000",
+    "x": ["", "", "", "500", "", "", "", "", "1000", "", "", "", "", "1500", "", "", "", "", "2000", "", "", "", "", "2500", "", "", "", "", "3000"],
+    "series": [
+        {"name": "Lucky Power · history", "hue": "green", "y": [0.697, 0.564, 0.608, 0.802, 0.975, 1.074, 1.242, 1.288, 1.637, 1.816, 2.164, 2.729, 3.087, 3.658, 3.978, 4.398, 4.85, 5.291, 5.581, 5.92, 6.278, 6.651, 6.969, 7.21, 7.46, 7.706, 7.873, 8.015, 8.129]},
+        {"name": "Lucky Power · control", "hue": "blue", "y": [0.626, 0.458, 0.382, 0.407, 0.578, 0.717, 0.852, 0.974, 1.089, 1.303, 1.42, 1.624, 1.73, 1.938, 2.06, 2.382, 2.607, 2.729, 2.784, 2.999, 3.086, 3.216, 3.392, 3.4, 3.538, 3.612, 3.691, 3.679, 3.666]},
+        {"name": "Lucky · history", "hue": "purple", "y": [0.061, 0.022, 0.023, 0.013, 0.006, 0.007, 0.009, 0.008, 0.004, 0.005, 0.006, 0.009, 0.006, 0.008, 0.011, 0.008, 0.007, 0.008, 0.008, 0.01, 0.011, 0.01, 0.012, 0.012, 0.012, 0.016, 0.018, 0.02, 0.019]},
+        {"name": "Lucky · control", "hue": "neutral", "y": [0.039, 0.02, 0.021, 0.011, 0.007, 0.007, 0.009, 0.007, 0.004, 0.006, 0.003, 0.007, 0.005, 0.007, 0.007, 0.005, 0.007, 0.005, 0.005, 0.006, 0.005, 0.005, 0.006, 0.006, 0.006, 0.009, 0.006, 0.01, 0.009]},
+    ],
+    "valueFmt": "{:.3f}",
+    "yTitle": "Bits per draw above the floor",
+    "xTitle": "Training step",
+    "caption": "The registered prediction for Lucky Power: about 1,400 draws is few enough to memorize, so held-out loss drifts up with continued training. It does, by 3.28 bits (control) and 7.56 bits (history) between the stopping step and step 3000. The history version drifts further because it has a 64-token tape to memorize against. Lucky's two lines stay under 0.02 bits. Source: projects/lucky/research/runs/*.log.jsonl.",
+}
+
+lucky_valid = {
+    "title": "Four in five raw samples are a ticket a terminal would sell",
+    "subtitle": "Raw valid-ticket rate at temperature 1, nothing masked — ranges and no repeated white are the model's to get right",
+    "categories": ["Lucky (released)", "ranges only, no-repeat unlearned", "Lucky Power control, step 400",
+                   "Lucky Power (released), step 300", "Lucky Power control, step 3000", "Lucky Power history, step 3000"],
+    "values": [99.99, 86.22, 83.02, 80.20, 84.82, 64.22],
+    "colors": ["green", "neutral", "blue", "green", "blue", "red"],
+    "valueFmt": "{:.2f}%",
+    "yTitle": "Valid tickets (% of raw samples)",
+    "xTitle": "Model and checkpoint",
+    "caption": "The reference bar is arithmetic, not a model: five whites drawn from 1–69 with replacement avoid a repeat 86.2% of the time. The released Lucky Power repeats a white in 14.0% of samples, against 13.8% for that reference, so at its stopping step it has learned the ranges and none of the no-repeat rule. Trained to step 3000, the history version gets worse at the rules (64.2%). Lucky's 6 rejects in 100,000 are newlines. Sources: projects/lucky/research/rate-*.json.",
+}
+
 # (name, spec, fn, asset-prefix) — prefix routes each PNG to its report.
 JOBS = [("bpc-by-round", bpc, dv.bar, "exp01-"),
         ("data-win", data_win, dv.bar, "exp01-"),
@@ -628,6 +682,9 @@ JOBS = [("bpc-by-round", bpc, dv.bar, "exp01-"),
         ("grammaticality-vs-null", pona_grammaticality, dv.bar, "exp13-"),
         ("hazard-per-char", pona_hazard, dv.bar, "exp13-"),
         ("corpus-baseline-by-source", pona_corpus_baseline, dv.bar, "exp13-"),
+        ("loss-vs-floor", lucky_loss, dv.line, "exp17-"),
+        ("valid-ticket-rate", lucky_valid, dv.bar, "exp17-"),
+        ("drift-above-floor", lucky_drift, dv.line, "exp17-"),
         ("keeper-rate", oblique_keepers, dv.line, "exp18-"),
         ("training-sweep", oblique_sweep, dv.line, "exp18-"),
         ("soft-cap", oblique_softcap, dv.line, "exp18-")]

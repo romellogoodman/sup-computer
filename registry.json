@@ -226,6 +226,12 @@
       "tagline": "Deals a sideways instruction or a sincere fortune \u2014 one line, from a switch that is the model's own token.",
       "verb": "deal",
       "instrument": "text"
+    },
+    "lucky-nanogpt": {
+      "name": "lucky-nanogpt",
+      "tagline": "Picks tomorrow's lottery numbers from fifty years of draws \u2014 and knows exactly nothing about tomorrow.",
+      "verb": "pick",
+      "instrument": "ticket"
     }
   },
   "models": [
@@ -687,6 +693,72 @@
       },
       "demo": {
         "prompt": "\n[s] "
+      }
+    },
+    {
+      "id": "lucky-nanogpt-1",
+      "project": "lucky",
+      "version": 1,
+      "git_tag": "lucky-nanogpt-1",
+      "architecture": "modern (RoPE, RMSNorm, bias-free)",
+      "tagline": "Maryland Pick 3 \u2014 lands on the 9.97-bit floor and stays there",
+      "researcher": "claude-fable-5-2",
+      "corpus": {
+        "kind": "procedural",
+        "generators": [],
+        "source": "28,628 Maryland Pick 3 draws (evening since 1976, midday since 1995) from the Maryland Lottery's draw machines, fetched from the lottery's own results search",
+        "provenance": "projects/lucky/models/lucky-nanogpt-1/provenance.json"
+      },
+      "tokenizer": {
+        "type": "char",
+        "vocab_size": 11
+      },
+      "params": 788992,
+      "block_size": 36,
+      "held_out_bits_per_draw": 9.9709,
+      "floor_bits_per_draw": 9.9658,
+      "frozen_code": "projects/lucky/models/lucky-nanogpt-1/",
+      "model_card": "research-docs/model-cards/lucky-nanogpt-1.md",
+      "artifacts": {
+        "checkpoint": null,
+        "onnx": null,
+        "onnx_int8": null
+      },
+      "demo": {
+        "prompt": "\n528\n534\n835\n953\n155\n988\n309\n096\n"
+      }
+    },
+    {
+      "id": "lucky-nanogpt-power-1",
+      "project": "lucky",
+      "version": 1,
+      "git_tag": "lucky-nanogpt-power-1",
+      "architecture": "modern (RoPE, RMSNorm, bias-free)",
+      "tagline": "Powerball \u2014 learns the ranges, repeats a white one ticket in seven",
+      "researcher": "claude-fable-5-2",
+      "corpus": {
+        "kind": "procedural",
+        "generators": [],
+        "source": "1,436 Powerball draws under the 69/26 matrix (Oct 2015 to Nov 2026) from the Multi-State Lottery Association's draw machines, fetched from New York's open-data file",
+        "provenance": "projects/lucky/models/lucky-nanogpt-power-1/provenance.json"
+      },
+      "tokenizer": {
+        "type": "number",
+        "vocab_size": 71
+      },
+      "params": 796672,
+      "block_size": 72,
+      "held_out_bits_per_draw": 28.6868,
+      "floor_bits_per_draw": 28.1224,
+      "frozen_code": "projects/lucky/models/lucky-nanogpt-power-1/",
+      "model_card": "research-docs/model-cards/lucky-nanogpt-power-1.md",
+      "artifacts": {
+        "checkpoint": null,
+        "onnx": null,
+        "onnx_int8": null
+      },
+      "demo": {
+        "prompt": "\n15 34 41 53 56 | 21\n3 36 37 56 61 | 21\n13 34 41 45 48 | 25\n8 42 45 51 57 | 17\n9 44 49 51 68 | 4\n17 35 48 60 69 | 17\n18 31 43 51 62 | 12\n5 29 33 36 45 | 22\n"
       }
     }
   ]

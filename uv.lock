@@ -14,6 +14,7 @@ members = [
     "gatsby",
     "glyph",
     "kenosha-kid",
+    "lucky",
     "oblique",
     "pona",
     "shakespeare",
@@ -677,6 +678,17 @@ wheels = [
 name = "kenosha-kid"
 version = "0.1.0"
 source = { virtual = "projects/kenosha-kid" }
+dependencies = [
+    { name = "supcomputer-core" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "supcomputer-core", editable = "core" }]
+
+[[package]]
+name = "lucky"
+version = "0.1.0"
+source = { virtual = "projects/lucky" }
 dependencies = [
     { name = "supcomputer-core" },
 ]

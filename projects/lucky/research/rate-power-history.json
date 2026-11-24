@@ -1,0 +1,110 @@
+{
+ "checkpoint": "projects/lucky/runs/power-history",
+ "game": "powerball",
+ "history": 8,
+ "step": 300,
+ "samples": 1000000,
+ "seed": 0,
+ "temperature": 1.0,
+ "valid": 802007,
+ "valid_rate": 0.802007,
+ "valid_rate_ci95": [
+  0.8012248062211477,
+  0.8027868734075838
+ ],
+ "rejects_by_rule": {
+  "white_out_of_range": 5048,
+  "white_repeated": 140083,
+  "red_out_of_range": 61829
+ },
+ "reject_examples": [
+  {
+   "attempt": "56 56 23 3 56 | 8",
+   "why": [
+    "white_repeated"
+   ]
+  },
+  {
+   "attempt": "39 50 57 69 23 | 35",
+   "why": [
+    "red_out_of_range"
+   ]
+  },
+  {
+   "attempt": "58 18 18 2 4 | 13",
+   "why": [
+    "white_repeated"
+   ]
+  },
+  {
+   "attempt": "64 64 59 44 39 | 2",
+   "why": [
+    "white_repeated"
+   ]
+  },
+  {
+   "attempt": "59 24 2 53 42 | 37",
+   "why": [
+    "red_out_of_range"
+   ]
+  },
+  {
+   "attempt": "22 47 22 38 2 | 23",
+   "why": [
+    "white_repeated"
+   ]
+  },
+  {
+   "attempt": "17 29 18 18 59 | 26",
+   "why": [
+    "white_repeated"
+   ]
+  },
+  {
+   "attempt": "14 61 19 51 8 | 56",
+   "why": [
+    "red_out_of_range"
+   ]
+  },
+  {
+   "attempt": "23 45 20 22 12 | 52",
+   "why": [
+    "red_out_of_range"
+   ]
+  },
+  {
+   "attempt": "37 38 38 25 67 | 22",
+   "why": [
+    "white_repeated"
+   ]
+  },
+  {
+   "attempt": "19 39 31 49 39 | 13",
+   "why": [
+    "white_repeated"
+   ]
+  },
+  {
+   "attempt": "19 61 12 20 61 | 15",
+   "why": [
+    "white_repeated"
+   ]
+  }
+ ],
+ "memorization": {
+  "past_draws": 1436,
+  "valid_samples": 802007,
+  "full_ticket": {
+   "matches": 1,
+   "rate": 1.246871910095548e-06,
+   "chance_rate": 4.914419659502038e-06,
+   "expected_by_chance": 3.9413989678582513
+  },
+  "five_whites": {
+   "matches": 95,
+   "rate": 0.00011845283145907704,
+   "chance_rate": 0.000127774911147053,
+   "expected_by_chance": 102.47637316431454
+  }
+ }
+}
