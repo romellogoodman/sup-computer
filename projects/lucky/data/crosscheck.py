@@ -104,6 +104,9 @@ def main():
         "draws": len(rows),
         "evening": {"draws": len(by_time["evening"]), "first": by_time["evening"][0], "last": by_time["evening"][-1]},
         "midday": {"draws": len(by_time["midday"]), "first": by_time["midday"][0], "last": by_time["midday"][-1]},
+        "note": "The corpus is the official archive, draw for draw. A draw only the second source lists "
+                "(only_in_second) is left out: the official search answers 'no drawings' for that date. "
+                "A draw the two sources disagree on keeps the official value. Neither is repaired by hand.",
         "crosscheck": compare(md, lc),
     }
 
