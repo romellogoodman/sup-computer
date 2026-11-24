@@ -39,7 +39,7 @@ def main():
         ids = np.array([stoi[c] for c in data], dtype=np.uint16)
         ids.tofile(os.path.join(OUT_DIR, f"{split}.bin"))
         print(f"{split}: {len(ids):,} tokens, {data.count(chr(10)):,} lines")
-    meta = {"vocab_size": len(CHARS), "stoi": stoi, "itos": itos, "tokenizer": "pointing-char-v1"}
+    meta = {"vocab_size": len(CHARS), "stoi": stoi, "itos": itos, "arm": "char", "tokenizer_name": "pointing-char-v1"}
     for d in (OUT_DIR, HERE):
         with open(os.path.join(d, "meta.pkl"), "wb") as f:
             pickle.dump(meta, f)
