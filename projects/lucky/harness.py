@@ -305,7 +305,8 @@ def main():
     b.add_argument("--ckpt", required=True)
     b.add_argument("--n", type=int, default=100000)
     b.add_argument("--seed", type=int, default=0)
-    b.add_argument("--batch", type=int, default=20000)
+    b.add_argument("--batch", type=int, default=500,
+                   help="samples per chunk; the attention cache is ~0.3 MB per sample, so keep this small")
     b.add_argument("--device", default="mps" if torch.backends.mps.is_available() else "cpu")
     b.add_argument("--out")
     b.set_defaults(fn=cmd_rate)

@@ -105,7 +105,7 @@ def to_xy(game, win):
 
 
 @torch.no_grad()
-def bits_per_draw(model, game, draws, idx, history, device, batch=4096):
+def bits_per_draw(model, game, draws, idx, history, device, batch=1024):
     """Exact held-out score, in bits, for each target draw in idx.
 
     pick3: -log2 P(d d d \\n | history).
