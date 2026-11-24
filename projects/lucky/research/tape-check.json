@@ -1,0 +1,24 @@
+{
+ "seeds": 2000,
+ "tapes": "the last 8 draws in the corpus vs the 8 draws before them",
+ "models": {
+  "lucky-history": {
+   "game": "pick3",
+   "step": 1100,
+   "identical_picks": 1985,
+   "identical_pick_rate": 0.9925,
+   "identical_slots": 5985,
+   "slots": 6000,
+   "identical_slot_rate": 0.9975
+  },
+  "power-history": {
+   "game": "powerball",
+   "step": 300,
+   "identical_picks": 1164,
+   "identical_pick_rate": 0.582,
+   "identical_slots": 11030,
+   "slots": 12000,
+   "identical_slot_rate": 0.9191666666666667
+  }
+ }
+}
