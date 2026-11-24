@@ -1,0 +1,249 @@
+{
+ "run": "seed1337",
+ "rule": "lowest validation loss among checkpoints under 10% exact memorization in every dial cell and at least 90% well-formed at temperature 1.0 and below",
+ "lowest_val_loss_step": 12000,
+ "lowest_val_loss": 0.7689,
+ "eligible_steps": [],
+ "chosen_step": 12000,
+ "chosen_by": "the registered rule with the well-formedness bar set aside; the owner's ruling is pending",
+ "no_checkpoint_under_memorization_bar": false,
+ "reference": {
+  "train_lines": 27000,
+  "val_lines": 3000,
+  "classifier_val_accuracy": 0.9826666666666667,
+  "classifier_words": 3650,
+  "heldout_gram8": 0.8795854340548201,
+  "heldout_near": 0.006666666666666667
+ },
+ "checkpoints": [
+  {
+   "step": 500,
+   "train_loss": 1.1905,
+   "val_loss": 1.1899,
+   "worst_exact": 0.0,
+   "wellformed_cold": 0.5810000000000001,
+   "wellformed_by_temperature": {
+    "0.6": 0.593,
+    "0.8": 0.5920000000000001,
+    "1": 0.558,
+    "1.2": 0.436,
+    "1.4": 0.276
+   },
+   "exact_by_temperature": {
+    "0.6": 0.0,
+    "0.8": 0.0,
+    "1": 0.0,
+    "1.2": 0.0,
+    "1.4": 0.0
+   },
+   "near_at_1": 0.0,
+   "gram8_at_1": 0.4329517306739611,
+   "register_accuracy_at_1": 0.714,
+   "length_only_cold": NaN,
+   "under_memorization_bar": true,
+   "eligible": false
+  },
+  {
+   "step": 1000,
+   "train_loss": 1.0142,
+   "val_loss": 1.0243,
+   "worst_exact": 0.0,
+   "wellformed_cold": 0.7763333333333332,
+   "wellformed_by_temperature": {
+    "0.6": 0.755,
+    "0.8": 0.7869999999999999,
+    "1": 0.7869999999999999,
+    "1.2": 0.692,
+    "1.4": 0.5509999999999999
+   },
+   "exact_by_temperature": {
+    "0.6": 0.0,
+    "0.8": 0.0,
+    "1": 0.0,
+    "1.2": 0.0,
+    "1.4": 0.0
+   },
+   "near_at_1": 0.0,
+   "gram8_at_1": 0.6196414524456515,
+   "register_accuracy_at_1": 0.792,
+   "length_only_cold": NaN,
+   "under_memorization_bar": true,
+   "eligible": false
+  },
+  {
+   "step": 2000,
+   "train_loss": 0.9121,
+   "val_loss": 0.9264,
+   "worst_exact": 0.0,
+   "wellformed_cold": 0.766,
+   "wellformed_by_temperature": {
+    "0.6": 0.722,
+    "0.8": 0.7869999999999999,
+    "1": 0.7889999999999999,
+    "1.2": 0.804,
+    "1.4": 0.6990000000000001
+   },
+   "exact_by_temperature": {
+    "0.6": 0.0,
+    "0.8": 0.0,
+    "1": 0.0,
+    "1.2": 0.0,
+    "1.4": 0.0
+   },
+   "near_at_1": 0.0,
+   "gram8_at_1": 0.7238506106264759,
+   "register_accuracy_at_1": 0.874,
+   "length_only_cold": NaN,
+   "under_memorization_bar": true,
+   "eligible": false
+  },
+  {
+   "step": 3000,
+   "train_loss": 0.8517,
+   "val_loss": 0.8747,
+   "worst_exact": 0.0,
+   "wellformed_cold": 0.816,
+   "wellformed_by_temperature": {
+    "0.6": 0.7929999999999999,
+    "0.8": 0.821,
+    "1": 0.8340000000000001,
+    "1.2": 0.823,
+    "1.4": 0.711
+   },
+   "exact_by_temperature": {
+    "0.6": 0.0,
+    "0.8": 0.0,
+    "1": 0.0,
+    "1.2": 0.0,
+    "1.4": 0.0
+   },
+   "near_at_1": 0.001,
+   "gram8_at_1": 0.7264321665744851,
+   "register_accuracy_at_1": 0.918,
+   "length_only_cold": NaN,
+   "under_memorization_bar": true,
+   "eligible": false
+  },
+  {
+   "step": 4000,
+   "train_loss": 0.824,
+   "val_loss": 0.8511,
+   "worst_exact": 0.0,
+   "wellformed_cold": 0.8086666666666668,
+   "wellformed_by_temperature": {
+    "0.6": 0.78,
+    "0.8": 0.815,
+    "1": 0.831,
+    "1.2": 0.851,
+    "1.4": 0.761
+   },
+   "exact_by_temperature": {
+    "0.6": 0.0,
+    "0.8": 0.0,
+    "1": 0.0,
+    "1.2": 0.0,
+    "1.4": 0.0
+   },
+   "near_at_1": 0.0,
+   "gram8_at_1": 0.7503523838890631,
+   "register_accuracy_at_1": 0.938,
+   "length_only_cold": NaN,
+   "under_memorization_bar": true,
+   "eligible": false
+  },
+  {
+   "step": 6000,
+   "train_loss": 0.7801,
+   "val_loss": 0.8155,
+   "worst_exact": 0.0,
+   "wellformed_cold": 0.8803333333333333,
+   "wellformed_by_temperature": {
+    "0.6": 0.872,
+    "0.8": 0.885,
+    "1": 0.884,
+    "1.2": 0.855,
+    "1.4": 0.784
+   },
+   "exact_by_temperature": {
+    "0.6": 0.0,
+    "0.8": 0.0,
+    "1": 0.0,
+    "1.2": 0.0,
+    "1.4": 0.0
+   },
+   "near_at_1": 0.001,
+   "gram8_at_1": 0.780056074202794,
+   "register_accuracy_at_1": 0.948,
+   "length_only_cold": NaN,
+   "under_memorization_bar": true,
+   "eligible": false
+  },
+  {
+   "step": 8000,
+   "train_loss": 0.7513,
+   "val_loss": 0.7954,
+   "worst_exact": 0.002,
+   "wellformed_cold": 0.8936666666666667,
+   "wellformed_by_temperature": {
+    "0.6": 0.882,
+    "0.8": 0.892,
+    "1": 0.907,
+    "1.2": 0.874,
+    "1.4": 0.819
+   },
+   "exact_by_temperature": {
+    "0.6": 0.001,
+    "0.8": 0.0,
+    "1": 0.0,
+    "1.2": 0.001,
+    "1.4": 0.0
+   },
+   "near_at_1": 0.001,
+   "gram8_at_1": 0.7920748544648257,
+   "register_accuracy_at_1": 0.964,
+   "length_only_cold": NaN,
+   "under_memorization_bar": true,
+   "eligible": false
+  },
+  {
+   "step": 12000,
+   "train_loss": 0.7238,
+   "val_loss": 0.7689,
+   "worst_exact": 0.002,
+   "wellformed_cold": 0.886,
+   "wellformed_by_temperature": {
+    "0.6": 0.867,
+    "0.8": 0.891,
+    "1": 0.9,
+    "1.2": 0.872,
+    "1.4": 0.83
+   },
+   "exact_by_temperature": {
+    "0.6": 0.001,
+    "0.8": 0.0,
+    "1": 0.0,
+    "1.2": 0.0,
+    "1.4": 0.0
+   },
+   "near_at_1": 0.002,
+   "gram8_at_1": 0.8073155301217358,
+   "register_accuracy_at_1": 0.965,
+   "length_only_cold": 0.10966666666666668,
+   "under_memorization_bar": true,
+   "eligible": false
+  }
+ ],
+ "p1": {
+  "register_accuracy_at_1": 0.965,
+  "holds": true,
+  "fails": false,
+  "classifier_on_heldout_corpus": 0.9826666666666667
+ },
+ "p4": {
+  "lowest_loss_step_harnessed": true,
+  "lowest_loss_worst_exact": 0.002,
+  "lowest_loss_over_10_percent": false,
+  "chosen_is_earlier": false,
+  "holds": false
+ }
+}

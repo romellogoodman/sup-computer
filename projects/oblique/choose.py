@@ -6,6 +6,11 @@ off), exact memorization is under 10% in every cell for each register, and
 mean well-formedness over the cells at temperature 1.0 and below is at least
 90%. Among eligible checkpoints the dial uses the lowest validation loss.
 
+If no checkpoint clears both bars the script says so, and then names the
+checkpoint the same rule picks with the well-formedness bar set aside, marked
+as a fallback: memorization is the bar the brief's kill criterion is written
+on, and whether a fallback stands is the owner's call, not this script's.
+
 Reads the harness results and the committed training log; prints the table
 the README's leaderboard is copied from, P1 and P4, and writes the verdict.
 
@@ -62,11 +67,21 @@ def main():
             "near_at_1": (cells[1.0]["s"]["near"] + cells[1.0]["f"]["near"]) / 2,
             "gram8_at_1": (cells[1.0]["s"]["gram8"] + cells[1.0]["f"]["gram8"]) / 2,
             "register_accuracy_at_1": cells[1.0]["both"]["register_accuracy"],
+            "length_only_cold": (sum(cells[t][r].get("length_only", float("nan"))
+                                     for t in DIAL if t <= 1.0 for r in "sf")
+                                 / (2 * len(cold))),
+            "under_memorization_bar": worst_exact < MEMORIZATION_BAR,
             "eligible": worst_exact < MEMORIZATION_BAR and wellformed >= WELLFORMED_BAR,
         })
     rows.sort(key=lambda r: r["step"])
     eligible = [r for r in rows if r["eligible"]]
     chosen = min(eligible, key=lambda r: r["val_loss"]) if eligible else None
+    fallback = False
+    if chosen is None:
+        unmemorized = [r for r in rows if r["under_memorization_bar"]]
+        if unmemorized:
+            chosen = min(unmemorized, key=lambda r: r["val_loss"])
+            fallback = True
 
     print("| step | train loss | val loss | worst exact | well-formed, T ≤ 1.0 | "
           "well-formed at 1.4 | near at 1.0 | 8-gram at 1.0 | register at 1.0 | eligible |")
@@ -85,8 +100,12 @@ def main():
         "rule": "lowest validation loss among checkpoints under 10% exact memorization in "
                 "every dial cell and at least 90% well-formed at temperature 1.0 and below",
         "lowest_val_loss_step": best_step, "lowest_val_loss": loss[best_step][1],
+        "eligible_steps": [r["step"] for r in eligible],
         "chosen_step": chosen["step"] if chosen else None,
-        "kill_criterion_1": chosen is None,
+        "chosen_by": (None if chosen is None else
+                      "the registered rule with the well-formedness bar set aside; "
+                      "the owner's ruling is pending" if fallback else "the registered rule"),
+        "no_checkpoint_under_memorization_bar": chosen is None,
         "reference": harness["reference"],
         "checkpoints": rows,
     }
@@ -104,12 +123,15 @@ def main():
                           and chosen["step"] < best_step),
         }
         print(f"\nlowest validation loss: step {best_step:,} ({loss[best_step][1]:.4f})")
-        print(f"chosen: step {chosen['step']:,}")
+        if fallback:
+            print(f"no checkpoint clears the registered well-formedness bar "
+                  f"({WELLFORMED_BAR:.0%} at temperature 1.0 and below)")
+        print(f"chosen{' (fallback)' if fallback else ''}: step {chosen['step']:,}")
         print(f"P1: register accuracy at temperature 1.0 is {acc:.1%} "
               f"({'holds' if acc > 0.85 else 'fails' if acc < 0.70 else 'between the bars'})")
         print(f"P4: {'holds' if verdict['p4']['holds'] else 'fails'}")
     else:
-        print("\nno eligible checkpoint: kill criterion 1")
+        print("\nno checkpoint under the memorization bar: kill criterion 1")
     out = os.path.join(HERE, "research", f"choice-{args.run}.json")
     with open(out, "w") as f:
         json.dump(verdict, f, indent=1)

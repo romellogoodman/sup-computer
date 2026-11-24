@@ -67,7 +67,7 @@ def load_meta():
 
 # --- sampling ---------------------------------------------------------------
 @torch.no_grad()
-def sample_rows(model, meta, specs, seed, device, batch=2000):
+def sample_rows(model, meta, specs, seed, device, batch=500):
     """One sample per spec, where a spec is (register, temperature, soft_cap).
     Rows with different settings share a batch: temperature and soft-cap are
     applied per row. Returns a list of (text, terminated) in spec order: the
@@ -112,6 +112,8 @@ def sample_rows(model, meta, specs, seed, device, batch=2000):
         for row in rows:
             text = "".join(itos[i] for i in row[n_prime:])
             out.append((text.split("\n")[0], "\n" in text))
+        if str(device).startswith("mps"):
+            torch.mps.empty_cache()    # the pool otherwise grows by a batch at a time
     return out
 
 
@@ -262,6 +264,8 @@ def score_cell(ref, samples_by_register):
             "near": ref.near_rate(texts),
             "gram8": float(np.mean([ref.gram_overlap(t) for t in texts])),
             "wellformed": sum(ok for ok, _, _ in wf) / n,
+            # lines whose one fault is the length band: usually a twelfth word
+            "length_only": sum(rs == ["length"] for _, rs, _ in wf) / n,
             "nearmiss_lines": sum(nm for _, _, nm in wf) / n,
             "malformed_reasons": reasons,
             "distinct": len(set(texts)) / n,
@@ -320,19 +324,23 @@ def main():
                 for reg in REGISTERS:
                     specs += [(reg, temp, cap)] * args.n
                     owner += [(f"t{temp:g}_cap{cap_name(cap)}", reg)] * args.n
-        sampled = sample_rows(model, meta, specs, args.seed + step, args.device)
+        # one stream per (checkpoint, soft-cap set), so a call that adds caps
+        # to a file does not replay the draws of the call before it
+        sample_seed = args.seed + step + sum(ord(c) for c in args.caps)
+        sampled = sample_rows(model, meta, specs, sample_seed, args.device)
         grouped = {}
         for (cell, reg), sample in zip(owner, sampled):
             grouped.setdefault(cell, {}).setdefault(reg, []).append(sample)
         cells = {cell: score_cell(ref, by_reg) for cell, by_reg in grouped.items()}
         entry = result["checkpoints"].setdefault(str(step), {"step": step, "cells": {}})
         entry["best_val_loss_so_far"] = float(ckpt["best_val_loss"])
-        entry["sample_seed"] = args.seed + step
+        entry.setdefault("sample_seeds", {})[args.caps] = sample_seed
         entry["cells"].update(cells)
         result["checkpoints"] = dict(sorted(result["checkpoints"].items(),
                                             key=lambda kv: int(kv[0])))
-        d = cells.get("t1_capnone") or next(iter(cells.values()))
-        print(f"step {step:>6}: T=1.0 cap none | exact {d['both']['exact']:.3f} "
+        name = "t1_capnone" if "t1_capnone" in cells else next(iter(cells))
+        d = cells[name]
+        print(f"step {step:>6}: {name} | exact {d['both']['exact']:.3f} "
               f"wellformed {d['both']['wellformed']:.3f} "
               f"register {d['both']['register_accuracy']:.3f}  ({time.time() - t0:.0f}s)",
               flush=True)

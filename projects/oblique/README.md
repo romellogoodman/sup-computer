@@ -40,9 +40,41 @@ first training run: [`research/predictions.md`](research/predictions.md).
 
 ## State
 
-In progress. The corpus is done and committed. Training was interrupted at
-step 4,000 of 12,000 on the first seed and is being resumed; the harness
-numbers, the checkpoint choice and the rating sheets follow it.
+The corpus, both training seeds, the automatic harness and the blind rating
+sheets are done. **The human ratings are not in.** P2 and P3 are unscored
+until they are, and nothing is released: no model card, no registry entry,
+no frozen folder.
+
+| | Status |
+|---|---|
+| P1, the register token takes | holds: 96.5% at temperature 1.0, against a bar of 85% |
+| P2, keepers peak in the middle | unscored, waits on the dial sheet |
+| P3, fortunes are the floor | unscored, waits on the dial sheet |
+| P4, memorization arrives before oblique | fails: the lowest-loss checkpoint copies 0.2% of its lines |
+| Kill criterion 4, deck leakage | did not fire: 0 matches |
+| Kill criterion 1, no well-formed cell | not fired, **and needs the owner's ruling** (below) |
+
+**One ruling is open before the sheets are rated.** The checkpoint rule
+registered before training asked for two things in the dial cells: under 10%
+exact memorization, and at least 90% well-formed lines at temperature 1.0
+and below. Every checkpoint clears the first. None clears the second: step
+12,000 scores 88.6%. Nearly all of the shortfall is one fault. The corpus
+stops at eleven words, the model doesn't count words, and about a tenth of
+its lines run to twelve or thirteen. The sheets were drawn from step 12,000,
+the checkpoint the same rule picks with that bar set aside. The 90% figure
+was the researcher's choice, not the brief's. If the owner reads the miss as
+kill criterion 1, the corpus gets doubled once and these sheets are void.
+The reasoning is in [`research/log.md`](research/log.md).
+
+## For the rater
+
+The sheets and their instructions are in
+[`research/sheets/`](research/sheets/README.md). Fill `dial-sheet.csv` and
+`register-sheet.csv`, leave the `KEY-*.csv` files closed, then:
+
+```bash
+uv run python projects/oblique/score_sheets.py
+```
 
 ## Pipeline
 
@@ -55,6 +87,7 @@ data/filter.py       ->  data/corpus.txt + filter-log.json
 data/prepare.py      ->  data/oblique/{train,val}.bin + meta.pkl
 sweep.py             ->  runs/<run>/ckpt-<step>.pt, every 500 steps
 harness.py           ->  research/harness-<run>.json
+choose.py            ->  research/choice-<run>.json                   (the registered checkpoint rule)
 sheets.py            ->  research/sheets/*.csv                        (blind sheets + keys)
 score_sheets.py      ->  research/ratings-scored.json                 (after the human seat)
 ```
@@ -64,9 +97,20 @@ uv run python projects/oblique/data/fetch_deck.py
 uv run python projects/oblique/data/filter.py        # rebuilds corpus.txt from the committed raw.txt
 uv run python projects/oblique/data/prepare.py
 uv run python projects/oblique/sweep.py --seed 1337 --run seed1337
-uv run python projects/oblique/harness.py --run seed1337 --steps 500,1000,2000 \
+uv run python projects/oblique/harness.py --run seed1337 --caps none \
+    --steps 500,1000,2000,3000,4000,6000,8000,12000 \
     --out projects/oblique/research/harness-seed1337.json
+uv run python projects/oblique/harness.py --run seed1337 --steps 12000 --caps 8 \
+    --out projects/oblique/research/harness-seed1337.json    # then 4, then 2
+uv run python projects/oblique/choose.py --run seed1337
+uv run python projects/oblique/sheets.py --run seed1337 --step 12000
+uv run python projects/oblique/test_score_sheets.py           # the scorer, on synthetic ratings
 ```
+
+Training and harness sampling use the GPU. On the studio machine every such
+command runs under the shared lock, one job at a time:
+`lockf -k ~/.cache/sup-computer/gpu.lock uv run python ...`. A killed sweep
+continues with `--resume`.
 
 `generate.py` costs money and takes `--budget` on every run. The corpus is
 committed, so nothing downstream needs it.
@@ -164,7 +208,88 @@ before training.
 
 ## Leaderboard
 
-Filled when the sweep and the harness finish.
+Both seeds ran the one recipe to 12,000 steps. Validation loss fell at every
+eval and never turned.
+
+| Run | Seed | Steps | Train loss | Val loss | Note |
+|---|---|---|---|---|---|
+| `seed1337` | 1337 | 12,000 | 0.7238 | 0.7689 | harnessed; the sheets come from its last checkpoint |
+| `seed1338` | 1338 | 12,000 | 0.7245 | 0.7691 | trained only; its sheet waits on the first seed's peak |
+
+### The sweep, seed 1337
+
+Five dial cells per checkpoint (temperatures 0.6 to 1.4, soft-cap off), 500
+lines per register per cell. "Worst exact" is the highest exact-memorization
+rate in any dial cell for either register. "Register" is the share of the
+1,000 samples at temperature 1.0 whose token the corpus-trained classifier
+recovers; the same classifier scores 98.3% on held-out corpus lines.
+Held-out corpus lines score 88.0% on 8-gram overlap and 0.7% on near match,
+which is what a line that was never trained on looks like.
+
+| Step | Train loss | Val loss | Worst exact | Well-formed, T ≤ 1.0 | Well-formed at 1.4 | Near at 1.0 | 8-gram at 1.0 | Register at 1.0 |
+|---|---|---|---|---|---|---|---|---|
+| 500 | 1.1905 | 1.1899 | 0.0% | 58.1% | 27.6% | 0.0% | 43.3% | 71.4% |
+| 1,000 | 1.0142 | 1.0243 | 0.0% | 77.6% | 55.1% | 0.0% | 62.0% | 79.2% |
+| 2,000 | 0.9121 | 0.9264 | 0.0% | 76.6% | 69.9% | 0.0% | 72.4% | 87.4% |
+| 3,000 | 0.8517 | 0.8747 | 0.0% | 81.6% | 71.1% | 0.1% | 72.6% | 91.8% |
+| 4,000 | 0.8240 | 0.8511 | 0.0% | 80.9% | 76.1% | 0.0% | 75.0% | 93.8% |
+| 6,000 | 0.7801 | 0.8155 | 0.0% | 88.0% | 78.4% | 0.1% | 78.0% | 94.8% |
+| 8,000 | 0.7513 | 0.7954 | 0.2% | 89.4% | 81.9% | 0.1% | 79.2% | 96.4% |
+| **12,000** | 0.7238 | 0.7689 | 0.2% | 88.6% | 83.0% | 0.2% | 80.7% | 96.5% |
+
+The model does not memorize. At step 12,000 it copies 1 line in 1,000 at
+its coldest setting, and its 8-gram overlap at temperature 1.0 sits under
+the held-out corpus's own. No checkpoint reaches the registered 90%
+well-formedness bar (§ State).
+
+### Every cell, step 12,000
+
+The mean of the two registers, 500 lines each. "Length-only" is the share of
+lines whose single fault is the length band.
+
+| Soft-cap | Temperature | Exact | Near | 8-gram | Well-formed | Length-only | Register |
+|---|---|---|---|---|---|---|---|
+| off | 0.6 | 0.1% | 1.4% | 91.6% | 86.7% | 13.2% | 98.7% |
+| off | 0.8 | 0.0% | 0.6% | 87.5% | 89.1% | 10.8% | 97.5% |
+| off | 1.0 | 0.0% | 0.2% | 80.7% | 90.0% | 8.9% | 96.5% |
+| off | 1.2 | 0.0% | 0.2% | 73.0% | 87.2% | 7.2% | 94.0% |
+| off | 1.4 | 0.0% | 0.0% | 64.1% | 83.0% | 5.8% | 90.8% |
+| 8 | 0.6 | 0.0% | 0.1% | 73.6% | 76.8% | 6.8% | 93.0% |
+| 8 | 0.8 | 0.0% | 0.1% | 54.2% | 63.1% | 3.6% | 85.7% |
+| 8 | 1.0 | 0.0% | 0.0% | 35.0% | 41.6% | 2.6% | 76.6% |
+| 8 | 1.2 | 0.0% | 0.0% | 20.8% | 28.9% | 1.4% | 66.4% |
+| 8 | 1.4 | 0.0% | 0.0% | 11.3% | 15.7% | 2.1% | 59.6% |
+| 4 | 0.6 | 0.0% | 0.0% | 5.2% | 7.2% | 0.8% | 57.0% |
+| 4 | 0.8 | 0.0% | 0.0% | 2.0% | 5.1% | 1.7% | 52.1% |
+| 4 | 1.0 | 0.0% | 0.0% | 0.8% | 2.7% | 1.4% | 50.3% |
+| 4 | 1.2 | 0.0% | 0.0% | 0.4% | 1.8% | 1.5% | 50.0% |
+| 4 | 1.4 | 0.0% | 0.0% | 0.2% | 1.4% | 1.3% | 50.6% |
+| 2 | 0.6 | 0.0% | 0.0% | 0.1% | 0.9% | 1.0% | 49.7% |
+| 2 | 0.8 | 0.0% | 0.0% | 0.0% | 0.6% | 1.1% | 50.8% |
+| 2 | 1.0 | 0.0% | 0.0% | 0.0% | 0.6% | 1.5% | 50.3% |
+| 2 | 1.2 | 0.0% | 0.0% | 0.0% | 0.7% | 1.0% | 50.1% |
+| 2 | 1.4 | 0.0% | 0.0% | 0.0% | 0.1% | 1.3% | 49.9% |
+
+The soft-cap grid borrowed from daydream is too strong for this model. A cap
+of 8 already halves well-formedness at temperature 1.0, and 4 and 2 are
+noise with the classifier at chance. The sweep the brief plans at the
+winning temperature needs caps above 8.
+
+### What still doesn't work
+
+- **The model overruns the length band.** 8.9% to 13.2% of lines at
+  temperature 1.0 and below run past eleven words. The corpus has a hard
+  edge there and a character model has no way to see it.
+- **The registered checkpoint bar was missed**, by 1.4 points at step 12,000
+  and 0.6 at step 8,000. The ruling is the owner's.
+- **P4's premise didn't happen.** There is no memorization for oblique to
+  arrive before, so training length chose nothing: the last checkpoint is
+  the best on loss and on register accuracy.
+- **The proper-noun filter misses a name that opens a line.** It keys on
+  capitals inside a sentence.
+- **Fortunes run long.** At temperature 0.6, 17.0% of `[f]` lines break the
+  length band against 9.4% of `[s]` lines, so length alone hints at the
+  register.
 
 ## Versions
 
