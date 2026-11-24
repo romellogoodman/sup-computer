@@ -1,0 +1,61 @@
+id,register,temperature,soft_cap,run,step,sample_seed,in_training_set,wellformed,malformed,classifier_guess,raw_line
+S001,s,0.4,none,seed1338,12000,27331,0,0,length,s,draw the sound of the paper and follow the thing that leaves you feeling for an unexpected color.
+S002,s,0.8,none,seed1338,12000,27531,0,1,,s,let the paper bleed before the drawing touch.
+S003,s,0.6,none,seed1338,12000,27431,0,1,,s,draw the space between two forms and make the smallest mark.
+S004,s,0.8,none,seed1338,12000,27531,0,1,,s,let the composition decide where the mistake feels comfortable.
+S005,f,0.4,none,seed1338,12000,27332,0,1,,f,you will find courage in a place you have been avoiding.
+S006,f,0.6,none,seed1338,12000,27432,0,1,,f,the lid you are still learning you still find it.
+S007,f,0.6,none,seed1338,12000,27432,0,1,,f,let your hope choose the season that something surprise.
+S008,s,0.4,none,seed1338,12000,27331,0,1,,s,what would the figure look like a scene?
+S009,s,0.6,none,seed1338,12000,27431,0,1,,s,make the paper do the forms and watch the mistake.
+S010,s,0.4,none,seed1338,12000,27331,0,1,,s,paint the sound of a sound of the reflection.
+S011,f,0.4,none,seed1338,12000,27332,0,1,,f,you will find comfort in a small decision.
+S012,f,0.8,none,seed1338,12000,27532,0,1,,f,you will ask for with permission to begin.
+S013,s,0.8,none,seed1338,12000,27531,0,1,,s,let drips become a sharper crooked in the entire scene.
+S014,s,0.6,none,seed1338,12000,27431,0,1,,s,sketch the whole thing until it becomes the work.
+S015,f,0.8,none,seed1338,12000,27532,0,1,,f,your honesty will arrive when you stop rushing.
+S016,s,0.6,none,seed1338,12000,27431,0,1,,s,fold the page into a small corner changes.
+S017,s,0.6,none,seed1338,12000,27431,0,0,length,f,cut a doorway you are missing to someone is about this time.
+S018,f,0.8,none,seed1338,12000,27532,0,0,length,f,a gentle voice can carry you when you stop using a week.
+S019,s,0.4,none,seed1338,12000,27331,0,1,,s,let the subject choose the next color.
+S020,f,0.6,none,seed1338,12000,27432,0,0,length,f,you will find courage in a good thing that you keep avoiding.
+S021,f,0.6,none,seed1338,12000,27432,0,1,,f,your hands will make room for a helpful word.
+S022,f,0.8,none,seed1338,12000,27532,0,0,length,s,let the quiet hour be proud of yourself and stay with this and draw the object.
+S023,f,0.8,none,seed1338,12000,27532,0,1,,f,the thing you are still asking for a held beginning.
+S024,s,0.8,none,seed1338,12000,27531,0,1,,s,what does the picture look blindly until it forgets nobody to?
+S025,s,0.8,none,seed1338,12000,27531,0,1,,s,work as if the mistake were certainty.
+S026,f,0.8,none,seed1338,12000,27532,0,1,,f,your timing is building something you thought was clearer.
+S027,s,0.4,none,seed1338,12000,27331,0,1,,s,let the shadow decide where the image is stopping.
+S028,f,0.8,none,seed1338,12000,27532,0,1,,f,your patience is already giving something new.
+S029,s,0.6,none,seed1338,12000,27431,0,1,,s,paint the silence between two forms.
+S030,f,0.6,none,seed1338,12000,27432,0,1,,f,the smallest words may bring you well far.
+S031,s,0.4,none,seed1338,12000,27331,0,1,,s,sketch the edge of a single drawer.
+S032,s,0.8,none,seed1338,12000,27531,0,1,,s,what if the smoke instead of this?
+S033,s,0.6,none,seed1338,12000,27431,0,1,,s,let the subject leave the canvas before continue anything.
+S034,f,0.6,none,seed1338,12000,27432,0,1,,f,you will find a friend in an ordinary moment.
+S035,s,0.4,none,seed1338,12000,27331,0,1,,s,what would the color sit if it were tired?
+S036,f,0.4,none,seed1338,12000,27332,0,1,,f,your honesty will steady you that was never to be looked.
+S037,f,0.4,none,seed1338,12000,27332,0,1,,f,your careful listening will find you when you stop rehearsing it.
+S038,s,0.8,none,seed1338,12000,27531,0,1,,s,bury the scene where the work happens if it contains.
+S039,f,0.4,none,seed1338,12000,27332,0,0,length,f,a small kindness will return with you in a place you have been avoiding.
+S040,f,0.4,none,seed1338,12000,27332,0,0,length,f,you will find steady effort in a strength you have been perfect.
+S041,s,0.4,none,seed1338,12000,27331,0,1,,s,let the subject become the tool of a doorway.
+S042,f,0.6,none,seed1338,12000,27432,0,1,,f,let the rain decide the thing you fear most today.
+S043,f,0.4,none,seed1338,12000,27332,0,1,,f,you will find comfort in a stranger's step.
+S044,f,0.6,none,seed1338,12000,27432,0,0,length,f,the warmth you look smaller is ready to still be ready for patience.
+S045,f,0.4,none,seed1338,12000,27332,0,1,,f,a small kindness will return to you that feels simple afternoon.
+S046,f,0.8,none,seed1338,12000,27532,0,1,,f,the right evening will guide you someone who you feared.
+S047,f,0.8,none,seed1338,12000,27532,0,1,,f,a kinder dream will return to you to you see them.
+S048,s,0.8,none,seed1338,12000,27531,0,1,,s,build the scene from its memory.
+S049,s,0.4,none,seed1338,12000,27331,0,1,,s,let the subject stay and follow the horizon.
+S050,s,0.6,none,seed1338,12000,27431,0,1,,s,which part remembers your own color.
+S051,f,0.4,none,seed1338,12000,27332,0,1,,f,your next step need not be seen to be seen.
+S052,f,0.6,none,seed1338,12000,27432,0,1,,s,the work you keep avoiding when you stop forcing it.
+S053,f,0.4,none,seed1338,12000,27332,0,1,,f,you will find courage in an ordinary moment.
+S054,s,0.8,none,seed1338,12000,27531,0,1,,s,turn the foreground attempt at the stroke unfinished.
+S055,s,0.6,none,seed1338,12000,27431,0,0,length,s,let the shape decide where the easel wants and watch it make.
+S056,f,0.8,none,seed1338,12000,27532,0,1,,f,you may find warmth of a street you thought was making.
+S057,s,0.4,none,seed1338,12000,27331,0,0,length,s,what if the subject were the subject and start from the subject.
+S058,s,0.6,none,seed1338,12000,27431,0,1,,s,start with the silence with a familiar patch.
+S059,f,0.6,none,seed1338,12000,27432,0,0,length,f,your patience will return to you when you want a hard day.
+S060,s,0.8,none,seed1338,12000,27531,0,1,,s,put the palette toward the next mark.
