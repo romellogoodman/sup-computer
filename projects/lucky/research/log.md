@@ -69,8 +69,8 @@ predictions.
 
 **Lucky is on its floor.** History 9.9709, control 9.9707, floor 9.9658.
 The gap is −0.0002 [−0.0052, +0.0046]. The two runs share a seed and a
-target order, and their logs agree to two decimals for the first 1,000
-steps.
+target order, and from step 300 to step 1000 their logs agree to two
+decimals.
 
 **Lucky Power is not.** History 28.687 (step 300), control 28.505 (step
 400), floor 28.122. Both miss the registered 1% band. The valid-ticket rate
