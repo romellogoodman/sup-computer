@@ -1,0 +1,768 @@
+{
+  "_note": "Written by projects/lucky/data/crosscheck.py. Draws come from physical draw machines; no model wrote any of this corpus.",
+  "pick3": {
+    "game": "Maryland Pick 3",
+    "fetched": "2026-11-24",
+    "sources": {
+      "primary": {
+        "name": "Maryland Lottery (mdlottery.com), winning-numbers search",
+        "url": "https://www.mdlottery.com/player-tools/winning-numbers/",
+        "endpoint": "https://www.mdlottery.com/wp-admin/admin-ajax.php?action=jquery_shortcode&shortcode=find_numbers&atts={\"game\":\"pick-3-4-5\",\"start\":\"01/01/<year>\",\"end\":\"12/31/<year>\",\"method\":\"ANY\"}",
+        "requests": "one per year, 1976 to the fetch year"
+      },
+      "second": {
+        "name": "LotteryCorner (lotterycorner.com), third-party archive",
+        "url": "https://www.lotterycorner.com/md/pick-3-evening/<year> and https://www.lotterycorner.com/md/pick-3-midday/<year>",
+        "requests": "one per draw time per year (midday from 1995)"
+      }
+    },
+    "corpus": "projects/lucky/data/pick3/draws.csv",
+    "draws": 28628,
+    "evening": {
+      "draws": 17592,
+      "first": "1976-07-29",
+      "last": "2026-11-23"
+    },
+    "midday": {
+      "draws": 11036,
+      "first": "1995-05-01",
+      "last": "2026-11-23"
+    },
+    "note": "The corpus is the official archive, draw for draw. A draw only the second source lists (only_in_second) is left out: the official search answers 'no drawings' for that date. A draw the two sources disagree on keeps the official value. Neither is repaired by hand.",
+    "crosscheck": {
+      "primary_draws": 28628,
+      "second_draws": 28694,
+      "in_both_and_equal": 28603,
+      "in_both_and_different": [
+        {
+          "draw": [
+            "1999-10-02",
+            "evening"
+          ],
+          "primary": "947",
+          "second": "062"
+        },
+        {
+          "draw": [
+            "2000-12-11",
+            "evening"
+          ],
+          "primary": "133",
+          "second": "795"
+        },
+        {
+          "draw": [
+            "2002-09-28",
+            "evening"
+          ],
+          "primary": "028",
+          "second": "928"
+        },
+        {
+          "draw": [
+            "2003-01-20",
+            "midday"
+          ],
+          "primary": "412",
+          "second": "027"
+        },
+        {
+          "draw": [
+            "2003-02-23",
+            "evening"
+          ],
+          "primary": "093",
+          "second": "024"
+        },
+        {
+          "draw": [
+            "2004-01-30",
+            "midday"
+          ],
+          "primary": "847",
+          "second": "874"
+        },
+        {
+          "draw": [
+            "2004-02-27",
+            "evening"
+          ],
+          "primary": "739",
+          "second": "730"
+        },
+        {
+          "draw": [
+            "2006-10-21",
+            "midday"
+          ],
+          "primary": "950",
+          "second": "976"
+        },
+        {
+          "draw": [
+            "2007-01-15",
+            "evening"
+          ],
+          "primary": "283",
+          "second": "731"
+        },
+        {
+          "draw": [
+            "2007-04-15",
+            "evening"
+          ],
+          "primary": "366",
+          "second": "376"
+        },
+        {
+          "draw": [
+            "2007-07-26",
+            "midday"
+          ],
+          "primary": "592",
+          "second": "596"
+        },
+        {
+          "draw": [
+            "2007-12-31",
+            "evening"
+          ],
+          "primary": "118",
+          "second": "720"
+        },
+        {
+          "draw": [
+            "2008-03-12",
+            "evening"
+          ],
+          "primary": "514",
+          "second": "116"
+        },
+        {
+          "draw": [
+            "2008-03-31",
+            "evening"
+          ],
+          "primary": "964",
+          "second": "694"
+        },
+        {
+          "draw": [
+            "2008-11-07",
+            "evening"
+          ],
+          "primary": "657",
+          "second": "080"
+        },
+        {
+          "draw": [
+            "2010-07-06",
+            "midday"
+          ],
+          "primary": "212",
+          "second": "228"
+        },
+        {
+          "draw": [
+            "2021-03-09",
+            "evening"
+          ],
+          "primary": "177",
+          "second": "634"
+        },
+        {
+          "draw": [
+            "2023-03-17",
+            "evening"
+          ],
+          "primary": "664",
+          "second": "994"
+        }
+      ],
+      "only_in_primary": [
+        [
+          "1998-08-09",
+          "midday"
+        ],
+        [
+          "2026-09-10",
+          "evening"
+        ],
+        [
+          "2026-09-10",
+          "midday"
+        ],
+        [
+          "2026-09-12",
+          "evening"
+        ],
+        [
+          "2026-09-12",
+          "midday"
+        ],
+        [
+          "2026-11-23",
+          "evening"
+        ],
+        [
+          "2026-11-23",
+          "midday"
+        ]
+      ],
+      "only_in_second": [
+        {
+          "draw": [
+            "1998-01-18",
+            "evening"
+          ],
+          "second": "270"
+        },
+        {
+          "draw": [
+            "1998-01-25",
+            "evening"
+          ],
+          "second": "473"
+        },
+        {
+          "draw": [
+            "1998-02-01",
+            "evening"
+          ],
+          "second": "170"
+        },
+        {
+          "draw": [
+            "1998-02-08",
+            "evening"
+          ],
+          "second": "069"
+        },
+        {
+          "draw": [
+            "1998-02-15",
+            "evening"
+          ],
+          "second": "830"
+        },
+        {
+          "draw": [
+            "1998-02-22",
+            "evening"
+          ],
+          "second": "125"
+        },
+        {
+          "draw": [
+            "1998-03-01",
+            "evening"
+          ],
+          "second": "138"
+        },
+        {
+          "draw": [
+            "1998-03-08",
+            "evening"
+          ],
+          "second": "172"
+        },
+        {
+          "draw": [
+            "1998-03-15",
+            "evening"
+          ],
+          "second": "188"
+        },
+        {
+          "draw": [
+            "1998-03-22",
+            "evening"
+          ],
+          "second": "023"
+        },
+        {
+          "draw": [
+            "1998-03-29",
+            "evening"
+          ],
+          "second": "480"
+        },
+        {
+          "draw": [
+            "1998-04-05",
+            "evening"
+          ],
+          "second": "280"
+        },
+        {
+          "draw": [
+            "1998-04-12",
+            "evening"
+          ],
+          "second": "250"
+        },
+        {
+          "draw": [
+            "1998-04-19",
+            "evening"
+          ],
+          "second": "939"
+        },
+        {
+          "draw": [
+            "1998-04-26",
+            "evening"
+          ],
+          "second": "742"
+        },
+        {
+          "draw": [
+            "1998-05-03",
+            "evening"
+          ],
+          "second": "977"
+        },
+        {
+          "draw": [
+            "1998-05-10",
+            "evening"
+          ],
+          "second": "040"
+        },
+        {
+          "draw": [
+            "1998-05-17",
+            "evening"
+          ],
+          "second": "149"
+        },
+        {
+          "draw": [
+            "1998-05-24",
+            "evening"
+          ],
+          "second": "344"
+        },
+        {
+          "draw": [
+            "1998-05-31",
+            "evening"
+          ],
+          "second": "642"
+        },
+        {
+          "draw": [
+            "1998-06-07",
+            "evening"
+          ],
+          "second": "172"
+        },
+        {
+          "draw": [
+            "1998-06-14",
+            "evening"
+          ],
+          "second": "905"
+        },
+        {
+          "draw": [
+            "1998-06-21",
+            "evening"
+          ],
+          "second": "158"
+        },
+        {
+          "draw": [
+            "1998-08-09",
+            "evening"
+          ],
+          "second": "626"
+        },
+        {
+          "draw": [
+            "2003-02-23",
+            "midday"
+          ],
+          "second": "091"
+        },
+        {
+          "draw": [
+            "2004-12-23",
+            "evening"
+          ],
+          "second": "834"
+        },
+        {
+          "draw": [
+            "2004-12-23",
+            "midday"
+          ],
+          "second": "996"
+        },
+        {
+          "draw": [
+            "2005-01-13",
+            "evening"
+          ],
+          "second": "355"
+        },
+        {
+          "draw": [
+            "2005-01-13",
+            "midday"
+          ],
+          "second": "183"
+        },
+        {
+          "draw": [
+            "2005-06-19",
+            "evening"
+          ],
+          "second": "519"
+        },
+        {
+          "draw": [
+            "2005-06-19",
+            "midday"
+          ],
+          "second": "073"
+        },
+        {
+          "draw": [
+            "2005-07-14",
+            "evening"
+          ],
+          "second": "348"
+        },
+        {
+          "draw": [
+            "2005-07-14",
+            "midday"
+          ],
+          "second": "972"
+        },
+        {
+          "draw": [
+            "2005-09-19",
+            "evening"
+          ],
+          "second": "193"
+        },
+        {
+          "draw": [
+            "2005-09-19",
+            "midday"
+          ],
+          "second": "193"
+        },
+        {
+          "draw": [
+            "2005-10-02",
+            "evening"
+          ],
+          "second": "387"
+        },
+        {
+          "draw": [
+            "2005-10-02",
+            "midday"
+          ],
+          "second": "096"
+        },
+        {
+          "draw": [
+            "2005-12-27",
+            "evening"
+          ],
+          "second": "584"
+        },
+        {
+          "draw": [
+            "2005-12-27",
+            "midday"
+          ],
+          "second": "521"
+        },
+        {
+          "draw": [
+            "2006-02-23",
+            "evening"
+          ],
+          "second": "520"
+        },
+        {
+          "draw": [
+            "2006-02-23",
+            "midday"
+          ],
+          "second": "580"
+        },
+        {
+          "draw": [
+            "2006-06-07",
+            "evening"
+          ],
+          "second": "012"
+        },
+        {
+          "draw": [
+            "2006-06-07",
+            "midday"
+          ],
+          "second": "441"
+        },
+        {
+          "draw": [
+            "2006-08-02",
+            "evening"
+          ],
+          "second": "860"
+        },
+        {
+          "draw": [
+            "2006-08-02",
+            "midday"
+          ],
+          "second": "066"
+        },
+        {
+          "draw": [
+            "2006-09-15",
+            "evening"
+          ],
+          "second": "155"
+        },
+        {
+          "draw": [
+            "2006-09-15",
+            "midday"
+          ],
+          "second": "740"
+        },
+        {
+          "draw": [
+            "2006-12-20",
+            "evening"
+          ],
+          "second": "864"
+        },
+        {
+          "draw": [
+            "2006-12-20",
+            "midday"
+          ],
+          "second": "215"
+        },
+        {
+          "draw": [
+            "2007-10-10",
+            "evening"
+          ],
+          "second": "896"
+        },
+        {
+          "draw": [
+            "2007-10-10",
+            "midday"
+          ],
+          "second": "317"
+        },
+        {
+          "draw": [
+            "2008-08-22",
+            "evening"
+          ],
+          "second": "871"
+        },
+        {
+          "draw": [
+            "2008-08-22",
+            "midday"
+          ],
+          "second": "099"
+        },
+        {
+          "draw": [
+            "2009-02-23",
+            "evening"
+          ],
+          "second": "325"
+        },
+        {
+          "draw": [
+            "2009-02-23",
+            "midday"
+          ],
+          "second": "344"
+        },
+        {
+          "draw": [
+            "2009-05-26",
+            "evening"
+          ],
+          "second": "342"
+        },
+        {
+          "draw": [
+            "2009-05-26",
+            "midday"
+          ],
+          "second": "042"
+        },
+        {
+          "draw": [
+            "2009-06-04",
+            "evening"
+          ],
+          "second": "550"
+        },
+        {
+          "draw": [
+            "2009-06-04",
+            "midday"
+          ],
+          "second": "347"
+        },
+        {
+          "draw": [
+            "2009-07-06",
+            "evening"
+          ],
+          "second": "330"
+        },
+        {
+          "draw": [
+            "2009-07-06",
+            "midday"
+          ],
+          "second": "090"
+        },
+        {
+          "draw": [
+            "2009-10-08",
+            "evening"
+          ],
+          "second": "414"
+        },
+        {
+          "draw": [
+            "2009-10-08",
+            "midday"
+          ],
+          "second": "628"
+        },
+        {
+          "draw": [
+            "2009-11-03",
+            "evening"
+          ],
+          "second": "560"
+        },
+        {
+          "draw": [
+            "2009-11-03",
+            "midday"
+          ],
+          "second": "198"
+        },
+        {
+          "draw": [
+            "2010-01-02",
+            "evening"
+          ],
+          "second": "164"
+        },
+        {
+          "draw": [
+            "2010-01-02",
+            "midday"
+          ],
+          "second": "117"
+        },
+        {
+          "draw": [
+            "2010-06-13",
+            "evening"
+          ],
+          "second": "537"
+        },
+        {
+          "draw": [
+            "2010-06-13",
+            "midday"
+          ],
+          "second": "479"
+        },
+        {
+          "draw": [
+            "2010-07-07",
+            "evening"
+          ],
+          "second": "244"
+        },
+        {
+          "draw": [
+            "2010-07-07",
+            "midday"
+          ],
+          "second": "336"
+        },
+        {
+          "draw": [
+            "2010-11-12",
+            "evening"
+          ],
+          "second": "630"
+        },
+        {
+          "draw": [
+            "2010-11-12",
+            "midday"
+          ],
+          "second": "643"
+        }
+      ]
+    }
+  },
+  "powerball": {
+    "game": "Powerball, 69/26 matrix (first draw 2015-10-07)",
+    "fetched": "2026-11-23",
+    "sources": {
+      "primary": {
+        "name": "New York open data, Lottery Powerball Winning Numbers: Beginning 2010",
+        "url": "https://data.ny.gov/api/views/d6yy-54nr/rows.csv?accessType=DOWNLOAD"
+      },
+      "second": {
+        "name": "Texas Lottery, Powerball past winning numbers (draw order)",
+        "url": "https://www.texaslottery.com/export/sites/lottery/Games/Powerball/Winning_Numbers/powerball.csv"
+      }
+    },
+    "corpus": "projects/lucky/data/powerball/draws.csv",
+    "draws": 1436,
+    "first": "2015-10-07",
+    "last": "2026-11-21",
+    "note": "Whites are compared as sets: New York publishes them sorted, Texas in draw order. Power Play and Double Play are not in the corpus.",
+    "crosscheck": {
+      "primary_draws": 1436,
+      "second_draws": 1437,
+      "in_both_and_equal": 1436,
+      "in_both_and_different": [],
+      "only_in_primary": [],
+      "only_in_second": [
+        {
+          "draw": "2026-11-23",
+          "second": [
+            [
+              7,
+              9,
+              27,
+              40,
+              58
+            ],
+            19
+          ]
+        }
+      ]
+    }
+  }
+}
