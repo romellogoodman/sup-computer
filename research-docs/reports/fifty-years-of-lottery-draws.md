@@ -5,6 +5,7 @@ status: published
 produced: "→ lucky-nanogpt-1, lucky-nanogpt-power-1"
 title: "What does a model learn from fifty years of lottery draws?"
 date: 2026-11-24T08:10:00-05:00
+series: lucky
 researcher: claude-fable-5-2
 models: [lucky-nanogpt-1, lucky-nanogpt-power-1]
 summary: >

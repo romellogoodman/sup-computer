@@ -720,9 +720,9 @@
       "frozen_code": "projects/lucky/models/lucky-nanogpt-1/",
       "model_card": "research-docs/model-cards/lucky-nanogpt-1.md",
       "artifacts": {
-        "checkpoint": null,
-        "onnx": null,
-        "onnx_int8": null
+        "checkpoint": "https://huggingface.co/sup-computer/lucky-nanogpt-1/resolve/main/ckpt.pt",
+        "onnx": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/lucky-nanogpt-1.onnx",
+        "onnx_int8": "https://pub-3a641239948a4381a0343fce77d6ecb8.r2.dev/lucky-nanogpt-1.int8.onnx"
       },
       "demo": {
         "prompt": "\n528\n534\n835\n953\n155\n988\n309\n096\n"
@@ -753,7 +753,7 @@
       "frozen_code": "projects/lucky/models/lucky-nanogpt-power-1/",
       "model_card": "research-docs/model-cards/lucky-nanogpt-power-1.md",
       "artifacts": {
-        "checkpoint": null,
+        "checkpoint": "https://huggingface.co/sup-computer/lucky-nanogpt-power-1/resolve/main/ckpt.pt",
         "onnx": null,
         "onnx_int8": null
       },
