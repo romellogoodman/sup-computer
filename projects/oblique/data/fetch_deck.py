@@ -5,7 +5,7 @@ The deck is Brian Eno and Peter Schmidt's. It is fetched to data/deck/
 it is never committed, never shown to a generator and never trained on.
 
 Sources are two public transcriptions: the four editions plus a condensed
-list, and one independent list. The union is 258 distinct cards.
+list, and one independent list. The union is 247 distinct cards.
 
 Run from the repo root:
     uv run python projects/oblique/data/fetch_deck.py

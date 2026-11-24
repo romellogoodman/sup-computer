@@ -63,7 +63,8 @@ def main():
                 shutil.copyfile(os.path.join(ROOT, out_dir, "ckpt.pt"),
                                 os.path.join(ROOT, out_dir, f"ckpt-{pending:05d}.pt"))
                 pending = None
-            if not m and not line.startswith(("iter ", "saving")):
+            if line.startswith(("tokens per iteration", "found vocab_size",
+                                "number of parameters")):
                 ev.write("# " + line)
         code = proc.wait()
         if pending is not None and code == 0:

@@ -22,7 +22,10 @@ temperature. `none` is off.
 
 Run from the repo root:
     uv run python projects/oblique/harness.py --run seed1337 \\
-        --steps 500,1000,2000 --out projects/oblique/research/harness-seed1337.json
+        --steps 500,1000,2000 --caps none \\
+        --out projects/oblique/research/harness-seed1337.json
+
+A second call with the same --out adds checkpoints, or cells, to the file.
 """
 import argparse
 import json
@@ -31,6 +34,7 @@ import pickle
 import re
 import sys
 import time
+import warnings
 
 import numpy as np
 import torch
@@ -43,6 +47,8 @@ from nanogpt_core import load_model
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "data"))
 from prepare import OUT_DIR as DATA_DIR, split_lines  # noqa: E402
+
+warnings.filterwarnings("ignore", message="Sparse invariant checks")
 
 TEMPERATURES = [0.6, 0.8, 1.0, 1.2, 1.4]
 SOFT_CAPS = [None, 8.0, 4.0, 2.0]
@@ -61,35 +67,57 @@ def load_meta():
 
 # --- sampling ---------------------------------------------------------------
 @torch.no_grad()
-def sample_lines(model, meta, register, n, temperature, soft_cap, seed,
-                 device, batch=250):
-    """n samples primed with "\\n[<register>] ". Returns a list of
-    (text, terminated): the text after the token up to the first newline, and
-    whether that newline arrived inside MAX_NEW characters."""
+def sample_rows(model, meta, specs, seed, device, batch=2000):
+    """One sample per spec, where a spec is (register, temperature, soft_cap).
+    Rows with different settings share a batch: temperature and soft-cap are
+    applied per row. Returns a list of (text, terminated) in spec order: the
+    text after the token up to the first newline, and whether that newline
+    arrived inside MAX_NEW characters."""
     stoi, itos = meta["stoi"], meta["itos"]
-    prime = [stoi[c] for c in f"\n[{register}] "]
     nl = stoi["\n"]
     gen = torch.Generator(device="cpu").manual_seed(seed)
+    n_prime = len("\n[s] ")
     out = []
-    for lo in range(0, n, batch):
-        b = min(batch, n - lo)
-        idx = torch.tensor([prime] * b, dtype=torch.long, device=device)
-        done = torch.zeros(b, dtype=torch.bool)
+    for lo in range(0, len(specs), batch):
+        part = specs[lo:lo + batch]
+        idx = torch.tensor([[stoi[c] for c in f"\n[{reg}] "] for reg, _, _ in part],
+                           dtype=torch.long, device=device)
+        temp = torch.tensor([t for _, t, _ in part]).unsqueeze(1)
+        capped = torch.tensor([c is not None for _, _, c in part]).unsqueeze(1)
+        cap = torch.tensor([c if c is not None else 1.0 for _, _, c in part]).unsqueeze(1)
+        rows = [None] * len(part)          # finished rows, in their original order
+        alive = list(range(len(part)))
         for _ in range(MAX_NEW):
             logits, _ = model(idx)
             logits = logits[:, -1, :].float().cpu()
-            if soft_cap is not None:
-                logits = soft_cap * torch.tanh(logits / soft_cap)
-            probs = F.softmax(logits / temperature, dim=-1)
+            logits = torch.where(capped, cap * torch.tanh(logits / cap), logits)
+            probs = F.softmax(logits / temp, dim=-1)
             nxt = torch.multinomial(probs, 1, generator=gen)
             idx = torch.cat((idx, nxt.to(device)), dim=1)
-            done |= nxt.squeeze(1) == nl
-            if bool(done.all()):
-                break
-        for row in idx[:, len(prime):].cpu().tolist():
-            text = "".join(itos[i] for i in row)
+            ended = nxt.squeeze(1) == nl
+            if bool(ended.any()):
+                # a finished line leaves the batch, so stragglers cost little
+                done = idx[ended.to(device)].cpu().tolist()
+                keep = (~ended).nonzero().squeeze(1)
+                for j, row in zip(ended.nonzero().squeeze(1).tolist(), done):
+                    rows[alive[j]] = row
+                alive = [alive[j] for j in keep.tolist()]
+                if not alive:
+                    break
+                idx = idx[keep.to(device)]
+                temp, capped, cap = temp[keep], capped[keep], cap[keep]
+        if alive:
+            for j, row in enumerate(idx.cpu().tolist()):
+                rows[alive[j]] = row
+        for row in rows:
+            text = "".join(itos[i] for i in row[n_prime:])
             out.append((text.split("\n")[0], "\n" in text))
     return out
+
+
+def sample_lines(model, meta, register, n, temperature, soft_cap, seed, device):
+    """n samples from one register at one setting."""
+    return sample_rows(model, meta, [(register, temperature, soft_cap)] * n, seed, device)
 
 
 # --- the corpus-side references ---------------------------------------------
@@ -195,8 +223,7 @@ class RegisterClassifier:
                     cols.append(j)
         return torch.sparse_coo_tensor(
             torch.tensor([rows, cols], dtype=torch.long).reshape(2, -1),
-            torch.ones(len(rows)), (len(texts), len(self.index)),
-            check_invariants=False).coalesce()
+            torch.ones(len(rows)), (len(texts), len(self.index))).coalesce()
 
     def predict(self, texts):
         """A list of 's' / 'f'."""
@@ -271,33 +298,39 @@ def main():
     print(f"classifier on held-out corpus lines: {ref.classifier_val_accuracy:.3f}; "
           f"held-out 8-gram overlap {ref.heldout_8gram:.3f}, near {ref.heldout_near:.3f}")
 
-    result = {
-        "run": args.run, "n_per_register": args.n, "seed": args.seed,
-        "temperatures": temps, "soft_caps": [cap_name(c) for c in caps],
-        "reference": {
-            "train_lines": len(ref.train), "val_lines": len(ref.val),
-            "classifier_val_accuracy": ref.classifier_val_accuracy,
-            "classifier_words": len(ref.classifier.index),
-            "heldout_gram8": ref.heldout_8gram, "heldout_near": ref.heldout_near,
-        },
-        "checkpoints": {},
+    result = {"run": args.run, "checkpoints": {}}
+    if os.path.exists(args.out):
+        # a later call adds checkpoints or cells to the same file
+        with open(args.out) as f:
+            result = json.load(f)
+    result["n_per_register"] = args.n
+    result["reference"] = {
+        "train_lines": len(ref.train), "val_lines": len(ref.val),
+        "classifier_val_accuracy": ref.classifier_val_accuracy,
+        "classifier_words": len(ref.classifier.index),
+        "heldout_gram8": ref.heldout_8gram, "heldout_near": ref.heldout_near,
     }
     for step in [int(s) for s in args.steps.split(",")]:
         path = os.path.join(HERE, "runs", args.run, f"ckpt-{step:05d}.pt")
         model, ckpt = load_model(path, args.device)
         t0 = time.time()
-        cells = {}
+        specs, owner = [], []
         for cap in caps:
             for temp in temps:
-                seed = args.seed + step + int(temp * 100) * 7 + (0 if cap is None else int(cap) * 1009)
-                samples = {reg: sample_lines(model, meta, reg, args.n, temp, cap,
-                                             seed + (0 if reg == "s" else 1), args.device)
-                           for reg in REGISTERS}
-                cells[f"t{temp:g}_cap{cap_name(cap)}"] = score_cell(ref, samples)
-        result["checkpoints"][str(step)] = {
-            "step": step, "best_val_loss_so_far": float(ckpt["best_val_loss"]),
-            "cells": cells,
-        }
+                for reg in REGISTERS:
+                    specs += [(reg, temp, cap)] * args.n
+                    owner += [(f"t{temp:g}_cap{cap_name(cap)}", reg)] * args.n
+        sampled = sample_rows(model, meta, specs, args.seed + step, args.device)
+        grouped = {}
+        for (cell, reg), sample in zip(owner, sampled):
+            grouped.setdefault(cell, {}).setdefault(reg, []).append(sample)
+        cells = {cell: score_cell(ref, by_reg) for cell, by_reg in grouped.items()}
+        entry = result["checkpoints"].setdefault(str(step), {"step": step, "cells": {}})
+        entry["best_val_loss_so_far"] = float(ckpt["best_val_loss"])
+        entry["sample_seed"] = args.seed + step
+        entry["cells"].update(cells)
+        result["checkpoints"] = dict(sorted(result["checkpoints"].items(),
+                                            key=lambda kv: int(kv[0])))
         d = cells.get("t1_capnone") or next(iter(cells.values()))
         print(f"step {step:>6}: T=1.0 cap none | exact {d['both']['exact']:.3f} "
               f"wellformed {d['both']['wellformed']:.3f} "
