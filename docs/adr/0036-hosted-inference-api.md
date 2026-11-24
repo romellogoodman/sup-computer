@@ -1,6 +1,6 @@
 # ADR 0036: A hosted inference API — the player's third consumer
 
-- **Status:** Accepted (amends [ADR-0025](0025-sup-cli-and-injectable-player-backend.md) — the injectable backend now has a third consumer, a Vercel function; extends [ADR-0019](0019-llm-readable-markdown-endpoints.md) with `/api.md`; addendum 2026-09-15 for the `sup mcp` surface, see § Addendum)
+- **Status:** Accepted (amends [ADR-0025](0025-sup-cli-and-injectable-player-backend.md) — the injectable backend now has a third consumer, a Vercel function; extends [ADR-0019](0019-llm-readable-markdown-endpoints.md) with `/api.md`; addendum 2026-09-15 for the `sup mcp` surface and addendum 2026-11-23 for the `/api/generate` rate limit, see § Addenda)
 - **Date:** 2026-09-15
 - **Deciders:** Romello Goodman (with Claude)
 
@@ -126,9 +126,10 @@ page already follows, so the API is one `.md` away like everything else.
   promise.
 - A single CPU generates serially. Concurrent requests for the same model
   queue behind each other by design; a burst of 512-token glyph requests
-  would exhaust the budget and come back truncated. There is no rate limit
-  — accepted for a research studio's traffic, and the first thing to add if
-  that changes. The int8 graph on x64 is the other lever: dynamic int8 was
+  would exhaust the budget and come back truncated. There was no rate limit
+  when this was accepted — fine for a research studio's traffic, and the
+  first thing to add if that changed. One has since been added (§ Addendum
+  2026-11-23). The int8 graph on x64 is the other lever: dynamic int8 was
   chosen for download size, and whether the full-precision graph is faster
   on the function's CPU is unmeasured.
 - `vercel.json` now owns the trailing-slash redirect the framework used to
@@ -199,3 +200,25 @@ clone). *Reversed the same day by
 [ADR-0039](0039-publish-the-cli-to-npm.md): the CLI is the `supcpu` package,
 and a client anywhere runs `npx -y supcpu mcp`.* A client that calls `generate` in hosted mode pays the API's cold
 start on the first call; `--local` pays the artifact download instead.
+
+## Addendum (2026-11-23): `/api/generate` is rate-limited at the firewall
+
+The Consequences above say there is no rate limit. That is no longer true. A
+Vercel Firewall (WAF) custom rule on the `sup-computer` project limits
+requests whose path starts with `/api/generate` to **10 per 60 seconds per
+IP** (fixed window); requests over the limit are answered by the firewall and
+never reach the function. A security check on 2026-11-23 found the rule
+already live and this ADR out of date.
+
+- **Where it lives.** In the Vercel project's firewall configuration, not in
+  this repository — there is no `vercel.json` entry or code for it. Read it
+  with `vercel firewall rules list --expand` from a directory linked to the
+  project. A fresh project deployed from this tree would have no limit until
+  the rule is recreated.
+- **What it does not change.** The API is still public: no auth, CORS open,
+  and `/api/models` and `/api/health` are not limited. The limit is per IP, so
+  it bounds one client's burst, not total traffic; the serial single-CPU
+  queueing described above still applies under many distinct callers.
+- **Not done.** No test or CI check asserts the rule exists, and the limit is
+  not documented on `/api.md`, so a client that hits it sees the firewall's
+  response with no explanation from our docs.
