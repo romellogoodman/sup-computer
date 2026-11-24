@@ -13,6 +13,7 @@ Run from the repo root:
 What a run writes into out_dir:
     ckpt.pt         the early-stopped checkpoint: lowest val bits/draw
     ckpt_final.pt   the last step, kept to show the overfitting drift
+    ckpt_last.pt    the latest eval step; --init_from=resume continues from it
     log.jsonl       one line per eval: step, epoch, train loss, and exact
                     val and test bits/draw (Powerball at set level)
 
@@ -48,6 +49,7 @@ eval_interval = 100
 log_interval = 50
 batch_size = 256
 max_iters = 3000
+init_from = 'scratch'   # or 'resume': continue from out_dir/ckpt_last.pt
 # model
 n_layer = 4
 n_head = 4
@@ -77,7 +79,6 @@ block_size = game_block_size(game, history)
 config['block_size'] = block_size
 os.makedirs(out_dir, exist_ok=True)
 torch.manual_seed(seed)
-data_gen = torch.Generator().manual_seed(seed)  # epoch order + white shuffles
 
 draws, meta = load_dataset(os.path.join(data_root, dataset))
 splits = meta['splits']
@@ -107,7 +108,10 @@ def get_lr(it):
     return min_lr + 0.5 * (1.0 + math.cos(math.pi * ratio)) * (learning_rate - min_lr)
 
 
-def epoch_batches():
+def epoch_batches(epoch):
+    # the epoch's order and white shuffles come from (seed, epoch) alone, so a
+    # resumed run replays the interrupted epoch exactly
+    data_gen = torch.Generator().manual_seed(seed * 100003 + epoch)
     order = train_idx[torch.randperm(len(train_idx), generator=data_gen)]
     for s in range(0, len(order), batch_size):
         win = windows(draws, order[s:s + batch_size], history)
@@ -116,26 +120,44 @@ def epoch_batches():
         yield to_xy(game, win)
 
 
-def save(name, iter_num, best_val):
+def save(name, iter_num, best_val, best_step):
     torch.save({
         'model': model.state_dict(),
         'optimizer': optimizer.state_dict(),
         'model_args': model_args,
         'iter_num': iter_num,
         'best_val_loss': best_val,
+        'best_step': best_step,
         'config': config,
     }, os.path.join(out_dir, name))
 
 
 log_path = os.path.join(out_dir, 'log.jsonl')
-open(log_path, 'w').close()
-iter_num, epoch, best_val, best_step = 0, 0, float('inf'), 0
+iter_num, best_val, best_step = 0, float('inf'), 0
+resumed_at = -1
+if init_from == 'resume':
+    last = torch.load(os.path.join(out_dir, 'ckpt_last.pt'), map_location=device, weights_only=True)
+    model.load_state_dict(last['model'])
+    optimizer.load_state_dict(last['optimizer'])
+    iter_num, best_val, best_step = last['iter_num'], last['best_val_loss'], last['best_step']
+    resumed_at = iter_num  # this step's eval is already in the log
+    with open(log_path) as f:
+        kept = [line for line in f if json.loads(line)['step'] <= iter_num]
+    with open(log_path, 'w') as f:
+        f.writelines(kept)
+    print(f"resuming from step {iter_num}")
+else:
+    open(log_path, 'w').close()
+epoch = iter_num // steps_per_epoch
+skip = iter_num % steps_per_epoch
 recent = []
-t0 = time.time()
+t0, it0 = time.time(), iter_num
 done = False
 while not done:
-    for x, y in epoch_batches():
-        if iter_num % eval_interval == 0 or iter_num == max_iters:
+    for b, (x, y) in enumerate(epoch_batches(epoch)):
+        if b < skip:
+            continue
+        if (iter_num % eval_interval == 0 or iter_num == max_iters) and iter_num != resumed_at:
             val = bits_per_draw(model, game, draws, val_idx, history, device).mean().item()
             test = bits_per_draw(model, game, draws, test_idx, history, device).mean().item()
             model.train()
@@ -148,8 +170,9 @@ while not done:
             flag = ''
             if val < best_val and iter_num > 0:
                 best_val, best_step = val, iter_num
-                save('ckpt.pt', iter_num, best_val)
+                save('ckpt.pt', iter_num, best_val, best_step)
                 flag = '  saving checkpoint'
+            save('ckpt_last.pt', iter_num, best_val, best_step)
             print(f"step {iter_num}: val {val:.4f} test {test:.4f} bits/draw "
                   f"(floor {floor:.4f}, best val {best_val:.4f} @ {best_step}){flag}", flush=True)
             recent = []
@@ -166,10 +189,11 @@ while not done:
         optimizer.zero_grad(set_to_none=True)
         recent.append(loss.item())
         if iter_num % log_interval == 0:
-            dt = (time.time() - t0) / (iter_num + 1)
+            dt = (time.time() - t0) / (iter_num - it0 + 1)
             print(f"iter {iter_num}: loss {recent[-1]:.4f}, time {dt * 1000:.1f}ms", flush=True)
         iter_num += 1
     epoch += 1
+    skip = 0
 
-save('ckpt_final.pt', iter_num, best_val)
+save('ckpt_final.pt', iter_num, best_val, best_step)
 print(f"done: {iter_num} steps, {epoch} epochs; early stop = step {best_step} (val {best_val:.4f} bits/draw)")

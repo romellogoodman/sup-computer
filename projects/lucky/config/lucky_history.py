@@ -30,3 +30,5 @@ beta2 = 0.99
 weight_decay = 1e-1
 
 seed = 1337
+
+device = 'cpu'           # four tiny models; CPU keeps them off the shared GPU
