@@ -347,6 +347,13 @@ def main():
         lines = [r["words"] for r in recs]
         points = []
         for path in sorted(glob.glob(os.path.join(args.out_dir, "ckpt-*.pt"))):
+            # a scored snapshot is kept beside it, so the curve can be built up
+            # while the run is still training
+            cached = path[:-3] + f".curve-{args.split}.json"
+            if os.path.exists(cached):
+                with open(cached, encoding="utf-8") as f:
+                    points.append(json.load(f))
+                continue
             model, ckpt = load_model(path, args.device)
             r = score(recs, point(model, meta, next(model.parameters()).device, lines))
             points.append({
@@ -359,6 +366,8 @@ def main():
                 "recall": {k: v["recall"] for k, v in r["per_mark"].items()},
                 "precision": {k: v["precision"] for k, v in r["per_mark"].items()},
             })
+            with open(cached, "w", encoding="utf-8") as f:
+                json.dump(points[-1], f)
             print(f"[{tag}] iter {ckpt['iter_num']:>5}: exact {r['exact_match']['rate']:.1%}  "
                   + "  ".join(f"{k[:5]} {points[-1]['f1'][k]:.2f}" for k in ["period", "comma", "question", "colon", "semicolon"]))
         gold = Counter(s for r in recs for s in r["slots"] if s != strip.NONE)

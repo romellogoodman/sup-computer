@@ -3,6 +3,10 @@ runs/
 data/raw/
 data/corpus/
 data/tokenized/
+models/*/raw/
+models/*/corpus/
+models/*/tokenized/
+models/*/results/
 dist/
 __pycache__/
 *.bin
