@@ -361,7 +361,9 @@ def main():
             })
             print(f"[{tag}] iter {ckpt['iter_num']:>5}: exact {r['exact_match']['rate']:.1%}  "
                   + "  ".join(f"{k[:5]} {points[-1]['f1'][k]:.2f}" for k in ["period", "comma", "question", "colon", "semicolon"]))
-        out = {"tag": tag, "split": args.split, "lines": len(recs), "sample_seed": 1337, "points": points}
+        gold = Counter(s for r in recs for s in r["slots"] if s != strip.NONE)
+        out = {"tag": tag, "split": args.split, "lines": len(recs), "sample_seed": 1337,
+               "gold_in_sample": {strip.MARK_NAMES[m]: gold[m] for m in strip.MARKS}, "points": points}
         path = os.path.join(research, f"curve-{tag}.json")
     else:
         model, ckpt = load_model(args.out_dir, args.device)
