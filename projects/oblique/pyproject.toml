@@ -1,0 +1,19 @@
+[project]
+name = "oblique"
+version = "0.1.0"
+description = "A tiny GPT trained on synthetic aphorisms in two registers under one control token, and whether oblique is a place on the sampler's dial"
+requires-python = ">=3.10"
+dependencies = [
+    "supcomputer-core",
+    # exact normalized edit distance at corpus scale: the near-duplicate
+    # filter, the deck-leakage check and the harness's non-word test
+    "rapidfuzz>=3.9",
+]
+
+[tool.uv.sources]
+supcomputer-core = { workspace = true }
+
+# Thin consumer of the shared engine, same shape as kenosha-kid: corpus
+# generation and filtering, config, the harness and the rating sheets live
+# here; training and checkpoint loading call into nanogpt_core. Not a build
+# target (no [build-system]).
