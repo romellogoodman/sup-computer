@@ -1,0 +1,62 @@
+{
+ "checkpoint": "projects/lucky/runs/lucky-control/ckpt_final.pt",
+ "game": "pick3",
+ "history": 0,
+ "step": 3000,
+ "samples": 100000,
+ "seed": 0,
+ "temperature": 1.0,
+ "valid": 99993,
+ "valid_rate": 0.99993,
+ "valid_rate_ci95": [
+  0.99985549945871,
+  0.9999660913950558
+ ],
+ "rejects_by_rule": {
+  "not_a_digit": 7
+ },
+ "reject_examples": [
+  {
+   "attempt": "0 \\n 2",
+   "why": [
+    "not_a_digit"
+   ]
+  },
+  {
+   "attempt": "5 4 \\n",
+   "why": [
+    "not_a_digit"
+   ]
+  },
+  {
+   "attempt": "2 3 \\n",
+   "why": [
+    "not_a_digit"
+   ]
+  },
+  {
+   "attempt": "2 7 \\n",
+   "why": [
+    "not_a_digit"
+   ]
+  },
+  {
+   "attempt": "7 6 \\n",
+   "why": [
+    "not_a_digit"
+   ]
+  },
+  {
+   "attempt": "8 6 \\n",
+   "why": [
+    "not_a_digit"
+   ]
+  },
+  {
+   "attempt": "\\n 9 1",
+   "why": [
+    "not_a_digit"
+   ]
+  }
+ ]
+}
